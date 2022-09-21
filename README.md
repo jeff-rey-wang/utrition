@@ -1,6 +1,7 @@
 # Project Name
 
 Developer Names:
+Yasmine Jolly
 
 Date of project start:
 
