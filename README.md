@@ -1,7 +1,13 @@
 # Project Name
+Utrition
 
-Developer Names:
+## Developer Names:
 Yasmine Jolly
+Justina Srebrnjak
+Jeffrey Wang
+Alex Moica
+Catherine Chen
+Jack Theriault
 
 Date of project start:
 
