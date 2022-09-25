@@ -20,9 +20,9 @@
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
+09/26/2022 & Catherine Chen, Yasmine Jolly, &Initial Document\\ 
+&Jeffrey Wang, Jack Theriault, &\\
+&Alex Moica, Justina Srebrnjak &\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -93,12 +93,47 @@ Each team member is expected to contribute to both technical developement and wr
 
 \section{Workflow Plan}
 
-\begin{itemize}
-	\item How will you be using git, including branches, pull request, etc.?
-	\item How will you be managing issues, including template issues, issue
-	classificaiton, etc.?
-\end{itemize}
+The team will employ a \textbf{Trunk-based Development} version control model, 
+which encourages small, frequent merges to the main branch. This model will 
+help facilitate the use of CI/CD technologies throughout the product's 
+development. Developers will create individual branches when making their 
+changes, and create a pull request when changes are ready for review. Once a 
+pull request is opened, Git Actions will run automated tests and use linting 
+tools to flag potential programming and stylistic errors. Once the changes pass 
+code checks and receive an approval from another team member, the changes will 
+be ready to merge into the main branch. Under this model, changes to the 
+product will be added and reviewed, quickly and consistently.
+\\
 
+To manages issues, weekly meetings have been designated as 'planning' and 
+'update' meetings. Management of issues will primarily be covered in planning 
+meetings. Members will create issues on GitHub, representing a specific aspect 
+of the project they are completing. Members will by assigned to issues 
+pertaining to the changes they are making. Issues will be linked to specific 
+pull requests to better communicate the purpose of each pull request.
+\\
+
+The full workflow is as follows:
+
+\begin{enumerate}
+	\item Create issue on GitHub project board
+	\begin{enumerate}
+		\item Assign issue to self
+		\item Fill out issue information
+	\end{enumerate}
+	\item Pull changes from \texttt{main} branch
+	\item Create new branch off of \texttt{main} branch
+	\item Commit changes to new branch
+	\item Open pull request
+	\begin{enumerate}
+		\item Add description, and link to issue
+		\item Changes must pass automated tests
+		\item Changes must pass linting checks
+		\item At least one other team member must approve changes
+	\end{enumerate}
+	\item Merge changes into \texttt{main} branch
+	
+\end{enumerate}
 \section{Proof of Concept Demonstration Plan}
 
 The demonstration for the proof of the Utrition web application concept will consist of three main components to accurately depict the feasibility. There should be a simple user interface that is navigable. The artificial intelligence will be receiving an input of food items and should be able to correctly output the identity of the food displayed in the image for a small subset of our selected food list. Upon the correct identification of food that the user has uploaded an image of, the application will output the nutrition facts. The risks going into the making of the project consists of learning how to utilize the TensorFlow library, training the machine learning models to accurately recognize and classify the images presented, learning front end languages and training the necessary web development skills to create the application.
