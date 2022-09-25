@@ -140,18 +140,46 @@ The demonstration for the proof of the Utrition web application concept will con
 
 \section{Technology}
 
+The following technologies will be used the development and testing of the system:
 \begin{itemize}
-\item Specific programming language
-\item Specific linter tool (if appropriate)
-\item Specific unit testing framework
-\item Investigation of code coverage measuring tools
-\item Specific plans for Continuous Integration (CI), or an explanation that CI
-  is not being done
-\item Specific performance measuring tools (like Valgrind), if
-  appropriate
-\item Libraries you will likely be using?
-\item Tools you will likely be using?
+	\item Programming languages
+	\begin{itemize}
+		\item Python
+		\item JavaScript
+		\item HTML
+		\item CSS
+	\end{itemize}
+	\item Linter tool
+	\begin{itemize}
+		\item Pylint
+	\end{itemize}
+	\item Unit testing framework \& code coverage measuring tool
+	\begin{itemize}
+		\item Pytest
+	\end{itemize}
+	\item Libraries
+	\begin{itemize}
+		\item NumPy
+		\item TensorFlow
+		\item Pillow
+		\item OpenCV-Python
+		\item Pickle
+	\end{itemize}
+	\item Development tools
+	\begin{itemize}
+		\item Visual Studio Code
+		\item Git
+		\item Chrome web browser
+		\item \LaTeX
+		\item GitHub actions (CI/CD)
+	\end{itemize}
+	\item Remote workspace \& video conferencing
+	\begin{itemize}
+		\item Microsoft Teams
+	\end{itemize}
 \end{itemize}
+
+For continuous integration, automated unit tests and linting will be run each time a branch is being merged. This will ensure that each revision that is committed will trigger the automated tests. The working copy should pass the automated tests before merging into the main branch. 
 
 \section{Coding Standard}
 Team Durum Wheat Semolina will adhere to the PEP8 Python coding conventions. The team will utilize Pylint to ensure adherence to the PEP8 coding conventions. When a team member has made changes to a Python file, Pylint will be used before submitting a pull request. For code in Javascript, HTML, and CSS, team Durum Wheat Semolina will be following the Google style guide. The hyperlinks to the guides can be found below:
