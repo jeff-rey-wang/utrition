@@ -82,6 +82,44 @@ Utrition will be software that can be used on any device with a web browser. Utr
 
 \section{Goals}
 
+This section contains the project goals integral to the development of 
+Utrition. These goals outline the primary reasons for the product's existence, 
+and are critical in contributing to its completeness.
+
+\subsection{Collection of Images}
+
+Utrition outputs the nutritional properties of food found in pictures 
+provided by the user. Users will be allowed to upload pictures to the system, 
+where they will be saved for further processing and analysis. This features 
+serves as the core user input interaction that users will experience when they 
+want to log their diet.
+
+\subsection{Accurate Food Detection}
+
+Utrition will use computer vision to identify the food items present in 
+user-provided images. These food recognition services will analyze pictures, 
+and highlight individual food objects found in the image. The set of identified 
+foods are listed and recorded, and will be used for further processing. This 
+feature leverages food recognition technology to streamline the process of 
+logging one's diet. Instead of having the user list a breakdown of their meal, 
+Utrition will determine what the user is eating from the provided image.
+
+\subsection{Retrieval of Nutritional Information}
+
+Utrition will calculate the nutritional details of the food item identified in the user-provided image. The macronutrients, micronutrients, and caloric information will be fetched for further analysis and processing.
+
+\subsection{Record User's Consumed Nutrients}
+
+Utrition will save the nutritional information of the specified foods in an internal database. This data will be compiled and organized by the date the food was consumed. This data will be used to track overall progress and trends of consumed nutrients.
+
+\subsection{Access Previous Meal Data}
+
+Previously tracked food and nutrtritional data will be able to be accessed from the database. The relevant data will be retrieved from the database based on the search parameters.
+
+\subsection{Display Nutritional Data}
+
+Utrition will display the fetched nutritional data on an interactive user interface. Nutritional data trends and the history of tracked data will be displayed as well. The data will be displayed in different views such as charts and graphs. 
+
 \section{Stretch Goals}
 
 This section contains project goals that are not integral to the development of Utrition, but would be valuable extensions to develop once the aforementioned goals are met.
@@ -92,7 +130,12 @@ Users will be able to access the Utrition application online through a website h
 
 \subsection{Logging Preset Meals}
 
-Users will be able to create presets of their commonly eaten meals on Utrition and save them for future use. Once a preset is created, a user will be able to select it to log the information of the meal without needing to manually re-upload images. This feature will allow users to customize Utrition to fit their eating habits, while also reducing the amount of time it takes to log a meal and access its information.
+Users will be able to create presets of their commonly eaten meals on Utrition 
+and save them for future use. Once a preset is created, a user will be able to 
+select it to log the information of the meal without needing to manually 
+re-upload images. This feature will allow users to customize Utrition to fit 
+their eating habits, while also reducing the amount of time it takes to log a 
+meal and access its information.
 
 \subsection{Identifying Complex Food Items}
 
