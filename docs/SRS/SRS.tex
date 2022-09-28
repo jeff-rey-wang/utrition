@@ -1009,29 +1009,39 @@ qualities that the software is expected to exhibit.
 
 \subsection{Functional Requirements}
 
-\noindent \begin{itemize}
+List of Functional Requirements: 
 
-\item[R\refstepcounter{reqnum}\thereqnum \label{R_Inputs}:] \plt{Requirements
-    for the inputs that are supplied by the user.  This information has to be
-    explicit.}
-
-\item[R\refstepcounter{reqnum}\thereqnum \label{R_OutputInputs}:] \plt{It isn't
-    always required, but often echoing the inputs as part of the output is a
-    good idea.}
-
-\item[R\refstepcounter{reqnum}\thereqnum \label{R_Calculate}:] \plt{Calculation
-    related requirements.}
-
-\item[R\refstepcounter{reqnum}\thereqnum \label{R_VerifyOutput}:]
-  \plt{Verification related requirements.}
-
-\item[R\refstepcounter{reqnum}\thereqnum \label{R_Output}:] \plt{Output related
-    requirements.}
-
+\FillFRNumber
+\begin{itemize}
+    \item \textit{Description}: The user shall have the ability to upload digital images of standard image types to the system. 
+    \item \textit{Rationale}: In order for the system to identify the food a user is eating, the user would have to upload an image of their food to the system. The image shall be saved on the user’s device, which can then be selected.
+    \item \textit{Priority}: High
 \end{itemize}
 
-\plt{Every IM should map to at least one requirement, but not every requirement
-  has to map to a corresponding IM.}
+
+\FillFRNumber
+The user shall have the ability to upload multiple digital images of standard image types to the system. (2.1) Medium 
+
+\FillFRNumber
+The system will be able to identify the type of food that is captured in a image. (2.2) High 
+
+\FillFRNumber
+The system will be able to retrieve nutrition facts of a specific food, which include macronutrients, micronutrients, and caloric details. (2.3) High 
+
+\FillFRNumber
+The system will match the fetched nutrition information to a food. (2.3) High 
+
+\FillFRNumber
+The system will display the nutritional information of a food to the user. (2.4) High 
+
+\FillFRNumber
+The system will log the nutritional data of a food. (2.5) Medium 
+
+\FillFRNumber
+The user will be able to access the nutritional data of previously logged foods. (2.6) (medium) 
+
+\FillFRNumber
+The system will display the history of logged nutritional data in a graph. (2.4) (medium)
 
 \subsection{Nonfunctional Requirements}
 
