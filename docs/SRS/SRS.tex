@@ -75,6 +75,9 @@
 \newcounter{lcnum} %Likely change number
 \newcommand{\lthelcnum}{LC\thelcnum}
 \newcommand{\lcref}[1]{LC\ref{#1}}
+\newcounter{FRCounter}
+\setcounter{FRCounter}{1}
+\newcommand{\FillFRNumber}{\textbf{FR\arabic{FRCounter}.} \stepcounter{FRCounter}}
 
 \usepackage{fullpage}
 
