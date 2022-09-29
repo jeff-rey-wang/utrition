@@ -1008,6 +1008,12 @@ A correct solution must exhibit \plt{fill in the details}.  \plt{These
 The scope of the project is to develop a nutrition tracking application to identify food items based on an image, and derive nutritional data from the classified food. This application can be installed on the user's system, and will have comprehensive software documentation.
 
 \subsubsection{The Context of the Work}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{work_context_diagram.png}
+	\caption{Work Context Diagram}
+\end{figure}
+
 
 \subsubsection{Work Partitioning}
 
@@ -1017,7 +1023,7 @@ The scope of the project is to develop a nutrition tracking application to ident
 
 \FillFRNumber
 \begin{itemize}
-    \item \textit{Description}: The user shall have the ability to upload digital images of standard image types to the system. 
+    \item \textit{Description}: The user shall have the ability to upload digital images of \textbf{standard image types} to the system. 
     \item \textit{Rationale}: In order for the system to identify the food a user is eating, the user would have to upload an image of their food to the system. The image shall be saved on the user’s device, which can then be selected.
     \item \textit{Priority}: High
 \end{itemize}
@@ -1037,30 +1043,29 @@ The system will match the fetched nutrition information to a food. (2.3) High
 
 \FillFRNumber
 \begin{itemize}
-	\item \textit{Description}: The system will display the nutritional information of a food to the user. 
-	\item \textit{Rationale}:
-	\item \textit{Priority}: High
-\end{itemize}
-
-
-\FillFRNumber
-\begin{itemize}
 	\item \textit{Description}: The system will log the nutritional data of a food.
-	\item \textit{Rationale}:
+	\item \textit{Rationale}: Nutritional data of a food will be saved for future reference. This system shall be able to fetch previously recorded data for other processes, such as displaying visuals and calculating nutritional summaries. 
 	\item \textit{Priority}: Medium
 \end{itemize}
 
 \FillFRNumber
 \begin{itemize}
 	\item \textit{Description}: The user will be able to access the nutritional data of previously logged foods. 
-	\item \textit{Rationale}:
+	\item \textit{Rationale}: Nutritional data found in the database shall be available to be referenced and displayed to the user. This will allow the user to view nutritional details of the food that was previously tracked within the application. 
 	\item \textit{Priority}: Medium
 \end{itemize}
 
 \FillFRNumber
 \begin{itemize}
+	\item \textit{Description}: The system will display the nutritional information of a food to the user. 
+	\item \textit{Rationale}: Nutritional data of a particular food item shall be displayed on the user interface, so the user can view the nutritional breakdown of the food.
+	\item \textit{Priority}: High
+\end{itemize}
+
+\FillFRNumber
+\begin{itemize}
 	\item \textit{Description}: The system will display the history of logged nutritional data in a graph. 
-	\item \textit{Rationale}:
+	\item \textit{Rationale}: Previously tracked nutritional statistics will be rendered in a graph as a function over time. This display will be a visual indicator of trends and overall progress.
 	\item \textit{Priority}: Medium
 \end{itemize}
 
@@ -1344,5 +1349,13 @@ Their values are defined in this section for easy maintenance.}
   requirement could be more abstract
 \end{itemize}
 }
+
+\section{Appendix}
+This section has been added to the Volere template.
+\begin{itemize}
+	\item \textbf{Standard image types}: These are image files of extensions which include .png, .jpg, .jpeg.
+\end{itemize}
+
+\subsection{Constants}
 
 \end{document}
