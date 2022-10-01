@@ -1017,6 +1017,26 @@ The scope of the project is to develop a nutrition tracking application to ident
 
 \subsubsection{Work Partitioning}
 
+\begin{tabular}{ |p{5cm}|p{4cm}|p{6.5cm}| }
+\hline
+\textbf{Event Name}                   & \textbf{Input/Output}                                            & \textbf{Summary}                                                                                                                            \\ 
+\hline
+System receives image                 & User uploaded image (in) / Pre-processed image (out)             & User uploads an image and it is pre-processed into a format that can be sent to the computer vision algorithm.                              \\ 
+\hline
+Food identified in image              & Pre-processed image~(in) / Identified food (out)                 & The pre-processed image is processed to identify the food it represents through the use of our machine learning computer vision algorithm.  \\ 
+\hline
+Nutritional data retrieved            & Identified food(in) / Nutritional data (out)                     & The identified food is passed into a matching algorithm to retrieve the associated nutritional data from all stored nutritional data.       \\ 
+\hline
+Nutritional data displayed            & Nutritional data (in) / Visual display of nutritional data (out) & The raw nutritional data is transformed into a human readable format and displayed to the user.                                             \\ 
+\hline
+Nutritional data~logged               & Nutritional data (in) / Logging of data (out)                    & The nutritional data and search information of a user's search is internally logged and persists after the program has exited.              \\ 
+\hline
+Past nutritional data retrieved       & User mouse input (in) / Nutritional data (out)                   & The user is able to retrieve the nutritional data and search information of their past image uploads.                                       \\ 
+\hline
+Past nutritional data chart displayed & Nutritional data (in) / Chart (out)                              & Past nutritional data is displayed in a graph, showing past searches and nutritional data through various periods of time.                  \\
+\hline
+\end{tabular}
+
 \subsubsection{Individual Product Use Cases}
 
 \subsection{Functional Requirements}
@@ -1030,16 +1050,32 @@ The scope of the project is to develop a nutrition tracking application to ident
 
 
 \FillFRNumber
-The user shall have the ability to upload multiple digital images of standard image types to the system. (2.1) Medium 
+\begin{itemize}
+    \item \textit{Description}: The user shall have the ability to upload multiple digital images of \textbf{standard image types} to the system.
+    \item \textit{Rationale}: In order for the system to return the total nutritional content of a users meal, the user would have to upload multiple images of the individual components of their meal for the system to identify. The images shall be saved on the user’s device, which can then be selected.
+    \item \textit{Priority}: Medium
+\end{itemize}
 
 \FillFRNumber
-The system will be able to identify the type of food that is captured in a image. (2.2) High 
+\begin{itemize}
+    \item \textit{Description}: The system will be able to identify the type of food that is captured in an image. 
+    \item \textit{Rationale}: In order for the system to return the nutritional content of a food, the system must first identify the food present in an image.
+    \item \textit{Priority}: High
+\end{itemize}
 
 \FillFRNumber
-The system will be able to retrieve nutrition facts of a specific food, which include macronutrients, micronutrients, and caloric details. (2.3) High 
+\begin{itemize}
+    \item \textit{Description}: The system will be able to store the nutrition facts of a variety of foods, including their macro-nutrients, micro-nutrients, and caloric details.
+    \item \textit{Rationale}: In order to provide a user with the nutritional regarding their meal, the system must first be able to store the nutritional data for a large variety of foods for later use.
+    \item \textit{Priority}: High
+\end{itemize}
 
 \FillFRNumber
-The system will match the fetched nutrition information to a food. (2.3) High 
+\begin{itemize}
+    \item \textit{Description}: The system will be able to retrieve the nutrition facts for a specific food.
+    \item \textit{Rationale}: In order to provide the user with the nutritional data regarding their meal, the system would have to be able to retrieve the nutritional data for a given food.
+    \item \textit{Priority}: High
+\end{itemize}
 
 \FillFRNumber
 \begin{itemize}
