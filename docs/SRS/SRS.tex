@@ -1209,14 +1209,39 @@ A correct solution must exhibit \plt{fill in the details}.  \plt{These
 \hspace{1.5cm}N/A (BRING UP WITH GROUP) 
 
 \subsection{Cultural or Political Requirements}
+
 \subsubsection{Cultural Requirements}
+
 \begin{enumerate}[{CP}1. ] 
 	\item Utrition will not display any culturally insensitive content. \\
 	\textbf{Rationale:} Culturally insensitive topics are irrelevant for what Utrition provides.\\	
 	\textbf{Fit Criteria:} 95\% of the test panel agree that Utrition does not provide any culturally insensitive content to the user.
 \end{enumerate}
+
 \subsubsection{Political Requirements}
 \hspace{1.5cm}N/A (BRING UP WITH GROUP) 
+
+\subsection{Legal Requirements}
+\subsubsection{Compliance Requirements}
+\begin{enumerate}[{LR}1. ]
+	\item Utrition follows Canada’s Anti-Spam Legislation.\\
+	Requirements for Installing Computer Programs \citep{CanadianInstall}.\\
+	\textbf{Rationale:} Durum Wheat Semolina complies with the law, so no unneeded delays occur.\\
+	\textbf{Fit Criteria:} No malicious software will be present in Utrition’s github repository.
+\end{enumerate}
+\subsubsection{Standards Requirements}
+\begin{enumerate}[start=2,label={LR\arabic*.}]
+	\item Durum Wheat Semolina follows Canada's "Guide for Publishing Open Source 
+	Code" \citep{CanadianCode}.\\
+	\textbf{Rationale:} To assist Durum Wheat Semolina in setting up the development environment for Utrition.\\
+	\textbf{Fit Criteria:} Durum Wheat Semolina commit no infractions when following Canada’s guide.
+	\item Durum Wheat Semolina will adhere to the PEP8 Python coding conventions.\\
+	\textbf{Rationale:} Ensures code is consistent for the whole development team to work efficiently \\
+	\textbf{Fit Criteria:} Pylint will be used after every pull request.
+	\item Utrition is created following the standards set by the Google HTML/CSS Style Guide \citep{HTMLCSSStyle} and Google Java Style Guide \citep{JavaStyle}. \\
+	\textbf{Rationale:} Ensures code is consistent for the whole development team to work efficiently \\
+	\textbf{Fit Criteria:} Before every pull request, code will be reviewed to ensure no violations of the standards occur.
+\end{enumerate}
 
 \section{Likely Changes}    
 \noindent \begin{itemize}
