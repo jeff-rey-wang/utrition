@@ -17,6 +17,7 @@
 \usepackage{pdflscape}
 \usepackage{afterpage}
 \usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
 
 \usepackage[round]{natbib}
 
@@ -1000,19 +1001,71 @@ A correct solution must exhibit \plt{fill in the details}.  \plt{These
   plan.}
 
 \section{Non-Functional Requirements}
+
 \subsection{Look and Feel Requirements}
+
 \subsubsection{Appearance Requirements}
+
 \begin{enumerate}[{LF}1. ]
 	\item Utrition’s user interface will be clutterless.\\
 	\textbf{Rationale:} Users must be able to access and read all parts of the user interface. \\
 	\textbf{Fit Criteria:} The distance between user interface components must exceed 20 pixels.
 \end{enumerate}
+
 \subsubsection{Style Requirements}
-\begin{enumerate}[{LF}1. ]
+
+\begin{enumerate}[{LF}2. ]
 	\item Utrition’s style will be consistent throughout the different stages of accessing the user interface.\\
 	\textbf{Rationale:} The appearance of Utrition will be more professional and consistent. \\
 	\textbf{Fit Criteria:} Users will only be able to see $\pi$ when using Utrition. $\pi$ is the consistent font type
 \end{enumerate}
+
+\subsection{Usability and Humanity Requirements}
+
+\subsubsection{Ease of Use Requirements}
+
+\begin{enumerate}[{UH}1. ]
+	\item The user interface will be easy to navigate. \\
+	\textbf{Rationale:} Allows the user to efficiently learn and use Utrition.\\
+	\textbf{Fit Criteria:} The user will be able to navigate to the main menu from any page in 2 clicks.
+\end{enumerate}
+
+\subsubsection{Personalization and Internationalization Requirements}
+
+\begin{enumerate}[{UH}2. ] 
+	\item Utrition will retain the user’s previously tracked information.\\
+	\textbf{Rationale:} Users will be able to view their dietary habits and can make nutritional adjustments based on their observations.\\
+	\textbf{Fit Criteria:} The user will be able to view their diet for the past $\pi$ days.
+	
+\end{enumerate}
+
+\subsubsection{Learning Requirements}
+
+\begin{enumerate}[{UH}3. ] 
+	\item Utrition will be able to be used by people aged 14 and higher who have received no training on the product.\\
+	\textbf{Rationale:} Utrition should be able to be used by all individuals who are concerned with their dietary habits.\\
+	\textbf{Fit Criteria:} 90\% of a test panel of the target demographic should be able to upload their food and retrieve the nutritional facts for it in 2 minutes.
+\end{enumerate}
+
+\subsubsection{Understandability and Politeness Requirements}
+
+\begin{enumerate}[start=4,label={UH\arabic*.}]
+	\item Key information will be easy to understand on Utrition.\\
+	\textbf{Rationale:} Users will be more likely to use the webapp if they are able to understand it efficiently.\\
+	\textbf{Fit Criteria:} Every clickable object will have a diagram associated with it. Calories, fat, sodium, carbohydrates, sugar, and protein will have a diagram associated next to it.
+	\item Utrition will not overwhelm the user with information.\\
+	\textbf{Rationale:} The user is only concerned with the nutritional information and not the calculations leading up to it.\\
+	\textbf{Fit Criteria:} All backend calculations, such as identifying the uploaded food and retrieving the nutritional information, will not be displayed to the user.
+\end{enumerate}
+
+\subsubsection{Accessibility Requirements}
+
+\begin{enumerate}[{UH}6. ] 
+	\item Utrition will be able to be used by deaf people.\\
+	\textbf{Rationale:} Durum Wheat Semolina aims to allow as many individuals as possible to use Utrition.\\
+	\textbf{Fit Criteria:} There will be no sound used by the Utrition web app. 
+\end{enumerate}
+
 \section{Likely Changes}    
 
 \noindent \begin{itemize}
