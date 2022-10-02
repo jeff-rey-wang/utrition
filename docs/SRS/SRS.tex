@@ -1066,6 +1066,71 @@ A correct solution must exhibit \plt{fill in the details}.  \plt{These
 	\textbf{Fit Criteria:} There will be no sound used by the Utrition web app. 
 \end{enumerate}
 
+\subsection{Performance Requirements}
+
+\subsubsection{Speed and Latency Requirements}
+
+\begin{enumerate}[start=1,label={PR\arabic*.}]
+	\item Switching between different UI screens will be quick.\\
+	\textbf{Rationale:} The user should not have to wait to access different parts of the Utrition web app.\\
+	\textbf{Fit Criteria:} The time between the user’s click and the new UI displaying will not exceed 2 seconds.
+	\item Identifying and displaying each food item will be done quickly.\\
+	\textbf{Rationale:} The main use of the web app should not force the user to wait.\\
+	\textbf{Fit Criteria:} After uploading a picture, Utrition will always display the calculated food item within 10 seconds in a test with multiple images.
+	\item Displaying the calculated food’s nutritional value will be done quickly. \\
+	\textbf{Rationale:} The secondary use of the web app should not force the user to wait. \\
+	\textbf{Fit Criteria:} After viewing the calculated food item, Utrition will always display the nutritional facts within 5 seconds in a test with multiple images.
+\end{enumerate}
+
+\subsubsection{Safety-Critical Requirements}
+\hspace{1.5cm}N/A
+
+\subsubsection{Precision or Accuracy Requirements}
+
+\begin{enumerate}[start=4,label={PR\arabic*.}]
+	\item Identifying and displaying each food item will be done correctly. \\
+	\textbf{Rationale:} The main use of the web app should provide the user with accurate information. \\
+	\textbf{Fit Criteria:} In a test with multiple images, Utrition will identify and display the correct food with an average accuracy of 70\%.
+	\item  The displayed nutritional facts will be correct. \\
+	\textbf{Rationale:} The information given to the user should be accurate. \\
+	\textbf{Fit Criteria:} In a test with multiple images, Utrition will display the correct nutritional information for the calculated food 100\% of the time.
+\end{enumerate}
+
+\subsubsection{Reliability and Availibility Requirements}
+
+\begin{enumerate}[{PR}6. ] 
+	\item Utrition will be available to all users at all times.\\
+	\textbf{Rationale:} The user should be able to track their diet whenever they decide to eat. \\
+	\textbf{Fit Criteria:} Since Utrition is a local webapp, the user will always be allowed to use Utrition unless their device is down.
+\end{enumerate}
+
+\subsubsection{Robustness or Fault-Tolerance Requirements}
+\hspace{1.5cm}N/A
+
+\subsubsection{Capacity Requirements}
+
+\begin{enumerate}[{PR}7. ] 
+	\item Utrition will allow $\pi$ images to be uploaded as a group.\\
+	\textbf{Rationale:} The user will have to wait too long for the calculated results if more than $\pi$ images are uploaded at once. \\
+	\textbf{Fit Criteria:} The user will not be able to upload more than $\pi$ photos.
+\end{enumerate}
+
+\subsubsection{Scalability or Extensibility Requirements}
+
+\begin{enumerate}[{PR}8. ] 
+	\item Utrition will have no limit to the size of the user base for its lifespan. \\
+	\textbf{Rationale:} Utrition should be available to all individuals who are health conscious.\\
+	\textbf{Fit Criteria:} Utrition is a local web app and does not depend on a server.
+\end{enumerate}
+
+\subsubsection{Longevity Requirements}
+
+\begin{enumerate}[{PR}9. ] 
+	\item Utrition is expected to operate indefinitely.\\
+	\textbf{Rationale:} Nutritional food values will never change and people will always want ways to regulate their diet. \\
+	\textbf{Fit Criteria:} Utrition will be available to use on github.
+\end{enumerate}
+
 \section{Likely Changes}    
 
 \noindent \begin{itemize}
