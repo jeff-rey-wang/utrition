@@ -129,8 +129,9 @@
 
 \begin{document}
 
-\title{Software Requirements Specification for \progname: subtitle describing software} 
-\author{Author Name(s)}
+\title{Software Requirements Specification for \progname} 
+\author{Catherine Chen, Yasmine Jolly,\\ Jeffrey Wang, Jack Theriault,\\ Alex 
+Moica, Justina Srebrnjak}
 \date{\today}
 	
 \maketitle
@@ -148,8 +149,8 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+\today & 1.0 & Initial Version\\
+%Date 2 & 1.1 & Notes\\
 \bottomrule
 \end{tabularx}
 
@@ -240,7 +241,6 @@ which heat is transferred in
   PS & Physical System Description\\
   R & Requirement\\
   SRS & Software Requirements Specification\\
-  \progname{} & \plt{put an expanded version of your program name here (as appropriate)}\\
   T & Theoretical Model\\
   \bottomrule
 \end{tabular}\\
@@ -338,6 +338,13 @@ expect in the Introduction section.}
 
 \subsection{Purpose of Document}
 
+This document describes the requirements for 'Utrition'. It will provide a 
+detailed overview of the application, and a comprehensive description of the 
+software's functional, non-functional requirements, as well as other details 
+relevant to the product. The template for this document is a modified version 
+of the Volere template \citep{RobertsonAndRobertson2012}.
+
+
 \plt{This section summarizes the purpose of the SRS document.  It does not focus
   on the problem itself.  The problem is described in the ``Problem
   Description'' section (Section~\ref{Sec_pd}).  The purpose is for the document
@@ -349,6 +356,12 @@ expect in the Introduction section.}
   etc.}
 
 \subsection{Scope of Requirements} 
+When considering the files the user uploads to the system, the requirements of 
+this document are constrained to consider only a subset of all possible file 
+types. Furthermore, requirements are created under the impression that files 
+are of a manageable size. Lastly, we assume the user accesses the system 
+through a computer capable of running most modern applications. That is to say, 
+the user possesses sufficient hardware capabilities to run the system.
 
 \plt{Modelling the real world requires simplification.  The full complexity of
   the actual physics, chemistry, biology is too much for existing models, and
@@ -366,6 +379,12 @@ expect in the Introduction section.}
   describes, all of the assumptions.}
 
 \subsection{Characteristics of Intended Reader} \label{sec_IntendedReader}
+This document is intended for the developers and testers working on this 
+system, so that the requirements of the system can be communicated throughout 
+the development process. Readers should have an understanding of the software 
+design life cycle as well as the ability to read discrete math at a 
+university-level or better in order to fully understand the contents and 
+equations used in this document.
 
 \plt{This section summarizes the skills and knowledge of the readers of the
   SRS.  It does NOT have the same purpose as the ``User Characteristics''
@@ -383,6 +402,13 @@ expect in the Introduction section.}
   graduate course on advanced quantum mechanics?}
 
 \subsection{Organization of Document}
+
+The rest of the SRS will discuss the purpose and context of the system, 
+followed by the functional requirements it must satisfy. Then the document will 
+mention its non-functional requirements, providing justifications for each. 
+This is followed by a discussion of potential issues that may arise during the 
+project's development. Lastly, the document lists likely and unlikely 
+changes, and includes a traceability matrix for the system.
 
 \plt{This section provides a roadmap of the SRS document.  It will help the
   reader orient themselves.  It will provide direction that will help them
@@ -1306,6 +1332,7 @@ Their values are defined in this section for easy maintenance.}
 \newpage
 
 \bibliographystyle {plainnat}
+
 \bibliography {../../refs/References}
 
 \newpage
