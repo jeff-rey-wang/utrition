@@ -16,6 +16,8 @@
 \usepackage{caption}
 \usepackage{pdflscape}
 \usepackage{afterpage}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
 
 \usepackage[round]{natbib}
 
@@ -1191,6 +1193,248 @@ be covered in the Verification and Validation document.}
   understandability and reusability.
 
 \end{itemize}
+
+\section{Non-Functional Requirements}
+
+\subsection{Look and Feel Requirements}
+
+\subsubsection{Appearance Requirements}
+
+\begin{enumerate}[{LF}1. ]
+	\item Utrition’s user interface will be clutterless.\\
+	\textbf{Rationale:} Users must be able to access and read all parts of the user interface. \\
+	\textbf{Fit Criteria:} The distance between user interface components must exceed 20 pixels.
+\end{enumerate}
+
+\subsubsection{Style Requirements}
+
+\begin{enumerate}[{LF}2. ]
+	\item Utrition’s style will be consistent throughout the different stages of accessing the user interface.\\
+	\textbf{Rationale:} The appearance of Utrition will be more professional and consistent. \\
+	\textbf{Fit Criteria:} Users will only be able to see $\pi$ when using Utrition. $\pi$ is the consistent font type
+\end{enumerate}
+
+\subsection{Usability and Humanity Requirements}
+
+\subsubsection{Ease of Use Requirements}
+
+\begin{enumerate}[{UH}1. ]
+	\item The user interface will be easy to navigate. \\
+	\textbf{Rationale:} Allows the user to efficiently learn and use Utrition.\\
+	\textbf{Fit Criteria:} The user will be able to navigate to the main menu from any page in 2 clicks.
+\end{enumerate}
+
+\subsubsection{Personalization and Internationalization Requirements}
+
+\begin{enumerate}[{UH}2. ] 
+	\item Utrition will retain the user’s previously tracked information.\\
+	\textbf{Rationale:} Users will be able to view their dietary habits and can make nutritional adjustments based on their observations.\\
+	\textbf{Fit Criteria:} The user will be able to view their diet for the past $\pi$ days.
+	
+\end{enumerate}
+
+\subsubsection{Learning Requirements}
+
+\begin{enumerate}[{UH}3. ] 
+	\item Utrition will be able to be used by people aged 14 and higher who have received no training on the product.\\
+	\textbf{Rationale:} Utrition should be able to be used by all individuals who are concerned with their dietary habits.\\
+	\textbf{Fit Criteria:} 90\% of a test panel of the target demographic should be able to upload their food and retrieve the nutritional facts for it in 2 minutes.
+\end{enumerate}
+
+\subsubsection{Understandability and Politeness Requirements}
+
+\begin{enumerate}[start=4,label={UH\arabic*.}]
+	\item Key information will be easy to understand on Utrition.\\
+	\textbf{Rationale:} Users will be more likely to use the webapp if they are able to understand it efficiently.\\
+	\textbf{Fit Criteria:} Every clickable object will have a diagram associated with it. Calories, fat, sodium, carbohydrates, sugar, and protein will have a diagram associated next to it.
+	\item Utrition will not overwhelm the user with information.\\
+	\textbf{Rationale:} The user is only concerned with the nutritional information and not the calculations leading up to it.\\
+	\textbf{Fit Criteria:} All backend calculations, such as identifying the uploaded food and retrieving the nutritional information, will not be displayed to the user.
+\end{enumerate}
+
+\subsubsection{Accessibility Requirements}
+
+\begin{enumerate}[{UH}6. ] 
+	\item Utrition will be able to be used by deaf people.\\
+	\textbf{Rationale:} Durum Wheat Semolina aims to allow as many individuals as possible to use Utrition.\\
+	\textbf{Fit Criteria:} There will be no sound used by the Utrition web app. 
+\end{enumerate}
+
+\subsection{Performance Requirements}
+
+\subsubsection{Speed and Latency Requirements}
+
+\begin{enumerate}[start=1,label={PR\arabic*.}]
+	\item Switching between different UI screens will be quick.\\
+	\textbf{Rationale:} The user should not have to wait to access different parts of the Utrition web app.\\
+	\textbf{Fit Criteria:} The time between the user’s click and the new UI displaying will not exceed 2 seconds.
+	\item Identifying and displaying each food item will be done quickly.\\
+	\textbf{Rationale:} The main use of the web app should not force the user to wait.\\
+	\textbf{Fit Criteria:} After uploading a picture, Utrition will always display the calculated food item within 10 seconds in a test with multiple images.
+	\item Displaying the calculated food’s nutritional value will be done quickly. \\
+	\textbf{Rationale:} The secondary use of the web app should not force the user to wait. \\
+	\textbf{Fit Criteria:} After viewing the calculated food item, Utrition will always display the nutritional facts within 5 seconds in a test with multiple images.
+\end{enumerate}
+
+\subsubsection{Safety-Critical Requirements}
+\hspace{1.5cm}N/A
+
+\subsubsection{Precision or Accuracy Requirements}
+
+\begin{enumerate}[start=4,label={PR\arabic*.}]
+	\item Identifying and displaying each food item will be done correctly. \\
+	\textbf{Rationale:} The main use of the web app should provide the user with accurate information. \\
+	\textbf{Fit Criteria:} In a test with multiple images, Utrition will identify and display the correct food with an average accuracy of 70\%.
+	\item  The displayed nutritional facts will be correct. \\
+	\textbf{Rationale:} The information given to the user should be accurate. \\
+	\textbf{Fit Criteria:} In a test with multiple images, Utrition will display the correct nutritional information for the calculated food 100\% of the time.
+\end{enumerate}
+
+\subsubsection{Reliability and Availibility Requirements}
+
+\begin{enumerate}[{PR}6. ] 
+	\item Utrition will be available to all users at all times.\\
+	\textbf{Rationale:} The user should be able to track their diet whenever they decide to eat. \\
+	\textbf{Fit Criteria:} Since Utrition is a local webapp, the user will always be allowed to use Utrition unless their device is down.
+\end{enumerate}
+
+\subsubsection{Robustness or Fault-Tolerance Requirements}
+\hspace{1.5cm}N/A
+
+\subsubsection{Capacity Requirements}
+
+\begin{enumerate}[{PR}7. ] 
+	\item Utrition will allow $\pi$ images to be uploaded as a group.\\
+	\textbf{Rationale:} The user will have to wait too long for the calculated results if more than $\pi$ images are uploaded at once. \\
+	\textbf{Fit Criteria:} The user will not be able to upload more than $\pi$ photos.
+\end{enumerate}
+
+\subsubsection{Scalability or Extensibility Requirements}
+
+\begin{enumerate}[{PR}8. ] 
+	\item Utrition will have no limit to the size of the user base for its lifespan. \\
+	\textbf{Rationale:} Utrition should be available to all individuals who are health conscious.\\
+	\textbf{Fit Criteria:} Utrition is a local web app and does not depend on a server.
+\end{enumerate}
+
+\subsubsection{Longevity Requirements}
+
+\begin{enumerate}[{PR}9. ] 
+	\item Utrition is expected to operate indefinitely.\\
+	\textbf{Rationale:} Nutritional food values will never change and people will always want ways to regulate their diet. \\
+	\textbf{Fit Criteria:} Utrition will be available to use on github.
+\end{enumerate}
+
+\subsection{Operational and Environmental Requirements}
+
+\subsubsection{Expected Physical Environment}
+\begin{enumerate}[{OE}1. ] 
+	\item Utrition will be used on any smart device with access to the “.jpg” photo format.\\
+	\textbf{Rationale:} The user must be able to download Utrition and upload a photo to it. \\
+	\textbf{Fit Criteria:} 100\% of the tested smart devices should be able to use all functionalities of the Utrition web app.
+\end{enumerate}
+
+\subsubsection{Requirements for Interfacing with Adjacent systems}
+\hspace{1.5cm}N/A (BRING UP WITH GROUP) 
+
+\subsubsection{Productization Requirements}
+\begin{enumerate}[start=2,label={OE\arabic*.}]
+	\item Utrition will be distributed on github as a public repository.\\
+	\textbf{Rationale:} Utrition is free to be used by anyone.\\
+	\textbf{Fit Criteria:} Users will be able to find and pull the repository into their personal device.
+	\item Utrition will be able to be installed by any individual aged 14 or older after reading the installation guide on the Utrition github page.\\
+	\textbf{Rationale:} Utrition should be accessible to all users. \\
+	\textbf{Fit Criteria:} 95\% of a test panel will be able to install Utrition after reading the installation guide.
+\end{enumerate}
+
+\subsubsection{Release Requirements}
+
+\begin{enumerate}[{OE}4. ] 
+	\item Utrition will not have any updates after initial public release.\\
+	\textbf{Rationale:} Food components and their nutritional value do not change over time.\\	\textbf{Fit Criteria:} Utrition’s git will receive no updates after initial release.
+\end{enumerate}
+
+\subsection{Maintainability and Support Requirements}
+
+\subsubsection{Maintenance Requirements}
+\begin{enumerate}[{MS}1. ] 
+	\item New data can be given to improve Utrition’s AI at any point.\\
+	\textbf{Rationale:} Utrition’s AI must be ready to improve itself whenever needed to ensure it can detect food at 70\% accuracy.\\	
+	\textbf{Fit Criteria:} Any backend developer is able to successfully upload new data to Utrition’s AI at any time. 
+\end{enumerate}
+
+\subsubsection{Supportability Requirements}
+\begin{enumerate}[{MS}2. ] 
+	\item Support on how to install and use Utrition will be found on Utrition’s github page. \\
+	\textbf{Rationale:} Users who are not technologically advanced should be able to use Utrition.\\	
+	\textbf{Fit Criteria:} All users will be able to view the support manuals on how to install and use Utrition.
+\end{enumerate}
+
+\subsubsection{Adaptability Requirements}
+\hspace{1.5cm}N/A (BRING UP WITH GROUP) 
+
+\subsection{Security Requirements}
+
+\subsubsection{Access Requirements}
+\begin{enumerate}[{SR}1. ] 
+	\item The entirety of Utrition can be accessed by all individuals. \\
+	\textbf{Rationale:} The user has the flexibility to improve Utrition and the right to know what they’re downloading onto their computer.  \\	
+	\textbf{Fit Criteria:} Anyone will be able to pull the open-source project from github
+\end{enumerate}
+
+\subsubsection{Integrity Requirements}
+\begin{enumerate}[{SR}2. ] 
+	\item Utrition will not crash when an abnormal photo format is uploaded to the app. \\
+	\textbf{Rationale:} Users should not be punished for uploading the wrong photo format/Utrition should not crash by improper user input.\\	
+	\textbf{Fit Criteria:}  Utrition will only allow photo uploads from images that have the file extension “.jpg”
+\end{enumerate}
+
+\subsubsection{Privacy Requirements}
+\begin{enumerate}[{SR}3. ] 
+	\item Utrition will store the user’s data locally.\\
+	\textbf{Rationale:} Only the user should have to view their stored dietary habits. \\	
+	\textbf{Fit Criteria:} Utrition can be used offline and will never communicate with other servers.
+\end{enumerate}
+
+\subsubsection{Audit Requirements}
+\hspace{1.5cm}N/A (BRING UP WITH GROUP) 
+
+\subsubsection{Immunity Requirements}
+\hspace{1.5cm}N/A (BRING UP WITH GROUP) 
+
+\subsection{Cultural or Political Requirements}
+
+\subsubsection{Cultural Requirements}
+
+\begin{enumerate}[{CP}1. ] 
+	\item Utrition will not display any culturally insensitive content. \\
+	\textbf{Rationale:} Culturally insensitive topics are irrelevant for what Utrition provides.\\	
+	\textbf{Fit Criteria:} 95\% of the test panel agree that Utrition does not provide any culturally insensitive content to the user.
+\end{enumerate}
+
+\subsubsection{Political Requirements}
+\hspace{1.5cm}N/A (BRING UP WITH GROUP) 
+
+\subsection{Legal Requirements}
+\subsubsection{Compliance Requirements}
+\begin{enumerate}[{LR}1. ]
+	\item Utrition follows Canada’s Anti-Spam Legislation Requirements for Installing Computer Programs \citep{CanadianInstall}.\\
+	\textbf{Rationale:} Durum Wheat Semolina complies with the law, so no unneeded delays occur.\\
+	\textbf{Fit Criteria:} No malicious software will be present in Utrition’s github repository.
+\end{enumerate}
+\subsubsection{Standards Requirements}
+\begin{enumerate}[start=2,label={LR\arabic*.}]
+	\item Durum Wheat Semolina follows Canada's "Guide for Publishing Open Source 
+	Code" \citep{CanadianCode}.\\
+	\textbf{Rationale:} To assist Durum Wheat Semolina in setting up the development environment for Utrition.\\
+	\textbf{Fit Criteria:} Durum Wheat Semolina commit no infractions when following Canada’s guide.
+	\item Durum Wheat Semolina will adhere to the PEP8 Python coding conventions.\\
+	\textbf{Rationale:} Ensures code is consistent for the whole development team to work efficiently \\
+	\textbf{Fit Criteria:} Pylint will be used after every pull request.
+	\item Utrition is created following the standards set by the Google HTML/CSS Style Guide \citep{HTMLCSSStyle} and Google Java Style Guide \citep{JavaStyle}. \\
+	\textbf{Rationale:} Ensures code is consistent for the whole development team to work efficiently \\
+	\textbf{Fit Criteria:} Before every pull request, code will be reviewed to ensure no violations of the standards occur.
+\end{enumerate}
 
 \section{Project Drivers }
 
