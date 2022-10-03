@@ -14,48 +14,48 @@
 
 \begin{document}
 
+\maketitle
+
 \begin{table}[hp]
 \caption{Revision History} \label{TblRevisionHistory}
 \begin{tabularx}{\textwidth}{llX}
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
+09/26/2022 & Catherine Chen, Yasmine Jolly, &Initial Document\\ 
+&Jeffrey Wang, Jack Theriault, &\\
+&Alex Moica, Justina Srebrnjak &\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \newpage
 
-\maketitle
-
-The development plan details the foundation on how team Durum Wheat Semolina will develop the nutrition tracking app Utrition. This document outlines each team member’s roles and responsibilities, as well as the team’s workflow plan and how deadlines will be scheduled. The document describes the biggest challenges the team will face while developing Utrition and their respective solutions. Also, the document lists the coding standards and technology used in developing Utrition.
+The development plan details the foundation of how team Durum Wheat Semolina will develop the nutrition tracking app Utrition. This document outlines each team member’s roles and responsibilities, as well as the team’s workflow plan and how deadlines will be scheduled. The proof-of-concept demonstration plan addressing the biggest challenges the team will face while developing Utrition is included in this document. Also, the document lists the coding standards and technology used in developing Utrition.
 
 \section{Team Meeting Plan}
 
-Team meetings will occur twice every week. These meetings will take place from 6:30-7:30 on Mondays and from 1:30-2:30 on Thursdays. The location for the meetings will be on the McMaster University campus, in a private study room that will be booked and notified to all group members 24 hours before the meeting. Catherine Chen is responsible for booking the meeting room. Any additional meetings will be planned in accordance with all members availablity when needed.
+Team meetings will occur twice every week. These meetings will take place from 6:30pm-7:30pm on Mondays and from 1:30pm-2:30pm on Thursdays. The location for the meetings will be on the McMaster University campus, in a private study room that will be booked and notified to all group members 24 hours before the meeting. Catherine Chen is responsible for booking the meeting room. Any additional meetings will be planned in accordance with all members'  availability when needed.
 
-All six groups members are expected to attend every meeting. In the event that a group member plans to miss a meeting, they must notify all groups members beforehand and continue to complete their assigned work.
+All six group members are expected to attend every meeting. In the event that a group member plans to miss a meeting, they must notify all group members beforehand and continue to complete their assigned work.
 
 Meetings will follow the meeting agenda created by Yasmine Jolly. Any member can add to the agenda which can be found in a word document inside the team's Microsoft Teams channel. Yasmine will chair all meetings, ensuring all agenda items are discussed in order of highest priority.
 
 \section{Team Communication Plan}
 
-The team will communicate primarily through Facebook Messenger chat. All members have the application downloaded on their phones and will receive notifications when a new message is sent. This ensures replies will be sent in a timely fashion. In emergency cases where a member must get in contact with another member as soon as possible, they may call them on their personal cell phone number. Personal contact information has been shared between all members.
+The team will communicate primarily through Facebook Messenger chat. All members have the application downloaded on their cell phones and will receive notifications when a new message is sent. This ensures replies will be sent in a timely fashion. In emergency cases where a member must get in contact with another member as soon as possible, they may call them with their personal cell phone number. Personal contact information has been shared between all members.
 
 \section{Team Member Roles}
 
-Utrition will not contain a team leader. Team members will have equal authority and influence on major decisions and plans for the project. All important decisions must be unanimously agreed upon by all team members.
+Utrition will not employ a team leader. Team members will have equal authority and influence on major decisions and plans for the project. All important decisions must be unanimously agreed upon by all team members.
 
-Each team member is expected to contribute to both technical developement and written documentation work during this project. Tasks will be distributed throughout the span of the project where each group member is responsible for their assigned work. In addition to these responsibilities, specific roles have been assigned to each member to ensure organization of the project and high quality deliverables. These roles are discussed below. 
+Each team member is expected to contribute to both technical development and written documentation work during this project. Tasks will be distributed throughout the span of the project where each group member is responsible for their assigned work. In addition to these responsibilities, specific roles have been assigned to each member to ensure organization of the project and high-quality deliverables. These roles are discussed below. In the event that a team member wishes to change their role, they must discuss this matter with the team to ensure their responsibilities are being taken over.
 
 \subsection{Alexander Moica}
 
 \begin{itemize}
 	\item Backend Developer Lead: responsible for leading development of backend implementation. All needed work for product functionality must be identified and managed by this role. Questions regarding backend work will be directed to this role.
-	\item Github Specialist: responsible for managing the project on Github including creating Git issues and managing tags. Additionally, any questions about Github functionality will be directed to this role.
+	\item GitHub Specialist: responsible for managing the project on GitHub including creating Git issues and managing tags. Additionally, any questions about GitHub functionality will be directed to this role.
 \end{itemize}
 
 \subsection{Yasmine Jolly}
@@ -69,7 +69,7 @@ Each team member is expected to contribute to both technical developement and wr
 
 \begin{itemize}
 	\item Team Liaison: responsible for communicating questions and concerns on behalf of the team to the class instructor and/or teaching assistants. 
-	\item LaTeX Specialist: responsible for answering all team internal questions related to LaTeX. 
+	\item \LaTeX Specialist: responsible for answering all team internal questions related to \LaTeX. 
 \end{itemize}
 
 \subsection{Jack Theriault}
@@ -88,48 +88,113 @@ Each team member is expected to contribute to both technical developement and wr
 \subsection{Justina Srebrnjak}
 
 \begin{itemize}
-	\item Documentation Proof Reader: responsible for reviewing all documentation. This includes ensuring the document is cohesive, correcting any grammar or spelling errors, and grading the document with provided rubics before submission.   
+	\item Documentation Proof Reader Lead: responsible for leading reviews of all documentation. This includes ensuring the document is cohesive, correcting any grammar or spelling errors, and grading the document with provided rubrics before submission. Any questions related to proof reading documents will be directed to this role.   
 \end{itemize}
 
 \section{Workflow Plan}
 
-\begin{itemize}
-	\item How will you be using git, including branches, pull request, etc.?
-	\item How will you be managing issues, including template issues, issue
-	classificaiton, etc.?
-\end{itemize}
+The team will employ a \textbf{Trunk-based Development} version control model, 
+which encourages small and frequent merges to the main branch. This model will 
+help facilitate the use of CI/CD technologies throughout the product's 
+development. Developers will create individual branches when making their 
+changes, and create a pull request when changes are ready for review. Once a 
+pull request is opened, Git Actions will run automated tests and use linting 
+tools to flag potential programming and stylistic errors. Once the changes pass 
+code checks and receive an approval from another team member, the changes will 
+be ready to merge into the main branch. Under this model, changes to the 
+product will be added and reviewed, quickly and consistently.
+\\
 
+To manages issues, weekly meetings have been designated as 'planning' and 
+'update' meetings. Management of issues will primarily be covered in planning 
+meetings. Members will create issues on GitHub, representing a specific aspect 
+of the project they are completing. Members will by assigned to issues 
+pertaining to the changes they are making. These issues will be tracked on the Utrition Project Board, where issues will be placed in categories such as To Do, In Progress, Review, QA, and Done. Issues will be linked to specific 
+pull requests to better communicate the purpose of each pull request. The creator of the pull request will also add any appropriate tags (ex. documentation, bug fix, etc.) to better categorize the work and locate easily.
+\\
+
+The full workflow is as follows:
+
+\begin{enumerate}
+	\item Create issue on GitHub project board
+	\begin{enumerate}
+		\item Assign issue to self
+		\item Fill out issue information
+	\end{enumerate}
+	\item Pull changes from \texttt{main} branch
+	\item Create new branch off of \texttt{main} branch
+	\item Commit changes to new branch
+	\item Open pull request
+	\begin{enumerate}
+		\item Add description, appropriate tags and link to issue
+		\item Changes must pass automated tests
+		\item Changes must pass linting checks
+		\item At least one other team member must approve changes
+	\end{enumerate}
+	\item Merge changes into \texttt{main} branch
+	
+\end{enumerate}
 \section{Proof of Concept Demonstration Plan}
 
-What is the main risk, or risks, for the success of your project?  What will you
-demonstrate during your proof of concept demonstration to convince yourself that
-you will be able to overcome this risk?
+Utrition is a complex application that contains risks to the completion of the project. These risks are learning how to utilize the TensorFlow library, training the machine learning models to accurately recognize and classify the images presented, and learning frontend languages such as HTML/CSS and the backend connector language, JavaScript.
+
+The proof-of-concept demonstration for Utrition will consist of three main components to accurately depict the feasibility of the project. There should be a simple user interface that the backend implementation will be accessed through. In terms of backend functionality, there should be simple artificial intelligence. This technology will be receiving an input of food items and should be able to correctly output the identity of the food displayed in the image for a small subset of our selected food list. Upon the correct identification of the food, the application will output the corresponding nutrition facts.
+
+In the case that the risks are not able to be mitigated in the proof-of-concept demonstration, the project will readjusted. For example, if it proves too difficult to create the frontend of the web application, the product will be accessed from the backend files using command line.
 
 \section{Technology}
 
+The following technologies will be used for the development and testing of the system:
 \begin{itemize}
-\item Specific programming language
-\item Specific linter tool (if appropriate)
-\item Specific unit testing framework
-\item Investigation of code coverage measuring tools
-\item Specific plans for Continuous Integration (CI), or an explanation that CI
-  is not being done
-\item Specific performance measuring tools (like Valgrind), if
-  appropriate
-\item Libraries you will likely be using?
-\item Tools you will likely be using?
+	\item Programming languages
+	\begin{itemize}
+		\item Python
+		\item JavaScript
+		\item HTML
+		\item CSS
+	\end{itemize}
+	\item Linter tool
+	\begin{itemize}
+		\item Pylint
+	\end{itemize}
+	\item Unit testing framework \& code coverage measuring tool
+	\begin{itemize}
+		\item Pytest
+	\end{itemize}
+	\item Libraries
+	\begin{itemize}
+		\item NumPy
+		\item TensorFlow
+		\item Pillow
+		\item OpenCV-Python
+		\item Pickle
+	\end{itemize}
+	\item Development tools
+	\begin{itemize}
+		\item Visual Studio Code
+		\item Git
+		\item Chrome web browser
+		\item \LaTeX
+		\item GitHub Actions (CI/CD)
+	\end{itemize}
+	\item Remote workspace \& video conferencing
+	\begin{itemize}
+		\item Microsoft Teams
+	\end{itemize}
 \end{itemize}
 
+For continuous integration, automated unit tests and linting will be run each time a branch is being merged. This will ensure that each revision that is committed will trigger the automated tests. The working copy should pass the automated tests before merging into the main branch. 
+
 \section{Coding Standard}
-Team Durum Wheat Semolina will adhere to the PEP8 Python coding conventions. The team will utilize Pylint to ensure adherence to the PEP8 coding conventions. When a team member has made changes to a Python file, Pylint will be used before submitting a pull request. For code in Javascript, HTML, and CSS, team Durum Wheat Semolina will be following the Google style guide. The hyperlinks to the guides can be found below:
+Team Durum Wheat Semolina will adhere to the PEP8 Python coding conventions by using Pylint. When a team member has made changes to a Python file, Pylint will be used before submitting a pull request. For code in JavaScript, HTML, and CSS, the team will be following the Google style guide. The hyperlinks to the guides can be found below:
 \begin{itemize}
 	\item \href{https://peps.python.org/pep-0008/}{Python}
-	\item \href{https://google.github.io/styleguide/jsguide.html}{Javascript}
+	\item \href{https://google.github.io/styleguide/jsguide.html}{JavaScript}
 	\item \href{https://google.github.io/styleguide/htmlcssguide.html}{HTML / CSS}
 \end{itemize}
 
 \section{Project Scheduling}
 
-\wss{How will the project be scheduled?}
+Project scheduling will occur during the two weekly meetings mentioned in Section 1 - Team Meeting Plan. Monday meetings will be "planning" meetings where the team discusses and breaks up upcoming tasks into specific actionable issues, create tickets on our GitHub board, allocate work to team members, and determine goals and deadlines for our project deliverables. During Thursday meetings, the team will be checking the progress of every ticket assigned to a team member and discussing any issues that have arisen in the interim. Through this system, we are able to effectively schedule deadlines and ensure we meet them through constant communication, progress checks, and efficient distribution of work.
 
 \end{document}

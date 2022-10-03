@@ -31,6 +31,8 @@
 \end{tabularx}
 \end{table}
 
+\newpage
+
 \section{Problem Statement}
 
 \wss{You should check your problem statement with the
@@ -40,25 +42,88 @@
 
 \subsection{Problem}
 
-Malnutrition is an often overlooked health issue that is becoming more prevalent as time goes by. In fact, malnourished individuals may not know they are not consuming the proper amount of nutrients to keep them healthy. As a result, undernourished individuals will have a weaker immune system and stunted growth, while overnourished individuals will have cardiovascular diseases and diabetes. All of these factors lead to a lower life expectancy. There are nutrition apps that help the user track the progress to their nutritional goals, but all of them require the user to manually input each component used for their meal. Searching for each component can be overwhelming and tedious to some users. Therefore, some users end up never using their downloaded app even though they had an interest in taking care of their nutritional health.
-\begin{itemize}
-	\item \href{https://peps.python.org/pep-0008/}{Python}
-	\item \href{https://google.github.io/styleguide/jsguide.html}{Javascript}
-	\item \href{https://google.github.io/styleguide/htmlcssguide.html}{HTML / CSS}
-\end{itemize}
+Malnutrition is an often overlooked health issue that is becoming more prevalent in today's society. In fact, malnourished individuals may not know they are not consuming the proper amount of nutrients to keep them healthy. As a result, undernourished individuals will have a weaker immune system and stunted growth, while over nourished individuals will have cardiovascular diseases and diabetes. All of these factors lead to a lower life expectancy. There are nutrition apps that help users track the progress to their nutritional goals, but all of them require the user to manually input each component used for their meal. Searching for each component can be overwhelming and tedious for users. Therefore, users end up never using their downloaded app even though they had an interest in taking care of their nutritional health. Without an easier solution, our population will continue to eat poorly, which will lead to health issues and earlier death rates.
 
 \subsection{Inputs and Outputs}
-
-\wss{Characterize the problem in terms of ``high level'' inputs and outputs.  
-Use abstraction so that you can avoid details.}
+\begin{itemize}
+	\item \textbf{Inputs:}
+	\subitem The user will be able to upload either one or multiple images of one individual food item.\\
+	\item \textbf{Outputs:}
+	\subitem The application will accurately identify what food or foods the user has uploaded an image of. 
+	\subitem The application, upon identifying what food the user has uploaded, will generate the nutrition facts and calories of this item.
+	\subitem Once nutrition facts have been fetched, the application will save the nutritional facts of the user's meal. This allows for the user identify trends in their eating habits and count their calories from all items consumed.
+\end{itemize}
 
 \subsection{Stakeholders}
 
+\begin{itemize}
+	\item \textbf{Primary Stakeholders} 
+
+	\subitem Health Conscious Individuals: The primary stakeholder for this web application will be health conscious individuals that wish to improve their daily eating habits. Assuming the user does not have the knowledge of nutritional values of foods, they are estimated to utilize the app whenever they want to eat a meal approximately three to four times a day.\newline
+
+	\item \textbf{Secondary Stakeholders} 
+
+	\subitem Individuals Employed in the Health and Fitness Sector and Active Gym Users: Rather than relying on the application, it will be used more as a helpful tool to be used on occasion. The user is estimated to have a certain level of knowledge of nutrition. Rather than utilizing the application every meal, it will be used when the user is unsure or has forgotten the foods nutrition facts.\newline
+
+	\item \textbf{Tertiary Stakeholders} 
+
+	\subitem Grocery Stores: Grocery stores stock may be affected as a response to users changing food patterns. There may be a preference towards certain healthier foods.
+
+	\subitem Restaurants: They may expect a decrease in customers as there may be a preference to cook from home. Since our application gives guidance as to how many calories the user is consuming, users may prefer to eat at home where they know exactly what they are consuming. The customers who still decide to go to restaurants may prefer going for a healthier option on the menu, affecting the restaurants projected order preferences.
+
+	\subitem Gyms: Upon gaining the knowledge of how many calories they are consuming, users of our application may attend the gym more often to burn off extra calories that may exceed their recommended caloric intake. 
+
+\end{itemize}
+
+
 \subsection{Environment}
 
-Utrition will be software that can be used on any device with a web browser. Utrition will be hosted locally as a webapp. 
+Our application, Utrition, will be software that can be used on any device (ex. cell phone or computer) that contains a web browser. Utrition will be hosted locally as a web app. This means devices will also require installation of Python3 and NodeJS.
 
 \section{Goals}
+
+This section contains the project goals integral to the development of 
+Utrition. These goals outline the primary reasons for the product's existence, 
+and are critical in contributing to its completeness.
+
+\subsection{Collection of Images}
+
+Utrition outputs the nutritional properties of food found in pictures 
+provided by the user. Users will be allowed to upload pictures to the system, 
+where they will be saved for further processing and analysis. This feature 
+serves as the core user input interaction that users will experience when they 
+want to log their diet.
+
+\subsection{Accurate Food Detection}
+
+Utrition will use computer vision to identify the food items present in 
+user-provided images. These food recognition services will analyze pictures, 
+and highlight individual food objects found in the image. The set of identified 
+foods are listed and recorded, and will be used for further processing. This 
+feature leverages food recognition technology to streamline the process of 
+logging one's diet. Instead of having the user list a breakdown of their meal, 
+Utrition will determine what the user is eating from the provided image.
+
+\subsection{Retrieval of Nutritional Information}
+
+Utrition will calculate the nutritional details of the food item identified in the user-provided image. The macronutrients, micronutrients, and caloric information will be fetched for further analysis and processing.
+
+\subsection{Display Nutritional Data}
+
+Utrition will display the fetched nutritional data on an interactive user 
+interface. Nutritional data patterns and the history of tracked data will be 
+displayed as well. The data will be displayed in different statistical views.
+
+\subsection{Record User's Consumed Nutrients}
+
+Utrition will save the nutritional information of the user's past meals. This 
+data will be compiled and organized by the date the food was consumed. This 
+data will be used to track overall progress and trends of consumed nutrients.
+
+\subsection{Access Previous Meal Data}
+
+Previously tracked food and nutritional data will be able to be accessed. The 
+relevant data will be retrieved based on the search parameters.
 
 \section{Stretch Goals}
 
@@ -70,14 +135,19 @@ Users will be able to access the Utrition application online through a website h
 
 \subsection{Logging Preset Meals}
 
-Users will be able to create presets of their commonly eaten meals on Utrition and save them for future use. Once a preset is created, a user will be able to select it to log the information of the meal without needing to manually re-upload images. This feature will allow users to customize Utrition to fit their eating habits, while also reducing the amount of time it takes to log a meal and access its information.
+Users will be able to create preset options of their commonly eaten meals on Utrition 
+and save them for future use. Once a preset is created, a user will be able to 
+select it to log the information of the meal without needing to manually 
+re-upload images. This feature will allow users to customize Utrition to fit 
+their eating habits, while also reducing the amount of time it takes to log a 
+meal and access its information.
 
 \subsection{Identifying Complex Food Items}
 
-One stretch goal our team has is to improve upon the product's food identification implementation. Once our system is able to identify basic food items consisting of one part (ex. apple, cheese, chicken), the next step would be for Utrition to identify increasingly complex items and its individual parts (ex. hamburger with bun, beef, tomoato, lettuce, and cheese). This feature allows the user to simply input one image of their meal instead of uploading pictures of its individual parts. The result is a significant reduction in time needed for the user to determine their nutrition facts for their meal, increasing the efficiency and usability of the system.
+Once our system is able to identify basic food items, the next step is to improve upon the product's food identification implementation. Now that Utrition can identify foods consisting of one part (ex. apple, cheese, chicken), Utrition will identify increasingly complex items and its individual parts (ex. hamburger with bun, beef, tomato, lettuce, and cheese). This feature allows the user to simply input one image of their meal instead of uploading pictures of its individual parts. The result is a significant reduction in time needed for the user to determine their nutritional facts for their meal, increasing the efficiency and usability of the system.
 
 \subsection{Providing Insights into User's Eating Habits}
 
-Another stretch goal for Utrition is being able to provide insights into the eating habits of the user. For example, some insights the system might give include informing the user that their calorie count is too low or that they are deficient in fibre. With this additional functionality, the application becomes more informative and useful for users. Instead of simply tracking their food intake, users will now receive suggestions to improve their eating habits.
+Utrition will provide insights into the eating habits of the user. For example, some insights the system might give include informing the user that their calorie count is too low or that they are deficient in a specific nutrient such as fibre. With this additional functionality, the application becomes more informative and useful for users. Instead of simply tracking their food intake, users will now receive suggestions to improve their eating habits.
 
 \end{document}
