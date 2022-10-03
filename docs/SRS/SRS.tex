@@ -1125,6 +1125,97 @@ be covered in the Verification and Validation document.}
 
 \end{itemize}
 
+\section{Project Issues}
+
+\subsection{Open Issues}
+Below are open issues concerning the development of Utrition:
+\begin{itemize}
+	\item Depending on the amount of identified food image data our team can obtain, the accuracy of our food detection machine learning model may be low
+	\item Currently, Utrition is planned to saved past user input. It is unknown how this will be done. Employing an account and password system for each user is added functionality that may be difficult to implement 
+	\item One requirement states that past nutritional values of food will be stored for easy access when the system needs it again. When saving large amounts of nutritional data, processing could become slow for the entire system.
+\end{itemize}
+
+\subsection{Off-the-Shelf Solutions}
+\subsubsection{Ready-Made Products}
+After investigating the market, there are two ready-made solutions that provide similar functionality to Utrition. Firstly, the application \href{https://www.caloriemama.ai/#Categories}{Calorie Mama} is able to identify calories when a picture is uploaded of the user's meal. Although this implements some of Utrition's functionality, it fails to identify nutritional information or save any past calorie calculations.
+
+Another product the team found to be similar to Utrition is \href{https://play.google.com/store/apps/details?id=ai.bite.biteapp&hl=en_US&gl=US}{Bitesnap}. This application will be able to identify food items, provide their corresponding nutritional information and calories, and store this information to provide eating insights for the user. Frequent reviews state that the system is not able to identify many foods provided in an image by the user. This means that the application's food database is small. Utrition will focus on creating a machine learning model that is able to identify a vast number of food items by supplying a large dataset of labelled food images. 
+
+\subsubsection{Reusable Components}
+Through research into libraries and APIs, the team has identified two systems that can be used for development of Utrition. Firstly, our team plans to create a machine learning model to identify different food items from an uploaded image. To do this the \href{https://www.tensorflow.org/}{TensorFlow} library can be used. This free and open-source library will all use to create and employ our machine learning model.
+
+Secondly, Utrition must be able to return nutritional information about a food when an image of that food is uploaded. In order to retrieve this nutritional information, calls to \href{https://www.nutritionix.com/business/api}{Nutritionix API} can be made. Nutritionix contains data on a vast range of foods and their nutritional value. Using the free version, our team can make calls to this API to retrieve needed nutritional information.
+
+\subsubsection{Products That Can Be Copied}
+The team will be using datasets of labelled food images in order to train our machine learning model. These datasets can be freely obtained online and used in our development.
+
+\subsection{New Problems}
+N.A.
+
+\subsection{Tasks}
+\subsubsection{Project Planning}
+Team members will follow a strict schedule to ensure the completion of Utrition. The team will work in 1 week Sprint cycles where tasks are distributed during the first meeting of the week (Monday at 6:30pm) and all tasks must be finished before that meeting the week after. There is also a scheduled progress meeting half-way through the Sprint (Thursday at 1:30pm) to give an update to the team on each person's progress and discuss any blocking issues. The team will create tasks each week based on the due dates provided in SFWRENG 4G06. This ensures that all deadlines are met.
+
+\subsection{Migration to the New Product}
+N.A.
+
+\subsection{Risks}
+\subsubsection{Low Productivity}
+Working on a team with multiple developers creates the possibility that some people will not be productive and complete their assigned tasks. Missed work will cause a higher risk for an incomplete or inadequate final implementation. This risk can be identified when a developer is frequently missing deadlines and delivering poorly done work. To address this risk, the offending team member will be addressed directly by the group and asked about their opinion on possible solutions. This can include working on different areas of the project, asking for help when needed, etc.\newline
+\textbf{Probability:} \%15
+
+\subsubsection{Inadequate Implementation}
+Due to the volume of requirements, the difficulty of the implementation, and the timeline of the project, there is a risk that the development team will not be able to create a good quality product. This includes partial implementation of features or hardcoded work arounds. To identify this risk before it becomes an issue, the development team hosts weekly progress meetings to ensure all members are proceeding smoothly. In the event that this risk is unavoidable, the team will alter the final goals of Utrition to remove unnecessary functionality.\newline
+\textbf{Probability:} \%10
+
+\subsubsection{Limited Time Frame}
+Since Utrition's final implementation and documentation are required in less than 7 months, there is a risk that the project does not get completed. Every team member has additional work responsibilities outside of this project which could affect the time they have to work on Utrition. One sign that this risk poses a threat to the project is missed deadlines. This sign can be identified easily during the team's weekly meetings. If this risk becomes a problem, the team will apply an all-hands-on-deck approach where all unfinished work will be split up equally.\newline
+\textbf{Probability:} \%8
+
+\subsection{Costs}
+Utrition will be development using free programming technologies and open-source libraries. This sets the current budget of the project to \$0. The plan for Utrition's availability is for users to download all code files from GitHub in order to run the system. In future development, hosting Utrition as a website will cost between the range of \$3.95 - \$16.95 per month.
+
+The time cost for the project is calculated based on the number of developers and the duration of the project. Utrition will be development by 6 individuals who all can provide 10 hours every week. The duration of the project is set to 8 months. Using these values, the total amount of time needed to complete the project is 1920 hours and 320 hours per developer.
+
+\subsection{User Documentation and Training}
+\subsubsection{User Documentation Requirements}
+Utrition will be available to users from GitHub. Inside the repository, the README file will contain instructions for the download and setup of Utrition. Any required software needed by the user to run Utrition will be specified in this file along with solutions to common installation errors. This file will also discuss all functionality of the system and provide instructions for the user to use Utrition. This section will act as the user manual. 
+
+\subsubsection{Training Requirements}
+There is no training needed for users to use Utrition. Any questions regarding usage of the system will be available in the user manual.
+
+\subsection{Waiting Room}
+In this section, requirements for future releases of Utrition are stated from highest to lowest priority. For a more in-depth explanation of each requirement, please refer to section 3 (Stretch Goals) inside the Problem Statement and Goals document.
+
+\begin{itemize}
+	\item [F?.] The system must be accessible online as a website.\newline
+	\textbf{Rationale:} Hosting Utrition online will make it easier for users to access the system. They can search for Utrition in an online search instead of downloading the project from GitHub.
+	
+	\item [F?.] The system must be able to identify the individual foods inside a picture of a meal.\newline
+	\textbf{Rationale:} If the system can identify visually apparent ingredients inside of a meal, the user will not need to upload pictures of each individual food item which will increase efficiency.
+	
+	\item [F?.] Users must be able to save preset meal options consisting of one or many foods.\newline
+	\textbf{Rationale:} Users can save selected foods together as meals so they can easily log this meal as eaten without needing to manually upload images of individual ingredients.
+	
+	\item [F?.] Utrition will provide insights into the eating habits of the user such as what vitamins they should try to consume more of based on their previous inputs.\newline
+	\textbf{Rationale:} By providing health insights, the system will become more useful to users by helping them improve their eating habits rather than solely tracking them.
+	
+	\item [NF?.] Once hosted online, Utrition must compute output with similar performance to the downloaded system within a 25\% margin of error.\newline
+	\textbf{Rationale:} Hosting Utrition online should provide similar performance speeds compared to the local version so users experience the same enjoyment levels when using the system.
+	
+\end{itemize}
+
+\subsection{Ideas for Solutions}
+
+Below are some ideas for implementation of Utrition:
+
+\begin{itemize}
+	\item Create frontend display using HTML/CSS and JavaScript to connect to backend
+	\item Backend can be implemented with Python
+	\item Use \href{https://www.tensorflow.org/}{TensorFlow} library to create a machine learning model and train it with datasets of labelled food
+	\item Use \href{https://www.nutritionix.com/business/api}{Nutritionix API} calls to retrieve nutrition facts of food items
+\end{itemize}
+
 \section{Likely Changes}    
 
 \noindent \begin{itemize}
