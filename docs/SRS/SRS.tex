@@ -77,6 +77,9 @@
 \newcounter{lcnum} %Likely change number
 \newcommand{\lthelcnum}{LC\thelcnum}
 \newcommand{\lcref}[1]{LC\ref{#1}}
+\newcounter{ulcnum} %Unlikely change number
+\newcommand{\ltheulcnum}{ULC\theulcnum}
+\newcommand{\ulcref}[1]{ULC\ref{#1}}
 \newcounter{FRCounter}
 \setcounter{FRCounter}{1}
 \newcommand{\FillFRNumber}{\textbf{FR\arabic{FRCounter}.} \stepcounter{FRCounter}}
@@ -1583,7 +1586,7 @@ data from system servers.
 
 \noindent \begin{itemize}
 
-\item[ULC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}:] 
+\item[ULC\refstepcounter{ulcnum}\theulcnum\label{ULC_meaningfulLabel}:] 
 The user's past nutritional history will always be stored locally on the user's 
 device. This will remain limit the number of requests in the event the system 
 is hosted online. Furthermore, this allows to access their nutritional history 
