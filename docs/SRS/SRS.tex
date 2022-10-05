@@ -189,7 +189,7 @@ description of the unit and the SI name.
   \end{tabular}
   %	\caption{Provide a caption}
 %\end{table}
-
+ | x = Images, B = {food
 \plt{Only include the units that your SRS actually uses.}
 
 \plt{Derived units, like newtons, pascal, etc, should show their derivation
@@ -1079,7 +1079,8 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 
 \FillFRNumber
 \begin{itemize}
-    \item \textit{Description}: The user shall have the ability to upload digital images of \textbf{standard image types} to the system. 
+    \item \textit{Description}: The user shall have the ability to upload a digital image of a \textbf{standard image type} to the system. 
+    \item \textit{Formalization}: $x \in A \mid x = \text{Images}, A = \{\text{\textbf{standard image types}}\}$
     \item \textit{Rationale}: In order for the system to identify the food a user is eating, the user would have to upload an image of their food to the system. The image shall be saved on the user’s device, which can then be selected.
     \item \textit{Priority}: High
 \end{itemize}
@@ -1088,6 +1089,7 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \FillFRNumber
 \begin{itemize}
     \item \textit{Description}: The user shall have the ability to upload multiple digital images of \textbf{standard image types} to the system.
+    \item \textit{Formalization}: $\forall x \cdot x \in A \mid x = \text{Images}, A = \{\text{\textbf{standard image types}}\}$
     \item \textit{Rationale}: In order for the system to return the total nutritional content of a users meal, the user would have to upload multiple images of the individual components of their meal for the system to identify. The images shall be saved on the user’s device, which can then be selected.
     \item \textit{Priority}: Medium
 \end{itemize}
@@ -1095,20 +1097,22 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \FillFRNumber
 \begin{itemize}
     \item \textit{Description}: The system will be able to identify the type of food that is captured in an image. 
+    \item \textit{Formalization}: $\forall x \cdot \exists y \cdot y \in B \mid x = \text{Images}, B = \{\text{food label type}\}$
     \item \textit{Rationale}: In order for the system to return the nutritional content of a food, the system must first identify the food present in an image.
     \item \textit{Priority}: High
 \end{itemize}
 
 \FillFRNumber
 \begin{itemize}
-    \item \textit{Description}: The system will be able to store the nutrition facts of a variety of foods, including their macro-nutrients, micro-nutrients, and caloric details.
-    \item \textit{Rationale}: In order to provide a user with the nutritional regarding their meal, the system must first be able to store the nutritional data for a large variety of foods for later use.
+    \item \textit{Description}: The system will be able to make an API call to an external database of nutrition facts for a variety of foods, including their macro-nutrients, micro-nutrients, and caloric details.
+    \item \textit{Rationale}: In order to provide a user with the nutritional regarding their meal, the system must first be able to fetch the nutritional data for a large variety of foods for later use.
     \item \textit{Priority}: High
 \end{itemize}
 
 \FillFRNumber
 \begin{itemize}
     \item \textit{Description}: The system will be able to retrieve the nutrition facts for a specific food.
+    \item \textit{Formalization}: $\forall y \cdot \exists z \cdot z \in C \mid y = \text{food label}, C = \{\text{nutritional data}\}$
     \item \textit{Rationale}: In order to provide the user with the nutritional data regarding their meal, the system would have to be able to retrieve the nutritional data for a given food.
     \item \textit{Priority}: High
 \end{itemize}
@@ -1116,6 +1120,7 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \FillFRNumber
 \begin{itemize}
 	\item \textit{Description}: The system will log the nutritional data of a food.
+	\item \textit{Formalization}: $\forall v \cdot \exists z \cdot z \in C \mid v = \text{logged food label}, C = \{\text{nutritional data}\}$
 	\item \textit{Rationale}: Nutritional data of a food will be saved for future reference. This system shall be able to fetch previously recorded data for other processes, such as displaying visuals and calculating nutritional summaries. 
 	\item \textit{Priority}: Medium
 \end{itemize}
