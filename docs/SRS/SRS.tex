@@ -440,6 +440,9 @@ Other stakeholders of the Utrition application consist of grocery stores, restau
 
 As we wish to make Utrition as accurate as possible when identifying food, the application will only be trained for individual food items or ingredients rather than whole meals. For example, the user is expected to provide a picture of lettuce rather than an entire sandwich if they wish to track that lettuce appeared in their sandwich. This constraint is to ensure that the user gets an accurate estimate of exactly the nutritional value of their meal since the application may not detect all separate food items in one picture. 
 
+\subsection{Naming Conventions and Terminology}
+This section is discussed in Section 1.3.
+
 \subsection{Relevant Facts and Assumptions } 
 
 \begin{itemize}
@@ -499,68 +502,59 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 
 \subsection{Functional Requirements}
 
-\FillFRNumber
+
 \begin{itemize}
-    \item \textit{Description}: The user shall have the ability to upload digital images of \textbf{standard image types} to the system. 
-    \item \textit{Rationale}: In order for the system to identify the food a user is eating, the user would have to upload an image of their food to the system. The image shall be saved on the user’s device, which can then be selected.
-    \item \textit{Priority}: High
+    \item [\FillFRNumber] The user must have the ability to upload digital images of \textbf{standard image types} to the system.\newline 
+    \textbf{Rationale:} In order for the system to identify the food a user is eating, the user would have to upload an image of their food to the system. The image shall be saved on the user’s device, which can then be selected.\newline
+    \textbf{Priority:} High
 \end{itemize}
 
-
-\FillFRNumber
 \begin{itemize}
-    \item \textit{Description}: The user shall have the ability to upload multiple digital images of \textbf{standard image types} to the system.
-    \item \textit{Rationale}: In order for the system to return the total nutritional content of a users meal, the user would have to upload multiple images of the individual components of their meal for the system to identify. The images shall be saved on the user’s device, which can then be selected.
-    \item \textit{Priority}: Medium
+    \item [\FillFRNumber] The user must have the ability to upload multiple digital images of \textbf{standard image types} to the system.\newline
+    \textbf{Rationale:} In order for the system to return the total nutritional content of a user's meal, the user would have to upload multiple images of the individual components of their meal for the system to identify. The images shall be saved on the user’s device, which can then be selected.\newline
+    \textbf{Priority:} Medium
 \end{itemize}
 
-\FillFRNumber
 \begin{itemize}
-    \item \textit{Description}: The system will be able to identify the type of food that is captured in an image. 
-    \item \textit{Rationale}: In order for the system to return the nutritional content of a food, the system must first identify the food present in an image.
-    \item \textit{Priority}: High
+    \item [\FillFRNumber] The system will be able to identify the type of food that is captured in an image. \newline
+    \textbf{Rationale:} In order for the system to return the nutritional content of a food, the system must first identify the food present in an image.\newline
+    \textbf{Priority:} High
 \end{itemize}
 
-\FillFRNumber
 \begin{itemize}
-    \item \textit{Description}: The system will be able to store the nutrition facts of a variety of foods, including their macro-nutrients, micro-nutrients, and caloric details.
-    \item \textit{Rationale}: In order to provide a user with the nutritional regarding their meal, the system must first be able to store the nutritional data for a large variety of foods for later use.
-    \item \textit{Priority}: High
+    \item [\FillFRNumber] The system will be able to store the nutrition facts of a variety of foods, including their macro-nutrients, micro-nutrients, and caloric details. \newline
+    \textbf{Rationale:} In order to provide a user with the nutritional information regarding their meal, the system must first be able to store the nutritional data for a large variety of foods for later use.\newline
+    \textbf{Priority:} High
 \end{itemize}
 
-\FillFRNumber
 \begin{itemize}
-    \item \textit{Description}: The system will be able to retrieve the nutrition facts for a specific food.
-    \item \textit{Rationale}: In order to provide the user with the nutritional data regarding their meal, the system would have to be able to retrieve the nutritional data for a given food.
-    \item \textit{Priority}: High
+    \item [\FillFRNumber] The system will be able to retrieve the nutrition facts for a specific food.\newline
+    \textbf{Rationale:} In order to provide the user with the nutritional data regarding their meal, the system must be able to retrieve the nutritional data for a given food.\newline
+    \textbf{Priority:} High
 \end{itemize}
 
-\FillFRNumber
 \begin{itemize}
-	\item \textit{Description}: The system will log the nutritional data of a food.
-	\item \textit{Rationale}: Nutritional data of a food will be saved for future reference. This system shall be able to fetch previously recorded data for other processes, such as displaying visuals and calculating nutritional summaries. 
-	\item \textit{Priority}: Medium
+	\item [\FillFRNumber] The system will log the nutritional data of a food.\newline
+	\textbf{Rationale:} Nutritional data of a food will be saved for future reference. This system shall be able to fetch previously recorded data for other processes, such as displaying visuals and calculating nutritional summaries.\newline
+	\textbf{Priority:} Medium
 \end{itemize}
 
-\FillFRNumber
 \begin{itemize}
-	\item \textit{Description}: The user will be able to access the nutritional data of previously logged foods. 
-	\item \textit{Rationale}: Nutritional data found in the database shall be available to be referenced and displayed to the user. This will allow the user to view nutritional details of the food that was previously tracked within the application. 
-	\item \textit{Priority}: Medium
+	\item [\FillFRNumber] The user will be able to access the nutritional data of previously logged foods. \newline
+	\textbf{Rationale:} Nutritional data found in the database shall be available to be referenced and displayed to the user. This will allow the user to view nutritional details of the food that was previously tracked within the application. \newline
+	\textbf{Priority:} Medium
 \end{itemize}
 
-\FillFRNumber
 \begin{itemize}
-	\item \textit{Description}: The system will display the nutritional information of a food to the user. 
-	\item \textit{Rationale}: Nutritional data of a particular food item shall be displayed on the user interface, so the user can view the nutritional breakdown of the food.
-	\item \textit{Priority}: High
+	\item [\FillFRNumber] The system will display the nutritional information of a food to the user. \newline
+	\textbf{Rationale:} Nutritional data of a particular food item shall be displayed on the user interface, so the user can view the nutritional breakdown of the food.\newline
+	\textbf{Priority:} High
 \end{itemize}
 
-\FillFRNumber
 \begin{itemize}
-	\item \textit{Description}: The system will display the history of logged nutritional data in a graph. 
-	\item \textit{Rationale}: Previously tracked nutritional statistics will be rendered in a graph as a function over time. This display will be a visual indicator of trends and overall progress.
-	\item \textit{Priority}: Medium
+	\item [\FillFRNumber] The system will display the history of logged nutritional data in a graph.\newline 
+	\textbf{Rationale:} Previously tracked nutritional statistics will be rendered in a graph as a function over time. This display will be a visual indicator of trends and overall progress.\newline
+	\textbf{Priority:} Medium
 \end{itemize}
 
 \section{Non-Functional Requirements}
