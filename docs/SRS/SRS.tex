@@ -582,12 +582,7 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \end{enumerate}
 
 \subsubsection{Style Requirements}
-
-\begin{enumerate}[{LF}2. ]
-	\item Utrition’s style will be consistent throughout the different stages of accessing the user interface.\\
-	\textbf{Rationale:} The appearance of Utrition will be more professional and consistent. \\
-	\textbf{Fit Criteria:} Users will only be able to see $\pi$ when using Utrition. $\pi$ is the consistent font type
-\end{enumerate}
+\hspace{1.5cm}N/A
 
 \subsection{Usability and Humanity Requirements}
 
@@ -602,9 +597,9 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \subsubsection{Personalization and Internationalization Requirements}
 
 \begin{enumerate}[{UH}2. ] 
-	\item Utrition will retain the user’s previously tracked information.\\
+	\item Utrition will retain the user’s diet history.\\
 	\textbf{Rationale:} Users will be able to view their dietary habits and can make nutritional adjustments based on their observations.\\
-	\textbf{Fit Criteria:} The user will be able to view their diet for the past $\pi$ days.
+	\textbf{Fit Criteria:} The user must be able to view every past inputted food item.
 	
 \end{enumerate}
 
@@ -640,7 +635,7 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \subsubsection{Speed and Latency Requirements}
 
 \begin{enumerate}[start=1,label={PR\arabic*.}]
-	\item Switching between different UI screens will be quick.\\
+	\item Switching between different user interface screens will be quick.\\
 	\textbf{Rationale:} The user should not have to wait to access different parts of the Utrition web app.\\
 	\textbf{Fit Criteria:} The time between the user’s click and the new UI displaying will not exceed 2 seconds.
 	\item Identifying and displaying each food item will be done quickly.\\
@@ -670,7 +665,7 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \begin{enumerate}[{PR}6. ] 
 	\item Utrition will be available to all users at all times.\\
 	\textbf{Rationale:} The user should be able to track their diet whenever they decide to eat. \\
-	\textbf{Fit Criteria:} Since Utrition is a local webapp, the user will always be allowed to use Utrition unless their device is down.
+	\textbf{Fit Criteria:} Since Utrition is a local webapp, the user will always be allowed to use Utrition unless their device or internet connection is down.
 \end{enumerate}
 
 \subsubsection{Robustness or Fault-Tolerance Requirements}
@@ -703,17 +698,13 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \subsection{Operational and Environmental Requirements}
 
 \subsubsection{Expected Physical Environment}
-\begin{enumerate}[{OE}1. ] 
-	\item Utrition will be used on any smart device with access to the “.jpg” photo format.\\
-	\textbf{Rationale:} The user must be able to download Utrition and upload a photo to it. \\
-	\textbf{Fit Criteria:} 100\% of the tested smart devices should be able to use all functionalities of the Utrition web app.
-\end{enumerate}
+\hspace{1.5cm}N/A
 
 \subsubsection{Requirements for Interfacing with Adjacent systems}
-\hspace{1.5cm}N/A (BRING UP WITH GROUP) 
+\hspace{1.5cm}N/A 
 
 \subsubsection{Productization Requirements}
-\begin{enumerate}[start=2,label={OE\arabic*.}]
+\begin{enumerate}[start=1,label={OE\arabic*.}]
 	\item Utrition will be distributed on github as a public repository.\\
 	\textbf{Rationale:} Utrition is free to be used by anyone.\\
 	\textbf{Fit Criteria:} Users will be able to find and pull the repository into their personal device.
@@ -724,7 +715,7 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 
 \subsubsection{Release Requirements}
 
-\begin{enumerate}[{OE}4. ] 
+\begin{enumerate}[{OE}3. ] 
 	\item Utrition will not have any updates after initial public release.\\
 	\textbf{Rationale:} Food components and their nutritional value do not change over time.\\	\textbf{Fit Criteria:} Utrition’s git will receive no updates after initial release.
 \end{enumerate}
@@ -746,7 +737,12 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \end{enumerate}
 
 \subsubsection{Adaptability Requirements}
-\hspace{1.5cm}N/A (BRING UP WITH GROUP) 
+\begin{enumerate}[{MS}3. ] 
+	\item Utrition will be used on any computer with access to the “.jpg” photo format.\\
+	\textbf{Rationale:} The user must be able to download Utrition and upload a photo to it. \\
+	\textbf{Fit Criteria:} 100\% of the tested Windows, macOS, and LINUX devices should be able to use all functionalities of the Utrition web app.
+\end{enumerate}
+
 
 \subsection{Security Requirements}
 
@@ -772,10 +768,10 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \end{enumerate}
 
 \subsubsection{Audit Requirements}
-\hspace{1.5cm}N/A (BRING UP WITH GROUP) 
+\hspace{1.5cm}N/A 
 
 \subsubsection{Immunity Requirements}
-\hspace{1.5cm}N/A (BRING UP WITH GROUP) 
+\hspace{1.5cm}N/A 
 
 \subsection{Cultural or Political Requirements}
 
@@ -788,7 +784,7 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \end{enumerate}
 
 \subsubsection{Political Requirements}
-\hspace{1.5cm}N/A (BRING UP WITH GROUP) 
+\hspace{1.5cm}N/A
 
 \subsection{Legal Requirements}
 \subsubsection{Compliance Requirements}
@@ -809,6 +805,9 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 	\item Utrition is created following the standards set by the Google HTML/CSS Style Guide \citep{HTMLCSSStyle} and Google Java Style Guide \citep{JavaStyle}. \\
 	\textbf{Rationale:} Ensures code is consistent for the whole development team to work efficiently \\
 	\textbf{Fit Criteria:} Before every pull request, code will be reviewed to ensure no violations of the standards occur.
+	\item Utrition's front end will follow Google's guide for material design \citep{StyleGuide}\\
+	\textbf{Rationale:} The appearance of Utrition will be more professional and consistent. \\
+	\textbf{Fit Criteria:} Utrition's user interface will be reviewed to ensure all fonts and colours adhere to the style guide.
 \end{enumerate}
 
 \section{Project Issues}
@@ -944,7 +943,6 @@ offline.
 \hline
    &FR1& FR2&FR3&FR4&FR5&FR6&FR7&FR8&FR9\\ \hline
 LF1& & x& & & & & x& x& x \\ \hline
-LF2& & x& & & & & x& x& x \\ \hline
 UH1& & x& & & & & & x& x \\ \hline
 UH2& & & x& & & & x& & x \\ \hline
 UH3& x& x& & & & & x& &  \\ \hline
@@ -963,17 +961,19 @@ PR9& & & & & & & & &\\ \hline
 OE1& & & & & & & & &\\ \hline
 OE2& & & & & & & & &\\ \hline
 OE3& & & & & & & & &\\ \hline
-OE4& & & & & & & & &\\ \hline
 MS1& & & x& & x& & & x&\\ \hline
 MS2& & & & & & & & & \\ \hline
+MS3& & & & & & & & &\\ \hline
 SR1& & & & & & & & & \\ \hline
 SR2& x& x& & & & & & & \\ \hline
-SR3& & & & x& & x& & & \\ \hline
+SR3& & & & & & x& & & \\ \hline
 CP1& & & & & & & & & \\ \hline
 LR1& & & & & & & & & \\ \hline
 LR2& & & & & & & & & \\ \hline
 LR3& & & & & & & & & \\ \hline
 LR4& & & & & & & & & \\ \hline
+LR5& & x& & & & & x& x& x \\ \hline
+
 \end{tabular}
 \caption{Traceability Matrix Showing the Connections Between Functional and Non-functional}
 \end{table}
