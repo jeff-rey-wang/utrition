@@ -77,6 +77,9 @@
 \newcounter{lcnum} %Likely change number
 \newcommand{\lthelcnum}{LC\thelcnum}
 \newcommand{\lcref}[1]{LC\ref{#1}}
+\newcounter{ulcnum} %Unlikely change number
+\newcommand{\ltheulcnum}{ULC\theulcnum}
+\newcommand{\ulcref}[1]{ULC\ref{#1}}
 \newcounter{FRCounter}
 \setcounter{FRCounter}{1}
 \newcommand{\FillFRNumber}{\textbf{FR\arabic{FRCounter}.} \stepcounter{FRCounter}}
@@ -1558,12 +1561,24 @@ Below are some ideas for implementation of Utrition:
 	\item Use \href{https://www.nutritionix.com/business/api}{Nutritionix API} calls to retrieve nutrition facts of food items
 \end{itemize}
 
-\section{Likely Changes}    
+\section{Likely Changes}   
 
 \noindent \begin{itemize}
 
-\item[LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}:] \plt{Give
-    the likely changes, with a reference to the related assumption (aref), as appropriate.}
+\item[LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}:] 
+With respect to the A1, the system currently assumes the uploaded pictures will 
+show individual ingredients. In the future, a more sophisticated computer 
+vision model can be added to differentiate individual ingredients from a meal.
+
+\item[LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}:] 
+The system currently supports a model where the user uploads images of food to 
+be evaluated. In the future, the system may allow the user to record their 
+meals in real time and identify nutritional facts instantaneously.
+
+\item[LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}:] 
+The system is currently designed to run locally on the user's device. In the 
+future, the system can be hosted online, and allow users to request nutritional 
+data from system servers.
 
 \end{itemize}
 
@@ -1571,9 +1586,11 @@ Below are some ideas for implementation of Utrition:
 
 \noindent \begin{itemize}
 
-\item[LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}:] \plt{Give
-    the unlikely changes.  The design can assume that the changes listed will
-    not occur.}
+\item[ULC\refstepcounter{ulcnum}\theulcnum\label{ULC_meaningfulLabel}:] 
+The user's past nutritional history will always be stored locally on the user's 
+device. This will remain limit the number of requests in the event the system 
+is hosted online. Furthermore, this allows to access their nutritional history 
+offline.
 
 \end{itemize}
 
