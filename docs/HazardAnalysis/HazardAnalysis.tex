@@ -2,14 +2,20 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{hyperref}
+
+\hypersetup{
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=red,          % color of internal links (change box color with 
+	%linkbordercolor)
+	citecolor=green,        % color of links to bibliography
+	filecolor=magenta,      % color of file links
+	urlcolor=cyan           % color of external links
+}
 
 \title{Hazard Analysis\\\progname}
 
-\author{Team \#, Team Name
-		\\ Student 1 name and macid
-		\\ Student 2 name and macid
-		\\ Student 3 name and macid
-}
+\author{\authname}
 
 \date{}
 
@@ -17,23 +23,69 @@
 \input{../Common}
 
 \begin{document}
-
-\begin{table}[hp]
-\caption{Revision History} \label{TblRevisionHistory}
-\begin{tabularx}{\textwidth}{llX}
-\toprule
-\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
-\midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\newpage
-
-\maketitle
-
-
+	
+	\maketitle
+	\thispagestyle{empty}
+	
+	~\newpage
+	
+	\pagenumbering{roman}
+	
+	\begin{table}[hp]
+		\caption{Revision History} \label{TblRevisionHistory}
+		\begin{tabularx}{\textwidth}{llX}
+			\toprule
+			\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
+			\midrule
+			Date1 & Name(s) & Description of changes\\
+			Date2 & Name(s) & Description of changes\\
+			... & ... & ...\\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	
+	~\newpage
+	
+	\tableofcontents
+	
+	~\newpage
+	
+	\pagenumbering{arabic}
+	
+	\wss{You are free to modify this template.}
+	
+	\section{Introduction}
+	
+	\wss{You can include your definition of what a hazard is here.}
+	
+	\section{Scope and Purpose of Hazard Analysis}
+	
+	\section{System Boundaries and Components}
+	
+	\section{Critical Assumptions}
+	
+	\wss{These assumptions that are made about the software or system.  You 
+	should
+		minimize the number of assumptions that remove potential hazards.  For 
+		instance,
+		you could assume a part will never fail, but it is generally better to 
+		include
+		this potential failure mode.}
+	
+	\section{Failure Mode and Effect Analysis}
+	
+	\wss{Include your FMEA table here}
+	
+	\section{Safety and Security Requirements}
+	
+	\wss{Newly discovered requirements.  These should also be added to the 
+	SRS.  (A
+		rationale design process how and why to fake it.)}
+	
+	\section{Roadmap}
+	
+	\wss{Which safety requirements will be implemented as part of the capstone 
+	timeline?
+		Which requirements will be implemented in the future?}
+	
 \end{document}
