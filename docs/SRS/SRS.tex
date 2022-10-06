@@ -135,7 +135,7 @@
 \begin{document}
 
 \title{Software Requirements Specification for \progname} 
-\author{Catherine Chen, Yasmine Jolly,\\ Jeffrey Wang, Jack Theriault,\\ Alex 
+\author{Team 16, Durum Wheat Semolina\\Catherine Chen, Yasmine Jolly,\\ Jeffrey Wang, Jack Theriault,\\ Alex 
 Moica, Justina Srebrnjak}
 \date{\today}
 	
@@ -160,113 +160,6 @@ Moica, Justina Srebrnjak}
 \end{tabularx}
 
 ~\newpage
-
-\section{Reference Material}
-
-This section records information for easy reference.
-
-\subsection{Table of Units}
-
-Throughout this document SI (Syst\`{e}me International d'Unit\'{e}s) is employed
-as the unit system.  In addition to the basic units, several derived units are
-used as described below.  For each unit, the symbol is given followed by a
-description of the unit and the SI name.
-~\newline
-
-\renewcommand{\arraystretch}{1.2}
-%\begin{table}[ht]
-  \noindent \begin{tabular}{l l l} 
-    \toprule		
-    \textbf{symbol} & \textbf{unit} & \textbf{SI}\\
-    \midrule 
-    \si{\metre} & length & metre\\
-    \si{\kilogram} & mass	& kilogram\\
-    \si{\second} & time & second\\
-    \si{\celsius} & temperature & centigrade\\
-    \si{\joule} & energy & joule\\
-    \si{\watt} & power & watt (W = \si{\joule\per\second})\\
-    \bottomrule
-  \end{tabular}
-  %	\caption{Provide a caption}
-%\end{table}
-
-\plt{Only include the units that your SRS actually uses.}
-
-\plt{Derived units, like newtons, pascal, etc, should show their derivation
-    (the units they are derived from) if their constituent units are in the
-    table of units (that is, if the units they are derived from are used in the
-    document).  For instance, the derivation of pascals as
-    $\si{\pascal}=\si{\newton\per\square\meter}$ is shown if newtons and m are
-    both in the table.  The derivations of newtons would not be shown if kg and
-    s are not both in the table.}
-
-\plt{The symbol for units named after people use capital letters, but the name 
-  of the unit itself uses lower case.  For instance, pascals use the symbol Pa,
-  watts use the symbol W, teslas use the symbol T, newtons use the symbol N,
-  etc.  The one exception to this is degree Celsius.  Details on writing metric
-  units can be found on the 
-  \href{https://www.nist.gov/pml/weights-and-measures/writing-metric-units}
-  {NIST} web-page.}
-
-\subsection{Table of Symbols}
-
-The table that follows summarizes the symbols used in this document along with
-their units.  The choice of symbols was made to be consistent with the heat
-transfer literature and with existing documentation for solar water heating
-systems.  The symbols are listed in alphabetical order.
-
-\renewcommand{\arraystretch}{1.2}
-%\noindent \begin{tabularx}{1.0\textwidth}{l l X}
-\noindent \begin{longtable*}{l l p{12cm}} \toprule
-\textbf{symbol} & \textbf{unit} & \textbf{description}\\
-\midrule 
-$A_C$ & \si[per-mode=symbol] {\square\metre} & coil surface area
-\\
-$A_\text{in}$ & \si[per-mode=symbol] {\square\metre} & surface area over 
-which heat is transferred in
-\\ 
-\bottomrule
-\end{longtable*}
-\plt{Use your problems actual symbols.  The si package is a good idea to use for
-  units.}
-
-\subsection{Abbreviations and Acronyms}
-
-\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{l l} 
-  \toprule		
-  \textbf{symbol} & \textbf{description}\\
-  \midrule 
-  A & Assumption\\
-  DD & Data Definition\\
-  GD & General Definition\\
-  GS & Goal Statement\\
-  IM & Instance Model\\
-  LC & Likely Change\\
-  PS & Physical System Description\\
-  R & Requirement\\
-  SRS & Software Requirements Specification\\
-  T & Theoretical Model\\
-  \bottomrule
-\end{tabular}\\
-
-\plt{Add any other abbreviations or acronyms that you add}
-
-\subsection{Mathematical Notation}
-
-\plt{This section is optional, but should be included for projects that make use
-  of notation to convey mathematical information.  For instance, if typographic
-  conventions (like bold face font) are used to distinguish matrices, this
-  should be stated here.  If symbols are used to show mathematical operations,
-  these should be summarized here.  In some cases the easiest way to summarize
-  the notation is to point to a text or other source that explains the
-  notation.}
-
-\plt{This section was added to the template because some students use very
-  domain specific notation.  This notation will not be readily understandable to
-  people outside of your domain.  It should be explained.}
-
-\newpage
 
 \pagenumbering{arabic}
 
@@ -366,7 +259,7 @@ this document are constrained to consider only a subset of all possible file
 types. Furthermore, requirements are created under the impression that files 
 are of a manageable size, and are of food objects identifiable by a machine 
 learning model. Lastly, we assume the user possesses sufficient knowledge to 
-access the system, and does so with internet, and through a machine capable of 
+access the system, and does so with internet through a machine capable of 
 running most modern applications. That is to say, the user possesses sufficient 
 hardware capabilities to access all capabilities of the system.
 
@@ -446,7 +339,29 @@ Other stakeholders of the Utrition application consist of grocery stores, restau
 As we wish to make Utrition as accurate as possible when identifying food, the application will only be trained for individual food items or ingredients rather than whole meals. For example, the user is expected to provide a picture of lettuce rather than an entire sandwich if they wish to track that lettuce appeared in their sandwich. This constraint is to ensure that the user gets an accurate estimate of exactly the nutritional value of their meal since the application may not detect all separate food items in one picture. 
 
 \subsection{Naming Conventions and Terminology}
-This section is discussed in Section 1.3.
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{l l} 
+	\toprule		
+	\textbf{symbol} & \textbf{description}\\
+	\midrule 
+	A & Assumption\\
+	API & Application programming interface\\
+	App & Application\\
+	CP & Cultural and Political Requirement\\
+	FR & Functional Requirement\\
+	LC & Likely Change\\
+	LF & Look and Feel Requirement\\
+	LR & Legal Requirement\\
+	MS & Maintainability and Support Requirement\\
+	OE & Operational and Environmental Requirement\\
+	PR & Performance Requirement\\
+	SR & Security Requirement\\
+	SRS & Software Requirements Specification\\
+	UH & Usability and Humanity Requirement\\
+	UI & User Interface\\
+	ULC & Unlikely Change\\
+	\bottomrule
+\end{tabular}\\
 
 \subsection{Relevant Facts and Assumptions } 
 
@@ -458,7 +373,7 @@ This section is discussed in Section 1.3.
 	
 	\item [A3:] There is an assumption that the client will only take a picture of individual ingredients. 
 
-	\item [A4:] The client is expected to have knowledge of the metric system as Utrition will be outputting nutritional value data in grams and calories.
+	\item [A4:] The user is expected to have knowledge of the metric system as Utrition will be outputting nutritional value data in grams and calories.
 	
 	\item [A5.] The user is expected to have internet access while using Utrition.
 
@@ -590,7 +505,7 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 
 \begin{enumerate}[{UH}1. ]
 	\item The user interface will be easy to navigate. \\
-	\textbf{Rationale:} Allows the user to efficiently learn and use Utrition.\\
+	\textbf{Rationale:} This allows the user to efficiently learn and use Utrition.\\
 	\textbf{Fit Criteria:} The user will be able to navigate to the main menu from any page in 2 clicks.
 \end{enumerate}
 
@@ -608,15 +523,15 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \begin{enumerate}[{UH}3. ] 
 	\item Utrition will be able to be used by people aged 14 and higher who have received no training on the product.\\
 	\textbf{Rationale:} Utrition should be able to be used by all individuals who are concerned with their dietary habits.\\
-	\textbf{Fit Criteria:} 90\% of a test panel of the target demographic should be able to upload their food and retrieve the nutritional facts for it in 2 minutes.
+	\textbf{Fit Criteria:} 90\% of a test panel of the target demographic should be able to upload their food and retrieve the corresponding nutritional facts in under 2 minutes.
 \end{enumerate}
 
 \subsubsection{Understandability and Politeness Requirements}
 
 \begin{enumerate}[start=4,label={UH\arabic*.}]
 	\item Key information will be easy to understand on Utrition.\\
-	\textbf{Rationale:} Users will be more likely to use the webapp if they are able to understand it efficiently.\\
-	\textbf{Fit Criteria:} Every clickable object will have a diagram associated with it. Calories, fat, sodium, carbohydrates, sugar, and protein will have a diagram associated next to it.
+	\textbf{Rationale:} Users will be more likely to use the web application if they are able to understand it efficiently.\\
+	\textbf{Fit Criteria:} Every clickable object will have a symbol associated with it. Calories, fat, sodium, carbohydrates, sugar, and protein will have a symbol associated next to it.
 	\item Utrition will not overwhelm the user with information.\\
 	\textbf{Rationale:} The user is only concerned with the nutritional information and not the calculations leading up to it.\\
 	\textbf{Fit Criteria:} All backend calculations, such as identifying the uploaded food and retrieving the nutritional information, will not be displayed to the user.
@@ -627,7 +542,7 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \begin{enumerate}[{UH}6. ] 
 	\item Utrition will be able to be used by deaf people.\\
 	\textbf{Rationale:} Durum Wheat Semolina aims to allow as many individuals as possible to use Utrition.\\
-	\textbf{Fit Criteria:} There will be no sound used by the Utrition web app. 
+	\textbf{Fit Criteria:} There will be no sound used by the Utrition web application. 
 \end{enumerate}
 
 \subsection{Performance Requirements}
@@ -636,14 +551,14 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 
 \begin{enumerate}[start=1,label={PR\arabic*.}]
 	\item Switching between different user interface screens will be quick.\\
-	\textbf{Rationale:} The user should not have to wait to access different parts of the Utrition web app.\\
-	\textbf{Fit Criteria:} The time between the user’s click and the new UI displaying will not exceed 2 seconds.
+	\textbf{Rationale:} The user should not have to wait to access different parts of the Utrition web application.\\
+	\textbf{Fit Criteria:} The time between the user’s click and displaying the new UI will not exceed 2 seconds.
 	\item Identifying and displaying each food item will be done quickly.\\
-	\textbf{Rationale:} The main use of the web app should not force the user to wait.\\
-	\textbf{Fit Criteria:} After uploading a picture, Utrition will always display the calculated food item within 10 seconds in a test with multiple images.
-	\item Displaying the calculated food’s nutritional value will be done quickly. \\
-	\textbf{Rationale:} The secondary use of the web app should not force the user to wait. \\
-	\textbf{Fit Criteria:} After viewing the calculated food item, Utrition will always display the nutritional facts within 5 seconds in a test with multiple images.
+	\textbf{Rationale:} No process should force users to wait extended periods of time.\\
+	\textbf{Fit Criteria:} After uploading a picture, Utrition will always display the identified food item within 10 seconds in a test with multiple images.
+	\item Displaying a food’s nutritional value will be done quickly. \\
+	\textbf{Rationale:} No process should force users to wait extended periods of time. \\
+	\textbf{Fit Criteria:} After identifying the correct food item, Utrition will always display the nutritional facts within 5 seconds in a test with multiple images.
 \end{enumerate}
 
 \subsubsection{Safety-Critical Requirements}
@@ -653,19 +568,19 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 
 \begin{enumerate}[start=4,label={PR\arabic*.}]
 	\item Identifying and displaying each food item will be done correctly. \\
-	\textbf{Rationale:} The main use of the web app should provide the user with accurate information. \\
+	\textbf{Rationale:} The web app should provide the user with accurate information. \\
 	\textbf{Fit Criteria:} In a test with multiple images, Utrition will identify and display the correct food with an average accuracy of 70\%.
 	\item  The displayed nutritional facts will be correct. \\
-	\textbf{Rationale:} The information given to the user should be accurate. \\
-	\textbf{Fit Criteria:} In a test with multiple images, Utrition will display the correct nutritional information for the calculated food 100\% of the time.
+	\textbf{Rationale:} The nutritional information given to the user should be accurate. \\
+	\textbf{Fit Criteria:} In a test with multiple images, Utrition will display the correct nutritional information for an identified food 90\% of the time.
 \end{enumerate}
 
 \subsubsection{Reliability and Availibility Requirements}
 
 \begin{enumerate}[{PR}6. ] 
-	\item Utrition will be available to all users at all times.\\
+	\item Utrition will be available to users at all times.\\
 	\textbf{Rationale:} The user should be able to track their diet whenever they decide to eat. \\
-	\textbf{Fit Criteria:} Since Utrition is a local webapp, the user will always be allowed to use Utrition unless their device or internet connection is down.
+	\textbf{Fit Criteria:} Since Utrition is a local web app, the user will always be allowed to use Utrition unless their device or internet connection is down.
 \end{enumerate}
 
 \subsubsection{Robustness or Fault-Tolerance Requirements}
@@ -674,9 +589,9 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \subsubsection{Capacity Requirements}
 
 \begin{enumerate}[{PR}7. ] 
-	\item Utrition will allow $\pi$ images to be uploaded as a group.\\
-	\textbf{Rationale:} The user will have to wait too long for the calculated results if more than $\pi$ images are uploaded at once. \\
-	\textbf{Fit Criteria:} The user will not be able to upload more than $\pi$ photos.
+	\item Utrition will allow 3 images to be uploaded as a group.\\
+	\textbf{Rationale:} The user will have to wait too long for the calculated results if more than 3 images are uploaded at once. \\
+	\textbf{Fit Criteria:} The system will not allow more than 3 photos to be uploaded at once.
 \end{enumerate}
 
 \subsubsection{Scalability or Extensibility Requirements}
@@ -690,9 +605,9 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \subsubsection{Longevity Requirements}
 
 \begin{enumerate}[{PR}9. ] 
-	\item Utrition is expected to operate indefinitely.\\
+	\item Utrition should operate indefinitely once fully developed.\\
 	\textbf{Rationale:} Nutritional food values will never change and people will always want ways to regulate their diet. \\
-	\textbf{Fit Criteria:} Utrition will be available to use on github.
+	\textbf{Fit Criteria:} Utrition will be available to use on GitHub for an indefinite amount of time.
 \end{enumerate}
 
 \subsection{Operational and Environmental Requirements}
@@ -705,42 +620,43 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 
 \subsubsection{Productization Requirements}
 \begin{enumerate}[start=1,label={OE\arabic*.}]
-	\item Utrition will be distributed on github as a public repository.\\
+	\item Utrition will be available on GitHub as a public repository.\\
 	\textbf{Rationale:} Utrition is free to be used by anyone.\\
-	\textbf{Fit Criteria:} Users will be able to find and pull the repository into their personal device.
-	\item Utrition will be able to be installed by any individual aged 14 or older after reading the installation guide on the Utrition github page.\\
-	\textbf{Rationale:} Utrition should be accessible to all users. \\
-	\textbf{Fit Criteria:} 95\% of a test panel will be able to install Utrition after reading the installation guide.
+	\textbf{Fit Criteria:} Users will be able to find and pull the repository on to their personal device.
+	\item Utrition will be able to be installed by any individual aged 14 or older after reading the installation guide on the Utrition GitHub page.\\
+	\textbf{Rationale:} Utrition should have a simple installation process. \\
+	\textbf{Fit Criteria:} 95\% of a test panel with the intended demographic will be able to install Utrition after reading the installation guide.
 \end{enumerate}
 
 \subsubsection{Release Requirements}
 
 \begin{enumerate}[{OE}3. ] 
-	\item Utrition will not have any updates after initial public release.\\
-	\textbf{Rationale:} Food components and their nutritional value do not change over time.\\	\textbf{Fit Criteria:} Utrition’s git will receive no updates after initial release.
+	\item Utrition will not have any updates after final implementation is complete.\\
+	\textbf{Rationale:} Food components and their nutritional value do not change over time which means no updates are needed to keep the system functioning and relevant.\\	
+	\textbf{Fit Criteria:} Utrition’s GitHub repository will receive no updates after final implementation.
 \end{enumerate}
 
 \subsection{Maintainability and Support Requirements}
 
 \subsubsection{Maintenance Requirements}
 \begin{enumerate}[{MS}1. ] 
-	\item New data can be given to improve Utrition’s AI at any point.\\
-	\textbf{Rationale:} Utrition’s AI must be ready to improve itself whenever needed to ensure it can detect food at 70\% accuracy.\\	
-	\textbf{Fit Criteria:} Any backend developer is able to successfully upload new data to Utrition’s AI at any time. 
+	\item During developement, new data can be used to improve Utrition’s machine learning model.\\
+	\textbf{Rationale:} Utrition’s machine learning model can receive new data to improve itself and detect food at 70\% accuracy.\\	
+	\textbf{Fit Criteria:} Any backend developer is able to successfully upload new data to Utrition’s machine learning model at any time during development. 
 \end{enumerate}
 
 \subsubsection{Supportability Requirements}
 \begin{enumerate}[{MS}2. ] 
-	\item Support on how to install and use Utrition will be found on Utrition’s github page. \\
-	\textbf{Rationale:} Users who are not technologically advanced should be able to use Utrition.\\	
+	\item Technical support related to installation and the use of Utrition will be found in Utrition’s GitHub repository. \\
+	\textbf{Rationale:} Users who are not technologically advanced should be able to use Utrition given an installation guide and user manual.\\	
 	\textbf{Fit Criteria:} All users will be able to view the support manuals on how to install and use Utrition.
 \end{enumerate}
 
 \subsubsection{Adaptability Requirements}
 \begin{enumerate}[{MS}3. ] 
-	\item Utrition will be used on any computer with access to the “.jpg” photo format.\\
-	\textbf{Rationale:} The user must be able to download Utrition and upload a photo to it. \\
-	\textbf{Fit Criteria:} 100\% of the tested Windows, macOS, and LINUX devices should be able to use all functionalities of the Utrition web app.
+	\item Utrition will be used on any computer with access to ".png", ".jpg", or ".jpeg" photo format.\\
+	\textbf{Rationale:} The user must be able to upload image files to Utrition in one of these formats. \\
+	\textbf{Fit Criteria:} 100\% of the tested Windows, macOS, and Linux devices should be able to use all functionality provided for Utrition.
 \end{enumerate}
 
 
@@ -750,21 +666,21 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \begin{enumerate}[{SR}1. ] 
 	\item The entirety of Utrition can be accessed by all individuals. \\
 	\textbf{Rationale:} The user has the flexibility to improve Utrition and the right to know what they’re downloading onto their computer.  \\	
-	\textbf{Fit Criteria:} Anyone will be able to pull the open-source project from github
+	\textbf{Fit Criteria:} Anyone will be able to pull the open-source project from GitHub
 \end{enumerate}
 
 \subsubsection{Integrity Requirements}
 \begin{enumerate}[{SR}2. ] 
-	\item Utrition will not crash when an abnormal photo format is uploaded to the app. \\
-	\textbf{Rationale:} Users should not be punished for uploading the wrong photo format/Utrition should not crash by improper user input.\\	
-	\textbf{Fit Criteria:}  Utrition will only allow photo uploads from images that have the file extension “.jpg”
+	\item Utrition will not crash when an abnormal photo format has attempted to be uploaded to the app. \\
+	\textbf{Rationale:} Users should not be punished for uploading the wrong photo format. Utrition should not crash by improper user input.\\	
+	\textbf{Fit Criteria:}  Utrition will only allow photo uploads from images that have the file extension ".png", ".jpg", or ".jpeg".
 \end{enumerate}
 
 \subsubsection{Privacy Requirements}
 \begin{enumerate}[{SR}3. ] 
 	\item Utrition will store the user’s data locally.\\
 	\textbf{Rationale:} Only the user should have to view their stored dietary habits. \\	
-	\textbf{Fit Criteria:} Utrition can be used offline and will never communicate with other servers.
+	\textbf{Fit Criteria:} Utrition will not contain personalized data from one user on another user's system.
 \end{enumerate}
 
 \subsubsection{Audit Requirements}
@@ -779,8 +695,8 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 
 \begin{enumerate}[{CP}1. ] 
 	\item Utrition will not display any culturally insensitive content. \\
-	\textbf{Rationale:} Culturally insensitive topics are irrelevant for what Utrition provides.\\	
-	\textbf{Fit Criteria:} 95\% of the test panel agree that Utrition does not provide any culturally insensitive content to the user.
+	\textbf{Rationale:} Utrition should not show culturally insensitive content since the application is intended for individuals of any race or religion.\\	
+	\textbf{Fit Criteria:} 95\% of the test panel agrees that Utrition does not provide any culturally insensitive content to the user.
 \end{enumerate}
 
 \subsubsection{Political Requirements}
@@ -790,23 +706,23 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \subsubsection{Compliance Requirements}
 \begin{enumerate}[{LR}1. ]
 	\item Utrition follows Canada’s Anti-Spam Legislation Requirements for Installing Computer Programs \citep{CanadianInstall}.\\
-	\textbf{Rationale:} Durum Wheat Semolina complies with the law, so no unneeded delays occur.\\
-	\textbf{Fit Criteria:} No malicious software will be present in Utrition’s github repository.
+	\textbf{Rationale:} Durum Wheat Semolina complies with the law to provide an application void of spam and computer viruses.\\
+	\textbf{Fit Criteria:} No malicious software will be present in Utrition’s GitHub repository.
 \end{enumerate}
 \subsubsection{Standards Requirements}
 \begin{enumerate}[start=2,label={LR\arabic*.}]
 	\item Durum Wheat Semolina follows Canada's "Guide for Publishing Open Source 
 	Code" \citep{CanadianCode}.\\
-	\textbf{Rationale:} To assist Durum Wheat Semolina in setting up the development environment for Utrition.\\
-	\textbf{Fit Criteria:} Durum Wheat Semolina commit no infractions when following Canada’s guide.
+	\textbf{Rationale:} This guide will assist Durum Wheat Semolina in setting up the development environment for Utrition.\\
+	\textbf{Fit Criteria:} Durum Wheat Semolina will not commit infractions when following Canada’s guide.
 	\item Durum Wheat Semolina will adhere to the PEP8 Python coding conventions.\\
-	\textbf{Rationale:} Ensures code is consistent for the whole development team to work efficiently \\
-	\textbf{Fit Criteria:} Pylint will be used after every pull request.
-	\item Utrition is created following the standards set by the Google HTML/CSS Style Guide \citep{HTMLCSSStyle} and Google Java Style Guide \citep{JavaStyle}. \\
-	\textbf{Rationale:} Ensures code is consistent for the whole development team to work efficiently \\
+	\textbf{Rationale:} This guide ensures code is consistent which allows the development team to work more efficiently. \\
+	\textbf{Fit Criteria:} Pylint will be used throughout development to ensure every pull request contains properly formatted code.
+	\item Utrition is created following the standards set by the Google HTML/CSS Style Guide \citep{HTMLCSSStyle} and Google Java Style Guide \citep{JavaScriptStyle}. \\
+	\textbf{Rationale:} This guide ensures code is consistent which allows the development team to work more efficiently.\\
 	\textbf{Fit Criteria:} Before every pull request, code will be reviewed to ensure no violations of the standards occur.
 	\item Utrition's front end will follow Google's guide for material design \citep{StyleGuide}\\
-	\textbf{Rationale:} The appearance of Utrition will be more professional and consistent. \\
+	\textbf{Rationale:} The appearance of Utrition will be professional and consistent when following this guide. \\
 	\textbf{Fit Criteria:} Utrition's user interface will be reviewed to ensure all fonts and colours adhere to the style guide.
 \end{enumerate}
 
@@ -816,8 +732,8 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 Below are open issues concerning the development of Utrition:
 \begin{itemize}
 	\item Depending on the amount of identified food image data our team can obtain, the accuracy of our food detection machine learning model may be low
-	\item Currently, Utrition is planned to saved past user input. It is unknown how this will be done. Employing an account and password system for each user is added functionality that may be difficult to implement 
-	\item One requirement states that past nutritional values of food will be stored for easy access when the system needs it again. When saving large amounts of nutritional data, processing could become slow for the entire system.
+	\item Currently, Utrition is planned to saved past user input locally. It is unknown how this will be done. One method such as employing an account and password system for each user is added functionality that may be difficult to implement 
+	\item One functional requirement states that past nutritional values of food will be stored for easy access when the system needs it again. When saving large amounts of nutritional data, processing could become slow for the entire system.
 \end{itemize}
 
 \subsection{Off-the-Shelf Solutions}
@@ -827,7 +743,7 @@ After investigating the market, there are two ready-made solutions that provide 
 Another product the team found to be similar to Utrition is \href{https://play.google.com/store/apps/details?id=ai.bite.biteapp&hl=en_US&gl=US}{Bitesnap}. This application will be able to identify food items, provide their corresponding nutritional information and calories, and store this information to provide eating insights for the user. Frequent reviews state that the system is not able to identify many foods provided in an image by the user. This means that the application's food database is small. Utrition will focus on creating a machine learning model that is able to identify a vast number of food items by supplying a large dataset of labelled food images. 
 
 \subsubsection{Reusable Components}
-Through research into libraries and APIs, the team has identified two systems that can be used for development of Utrition. Firstly, our team plans to create a machine learning model to identify different food items from an uploaded image. To do this the \href{https://www.tensorflow.org/}{TensorFlow} library can be used. This free and open-source library will all use to create and employ our machine learning model.
+Through research into libraries and APIs, the team has identified two systems that can be used for development of Utrition. Firstly, our team plans to create a machine learning model to identify different food items from an uploaded image. To do this, the \href{https://www.tensorflow.org/}{TensorFlow} library can be used. This free and open-source library will be used to create and employ our machine learning model.
 
 Secondly, Utrition must be able to return nutritional information about a food when an image of that food is uploaded. In order to retrieve this nutritional information, calls to \href{https://www.nutritionix.com/business/api}{Nutritionix API} can be made. Nutritionix contains data on a vast range of foods and their nutritional value. Using the free version, our team can make calls to this API to retrieve needed nutritional information.
 
@@ -835,14 +751,14 @@ Secondly, Utrition must be able to return nutritional information about a food w
 The team will be using datasets of labelled food images in order to train our machine learning model. These datasets can be freely obtained online and used in our development.
 
 \subsection{New Problems}
-N.A.
+N/A
 
 \subsection{Tasks}
 \subsubsection{Project Planning}
 Team members will follow a strict schedule to ensure the completion of Utrition. The team will work in 1 week Sprint cycles where tasks are distributed during the first meeting of the week (Monday at 6:30pm) and all tasks must be finished before that meeting the week after. There is also a scheduled progress meeting half-way through the Sprint (Thursday at 1:30pm) to give an update to the team on each person's progress and discuss any blocking issues. The team will create tasks each week based on the due dates provided in SFWRENG 4G06. This ensures that all deadlines are met.
 
 \subsection{Migration to the New Product}
-N.A.
+N/A
 
 \subsection{Risks}
 \subsubsection{Low Productivity}
@@ -850,7 +766,7 @@ Working on a team with multiple developers creates the possibility that some peo
 \textbf{Probability:} \%15
 
 \subsubsection{Inadequate Implementation}
-Due to the volume of requirements, the difficulty of the implementation, and the timeline of the project, there is a risk that the development team will not be able to create a good quality product. This includes partial implementation of features or hardcoded work arounds. To identify this risk before it becomes an issue, the development team hosts weekly progress meetings to ensure all members are proceeding smoothly. In the event that this risk is unavoidable, the team will alter the final goals of Utrition to remove unnecessary functionality.\newline
+Due to the volume of requirements, the difficulty of the implementation, and the timeline of the project, there is a risk that the development team will not be able to create a good quality product. This includes partial implementation of features or hardcoded work-arounds. To identify this risk before it becomes an issue, the development team hosts weekly progress meetings to ensure all members are proceeding smoothly. In the event that this risk is unavoidable, the team will alter the final goals of Utrition to remove unnecessary functionality.\newline
 \textbf{Probability:} \%10
 
 \subsubsection{Limited Time Frame}
@@ -864,7 +780,7 @@ The time cost for the project is calculated based on the number of developers an
 
 \subsection{User Documentation and Training}
 \subsubsection{User Documentation Requirements}
-Utrition will be available to users from GitHub. Inside the repository, the README file will contain instructions for the download and setup of Utrition. Any required software needed by the user to run Utrition will be specified in this file along with solutions to common installation errors. This file will also discuss all functionality of the system and provide instructions for the user to use Utrition. This section will act as the user manual. 
+Utrition will be available to users from GitHub. Inside the repository, the README file will contain instructions for the download and setup of Utrition. Any required software needed by the user to run Utrition will be specified in this file along with solutions to common installation errors. This file will also discuss all functionality of the system and provide instructions for the user to use Utrition. This section will act as the installation guide and user manual. 
 
 \subsubsection{Training Requirements}
 There is no training needed for users to use Utrition. Any questions regarding usage of the system will be available in the user manual.
@@ -885,7 +801,7 @@ In this section, requirements for future releases of Utrition are stated from hi
 	\item [\FillFRNumber] Utrition will provide insights into the eating habits of the user such as what vitamins they should try to consume more of based on their previous inputs.\newline
 	\textbf{Rationale:} By providing health insights, the system will become more useful to users by helping them improve their eating habits rather than solely tracking them.
 	
-	\item [NF?.] Once hosted online, Utrition must compute output with similar performance to the downloaded system within a 25\% margin of error.\newline
+	\item [\textbf{PR10.}] Once hosted online, Utrition must compute output with similar performance to the downloaded system within a 25\% margin of error.\newline
 	\textbf{Rationale:} Hosting Utrition online should provide similar performance speeds compared to the local version so users experience the same enjoyment levels when using the system.
 	
 \end{itemize}
@@ -902,39 +818,43 @@ Below are some ideas for implementation of Utrition:
 \end{itemize}
 
 \section{Likely Changes}   
+This section has been added to the Volere template and details the likely changes to the system that can be made later on in development.
 
 \noindent \begin{itemize}
 
-\item[LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}:] 
-With respect to the A1, the system currently assumes the uploaded pictures will 
+\item[\textbf{LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}}:] 
+With respect to A1, the system currently assumes the uploaded pictures will 
 show individual ingredients. In the future, a more sophisticated computer 
 vision model can be added to differentiate individual ingredients from a meal.
 
-\item[LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}:] 
+\item[\textbf{LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}}:] 
 The system currently supports a model where the user uploads images of food to 
 be evaluated. In the future, the system may allow the user to record their 
 meals in real time and identify nutritional facts instantaneously.
 
-\item[LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}:] 
+\item[\textbf{LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}}:] 
 The system is currently designed to run locally on the user's device. In the 
 future, the system can be hosted online, and allow users to request nutritional 
 data from system servers.
 
 \end{itemize}
 
-\section{Unlikely Changes}    
+\section{Unlikely Changes}  
+This section has been added to the Volere template and details the unlikely changes to the system during development.  
 
 \noindent \begin{itemize}
 
-\item[ULC\refstepcounter{ulcnum}\theulcnum\label{ULC_meaningfulLabel}:] 
+\item[\textbf{ULC\refstepcounter{ulcnum}\theulcnum\label{ULC_meaningfulLabel}}:] 
 The user's past nutritional history will always be stored locally on the user's 
-device. This will remain limit the number of requests in the event the system 
-is hosted online. Furthermore, this allows to access their nutritional history 
+device rather than on an online server. This will limit the number of requests in the event the system 
+is hosted online. Furthermore, this allows the user to access their nutritional history 
 offline.
 
 \end{itemize}
 
 \section{Traceability Matrix}
+This section has been added to the Volere template. The traceability matrix below illustrates the relation between functional and non-functional requirements.
+
 \begin{table}[H]
 
 \centering
@@ -1025,16 +945,19 @@ This section has been added to the Volere template.
 \end{itemize}
 
 \subsection{Constants}
+N/A
 
 \section{Reflection Appendix}
 \subsection{Skills}
-\subsubsection{Competence in Specialized Engineering Knowledge}
+\subsubsection{Competence in specialized engineering knowledge}
 This skill describes one's knowledge on specialized engineering subjects in order to contribute to implementation, documentation, and the final presentation. Some examples of this knowledge include understanding each documents' purposes, the different software architectures to be used in implementation, and proper version control practices. This is highly important for the success of Utrition since all aspects of the project are technically advanced and could not be accomplished by individuals uneducated in software engineering. Ways for people to improve this skill include consulting notes from past courses taken, reviewing previous projects, and researching needed unknown areas of expertise.
-\subsubsection{Successfully uses engineering tools}
-In order to have a successful capstone project it is necessary to be able to successfully utilize engineering tools. There are various types of engineering tools that all accomplish different tasks to ensure the quality of the project and the teams work habits. Git ensures that a large group of developers are all able to work on one thing at the same time which promotes efficiency and you do not write over other team members work, Latex so every document is formated professionally, Kanban boards ensure that everything gets done by the deadlines and coding linters will be good to keep our project formatting consistent. Approaches to learning these skills include reading documentation, asking more knowledgable individuals for advice and reading online discussion boards that answer questions on how to utilize the tool. 
 
-\subsubsection{Effective Project Management}
-Effective Project Management is a skill for planning and effectively managing a project’s time, resources, and scope. Also, to master the skill, one must be able to follow business practices when appropriate. In relation to Utrition, these business practices are: using git branches and pull requests, showing up to the biweekly meetings, working together on Microsoft Teams, and using git issues to assign tasks. Durum Wheat Semolina decided on these business practices, as they are needed to be able to allocate resources in an effective manner to ensure that the project tasks are efficiently completed. The most important business practice and the tool that assists Durum Wheat Semolina manage the project’s resources is git. There are many approaches to learning git. One of these approaches is to follow tutorials and guides online for how to effectively use git branches, issues, and pull requests. Another approach is to ask other members in Durum Wheat Semolina to teach the git business practices, as most software engineers have a profound understanding of git.
+\subsubsection{Successfully uses engineering tools}
+In order to create a successful project, it is necessary to be able to successfully utilize engineering tools. There are various types of engineering tools that all accomplish different tasks. For example, GitHub ensures that a large group of developers are all able to work on one project at the same time which promotes efficiency. Another example is \LaTeX which formats every document professionally. Kanban boards ensure that everything gets done by the deadlines and lastly, coding linters keep project code formated consistently. Approaches to learning these skills include reading documentation, asking more knowledgable individuals for advice, and reading online discussion boards that answer questions on how to utilize the tool. 
+
+\subsubsection{Effective project management}
+Effective Project Management is a skill for planning and effectively managing a project’s time, resources, and scope. Also, to master the skill, one must be able to follow business practices when appropriate. In relation to Utrition, these business practices are: using git branches and pull requests, showing up to the biweekly meetings, working together on Microsoft Teams, and using git issues to assign tasks. Durum Wheat Semolina decided on these business practices, as they are needed to be able to allocate resources in an effective manner to ensure that the project tasks are efficiently completed. To exercise this skill, one can use GitHub to distribute tasks and assign individuals to them, use the project kanban board frequently, and participate in all group meetings.
+
 \subsubsection{Develops models/prototypes; tests, evaluates, \& iterates as 
 appropriate}
 This skill describes the ability to not only make changes to a system through 
@@ -1044,9 +967,8 @@ development process, before they can manifest as bugs, and helps ensure changes
 to the system adhere to the requirements. For Utrition, this is significant as 
 it will be built out iteratively. Repeated, small changes will be made and 
 include a set of tests to ensure that our project is meeting requirements 
-throughout the development process. This skills can be exercised by creating a 
-process for automated unit testing, as well as encouraging all team members to 
-smoke test new code changes. Furthermore, the team can complete root cause 
+throughout the development process. This skill can be exercised by creating a 
+process for automated unit testing, as well as encouraging all team members to thoroughly test new code changes. Furthermore, the team can complete root cause 
 analysis when fixing bugs in order to better track potentially error-prone code.
 
 \subsubsection{Evaluates engineering tools, identifies their limitations, and selects, adapts, or extends them appropriately}
@@ -1057,28 +979,32 @@ This skill describes the ability to contribute to the team project as an active 
 
 \subsection{Teammate Specific Learning Approaches}
 \subsubsection{Alexander Moica}
-Alexander has had repeated previous experience working with a specific set of software tools but has rarely branched out to investigate and evaluate potential alternatives. In order to develop the skills necessary for the efficient evaluation of competing software tools, Alexander will search for tool reviews, comparisons, and benchmarks. This method was chosen since this content is available in a variety of easily digestible formats - including visual representations, video reviews, and interactive comparison tables.
+Alexander has had repeated previous experience working with a specific set of software tools but has rarely branched out to investigate and evaluate potential alternatives. In order to develop the skills necessary for the efficient evaluation of competing software tools (Section 10.1.5), Alexander will search for tool reviews, comparisons, and benchmarks. This method was chosen since this content is available in a variety of easily digestible formats - including visual representations, video reviews, and interactive comparison tables.
 
 \subsubsection{Yasmine Jolly}
-Yasmine recognizes that she does not have very effective time managerment skills as described in 10.1.6. In order to better manage her own time as a resource, so to get better  she will be checking the kanban board once a day to ensure that she does not miss any deadlines. 
+Yasmine recognizes that she often forgets to work iteratively and test/evaluate her work as she progresses (Section 10.1.4). She often saves this step to the end of her work and spends large amounts of time searching for mistakes. During this project, she will work to improve this skill by frequently running tests on her code to make sure there are no new regressions introduced. This method was chosen because it allows Yasmine to frequently think about edge cases in her code and create tests that will find such exceptions.
+
 \subsubsection{Jeffrey Wang}
 Jeffrey is familiar with the tools and programming languages frequently 
 used in the academic setting, but needs to improve his self-directed learning 
 ability. During the development of Utrition, there will be opportunities to 
 handle new technology outside the scope of an academic setting that will 
-require self-learning to understand (Section 16.1.1). Jeffrey will research 
+require self-learning to understand (Section 10.1.1). Jeffrey will research 
 unknown areas of expertise to quickly develop a understanding of the unknown 
 area to a level adequate for this project. Furthermore, he will read the 
 documentation of new technologies to better understand its capabilities. These 
 methods were chosen as they best tackle learning about subjects outside the 
 scope of an academic setting.
+
 \subsubsection{Jack Theriault}
-Jack has had experience with git, but he has not expanded on his knowledge and only knows the basic git commands for cloning, pulling, and pushing. In order for Jack to work effectively with Durum Wheat Semolina, Jack will need to follow tutorials and guides online on how to use the advanced git techniques. Jack has chosen this approach to learning because git is not difficult to understand with an online guide, and he does not want to distract his group mates with easy-to-answer questions.
+Jack has acknowledged that in the past, he has found it difficult to plan a project, taking into consideration its time, resources, and scope (Section 10.1.3). Often times, time is overestimated, resulting in some elements of the project remaining unfinished. In order for him to improve his project management skills, Jack will check the project kanban board regularly so he knows what tasks need to be done and by what date.
+
 
 \subsubsection{Catherine Chen}
-Catherine expressed that she wanted to be more proactive in the planning and execution of the project. She has previously struggled with being aware of  what other members are working on. In order to develop her initiative and leadership skills, Catherine will lead project planning meetings. This includes spearheading team meetings for planning project deadlines, being aware of the allocation of tasks within the group, actively using GitHub issues, and project board organization. This method was chosen as it allows her to take more of a leadership role within the team where she can plan the allocation of tasks to team members, and she will gain a more holistic view on the project.
+Catherine expressed that she wanted to be more proactive in the planning and execution of the project (Section 10.1.6). She has previously struggled with being aware of  what other members are working on. In order to develop her initiative and leadership skills, Catherine will lead project planning meetings. This includes spearheading team meetings for planning project deadlines, being aware of the allocation of tasks within the group, actively using GitHub issues, and project board organization. This method was chosen as it allows her to take more of a leadership role within the team where she can plan the allocation of tasks to team members, and she will gain a more holistic view on the project.
+
 \subsubsection{Justina Srebrnjak}
-Justina identifies that she has difficulty with understanding certain engineering tools such as \LaTeX, make, and certain programming languages such as JavaScript (Section 16.1.3). In order to better understand these tools as well as their limitations and uses, Justina will read any documentation available. She has chosen this method since she possesses a visual learning style and documentation is easily accessible online.
+Justina identifies that she has difficulty with understanding certain engineering tools such as \LaTeX, make, and certain programming languages such as JavaScript (Section 10.1.2). In order to better understand these tools and use them sucessfully, Justina will read any documentation available. She has chosen this method since she possesses a visual learning style and documentation is easily accessible online.
 
 \bibliographystyle {plainnat}
 
