@@ -61,6 +61,28 @@
 	\section{Scope and Purpose of Hazard Analysis}
 	
 	\section{System Boundaries and Components}
+	The system boundaries for this hazard analysis will include the device that the application is installed on as well as the components of the application itself. These components consist of image upload, image pre-processing, image processing & identification, API request calling, data logging, data log access, and data display components.
+	
+	\subsection{Image Upload}
+	This component allows an image to be uploaded and relayed to the pre-processing component.
+
+	\subsection{Image Pre-Processing}
+	This component takes an uploaded image and applies the algorithms needed to convert the raw image data into a format that can be used by a machine learning image model.
+	
+	\subsection{Image Processing & Identification}
+	This component is where the machine learning model analyzes the pre-processed image to identify the food displayed by comparing it to the images it was exposed to during its supervised learning. 
+	
+	\subsection{API Request Calling}
+	This component allows the application to interface with the Nutritionix API to access nutritional data on a given food.  
+	
+	\subsection{Data Logging}
+	This component logs past uses of the application by the identified food and the date it was used.   
+	
+	\subsection{Data Log Access}
+	This component returns the recorded logs of past uses of the application.
+	
+	\subsection{Data Display}
+	This component displays data visually for the user to see, either in textual or graphical formats.
 	
 	\section{Critical Assumptions}
 	
