@@ -3,6 +3,11 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\usepackage{pdflscape}
 
 \hypersetup{
 	colorlinks=true,       % false: boxed links; true: colored links
@@ -24,90 +29,114 @@
 
 \begin{document}
 	
-	\maketitle
-	\thispagestyle{empty}
-	
-	~\newpage
-	
-	\pagenumbering{roman}
-	
-	\begin{table}[hp]
-		\caption{Revision History} \label{TblRevisionHistory}
-		\begin{tabularx}{\textwidth}{llX}
-			\toprule
-			\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
-			\midrule
-			Date1 & Name(s) & Description of changes\\
-			Date2 & Name(s) & Description of changes\\
-			... & ... & ...\\
-			\bottomrule
-		\end{tabularx}
-	\end{table}
-	
-	~\newpage
-	
-	\tableofcontents
-	
-	~\newpage
-	
-	\pagenumbering{arabic}
-	
-	\wss{You are free to modify this template.}
-	
-	\section{Introduction}
-	
-	\wss{You can include your definition of what a hazard is here.}
-	
-	\section{Scope and Purpose of Hazard Analysis}
-	
-	\section{System Boundaries and Components}
-	The system boundaries for this hazard analysis will include the device that the application is installed on as well as the components of the application itself. These components consist of image upload, image pre-processing, image processing & identification, API request calling, data logging, data log access, and data display components.
-	
-	\subsection{Image Upload}
-	This component allows an image to be uploaded and relayed to the pre-processing component.
+\maketitle
+\thispagestyle{empty}
 
-	\subsection{Image Pre-Processing}
-	This component takes an uploaded image and applies the algorithms needed to convert the raw image data into a format that can be used by a machine learning image model.
-	
-	\subsection{Image Processing & Identification}
-	This component is where the machine learning model analyzes the pre-processed image to identify the food displayed by comparing it to the images it was exposed to during its supervised learning. 
-	
-	\subsection{API Request Calling}
-	This component allows the application to interface with the Nutritionix API to access nutritional data on a given food.  
-	
-	\subsection{Data Logging}
-	This component logs past uses of the application by the identified food and the date it was used.   
-	
-	\subsection{Data Log Access}
-	This component returns the recorded logs of past uses of the application.
-	
-	\subsection{Data Display}
-	This component displays data visually for the user to see, either in textual or graphical formats.
-	
-	\section{Critical Assumptions}
-	
-	\wss{These assumptions that are made about the software or system.  You 
-	should
-		minimize the number of assumptions that remove potential hazards.  For 
-		instance,
-		you could assume a part will never fail, but it is generally better to 
-		include
-		this potential failure mode.}
-	
-	\section{Failure Mode and Effect Analysis}
-	
-	\wss{Include your FMEA table here}
-	
-	\section{Safety and Security Requirements}
-	
-	\wss{Newly discovered requirements.  These should also be added to the 
-	SRS.  (A
-		rationale design process how and why to fake it.)}
-	
-	\section{Roadmap}
-	
-	\wss{Which safety requirements will be implemented as part of the capstone 
-	timeline?
-		Which requirements will be implemented in the future?}
+~\newpage
+
+\pagenumbering{roman}
+
+\begin{table}[hp]
+	\caption{Revision History} \label{TblRevisionHistory}
+	\begin{tabularx}{\textwidth}{llX}
+		\toprule
+		\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
+		\midrule
+		Date1 & Name(s) & Description of changes\\
+		Date2 & Name(s) & Description of changes\\
+		... & ... & ...\\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+~\newpage
+
+\tableofcontents
+
+~\newpage
+
+\pagenumbering{arabic}
+
+\wss{You are free to modify this template.}
+
+\section{Introduction}
+
+\wss{You can include your definition of what a hazard is here.}
+
+\section{Scope and Purpose of Hazard Analysis}
+
+\section{System Boundaries and Components}
+The system boundaries for this hazard analysis will include the device that the application is installed on as well as the components of the application itself. These components consist of image upload, image pre-processing, image processing \& identification, API request calling, data logging, data log access, and data display components.
+
+\subsection{Image Upload}
+This component allows an image to be uploaded and relayed to the pre-processing component.
+
+\subsection{Image Pre-Processing}
+This component takes an uploaded image and applies the algorithms needed to convert the raw image data into a format that can be used by a machine learning image model.
+
+\subsection{Image Processing \& Identification}
+This component is where the machine learning model analyzes the pre-processed image to identify the food displayed by comparing it to the images it was exposed to during its supervised learning. 
+
+\subsection{API Request Calling}
+This component allows the application to interface with the Nutritionix API to access nutritional data on a given food.  
+
+\subsection{Data Logging}
+This component logs past uses of the application by the identified food and the date it was used.   
+
+\subsection{Data Log Access}
+This component returns the recorded logs of past uses of the application.
+
+\subsection{Data Display}
+This component displays data visually for the user to see, either in textual or graphical formats.
+
+\section{Critical Assumptions}
+
+\wss{These assumptions that are made about the software or system.  You 
+should
+	minimize the number of assumptions that remove potential hazards.  For 
+	instance,
+	you could assume a part will never fail, but it is generally better to 
+	include
+	this potential failure mode.}
+
+\section{Failure Mode and Effect Analysis}
+
+\wss{Include your FMEA table here}
+
+\begin{landscape}
+\begin{table}[ht]
+	\centering
+	\begin{adjustbox}{width=\hsize,center=\textwidth}
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+		\hline
+		\multicolumn{9}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
+		\multicolumn{9}{|l|}{System: Utrition}\\
+		\multicolumn{9}{|l|}{Subsystem: N/A}\\
+		\multicolumn{9}{|l|}{Phase/Mode: System Requirements}\\\hline
+		\textbf{Design Function} & \textbf{Failure Modes} & \textbf{Effects of Failure} & \textbf{Causes of Failure} & \textbf{Detection} & \textbf{Risk Priority Number} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
+		\multirow{3}{*}{Image Collection} & Image of incorrect type inputted & Users attempt to upload a file of an unsupported type & No image uploaded & Upload error will occur & & Provide error message that informs the user that only file types of type .png, .jpg, and .jpeg can be uploaded & & H1-1 \\ \cline{2-9}
+		& Image size inputted is too large & Image file from user is too large to be uploaded and stored & Same as H1-1 & Same as H1-1 & & Provide error message that inputted file is too large & & H1-2\\ \cline{2-9}
+		& User tries to upload more than 3 images at once & User attempts to upload more than 3 images & Same as H1-1 & Same as H1-1 & & Provide error message saying up to 3 photos can be uploaded at once & & H1-3\\ \hline
+		\multirow{3}{*}{General System} & User loses internet connection & Internet connection used by device is lost or is too weak & Unable to access nutrition facts for food items & API calls will fail & & Provide error message that informs the user that they must be connected to an internet connection to use the system & & H2-1 \\ \cline{2-9}
+		& \multirow{2}{*}{System closes unexpectedly} & a. Host device shuts down (loses power) & a. Loss of recently inputted data & a. Device screen will turn black & & a. System should save data with each new input to minimize lost data & & \multirow{2}{*}{H2-2}\\
+		& & b. Internal error occurs & b. Same as H2-2a & b. Application will become unresponsive & & b. Same as H2-2a & &\\ \hline
+	\end{tabular}
+	\end{adjustbox}
+	\caption{FMEA Table}
+	\label{tab:my_label}
+\end{table}
+\end{landscape}
+
+\section{Safety and Security Requirements}
+
+\wss{Newly discovered requirements.  These should also be added to the 
+SRS.  (A
+	rationale design process how and why to fake it.)}
+
+\section{Roadmap}
+
+\wss{Which safety requirements will be implemented as part of the capstone 
+timeline?
+	Which requirements will be implemented in the future?}
 	
 \end{document}
