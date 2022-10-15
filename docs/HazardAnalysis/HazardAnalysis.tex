@@ -8,6 +8,12 @@
 \usepackage{adjustbox}
 \usepackage{graphicx}
 \usepackage{pdflscape}
+\usepackage[shortlabels]{enumitem}
+
+
+
+
+
 
 \hypersetup{
 	colorlinks=true,       % false: boxed links; true: colored links
@@ -128,10 +134,31 @@ should
 \end{landscape}
 
 \section{Safety and Security Requirements}
+\subsection{Safety Requirements}
+\subsection{Security Requirements}
 
-\wss{Newly discovered requirements.  These should also be added to the 
-SRS.  (A
-	rationale design process how and why to fake it.)}
+\begin{enumerate}[{SCR}1.] 
+	\item The entirety of Utrition can be accessed by all individuals. \\
+	\textbf{Rationale:} The user has the flexibility to improve Utrition 
+	and the right to know what they’re downloading onto their computer.  
+	\\	
+	\textbf{Fit Criteria:} Anyone will be able to pull the open-source 
+	project from GitHub
+ 
+	\item Utrition will not crash when an abnormal photo format has 
+	attempted to be uploaded to the app. \\
+	\textbf{Rationale:} Users should not be punished for uploading the 
+	wrong photo format. Utrition should not crash by improper user 
+	input.\\	
+	\textbf{Fit Criteria:}  Utrition will only allow photo uploads from 
+	images that have the file extension ".png", ".jpg", or ".jpeg".
+	
+	\item Utrition will store the user’s data locally. \\
+	\textbf{Rationale:} 
+	Only the user should have to view their stored dietary habits. \\	
+	\textbf{Fit Criteria:} Utrition will not contain personalized data from 
+	one user on another user's system.
+\end{enumerate}
 
 \section{Roadmap}
 
