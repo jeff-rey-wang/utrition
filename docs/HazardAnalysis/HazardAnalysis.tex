@@ -9,10 +9,8 @@
 \usepackage{graphicx}
 \usepackage{pdflscape}
 \usepackage[shortlabels]{enumitem}
-
-
-
-
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
 
 \hypersetup{
@@ -107,27 +105,29 @@ should
 
 \section{Failure Mode and Effect Analysis}
 
-\wss{Include your FMEA table here}
-
 \begin{landscape}
+	\thispagestyle{empty}
 \begin{table}[ht]
 	\centering
-	\begin{adjustbox}{width=\hsize,center=\textwidth}
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+
+	\makebox[\linewidth]{
+	\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{2cm}|p{3cm}|p{1cm}|p{1cm}|}
 		\hline
 		\multicolumn{9}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
 		\multicolumn{9}{|l|}{System: Utrition}\\
 		\multicolumn{9}{|l|}{Subsystem: N/A}\\
 		\multicolumn{9}{|l|}{Phase/Mode: System Requirements}\\\hline
 		\textbf{Design Function} & \textbf{Failure Modes} & \textbf{Effects of Failure} & \textbf{Causes of Failure} & \textbf{Detection} & \textbf{Risk Priority Number} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
-		\multirow{3}{*}{Image Collection} & Image of incorrect type inputted & Users attempt to upload a file of an unsupported type & No image uploaded & Upload error will occur & & Provide error message that informs the user that only file types of type .png, .jpg, and .jpeg can be uploaded & & H1-1 \\ \cline{2-9}
+		Image Collection & Image of incorrect type inputted & Users attempt to upload a file of an unsupported type & No image uploaded & Upload error will occur & & Provide error message that informs the user that only file types of type .png, .jpg, and .jpeg can be uploaded & & H1-1 \\ \cline{2-9}
 		& Image size inputted is too large & Image file from user is too large to be uploaded and stored & Same as H1-1 & Same as H1-1 & & Provide error message that inputted file is too large & & H1-2\\ \cline{2-9}
 		& User tries to upload more than 3 images at once & User attempts to upload more than 3 images & Same as H1-1 & Same as H1-1 & & Provide error message saying up to 3 photos can be uploaded at once & & H1-3\\ \hline
-		\multirow{3}{*}{General System} & User loses internet connection & Internet connection used by device is lost or is too weak & Unable to access nutrition facts for food items & API calls will fail & & Provide error message that informs the user that they must be connected to an internet connection to use the system & & H2-1 \\ \cline{2-9}
-		& \multirow{2}{*}{System closes unexpectedly} & a. Host device shuts down (loses power) & a. Loss of recently inputted data & a. Device screen will turn black & & a. System should save data with each new input to minimize lost data & & \multirow{2}{*}{H2-2}\\
+		General System & User loses internet connection & Internet connection used by device is lost or is too weak & Unable to access nutrition facts for food items & API calls will fail & & Provide error message that informs the user that they must be connected to an internet connection to use the system & & H2-1 \\ \cline{2-9}
+		& System closes unexpectedly & a. Host device shuts down (loses power) & a. Loss of recently inputted data & a. Device screen will turn black & & a. System should save data with each new input to minimize lost data & & \multirow{2}{*}{H2-2}\\
 		& & b. Internal error occurs & b. Same as H2-2a & b. Application will become unresponsive & & b. Same as H2-2a & &\\ \hline
+
 	\end{tabular}
-	\end{adjustbox}
+}
+
 	\caption{FMEA Table}
 	\label{tab:my_label}
 \end{table}
