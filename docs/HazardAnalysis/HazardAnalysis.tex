@@ -135,29 +135,55 @@ should
 
 \section{Safety and Security Requirements}
 \subsection{Safety Requirements}
-\subsection{Security Requirements}
+\begin{enumerate}[{SR}1.]
+	\item Utrition will be able to detect when the user uploads an abnormal 
+	image format, too many images, or images that are too large. A prompt will 
+	be given to the user, instructing them of their error. \\
+	\textbf{Rationale:}  Utrition should not crash by improper user 
+	input. Users should have an opportunity to amend a their faulty input in 
+	order to use the services provided by the application.\\	
+	\textbf{Associated Hazards:} H1-1, H1-2, H1-3.
+	
+	\item Utrition will abort retrieval of nutritional information if it cannot 
+	be completed successfully. The user will be notified when such 
+	an error occurs. \\
+	\textbf{Rationale:}  Information retrieval may fail due to a variety of 
+	reasons, and the user should be notified of the reason why the service 
+	could not be completed as expected.\\	
+	\textbf{Associated Hazards:} H2-1, H2-2, H3-1, H3-2, H3-3, H4-1, H5-1. H5-2.
+	
+	\item Utrition will prompt the user if food identification cannot 
+	be completed successfully. The user will be notified on the type of error 
+	that occurs. \\
+	\textbf{Rationale:}  Food identification may fail due to a variety of 
+	reasons, and the user should be notified so they may attempt to find a  
+	workaround for the issue. \\	
+	\textbf{Associated Hazards:} H5-1. H5-2.
+	
+	\item Utrition will prompt the user if past nutritional trends cannot
+	be displayed successfully. The user will be notified on the type of error 
+	that occurs. \\
+	\textbf{Rationale:}  Failure to display past nutritional trends may fail 
+	due to a variety of reasons. The user should be be made aware of the issue, 
+	and the underlying cause behind it.\\	
+	\textbf{Associated Hazards:} H6-1.
+\end{enumerate}
 
-\begin{enumerate}[{SCR}1.] 
-	\item The entirety of Utrition can be accessed by all individuals. \\
-	\textbf{Rationale:} The user has the flexibility to improve Utrition 
-	and the right to know what they’re downloading onto their computer.  
-	\\	
-	\textbf{Fit Criteria:} Anyone will be able to pull the open-source 
-	project from GitHub
- 
-	\item Utrition will not crash when an abnormal photo format has 
-	attempted to be uploaded to the app. \\
-	\textbf{Rationale:} Users should not be punished for uploading the 
-	wrong photo format. Utrition should not crash by improper user 
-	input.\\	
-	\textbf{Fit Criteria:}  Utrition will only allow photo uploads from 
-	images that have the file extension ".png", ".jpg", or ".jpeg".
+\subsection{Security Requirements}
+\begin{enumerate}[{SR}1.] 
+	\setcounter{enumi}{4}
 	
 	\item Utrition will store the user’s data locally. \\
-	\textbf{Rationale:} 
-	Only the user should have to view their stored dietary habits. \\	
-	\textbf{Fit Criteria:} Utrition will not contain personalized data from 
-	one user on another user's system.
+	\textbf{Rationale:} Only the user should have to view their stored dietary 
+	habits. \\	
+	\textbf{Associated Hazards:} H4-2.
+	
+	\item Utrition will periodically save user’s data during use. \\
+	\textbf{Rationale:} In the event of unexpected shutdown, the user should 
+	not lose all information from the last session. Periodically saving user 
+	information will allow users to continue from their last step in the event 
+	of an unexpected shutdown. \\	
+	\textbf{Associated Hazards:} H4-2.
 \end{enumerate}
 
 \section{Roadmap}
