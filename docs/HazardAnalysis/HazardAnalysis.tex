@@ -124,6 +124,12 @@ should
 		General System & User loses internet connection & Internet connection used by device is lost or is too weak & Unable to access nutrition facts for food items & API calls will fail & & Provide error message that informs the user that they must be connected to an internet connection to use the system & & H2-1 \\ \cline{2-9}
 		& System closes unexpectedly & a. Host device shuts down (loses power) & a. Loss of recently inputted data & a. Device screen will turn black & & a. System should save data with each new input to minimize lost data & & \multirow{2}{*}{H2-2}\\
 		& & b. Internal error occurs & b. Same as H2-2a & b. Application will become unresponsive & & b. Same as H2-2a & &\\ \hline
+		Database & Nutritional data is unavailable & Nutritional data has not been put in the data base for that particular input yet & System will not output any nutritional information after users request & Nothing will be outputted after api recognition of key food item & & Display error message explaining that this nutritional data has not yet been added to the database & & H3-1 \\ \cline{2-9}
+		& Nutritional data is deleted unintentionally & Accidental error of developers deleting necessary data & Same as H3-1 & Same as H3-1 & & Display error message explaining that this nutritional data has been deleted & & H3-2\\ \cline{2-9}
+		& User past data is deleted & The data was not successfully stored within the data base or the users past data was deleted unintentionally & System will not output any of the users information after users request  & Nothing will be outputted after user requests past data  & & Display error message saying that the users past data has been deleted  & & H3-3\\ \hline
+		Graph Creation & Graph cannot be generated  & Not enough past information from user  & Cannot output a graph for user to see & There is no information available in users past data  & & Display error message stating there is not enough data to create the graph & & H6-1 \\ \cline{2-9}
+		
+		
 
 	\end{tabular}
 }
