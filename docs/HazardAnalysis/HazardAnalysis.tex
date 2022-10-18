@@ -130,12 +130,6 @@ should
 		General System & User loses internet connection & Internet connection used by device is lost or is too weak & Unable to access nutrition facts for food items & API calls will fail & & Provide error message that informs the user that they must be connected to an internet connection to use the system & & H2-1 \\ \cline{2-9}
 		& System closes unexpectedly & a. Host device shuts down (loses power) & a. Loss of recently inputted data & a. Device screen will turn black & & a. System should save data with each new input to minimize lost data & & \multirow{2}{*}{H2-2}\\
 		& & b. Internal error occurs & b. Same as H2-2a & b. Application will become unresponsive & & b. Same as H2-2a & &\\ \hline
-		Database & Nutritional data is unavailable & Nutritional data has not been put in the data base for that particular input yet & System will not output any nutritional information after users request & Nothing will be outputted after api recognition of key food item & & Display error message explaining that this nutritional data has not yet been added to the database & & H3-1 \\ \cline{2-9}
-		& Nutritional data is deleted unintentionally & Accidental error of developers deleting necessary data & Same as H3-1 & Same as H3-1 & & Display error message explaining that this nutritional data has been deleted & & H3-2\\ \cline{2-9}
-		& User past data is deleted & The data was not successfully stored within the data base or the users past data was deleted unintentionally & System will not output any of the users information after users request  & Nothing will be outputted after user requests past data  & & Display error message saying that the users past data has been deleted  & & H3-3\\ \hline
-		Graph Creation & Graph cannot be generated  & Not enough past information from user  & Cannot output a graph for user to see & There is no information available in users past data  & & Display error message stating there is not enough data to create the graph & & H6-1 \\ \cline{2-9}
-		
-		
 
 	\end{tabular}
 }
@@ -143,6 +137,66 @@ should
 	\caption{FMEA Table}
 	\label{tab:my_label}
 \end{table}
+\end{landscape}
+
+\begin{landscape}
+	\thispagestyle{empty}
+	\begin{table}[ht]
+		\centering
+		
+		\makebox[\linewidth]{
+			\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{2cm}|p{3cm}|p{1cm}|p{1cm}|}
+				\hline
+				\multicolumn{9}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
+				\multicolumn{9}{|l|}{System: Utrition}\\
+				\multicolumn{9}{|l|}{Subsystem: N/A}\\
+				\multicolumn{9}{|l|}{Phase/Mode: System Requirements}\\\hline
+				\textbf{Design Function} & \textbf{Failure Modes} & \textbf{Effects of Failure} & \textbf{Causes of Failure} & \textbf{Detection} & \textbf{Risk Priority Number} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
+				Database & Nutritional data is unavailable & Nutritional data has not been put in the data base for that particular input yet & System will not output any nutritional information after users request & Nothing will be outputted after api recognition of key food item & & Display error message explaining that this nutritional data has not yet been added to the database & & H3-1 \\ \cline{2-9}
+				& Nutritional data is deleted unintentionally & Accidental error of developers deleting necessary data & Same as H3-1 & Same as H3-1 & & Display error message explaining that this nutritional data has been deleted & & H3-2\\ \cline{2-9}
+				& User past data is deleted & The data was not successfully stored within the data base or the users past data was deleted unintentionally & System will not output any of the users information after users request  & Nothing will be outputted after user requests past data  & & Display error message saying that the users past data has been deleted  & & H3-3\\ \hline
+				Graph Creation & Graph cannot be generated  & Not enough past information from user  & Cannot output a graph for user to see & There is no information available in users past data  & & Display error message stating there is not enough data to create the graph & & H6-1 \\ \hline
+				
+				
+				
+			\end{tabular}
+		}
+		
+		\caption{FMEA Table}
+		\label{tab:my_label}
+	\end{table}
+\end{landscape}
+
+\begin{landscape}
+	\thispagestyle{empty}
+	\begin{table}[ht]
+		\centering
+		
+		\makebox[\linewidth]{
+			\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{2cm}|p{3cm}|p{1cm}|p{1cm}|}
+				\hline
+				\multicolumn{9}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
+				\multicolumn{9}{|l|}{System: Utrition}\\
+				\multicolumn{9}{|l|}{Subsystem: N/A}\\
+				\multicolumn{9}{|l|}{Phase/Mode: System Requirements}\\\hline
+				\textbf{Design Function} & \textbf{Failure Modes} & \textbf{Effects of Failure} & \textbf{Causes of Failure} & \textbf{Detection} & \textbf{Risk Priority Number} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
+				API Calls & API call fails unexpectedly & a. Internet connection error & System will not return nutritional data for a food item & The API response will be verified by the system. The system will detect if the response is an error & & a. Display error message detailing a system error due to poor internet connection& SR2 & \multirow{2}{*} {HX-1} \\ 
+				& & b. Too many requests sent to API causing throttling limit to be reached & & & & b. Display error message detailing a system error due to too many requests being sent & & \\ \cline{2-9}
+				& API does not contain nutrition facts for a food item & Food item is not found in API database & Same as HX-1 & The API response will be verified by the system and will detect if the response is empty & & Display error message detailing that the food data could not be fetched & SR2 & HX-2\\ \hline
+				Image Identification Model & Food from image is incorrectly identified & a. Poor image quality & System will process the incorrectly identified food item & User will file a report to the dev team with the image that was incorrectly identified & & User should upload an alternate image of the food & SR2, SR3 & \multirow{3}{*} {HY-1} \\ 
+				& & b. Food identification system error & & & & & & \\
+				& & c. ML system biases & & & & & & \\ \cline{2-9}
+				& No food is identified in the image & Same as HY-1 & No food item will be identified, the system will not be able to proceed & The food identification ML process will return an error to the system & & Display error message detailing that a food item was not detected & SR2, SR3 & HY-2\\ \hline
+
+				
+				
+				
+			\end{tabular}
+		}
+		
+		\caption{FMEA Table}
+		\label{tab:my_label}
+	\end{table}
 \end{landscape}
 
 \section{Safety and Security Requirements}
