@@ -10,8 +10,14 @@
 \usepackage{pdflscape}
 \usepackage[shortlabels]{enumitem}
 \usepackage{array}
+\usepackage{fancyhdr}
+\usepackage[margin=1in, includeheadfoot]{geometry}
+
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
+\fancyhf{} % clear all header and footers
+\renewcommand{\headrulewidth}{0pt} % remove the header rule
+\lfoot{\thepage}
 
 \hypersetup{
 	colorlinks=true,       % false: boxed links; true: colored links
@@ -31,8 +37,10 @@
 \input{../Comments}
 \input{../Common}
 
+\pagestyle{fancy}
+
 \begin{document}
-	
+
 \maketitle
 \thispagestyle{empty}
 
@@ -115,7 +123,7 @@ The user is assumed to have sufficient storage space to download the Utrition ap
 \section{Failure Mode and Effect Analysis}
 
 \begin{landscape}
-	\thispagestyle{empty}
+
 \begin{table}[ht]
 	\centering
 
@@ -143,7 +151,7 @@ The user is assumed to have sufficient storage space to download the Utrition ap
 \end{landscape}
 
 \begin{landscape}
-	\thispagestyle{empty}
+
 	\begin{table}[ht]
 		\centering
 		
@@ -171,7 +179,7 @@ The user is assumed to have sufficient storage space to download the Utrition ap
 \end{landscape}
 
 \begin{landscape}
-	\thispagestyle{empty}
+
 	\begin{table}[ht]
 		\centering
 		
