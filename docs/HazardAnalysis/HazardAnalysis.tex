@@ -82,7 +82,7 @@ mention recommended actions to mitigate and circumvent hazards encountered
 while using the system.
 
 \section{Scope and Purpose of Hazard Analysis}
-The purpose of conducting a hazard analysis is to document the system conditions, that along with conditions in the environment, can cause harm or damage. Documentation for how to control or mitigate these conditions will also be included. The scope of this hazard analysis will span from the time the the user inputs an image into Utrition to the time when the nutritional data results of their image are displayed, including the pre-processing, processing, API request, and data representation steps.
+The purpose of conducting a hazard analysis is to document the system conditions, that along with conditions in the environment, can cause harm or damage. Documentation for how to control or mitigate these conditions will also be included. The scope of this hazard analysis will span from the time the user inputs an image into Utrition to the time when the nutritional data results of their image are displayed, including the pre-processing, processing, API request, and data representation steps.
 
 \section{System Boundaries and Components}
 The system boundaries for this hazard analysis will include the device that the application is installed on as well as the components of the application itself. These components consist of image upload, image pre-processing, image processing \& identification, API request calling, data logging, data log access, and data display components.
@@ -129,6 +129,7 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 
 	\makebox[\linewidth]{
 	\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|p{1cm}|}
+		\multicolumn{8}{c}{}\\
 		\hline
 		\multicolumn{8}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
 		\multicolumn{8}{|l|}{System: Utrition}\\
@@ -162,6 +163,7 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 		
 		\makebox[\linewidth]{
 			\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|p{1cm}|}
+				\multicolumn{8}{c}{}\\
 				\hline
 				\multicolumn{8}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
 				\multicolumn{8}{|l|}{System: Utrition}\\
@@ -187,7 +189,7 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 				nutritional data has been deleted & SR8 & H4-2\\ \cline{2-8}
 				& User past data is deleted & a. The data was not successfully 
 				stored within the data base & a. System will not output any of 
-				the users information & a. Nothing will be output after user 
+				the user's information & a. Nothing will be output after user 
 				requests past data & a. Display error message saying that the 
 				user's past data has been deleted & SR8 & H4-3\\ 
 				& & b. The user's past data was deleted unintentionally & b. Same as H4-3a & b. Same as H4-3a & b. Same as H4-3a & &\\\hline
@@ -206,6 +208,7 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 		
 		\makebox[\linewidth]{
 			\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|p{1cm}|}
+				\multicolumn{8}{c}{}\\
 				\hline
 				\multicolumn{8}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
 				\multicolumn{8}{|l|}{System: Utrition}\\
@@ -294,7 +297,7 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 	be displayed successfully. The user will be notified on the type of error 
 	that occurs. \\
 	\textbf{Rationale:}  Failure to display past nutritional trends may fail 
-	due to a variety of reasons. The user should be be made aware of the issue, 
+	due to a variety of reasons. The user should be made aware of the issue, 
 	and the underlying cause behind it.\\	
 	\textbf{Associated Hazards:} H5-1.
 	
@@ -323,6 +326,6 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 timeline?
 	Which requirements will be implemented in the future?}
 
-Durum Wheat Semolina is planning to implement SR1-SR10 during Utrition's capstone timeline. The safety requirements (SR1-SR10) are easy to implement and do not provide much strain to the system. They exist to guide the user through Utrition, and to aid Utrition in being an easy-to-understand application. SR11 is not required to allow the user to use Utrition. The cost of implementing and utilizing SR11 is high with the reward being low. Therefore, the implementation of the requirement, during Utrition's capstone timeline, cannot be justified.
+Durum Wheat Semolina is planning to implement SR1-SR10 during Utrition's capstone timeline. The safety requirements (SR1-SR10) are easy to implement and do not provide much strain to the system. They exist to guide the user through Utrition, and to aid Utrition in being an easy-to-understand application. SR11 is not required to allow the user to use Utrition. The cost of implementing and utilizing SR11 is high with the reward being low. Therefore, the implementation of this requirement, during Utrition's capstone timeline, cannot be prioritized.
 	
 \end{document}
