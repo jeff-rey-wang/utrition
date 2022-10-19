@@ -141,7 +141,11 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 		Image Processing \& Identification & Food from image is incorrectly identified & a. Poor image quality & a. System will process the incorrectly identified food item & a. User will file a report to the development team with the image that was incorrectly identified & a. If the machine learning model is not confident in result, the system will suggest the user upload another image & SR4 & \multirow{3}{*} {H2-1} \\ 
 		& & b. Machine learning model has not been trained to identify inputted food item & b. Same as H2-1a & b. Same as H2-1a & b. Same as H2-1a & & \\
 		& & c. Machine learning model accuracy is low & c. Same as H2-1 & c. Same as H2-1a & c. Same as H2-1 & & \\ \cline{2-8}
-		& No food is identified in the image & Same as H2-1 & No food item will be identified and the system will not be able to proceed & The food identification machine learning process will return an error to the system & Display error message detailing that system could not identify a food item in the uploaded image & SR4, SR5 & H2-2\\ \hline
+		& No food is identified in the image & Same as H2-1 & No food item will 
+		be identified and the system will not be able to proceed & The food 
+		identification machine learning process will return an error to the 
+		system & Display error message detailing that system could not identify 
+		a food item in the uploaded image & SR4 & H2-2\\ \hline
 
 	\end{tabular}
 }
@@ -166,10 +170,26 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 				\textbf{Design Function} & \textbf{Failure Modes}& \textbf{Causes of Failure} & \textbf{Effects of Failure} & \textbf{Detection} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
 				API Request Calling & API call fails unexpectedly & a. Internet connection error & a. System will not return nutritional data for a food item & a. The API response will be verified by the system. The system will detect if the response is an error & a. Display error message detailing a system error due to poor internet connection & SR5 & \multirow{2}{*} {H3-1} \\ 
 				& & b. Too many requests sent to API causing throttling limit to be reached & b. Same as H3-1a & b. Same as H3-1a & b. Display error message detailing a system error due to too many requests being sent & & \\ \cline{2-8}
-				& API does not contain nutrition facts for a food item & Food item is not found in API database & Same as H3-1a & The API response will be verified by the system and will detect if the response is empty & Display error message detailing that the food data could not be fetched & SR5 & H3-2\\ \hline
-				Data Log Access & Nutritional data is unavailable & Nutritional data has not been put in the database for that particular input yet & System will not output any nutritional information  & Database will return no result for past nutritional data & Display error message explaining that this nutritional data has not yet been added to the database & SR5 & H4-1 \\ \cline{2-8}
-				& Nutritional data is deleted unintentionally & Accidental error of database deleting necessary data & Same as H4-1 & Same as H4-1 & Display error message explaining that this nutritional data has been deleted & SR5 & H4-2\\ \cline{2-8}
-				& User past data is deleted & a. The data was not successfully stored within the data base & a. System will not output any of the users information & a. Nothing will be output after user requests past data & a. Display error message saying that the user's past data has been deleted & & H4-3\\ 
+				& API does not contain nutrition facts for a food item & Food 
+				item is not found in API database & Same as H3-1a & The API 
+				response will be verified by the system and will detect if the 
+				response is empty & Display error message detailing that the 
+				food data could not be fetched & SR6 & H3-2\\ \hline
+				Data Log Access & Nutritional data is unavailable & Nutritional 
+				data has not been put in the database for that particular input 
+				yet & System will not output any nutritional information  & 
+				Database will return no result for past nutritional data & 
+				Display error message explaining that this nutritional data has 
+				not yet been added to the database & SR7 & H4-1 \\ \cline{2-8}
+				& Nutritional data is deleted unintentionally & Accidental 
+				error of database deleting necessary data & Same as H4-1 & Same 
+				as H4-1 & Display error message explaining that this 
+				nutritional data has been deleted & SR8 & H4-2\\ \cline{2-8}
+				& User past data is deleted & a. The data was not successfully 
+				stored within the data base & a. System will not output any of 
+				the users information & a. Nothing will be output after user 
+				requests past data & a. Display error message saying that the 
+				user's past data has been deleted & SR8 & H4-3\\ 
 				& & b. The user's past data was deleted unintentionally & b. Same as H4-3a & b. Same as H4-3a & b. Same as H4-3a & &\\\hline
 			\end{tabular}
 		}
@@ -192,10 +212,22 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 				\multicolumn{8}{|l|}{Subsystem: N/A}\\
 				\multicolumn{8}{|l|}{Phase/Mode: System Requirements}\\\hline
 				\textbf{Design Function} & \textbf{Failure Modes}  & \textbf{Causes of Failure} & \textbf{Effects of Failure} & \textbf{Detection} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
-				Data Display & Graph cannot be generated  & Not enough past information from user  & No graph is displayed to the user & There is no information available in user's past data & Display error message stating there is not enough data to create the graph & SR6 & H5-1 \\ \hline
-				General System & Device loses internet connection & a. Internet connection used by device is too weak & a. Unable to access nutrition facts for food items & a. API calls will fail & a. Display error message that informs the user that they must be connected to an internet connection to use the system & & H6-1 \\
+				Data Display & Graph cannot be generated  & Not enough past 
+				information from user  & No graph is displayed to the user & 
+				There is no information available in user's past data & Display 
+				error message stating there is not enough data to create the 
+				graph & SR9 & H5-1 \\ \hline
+				General System & Device loses internet connection & a. Internet 
+				connection used by device is too weak & a. Unable to access 
+				nutrition facts for food items & a. API calls will fail & a. 
+				Display error message that informs the user that they must be 
+				connected to an internet connection to use the system & SR10 & 
+				H6-1 \\
 				& & b. Internet shutdown on connected network & b. Same as H6-1a & b. Same as H6-1a & b. Same as H6-1a & &\\ \cline{2-8}
-				& System closes unexpectedly & a. Host device shuts down (loses power) & a. Loss of recently inputted data & a. Device screen will turn black & a. System should save data with each new input to minimize lost data & SR8 & \multirow{2}{*}{H6-2}\\
+				& System closes unexpectedly & a. Host device shuts down (loses 
+				power) & a. Loss of recently inputted data & a. Device screen 
+				will turn black & a. System should save data with each new 
+				input to minimize lost data & SR11 & \multirow{2}{*}{H6-2}\\
 				& & b. Internal error occurs & b. Same as H6-2a & b. Application will become unresponsive & b. Same as H6-2a & &\\ \hline
 				
 			\end{tabular}
@@ -231,15 +263,32 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 	\textbf{Rationale:}  Food identification may fail due to a variety of 
 	reasons, and the user should be notified so they may attempt to find a  
 	workaround for the issue. \\	
-	\textbf{Associated Hazards:} H5-1. H5-2.
+	\textbf{Associated Hazards:} H2-1. H2-2.
 	
-	\item Utrition will abort retrieval of nutritional information if it cannot 
-	be completed successfully. The user will be notified when such 
-	an error occurs. \\
-	\textbf{Rationale:}  Information retrieval may fail due to a variety of 
-	reasons, and the user should be notified of the reason why the service 
-	could not be completed as expected.\\	
-	\textbf{Associated Hazards:} H2-1, H2-2, H3-1, H3-2, H3-3, H4-1, H5-1. H5-2.
+	\item Utrition will return an error message if the request to retrieve 
+	nutritional information cannot be completed successfully. \\
+	\textbf{Rationale:}  Information retrieval requests may fail due to a 
+	variety of reasons, and the user should be notified of the reason why the 
+	service could not be completed as expected.\\	
+	\textbf{Associated Hazards:} H3-1.
+	
+	\item Utrition will return an error message if the nutritional information 
+	of a specific item cannot be found.\\
+	\textbf{Rationale:}  The user should be notified if the nutritional data of 
+	their food item cannot be fetched.\\
+	\textbf{Associated Hazards:} H3-2.
+	
+	\item Utrition will return an error message if the user's part nutritional 
+	logs cannot be found.\\
+	\textbf{Rationale:}  The user should be notified if their nutritional data 
+	of past meals cannot be found.\\
+	\textbf{Associated Hazards:} H4-1.
+	
+	\item Utrition will return an error message if the user's part nutritional 
+	logs have been deleted.\\
+	\textbf{Rationale:}  The user should be notified if their nutritional data 
+	of past meals are no longer saved in the system.\\
+	\textbf{Associated Hazards:} H4-2, H4-3.
 	
 	\item Utrition will prompt the user if past nutritional trends cannot
 	be displayed successfully. The user will be notified on the type of error 
@@ -247,24 +296,25 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 	\textbf{Rationale:}  Failure to display past nutritional trends may fail 
 	due to a variety of reasons. The user should be be made aware of the issue, 
 	and the underlying cause behind it.\\	
+	\textbf{Associated Hazards:} H5-1.
+	
+	\item Utrition will prompt the user if their device is not connected to the 
+	internet when attempting to access the system. \\
+	\textbf{Rationale:}  The user should be notified if they are unable to 
+	connect to the system so they may apply a fix to the issue. \\	
 	\textbf{Associated Hazards:} H6-1.
 \end{enumerate}
 
 \subsection{Security Requirements}
 \begin{enumerate}[{SR}1.] 
-	\setcounter{enumi}{6}
-	
-	\item Utrition will store the user’s data locally. \\
-	\textbf{Rationale:} Only the user should have to view their stored dietary 
-	habits. \\	
-	\textbf{Associated Hazards:} H4-2.
+	\setcounter{enumi}{10}
 	
 	\item Utrition will periodically save user’s data during use. \\
 	\textbf{Rationale:} In the event of unexpected shutdown, the user should 
 	not lose all information from the last session. Periodically saving user 
 	information will allow users to continue from their last step in the event 
 	of an unexpected shutdown. \\	
-	\textbf{Associated Hazards:} H4-2.
+	\textbf{Associated Hazards:} H6-2.
 \end{enumerate}
 
 \section{Roadmap}
