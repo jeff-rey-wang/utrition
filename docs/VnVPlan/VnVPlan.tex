@@ -344,57 +344,77 @@ These tests cover  FR4 and FR5 in the SRS document. Automated unit tests will be
 	
 	How test will be performed: The API response will be verified that the contents are as expected.
 	
-	\item{test-id2\\}
-	
-	Control: Manual versus Automatic
-	
-	Initial State: 
-	
-	Input: 
-	
-	Output: \wss{The expected result for the given inputs}
-	
-	Test Case Derivation: \wss{Justify the expected value given in the Output field}
-	
-	How test will be performed: 
-	
 \end{enumerate}
 
 \subsubsection{Reading and Writing to Database}
 
 The following tests cover  FR6 and FR7 in the SRS document. Automated unit tests will be used to verify that the system is log and read from the database.
 
-\paragraph{Title for Test}
+\paragraph{Logging Data}
 
 \begin{enumerate}
 	
-	\item{test-id1\\}
+	\item{log-data-1\\}
 	
-	Control: Manual versus Automatic
+	Control: Automatic
 	
-	Initial State: 
+	Initial State: System contains nutritional data of a food item.
 	
-	Input: 
+	Input: Request to log the data to the database.
 	
-	Output: \wss{The expected result for the given inputs}
+	Output: Database is updated as the system writes the data to the database.
 	
-	Test Case Derivation: \wss{Justify the expected value given in the Output field}
+	Test Case Derivation: Nutritional data of a food will be saved for future reference. This is done by logging the data to the database.
 	
-	How test will be performed: 
+	How test will be performed: After the system receives the request to update the database, the database will be verified that it is updated with the new data.
 	
-	\item{test-id2\\}
+\end{enumerate}
+
+\paragraph{Reading Data}
+
+\begin{enumerate}
 	
-	Control: Manual versus Automatic
+	\item{read-data-1\\}
 	
-	Initial State: 
+	Control: Automatic
 	
-	Input: 
+	Initial State: Database contains nutritional data of a food item.
 	
-	Output: \wss{The expected result for the given inputs}
+	Input: Request to fetch the data of a particular food item.
 	
-	Test Case Derivation: \wss{Justify the expected value given in the Output field}
+	Output: Nutritional data of the requested food item.
 	
-	How test will be performed: 
+	Test Case Derivation: The system shall be able to fetch previously recorded data.
+	
+	How test will be performed: After the system receives the request to fetch the data of a food item, the returned data will be verified that it matches with the saved data in the database.
+	
+	\item{read-data-2\\} return data of range
+	
+	Control: Automatic
+	
+	Initial State: Database contains nutritional data of 5 different dates.
+	
+	Input: Request to fetch the data from the last 3 most recent dates.
+	
+	Output: A list of the nutritional data from the last 3 most recent dates.
+	
+	Test Case Derivation: The system shall be able to fetch previously recorded data. The system shall be able to fetch data from a range of dates.
+	
+	How test will be performed: The nutritional data from the 3 most recent dates will be verified if it matches the data in the database.
+	
+	\item{read-data-3\\}
+	
+	Control: Automatic
+	
+	Initial State: Database contains nutritional data.
+	
+	Input: Request to fetch the data of a particular food item that is not logged in the database.
+	
+	Output: No data is returned.
+	
+	Test Case Derivation: The system shall be able to fetch previously recorded data. This is an edge case for if the system is requested to read data from the database that does not exist. In this case, no data will be returned.
+	
+	How test will be performed: The output will be verified to be empty.
 	
 \end{enumerate}
 
