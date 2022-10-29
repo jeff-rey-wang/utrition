@@ -422,37 +422,37 @@ The following tests cover  FR6 and FR7 in the SRS document. Automated unit tests
 
 The following tests cover  FR8 and FR9 in the SRS document. Automated unit tests will be used to validate the generated visual display.
 
-\paragraph{Title for Test}
+\paragraph{Visualize Data}
 
 \begin{enumerate}
 	
-	\item{test-id1\\}
+	\item{visualize-1\\}
 	
-	Control: Manual versus Automatic
+	Control: Automatic
 	
-	Initial State: 
+	Initial State: Nutritional data of a food item is contained in the system.
 	
-	Input: 
+	Input: Request to display the nutritional information of a food item.
 	
-	Output: \wss{The expected result for the given inputs}
+	Output: System will generate the HTML body to be displayed on the user interface.
 	
-	Test Case Derivation: \wss{Justify the expected value given in the Output field}
+	Test Case Derivation: The nutritional data of a particular food item shall be displayed on the user interface. The system will generate the frontend script to display this data.
 	
-	How test will be performed: 
+	How test will be performed: The generated HTML body will be verified that it matches the expected output.
 	
-	\item{test-id2\\}
+	\item{visualize-2\\}
 	
-	Control: Manual versus Automatic
+	Control: Automatic
 	
-	Initial State: 
+	Initial State: Database contains nutritional data of 5 different dates.
 	
-	Input: 
+	Input: Request to display the past 5 dates of nutritional data in a graph.
 	
-	Output: \wss{The expected result for the given inputs}
+	Output: System will generate the HTML body to be displayed on the user interface.
 	
-	Test Case Derivation: \wss{Justify the expected value given in the Output field}
+	Test Case Derivation: The history of logged nutritional data shall be displayed in a graph on the user interface. The system will generate the frontend script to display this data.
 	
-	How test will be performed: 
+	How test will be performed: The generated HTML body will be verified that it matches the expected output.
 	
 \end{enumerate}
 	
