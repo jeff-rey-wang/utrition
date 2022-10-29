@@ -290,7 +290,7 @@ How test will be performed: A file of type .txt will be saved on the tester's de
 	
 	Test Case Derivation: The system should identify the food present in an image, and return the name of the food item as a string.
 	
-	How test will be performed: Unit test
+	How test will be performed: The system identified item will be verified that it matches the true item contained in the image.
 	
 	\item{image-identification-2\\}
 
@@ -304,7 +304,7 @@ How test will be performed: A file of type .txt will be saved on the tester's de
 	
 	Test Case Derivation: The system should identify the food present in an image, and return the name of the food item as a string.
 	
-	How test will be performed: Unit test
+	How test will be performed: The system identified item will be verified that it matches the true item contained in the image.
 	
 	\item{image-identification-3\\}
 	
@@ -318,7 +318,7 @@ How test will be performed: A file of type .txt will be saved on the tester's de
 	
 	Test Case Derivation: The system should identify the food present in an image, and return the name of the food item as a string.
 	
-	How test will be performed: Unit test
+	How test will be performed: The system identified item will be verified that it matches the true item contained in the image.
 	
 \end{enumerate}
 
@@ -326,23 +326,23 @@ How test will be performed: A file of type .txt will be saved on the tester's de
 
 These tests cover  FR4 and FR5 in the SRS document. Automated unit tests will be used to verify that the system is able to send requests to the external API.
 
-\paragraph{Title for Test}
+\paragraph{Call and Fetch API Response}
 
 \begin{enumerate}
 	
-	\item{test-id1\\}
+	\item{api-1\\}
 	
-	Control: Manual versus Automatic
+	Control: Automatic
 	
-	Initial State: 
+	Initial State: System on standby.
 	
-	Input: 
+	Input: Food item name as a string.
 	
-	Output: \wss{The expected result for the given inputs}
+	Output: JSON containing nutirition facts for the inputted food item.
 	
-	Test Case Derivation: \wss{Justify the expected value given in the Output field}
+	Test Case Derivation: A request will be made to the Nutritionix API with the food item name, which will return a response body containing the food item's nutrition facts.
 	
-	How test will be performed: 
+	How test will be performed: The API response will be verified that the contents are as expected.
 	
 	\item{test-id2\\}
 	
