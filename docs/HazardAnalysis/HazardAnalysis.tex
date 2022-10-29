@@ -11,6 +11,7 @@
 \usepackage[shortlabels]{enumitem}
 \usepackage{array}
 \usepackage{fancyhdr}
+\usepackage{caption}
 \usepackage[margin=1in, includeheadfoot]{geometry}
 
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
@@ -54,9 +55,7 @@
 		\toprule
 		\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 		\midrule
-		Date1 & Name(s) & Description of changes\\
-		Date2 & Name(s) & Description of changes\\
-		... & ... & ...\\
+		\today & All & Initial Version\\
 		\bottomrule
 	\end{tabularx}
 \end{table}
@@ -64,6 +63,7 @@
 ~\newpage
 
 \tableofcontents
+\listoftables
 
 ~\newpage
 
@@ -73,22 +73,22 @@
 
 \section{Introduction}
 
-This document discusses the hazards associated with 'Utrition'. In the context 
-of 'Utrition', hazards are defined to be a set of circumstances that prevent 
-the expected use of the system---leading to an error state. The document will 
+This document discusses the hazards associated with Utrition. In the context 
+of Utrition, hazards are defined to be a set of circumstances that prevent 
+the expected use of the system, leading to an error state. The document will 
 communicate the scope, boundaries and assumptions made when completing the 
 hazard analysis, and provide a list of identified hazards. In addition, it will 
 mention recommended actions to mitigate and circumvent hazards encountered 
 while using the system.
 
 \section{Scope and Purpose of Hazard Analysis}
-The purpose of conducting a hazard analysis is to document the system conditions, that along with conditions in the environment, can cause harm or damage. Documentation for how to control or mitigate these conditions will also be included. The scope of this hazard analysis will span from the time the the user inputs an image into Utrition to the time when the nutritional data results of their image are displayed, including the pre-processing, processing, API request, and data representation steps.
+The purpose of conducting a hazard analysis is to document the system conditions, that along with conditions in the environment, can cause harm or damage. Documentation for how to control or mitigate these conditions will also be included. The scope of this hazard analysis will span from the time the user inputs an image into Utrition to the time when the nutritional data results of their image are displayed, including the pre-processing, processing, API request, and data representation steps.
 
 \section{System Boundaries and Components}
 The system boundaries for this hazard analysis will include the device that the application is installed on as well as the components of the application itself. These components consist of image upload, image pre-processing, image processing \& identification, API request calling, data logging, data log access, and data display components.
 
 \subsection{Image Upload}
-This component allows an image to be uploaded and relayed to the pre-processing component.
+This component allows an image to be uploaded by the user and relayed to the pre-processing component.
 
 \subsection{Image Pre-Processing}
 This component takes an uploaded image and applies the algorithms needed to convert the raw image data into a format that can be used by a machine learning image model.
@@ -100,10 +100,10 @@ This component is where the machine learning model analyzes the pre-processed im
 This component allows the application to interface with the Nutritionix API to access nutritional data on a given food.  
 
 \subsection{Data Logging}
-This component logs past uses of the application by the identified food and the date it was used.   
+This component logs past uses of the application by the identified food and the date it was consumed.   
 
 \subsection{Data Log Access}
-This component returns the recorded logs of past uses of the application.
+This component returns the recorded logs of past uses of the application. These logs include past food items consumed by the user.
 
 \subsection{Data Display}
 This component displays data visually for the user to see, either in textual or graphical formats.
@@ -118,7 +118,7 @@ should
 	include
 	this potential failure mode.}
 
-The user is assumed to have sufficient storage space to download the Utrition application.
+In this Hazard Analysis, two assumptions are made. Firstly, the user will not be intentionally trying to cause errors in Utrition. Secondly, the user is assumed to have sufficient storage space to download and run the application.
 
 \section{Failure Mode and Effect Analysis}
 
@@ -128,25 +128,31 @@ The user is assumed to have sufficient storage space to download the Utrition ap
 	\centering
 
 	\makebox[\linewidth]{
-	\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{2cm}|p{3cm}|p{1cm}|p{1cm}|}
+	\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|p{1cm}|}
+		\multicolumn{8}{c}{}\\
 		\hline
-		\multicolumn{9}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
-		\multicolumn{9}{|l|}{System: Utrition}\\
-		\multicolumn{9}{|l|}{Subsystem: N/A}\\
-		\multicolumn{9}{|l|}{Phase/Mode: System Requirements}\\\hline
-		\textbf{Design Function} & \textbf{Failure Modes} & \textbf{Effects of Failure} & \textbf{Causes of Failure} & \textbf{Detection} & \textbf{Risk Priority Number} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
-		Image Collection & Image of incorrect type inputted & Users attempt to upload a file of an unsupported type & No image uploaded & Upload error will occur & & Provide error message that informs the user that only file types of type .png, .jpg, and .jpeg can be uploaded & & H1-1 \\ \cline{2-9}
-		& Image size inputted is too large & Image file from user is too large to be uploaded and stored & Same as H1-1 & Same as H1-1 & & Provide error message that inputted file is too large & & H1-2\\ \cline{2-9}
-		& User tries to upload more than 3 images at once & User attempts to upload more than 3 images & Same as H1-1 & Same as H1-1 & & Provide error message saying up to 3 photos can be uploaded at once & & H1-3\\ \hline
-		General System & User loses internet connection & Internet connection used by device is lost or is too weak & Unable to access nutrition facts for food items & API calls will fail & & Provide error message that informs the user that they must be connected to an internet connection to use the system & & H2-1 \\ \cline{2-9}
-		& System closes unexpectedly & a. Host device shuts down (loses power) & a. Loss of recently inputted data & a. Device screen will turn black & & a. System should save data with each new input to minimize lost data & & \multirow{2}{*}{H2-2}\\
-		& & b. Internal error occurs & b. Same as H2-2a & b. Application will become unresponsive & & b. Same as H2-2a & &\\ \hline
+		\multicolumn{8}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
+		\multicolumn{8}{|l|}{System: Utrition}\\
+		\multicolumn{8}{|l|}{Subsystem: N/A}\\
+		\multicolumn{8}{|l|}{Phase/Mode: System Requirements}\\\hline
+		\textbf{Design Function} & \textbf{Failure Modes} & \textbf{Causes of Failure} & \textbf{Effects of Failure} & \textbf{Detection} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
+		Image Upload & Image of incorrect type inputted & Users attempt to upload a file of an unsupported type & No image uploaded & Upload error will occur & Provide error message that informs the user that only file types of type .png, .jpg, and .jpeg can be uploaded & SR1 & H1-1 \\ \cline{2-8}
+		& Image size inputted is too large & Image file from user is too large to be uploaded and stored & Same as H1-1 & Same as H1-1 & Provide error message that inputted file is too large & SR2 & H1-2\\ \cline{2-8}
+		& User tries to upload more than 3 images at once & User attempts to upload more than 3 images & Same as H1-1 & Same as H1-1 & Provide error message saying up to 3 photos can be uploaded at once & SR3 & H1-3\\ \hline
+		Image Processing \& Identification & Food from image is incorrectly identified & a. Poor image quality & a. System will process the incorrectly identified food item & a. User will file a report to the development team with the image that was incorrectly identified & a. If the machine learning model is not confident in result, the system will suggest the user upload another image & SR4 & \multirow{3}{*} {H2-1} \\ 
+		& & b. Machine learning model has not been trained to identify inputted food item & b. Same as H2-1a & b. Same as H2-1a & b. Same as H2-1a & & \\
+		& & c. Machine learning model accuracy is low & c. Same as H2-1 & c. Same as H2-1a & c. Same as H2-1 & & \\ \cline{2-8}
+		& No food is identified in the image & Same as H2-1 & No food item will 
+		be identified and the system will not be able to proceed & The food 
+		identification machine learning process will return an error to the 
+		system & Display error message detailing that system could not identify 
+		a food item in the uploaded image & SR4 & H2-2\\ \hline
 
 	\end{tabular}
 }
 
-	\caption{FMEA Table}
-	\label{tab:my_label}
+	\caption{FMEA Table Part 1}
+	\label{FMEAPart1}
 \end{table}
 \end{landscape}
 
@@ -156,25 +162,42 @@ The user is assumed to have sufficient storage space to download the Utrition ap
 		\centering
 		
 		\makebox[\linewidth]{
-			\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{2cm}|p{3cm}|p{1cm}|p{1cm}|}
+			\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|p{1cm}|}
+				\multicolumn{8}{c}{}\\
 				\hline
-				\multicolumn{9}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
-				\multicolumn{9}{|l|}{System: Utrition}\\
-				\multicolumn{9}{|l|}{Subsystem: N/A}\\
-				\multicolumn{9}{|l|}{Phase/Mode: System Requirements}\\\hline
-				\textbf{Design Function} & \textbf{Failure Modes} & \textbf{Effects of Failure} & \textbf{Causes of Failure} & \textbf{Detection} & \textbf{Risk Priority Number} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
-				Database & Nutritional data is unavailable & Nutritional data has not been put in the data base for that particular input yet & System will not output any nutritional information after users request & Nothing will be outputted after api recognition of key food item & & Display error message explaining that this nutritional data has not yet been added to the database & & H3-1 \\ \cline{2-9}
-				& Nutritional data is deleted unintentionally & Accidental error of developers deleting necessary data & Same as H3-1 & Same as H3-1 & & Display error message explaining that this nutritional data has been deleted & & H3-2\\ \cline{2-9}
-				& User past data is deleted & The data was not successfully stored within the data base or the users past data was deleted unintentionally & System will not output any of the users information after users request  & Nothing will be outputted after user requests past data  & & Display error message saying that the users past data has been deleted  & & H3-3\\ \hline
-				Graph Creation & Graph cannot be generated  & Not enough past information from user  & Cannot output a graph for user to see & There is no information available in users past data  & & Display error message stating there is not enough data to create the graph & & H6-1 \\ \hline
-				
-				
-				
+				\multicolumn{8}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
+				\multicolumn{8}{|l|}{System: Utrition}\\
+				\multicolumn{8}{|l|}{Subsystem: N/A}\\
+				\multicolumn{8}{|l|}{Phase/Mode: System Requirements}\\\hline
+				\textbf{Design Function} & \textbf{Failure Modes}& \textbf{Causes of Failure} & \textbf{Effects of Failure} & \textbf{Detection} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
+				API Request Calling & API call fails unexpectedly & a. Internet connection error & a. System will not return nutritional data for a food item & a. The API response will be verified by the system. The system will detect if the response is an error & a. Display error message detailing a system error due to poor internet connection & SR5 & \multirow{2}{*} {H3-1} \\ 
+				& & b. Too many requests sent to API causing throttling limit to be reached & b. Same as H3-1a & b. Same as H3-1a & b. Display error message detailing a system error due to too many requests being sent & & \\ \cline{2-8}
+				& API does not contain nutrition facts for a food item & Food 
+				item is not found in API database & Same as H3-1a & The API 
+				response will be verified by the system and will detect if the 
+				response is empty & Display error message detailing that the 
+				food data could not be fetched & SR6 & H3-2\\ \hline
+				Data Log Access & Nutritional data is unavailable & Nutritional 
+				data has not been put in the database for that particular input 
+				yet & System will not output any nutritional information  & 
+				Database will return no result for past nutritional data & 
+				Display error message explaining that this nutritional data has 
+				not yet been added to the database & SR7 & H4-1 \\ \cline{2-8}
+				& Nutritional data is deleted unintentionally & Accidental 
+				error of database deleting necessary data & Same as H4-1 & Same 
+				as H4-1 & Display error message explaining that this 
+				nutritional data has been deleted & SR8 & H4-2\\ \cline{2-8}
+				& User past data is deleted & a. The data was not successfully 
+				stored within the data base & a. System will not output any of 
+				the user's information & a. Nothing will be output after user 
+				requests past data & a. Display error message saying that the 
+				user's past data has been deleted & SR8 & H4-3\\ 
+				& & b. The user's past data was deleted unintentionally & b. Same as H4-3a & b. Same as H4-3a & b. Same as H4-3a & &\\\hline
 			\end{tabular}
 		}
 		
-		\caption{FMEA Table}
-		\label{tab:my_label}
+		\caption{FMEA Table Part 2}
+		\label{FMEAPart2}
 	\end{table}
 \end{landscape}
 
@@ -184,50 +207,58 @@ The user is assumed to have sufficient storage space to download the Utrition ap
 		\centering
 		
 		\makebox[\linewidth]{
-			\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{2cm}|p{3cm}|p{1cm}|p{1cm}|}
+			\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|p{1cm}|}
+				\multicolumn{8}{c}{}\\
 				\hline
-				\multicolumn{9}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
-				\multicolumn{9}{|l|}{System: Utrition}\\
-				\multicolumn{9}{|l|}{Subsystem: N/A}\\
-				\multicolumn{9}{|l|}{Phase/Mode: System Requirements}\\\hline
-				\textbf{Design Function} & \textbf{Failure Modes} & \textbf{Effects of Failure} & \textbf{Causes of Failure} & \textbf{Detection} & \textbf{Risk Priority Number} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
-				API Calls & API call fails unexpectedly & a. Internet connection error & System will not return nutritional data for a food item & The API response will be verified by the system. The system will detect if the response is an error & & a. Display error message detailing a system error due to poor internet connection& SR2 & \multirow{2}{*} {HX-1} \\ 
-				& & b. Too many requests sent to API causing throttling limit to be reached & & & & b. Display error message detailing a system error due to too many requests being sent & & \\ \cline{2-9}
-				& API does not contain nutrition facts for a food item & Food item is not found in API database & Same as HX-1 & The API response will be verified by the system and will detect if the response is empty & & Display error message detailing that the food data could not be fetched & SR2 & HX-2\\ \hline
-				Image Identification Model & Food from image is incorrectly identified & a. Poor image quality & System will process the incorrectly identified food item & User will file a report to the dev team with the image that was incorrectly identified & & User should upload an alternate image of the food & SR2, SR3 & \multirow{3}{*} {HY-1} \\ 
-				& & b. Food identification system error & & & & & & \\
-				& & c. ML system biases & & & & & & \\ \cline{2-9}
-				& No food is identified in the image & Same as HY-1 & No food item will be identified, the system will not be able to proceed & The food identification ML process will return an error to the system & & Display error message detailing that a food item was not detected & SR2, SR3 & HY-2\\ \hline
-
-				
-				
+				\multicolumn{8}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
+				\multicolumn{8}{|l|}{System: Utrition}\\
+				\multicolumn{8}{|l|}{Subsystem: N/A}\\
+				\multicolumn{8}{|l|}{Phase/Mode: System Requirements}\\\hline
+				\textbf{Design Function} & \textbf{Failure Modes}  & \textbf{Causes of Failure} & \textbf{Effects of Failure} & \textbf{Detection} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
+				Data Display & Graph cannot be generated  & Not enough past 
+				information from user  & No graph is displayed to the user & 
+				There is no information available in user's past data & Display 
+				error message stating there is not enough data to create the 
+				graph & SR9 & H5-1 \\ \hline
+				General System & Device loses internet connection & a. Internet 
+				connection used by device is too weak & a. Unable to access 
+				nutrition facts for food items & a. API calls will fail & a. 
+				Display error message that informs the user that they must be 
+				connected to an internet connection to use the system & SR10 & 
+				H6-1 \\
+				& & b. Internet shutdown on connected network & b. Same as H6-1a & b. Same as H6-1a & b. Same as H6-1a & &\\ \cline{2-8}
+				& System closes unexpectedly & a. Host device shuts down (loses 
+				power) & a. Loss of recently inputted data & a. Device screen 
+				will turn black & a. System should save data with each new 
+				input to minimize lost data & SR11 & \multirow{2}{*}{H6-2}\\
+				& & b. Internal error occurs & b. Same as H6-2a & b. Application will become unresponsive & b. Same as H6-2a & &\\ \hline
 				
 			\end{tabular}
 		}
 		
-		\caption{FMEA Table}
-		\label{tab:my_label}
+		\caption{FMEA Table Part 3}
+		\label{FMEAPart3}
 	\end{table}
 \end{landscape}
 
 \section{Safety and Security Requirements}
 \subsection{Safety Requirements}
 \begin{enumerate}[{SR}1.]
-	\item Utrition will be able to detect when the user uploads an abnormal 
-	image format, too many images, or images that are too large. A prompt will 
-	be given to the user, instructing them of their error. \\
+	\item Utrition will return an error message when the user uploads an abnormal 
+	image format that is not .png, .jpg, or .jpeg. \\
 	\textbf{Rationale:}  Utrition should not crash by improper user 
-	input. Users should have an opportunity to amend a their faulty input in 
-	order to use the services provided by the application.\\	
-	\textbf{Associated Hazards:} H1-1, H1-2, H1-3.
+	input. Users should have an opportunity to upload a new file of an appropriate format.\\	
+	\textbf{Associated Hazards:} H1-1.
 	
-	\item Utrition will abort retrieval of nutritional information if it cannot 
-	be completed successfully. The user will be notified when such 
-	an error occurs. \\
-	\textbf{Rationale:}  Information retrieval may fail due to a variety of 
-	reasons, and the user should be notified of the reason why the service 
-	could not be completed as expected.\\	
-	\textbf{Associated Hazards:} H2-1, H2-2, H3-1, H3-2, H3-3, H4-1, H5-1. H5-2.
+	\item Utrition will return an error message when the user uploads an image file that exceeds the maximum size. \\
+	\textbf{Rationale:}  Utrition should not crash by improper user 
+	input. Users should have an opportunity to upload a new file of an appropriate size.\\	
+	\textbf{Associated Hazards:} H1-2.
+	
+	\item Utrition will return an error message when the user uploads more than three images at once. \\
+	\textbf{Rationale:}  Utrition should not crash by improper user 
+	input. Users should have an opportunity to upload three or fewer images to the system.\\	
+	\textbf{Associated Hazards:} H1-3.
 	
 	\item Utrition will prompt the user if food identification cannot 
 	be completed successfully. The user will be notified on the type of error 
@@ -235,32 +266,58 @@ The user is assumed to have sufficient storage space to download the Utrition ap
 	\textbf{Rationale:}  Food identification may fail due to a variety of 
 	reasons, and the user should be notified so they may attempt to find a  
 	workaround for the issue. \\	
-	\textbf{Associated Hazards:} H5-1. H5-2.
+	\textbf{Associated Hazards:} H2-1. H2-2.
+	
+	\item Utrition will return an error message if the request to retrieve 
+	nutritional information cannot be completed successfully. \\
+	\textbf{Rationale:}  Information retrieval requests may fail due to a 
+	variety of reasons, and the user should be notified of the reason why the 
+	service could not be completed as expected.\\	
+	\textbf{Associated Hazards:} H3-1.
+	
+	\item Utrition will return an error message if the nutritional information 
+	of a specific item cannot be found.\\
+	\textbf{Rationale:}  The user should be notified if the nutritional data of 
+	their food item cannot be fetched.\\
+	\textbf{Associated Hazards:} H3-2.
+	
+	\item Utrition will return an error message if the user's part nutritional 
+	logs cannot be found.\\
+	\textbf{Rationale:}  The user should be notified if their nutritional data 
+	of past meals cannot be found.\\
+	\textbf{Associated Hazards:} H4-1.
+	
+	\item Utrition will return an error message if the user's part nutritional 
+	logs have been deleted.\\
+	\textbf{Rationale:}  The user should be notified if their nutritional data 
+	of past meals are no longer saved in the system.\\
+	\textbf{Associated Hazards:} H4-2, H4-3.
 	
 	\item Utrition will prompt the user if past nutritional trends cannot
 	be displayed successfully. The user will be notified on the type of error 
 	that occurs. \\
 	\textbf{Rationale:}  Failure to display past nutritional trends may fail 
-	due to a variety of reasons. The user should be be made aware of the issue, 
+	due to a variety of reasons. The user should be made aware of the issue, 
 	and the underlying cause behind it.\\	
+	\textbf{Associated Hazards:} H5-1.
+	
+	\item Utrition will prompt the user if their device is not connected to the 
+	internet when attempting to access the system. \\
+	\textbf{Rationale:}  The user should be notified if they are unable to 
+	connect to the system so they may apply a fix to the issue. \\	
 	\textbf{Associated Hazards:} H6-1.
 \end{enumerate}
 
 \subsection{Security Requirements}
 \begin{enumerate}[{SR}1.] 
-	\setcounter{enumi}{4}
-	
-	\item Utrition will store the user’s data locally. \\
-	\textbf{Rationale:} Only the user should have to view their stored dietary 
-	habits. \\	
-	\textbf{Associated Hazards:} H4-2.
+	\setcounter{enumi}{10}
 	
 	\item Utrition will periodically save user’s data during use. \\
 	\textbf{Rationale:} In the event of unexpected shutdown, the user should 
 	not lose all information from the last session. Periodically saving user 
 	information will allow users to continue from their last step in the event 
 	of an unexpected shutdown. \\	
-	\textbf{Associated Hazards:} H4-2.
+	\textbf{Associated Hazards:} H6-2.
 \end{enumerate}
 
 \section{Roadmap}
@@ -269,6 +326,6 @@ The user is assumed to have sufficient storage space to download the Utrition ap
 timeline?
 	Which requirements will be implemented in the future?}
 
-Durum Wheat Semolina is planning to implement SR1, SR2, SR3, SR4, and SR5 during Utrition's capstone timeline. The safety requirements (SR1-SR4) are easy to implement and do not provide much strain to the system. They exist to guide the user through Utrition, and to aid Utrition in being an easy-to-understand application. SR5 is required to allow the user to access their previously eaten food items. SR6 is not required to allow the user to use Utrition. The cost of implementing and utilizing SR6 is too high to justify implementing the requirement during Utrition's capstone timeline.
+Durum Wheat Semolina is planning to implement SR1-SR10 during Utrition's capstone timeline. The safety requirements (SR1-SR10) are easy to implement and do not provide much strain to the system. They exist to guide the user through Utrition, and to aid Utrition in being an easy-to-understand application. SR11 is not required to allow the user to use Utrition. The cost of implementing and utilizing SR11 is high with the reward being low. Therefore, the implementation of this requirement, during Utrition's capstone timeline, cannot be prioritized.
 	
 \end{document}
