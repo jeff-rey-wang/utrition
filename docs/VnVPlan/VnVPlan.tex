@@ -447,23 +447,154 @@ Input/Condition: The developer is able to access \href{https://github.com/jeff-r
 Output/Result: Utrition is able to be downloaded by any user.
 
 How test will be performed: The developer will access Utrition’s github on their personal device’s web browser. The developer will click on “Code”, and then “Download ZIP”. The developer will verify that Utrition has been downloaded onto their device.
+\end{enumerate}
+
+\subsubsection{Operational and Environmental Testing}
+
+%\paragraph{Title for Test}
+
+\begin{enumerate}
 
 \item{NFR17\\} 
+
+Type: Static and Manual.
+
+Initial State: A user aged 14 or older has read Utrition’s “README.md” located at the bottom of the github page.
+
+Input/Condition: The user installs Utrition on their personal device
+
+Output/Result: The intended demographic is able to install Utrition on their computer.
+
+How test will be performed: Each developer on Durum Wheat Semolina will send Utrition’s github to 5 of their peers. The developers will send the following message: “Hello! Whenever you have time available, could you please attempt to install my software? The installation guide can be found under “README.md” at the bottom of this page: \href{https://github.com/jeff-rey-wang/utrition/}{https://github.com/jeff-rey-wang/utrition/}. Please let me know if you were or were not able to install the program with the installation guide. Thanks!”
+
 \item{NFR18\\} 
-\item{NFR19\\} 
-\item{NFR20\\} 
-\item{NFR21\\} 
-\item{NFR22\\} 
+
+Type: Static and Manual.
+
+Initial State: A user visits Utrition’s github page.
+
+Input/Condition: The user checks that the latest change to Utrition’s github is not after April 30th, 2022.
+
+Output/Result: Utrition will not have any updates after the final release.
+
+How test will be performed: A developer on Durum Wheat Semolina will visit Utrition’s github page bi-yearly to ensure no updates are made to Utrition’s github.
 
 \end{enumerate}
 
-\subsection{Traceability Between Test Cases and Requirements}
+\subsubsection{Maintainability and Support Testing}
 
-\wss{Provide a table that shows which test cases are supporting which
-  requirements.}
+%\paragraph{Title for Test}
 
-\section{Unit Test Description}
+\begin{enumerate}
 
+\item{NFR19\\} 
+
+alex
+
+
+\item{NFR20\\} 
+
+Type: Functional, Dynamic, and Manual.
+
+Initial State: The user has installed Utrition onto their Windows, macOS, or Linux device.
+
+Input/Condition: The user is able to upload an image of food and view all pages of the user interface.
+
+Output/Result: All of Utrition’s functionality can be accessed by Windows, macOS, and Linux devices
+
+How test will be performed: Developers of Durum Wheat Semolina will install Utrition on 2 of each Windows, macOS, and Linux device. The developer will open Utrition on the device, and then clicks on the “Upload Image” button. The developer will upload a random image of a food item found in the testPhotos directory, and then click on the “Add More” button. The developer uploads 2 more random images of different food. The developer continues to see their foods’ nutritional information. The developer clicks on the “Menu” button. The developer clicks on the “View Past Nutritional Data” button, and then clicks on the “View Past Nutritional Data Chart” button.
+
+\end{enumerate}
+
+\subsubsection{Security Testing}
+
+%\paragraph{Title for Test}
+
+\begin{enumerate}
+
+\item{NFR21\\} 
+
+Type: Functional, Dynamic, and Manual.
+
+Initial State: A user loads into Utrition’s main menu, and has clicked on the “Upload Image” button.
+
+Input/Condition: The user uploads a PDF document as an image.
+
+Output/Result: The user is notified that they are not able to proceed with viewing the identified foods or their nutritional information.
+
+How test will be performed: A developer on Durum Wheat Semolina will open Utrition and click on the “Upload Image” button. The developer will upload the image “waffle.pdf” to Utrition. The developer is notified that they cannot proceed with viewing the nutritional information, since Utrition does not support “.pdf” file types.
+
+\item{NFR22\\} 
+
+Type: Static and Manual.
+
+Initial State: A Durum Wheat Semolina developer visits Utrition’s github page.
+
+Input/Condition: The developer checks the userdata directory for any files.
+
+Output/Result: The userdata folder will be empty on github, so Utrition will only contain personalized data.
+
+How test will be performed: The developer loads into \href{https://github.com/jeff-rey-wang/utrition/}{Utrition’s github page} and goes into the utrition/src/userdata directory. The developer ensures that no userdata is preloaded into Utrition’s github.
+
+
+\end{enumerate}
+
+\subsubsection{Cultural Testing}
+
+%\paragraph{Title for Test}
+
+\begin{enumerate}
+\item{NFR23\\} 
+
+Type: Functional, Dynamic, and Manual.
+
+Initial State: Utrition’s main menu is being displayed to a user.
+
+Input/Condition: The user is told by a Durum Wheat Semolina developer to find culturally insensitive material for a reward of 5 canadian dollars.
+
+Output/Result: The user will be questioned after 5 minutes of searching if they have found any culturally insensitive material while using Utrition.
+
+How test will be performed: Each developer will approach 5 peers with Utrition’s main menu open on the developer’s device. The developer will give full control over to their peers, and will tell their peers to search for culturally insensitive material for \$5. After 5 minutes are up, the developer will ask their peers if they have found any culturally insensitive material.
+
+\end{enumerate}
+
+\subsubsection{Legal Testing}
+
+%\paragraph{Title for Test}
+
+\begin{enumerate}
+\item{NFR24\\}
+ 
+Type: Static and Manual.
+Initial State: A developer of Durum Wheat Semolina views Utrition’s github repository.
+Input/Condition: The developer inspects all code to ensure Utrition is following Canada’s Anti-Spam Legislation Requirements for Installing Computer Programs, Canada’s Guide for Publishing Open Source Code, Google’s HTML/CSS Style Guide, and Google’s guide for material design.
+
+Output/Result: Utrition is in compliance with all the standards laid out by the SRS document.
+
+How test will be performed: The developer goes into the utrition/src directory, and then opens the link to one of the following guides:
+\begin{itemize}
+	\item \href{https://crtc.gc.ca/eng/internet/install.htm}{Canada’s Anti-Spam Legislation Requirements for Installing Computer Programs}
+	\item \href{https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/open-source-software/guide-for-publishing-open-source-code.html}{Guide for Publishing Open Source Code}
+	\item \href{https://google.github.io/styleguide/jsguide.html}{Google JavaScript Style Guide}
+	\item \href{https://google.github.io/styleguide/htmlcssguide.html}{Google HTML/CSS Style Guide}
+	\item \href{https://material.io/design}{Material Design Guide}
+\end{itemize}
+The developer will go into each module found in the utrition/src directory, and will inspect the code to ensure that each rule outlined in Canada’s or Google’s guide is strictly adhered to. The developer is expected to review the code using the guide in chronological order.
+
+\item{NFR25\\}
+
+Type: Functional, Dynamic, and Manual.
+
+Initial State: A Durum Wheat Semolina developer has completed a module for Utrition, and has Pylint installed on their device.
+
+Input/Condition: The developer runs Pylint on their device.
+
+Output/Result: Pylint will notify the developer if there needs to be changes to the code to ensure Utrition adheres to the PEP8 Python coding conventions.
+
+How test will be performed: The developer will open their command prompt and travel to the directory with the finished module (utrition/src) by using “cd”. The developer runs Pylint on the finished module by typing “pylint finishedmodule.py” in their command prompt. The name “finishedmodule.py” is a placeholder for any future modules that Utrition will implement in the future. The command prompt will notify the developer to make any necessary changes.
+
+	
+\end{enumerate}
 \wss{Reference your MIS and explain your overall philosophy for test case
   selection.}  
 \wss{This section should not be filled in until after the MIS has
