@@ -701,30 +701,113 @@
 	
 	\begin{enumerate}
 		
-		\item{test-id1\\}
+		\item{bad-image-1\\}
 		
-		Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
+		Type: Automatic \wss{Functional, Dynamic, Manual, Automatic, Static 
+		etc. Most will
 			be automatic}
 		
-		Initial State: 
+		Initial State: User is about to upload an image to the system.
 		
-		Input/Condition: 
+		Input/Condition: Uploaded image is of an abnormal format.
+
+		Output/Result: Error message is displayed prompting user of their 
+		mistake.
 		
-		Output/Result: 
+		How test will be performed: Test will check if an error message element 
+		has been rendered.
 		
-		How test will be performed: 
+		\item{bad-image-2\\}
 		
-		\item{test-id2\\}
+		Type: Automatic \wss{Functional, Dynamic, Manual, Automatic, Static 
+			etc. Most will
+			be automatic}
 		
-		Type: Functional, Dynamic, Manual, Static etc.
+		Initial State: User is about to upload an image to the system.
 		
-		Initial State: 
+		Input/Condition: Uploaded image exceeds the maximum size.
 		
-		Input: 
+		Output/Result: Error message is displayed prompting user of their 
+		mistake.
 		
-		Output: 
+		How test will be performed: Test will check if an error message element 
+		has been rendered.
 		
-		How test will be performed: 
+		\item{bad-image-2\\}
+		
+		Type: Automatic
+		
+		Initial State: User is about to upload an image to the system.
+		
+		Input/Condition: Uploaded image exceeds the maximum size.
+		
+		Output/Result: Error message is displayed prompting user of their 
+		mistake.
+		
+		How test will be performed: Test will check if an error message element 
+		has been rendered.
+		
+		
+		\item{bad-image-3\\}
+
+		Type: Automatic
+		
+		Initial State: User is about to upload images to the system.
+		
+		Input/Condition: More than three images are attempting to be uploaded.
+		
+		Output/Result: Error message is displayed prompting user of their 
+		mistake.
+		
+		How test will be performed: Test will check if an error message element 
+		has been rendered.
+		
+		\item{failed-identification-1\\}
+		
+		Type: Automatic
+		
+		Initial State: System is identifying food objects within the user's 
+		uploaded image(s).
+		
+		Input/Condition: Uploaded image.
+		
+		Output/Result: Error message is displayed prompting user of a failed 
+		identification.
+		
+		How test will be performed: Test will check if an error message element 
+		has been rendered.
+		
+		\item{identification-accuracy-1\\}
+		
+		Type: Automatic
+		
+		Initial State: System is identifying food objects within the user's 
+		uploaded image(s).
+		
+		Input/Condition: Set of images; some containing foods, others without 
+		foods.
+		
+		Output/Result: Individual images may or may not be identified correctly.
+		
+		How test will be performed: The test will check if among all the 
+		provided images, more than 90\% of the images have been assessed 
+		correctly.
+		
+		\item{identification-accuracy-2\\}
+		
+		Type: Automatic
+		
+		Initial State: System is identifying food objects within the user's 
+		uploaded image(s).
+		
+		Input/Condition: Set of images; some containing foods, others without 
+		foods.
+		
+		Output/Result: Individual images may or may not be identified correctly.
+		
+		How test will be performed: The test will check if among all the 
+		provided images, more than 70\% of the images have been assessed 
+		correctly.
 		
 	\end{enumerate}
 	
