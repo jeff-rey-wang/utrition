@@ -219,6 +219,17 @@ How test will be performed:
 %\paragraph{Title for Test}
 
 \begin{enumerate}
+	\item{PR1\\} 
+	
+	a
+	
+\end{enumerate}
+
+\subsubsection{Usability and Humanity Testing}
+
+%\paragraph{Title for Test}
+
+\begin{enumerate}
 
 \item{NFR2\\}
 
@@ -321,11 +332,15 @@ How test will be performed: : On each screen, a developer on Durum Wheat Semolin
 
 Type: Functional, Dynamic, and Manual.
 
-Initial State: The user loads into Utrition’s main menu.
+Initial State: The user loads into Utrition’s main menu with a stable internet connection.
 
 Input/Condition: The user views every page of the user interface (Upload Image, View Nutritional Data, View Past Nutritional Data, View Past Nutritional Data Chart).
 
-Output/Result: The user does not hear Utrition generate any sound.
+Output/Result: 
+\begin{itemize}
+	\item Utrition is available to be used by users at all times since it is a web app.
+	\item The user does not hear Utrition generate any sound.
+\end{itemize}
 
 How test will be performed: On each screen, a developer on Durum Wheat Semolina will check if a sound plays. The developer will open Utrition on their personal device. The developer will click on the “Upload Image” button, and then the developer will upload an image of food. The uploaded images of the food item will be randomly selected by the developer in the testPhotos directory The developer will view the nutritional information and then click on the “Menu” button. The developer clicks on the “View Past Nutritional Data” button, and then the “View Past Nutritional Data Chart” button.
 
@@ -353,9 +368,94 @@ How test will be performed: The developer loads into Utrition’s github page (h
 \end{itemize}
 \end{enumerate}
 
-\subsubsection{Area of Testing2}
+\subsubsection{Performance Testing}
 
-...
+%\paragraph{Title for Test}
+
+\begin{enumerate}
+	
+\item{NFR12\\} 
+
+Type: Functional, Dynamic, and Manual.
+
+Initial State: The user has previously entered 10 items in Utrition, and is now viewing the main menu.
+
+Input/Condition: The user views every page of the user interface (Upload Image, View Nutritional Data, View Past Nutritional Data, View Past Nutritional Data Chart).
+
+Output/Result: The user will be able to access every page of the user interface in 2 seconds or less.
+
+How test will be performed: A developer on Durum Wheat Semolina will measure the time it takes for each new screen to load, excluding the screen that identifies each food item, using a stopwatch. The developer will open Utrition on their personal device and access the main menu. The developer will upload an image of different food items 10 times, with a minimum 1 minute time difference between the inputs. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer closes Utrition and reopens it. The developer will click on the “Upload Image” button, and then the developer will upload an image of food. The developer will view the nutritional information and then click on the “Menu” button. The developer clicks on the “View Past Nutritional Data'' button, and then the “View Past Nutritional Data Chart” button. The developer clicks on the “Menu” button.
+
+\item{NFR13\\} 
+
+Type: Functional, Dynamic, and Manual.
+
+Initial State: The user loads into Utrition’s main menu, and has clicked on the “Upload Image” button.
+
+Input/Condition: The user uploads 3 images simultaneously.
+
+Output/Result: 
+\begin{itemize}
+	\item The user is able to view the identification for all 3 food items in 10 or less seconds.
+	\item The user is able to view the nutritional information for all 3 food items in 5 or less seconds.
+\end{itemize}
+
+How test will be performed: A developer on Durum Wheat Semolina will open Utrition and click on the “Upload Image” button. The developer will upload a random image of a food item found in the testPhotos directory, and then click on the “Add More” button. The developer uploads 2 more random images of different food items and clicks to view the foods’ nutritional information. The developer measures the amount of time it takes for Utrition to notify the user the name of the identified food items. The developer measures the amount of time it takes for the system to change from the food identification interface to the nutritional information interface.
+
+\item{NFR14\\} 
+
+Type: Functional, Dynamic, and Manual.
+Initial State: The user loads into Utrition’s main menu, and has clicked on the “Upload Image” button.
+Input/Condition: The user uploads an image of food.
+Output/Result: The food is correctly identified and the correlated nutritional facts are correct.
+How test will be performed: A developer on Durum Wheat Semolina will open Utrition and click on the “Upload Image” button. The developer will upload the images of the following foods separately (images found in testPhotos directory):
+\begin{itemize}
+	\item Uncooked Pork
+	\item Corn
+	\item Lettuce
+	\item Beef
+	\item Penne Pasta
+	\item Rice
+	\item Milk
+	\item Butter
+	\item Wheat Bread
+	\item Cooked Steak
+\end{itemize} 
+
+The developer will check the accuracy of each identified food item and their respective nutritional facts.
+
+\item{NFR15\\} 
+
+Type: Functional, Dynamic, and Manual.
+
+Initial State: The user loads into Utrition’s main menu, and has clicked on the “Upload Image” button.
+
+Input/Condition: The user uploads 4 photos of different food items.
+
+Output/Result: The user is notified that they are not able to proceed with viewing the identified foods or their nutritional information.
+
+How test will be performed: A developer on Durum Wheat Semolina will open Utrition and click on the “Upload Image” button. The developer will upload an image of a random food item found in the testPhotos directory, and then click on the “Add More” button. The developer uploads 3 more random images of different food. The developer is notified that they cannot proceed with viewing the nutritional information unless they remove 1 image.
+
+\item{NFR16\\} 
+
+Type: Static and Manual.
+
+Initial State: A developer on Durum Wheat Semolina opens their internet browser.
+
+Input/Condition: The developer is able to access \href{https://github.com/jeff-rey-wang/utrition}{Utrition’s github page} and download the repository onto their personal device.
+
+Output/Result: Utrition is able to be downloaded by any user.
+
+How test will be performed: The developer will access Utrition’s github on their personal device’s web browser. The developer will click on “Code”, and then “Download ZIP”. The developer will verify that Utrition has been downloaded onto their device.
+
+\item{NFR17\\} 
+\item{NFR18\\} 
+\item{NFR19\\} 
+\item{NFR20\\} 
+\item{NFR21\\} 
+\item{NFR22\\} 
+
+\end{enumerate}
 
 \subsection{Traceability Between Test Cases and Requirements}
 
