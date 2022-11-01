@@ -213,35 +213,36 @@ How test will be performed:
 \wss{Tests related to usability could include conducting a usability test and
   survey.}
 
-\subsubsection{Area of Testing1}
+\subsubsection{Look and Feel Testing}
 		
-\paragraph{Title for Test}
+%\paragraph{Title for Test}
 
 \begin{enumerate}
 
-\item{test-id1\\}
+\item{NFR1\\}
 
-Type: 
+Type: Functional, Dynamic, and Manual.
 					
-Initial State: 
+Initial State: The user is viewing a page of the user interface (Upload Image, View Nutritional Data, View Past Nutritional Data, View Past Nutritional Data Chart)
 					
-Input/Condition: 
+Input/Condition: The user clicks on the “Menu” button located at the bottom of the user interface.
 					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
+Output/Result: The user will be brought to the main menu screen.
 
-Type: Functional, Dynamic, Manual, Static etc.
+How test will be performed: A developer of Durum Wheat Semolina will access every page listed in “Initial State” and will attempt to reach the main menu in 2 or less clicks from the respective page.
+
 					
-Initial State: 
+\item{NFR2\\}
+
+Type: Functional, Dynamic, and Manual.
 					
-Input: 
+Initial State: The user has previously entered 5 items in Utrition, and is now viewing the main menu.
 					
-Output: 
+Input: The user clicks on the “View Past Nutritional Data” button located at the right of the user interface.
 					
-How test will be performed: 
+Output: The user views a list displaying all 5 food items with their respective details in: food name, calories, fat, sodium, proteins, carbohydrates, sugars, and date entered.
+					
+How test will be performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and access the main menu. The developer will upload an image of different food items 5 times, with a minimum 1 minute time difference between each input. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer closes Utrition and reopens it. The developer clicks on the “View Past Nutritional Data” button, and views the list displaying the 5 different food items and their respective details.
 
 \end{enumerate}
 
