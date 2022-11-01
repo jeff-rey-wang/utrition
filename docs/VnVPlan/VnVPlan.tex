@@ -815,6 +815,25 @@
 		provided images, more than 70\% of the images have been assessed 
 		correctly.
 		
+		\item{identification-performance-2\\}
+		
+		Type: Automatic
+		
+		Initial State: System contains a set of images; some with and others 
+		without foods, and of extension .jpg, .png, or 
+		.jpeg, in accordance with scenarios outline in 
+		image-identification-1,2,3.
+		
+		Input/Condition: System prompted to process image, for each image 
+		within the provided set.
+		
+		Output/Result: The system should identify the food present in an image, 
+		and return the name of the food item as a string, and prompt the user 
+		if no food is detected.
+		
+		How test will be performed: The test will check if among all the 
+		provided images, all requests were completed under 10 seconds each.
+		
 		\item{visualization-performance-1\\}
 		
 		Type: Automatic
@@ -846,6 +865,7 @@
 		
 		How test will be performed: The test will measure if this interaction 
 		was completed in 5 seconds or less.
+		
 		
 	\end{enumerate}
 	
