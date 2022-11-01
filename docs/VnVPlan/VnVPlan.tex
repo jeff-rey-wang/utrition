@@ -705,40 +705,174 @@
 	\wss{These tests may involve collecting performance data from previously
 		mentioned functional tests.}
 	
-	\subsubsection{Module ?}
+	The nonfunctional requirements of the system will be broken down in the 
+	same manner as done so in section 6.2 (Tests for Functional Requirements).
+	
+	\subsubsection{Image Processing}
+	
+	\paragraph{Image Upload}
 	
 	\begin{enumerate}
 		
-		\item{test-id1\\}
+		\item{bad-image-1\\}
 		
-		Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
+		Type: Automatic \wss{Functional, Dynamic, Manual, Automatic, Static 
+		etc. Most will
 			be automatic}
 		
-		Initial State: 
+		Initial State: User is about to upload an image to the system.
 		
-		Input/Condition: 
+		Input/Condition: Uploaded image is of an abnormal format.
+
+		Output/Result: Error message is displayed prompting user of their 
+		mistake.
 		
-		Output/Result: 
+		How test will be performed: Test will check if an error message element 
+		has been rendered.
 		
-		How test will be performed: 
+		\item{bad-image-2\\}
 		
-		\item{test-id2\\}
+		Type: Automatic
 		
-		Type: Functional, Dynamic, Manual, Static etc.
+		Initial State: User is about to upload an image to the system.
 		
-		Initial State: 
+		Input/Condition: Uploaded image exceeds the maximum size.
 		
-		Input: 
+		Output/Result: Error message is displayed prompting user of their 
+		mistake.
 		
-		Output: 
+		How test will be performed: Test will check if an error message element 
+		has been rendered.
 		
-		How test will be performed: 
+		
+		\item{bad-image-3\\}
+
+		Type: Automatic
+		
+		Initial State: User is about to upload images to the system.
+		
+		Input/Condition: More than three images are attempting to be uploaded.
+		
+		Output/Result: Error message is displayed prompting user of their 
+		mistake.
+		
+		How test will be performed: Test will check if an error message element 
+		has been rendered.
+	\end{enumerate}
+
+	\paragraph{Image Identification}
+	
+	\begin{enumerate}
+		
+		\item{failed-identification-1\\}
+		
+		Type: Automatic
+		
+		Initial State: System is identifying food objects within the user's 
+		uploaded image(s).
+		
+		Input/Condition: Uploaded image.
+		
+		Output/Result: Error message is displayed prompting user of a failed 
+		identification.
+		
+		How test will be performed: Test will check if an error message element 
+		has been rendered.
+		
+		\item{image-identification-accuracy-1\\}
+		
+		Type: Automatic
+		
+		Initial State: System contains a set of images; all with foods, and of 
+		extension .jpg, .png, or .jpeg, in accordance with scenarios outline in 
+		image-identification-1,2,3.
+		
+		Input/Condition: System prompted to process image, for each image 
+		within the provided set.
+		
+		Output/Result: For each image, the system should identify the food 
+		present in an image, and return the name of the food item as a string.
+		
+		How test will be performed: The test will check if among all the 
+		provided images, more than 90\% of the images have been assessed 
+		correctly.
+		
+		\item{identification-accuracy-2\\}
+		
+		Type: Automatic
+		
+		Initial State: System contains a set of images; some with and others 
+		without foods, and of extension .jpg, .png, or 
+		.jpeg, in accordance with scenarios outline in 
+		image-identification-1,2,3.
+		
+		Input/Condition: System prompted to process image, for each image 
+		within the provided set.
+		
+		Output/Result: The system should identify the food present in an image, 
+		and return the name of the food item as a string, and prompt the user 
+		if no food is detected.
+		
+		How test will be performed: The test will check if among all the 
+		provided images, more than 70\% of the images have been assessed 
+		correctly.
+		
+		\item{identification-performance-2\\}
+		
+		Type: Automatic
+		
+		Initial State: System contains a set of images; some with and others 
+		without foods, and of extension .jpg, .png, or 
+		.jpeg, in accordance with scenarios outline in 
+		image-identification-1,2,3.
+		
+		Input/Condition: System prompted to process image, for each image 
+		within the provided set.
+		
+		Output/Result: The system should identify the food present in an image, 
+		and return the name of the food item as a string, and prompt the user 
+		if no food is detected.
+		
+		How test will be performed: The test will check if among all the 
+		provided images, all requests were completed under 10 seconds each.
+	\end{enumerate}
+	\subsubsection{Displaying to User Interface}
+	
+	\paragraph{Visualize Data}
+	\begin{enumerate}
+		\item{visualization-performance-1\\}
+		
+		Type: Automatic
+		
+		Initial State: Nutritional data of a food item is contained in the 
+		system.
+		
+		Input/Condition: Request to display the nutritional information of a 
+		food item.
+		
+		Output/Result: System will generate the HTML body to be displayed on 
+		the user 
+		interface.
+		
+		How test will be performed: The test will measure if this interaction 
+		was completed in 5 seconds or less.
+		
+		\item{visualize-performance-2\\}
+		
+		Control: Automatic
+		
+		Initial State: Database contains nutritional data of 5 different dates.
+		
+		Input/Condition: Request to display the past 5 dates of nutritional 
+		data in a graph.
+		
+		Output/Result: System will generate the HTML body to be displayed on 
+		the user interface.
+		
+		How test will be performed: The test will measure if this interaction 
+		was completed in 5 seconds or less.
 		
 	\end{enumerate}
-	
-	\subsubsection{Module ?}
-	
-	...
 	
 	\subsection{Traceability Between Test Cases and Modules}
 	
