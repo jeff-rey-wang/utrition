@@ -379,61 +379,267 @@
 	
 	\subsection{Tests for Functional Requirements}
 	
-	\wss{Most of the verification will be through automated unit testing.  If
-		appropriate specific modules can be verified by a non-testing based
-		technique.  That can also be documented in this section.}
+	\wss{Subsets of the tests may be in related, so this section is divided into
+		different areas.  If there are no identifiable subsets for the tests, this
+		level of document structure can be removed.}
 	
-	\subsubsection{Module 1}
+	\wss{Include a blurb here to explain why the subsections below
+		cover the requirements.  References to the SRS would be good.}
 	
-	\wss{Include a blurb here to explain why the subsections below cover the 
-	module.
-		References to the MIS would be good.  You will want tests from a black 
-		box
-		perspective and from a white box perspective.  Explain to the reader 
-		how the
-		tests were selected.}
+	The functional requirements of the system will be broken down into general phases of the system's functionality: Image Processing, API Calls, Reading and Writing to Database, and Displaying to User Interface. These subsections cover the functional requirements outlined in the SRS document.
+	
+	\subsubsection{Image Processing}
+	
+	\wss{It would be nice to have a blurb here to explain why the subsections below
+		cover the requirements.  References to the SRS would be good.  If a section
+		covers tests for input constraints, you should reference the data constraints
+		table in the SRS.}
+	
+	The following set of tests correlate FR1, FR2, and FR3 in the SRS document. Manual testing will be used, in which the tester will upload images according to the test plans to validate the proper response to the input. Automated testing will be used to verify the system's image identification process.
+	
+	\paragraph{Image Upload}
 	
 	\begin{enumerate}
 		
-		\item{test-id1\\}
+		\item{image-upload-1\\}
 		
-		Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-			be automatic}
+		Control: Manual
 		
-		Initial State: 
+		Initial State: No image in the system.
 		
-		Input: 
+		Input: An image file of extension .png will be uploaded into the system.
 		
-		Output: \wss{The expected result for the given inputs}
+		Output: The system will contain the uploaded image of type .png.
 		
-		Test Case Derivation: \wss{Justify the expected value given in the 
-		Output field}
+		Test Case Derivation: The system should save the inputted image, so that further processing can be done on the image.
 		
-		How test will be performed: 
+		How test will be performed: An image of type .png will be saved on the tester's device. The tester will upload this image to the system.
 		
-		\item{test-id2\\}
+		\item{image-upload-2\\}
 		
-		Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-			be automatic}
+		Control: Manual
 		
-		Initial State: 
+		Initial State: No image in the system.
 		
-		Input: 
+		Input: An image file of extension .jpg will be uploaded into the system.
 		
-		Output: \wss{The expected result for the given inputs}
+		Output: The system will contain the uploaded image of type .jpg.
 		
-		Test Case Derivation: \wss{Justify the expected value given in the 
-		Output field}
+		Test Case Derivation: The system should save the inputted image, so that further processing can be done on the image.
 		
-		How test will be performed: 
+		How test will be performed: An image of type .jpg will be saved on the tester's device. The tester will upload this image to the system.
 		
-		\item{...\\}
+		\item{image-upload-3\\}
+		
+		Control: Manual
+		
+		Initial State: No image in the system.
+		
+		Input: An image file of extension .jpeg will be uploaded into the system.
+		
+		Output: The system will contain the uploaded image of type .jpeg.
+		
+		Test Case Derivation: The system should save the inputted image, so that further processing can be done on the image.
+		
+		How test will be performed: An image of type .jpeg will be saved on the tester's device. The tester will upload this image to the system.
+		
+		\item{image-upload-4\\}
+		
+		Control: Manual
+		
+		Initial State: No image in the system.
+		
+		Input: A file of extension .txt will be uploaded into the system.
+		
+		Output: The system will not contain the uploaded file. An error message will be returned.
+		
+		Test Case Derivation: The system should only save the inputted image if it is of the proper file extension.
+		
+		How test will be performed: A file of type .txt will be saved on the tester's device. The tester will upload this file to the system.
 		
 	\end{enumerate}
 	
-	\subsubsection{Module 2}
+	\paragraph{Image Identification}
 	
-	...
+	\begin{enumerate}
+		
+		\item{image-identification-1\\}
+		
+		Control: Automatic
+		
+		Initial State: System contains an image of extension .png type.
+		
+		Input: System is prompted to process the image.
+		
+		Output: The type of food that is captured in the image is returned as a string.
+		
+		Test Case Derivation: The system should identify the food present in an image, and return the name of the food item as a string.
+		
+		How test will be performed: The system identified item will be verified that it matches the true item contained in the image.
+		
+		\item{image-identification-2\\}
+		
+		Control: Automatic
+		
+		Initial State: System contains an image of extension .jpg type.
+		
+		Input: System is prompted to process the image.
+		
+		Output: The type of food that is captured in the image is returned as a string.
+		
+		Test Case Derivation: The system should identify the food present in an image, and return the name of the food item as a string.
+		
+		How test will be performed: The system identified item will be verified that it matches the true item contained in the image.
+		
+		\item{image-identification-3\\}
+		
+		Control: Automatic
+		
+		Initial State: System contains an image of extension .jpeg type.
+		
+		Input: System is prompted to process the image.
+		
+		Output: The type of food that is captured in the image is returned as a string.
+		
+		Test Case Derivation: The system should identify the food present in an image, and return the name of the food item as a string.
+		
+		How test will be performed: The system identified item will be verified that it matches the true item contained in the image.
+		
+	\end{enumerate}
+	
+	\subsubsection{API Calls}
+	
+	These tests cover  FR4 and FR5 in the SRS document. Automated unit tests will be used to verify that the system is able to send requests to the external API.
+	
+	\paragraph{Call and Fetch API Response}
+	
+	\begin{enumerate}
+		
+		\item{api-1\\}
+		
+		Control: Automatic
+		
+		Initial State: System on standby.
+		
+		Input: Food item name as a string.
+		
+		Output: JSON containing nutirition facts for the inputted food item.
+		
+		Test Case Derivation: A request will be made to the Nutritionix API with the food item name, which will return a response body containing the food item's nutrition facts.
+		
+		How test will be performed: The API response will be verified that the contents are as expected.
+		
+	\end{enumerate}
+	
+	\subsubsection{Reading and Writing to Database}
+	
+	The following tests cover  FR6 and FR7 in the SRS document. Automated unit tests will be used to verify that the system is log and read from the database.
+	
+	\paragraph{Logging Data}
+	
+	\begin{enumerate}
+		
+		\item{log-data-1\\}
+		
+		Control: Automatic
+		
+		Initial State: System contains nutritional data of a food item.
+		
+		Input: Request to log the data to the database.
+		
+		Output: Database is updated as the system writes the data to the database.
+		
+		Test Case Derivation: Nutritional data of a food will be saved for future reference. This is done by logging the data to the database.
+		
+		How test will be performed: After the system receives the request to update the database, the database will be verified that it is updated with the new data.
+		
+	\end{enumerate}
+	
+	\paragraph{Reading Data}
+	
+	\begin{enumerate}
+		
+		\item{read-data-1\\}
+		
+		Control: Automatic
+		
+		Initial State: Database contains nutritional data of a food item.
+		
+		Input: Request to fetch the data of a particular food item.
+		
+		Output: Nutritional data of the requested food item.
+		
+		Test Case Derivation: The system shall be able to fetch previously recorded data.
+		
+		How test will be performed: After the system receives the request to fetch the data of a food item, the returned data will be verified that it matches with the saved data in the database.
+		
+		\item{read-data-2\\}
+		
+		Control: Automatic
+		
+		Initial State: Database contains nutritional data of 5 different dates.
+		
+		Input: Request to fetch the data from the last 3 most recent dates.
+		
+		Output: A list of the nutritional data from the last 3 most recent dates.
+		
+		Test Case Derivation: The system shall be able to fetch previously recorded data. The system shall be able to fetch data from a range of dates.
+		
+		How test will be performed: The nutritional data from the 3 most recent dates will be verified if it matches the data in the database.
+		
+		\item{read-data-3\\}
+		
+		Control: Automatic
+		
+		Initial State: Database contains nutritional data.
+		
+		Input: Request to fetch the data of a particular food item that is not logged in the database.
+		
+		Output: No data is returned.
+		
+		Test Case Derivation: The system shall be able to fetch previously recorded data. This is an edge case for if the system is requested to read data from the database that does not exist. In this case, no data will be returned.
+		
+		How test will be performed: The output will be verified to be empty.
+		
+	\end{enumerate}
+	
+	\subsubsection{Displaying to User Interface}
+	
+	The following tests cover  FR8 and FR9 in the SRS document. Automated unit tests will be used to validate the generated visual display.
+	
+	\paragraph{Visualize Data}
+	
+	\begin{enumerate}
+		
+		\item{visualize-1\\}
+		
+		Control: Automatic
+		
+		Initial State: Nutritional data of a food item is contained in the system.
+		
+		Input: Request to display the nutritional information of a food item.
+		
+		Output: System will generate the HTML body to be displayed on the user interface.
+		
+		Test Case Derivation: The nutritional data of a particular food item shall be displayed on the user interface. The system will generate the frontend script to display this data.
+		
+		How test will be performed: The generated HTML body will be verified that it matches the expected output.
+		
+		\item{visualize-2\\}
+		
+		Control: Automatic
+		
+		Initial State: Database contains nutritional data of 5 different dates.
+		
+		Input: Request to display the past 5 dates of nutritional data in a graph.
+		
+		Output: System will generate the HTML body to be displayed on the user interface.
+		
+		Test Case Derivation: The history of logged nutritional data shall be displayed in a graph on the user interface. The system will generate the frontend script to display this data.
+		
+		How test will be performed: The generated HTML body will be verified that it matches the expected output.
+		
+	\end{enumerate}
 	
 	\subsection{Tests for Nonfunctional Requirements}
 	
