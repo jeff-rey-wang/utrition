@@ -219,9 +219,73 @@ How test will be performed:
 %\paragraph{Title for Test}
 
 \begin{enumerate}
-	\item{PR1\\} 
+\item{NFR1\\} 
+
+Type: Functional, Dynamic, and Manual.
+
+Initial State: A developer from Durum Wheat Semolina has launched the Utrition app.
+
+Input/Condition: The developer measures the distance between the displayed user interface components.
+
+Output/Result: The distance between user interface components surpasses 20 pixels.
+
+How test will be performed: Each developer launches the Utrition app and opens the pixel measuring tool (https://www.rapidtables.com/web/tools/pixel-ruler.html). The developer will use the tool by viewing a page on Utrition, then clicking “Print Screen'' on their keyboard. Then, the developer pastes the screenshot into the tool. The developer clicks the two spots he would like to measure distance from. The developer measures the distances between the following components:	
+
+\begin{enumerate}
+	\item[$-$] On the main menu:
+	\begin{itemize}
+		\item Main Menu Button
+		\item Upload Image Button
+		\item Past Nutritional Data Button
+		\item Utrition Logo
+		\item The Edge of the Application
+	\end{itemize}
+	\item[$-$] When uploading an image:
+	\begin{itemize}
+		\item Utrition Logo
+		\item “Add More” Button
+		\item Loading Bar
+		\item Loading Text
+		\item Main Menu Button
+		\item The Edge of the Application	
+	\end{itemize}
+	\item[$-$] When viewing nutritional data:
+	\begin{itemize}
+		\item Utrition Logo
+		\item Nutrition Data Text
+		\item Associated Nutrition Symbol
+		\item Continue Button
+		\item Main Menu Button
+		\item Photo of Identified Food
+		\item Name of Identified Food
+		\item The Edge of the Application	
+	\end{itemize}
+	\item[$-$] When viewing past nutritional data:
+	\begin{itemize}
+		\item Utrition Logo
+		\item Nutrition Data Text
+		\item Associated Nutrition Symbol
+		\item Next Page Button
+		\item Previous Page Button
+		\item Main Menu Button
+		\item Column and Row Headers
+		\item The Edge of the Application
+	\end{itemize}
+	\item[$-$] When viewing past nutritional data chart:
+	\begin{itemize}
+		\item Utrition Logo
+		\item Chart Entry Dates
+		\item The Chart
+		\item Nutrition Data Text
+		\item Associated Nutrition Symbol
+		\item Next Page Button
+		\item Previous Page Button
+		\item Back Button
+		\item Main Menu Button
+		\item The Edge of the Application	
+	\end{itemize}
 	
-	a
+\end{enumerate}
 	
 \end{enumerate}
 
@@ -405,8 +469,12 @@ How test will be performed: A developer on Durum Wheat Semolina will open Utriti
 \item{NFR14\\} 
 
 Type: Functional, Dynamic, and Manual.
-Initial State: The user loads into Utrition’s main menu, and has clicked on the “Upload Image” button.
+
+Initial State: The user loads into Utrition’s main menu, and has clicked on the “Upload Image” 
+button.
+
 Input/Condition: The user uploads an image of food.
+
 Output/Result: The food is correctly identified and the correlated nutritional facts are correct.
 How test will be performed: A developer on Durum Wheat Semolina will open Utrition and click on the “Upload Image” button. The developer will upload the images of the following foods separately (images found in testPhotos directory):
 \begin{itemize}
