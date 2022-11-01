@@ -3,6 +3,7 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+
 \hypersetup{
     colorlinks,
     citecolor=blue,
@@ -219,7 +220,7 @@ How test will be performed:
 
 \begin{enumerate}
 
-\item{NFR1\\}
+\item{NFR2\\}
 
 Type: Functional, Dynamic, and Manual.
 					
@@ -232,7 +233,7 @@ Output/Result: The user will be brought to the main menu screen.
 How test will be performed: A developer of Durum Wheat Semolina will access every page listed in “Initial State” and will attempt to reach the main menu in 2 or less clicks from the respective page.
 
 					
-\item{NFR2\\}
+\item{NFR3\\}
 
 Type: Functional, Dynamic, and Manual.
 					
@@ -244,7 +245,7 @@ Output: The user views a list displaying all 5 food items with their respective 
 					
 How test will be performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and access the main menu. The developer will upload an image of different food items 5 times, with a minimum 1 minute time difference between each input. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer closes Utrition and reopens it. The developer clicks on the “View Past Nutritional Data” button, and views the list displaying the 5 different food items and their respective details.
 
-\item{NFR3\\}
+\item{NFR4\\}
 
 Type: Functional, Dynamic, and Manual.
 
@@ -256,7 +257,100 @@ Output/Result: The user views a chart displaying all 5 food items with their res
 
 How test will be performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and access the main menu. The developer will upload an image of different food items 5 times, with a minimum 1 minute time difference between each input. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer closes Utrition and reopens it. The developer clicks on the “View Past Nutritional Data” button, and then clicks on the “View Past Nutritional Data Chart” button. The developer views a chart displaying 5 different food items and their respective details.
 
+\item{NFR5\\}
 
+Type: Functional, Dynamic, and Manual.
+
+Initial State: The user views the main menu in Utrition without previously inputting any food items.
+
+Input/Condition: The user clicks on the “View Past Nutritional Data” button located at the right of the user interface.
+
+Output/Result: The user views an empty list with column entries: food name, calories, proteins, carbohydrates, sugars, and date entered.
+
+How test will be performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and access the main menu. The developer clicks on the “View Past Nutritional Data” button, and views the list displaying an empty list with the column entries listed in “Output”.
+
+\item{NFR6\\}
+
+Type: Functional, Dynamic, and Manual.
+
+Initial State: The user has just clicked on the “View Past Nutritional Data” button without previously inputting any food items.
+
+Input/Condition: The user clicks on the “View Past Nutritional Data Chart” button located at the top of the user interface.
+
+Output/Result: The user views a chart displaying all 5 food items with their respective details in: food name, calories, proteins, carbohydrates, sugars, and date entered.
+
+How test will be performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and access the main menu. The developer clicks on the “View Past Nutritional Data” button, and then the “View Past Nutritional Data Chart” button. The developer views a chart displaying 5 different food items and their respective details.
+
+\item{NFR7\\}
+
+Type: Functional, Dynamic, and Manual.
+
+Initial State: Utrition’s main menu is opened on the user’s personal device.
+
+Input/Condition: The user clicks on the “Upload Image” button located at the middle of the main menu and uploads a photo of food.
+
+Output/Result: The user views the food’s nutritional information.
+
+How test will be performed: Each developer of Durum Wheat Semolina will load Utrition onto their personal device. Each developer will ask 2 people aged 14 or older to upload and retrieve the nutritional data of the food item “pineapple.png” found in the utrition/test/testPhotos directory. The developer will track the time it takes for each test.
+
+\item{NFR8\\}
+
+Type: Functional, Dynamic, and Manual.
+
+Initial State: The user loads into Utrition’s main menu.
+
+Input/Condition: The user views every page of the user interface (Upload Image, View Nutritional Data, View Past Nutritional Data, View Past Nutritional Data Chart).
+
+Output/Result: The user will see the respective symbol associated with every mention of calories, fat, sodium carbohydrates, sugar, and protein.
+
+How test will be performed: On each screen, including the main menu, a developer on Durum Wheat Semolina will check if there is a symbol associated with every mention of calories, fat, sodium carbohydrates, sugar, and protein. The developer will open Utrition on their personal device. The developer will click on the “Upload Image” button, and then the developer will upload a random image of food found in the testPhotos directory. The developer will view the nutritional information and then click on the “Menu” button. The developer clicks on the “View Past Nutritional Data” button, and then the “View Past Nutritional Data Chart” button.
+
+\item{NFR9\\}
+
+Type: Functional, Dynamic, and Manual.
+
+Initial State: The user has previously entered 2 items in Utrition, and is now viewing the main menu.
+
+Input/Condition: The user views every page of the user interface (Upload Image, View Nutritional Data, View Past Nutritional Data, View Past Nutritional Data Chart).
+
+Output/Result: The user does not see any backend calculations.
+
+How test will be performed: : On each screen, a developer on Durum Wheat Semolina will check if any backend calculations are displayed to the user. The developer will open Utrition on their personal device and access the main menu. The developer will upload an image of different food items 2 times, with a minimum 1 minute time difference between the inputs. The uploaded images of the food items will be randomly selected by the developer in the testPhotos directory. The developer closes Utrition and reopens it. The developer will click on the “Upload Image” button, and then the developer will upload an image of food. The developer will view the nutritional information and then click on the “Menu” button. The developer clicks on the “View Past Nutritional Data'' button, and then the “View Past Nutritional Data Chart” button.
+
+\item{NFR10\\}
+
+Type: Functional, Dynamic, and Manual.
+
+Initial State: The user loads into Utrition’s main menu.
+
+Input/Condition: The user views every page of the user interface (Upload Image, View Nutritional Data, View Past Nutritional Data, View Past Nutritional Data Chart).
+
+Output/Result: The user does not hear Utrition generate any sound.
+
+How test will be performed: On each screen, a developer on Durum Wheat Semolina will check if a sound plays. The developer will open Utrition on their personal device. The developer will click on the “Upload Image” button, and then the developer will upload an image of food. The uploaded images of the food item will be randomly selected by the developer in the testPhotos directory The developer will view the nutritional information and then click on the “Menu” button. The developer clicks on the “View Past Nutritional Data” button, and then the “View Past Nutritional Data Chart” button.
+
+\item{NFR11\\}
+
+Type: Static and Manual.
+
+Initial State: A developer on Durum Wheat Semolina views Utrition’s github page. 
+
+Input/Condition: The developer checks every single directory if there is an audio file.
+
+Output/Result: The developer removes all audio files found in Utrition’s github.
+How test will be performed: The developer loads into Utrition’s github page (https://github.com/jeff-rey-wang/utrition/) and views the files in every single directory. For each directory the developer will check for the following file types:
+
+\begin{itemize}
+	\item MP3
+	\item AAC
+	\item Ogg Vorbis
+	\item FLAC
+	\item ALAC
+	\item WAV
+	\item AIFF
+	\item DSD
+	\item PCM
+\end{itemize}
 \end{enumerate}
 
 \subsubsection{Area of Testing2}
