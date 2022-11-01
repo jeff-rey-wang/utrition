@@ -777,17 +777,19 @@
 		How test will be performed: Test will check if an error message element 
 		has been rendered.
 		
-		\item{identification-accuracy-1\\}
+		\item{image-identification-accuracy-1\\}
 		
 		Type: Automatic
 		
-		Initial State: System is identifying food objects within the user's 
-		uploaded image(s).
+		Initial State: System contains a set of images; all with foods, and of 
+		extension .jpg, .png, or .jpeg, in accordance with scenarios outline in 
+		image-identification-1,2,3.
 		
-		Input/Condition: Set of images; some containing foods, others without 
-		foods.
+		Input/Condition: System prompted to process image, for each image 
+		within the provided set.
 		
-		Output/Result: Individual images may or may not be identified correctly.
+		Output/Result: For each image, the system should identify the food 
+		present in an image, and return the name of the food item as a string.
 		
 		How test will be performed: The test will check if among all the 
 		provided images, more than 90\% of the images have been assessed 
@@ -797,17 +799,53 @@
 		
 		Type: Automatic
 		
-		Initial State: System is identifying food objects within the user's 
-		uploaded image(s).
+		Initial State: System contains a set of images; some with and others 
+		without foods, and of extension .jpg, .png, or 
+		.jpeg, in accordance with scenarios outline in 
+		image-identification-1,2,3.
 		
-		Input/Condition: Set of images; some containing foods, others without 
-		foods.
+		Input/Condition: System prompted to process image, for each image 
+		within the provided set.
 		
-		Output/Result: Individual images may or may not be identified correctly.
+		Output/Result: The system should identify the food present in an image, 
+		and return the name of the food item as a string, and prompt the user 
+		if no food is detected.
 		
 		How test will be performed: The test will check if among all the 
 		provided images, more than 70\% of the images have been assessed 
 		correctly.
+		
+		\item{visualization-performance-1\\}
+		
+		Type: Automatic
+		
+		Initial State: Nutritional data of a food item is contained in the 
+		system.
+		
+		Input/Condition: Request to display the nutritional information of a 
+		food item.
+		
+		Output/Result: System will generate the HTML body to be displayed on 
+		the user 
+		interface.
+		
+		How test will be performed: The test will measure if this interaction 
+		was completed in 5 seconds or less.
+		
+		\item{visualize-performance-2\\}
+		
+		Control: Automatic
+		
+		Initial State: Database contains nutritional data of 5 different dates.
+		
+		Input/Condition: Request to display the past 5 dates of nutritional 
+		data in a graph.
+		
+		Output/Result: System will generate the HTML body to be displayed on 
+		the user interface.
+		
+		How test will be performed: The test will measure if this interaction 
+		was completed in 5 seconds or less.
 		
 	\end{enumerate}
 	
