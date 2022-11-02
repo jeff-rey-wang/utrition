@@ -355,6 +355,28 @@
 		
 	\end{enumerate}
 	
+	\subsection{Traceability Between Test Cases and Requirements}
+	
+	\begin{table}[]
+	
+	\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+
+	\hline
+	\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+	FR1                     & The user must have the ability to upload a digital image of a standard image type to the system.                                                                                      & one-upload-1                                                                                                 \\ \hline
+	FR2                     & The user shall have the ability to upload multiple digital images of standard image types to the system.                                                                              & multi-upload-1                                                                                               \\ \hline
+	FR3                     & The system will be able to identify the type of food that is captured in an image.                                                                                                    & current-nutrition-1                                                                                          \\ \hline
+	FR4                     & The system will be able to make an API call to an external database of nutrition facts for a variety of foods, including their macro-nutrients, micro-nutrients, and caloric details. & current-nutrition-1                                                                                          \\ \hline
+	FR5                     & The system will be able to retrieve the nutrition facts for a specific food.                                                                                                          & current-nutrition-1                                                                                          \\ \hline
+	FR6                     & The system will log the nutritional data of a food.                                                                                                                                   & current-nutrition-1                                                                                          \\ \hline
+	FR7                     & The user will be able to access the nutritional data of previously logged foods.                                                                                                      & \begin{tabular}[c]{@{}l@{}}past-nutrition-text-1\\ past-nutrition-graph-1\end{tabular}                       \\ \hline
+	FR8                     & The system will display the nutritional information of a food to the user.                                                                                                            & \begin{tabular}[c]{@{}l@{}}current-nutrition-1\\ past-nutrition-text-1\\ past-nutrition-graph-1\end{tabular} \\ \hline
+	FR9                     & The system will display the history of logged nutritional data in a graph.                                                                                                            & past-nutrition-graph-1                                                                                       \\ \hline
+	
+	\end{tabular}
+	
+	\end{table}
+	
 	\subsection{Tests for Nonfunctional Requirements}
 	
 	\wss{The nonfunctional requirements for accuracy will likely just reference 
