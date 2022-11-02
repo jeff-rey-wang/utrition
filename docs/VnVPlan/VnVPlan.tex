@@ -256,7 +256,11 @@
 	The below areas cover all of the nine functional requirements outlined in the SRS, dividing the functional requirements into two distinct sections. The first section details user actions before the image processing steps and encompasses FR1 and FR2. The second section details user actions after the image processing steps and encompasses FR3, FR4, FR5, FR6, FR7, FR8, and FR9.
 	
 	\subsubsection{Prior to Image Processing}
-	This section has two tests, with each corresponding to an action the user can take with our application, and likewise to FR1 and FR2 in the SRS. Testing that users can successfully submit one or multiple images is important to the core functionality of the other components of the application.
+	This section has three tests, with each corresponding to an action the user 
+	can take with our application, and likewise to FR1 and FR2 in the SRS. 
+	Testing that users can successfully submit one or multiple images is 
+	important to the core functionality of the other components of the 
+	application.
 	
 	\paragraph{Single image upload}
 	
@@ -274,7 +278,25 @@
 		
 		Test Case Derivation: The system should accept an uploaded image file from the user.
 		
-		How test will be performed: A locally stored image will be uploaded to the application through the image upload prompt. 
+		How test will be performed: A locally stored image will be uploaded to 
+		the application through the image upload prompt.
+		
+		\item{one-upload-2\\}
+		
+		Control: Manual
+		
+		Initial State: No image in the system.
+		
+		Input: A file of extension .txt will be uploaded into the system.
+		
+		Output: The system will not contain the uploaded file. An error message 
+		will be returned.
+		
+		Test Case Derivation: The system should only save the inputted image if 
+		it is of the proper file extension.
+		
+		How test will be performed: A file of type .txt will be saved on the 
+		tester's device. The tester will upload this file to the system.
 		
 	\end{enumerate}
 	
@@ -298,8 +320,179 @@
 		
 	\end{enumerate}
 	
+	
+	\subsubsection{Image Processing}
+	This section has contains tests that relate to the processing of the image 
+	uploaded by the user. Tests correspond to actions that will be taken by the 
+	application during image processing. Relevant functional requirements 
+	include FR3, FR4, FR5, FR6, and FR7.
+	
+	\paragraph{Image Identification}
+	
+	\begin{enumerate}
+		
+		\item{image-identification-1\\}
+		
+		Control: Automatic
+		
+		Initial State: System contains an image of extension .png type.
+		
+		Input: System is prompted to process the image.
+		
+		Output: The type of food that is captured in the image is returned as a 
+		string.
+		
+		Test Case Derivation: The system should identify the food present in an 
+		image, and return the name of the food item as a string.
+		
+		How test will be performed: The system identified item will be verified 
+		that it matches the true item contained in the image.
+		
+		\item{image-identification-2\\}
+		
+		Control: Automatic
+		
+		Initial State: System contains an image of extension .jpg type.
+		
+		Input: System is prompted to process the image.
+		
+		Output: The type of food that is captured in the image is returned as a 
+		string.
+		
+		Test Case Derivation: The system should identify the food present in an 
+		image, and return the name of the food item as a string.
+		
+		How test will be performed: The system identified item will be verified 
+		that it matches the true item contained in the image.
+		
+		\item{image-identification-3\\}
+		
+		Control: Automatic
+		
+		Initial State: System contains an image of extension .jpeg type.
+		
+		Input: System is prompted to process the image.
+		
+		Output: The type of food that is captured in the image is returned as a 
+		string.
+		
+		Test Case Derivation: The system should identify the food present in an 
+		image, and return the name of the food item as a string.
+		
+		How test will be performed: The system identified item will be verified 
+		that it matches the true item contained in the image.
+		
+	\end{enumerate}
+	
+	\paragraph{Call and Fetch API Response}
+	
+	\begin{enumerate}
+		
+		\item{api-1\\}
+		
+		Control: Automatic
+		
+		Initial State: System on standby.
+		
+		Input: Food item name as a string.
+		
+		Output: JSON containing nutrition facts for the inputted food item.
+		
+		Test Case Derivation: A request will be made to the Nutritionix API 
+		with the food item name, which will return a response body containing 
+		the food item's nutrition facts.
+		
+		How test will be performed: The API response will be verified that the 
+		contents are as expected.
+		
+	\end{enumerate}
+	
+	\paragraph{Logging Data}
+	
+	\begin{enumerate}
+		
+		\item{log-data-1\\}
+		
+		Control: Automatic
+		
+		Initial State: System contains nutritional data of a food item.
+		
+		Input: Request to log the data to the database.
+		
+		Output: Database is updated as the system writes the data to the 
+		database.
+		
+		Test Case Derivation: Nutritional data of a food will be saved for 
+		future reference. This is done by logging the data to the database.
+		
+		How test will be performed: After the system receives the request to 
+		update the database, the database will be verified that it is updated 
+		with the new data.
+		
+	\end{enumerate}
+	
+	\paragraph{Reading Data}
+	
+	\begin{enumerate}
+		
+		\item{read-data-1\\}
+		
+		Control: Automatic
+		
+		Initial State: Database contains nutritional data of a food item.
+		
+		Input: Request to fetch the data of a particular food item.
+		
+		Output: Nutritional data of the requested food item.
+		
+		Test Case Derivation: The system shall be able to fetch previously 
+		recorded data.
+		
+		How test will be performed: After the system receives the request to 
+		fetch the data of a food item, the returned data will be verified that 
+		it matches with the saved data in the database.
+		
+		\item{read-data-2\\}
+		
+		Control: Automatic
+		
+		Initial State: Database contains nutritional data of 5 different dates.
+		
+		Input: Request to fetch the data from the last 3 most recent dates.
+		
+		Output: A list of the nutritional data from the last 3 most recent 
+		dates.
+		
+		Test Case Derivation: The system shall be able to fetch previously 
+		recorded data. The system shall be able to fetch data from a range of 
+		dates.
+		
+		How test will be performed: The nutritional data from the 3 most recent 
+		dates will be verified if it matches the data in the database.
+		
+		\item{read-data-3\\}
+		
+		Control: Automatic
+		
+		Initial State: Database contains nutritional data.
+		
+		Input: Request to fetch the data of a particular food item that is not 
+		logged in the database.
+		
+		Output: No data is returned.
+		
+		Test Case Derivation: The system shall be able to fetch previously 
+		recorded data. This is an edge case for if the system is requested to 
+		read data from the database that does not exist. In this case, no data 
+		will be returned.
+		
+		How test will be performed: The output will be verified to be empty.
+	\end{enumerate}
+	
 	\subsubsection{Subsequent to Image Processing}
 	This section has three tests, with each corresponding to an action the user can take with our application, and likewise to (FR3, FR4, FR5, FR6, FR8), (FR7, FR8), and (FR7, FR8, FR9) respectively in the SRS. These tests will test the actions the user can take after uploading an image, comprising of viewing past and present nutritional data in textual and graphical formats.
+	
+	
 	
 	\paragraph{Viewing the nutritional data of an uploaded food image}
 	
@@ -369,13 +562,54 @@
 
 	\hline
 	\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
-	FR1                     & The user must have the ability to upload a digital image of a standard image type to the system.                                                                                      & one-upload-1                                                                                                 \\ \hline
+	FR1                     & The user must have the ability to upload a 
+	digital image of a standard image type to the 
+	system.                                                                     
+	                 &
+	\begin{tabular}[c]{@{}l@{}}one-upload-1\\ 
+	one-upload-2\end{tabular}                                                  
+	                                            \\
+	 \hline
 	FR2                     & The user shall have the ability to upload multiple digital images of standard image types to the system.                                                                              & multi-upload-1                                                                                               \\ \hline
-	FR3                     & The system will be able to identify the type of food that is captured in an image.                                                                                                    & current-nutrition-1                                                                                          \\ \hline
-	FR4                     & The system will be able to make an API call to an external database of nutrition facts for a variety of foods, including their macro-nutrients, micro-nutrients, and caloric details. & current-nutrition-1                                                                                          \\ \hline
-	FR5                     & The system will be able to retrieve the nutrition facts for a specific food.                                                                                                          & current-nutrition-1                                                                                          \\ \hline
-	FR6                     & The system will log the nutritional data of a food.                                                                                                                                   & current-nutrition-1                                                                                          \\ \hline
-	FR7                     & The user will be able to access the nutritional data of previously logged foods.                                                                                                      & \begin{tabular}[c]{@{}l@{}}past-nutrition-text-1\\ past-nutrition-graph-1\end{tabular}                       \\ \hline
+	FR3                     & The system will be able to identify the type of 
+	food that is captured in an 
+	image.                                                                      
+	                              &
+	 \begin{tabular}[c]{@{}l@{}}image-identification-1\\ 
+	 image-identification-2\\ 
+	 image-identification-3\\current-nutrition-1\end{tabular}                   
+	        
+		                                                                 \\ 
+		\hline
+	FR4                     & The system will be able to make an API call to an 
+	external database of nutrition facts for a variety of foods, including 
+	their macro-nutrients, micro-nutrients, and caloric details. & 
+	\begin{tabular}[c]{@{}l@{}}api-1\\ 
+		current-nutrition-1\end{tabular}                                        
+		                                                    \\ \hline
+	FR5                     & The system will be able to retrieve the nutrition 
+	facts for a specific 
+	food.                                                                       
+	                                   &
+	 \begin{tabular}[c]{@{}l@{}}api-1\\ 
+		read-data-1\\ 
+		current-nutrition-1\end{tabular}                                        
+		                                                    \\
+		 \hline
+	FR6                     & The system will log the nutritional data of a 
+	food.                                                                       
+	                                                            &  
+	\begin{tabular}[c]{@{}l@{}}api-1\\ 
+		log-data-1\\ 
+		current-nutrition-1\end{tabular}                                        
+		                                               \\ \hline
+	FR7                     & The user will be able to access the nutritional 
+	data of previously logged 
+	foods.                                                                      
+	                                &
+	 \begin{tabular}[c]{@{}l@{}}read-data-1\\ read-data-2\\ read-data-3\\ 
+	past-nutrition-text-1\\ 
+	past-nutrition-graph-1\end{tabular}                       \\ \hline
 	FR8                     & The system will display the nutritional information of a food to the user.                                                                                                            & \begin{tabular}[c]{@{}l@{}}current-nutrition-1\\ past-nutrition-text-1\\ past-nutrition-graph-1\end{tabular} \\ \hline
 	FR9                     & The system will display the history of logged nutritional data in a graph.                                                                                                            & past-nutrition-graph-1                                                                                       \\ \hline
 	
@@ -1156,7 +1390,8 @@
 		
 		Test Case Derivation: The system should save the inputted image, so that further processing can be done on the image.
 		
-		How test will be performed: An image of type .jpeg will be saved on the tester's device. The tester will upload this image to the system.
+		How test will be performed: An image of type .jpeg will be saved on the 
+		tester's device. The tester will upload this image to the system.
 		
 		\item{image-upload-4\\}
 		
@@ -1235,10 +1470,6 @@
 		How test will be performed: The system identified item will be verified that it matches the true item contained in the image.
 		
 	\end{enumerate}
-	
-	\subsubsection{API Calls}
-	
-	These tests cover  FR4 and FR5 in the SRS document. Automated unit tests will be used to verify that the system is able to send requests to the external API.
 	
 	\paragraph{Call and Fetch API Response}
 	
