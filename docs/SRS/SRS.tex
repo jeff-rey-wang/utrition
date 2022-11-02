@@ -577,7 +577,7 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 	input. Users should have an opportunity to upload a new file of an appropriate 
 	size.\\	
 	\textbf{Fit Criteria:} Error message should prompt user upon upload of an image 
-	later than 30MB.
+	larger than 30MB.
 	
 	\item Utrition will return an error message when the user uploads more than three 
 	images at once. \\
@@ -594,36 +594,36 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 	reasons, and the user should be notified so they may attempt to find a  
 	workaround for the issue. \\	
 	\textbf{Fit Criteria:} Error message should prompt user upon failure to identify 
-	any food items in the uploaded image
+	any food items in the uploaded image.
 	
 	\item Utrition will return an error message if the request to retrieve 
 	nutritional information cannot be completed successfully. \\
 	\textbf{Rationale:}  Information retrieval requests may fail due to a 
 	variety of reasons, and the user should be notified of the reason why the 
 	service could not be completed as expected.\\	
-	\textbf{Fit Criteria:} Error message should prompt user upon failure to request 
-	nutritional info regarding food items in the uploaded image.
+	\textbf{Fit Criteria:} Error message should prompt user to try again upon failure 
+	to request nutritional info regarding food items in the uploaded image.
 	
 	\item Utrition will return an error message if the nutritional information 
 	of a specific item cannot be found.\\
 	\textbf{Rationale:}  The user should be notified if the nutritional data of 
 	their food item cannot be fetched.\\
-	\textbf{Fit Criteria:} Error message should prompt user upon failure to find 
-	nutritional info regarding food items in the uploaded image.
+	\textbf{Fit Criteria:} Error message should notify user that the nutritional 
+	information pertaining to their food item does not exist.
 	
-	\item Utrition will return an error message if the user's part nutritional 
+	\item Utrition will return an error message if the user's past nutritional 
 	logs cannot be found.\\
 	\textbf{Rationale:}  The user should be notified if their nutritional data 
 	of past meals cannot be found.\\
-	\textbf{Fit Criteria:} Error message should prompt user upon failure to access 
+	\textbf{Fit Criteria:} Error message should notify user upon failure to access 
 	user's past nutritional info.
 	
-	\item Utrition will return an error message if the user's part nutritional 
+	\item Utrition will return an error message if the user's past nutritional 
 	logs have been deleted.\\
 	\textbf{Rationale:}  The user should be notified if their nutritional data 
 	of past meals are no longer saved in the system.\\
-	\textbf{Fit Criteria:} Error message should prompt user if user's past nutritional 
-	info is absent.
+	\textbf{Fit Criteria:} Error message should notify user if user's past nutritional 
+	info has been deleted.
 	
 	\item Utrition will prompt the user if past nutritional trends cannot
 	be displayed successfully. The user will be notified on the type of error 
