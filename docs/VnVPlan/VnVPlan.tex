@@ -363,7 +363,7 @@
 	
 	\subsection{Traceability Between Test Cases and Requirements}
 	
-	\begin{table}[]
+	\begin{table}[H]
 	
 	\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
 
@@ -380,7 +380,7 @@
 	FR9                     & The system will display the history of logged nutritional data in a graph.                                                                                                            & past-nutrition-graph-1                                                                                       \\ \hline
 	
 	\end{tabular}
-	
+	\caption {Traceability between System Tests and Functional Requirements}
 	\end{table}
 	
 	\subsection{Tests for Nonfunctional Requirements}
@@ -538,6 +538,20 @@
 		Test Case Derivation: The system should only save the inputted image if it is of the proper file extension.
 		
 		How test will be performed: A file of type .txt will be saved on the tester's device. The tester will upload this file to the system.
+		
+		\item{image-upload-3\\}
+		
+		Control: Manual
+		
+		Initial State: No image in the system.
+		
+		Input: An image file of extension .jpeg and a second image file of extension .png will be uploaded into the system.
+		
+		Output: The system will contain the two uploaded images of type .jpeg and .png.
+		
+		Test Case Derivation: The system should save the inputted images when multiple digital images are uploaded, so that further processing can be done on the image.
+		
+		How test will be performed: An image of type .jpeg and an image of type .png will be saved on the tester's device. The tester will upload these images to the system.
 		
 	\end{enumerate}
 	
@@ -903,6 +917,26 @@
 	\end{enumerate}
 	
 	\subsection{Traceability Between Test Cases and Modules}
+	
+		\begin{table}[H]
+		
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			FR1                     & The user must have the ability to upload a digital image of a standard image type to the system.                                                                                      & \begin{tabular}[c]{@{}l@{}}image-upload-1\\ image-upload-2\\image-upload-3\\image-upload-4\end{tabular}                                                                                                    \\ \hline
+			FR2                     & The user shall have the ability to upload multiple digital images of standard image types to the system.                                                                              & \begin{tabular}[c]{@{}l@{}}image-upload-4\\ image-upload-5\end{tabular}                                                                                                  \\ \hline
+			FR3                     & The system will be able to identify the type of food that is captured in an image.                                                                                                    & image-identification-1, image-identification-2, image-identification-3                                                                                          \\ \hline
+			FR4                     & The system will be able to make an API call to an external database of nutrition facts for a variety of foods, including their macro-nutrients, micro-nutrients, and caloric details. & api-1                                                                                          \\ \hline
+			FR5                     & The system will be able to retrieve the nutrition facts for a specific food.                                                                                                          &  \begin{tabular}[c]{@{}l@{}}read-data-1\\ api-1\\\end{tabular}                                                                                          \\ \hline
+			FR6                     & The system will log the nutritional data of a food.                                                                                                                                   & log-data-1                                                                                          \\ \hline
+			FR7                     & The user will be able to access the nutritional data of previously logged foods.                                                                                                      & \begin{tabular}[c]{@{}l@{}}read-data-1\\ read-data-2\\read-data-3\end{tabular}                       \\ \hline
+			FR8                     & The system will display the nutritional information of a food to the user.                                                                                                            & visualize-1\\ \hline
+			FR9                     & The system will display the history of logged nutritional data in a graph.                                                                                                            & visualize-2                                                                                  \\ \hline
+			
+		\end{tabular}
+		\caption {Traceability between Unit Tests and Functional Requirements}
+	\end{table}
 	
 	\wss{Provide evidence that all of the modules have been considered.}
 	
