@@ -32,8 +32,7 @@
 	\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 		\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 		\midrule
-		Date 1 & 1.0 & Notes\\
-		Date 2 & 1.1 & Notes\\
+		11/02/2022 & 1.0 & Completed Version 1\\
 		\bottomrule
 	\end{tabularx}
 	
@@ -56,7 +55,6 @@
 		\toprule		
 		\textbf{symbol} & \textbf{description}\\
 		\midrule 
-		T & Test\\
 		SRS & Software Requirements Specification\\
 		MG & Module Guide\\
 		MIS & Management Information System\\
@@ -75,7 +73,7 @@
 	
 	\pagenumbering{arabic}
 	
-	This document ... \wss{provide an introductory blurb and roadmap of the
+	This document depicts the Verification and Validation Plan for the Utrition project. This includes verifying both implementation and documentation. The document will depict the plans for reviewing all critical documentation along with the system and unit tests to be used for code verification.  \wss{provide an introductory blurb and roadmap of the
 		Verification and Validation plan}
 	
 	\section{General Information}
@@ -85,9 +83,9 @@
 	\wss{Say what software is being tested.  Give its name and a brief overview 
 	of
 		its general functions.}
-		The purpose behind this document is to provide clarity of the testing plan that the Utrition application will go through to ensure the quality of the final product. The document has been separated into the various types of testing that will be performed to outline what needs to be completed by the developers in the testing stage. The software being tested includes the Utrition application. This software consists of three main functions that are being tested such as image processing and identification, displaying an interface for the user, and writing to a database.
+		The purpose behind this document is to provide the testing plan that Utrition will undergo during its development period. This plan will ensure a high quality final product. Utrition is an application that allows individuals to discover the nutritional value of the foods they are consuming and track their previously eaten meals. This software consists of three main functions that are being tested such as image processing and identification, displaying an interface for the user, and writing to a database. (COME BACK TO THESE FUNCTIONS)
 	
-	\subsection{Objectives}
+	\subsection{Objectives} (REDO)
 	
 	\wss{State what is intended to be accomplished.  The objective will be 
 	around
@@ -97,7 +95,7 @@
 		qualities,
 		just those that are most important.}
 		
-		As mentioned in previous documents such as the SRS and the Hazard Analysis document there are requirements that are essential for the essence of the application which the proof of concept will therefore be focused on implementing. The proof of concept of the utrition application will consist a medium to high fidelity prototype that consists of various key requirements and the successful evasion of the potential hazards. There should additionally be a basic front-end implementation that will not be complete visually but will be able to perform every task specified in the requirements. 
+		As mentioned in previous documents such as the SRS and the Hazard Analysis, there are requirements that are essential for the essence of the application which the proof of concept will therefore be focused on implementing. The proof of concept of the utrition application will consist a medium to high fidelity prototype that consists of various key requirements and the successful evasion of the potential hazards. There should additionally be a basic front-end implementation that will not be complete visually but will be able to perform every task specified in the requirements. 
 
 		Requirements: Requirement FR3 that states, successful identification of foods captured in the user uploaded image, which should be proven for a subset of the set of food that the artificial intelligence will learn. Additionally, the requirement FR4 states, the system will be able to make an API call to an external database of nutrition facts, for the same subset of foods as listed earlier.  
 
@@ -113,14 +111,14 @@
 		project
 		is done, they will be written.}
 
-		This document references mutiple other documents which have been listed below:
-	
-	\citet{SRS}
-	\citet{DevelopmentPlan}
-	\citet{MG}
-	\citet{MIS}
-
-	
+		This document references multiple other documents that are listed below:
+		
+		\begin{itemize}
+			\item SRS, \citet{SRS}
+			\item Development Plan, \citet{DevelopmentPlan}
+			\item MG, \citet{MG}
+			\item MIS, \citet{MIS}
+		\end{itemize}
 	
 	\section{Plan}
 	
@@ -136,7 +134,7 @@
 		for the project's verification.  A table is a good way to summarize 
 		this information.}
 	
-	Each team member will be contributing to the verification and validation of Utrition's supporting documentation and implementation. Jack Theriault is the team's testing lead and can be deferred to for any queries regarding testing procedures. It is expected that all team members create the tests that correspond to their written code. In addition, each team member's specific role in the testing process is given below.
+	Each team member will be contributing to the verification and validation of Utrition's supporting documentation and implementation. Jack Theriault is the team's testing lead and can be deferred to for any queries regarding verification procedures. It is expected that all team members create the tests that correspond to their written code. In addition, each team member's specific role in the verification and validation process is given below.
 	
 	\begin{table}[H]
 		\centering
@@ -166,7 +164,7 @@
 	
 	To verify Utrition's SRS document, two approaches will be primarily used. Firstly, ad hoc reviews by fellow classmates are done to provide Durum Wheat Semolina with feedback from an outsider perspective. The rubric for the SRS is heavily used during this process. \\
 	
-	Once feedback from these reviews has been collected in addition to the feedback given by SFWRENG 4G06 TAs while marking version 0, the team will walk through the SRS and make any necessary changes. Since the SRS is critical when implementing Utrition, this review process will be done by all team members to ensure total coverage of possible improvements. The team will be instructed to go through all functional and non-functional requirements to identify any ambiguities or missing requirements. Once identified, the corresponding changes will be made. This walkthrough will be lead by Justina Srebrnjak who is in charge of SRS verification.
+	Once feedback from these reviews has been collected in addition to the feedback given by SFWRENG 4G06 TAs while marking version 0, the team will walk through the SRS and make any necessary changes. Since the SRS is critical when implementing Utrition, this review process will be done by all team members to ensure total coverage of possible improvements. The team will be instructed to go through all functional and non-functional requirements to identify any ambiguities or missing requirements. Once identified, the corresponding changes will be made. This walkthrough will be led by Justina Srebrnjak who is in charge of SRS verification.
 
 	\subsection{Design Verification Plan}
 	
@@ -176,9 +174,9 @@
 	
 	\wss{Create a checklists?}
 	
-	Utrition's design documents will be verified through a combination of peer reviews and documentation walkthroughs. Once version 0 of the design documents have been completed, students from SFWRENG 4G06 will perform ad hoc reviews based on the criteria given in the design rubric. These critiques will make Durum Wheat Semolina aware of any discrepencies found in the documentation.\\
+	Utrition's design documents will be verified through a combination of peer reviews and documentation walkthroughs. Once version 0 of the design documents has been completed, students from SFWRENG 4G06 will perform ad hoc reviews based on the criteria given in the design rubric. These critiques will make Durum Wheat Semolina aware of any discrepancies found in the documentation.\\
 	
-	Secondly, documentation walkthroughs will be conducted by all team members to verify the completeness of the design documents. The primary purpose of these walkthroughs is to verify that all functional requirements listed in the SRS document are fulfilled through the proposed design. Any missing functionality will be identified through this process and amended as needed. This verification plan will be lead by Catherine Chen.
+	Secondly, documentation walkthroughs will be conducted by all team members to verify the completeness of the design documents. The primary purpose of these walkthroughs is to verify that all functional requirements listed in the SRS document are fulfilled through the proposed design. Any missing functionality will be identified through this process and amended as needed. This verification plan will be led by Catherine Chen.
 	
 	\subsection{Verification and Validation Plan Verification Plan}
 	
@@ -189,9 +187,9 @@
 	
 	\wss{Create a checklists?}
 	
-	The verification plan for the VnV Plan document will consist of two techniques. Firstly, ad hoc reviews from the team's classmates in SFWRENG 4G06 will be conducted. These reviews will identify any discrepencies indicated by the VnV plan rubric. Their resulting feedback will contribute to any changes made to the document.\\
+	The verification plan for the VnV plan document will consist of two techniques. Firstly, ad hoc reviews from the team's classmates in SFWRENG 4G06 will be conducted. These reviews will identify any discrepancies indicated by the VnV plan rubric. Their resulting feedback will contribute to any changes made to the document.\\
 	
-	In addition to peer reviews, the Utrition team will participate in a walkthrough of the document while referring to the SRS. During this review, the team will verify that every requirement found in the SRS has at least one test that will test its completeness. This review will be lead by Jack Theriault. 
+	In addition to peer reviews, the Utrition team will participate in a walkthrough of the document while referring to the SRS. During this review, the team will verify that every requirement found in the SRS has at least one test that will test its completeness. This review will be led by Jack Theriault. 
 	
 	\subsection{Implementation Verification Plan}
 	
@@ -205,9 +203,9 @@
 		code
 		inspection, static analyzers, etc.}
 	
-	Verifying Utrition's implementation will be done through a variety of dynamic and static verification techniques. In terms of dynamic methods, a variety of system and unit tests will be performed on the written code. More information on these tests can be found in sections 5 and 6 of this document. These tests will be created by the entire team. More specifically, the people who work on a certain functionality of Utrition will be responsible for creating the corresponding test cases. These tests will be automated and run on the system whenever new code is pushed to the team's master branch on GitHub. This ensures that new code does not create any regressions in the current system. Alexander Moica will be the dynamic verification lead which entails monitoring new test case additions and ensuring full testing coverage of new code which includes edge cases and error cases.\\
+	Verifying Utrition's implementation will be done through a variety of dynamic and static verification techniques. In terms of dynamic methods, a variety of system and unit tests will be performed on the written code. More information on these tests can be found in sections 5 and 6 of this document. These tests will be created by the entire team. More specifically, the people who work on a certain functionality of Utrition will be responsible for creating the corresponding test cases. These tests will be automated and run on the system whenever new code is pushed to the team's main branch on GitHub. This ensures that new code does not create any regressions in the current system. Alexander Moica will be the dynamic verification lead which entails monitoring new test case additions and ensuring full testing coverage of new code which includes edge cases and error cases.\\
 	
-	Static verification will be done primarily through coding standards and code inspections. When writing code, each team member will be responsible for abiding by the coding guidelines outlined in Utrition's \href{https://github.com/jeff-rey-wang/utrition/blob/dff32f8ddc662d07db9bd74e0b3705aa657dae6e/docs/DevelopmentPlan/DevelopmentPlan.pdf}{Development Plan} in section 7. Python development will use the linter Pylint to enforce PEP8 standards. The Google style guides for JavaScript, HTML, and CSS will need to be followed manually. Additionally, coding inspections will be done for every new PR that is made to the team's master branch in GitHub. Before any PR is merged, at least one team member will be required to review the incoming code. During these reviews, team members will ensure complete functionality fulfillment inline with documentation, proper coding style, efficient implementation practices, and consistent naming practices for files, functions, and varibles. Jeffrey Wang will lead this static verification plan to ensure all coding inspections are completed and answer any questions regarding static verification.
+	Static verification will be done primarily through coding standards and code inspections. When writing code, each team member will be responsible for abiding by the coding guidelines outlined in Utrition's \href{https://github.com/jeff-rey-wang/utrition/blob/dff32f8ddc662d07db9bd74e0b3705aa657dae6e/docs/DevelopmentPlan/DevelopmentPlan.pdf}{Development Plan} in section 7. Python development will use the linter Pylint to enforce PEP8 standards. The Google style guides for JavaScript, HTML, and CSS will need to be followed manually. Additionally, coding inspections will be done for every new PR that is made to the team's main branch in GitHub. Before any PR is merged, at least one team member will be required to review the incoming code. During these reviews, team members will ensure complete functionality fulfillment inline with documentation, proper coding style, efficient implementation choices, and consistent naming practices for files, functions, and variables. Jeffrey Wang will lead this static verification plan to ensure all coding inspections are completed and answer any questions regarding static verification.
 	
 	\subsection{Automated Testing and Verification Tools}
 	
@@ -248,7 +246,7 @@
 	
 	\wss{This section might reference back to the SRS verification section.}
 	
-	In order to validate Utrition's implementation, interviews will be scheduled with potential users. In these interviews, the interview conducter will walk through the functional requirements of the system with the interviewee. The interviewee will be asked for their feedback on the current requirements of the system. This feedback may include adding or removing specific functionality (i.e. altering requirements). Software validation will be lead by Yasmine Jolly. 
+	In order to validate Utrition's implementation, interviews will be scheduled with potential users. In these interviews, the interview conductor will walk through the functional requirements of the system with the interviewee. The interviewee will be asked for their feedback on the current requirements of the system. This feedback may include adding or removing specific functionality (i.e. altering requirements). Software validation will be led by Yasmine Jolly. 
 	
 	\section{System Test Description}
 	
@@ -947,7 +945,7 @@
 		requirements.}
 	
 	\begin{table}[H]
-		\caption{\bf Non-Functional Traceability Matrix}
+		\caption{Non-Functional Traceability Matrix}
 		\begin{tabularx}{\textwidth}{|l|X|l|}
 			\hline
 			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
