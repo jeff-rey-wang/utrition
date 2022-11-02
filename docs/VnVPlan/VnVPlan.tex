@@ -207,7 +207,21 @@
 	
 	Verifying Utrition's implementation will be done through a variety of dynamic and static verification techniques. In terms of dynamic methods, a variety of system and unit tests will be performed on the written code. More information on these tests can be found in sections 5 and 6 of this document. These tests will be created by the entire team. More specifically, the people who work on a certain functionality of Utrition will be responsible for creating the corresponding test cases. These tests will be automated and run on the system whenever new code is pushed to the team's master branch on GitHub. This ensures that new code does not create any regressions in the current system. Alexander Moica will be the dynamic verification lead which entails monitoring new test case additions and ensuring full testing coverage of new code which includes edge cases and error cases.\\
 	
-	Static verification will be done primarily through coding standards and code inspections. When writing code, each team member will be responsible for abiding by the coding guidelines outlined in Utrition's \href{https://github.com/jeff-rey-wang/utrition/blob/dff32f8ddc662d07db9bd74e0b3705aa657dae6e/docs/DevelopmentPlan/DevelopmentPlan.pdf}{Development Plan} in section 7. Python development will use the linter Pylint to enforce PEP8 standards. The Google style guides for JavaScript, HTML, and CSS will need to be followed manually. Additionally, coding inspections will be done for every new PR that is made to the team's master branch in GitHub. Before any PR is merged, at least one team member will be required to review the incoming code. During these reviews, team members will ensure complete functionality fulfillment inline with documentation, proper coding style, efficient implementation practices, and consistent naming practices for files, functions, and varibles. Jeffrey Wang will lead this static verification plan to ensure all coding inspections are completed and answer any questions regarding static verification.
+	Static verification will be done primarily through coding standards and 
+	code inspections. When writing code, each team member will be responsible 
+	for abiding by the coding guidelines outlined in Utrition's 
+	\href{https://github.com/jeff-rey-wang/utrition/blob/dff32f8ddc662d07db9bd74e0b3705aa657dae6e/docs/DevelopmentPlan/DevelopmentPlan.pdf}{Development
+	 Plan} in section 7. Python development will use the linter Pylint to 
+	enforce PEP8 standards. The Google style guides for JavaScript, HTML, and 
+	CSS will need to be followed manually. Additionally, coding inspections 
+	will be done for every new PR that is made to the team's master branch in 
+	GitHub. Before any PR is merged, at least one team member will be required 
+	to review the incoming code. During these reviews, team members will ensure 
+	complete functionality fulfillment inline with documentation, proper coding 
+	style, efficient implementation practices, and consistent naming practices 
+	for files, functions, and variables. Jeffrey Wang will lead this static 
+	verification plan to ensure all coding inspections are completed and answer 
+	any questions regarding static verification.
 	
 	\subsection{Automated Testing and Verification Tools}
 	
@@ -632,42 +646,7 @@
 	\wss{Static tests, review, inspections, and walkthroughs, will not follow 
 	the
 		format for the tests given below.}
-	
-	\subsubsection{Area of Testing1}
-	
-	\paragraph{Title for Test}
-	
-	\begin{enumerate}
-		
-		\item{test-id1\\}
-		
-		Type: Functional, Dynamic, Manual, Static etc.
-		
-		Initial State: 
-		
-		Input/Condition: 
-		
-		Output/Result: 
-		
-		How test will be performed: 
-		
-		\item{test-id2\\}
-		
-		Type: Functional, Dynamic, Manual, Static etc.
-		
-		Initial State: 
-		
-		Input: 
-		
-		Output: 
-		
-		How test will be performed: 
-		
-	\end{enumerate}
-	
-	\subsubsection{Area of Testing2}
-	
-	...
+
 	
 	\subsubsection{Look and Feel Testing}
 	
@@ -895,7 +874,33 @@
 			\item The user is able to view the nutritional information for all 3 food items in 5 or less seconds.
 		\end{itemize}
 		
-		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and click on the “Upload Image” button. The developer will upload a random image of a food item found in the testPhotos directory, and then click on the “Add More” button. The developer uploads 2 more random images of different food items and clicks to view the foods’ nutritional information. The developer measures the amount of time it takes for Utrition to notify the user the name of the identified food items. The developer measures the amount of time it takes for the system to change from the food identification interface to the nutritional information interface.
+		How test will be performed: A developer on Durum Wheat Semolina will 
+		open Utrition and click on the “Upload Image” button. The developer 
+		will upload a random image of a food item found in the testPhotos 
+		directory, and then click on the “Add More” button. The developer 
+		uploads 2 more random images of different food items and clicks to view 
+		the foods’ nutritional information. The developer measures the amount 
+		of time it takes for Utrition to notify the user the name of the 
+		identified food items. The developer measures the amount of time it 
+		takes for the system to change from the food identification interface 
+		to the nutritional information interface.
+		
+		\item{nutrition-display-performance-1\\}
+		
+		Type: Automatic
+		
+		Initial State: Nutritional data of a food item is contained in the 
+		system.
+		
+		Input/Condition: Request to display the nutritional information of a 
+		food item.
+		
+		Output/Result: System will generate the HTML body to be displayed on 
+		the user 
+		interface.
+		
+		How test will be performed: The test will measure if this interaction 
+		was completed in 5 seconds or less.
 		
 		\item{NFR12\\} 
 		
@@ -921,7 +926,44 @@
 			\item Orange Juice
 		\end{itemize} 
 		
-		The developer will check the accuracy of each identified food item and their respective nutritional facts.
+		The developer will check the accuracy of each identified food item and 
+		their respective nutritional facts.
+		
+		\item{image-identification-accuracy-1\\}
+		
+		Type: Automatic
+		
+		Initial State: System contains a set of images; all with foods, and of 
+		extension .jpg, .png, or .jpeg.
+		
+		Input/Condition: System prompted to process image, for each image 
+		within the provided set.
+		
+		Output/Result: For each image, the system should identify the food 
+		present in an image, and return the name of the food item as a string.
+		
+		How test will be performed: The test will check if among all the 
+		provided images, more than 90\% of the images have been assessed 
+		correctly.
+		
+		\item{identification-accuracy-2\\}
+		
+		Type: Automatic
+		
+		Initial State: System contains a set of images; some with and others 
+		without foods, and of extension .jpg, .png, or 
+		.jpeg.
+		
+		Input/Condition: System prompted to process image, for each image 
+		within the provided set.
+		
+		Output/Result: The system should identify the food present in an image, 
+		and return the name of the food item as a string, and prompt the user 
+		if no food is detected.
+		
+		How test will be performed: The test will check if among all the 
+		provided images, more than 70\% of the images have been assessed 
+		correctly.
 		
 		\item{NFR13\\} 
 		
@@ -969,7 +1011,26 @@
 		
 		Output/Result: The user is notified that Utrition is not confident in the system’s identification. The system will suggest to upload another image.
 		
-		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and click on the “Upload Image” button. The developer will upload “desk.jpg” found in the testPhotos directory. The developer is notified that the machine learning algorithm is not confident in the identification of the food, and that they should upload another image.
+		How test will be performed: A developer on Durum Wheat Semolina will 
+		open Utrition and click on the “Upload Image” button. The developer 
+		will upload “desk.jpg” found in the testPhotos directory. The developer 
+		is notified that the machine learning algorithm is not confident in the 
+		identification of the food, and that they should upload another image.
+		
+		\item{failed-identification-1\\}
+		
+		Type: Automatic
+		
+		Initial State: System is identifying food objects within the user's 
+		uploaded image(s).
+		
+		Input/Condition: Uploaded image.
+		
+		Output/Result: Error message is displayed prompting user of a failed 
+		identification.
+		
+		How test will be performed: Test will check if an error message element 
+		has been rendered.
 		
 		\item{NFR17\\}
 		Type: Functional, Dynamic, and Manual.
@@ -1182,7 +1243,7 @@
 	
 	\begin{table}[H]
 		\caption{\bf Non-Functional Traceability Matrix}
-		\begin{tabularx}{\textwidth}{|l|X|l|}
+		\begin{tabularx}{\linewidth}{|l|X|l|}
 			\hline
 			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
 			\hline
@@ -1203,7 +1264,9 @@
 			\hline
 			PR1 & The time between the user’s click and displaying the new UI will not exceed 2 seconds. & NFR10 \\
 			\hline
-			PR2 & After uploading a picture, Utrition will always display the identified food item within 10 seconds in a test with multiple images. & NFR11 \\
+			PR2 & After uploading a picture, Utrition will always display the 
+			identified food item within 10 seconds in a test with multiple 
+			images. & NFR11 \\
 			\hline
 		\end{tabularx}
 		\label{tab:Non-Functional Traceability}
@@ -1213,7 +1276,10 @@
 			\hline
 			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
 			\hline
-			PR3 & After identifying the correct food item, Utrition will always display the nutritional facts within 5 seconds in a test with multiple images. & NFR11 \\
+			PR3 & After identifying the correct food item, Utrition will always 
+			display the nutritional facts within 5 seconds in a test with 
+			multiple images. & \begin{tabular}[c]{@{}l@{}}
+				NFR11,\\nutrition-\\display-\\performance-1\end{tabular}\\
 			\hline
 			PR4 & Error message should prompt user upon upload of an abnormal 
 			image. & NFR20\\
@@ -1225,7 +1291,9 @@
 			images. & NFR13\\
 			\hline
 			PR7 & Error message should prompt user upon failure to identify 
-			any food items in the uploaded image. & NFR16\\
+			any food items in the uploaded image. & 
+			\begin{tabular}[c]{@{}l@{}}NFR16,\\failed-\\identification-1 
+			\end{tabular}\\
 			\hline
 			PR8 & Error message should prompt user to try again upon failure 
 			to request nutritional info regarding food items in the uploaded image. & NFR17\\
@@ -1249,13 +1317,20 @@
 	\end{table}
 	
 	\begin{table}[H]
+		%identification-accuracy-2
 		\begin{tabularx}{\textwidth}{|l|X|l|}
 			\hline
 			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
 			\hline
-			PR14 & In a test with multiple images, Utrition will identify and display the correct food with an average accuracy of 70\%. & NFR12\\
+			PR14 & In a test with multiple images, Utrition will identify and 
+			display the correct food with an average accuracy of 70\%. & 
+			\begin{tabular}[c]{@{}l@{}}NFR12\\ 
+						identification-\\accuracy-2 \end{tabular}\\
 			\hline
-			PR15 & In a test with multiple images, Utrition will display the correct nutritional information for an identified food 90\% of the time. & NFR12\\
+			PR15 & In a test with multiple images, Utrition will display the 
+			correct nutritional information for an identified food 90\% of the 
+			time. & \begin{tabular}[c]{@{}l@{}}NFR12\\ 
+						identification-\\accuracy-1 \end{tabular}\\
 			\hline
 			PR16 & Since Utrition is a local web app, the user will always be allowed to use Utrition unless their device or internet connection is down. & NFR12\\
 			\hline
@@ -1334,272 +1409,15 @@
 	
 	\wss{Include a blurb here to explain why the subsections below
 		cover the requirements.  References to the SRS would be good.}
+
 	
-	The functional requirements of the system will be broken down into general phases of the system's functionality: Image Processing, API Calls, Reading and Writing to Database, and Displaying to User Interface. These subsections cover the functional requirements outlined in the SRS document.
-	
-	\subsubsection{Image Processing}
 	
 	\wss{It would be nice to have a blurb here to explain why the subsections below
 		cover the requirements.  References to the SRS would be good.  If a section
 		covers tests for input constraints, you should reference the data constraints
 		table in the SRS.}
 	
-	The following set of tests correlate FR1, FR2, and FR3 in the SRS document. Manual testing will be used, in which the tester will upload images according to the test plans to validate the proper response to the input. Automated testing will be used to verify the system's image identification process.
-	
-	\paragraph{Image Upload}
-	
-	\begin{enumerate}
-		
-		\item{image-upload-1\\}
-		
-		Control: Manual
-		
-		Initial State: No image in the system.
-		
-		Input: An image file of extension .png will be uploaded into the system.
-		
-		Output: The system will contain the uploaded image of type .png.
-		
-		Test Case Derivation: The system should save the inputted image, so that further processing can be done on the image.
-		
-		How test will be performed: An image of type .png will be saved on the tester's device. The tester will upload this image to the system.
-		
-		\item{image-upload-2\\}
-		
-		Control: Manual
-		
-		Initial State: No image in the system.
-		
-		Input: An image file of extension .jpg will be uploaded into the system.
-		
-		Output: The system will contain the uploaded image of type .jpg.
-		
-		Test Case Derivation: The system should save the inputted image, so that further processing can be done on the image.
-		
-		How test will be performed: An image of type .jpg will be saved on the tester's device. The tester will upload this image to the system.
-		
-		\item{image-upload-3\\}
-		
-		Control: Manual
-		
-		Initial State: No image in the system.
-		
-		Input: An image file of extension .jpeg will be uploaded into the system.
-		
-		Output: The system will contain the uploaded image of type .jpeg.
-		
-		Test Case Derivation: The system should save the inputted image, so that further processing can be done on the image.
-		
-		How test will be performed: An image of type .jpeg will be saved on the 
-		tester's device. The tester will upload this image to the system.
-		
-		\item{image-upload-4\\}
-		
-		Control: Manual
-		
-		Initial State: No image in the system.
-		
-		Input: A file of extension .txt will be uploaded into the system.
-		
-		Output: The system will not contain the uploaded file. An error message will be returned.
-		
-		Test Case Derivation: The system should only save the inputted image if it is of the proper file extension.
-		
-		How test will be performed: A file of type .txt will be saved on the tester's device. The tester will upload this file to the system.
-		
-		\item{image-upload-3\\}
-		
-		Control: Manual
-		
-		Initial State: No image in the system.
-		
-		Input: An image file of extension .jpeg and a second image file of extension .png will be uploaded into the system.
-		
-		Output: The system will contain the two uploaded images of type .jpeg and .png.
-		
-		Test Case Derivation: The system should save the inputted images when multiple digital images are uploaded, so that further processing can be done on the image.
-		
-		How test will be performed: An image of type .jpeg and an image of type .png will be saved on the tester's device. The tester will upload these images to the system.
-		
-	\end{enumerate}
-	
-	\paragraph{Image Identification}
-	
-	\begin{enumerate}
-		
-		\item{image-identification-1\\}
-		
-		Control: Automatic
-		
-		Initial State: System contains an image of extension .png type.
-		
-		Input: System is prompted to process the image.
-		
-		Output: The type of food that is captured in the image is returned as a string.
-		
-		Test Case Derivation: The system should identify the food present in an image, and return the name of the food item as a string.
-		
-		How test will be performed: The system identified item will be verified that it matches the true item contained in the image.
-		
-		\item{image-identification-2\\}
-		
-		Control: Automatic
-		
-		Initial State: System contains an image of extension .jpg type.
-		
-		Input: System is prompted to process the image.
-		
-		Output: The type of food that is captured in the image is returned as a string.
-		
-		Test Case Derivation: The system should identify the food present in an image, and return the name of the food item as a string.
-		
-		How test will be performed: The system identified item will be verified that it matches the true item contained in the image.
-		
-		\item{image-identification-3\\}
-		
-		Control: Automatic
-		
-		Initial State: System contains an image of extension .jpeg type.
-		
-		Input: System is prompted to process the image.
-		
-		Output: The type of food that is captured in the image is returned as a string.
-		
-		Test Case Derivation: The system should identify the food present in an image, and return the name of the food item as a string.
-		
-		How test will be performed: The system identified item will be verified that it matches the true item contained in the image.
-		
-	\end{enumerate}
-	
-	\paragraph{Call and Fetch API Response}
-	
-	\begin{enumerate}
-		
-		\item{api-1\\}
-		
-		Control: Automatic
-		
-		Initial State: System on standby.
-		
-		Input: Food item name as a string.
-		
-		Output: JSON containing nutirition facts for the inputted food item.
-		
-		Test Case Derivation: A request will be made to the Nutritionix API with the food item name, which will return a response body containing the food item's nutrition facts.
-		
-		How test will be performed: The API response will be verified that the contents are as expected.
-		
-	\end{enumerate}
-	
-	\subsubsection{Reading and Writing to Database}
-	
-	The following tests cover  FR6 and FR7 in the SRS document. Automated unit tests will be used to verify that the system is log and read from the database.
-	
-	\paragraph{Logging Data}
-	
-	\begin{enumerate}
-		
-		\item{log-data-1\\}
-		
-		Control: Automatic
-		
-		Initial State: System contains nutritional data of a food item.
-		
-		Input: Request to log the data to the database.
-		
-		Output: Database is updated as the system writes the data to the database.
-		
-		Test Case Derivation: Nutritional data of a food will be saved for future reference. This is done by logging the data to the database.
-		
-		How test will be performed: After the system receives the request to update the database, the database will be verified that it is updated with the new data.
-		
-	\end{enumerate}
-	
-	\paragraph{Reading Data}
-	
-	\begin{enumerate}
-		
-		\item{read-data-1\\}
-		
-		Control: Automatic
-		
-		Initial State: Database contains nutritional data of a food item.
-		
-		Input: Request to fetch the data of a particular food item.
-		
-		Output: Nutritional data of the requested food item.
-		
-		Test Case Derivation: The system shall be able to fetch previously recorded data.
-		
-		How test will be performed: After the system receives the request to fetch the data of a food item, the returned data will be verified that it matches with the saved data in the database.
-		
-		\item{read-data-2\\}
-		
-		Control: Automatic
-		
-		Initial State: Database contains nutritional data of 5 different dates.
-		
-		Input: Request to fetch the data from the last 3 most recent dates.
-		
-		Output: A list of the nutritional data from the last 3 most recent dates.
-		
-		Test Case Derivation: The system shall be able to fetch previously recorded data. The system shall be able to fetch data from a range of dates.
-		
-		How test will be performed: The nutritional data from the 3 most recent dates will be verified if it matches the data in the database.
-		
-		\item{read-data-3\\}
-		
-		Control: Automatic
-		
-		Initial State: Database contains nutritional data.
-		
-		Input: Request to fetch the data of a particular food item that is not logged in the database.
-		
-		Output: No data is returned.
-		
-		Test Case Derivation: The system shall be able to fetch previously recorded data. This is an edge case for if the system is requested to read data from the database that does not exist. In this case, no data will be returned.
-		
-		How test will be performed: The output will be verified to be empty.
-		
-	\end{enumerate}
-	
-	\subsubsection{Displaying to User Interface}
-	
-	The following tests cover  FR8 and FR9 in the SRS document. Automated unit tests will be used to validate the generated visual display.
-	
-	\paragraph{Visualize Data}
-	
-	\begin{enumerate}
-		
-		\item{visualize-1\\}
-		
-		Control: Automatic
-		
-		Initial State: Nutritional data of a food item is contained in the system.
-		
-		Input: Request to display the nutritional information of a food item.
-		
-		Output: System will generate the HTML body to be displayed on the user interface.
-		
-		Test Case Derivation: The nutritional data of a particular food item shall be displayed on the user interface. The system will generate the frontend script to display this data.
-		
-		How test will be performed: The generated HTML body will be verified that it matches the expected output.
-		
-		\item{visualize-2\\}
-		
-		Control: Automatic
-		
-		Initial State: Database contains nutritional data of 5 different dates.
-		
-		Input: Request to display the past 5 dates of nutritional data in a graph.
-		
-		Output: System will generate the HTML body to be displayed on the user interface.
-		
-		Test Case Derivation: The history of logged nutritional data shall be displayed in a graph on the user interface. The system will generate the frontend script to display this data.
-		
-		How test will be performed: The generated HTML body will be verified that it matches the expected output.
-		
-	\end{enumerate}
+
 	
 	\subsection{Tests for Nonfunctional Requirements}
 	
@@ -1611,196 +1429,8 @@
 	\wss{These tests may involve collecting performance data from previously
 		mentioned functional tests.}
 	
-	The nonfunctional requirements of the system will be broken down in the 
-	same manner as done so in section 6.2 (Tests for Functional Requirements).
-	
-	\subsubsection{Image Processing}
-	
-	\paragraph{Image Upload}
-	
-	\begin{enumerate}
-		
-		\item{bad-image-1\\}
-		
-		Type: Automatic \wss{Functional, Dynamic, Manual, Automatic, Static 
-		etc. Most will
-			be automatic}
-		
-		Initial State: User is about to upload an image to the system.
-		
-		Input/Condition: Uploaded image is of an abnormal format.
-
-		Output/Result: Error message is displayed prompting user of their 
-		mistake.
-		
-		How test will be performed: Test will check if an error message element 
-		has been rendered.
-		
-		\item{bad-image-2\\}
-		
-		Type: Automatic
-		
-		Initial State: User is about to upload an image to the system.
-		
-		Input/Condition: Uploaded image exceeds the maximum size.
-		
-		Output/Result: Error message is displayed prompting user of their 
-		mistake.
-		
-		How test will be performed: Test will check if an error message element 
-		has been rendered.
-		
-		
-		\item{bad-image-3\\}
-
-		Type: Automatic
-		
-		Initial State: User is about to upload images to the system.
-		
-		Input/Condition: More than three images are attempting to be uploaded.
-		
-		Output/Result: Error message is displayed prompting user of their 
-		mistake.
-		
-		How test will be performed: Test will check if an error message element 
-		has been rendered.
-	\end{enumerate}
-
-	\paragraph{Image Identification}
-	
-	\begin{enumerate}
-		
-		\item{failed-identification-1\\}
-		
-		Type: Automatic
-		
-		Initial State: System is identifying food objects within the user's 
-		uploaded image(s).
-		
-		Input/Condition: Uploaded image.
-		
-		Output/Result: Error message is displayed prompting user of a failed 
-		identification.
-		
-		How test will be performed: Test will check if an error message element 
-		has been rendered.
-		
-		\item{image-identification-accuracy-1\\}
-		
-		Type: Automatic
-		
-		Initial State: System contains a set of images; all with foods, and of 
-		extension .jpg, .png, or .jpeg, in accordance with scenarios outline in 
-		image-identification-1,2,3.
-		
-		Input/Condition: System prompted to process image, for each image 
-		within the provided set.
-		
-		Output/Result: For each image, the system should identify the food 
-		present in an image, and return the name of the food item as a string.
-		
-		How test will be performed: The test will check if among all the 
-		provided images, more than 90\% of the images have been assessed 
-		correctly.
-		
-		\item{identification-accuracy-2\\}
-		
-		Type: Automatic
-		
-		Initial State: System contains a set of images; some with and others 
-		without foods, and of extension .jpg, .png, or 
-		.jpeg, in accordance with scenarios outline in 
-		image-identification-1,2,3.
-		
-		Input/Condition: System prompted to process image, for each image 
-		within the provided set.
-		
-		Output/Result: The system should identify the food present in an image, 
-		and return the name of the food item as a string, and prompt the user 
-		if no food is detected.
-		
-		How test will be performed: The test will check if among all the 
-		provided images, more than 70\% of the images have been assessed 
-		correctly.
-		
-		\item{identification-performance-2\\}
-		
-		Type: Automatic
-		
-		Initial State: System contains a set of images; some with and others 
-		without foods, and of extension .jpg, .png, or 
-		.jpeg, in accordance with scenarios outline in 
-		image-identification-1,2,3.
-		
-		Input/Condition: System prompted to process image, for each image 
-		within the provided set.
-		
-		Output/Result: The system should identify the food present in an image, 
-		and return the name of the food item as a string, and prompt the user 
-		if no food is detected.
-		
-		How test will be performed: The test will check if among all the 
-		provided images, all requests were completed under 10 seconds each.
-	\end{enumerate}
-	\subsubsection{Displaying to User Interface}
-	
-	\paragraph{Visualize Data}
-	\begin{enumerate}
-		\item{visualization-performance-1\\}
-		
-		Type: Automatic
-		
-		Initial State: Nutritional data of a food item is contained in the 
-		system.
-		
-		Input/Condition: Request to display the nutritional information of a 
-		food item.
-		
-		Output/Result: System will generate the HTML body to be displayed on 
-		the user 
-		interface.
-		
-		How test will be performed: The test will measure if this interaction 
-		was completed in 5 seconds or less.
-		
-		\item{visualize-performance-2\\}
-		
-		Control: Automatic
-		
-		Initial State: Database contains nutritional data of 5 different dates.
-		
-		Input/Condition: Request to display the past 5 dates of nutritional 
-		data in a graph.
-		
-		Output/Result: System will generate the HTML body to be displayed on 
-		the user interface.
-		
-		How test will be performed: The test will measure if this interaction 
-		was completed in 5 seconds or less.
-		
-	\end{enumerate}
-	
 	\subsection{Traceability Between Test Cases and Modules}
 	
-		\begin{table}[H]
-		
-		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
-			
-			\hline
-			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
-			FR1                     & The user must have the ability to upload a digital image of a standard image type to the system.                                                                                      & \begin{tabular}[c]{@{}l@{}}image-upload-1\\ image-upload-2\\image-upload-3\\image-upload-4\end{tabular}                                                                                                    \\ \hline
-			FR2                     & The user shall have the ability to upload multiple digital images of standard image types to the system.                                                                              & \begin{tabular}[c]{@{}l@{}}image-upload-4\\ image-upload-5\end{tabular}                                                                                                  \\ \hline
-			FR3                     & The system will be able to identify the type of food that is captured in an image.                                                                                                    & image-identification-1, image-identification-2, image-identification-3                                                                                          \\ \hline
-			FR4                     & The system will be able to make an API call to an external database of nutrition facts for a variety of foods, including their macro-nutrients, micro-nutrients, and caloric details. & api-1                                                                                          \\ \hline
-			FR5                     & The system will be able to retrieve the nutrition facts for a specific food.                                                                                                          &  \begin{tabular}[c]{@{}l@{}}read-data-1\\ api-1\\\end{tabular}                                                                                          \\ \hline
-			FR6                     & The system will log the nutritional data of a food.                                                                                                                                   & log-data-1                                                                                          \\ \hline
-			FR7                     & The user will be able to access the nutritional data of previously logged foods.                                                                                                      & \begin{tabular}[c]{@{}l@{}}read-data-1\\ read-data-2\\read-data-3\end{tabular}                       \\ \hline
-			FR8                     & The system will display the nutritional information of a food to the user.                                                                                                            & visualize-1\\ \hline
-			FR9                     & The system will display the history of logged nutritional data in a graph.                                                                                                            & visualize-2                                                                                  \\ \hline
-			
-		\end{tabular}
-		\caption {Traceability between Unit Tests and Functional Requirements}
-	\end{table}
 	
 	\wss{Provide evidence that all of the modules have been considered.}
 	
