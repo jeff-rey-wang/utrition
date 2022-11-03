@@ -89,9 +89,9 @@
 	\wss{Say what software is being tested.  Give its name and a brief overview 
 	of
 		its general functions.}
-		The purpose behind this document is to provide the testing plan that Utrition will undergo during its development period. This plan will ensure a high quality final product. Utrition is an application that allows individuals to discover the nutritional value of the foods they are consuming and track their previously eaten meals. This software consists of three main functions that are being tested such as image processing and identification, displaying an interface for the user, and writing to a database. (COME BACK TO THESE FUNCTIONS)
+		The purpose behind this document is to provide the testing plan that Utrition will undergo during its development period. This plan will ensure a high-quality final product. Utrition is an application that allows individuals to discover the nutritional value of the foods they are consuming and track their previously eaten meals. This software consists of three main functions that are being tested such as image upload, image processing, and displaying nutritional information.
 	
-	\subsection{Objectives} (REDO)
+	\subsection{Objectives}
 	
 	\wss{State what is intended to be accomplished.  The objective will be 
 	around
@@ -101,11 +101,7 @@
 		qualities,
 		just those that are most important.}
 		
-		The objectives behind the design of the testing plan for Utrition is to design to code to fit various qualities to ensure the effectiveness of the final product. Firstly, the developers of Utrition would like to ensure the correctness of this application as this is a health based application. We want to ensure that the artificial intelligence can correctly identify the food that is in the image and therefore output the correct nutritional information. Additionally the Utrition application is expected to be robust and to be able to deal with very common errors that may potentially occur such as a user uploading an image of the wrong type. All tests written in this document are written to ensure that the code meets these objectives standards. 
-
-- build confidence in image identification AI
-- Ensure nutrition facts are correct
-- Prevent crashing of the system with unusual inputs
+		The objectives for Utrition's VnV plan is to confirm that the implementation and documentation is as effective as possible to produce the best final product. Firstly, the developers of Utrition would like to ensure the correctness of the application's internal processes. The team must ensure that the artificial intelligence can correctly identify the food that is depicted in the uploaded image. The output the nutritional information must also be correct. Since the application is health-based, all nutritional facts must be correct since users will be using this information to influence their eating habits. Additionally, the Utrition application must be robust in order to deal with common and uncommon errors that may potentially occur. One such error is the user uploading an image of the wrong type. All tests in this document are written to ensure that the code meets these objectives. 
 	
 	\subsection{Relevant Documentation}
 	
@@ -276,7 +272,7 @@
 		
 		Initial State: No image in the system.
 		
-		Input: An image file.
+		Input: An image file of type .png, .jpg, or .jpeg (images found in utrition/test/testPhotos directory).
 		
 		Output: The system accepts the image upload.
 		
@@ -291,7 +287,7 @@
 		
 		Initial State: No image in the system.
 		
-		Input: A file of extension .txt will be uploaded into the system.
+		Input: A file of extension .txt will be uploaded into the system (found in utrition/test/testPhotos directory).
 		
 		Output: The system will not contain the uploaded file. An error message 
 		will be returned.
@@ -314,7 +310,7 @@
 		
 		Initial State: No image in the system.
 		
-		Input: Three image files.
+		Input: Three image files of type .png, .jpg, or .jpeg (images found in utrition/test/testPhotos directory).
 		
 		Output: The system accepts the image uploads.
 		
@@ -557,7 +553,7 @@
 		How test will be performed: The program will automatically test that a file of pre-logged foods can be processed to return their corresponding nutritional data in the form of a graph.
 		
 	\end{enumerate}
-	\subsection{Traceability Between Test Cases and Requirements}
+	\subsection{Traceability Between Test Cases and Functional Requirements}
 	
 	\newpage
 	\begin{table}[H]
@@ -1167,7 +1163,7 @@
 		
 	\end{enumerate}
 	
-	\subsection{Traceability Between Test Cases and Requirements}
+	\subsection{Traceability Between Test Cases and Non-Functional Requirements}
 	
 	\wss{Provide a table that shows which test cases are supporting which
 		requirements.}
