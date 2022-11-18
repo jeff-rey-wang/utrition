@@ -1,0 +1,17 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type='text/javascript' src="{{url_for('static', filename='js/index.js')}}"></script>
+</head>
+
+<body>
+    <h1>Our Home Page</h1>
+    <form action = "/" method = "POST">
+        <p><input type = "submit" value = "Run Model" /></p>
+     </form>   
+    <p>Variable from backend: {{ food }}</p>
+</body>
+
+</html>
