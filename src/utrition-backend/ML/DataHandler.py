@@ -5,7 +5,7 @@ import pickle
 def unpickle(file):
 	with open(file, 'rb') as f: #files are in byte stream
 		dict = pickle.load(f, encoding='latin1') #convert from byte stream to object
-		if (file == 'cifar-100-python/meta'):
+		if (file == 'ML/cifar-100-python/meta'):
 			x = (dict['fine_label_names'])
 			return x
 		else:
@@ -15,9 +15,9 @@ def unpickle(file):
 
 def load_data(flag, PA):
 
-	trainFile = 'cifar-100-python/train'
-	testFile = 'cifar-100-python/test'
-	metaFile = 'cifar-100-python/meta'
+	trainFile = 'ML/cifar-100-python/train'
+	testFile = 'ML/cifar-100-python/test'
+	metaFile = 'ML/cifar-100-python/meta'
 
 	data_train, fine_train = unpickle(trainFile)
 	data_test, fine_test = unpickle(testFile)
