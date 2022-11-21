@@ -6,7 +6,7 @@ const ImageUpload = () => {
   const [image, setImage] = useState("");
   const [responseData, setResponseData] = useState("");
   function handleImage(e) {
-    setImage(e.target.files[0]);
+    setImage(e.target.files[0].name);
   }
   function handleApi() {
     //const formData = new FormData();
@@ -33,6 +33,15 @@ const ImageUpload = () => {
   }*/
 
   function getData() {
+    axios({
+      method: "POST",
+      url:"/upload",
+      data: {path:JSON.stringify(image)},
+    })
+    .then(response => response.json())
+    .catch(error => console.log(error))
+
+
     axios({
       method: "GET",
       url:"/upload",

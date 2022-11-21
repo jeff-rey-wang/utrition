@@ -3,20 +3,17 @@ import ML.Interface as interface
 
 home_view = Blueprint('home_view', __name__)
 
+foodPath = ""
+
 @home_view.route('/upload', methods=['GET', 'POST'])
 def display_index():
+	global foodPath
+
 	if request.method == 'POST':
-		content_type = request.headers.get('Content-Type')
-		if (content_type == 'application/json'):
-			foodPath = request.get_json()
-			return foodPath
-		else:
-			return "Content type is not supported."
+		foodPath = request.get_json()
+		return foodPath
 	else:
-		foodPath = "./ML/orange.jpeg" # make this from user input
-		#myFood = "orange"
-		myFood = interface.open(foodPath)
+		myFood = interface.open("./ML/"+foodPath["path"].strip(' " " '))
 		return jsonify(myFood)
 		# Make call to api here
 		# Should return food and nutritionix api call 
-	#return render_template('index.html')
