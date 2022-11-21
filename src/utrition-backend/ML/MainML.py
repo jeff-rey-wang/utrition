@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 import time
-import DataHandler
+import ML.DataHandler
 
 def startModel(flag, PA):
 	beginTime = time.time() #start timer to find time elapsed in identifying image
@@ -12,11 +12,14 @@ def startModel(flag, PA):
 	max_steps = 1000 #number of forward and backward passed on a batch. Larger max steps = overfitting, smaller max steps = uderfitting
 
 	# Prepare data
-	data_sets = DataHandler.load_data(flag, PA)
+	data_sets = ML.DataHandler.load_data(flag, PA)
 
 	# -----------------------------------------------------------------------------
 	# Prepare the TensorFlow graph
 	# -----------------------------------------------------------------------------
+
+	# Result of classification
+	result = ""
 
 	# Define input placeholders
 	tf.compat.v1.disable_eager_execution()
@@ -72,7 +75,10 @@ def startModel(flag, PA):
 				print("-"*30)
 				print("Image classified as:", data_sets['classes'][i]) #display label
 				print("-"*30)
+				result = data_sets['classes'][i]
 
 	
 	endTime = time.time() #stop timer
 	print('Total time: {:5.2f}s'.format(endTime - beginTime))
+
+	return result
