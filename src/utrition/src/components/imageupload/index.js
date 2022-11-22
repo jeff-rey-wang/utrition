@@ -8,29 +8,6 @@ const ImageUpload = () => {
   function handleImage(e) {
     setImage(e.target.files[0].name);
   }
-  function handleApi() {
-    //const formData = new FormData();
-    //formData.append("image", image);
-
-    /*axios.post("http://localhost:5000/upload", { foodPath: image }).then((res) => {
-      console.log(res);
-    });*/
-
-    APIService.GiveImagePath({image})
-    .then((res) => console.log(res))
-    .catch(error => console.log('error',error))
-
-    // axios.post("url", formData).then((res) => {
-    //   console.log(res);
-    // });
-  }
-
-  /*function requestApi() {
-    axios.get(`https://randomuser.me/api`).then(({ data }) => {
-      console.log(data);
-      return JSON.stringify(data, null, 2);
-    });
-  }*/
 
   function getData() {
     axios({
@@ -61,8 +38,7 @@ const ImageUpload = () => {
   return (
     <div style={{}}>
       <input type="file" name="file" onChange={handleImage} />
-      <button onClick={handleApi}>Submit</button>
-      <button onClick={getData}>Display</button>
+      <button onClick={getData}>Submit</button>
       <div style={{ border: "solid" }}>
         <pre>{responseData.food || "Result is here"}</pre>
       </div>
