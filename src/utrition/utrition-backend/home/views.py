@@ -7,6 +7,7 @@ home_view = Blueprint('home_view', __name__)
 
 foodPath = ""
 
+# Fetch the nutritional data for the identified food item by calling Nutritionix API
 def get_nutritional_data(food_item):
 	headers = {
 		'x-app-id': 'cd0a614a',
@@ -44,5 +45,3 @@ def display_index():
 	else:
 		myFood = interface.open("./ML/"+foodPath["path"].strip(' " " '))
 		return jsonify(get_nutritional_data(myFood))
-		# Make call to api here
-		# Should return food and nutritionix api call 
