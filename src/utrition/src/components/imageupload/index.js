@@ -36,11 +36,11 @@ const ImageUpload = () => {
   }
 
   return (
-    <div style={{}}>
+    <div style={{flexDirection:'row'}}>
       <input type="file" name="file" onChange={handleImage} />
       <button onClick={getData}>Submit</button>
       <div style={{ border: "solid" }}>
-        <pre>{responseData.food || "Result is here"}</pre>
+        <pre>{JSON.stringify(responseData.food, null, 2) }</pre>
       </div>
     </div>
   );
