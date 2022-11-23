@@ -14,7 +14,7 @@ const Upload = () => {
         height: "90vh",
       }}
     >
-      <h1 style={{borderBottom: "2mm ridge rgba(60, 179, 113, .7)", position: "absolute", top:"30%", clear: "right" }}>Upload an Image</h1>
+      <h1 style={{position: "absolute", top:"30%", clear: "right" }}>Upload an Image</h1>
       <ImageUpload />
     </div>
   );
