@@ -14,7 +14,7 @@ const Upload = () => {
         height: "90vh",
       }}
     >
-      <h1 style={{ clear: "right" }}>Upload </h1>
+      <h1 style={{position: "absolute", top:"30%", clear: "right" }}>Upload an Image</h1>
       <ImageUpload />
     </div>
   );
