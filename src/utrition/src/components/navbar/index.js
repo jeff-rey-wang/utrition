@@ -16,6 +16,10 @@ const NavBar = () => {
           <NavLink to="/profile" activeStyle>
             Profile
           </NavLink>
+          <NavLink to="/signin" activeStyle>
+            Signin
+          </NavLink>
+          {/* Create NavLink for signin page */}
         </NavMenu>
       </Nav>
     </>
