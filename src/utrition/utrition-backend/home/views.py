@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify
-from nutritionalDataFetcher import get_nutritional_data
+from .nutritionalDataFetcher import get_nutritional_data
 import ML.Interface as interface
 import json
 
