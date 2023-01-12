@@ -319,27 +319,47 @@ to be implemented.
 \section{Traceability Matrix} \label{SecTM}
 
 This section shows two traceability matrices: between the modules and the
-requirements and between the modules and the anticipated changes.
+requirements and between the modules and the anticipated changes. The requirements include functional and non-functional requirements that are outlined in the SRS.
 
 % the table should use mref, the requirements should be named, use something
 % like fref
 \begin{table}[H]
 \centering
-\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
 \toprule
 \textbf{Req.} & \textbf{Modules}\\
 \midrule
-R1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-R2 & \mref{mInput}, \mref{mParams}\\
-R3 & \mref{mVerify}\\
-R4 & \mref{mOutput}, \mref{mControl}\\
-R5 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R6 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R7 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R8 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R9 & \mref{mVerifyOut}\\
-R10 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}\\
-R11 & \mref{mOutput}, \mref{mODEs}, \mref{mEnergy}, \mref{mControl}\\
+FR1 & M1, M2, M6, M9\\
+FR2 & M1, M2, M6, M9\\
+FR3 & M7, M11, M12, M13\\
+FR4 & M14\\
+FR5 & M7, M14, M15\\
+FR6 & M15\\
+FR7 & M15\\
+FR8 & M8, M15. \\
+FR9 & M8, M15\\
+FR10 & M4, M7, M9\\
+FR11 & M4, M7, M10 \\
+FR12 & M10\\
+LF1 & M1, M2, M3, M4, M5, M6\\
+UH1 & M6\\
+UH2 & M15\\
+UH5 & M8\\
+PR2 & M11, M12, M13, M14\\
+PR3 & M14, M15, M9\\
+PR4 & M4, M5\\
+PR4, PR5, PR6 & M4, M5\\
+PR7 & M11\\
+PR8, PR9 & M14\\
+PR10, PR11, PR12 & M8, M15\\
+PR13 & M7\\
+PR14 & M11, M12, M13\\
+PR15 & M8, M14\\
+PR17 & M5\\
+MS1 & M13\\
+SR2, SR3 & M15\\
+
+
 \bottomrule
 \end{tabular}
 \caption{Trace Between Requirements and Modules}
@@ -352,18 +372,10 @@ R11 & \mref{mOutput}, \mref{mODEs}, \mref{mEnergy}, \mref{mControl}\\
 \toprule
 \textbf{AC} & \textbf{Modules}\\
 \midrule
-\acref{acHardware} & \mref{mHH}\\
-\acref{acInput} & \mref{mInput}\\
-\acref{acParams} & \mref{mParams}\\
-\acref{acVerify} & \mref{mVerify}\\
-\acref{acOutput} & \mref{mOutput}\\
-\acref{acVerifyOut} & \mref{mVerifyOut}\\
-\acref{acODEs} & \mref{mODEs}\\
-\acref{acEnergy} & \mref{mEnergy}\\
-\acref{acControl} & \mref{mControl}\\
-\acref{acSeqDS} & \mref{mSeqDS}\\
-\acref{acSolver} & \mref{mSolver}\\
-\acref{acPlot} & \mref{mPlot}\\
+AC2 & M4, M5, M7, M9, M10\\
+AC3 & M2, M3, M4, M5, M6\\
+AC4 & M14\\
+AC5 & M13\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Anticipated Changes and Modules}
