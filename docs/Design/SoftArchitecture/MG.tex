@@ -161,7 +161,9 @@ change.
   hardware on which the software is running.
 \item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the
   initial input data.
-\item ...
+\item [\refstepcounter{acnum} \actheacnum \label{acInput}:] The graphics being displayed on the user interface.
+\item [\refstepcounter{acnum} \actheacnum \label{acInput}:]  The nutritional data details of a food to be displayed. 
+\item [\refstepcounter{acnum} \actheacnum \label{acInput}:] The dataset used to train the image classification model.
 \end{description}
 
 \subsection{Unlikely Changes} \label{SecUchange}
@@ -176,7 +178,8 @@ decisions will be changed.
 \begin{description}
 \item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Input/Output devices
   (Input: File and/or Keyboard, Output: File, Memory, and/or Screen).
-\item ...
+\item [\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] There will always be a source of input data external to the software.
+\item [\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Local storage of the user's past nutritional history.
 \end{description}
 
 \section{Module Hierarchy} \label{SecMH}
@@ -187,8 +190,21 @@ below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
 
 \begin{description}
-\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
-\item ...
+\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Application Path Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Home Page Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Profile Page Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Upload Page Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Image Upload Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Navigation Bar Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Backend Communication Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Nutrition Log Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Manual Upload Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Voice Upload Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Image Classification Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Input Pre-Processing Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Training Dataset Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Nutritional Data Retriever Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] User Log Data Structure Module
 \end{description}
 
 
@@ -199,22 +215,26 @@ actually be implemented.
 \textbf{Level 1} & \textbf{Level 2}\\
 \midrule
 
-{Hardware-Hiding Module} & ~ \\
+{Hardware-Hiding Module} & N/A \\
 \midrule
 
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\ 
-& ?\\
+\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Application Path Module\\
+& Home Page Module\\
+& Profile Page Module\\
+& Upload Page Module\\
+& Image Upload Module\\
+& Navigation Bar Module\\
+& Backend Communication Module\\ 
+& Nutrition Log Module\\
+& Manual Upload Module \\
+& Voice Upload Module \\
 \midrule
 
-\multirow{3}{0.3\textwidth}{Software Decision Module} & {?}\\
-& ?\\
-& ?\\
+\multirow{3}{0.3\textwidth}{Software Decision Module} & Image Classification Module\\
+& Input Pre-Processing Module\\
+& Training Dataset Module\\
+& Nutritional Data Retriever Module\\
+& User Log Data Structure Module\\
 \bottomrule
 
 \end{tabular}
@@ -365,7 +385,7 @@ because they use modules from the lower levels.
 
 \begin{figure}[H]
 \centering
-%\includegraphics[width=0.7\textwidth]{UsesHierarchy.png}
+\includegraphics[width=0.7\textwidth]{use_hierarchy.png}
 \caption{Use hierarchy among modules}
 \label{FigUH}
 \end{figure}
