@@ -298,8 +298,15 @@ to be implemented.
   [Information to include for leaf modules in the decomposition by secrets tree.]
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Nutrition Log Module (\mref{mInput})}
 
+\begin{description}
+	\item[Secrets:]Displays the user's past inputs and their nutritional facts.
+	\item[Services:]Formats the data to be viewed in a visually pleasing manner on the Profile page.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Data Type
+
+\end{description}
 
 \subsection{Software Decision Module}
 
@@ -314,7 +321,21 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Nutritional Data Retriever Module (\mref{mInput})}
+
+\begin{description}
+	\item[Secrets:]Retrieves nutritional information for an inputted food item.
+	\item[Services:]Using the input food item, a request is made to NutritionixAPI to fetch the nutritional data of this item.
+	\item[Implemented By:] Utrition
+\end{description}
+
+\subsubsection{User Log Data Structure Module (\mref{mInput})}
+
+\begin{description}
+	\item[Secrets:]Stores past user inputted food items and their nutritional facts.
+	\item[Services:]Every user inputted food item and their corresponding nutritional facts are stored in a dictionary. Each key value is the food name and the values are the nutritional facts stored as a .json.
+	\item[Implemented By:] Utrition
+\end{description}
 
 \section{Traceability Matrix} \label{SecTM}
 
