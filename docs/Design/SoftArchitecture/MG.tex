@@ -287,7 +287,79 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Backend Communication Module (M7)}
+\subsubsection{Input Format Module (\mref{mInput})}
+
+\begin{description}
+\item[Secrets:]The format and structure of the input data.
+\item[Services:]Converts the input data into the data structure used by the
+  input parameters module.
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Record, Library, Abstract Object, or Abstract Data Type]
+  [Information to include for leaf modules in the decomposition by secrets tree.]
+\end{description}
+
+\subsubsection{Nutrition Log Module (\mref{mInput})}
+
+\begin{description}
+	\item[Secrets:]Displays the user's past inputs and their nutritional facts.
+	\item[Services:]Formats the data to be viewed in a visually pleasing manner on the Profile page.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Data Type
+
+\end{description}
+
+\subsubsection{Application Path Module (\mref{mInput})}
+
+\begin{description}
+	\item[Secrets:] The structure of the application.
+	\item[Services:] Imports all used React components, structures the basic 
+	interface of each page based on the path of the website.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Main React Component
+\end{description}
+
+\subsubsection{Image Upload Module (\mref{mInput})}
+
+\begin{description}
+	\item[Secrets:]Provides interface to allow user to log their meal by 
+	uploading an image.
+	\item[Services:]Formats input and queries backend regarding the nutritional 
+	contents of the classified food.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] React Component
+\end{description}
+\subsubsection{Navigation Bar Module (\mref{mInput})}
+
+\begin{description}
+	\item[Secrets:]Provides interface to allow user to navigate through various 
+	pages of the application
+	\item[Services:]Changes the path of the website to render new page based on 
+	user action.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] React Component
+\end{description}
+\subsubsection{Manual Logging Module (\mref{mInput})}
+
+\begin{description}
+\item[Secrets:]Provides interface to allow user to log their meal by manual 
+entry of their meals.
+\item[Services:]Formats input and queries backend regarding the nutritional 
+contents of the specified food.
+\item[Implemented By:] Utrition
+\item[Type of Module:] React Component
+\end{description}
+\subsubsection{Voice Upload Module (\mref{mInput})}
+
+\begin{description}
+\item[Secrets:]Provides interface to allow user to log their meal by verbal 
+communication of their meals.
+\item[Services:]Formats input and queries backend regarding the nutritional 
+contents of the classified food.
+\item[Implemented By:] Utrition
+\item[Type of Module:] React Component
+\end{description}
+
+\subsubsection{Backend Communication Module (\mref{mInput})}
 
 \begin{description}
 \item[Secrets:] Provides the ability for user input to be sent to the Input Pre-Processing Module.
@@ -308,7 +380,18 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Image Classification Module (M11)}
+\begin{description}
+\item[Secrets:] The design decision based on mathematical theorems, physical
+  facts, or programming considerations. The secrets of this module are
+  \emph{not} described in the SRS.
+\item[Services:] Includes data structure and algorithms used in the system that
+  do not provide direct interaction with the user. 
+  % Changes in these modules are more likely to be motivated by a desire to
+  % improve performance than by externally imposed changes.
+\item[Implemented By:] --
+\end{description}
+
+\subsubsection{Image Classification Module (\mref{mInput})}
 
 \begin{description}
 \item[Secrets:] Identifies the food present in a user image.
@@ -316,7 +399,7 @@ to be implemented.
 \item[Implemented By:] MainML.py
 \end{description}
 
-\subsubsection{Input Pre-Processing Module (M12)}
+\subsubsection{Input Pre-Processing Module (\mref{mInput})}
 
 \begin{description}
 \item[Secrets:] Converts an image path into a pixel array that can be used for machine learning processes in the Image Classification Module.
@@ -324,12 +407,28 @@ to be implemented.
 \item[Implemented By:] Interface.py
 \end{description}
 
-\subsubsection{Training Dataset Module (M13)}
+\subsubsection{Training Dataset Module (\mref{mInput})}
 
 \begin{description}
 \item[Secrets:] Creates a dictionary of known food identifiers for use by machine learning processes in the Image Classification Module.
 \item[Services:] Produces a dictionary of image labels and classes for use in the machine learning module in the Image Classification Module through parsing the training image, test image, and metadata files and appending the pixel array of the input image.
 \item[Implemented By:] DataHandler.py
+\end{description}
+
+\subsubsection{Nutritional Data Retriever Module (\mref{mInput})}
+
+\begin{description}
+	\item[Secrets:]Retrieves nutritional information for an inputted food item.
+	\item[Services:]Using the input food item, a request is made to NutritionixAPI to fetch the nutritional data of this item.
+	\item[Implemented By:] Utrition
+\end{description}
+
+\subsubsection{User Log Data Structure Module (\mref{mInput})}
+
+\begin{description}
+	\item[Secrets:]Stores past user inputted food items and their nutritional facts.
+	\item[Services:]Every user inputted food item and their corresponding nutritional facts are stored in a dictionary. Each key value is the food name and the values are the nutritional facts stored as a .json.
+	\item[Implemented By:] Utrition
 \end{description}
 
 \section{Traceability Matrix} \label{SecTM}
