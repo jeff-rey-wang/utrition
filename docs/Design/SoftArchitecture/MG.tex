@@ -358,6 +358,15 @@ contents of the classified food.
 \item[Implemented By:] Utrition
 \item[Type of Module:] React Component
 \end{description}
+
+\subsubsection{Backend Communication Module (\mref{mInput})}
+
+\begin{description}
+\item[Secrets:] Provides the ability for user input to be sent to the Input Pre-Processing Module.
+\item[Services:]Converts the input image filename to a usable image path used by the Input Pre-Processing Module through string operations.
+\item[Implemented By:] utrition\_backend/home/views.py
+\end{description}
+
 \subsection{Software Decision Module}
 
 \begin{description}
@@ -369,6 +378,30 @@ contents of the classified food.
   % Changes in these modules are more likely to be motivated by a desire to
   % improve performance than by externally imposed changes.
 \item[Implemented By:] --
+\end{description}
+
+\subsubsection{Image Classification Module (\mref{mInput})}
+
+\begin{description}
+\item[Secrets:] Identifies the food present in a user image.
+\item[Services:]Converts the input image pixel array to a string classification of the food in the image that the pixel array represents through a machine learning model.
+\item[Implemented By:] MainML.py
+\end{description}
+
+\subsubsection{Input Pre-Processing Module (\mref{mInput})}
+
+\begin{description}
+\item[Secrets:] Converts an image path into a pixel array that can be used for machine learning processes in the Image Classification Module.
+\item[Services:] Converts the input file path to a pixel array formatted as a multidimensional array of integers through accessing the image at the file path and concatenating its pixel values.
+\item[Implemented By:] Interface.py
+\end{description}
+
+\subsubsection{Training Dataset Module (\mref{mInput})}
+
+\begin{description}
+\item[Secrets:] Creates a dictionary of known food identifiers for use by machine learning processes in the Image Classification Module.
+\item[Services:] Produces a dictionary of image labels and classes for use in the machine learning module in the Image Classification Module through parsing the training image, test image, and metadata files and appending the pixel array of the input image.
+\item[Implemented By:] DataHandler.py
 \end{description}
 
 \subsubsection{Nutritional Data Retriever Module (\mref{mInput})}
