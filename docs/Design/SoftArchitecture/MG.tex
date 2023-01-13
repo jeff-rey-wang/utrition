@@ -287,19 +287,14 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Input Format Module (\mref{mInput})}
+\subsubsection{Backend Communication Module (M7)}
 
 \begin{description}
-\item[Secrets:]The format and structure of the input data.
-\item[Services:]Converts the input data into the data structure used by the
-  input parameters module.
-\item[Implemented By:] [Your Program Name Here]
-\item[Type of Module:] [Record, Library, Abstract Object, or Abstract Data Type]
-  [Information to include for leaf modules in the decomposition by secrets tree.]
+\item[Secrets:] The uploaded image filename formatted as a string.
+\item[Services:]Converts the input image filename to a usable image path used by the Input Pre-Processing Module through string operations.
+\item[Implemented By:] utrition\_backend/home/views.py
+\item[Type of Module:] Library
 \end{description}
-
-\subsubsection{Etc.}
-
 
 \subsection{Software Decision Module}
 
@@ -314,7 +309,32 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Image Classification Module (M11)}
+
+\begin{description}
+\item[Secrets:] The pixel array of an image formatted as a multidimensional array of integers. The dictionary of image labels and classes used.
+\item[Services:]Converts the input pixel array to a string classification of the food in the image that the pixel array represents through a machine learning model.
+\item[Implemented By:] MainML.py
+\item[Type of Module:] Library
+\end{description}
+
+\subsubsection{Input Pre-Processing Module (M12)}
+
+\begin{description}
+\item[Secrets:]The file path of an image formatted as a string.
+\item[Services:] Converts the input file path to a pixel array formatted as a multidimensional array of integers through accessing the image at the file path and concatenating its pixel values.
+\item[Implemented By:] Interface.py
+\item[Type of Module:] Library
+\end{description}
+
+\subsubsection{Training Dataset Module (M13)}
+
+\begin{description}
+\item[Secrets:] The pixel array of an image formatted as a multidimensional array of integers. The file paths of training image, test image, and metadata files formatted as strings.  
+\item[Services:] Produces a dictionary of image labels and classes for use in the machine learning module in the Image Classification Module through parsing the training image, test image, and metadata files and appending the pixel array of the input image.
+\item[Implemented By:] DataHandler.py
+\item[Type of Module:] Library
+\end{description}
 
 \section{Traceability Matrix} \label{SecTM}
 
