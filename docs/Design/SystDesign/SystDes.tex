@@ -46,8 +46,8 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+January 18, 2023 & 1.0 & Notes\\
+%Date 2 & 1.1 & Notes\\
 \bottomrule
 \end{tabularx}
 
@@ -56,6 +56,15 @@ Date 2 & 1.1 & Notes\\
 \section{Reference Material}
 
 This section records information for easy reference.
+\subsection{Relevant Documentation}
+This document references multiple other documents that are listed below:
+
+\begin{itemize}
+	\item SRS, \cite{SRS}
+	\item Development Plan, \cite{DevelopmentPlan}
+	\item MG, \cite{MG}
+	\item MIS, \cite{MIS}
+\end{itemize}
 
 \subsection{Abbreviations and Acronyms}
 
@@ -65,7 +74,10 @@ This section records information for easy reference.
   \textbf{symbol} & \textbf{description}\\
   \midrule 
   \progname & Explanation of program name\\
-  \wss{...} & \wss{...}\\
+  SRS & Software Requirements Specification\\
+  MG & Module Guide\\
+  MIS & Module Interface Specification\\
+  %\wss{...} & \wss{...}\\
   \bottomrule
 \end{tabular}\\
 
@@ -83,15 +95,30 @@ This section records information for easy reference.
 
 \section{Introduction}
 
-\wss{Include references to your other documentation}
 
-\section{Purpose}
+\subsection{Document Purpose}
 
-\wss{Purpose of your design documentation}
+This series of design documents are comprised of the System Design document, 
+the Module Guide, and the Module Interface Specification. The purpose of these 
+documents is to communicate the modular decomposition of 
+the Utrition application, and provide readers with information regarding the 
+functions/methods of each module, as well as the relationships between modules. 
+Information about the high-level decomposition of modules can be found in 
+the \href{../SoftArchitecture/MG.pdf}{MG}.
+Details regarding each module's functions and methods are discussed in 
+the \href{../SoftDetailedDes/MIS.pdf}{MIS}.
 
-\wss{Point to your other design documents}
+\subsection{System Purpose}
 
-\section{Scope}
+The purpose of Utrition is to provide users with an application that empowers 
+them discover the nutritional value of the foods they are consuming, and track
+their previously eaten meals. Users will be able to log their meals in a 
+variety of ways, ranging from manual information entry, to image upload. 
+Utrition will provide nutritional info based on the user's meals, and will 
+allow users to access information on their past meals.
+
+
+\subsection{Scope}
 
 \wss{Include a figure that show the System Context (showing the boundary between
 your system and the environment around it.)}
@@ -121,9 +148,15 @@ your system and the environment around it.)}
 
 \subsection{Monitored Variables}
 
+N/A
+
 \subsection{Controlled Variables}
 
+N/A
+
 \subsection{Constants Variables}
+
+N/A
 
 \section{User Interfaces}
 
@@ -135,7 +168,10 @@ needed. Drawings, Sketches, Figma}
 \wss{Most relevant for mechatronics projects}
 \wss{Show what will be acquired}
 \wss{Show what will be built, with detail on fabrication and materials}
-\wss{Include appendices as appropriate, possibly with sketches, drawings, CAD, etc}
+\wss{Include appendices as appropriate, possibly with sketches, drawings, CAD, 
+etc}
+
+N/A
 
 \section{Design of Electrical Components}
 
@@ -145,16 +181,20 @@ needed. Drawings, Sketches, Figma}
 \wss{Include appendices as appropriate, possibly with sketches, drawings,
 circuit diagrams, etc}
 
+N/A
+
 \section{Design of Communication Protocols}
 
 \wss{If appropriate}
+
+Front/Backend
 
 \section{Timeline}
 
 \wss{Schedule of tasks and who is responsible}
 
-% \bibliographystyle {plainnat}
-% \bibliography{../../../refs/References}
+\bibliographystyle {plainnat}
+\bibliography{../../../refs/References}
 
 \newpage{}
 
@@ -167,7 +207,11 @@ interaction with, the user interface}
 
 \section{Mechanical Hardware}
 
+N/A
+
 \section{Electrical Components}
+
+N/A
 
 \section{Communication Protocols}
 
