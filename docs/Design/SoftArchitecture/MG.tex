@@ -284,58 +284,7 @@ to be implemented.
   documents. This module serves as a communication layer between the
   hardware-hiding module and the software decision module. The programs in this
   module will need to change if there are changes in the SRS.
-\item[Implemented By:] --
-\end{description}
-
-\subsubsection{Input Format Module (\mref{mInput})}
-
-\begin{description}
-\item[Secrets:]The format and structure of the input data.
-\item[Services:]Converts the input data into the data structure used by the
-  input parameters module.
-\item[Implemented By:] [Your Program Name Here]
-\item[Type of Module:] [Record, Library, Abstract Object, or Abstract Data Type]
-  [Information to include for leaf modules in the decomposition by secrets tree.]
-\end{description}
-
-\subsubsection{Home Page Module (\mref{mInput})}
-
-\begin{description}
-\item[Secrets:]Contains the starting point of all other services. This starting page connects to all other pages.
-\item[Services:]imports components relevant to the home page and organizes all components on page 
 \item[Implemented By:] Utrition
-\item[Type of Module:] Objectgit 
-  [Information to include for leaf modules in the decomposition by secrets tree.]
-\end{description}
-
-\subsubsection{Profile Page Module (\mref{mInput})}
-
-\begin{description}
-\item[Secrets:]Displays users past data
-\item[Services:]imports components relevant to the users profile statistics and organizes all components on page 
-\item[Implemented By:] Utrition
-\item[Type of Module:] Object
-  [Information to include for leaf modules in the decomposition by secrets tree.]
-\end{description}
-
-\subsubsection{Upload Page Module (\mref{mInput})}
-
-\begin{description}
-\item[Secrets:]Takes in the users input and uploads it to the application.
-\item[Services:]imports components relevant to image upload and voice upload and organizes all components on page 
-\item[Implemented By:] Utrition
-\item[Type of Module:] Object
-  [Information to include for leaf modules in the decomposition by secrets tree.]
-\end{description}
-
-\subsubsection{Nutrition Log Module (\mref{mInput})}
-
-\begin{description}
-	\item[Secrets:]Displays the user's past inputs and their nutritional facts.
-	\item[Services:]Formats the data to be viewed in a visually pleasing manner on the Profile page.
-	\item[Implemented By:] Utrition
-	\item[Type of Module:] Abstract Data Type
-
 \end{description}
 
 \subsubsection{Application Path Module (\mref{mInput})}
@@ -346,6 +295,33 @@ to be implemented.
 	interface of each page based on the path of the website.
 	\item[Implemented By:] Utrition
 	\item[Type of Module:] Main React Component
+\end{description}
+
+\subsubsection{Home Page Module (\mref{mInput})}
+
+\begin{description}
+\item[Secrets:]Contains the starting point of all other services. This starting page connects to all other pages.
+\item[Services:] Imports components relevant to the home page and organizes all components on page 
+\item[Implemented By:] Utrition
+\item[Type of Module:] Object 
+\end{description}
+
+\subsubsection{Profile Page Module (\mref{mInput})}
+
+\begin{description}
+\item[Secrets:]Displays users past data
+\item[Services:] Imports components relevant to the users profile statistics and organizes all components on page 
+\item[Implemented By:] Utrition
+\item[Type of Module:] Object
+\end{description}
+
+\subsubsection{Upload Page Module (\mref{mInput})}
+
+\begin{description}
+\item[Secrets:]Takes in the users input and uploads it to the application.
+\item[Services:] Imports components relevant to image upload and voice upload and organizes all components on page 
+\item[Implemented By:] Utrition
+\item[Type of Module:] Object
 \end{description}
 
 \subsubsection{Image Upload Module (\mref{mInput})}
@@ -368,6 +344,28 @@ to be implemented.
 	\item[Implemented By:] Utrition
 	\item[Type of Module:] React Component
 \end{description}
+
+\subsubsection{Backend Communication Module (\mref{mInput})}
+
+\begin{description}
+	\item[Secrets:] Provides the ability for user input to be sent to the Input 
+	Pre-Processing Module.
+	\item[Services:]Converts the input image filename to a usable image path 
+	used by the Input Pre-Processing Module through string operations.
+	\item[Implemented By:] utrition\_backend/home/views.py
+\end{description}
+
+\subsubsection{Nutrition Log Module (\mref{mInput})}
+
+\begin{description}
+	\item[Secrets:]Displays the user's past inputs and their nutritional facts.
+	\item[Services:]Formats the data to be viewed in a visually pleasing manner 
+	on the Profile page.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Data Type
+	
+\end{description}
+
 \subsubsection{Manual Logging Module (\mref{mInput})}
 
 \begin{description}
@@ -378,6 +376,7 @@ contents of the specified food.
 \item[Implemented By:] Utrition
 \item[Type of Module:] React Component
 \end{description}
+
 \subsubsection{Voice Upload Module (\mref{mInput})}
 
 \begin{description}
@@ -389,13 +388,7 @@ contents of the classified food.
 \item[Type of Module:] React Component
 \end{description}
 
-\subsubsection{Backend Communication Module (\mref{mInput})}
 
-\begin{description}
-\item[Secrets:] Provides the ability for user input to be sent to the Input Pre-Processing Module.
-\item[Services:]Converts the input image filename to a usable image path used by the Input Pre-Processing Module through string operations.
-\item[Implemented By:] utrition\_backend/home/views.py
-\end{description}
 
 \subsection{Software Decision Module}
 
@@ -407,14 +400,16 @@ contents of the classified food.
   do not provide direct interaction with the user. 
   % Changes in these modules are more likely to be motivated by a desire to
   % improve performance than by externally imposed changes.
-\item[Implemented By:] --
+\item[Implemented By:] Utrition
 \end{description}
 
 \subsubsection{Image Classification Module (\mref{mInput})}
 
 \begin{description}
 \item[Secrets:] Identifies the food present in a user image.
-\item[Services:]Converts the input image pixel array to a string classification of the food in the image that the pixel array represents through a machine learning model.
+\item[Services:]Converts the input image pixel array to a string classification 
+of the food in the image that the pixel array represents through a machine 
+learning model.
 \item[Implemented By:] MainML.py
 \end{description}
 
