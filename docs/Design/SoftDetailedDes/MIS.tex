@@ -229,6 +229,222 @@ The following table is taken directly from the Module Guide document for this pr
 
 \newpage
 
+\section{MIS of \wss{Backend Communication Module}} \label{Module}
+
+\subsection{Module}
+
+This module provides a way for user input to be passed to backend processing modules in order to eventually classify the input. This module is called after the user submits a valid input.
+
+\subsection{Uses}
+
+Input Pre-Processing Module
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+
+None
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2.5cm} p{0.5cm} p{4.5cm} p{5cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+\wss{display\_index} & - & JSON Object: Consists of the food classified from the user input & If POST, return filepath to user upload (default state before user action) \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+
+None
+
+\subsubsection{Environment Variables}
+
+None
+
+\subsubsection{Assumptions}
+
+It is assumed that the filename of the user inputted file will be of String format.
+
+\subsubsection{Access Routine Semantics}
+
+None
+
+\subsubsection{Local Functions}
+
+None
+
+\newpage
+
+\section{MIS of \wss{Image Classification Module}} \label{Module}
+
+\subsection{Module}
+
+This module takes image data formatted as a pixel array and returns the name of the food identified in the input image. This module is called from the Input Pre-Processing Module after it constructs the pixel array of the uploaded image.
+
+\subsection{Uses}
+
+Training Dataset Module
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+
+None
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+\wss{startModel} & Array: Pixel array of the uploaded image file & String: Name of the
+food classified from
+the user input & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+
+weights: integer tensor with a size of 3072 by 100
+
+\subsubsection{Environment Variables}
+
+None
+
+\subsubsection{Assumptions}
+
+\item{It is assumed that there is a relationship between the uploaded image and the image labels that the machine learning model is aware of.}
+
+\item{It is assumed that the food in an uploaded image has a one to one relation with a label that the machine learning model is aware of.}
+
+\subsubsection{Access Routine Semantics}
+
+None
+
+\subsubsection{Local Functions}
+
+\wss{tf.compat.v1.train.GradientDescentOptimizer(learning\_rate).minimize(loss): Execute GradientDescentOptimizer and tries to minimize loss by computing the gradients of its trainable variables. Optimizes weights system variable on pass.}
+
+\newpage
+
+\section{MIS of \wss{Input Pre-Processing Module}} \label{Module}
+
+\subsection{Module}
+
+This module converts a user uploaded image into a pixel array and calls the Image Classification Module with the constructed pixel array. This module is called from the Backend Communication Module after it constructs the filepath to the uploaded image.
+
+\subsection{Uses}
+
+Image Classification Module
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+
+None
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+\wss{open} & String: Filepath of user uploaded image file & String: Name of the
+food classified from
+the user input & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+
+None
+
+\subsubsection{Environment Variables}
+
+None
+
+\subsubsection{Assumptions}
+
+It is assumed that there exists a valid image file at the provided image filepath.
+
+\subsubsection{Access Routine Semantics}
+
+None
+
+\subsubsection{Local Functions}
+
+None
+
+\newpage
+
+\section{MIS of \wss{Training Dataset Module}} \label{Module}
+
+\subsection{Module}
+
+This module constructs data sets of image and label data from the CIFAR-100 image training files. These datasets are what user-uploaded images are compared against in the Image Classification Module to identify the food present in the images. 
+
+\subsection{Uses}
+
+None
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+
+None
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+\wss{load\_data} & \item{Array: Pixel array of the uploaded image file} \item{Integer: Flag to denote if an image was uploaded by the user} & Dictionary: Image labels and classes used in the machine learning model & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+
+None
+
+\subsubsection{Environment Variables}
+
+None
+
+\subsubsection{Assumptions}
+
+It is assumed the filepath and filetype of the CIFAR-100 datasets are respectively constant and standard.
+
+\subsubsection{Access Routine Semantics}
+
+None
+
+\subsubsection{Local Functions}
+
+\item{unpickle(file): takes in a filepath and opens it into bytestream. Specific dictionary entries are retrieved and returned depending on the filepath that was passed as an argument}
+
+\item{main(): used for debugging a single file. Calls load\_data(None, None) and prints the resulting retrieved dictionary entries. }
+
+\newpage
+
 \bibliographystyle {plainnat}
 \bibliography {../../../refs/References}
 

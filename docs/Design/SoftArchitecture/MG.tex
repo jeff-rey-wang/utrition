@@ -301,30 +301,27 @@ to be implemented.
 
 \begin{description}
 \item[Secrets:]Contains the starting point of all other services. This starting page connects to all other pages.
-\item[Services:]the home page is what the user will see upon the launch of the utrition application. The user, from this home page, is able to redirect and navigate themselves to other pages such as the profile page and the upload page. 
+\item[Services:] Imports components relevant to the home page and organizes all components on page 
 \item[Implemented By:] Utrition
-\item[Type of Module:] [Record, Library, Abstract Object, or Abstract Data Type]
-  [Information to include for leaf modules in the decomposition by secrets tree.]
+\item[Type of Module:] Object 
 \end{description}
 
 \subsubsection{Profile Page Module (\mref{mInput})}
 
 \begin{description}
 \item[Secrets:]Displays users past data
-\item[Services:]This module takes in the food that was previously logged by the user from M8 and outputs a display of the information of what it was the user ate and the nutritional details. 
+\item[Services:] Imports components relevant to the users profile statistics and organizes all components on page 
 \item[Implemented By:] Utrition
-\item[Type of Module:] [Record, Library, Abstract Object, or Abstract Data Type]
-  [Information to include for leaf modules in the decomposition by secrets tree.]
+\item[Type of Module:] Object
 \end{description}
 
 \subsubsection{Upload Page Module (\mref{mInput})}
 
 \begin{description}
 \item[Secrets:]Takes in the users input and uploads it to the application.
-\item[Services:]The user will provide an input of a food as either a photo or by vocally communicating the name and the module will send it to get processed to identify the food and display the results of the AI generated result.
+\item[Services:] Imports components relevant to image upload and voice upload and organizes all components on page 
 \item[Implemented By:] Utrition
-\item[Type of Module:] [Record, Library, Abstract Object, or Abstract Data Type]
-  [Information to include for leaf modules in the decomposition by secrets tree.]
+\item[Type of Module:] Object
 \end{description}
 
 \subsubsection{Image Upload Module (\mref{mInput})}
@@ -356,6 +353,7 @@ to be implemented.
 	\item[Services:]Converts the input image filename to a usable image path 
 	used by the Input Pre-Processing Module through string operations.
 	\item[Implemented By:] utrition\_backend/home/views.py
+ 	\item[Type of Module:] Library
 \end{description}
 
 \subsubsection{Nutrition Log Module (\mref{mInput})}
@@ -414,6 +412,7 @@ contents of the classified food.
 of the food in the image that the pixel array represents through a machine 
 learning model.
 \item[Implemented By:] MainML.py
+\item[Type of Module:] Library
 \end{description}
 
 \subsubsection{Input Pre-Processing Module (\mref{mInput})}
@@ -422,6 +421,7 @@ learning model.
 \item[Secrets:] Converts an image path into a pixel array that can be used for machine learning processes in the Image Classification Module.
 \item[Services:] Converts the input file path to a pixel array formatted as a multidimensional array of integers through accessing the image at the file path and concatenating its pixel values.
 \item[Implemented By:] Interface.py
+\item[Type of Module:] Library
 \end{description}
 
 \subsubsection{Training Dataset Module (\mref{mInput})}
@@ -430,6 +430,7 @@ learning model.
 \item[Secrets:] Creates a dictionary of known food identifiers for use by machine learning processes in the Image Classification Module.
 \item[Services:] Produces a dictionary of image labels and classes for use in the machine learning module in the Image Classification Module through parsing the training image, test image, and metadata files and appending the pixel array of the input image.
 \item[Implemented By:] DataHandler.py
+\item[Type of Module:] Library
 \end{description}
 
 \subsubsection{Nutritional Data Retriever Module (\mref{mInput})}
