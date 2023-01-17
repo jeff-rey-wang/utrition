@@ -130,7 +130,13 @@ your system and the environment around it.)}
 \section{Project Overview}
 
 \subsection{Normal Behaviour}
-
+In their command-line interface, users will travel to the Utrition directory. From there, users will enter commands "npm start" and "npm run start-backend" separately. Utrition's front-end and back-end interfaces will successfully connect to the user's localhost server. Users will be greeted with the Utrition's home page. They may travel to their profile page, where they can find their past nutritional data saved in a list. On this page, users may decide to view their nutritional trends in graph form. Users may also travel to the upload page, where they can input food item(s) to find their nutritional information. Users can input food items by 
+\begin{itemize}
+	\item Clicking on the search bar and typing in the food items. Each food item is separated by a space.
+	\item Clicking on the microphone button and verbally listing the food items.
+	\item Clicking on the upload button and then selecting an image of a food item. Users can include multiple images in their search by clicking on the upload button again.
+\end{itemize}
+Users finalize their search by clicking the search button. In return, the user will be shown the nutritional information for each food item searched. The nutritional information is acquired from utilizing the Nutritionix public API. The data is stored on the user's device, so that past nutritional trends can be viewed on their profile page.
 \subsection{Undesired Event Handling}
 
 \wss{How you will approach undesired events}
