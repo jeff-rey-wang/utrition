@@ -229,7 +229,7 @@ The following table is taken directly from the Module Guide document for this pr
 
 \newpage
 
-\section{MIS of \wss{Backend Communication Module}} \label{Module}
+\section{MIS of Backend Communication Module} \label{Module}
 
 \subsection{Module}
 
@@ -252,7 +252,7 @@ None
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-\wss{display\_index} & - & JSON Object: Consists of the food classified from the user input & If POST, return filepath to user upload (default state before user action) \\
+display\_index & - & JSON Object: Consists of the food classified from the user input & If POST, return filepath to user upload (default state before user action) \\
 \hline
 \end{tabular}
 \end{center}
@@ -281,7 +281,7 @@ None
 
 \newpage
 
-\section{MIS of \wss{Image Classification Module}} \label{Module}
+\section{MIS of Image Classification Module} \label{Module}
 
 \subsection{Module}
 
@@ -304,7 +304,7 @@ None
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-\wss{startModel} & Array: Pixel array of the uploaded image file & String: Name of the
+startModel & Array: Pixel array of the uploaded image file & String: Name of the
 food classified from
 the user input & - \\
 \hline
@@ -333,11 +333,11 @@ None
 
 \subsubsection{Local Functions}
 
-\wss{tf.compat.v1.train.GradientDescentOptimizer(learning\_rate).minimize(loss): Execute GradientDescentOptimizer and tries to minimize loss by computing the gradients of its trainable variables. Optimizes weights system variable on pass.}
+tf.compat.v1.train.GradientDescentOptimizer(learning\_rate).minimize(loss): Execute GradientDescentOptimizer and tries to minimize loss by computing the gradients of its trainable variables. Optimizes weights system variable on pass.
 
 \newpage
 
-\section{MIS of \wss{Input Pre-Processing Module}} \label{Module}
+\section{MIS of Input Pre-Processing Module} \label{Module}
 
 \subsection{Module}
 
@@ -360,7 +360,7 @@ None
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-\wss{open} & String: Filepath of user uploaded image file & String: Name of the
+open & String: Filepath of user uploaded image file & String: Name of the
 food classified from
 the user input & - \\
 \hline
@@ -391,7 +391,7 @@ None
 
 \newpage
 
-\section{MIS of \wss{Training Dataset Module}} \label{Module}
+\section{MIS of Training Dataset Module} \label{Module}
 
 \subsection{Module}
 
@@ -414,7 +414,7 @@ None
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-\wss{load\_data} & \item{Array: Pixel array of the uploaded image file} \item{Integer: Flag to denote if an image was uploaded by the user} & Dictionary: Image labels and classes used in the machine learning model & - \\
+load\_data & \item{Array: Pixel array of the uploaded image file} \item{Integer: Flag to denote if an image was uploaded by the user} & Dictionary: Image labels and classes used in the machine learning model & - \\
 \hline
 \end{tabular}
 \end{center}
