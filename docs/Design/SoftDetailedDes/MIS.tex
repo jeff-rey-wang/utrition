@@ -162,6 +162,283 @@ The following table is taken directly from the Module Guide document for this pr
 \newpage
 ~\newpage
 
+\section{Application Path Module} \label{App}
+\subsection{Module}
+App
+\subsection{Uses}
+NavBar\\
+Home\\
+Upload\\
+Profile
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{3cm} p{4cm} p{4cm} p{3cm}}
+		
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		App & - & App & - \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+$path$: string
+\subsubsection{Assumptions}
+User will not try and purposefully edit site path to a nonexistent page
+\subsubsection{Access Routine Semantics}
+App():
+\begin{itemize}
+	\item transition: $path := "/"$
+	\item output: $out := self$
+	\item exception: None
+\end{itemize}
+\subsubsection{Local Functions}
+None
+\newpage
+\section{Image Upload Module} \label{ImageUpload} 
+\subsection{Module}
+ImageUpload
+\subsection{Uses}
+N/A
+\subsection{Syntax}
+\subsubsection{Exported Types}
+ImageUpload
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{3cm} p{4cm} p{4cm} p{3cm}}
+		
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		ImageUpload & - & ImageUpload &- \\
+		handleImage & Event & - & - \\
+		getData & - & - & badResponseError \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsubsection{State Variables}
+$image$: string\\
+$responseData$: JSON
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+Assumes file is not empty\\
+Assumes file is of appropriate type\\
+Assumes backend always sends SOME response
+\subsubsection{Access Routine Semantics}
+ImageUpload():
+\begin{itemize}
+	\item transition: $image, responseData := "", ""$
+	\item output: $out := self$
+	\item exception: None
+\end{itemize}
+\noindent
+handleImage(e):
+\begin{itemize}
+	\item transition: set image to path of uploaded image via setImage(e)
+	\item exception: None
+\end{itemize}
+\noindent
+getData():
+\begin{itemize}
+	\item transition: send image path, then listen for a response from 
+	backend\\ set responseData to the response
+	\item exception: if error response, log the response code
+\end{itemize}
+
+
+\subsubsection{Local Functions}
+\noindent setImage(s)
+\begin{itemize}
+	\item transition: $ image :=s $
+	\item exception: None
+\end{itemize}
+\noindent setResponseData(r)
+\begin{itemize}
+	\item transition: $ responseData:=r $
+	\item exception: None
+\end{itemize}
+\newpage
+\section{Navigation Bar Module} \label{Navbar}
+\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+\subsection{Module}
+NavBar
+\subsection{Uses}
+None
+\subsection{Syntax}
+\subsubsection{Exported Types}
+NavBar
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{3cm} p{4cm} p{4cm} p{3cm}}
+		
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		NavBar & - & NavBar & - \\
+		to & Event &  & - \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+Users will not try and purposefully change the paths for each button.
+\subsubsection{Access Routine Semantics}
+
+\noindent NavBar():
+\begin{itemize}
+	\item output: $out := self$ 
+	\item exception: None
+\end{itemize}
+
+\noindent to():
+\begin{itemize}
+	\item transition: $path :=$ "/" $\lor \ path :=$ "/profile" $\lor \ path 
+	:=$ 
+	"/upload" 
+	\item exception: None
+\end{itemize}
+\subsubsection{Local Functions}
+None
+\newpage
+\section{Manual Logging Module} \label{ManualLogging}
+\subsection{Module}
+ManualLog
+\subsection{Uses}
+None
+\subsection{Syntax}
+\subsubsection{Exported Types}
+ManualLog
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{3cm} p{4cm} p{4cm} p{2cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		ManualLog & - & ManualLog & - \\
+		handleFoodItem & Event & - & - \\
+		getData & - & - & badResponseError \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+$foodDesc$ : (string, Integer)\\
+$responseData$: JSON
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Routine Semantics}
+\noindent ManualLog():
+\begin{itemize}
+	\item transition: $foodDesc, responseData := $ "", ""
+	\item output: $out := self$ 
+	\item exception: None
+\end{itemize}
+
+\noindent handleFoodItem(e)
+\begin{itemize}
+	\item transition: Set foodDesc to be the contents of the text fields via 
+	setFoodDesc(e)
+	\item exception: None
+\end{itemize}
+
+\noindent
+getData():
+\begin{itemize}
+	\item transition: send food item, then listen for a response from 
+	backend\\ set responseData to the response \\ display nutritional output
+	\item exception: if error response, log the response code
+\end{itemize}
+
+\subsubsection{Local Functions}
+\noindent setFoodDesc((foodName, servings))
+\begin{itemize}
+	\item transition: $ foodDesc := $ (foodName, servings)
+	\item exception: None
+\end{itemize}
+\noindent setResponseData(r)
+\begin{itemize}
+	\item transition: $ responseData:=r $
+	\item exception: None
+\end{itemize}
+\newpage
+\section{Voice Upload Module} \label{VoiceUpload} 
+\subsection{Module}
+VoiceUpload
+\subsection{Uses}
+None
+\subsection{Syntax}
+\subsubsection{Exported Types}
+VoiceUpload
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{3cm} p{4cm} p{4cm} p{2cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		VoiceUpload & - & VoiceUpload & - \\
+		handleVoiceInput & Event & - & - \\
+		getData & - & - & badResponseError \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+$ detectSpeech $: string\\
+$responseData$: JSON
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Routine Semantics}
+\noindent VoiceUpload():
+\begin{itemize}
+	\item transition: $detectSpeech, responseData :=$ "", ""
+	\item output: $out := self$ 
+	\item exception: None
+\end{itemize}
+
+\noindent handleVoiceInput(e)
+\begin{itemize}
+	\item transition: Set detectSpeech to be the detected speech input via 
+	setDetectSpeech(e)
+	\item exception: None
+\end{itemize}
+
+\noindent
+getData():
+\begin{itemize}
+	\item transition: send voice input, then listen for a response from 
+	backend\\ set responseData to the response\\ display nutritional output
+	\item exception: if error response, log the response code
+\end{itemize}
+
+\subsubsection{Local Functions}
+\noindent setDetectSpeech(s)
+\begin{itemize}
+	\item transition: $ detectSpeech := $ s
+	\item exception: None
+\end{itemize}
+\noindent setResponseData(r)
+\begin{itemize}
+	\item transition: $ responseData:=r $
+	\item exception: None
+\end{itemize}
+\newpage
+
 \section{MIS of Nutrition Log Module} \label{Module} \wss{Use labels for
   cross-referencing}
 
