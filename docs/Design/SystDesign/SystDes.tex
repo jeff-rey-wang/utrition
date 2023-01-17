@@ -9,6 +9,7 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{enumerate}
+\usepackage{graphicx}
 \hypersetup{
     colorlinks,
     citecolor=blue,
@@ -128,6 +129,13 @@ Users will be able to input their food items to Utrition by using speech to text
 \wss{Include a figure that show the System Context (showing the boundary between
 your system and the environment around it.)}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{System_Context_Diagram.png}
+	\caption{System Context Diagram}
+\end{figure}
+
+
 \section{Project Overview}
 
 \subsection{Normal Behaviour}
@@ -166,17 +174,80 @@ The one specific case where Utrition will not notify the user of the specific er
 \begin{enumerate}[{FR}1. ]
 	\item Provide user a screen with the option to click a button, which then leads the user to upload an image.
 	\item Provide the user a button to click on that allows them to enter another food item. After the second food item is entered, the button remains for more food items to be entered.
-	\item The food item(s) uploaded to the Utrition frontend will be condensed to a 32x32 pixel image, which is then turned into a 32x32 array. The array containing data for each pixel is then transferred to the Utrition backend. From there, the image is parsed through a TensorFlow machine learning algorithm which is trained on the CIFAR-100 dataset to determine the food item.
-	\item The Utrition backend provides the Nutritionix API with valid headers (x-app-id, x-app-key, x-remote-user-id) that allow the use of the API.
-	\item The Utrition backend interface sends a POST request to the Nutritionix API. The response to the POST request provides the backend interface with a JSON file containing the food’s macro-nutrients, micro-nutrients, and caloric details.
-	\item Once the Utrition backend has received the nutritional details of the food item from the Nutritionix API, the backend stores the nutritional information as a JSON file on the users’ Utrition folder.
-	\item Once the user requests to see past nutritional data, the frontend interface sends a GET request to the frontend local server. This request is passed to the backend local server, which then gets sent to the backend interface. The backend interface returns the data of all logged JSON files in the previously logged food items folder to the front-end interface (going through their respective local servers). The frontend interface displays the JSON files’ data in reverse-chronological order.
-	\item Once the Utrition backend interface receives the JSON file from the Nutritionix API, the data is sent to the local backend server, to the local frontend server, and then to the frontend interface. In the frontend interface, the JSON file has the “stringify” method applied to it to display the information to the user.
-	\item Once the user requests to see the past nutritional data graph, the frontend interface switches to a different user interface screen. From there, the front end interface sends a GET request to the frontend local server. This request is passed to the backend local server, which then gets sent to the backend interface. The backend interface returns the data of all logged JSON files in the previously logged food items folder to the front-end interface (going through their respective local servers). The frontend interface parses the data by using ChartJS to display a graph of past nutritional trends to the user.
-	
-	
+	\item The food item(s) uploaded to the Utrition front-end will be condensed to a 32x32 pixel image, which is then turned into a 32x32 array. The array containing data for each pixel is then transferred to the Utrition back-end. From there, the image is parsed through a TensorFlow machine learning algorithm which is trained on the CIFAR-100 dataset to determine the food item.
+	\item The Utrition back-end provides the Nutritionix API with valid headers (x-app-id, x-app-key, x-remote-user-id) that allow the use of the API.
+	\item The Utrition back-end interface sends a POST request to the Nutritionix API. The response to the POST request provides the back-end interface with a JSON file containing the food’s macro-nutrients, micro-nutrients, and caloric details.
+	\item Once the Utrition back-end has received the nutritional details of the food item from the Nutritionix API, the back-end stores the nutritional information as a JSON file on the users’ Utrition folder.
+	\item Once the user requests to see past nutritional data, the front-end interface sends a GET request to the front-end local server. This request is passed to the back-end local server, which then gets sent to the back-end interface. The back-end interface returns the data of all logged JSON files in the previously logged food items folder to the front-end interface (going through their respective local servers). The front-end interface displays the JSON files’ data in reverse-chronological order.
+	\item Once the Utrition back-end interface receives the JSON file from the Nutritionix API, the data is sent to the local back-end server, to the local front-end server, and then to the front-end interface. In the front-end interface, the JSON file has the “stringify” method applied to it to display the information to the user.
+	\item Once the user requests to see the past nutritional data graph, the front-end interface switches to a different user interface screen. From there, the front end interface sends a GET request to the front-end local server. This request is passed to the back-end local server, which then gets sent to the back-end interface. The back-end interface returns the data of all logged JSON files in the previously logged food items folder to the front-end interface (going through their respective local servers). The front-end interface parses the data by using ChartJS to display a graph of past nutritional trends to the user.
 \end{enumerate}
 
+\subsubsection{Non-Functional Requirements}
+\begin{enumerate}[{LF}1. ]
+	\item Utrition’s user interface will be clutter-free.
+\end{enumerate}
+
+\begin{enumerate}[{UH}1. ]
+	\item Utrition’s user interface will be clutter-free.
+	\item This design decision is covered by FR6's design decision.
+	\item Utrition will provide steps on how to use the product on its homepage. Utrition will not provide the user with many available actions, so it becomes clear to individuals how to use the product. 
+	\item Nutritional information (calories, fat, sodium, carbohydrates, sugar, and protein) will have an appropriate symbol next to it.
+	\item Only important nutritional information is displayed to the user (calories, fat, sodium, carbohydrates, sugar, and protein) and back-end calculations are not displayed to the user. Front end reformatting of information will not be displayed to the user as well.
+	\item No sound files will be found in Utrition's GitHub repository.
+\end{enumerate}
+
+\begin{enumerate}[{PR}1. ]
+	\item Each screen loads in their personal set of functions. Each screen will not load in many functions.
+	\item The machine learning algorithm sets the maximum amount of iterations to be 1000 for each image.
+	\item No calculations are done while retrieving nutritional facts.
+	\item The submitted image format is checked by the front-end interface, and if the image format is not “.png”, “.jpg”, or “.jpeg” an error message is returned to the user.
+	\item The submitted image size is checked by the front-end interface, and if the image size is larger than 30MB an error message is returned to the user.
+	\item After an image upload, the front-end interface counts the amount of images uploaded by the user. Once the amount of images exceeds 3, an error message is displayed to the user and the ability to proceed with the food-identification system is removed.
+	\item Once the food image is sent to the back-end system, the machine learning algorithm begins a real-time stopwatch. After every iteration of the machine learning algorithm, the timer is checked. If the timer surpasses 10 seconds, an error message is sent to the back-end local server, which sends it to the front-end local server, which then sends it to the front-end interface to display the error message.
+	\item Once the back-end determines the food item, a POST request is sent to the Nutrionix API. The Nutritionix API will send back a response, and the response is verified by the Utrition back-end system. If the response is “Too many requests”, the user cannot submit more food items. Once an error message is detected by the Utrition back-end system, the message is sent to the back-end local server, which sends it to the front-end local server, which then sends it to the front-end interface to display the error message.
+	\item Once the back-end determines the food item, a POST request is sent to the Nutrionix API. The Nutritionix API will send back a response, and the response is verified by the Utrition back-end system. If the response is empty, the food item was not found in the Nutrionix API. The response is sent to the back-end local server, which sends it to the front-end local server, which then sends it to the front-end interface to display the error message.
+	\item is this feasible?
+	\item is this feasible?
+	\item Once the user requests the past foods graph to be displayed. The front-end system sends a request to the front-end local server, which travels to the back-end local server to the back-end system. If the back-end system cannot find any stored data, an error message is sent back to the local back-end server, which travels to the local front-end server to the front-end system. The error message is displayed to the user in the front-end interface.
+	\item Once the back-end determines the food item, a POST request is sent to the Nutrionix API. The Nutritionix API will send back a response, and the response is verified by the Utrition back-end system. If the response is a timed-out error, the user has an issue with their internet connection. Once an error message is detected by the Utrition back-end system, the message is sent to the back-end local server, which sends it to the front-end local server, which then sends it to the front-end interface to display the error message.
+	\item The learning rate of the machine learning algorithm is set to 0.005.
+	\item The Nutritionix API will provide correct results to the back-end, which then gets sent to the front-end interface through their respective local servers unless the user does not have an internet connection or an obscure food item is entered.
+	\item Utrition is a local web application.
+	\item After an image upload, the front-end interface counts the amount of images uploaded by the user. Once the amount of images exceeds 3, an error message is displayed to the user and the ability to proceed with the food-identification system is removed.
+	\item Utrition is a local web application.
+	\item Utrition is available on GitHub.
+\end{enumerate}
+
+\begin{enumerate}[{OE}1. ]
+	\item Utrition is available on GitHub.
+	\item The installation guide on GitHub is written in simple English.
+	\item No developers will make changes to Utrition after publication.
+\end{enumerate}
+
+\begin{enumerate}[{MS}1. ]
+	\item The CIFAR-100 dataset can be swapped with another appropriate dataset by placing it under the src/utrition-backend/ML/ folder.
+	\item Developers will upload an installation guide, and a guide on how to use the web application on the Utrition GitHub.
+	\item This design decision is covered by PR4's design decision.
+\end{enumerate}
+
+\begin{enumerate}[{SR}1. ]
+	\item Utrition is available on GitHub.
+	\item feasible?
+	\item Utrition only stores previously searched food items’ nutritional information on the users’ Utrition folder. Utrition does not communicate with other instances of Utrition on other devices.
+\end{enumerate}
+
+\begin{enumerate}[{CP}1. ]
+	\item Developers will not include any potentially insensitive content.
+\end{enumerate}	
+
+\begin{enumerate}[{LR}1. ]
+	\item Developers will not include any malicious software in Utrition.
+	\item Development of Utrition will be done on GitHub.
+	\item GitHub’s CI/CD pipeline will be used with Pylint. Developers will review the results of the Pylint test to determine if coding conventions are not being followed properly.
+	\item Front-end developers code in HTML and CSS using Google’s style guide. A review is performed by the front-end developers before the final launch of Utrition.
+	\item Front-end developers design the interface using Google’s style guide. A review is performed by the front-end developers before the final launch of Utrition.
+\end{enumerate}	
 \section{System Variables}
 
 \wss{Include this section for Mechatronics projects}
@@ -222,7 +293,8 @@ N/A
 
 \wss{If appropriate}
 
-Front/Backend
+To use Utrition users must run commands “npm start” and “npm run start-backend”. The “npm start” command allows for the front-end user interface to be displayed and connects the front-end interface to the user’s local server (http://localhost:3000). The “npm run start-backend” command creates an unseen back-end interface on the user’s local server (http://localhost:5000). Since the front-end and back-end connect to the same local server, communication is done by the front-end sending GET and POST requests to the local server. The back-end receives the GET or POST request and begins working on the given task. Once the task has been completed, the back-end returns data through the local server to reach the front-end (which is waiting for the back-end’s response). For example, if the request from the front-end is to find nutritional data for a food item, the front-end will send a GET request to the local server. The back-end reads this GET request from their local server (because they are located at the same address) and sends a POST request to the Nutritionix API. In return, the Nutritionix API will deliver the data back to the back-end. From there, the back-end returns the Nutritional data to the front-end by using the local server. 
+
 
 \section{Timeline}
 
@@ -249,6 +321,12 @@ N/A
 N/A
 
 \section{Communication Protocols}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.85]{Communication_Protocols.png}
+	\caption{Communication between the front-end and back-end}
+\end{figure}
 
 \section{Reflection}
 
