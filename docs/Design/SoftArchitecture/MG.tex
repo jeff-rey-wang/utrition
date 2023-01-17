@@ -205,6 +205,7 @@ actually be implemented.
 \item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Training Dataset Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Nutritional Data Retriever Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] User Log Data Structure Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Food Entry Module
 \end{description}
 
 
@@ -228,6 +229,7 @@ actually be implemented.
 & Nutrition Log Module\\
 & Manual Upload Module \\
 & Voice Upload Module \\
+& Food Entry Module \\
 \midrule
 
 \multirow{3}{0.3\textwidth}{Software Decision Module} & Image Classification Module\\
@@ -353,6 +355,7 @@ to be implemented.
 	\item[Services:]Converts the input image filename to a usable image path 
 	used by the Input Pre-Processing Module through string operations.
 	\item[Implemented By:] utrition\_backend/home/views.py
+ 	\item[Type of Module:] Library
 \end{description}
 
 \subsubsection{Nutrition Log Module (\mref{mInput})}
@@ -388,7 +391,14 @@ contents of the classified food.
 \item[Type of Module:] React Component
 \end{description}
 
+\subsubsection{Food Entry Module (\mref{mInput})}
 
+\begin{description}
+	\item[Secrets:]Stores an individual food item and their nutritional facts as an object.
+	\item[Services:]A food item is stored as an object. The object contains the food item name and important nutritional information such as calories, fats, sugar content, etc.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Object
+\end{description}
 
 \subsection{Software Decision Module}
 
@@ -411,6 +421,7 @@ contents of the classified food.
 of the food in the image that the pixel array represents through a machine 
 learning model.
 \item[Implemented By:] MainML.py
+\item[Type of Module:] Library
 \end{description}
 
 \subsubsection{Input Pre-Processing Module (\mref{mInput})}
@@ -419,6 +430,7 @@ learning model.
 \item[Secrets:] Converts an image path into a pixel array that can be used for machine learning processes in the Image Classification Module.
 \item[Services:] Converts the input file path to a pixel array formatted as a multidimensional array of integers through accessing the image at the file path and concatenating its pixel values.
 \item[Implemented By:] Interface.py
+\item[Type of Module:] Library
 \end{description}
 
 \subsubsection{Training Dataset Module (\mref{mInput})}
@@ -427,6 +439,7 @@ learning model.
 \item[Secrets:] Creates a dictionary of known food identifiers for use by machine learning processes in the Image Classification Module.
 \item[Services:] Produces a dictionary of image labels and classes for use in the machine learning module in the Image Classification Module through parsing the training image, test image, and metadata files and appending the pixel array of the input image.
 \item[Implemented By:] DataHandler.py
+\item[Type of Module:] Library
 \end{description}
 
 \subsubsection{Nutritional Data Retriever Module (\mref{mInput})}
@@ -440,8 +453,8 @@ learning model.
 \subsubsection{User Log Data Structure Module (\mref{mInput})}
 
 \begin{description}
-	\item[Secrets:]Stores past user inputted food items and their nutritional facts.
-	\item[Services:]Every user inputted food item and their corresponding nutritional facts are stored in a dictionary. Each key value is the food name and the values are the nutritional facts stored as a .json.
+	\item[Secrets:]Stores all past user inputted food items and their nutritional facts.
+	\item[Services:]Every user inputted food item and their corresponding nutritional facts are stored in a sequence of FoodEntry objects.
 	\item[Implemented By:] Utrition
 \end{description}
 
@@ -462,9 +475,9 @@ FR1 & M1, M2, M6, M9\\
 FR2 & M1, M2, M6, M9\\
 FR3 & M7, M11, M12, M13\\
 FR4 & M14\\
-FR5 & M7, M14, M15\\
-FR6 & M15\\
-FR7 & M15\\
+FR5 & M7, M14, M15, M16\\
+FR6 & M15, M16\\
+FR7 & M15, M16\\
 FR8 & M8, M15. \\
 FR9 & M8, M15\\
 FR10 & M4, M7, M9\\
@@ -472,21 +485,21 @@ FR11 & M4, M7, M10 \\
 FR12 & M10\\
 LF1 & M1, M2, M3, M4, M5, M6\\
 UH1 & M6\\
-UH2 & M15\\
+UH2 & M15, M16\\
 UH5 & M8\\
 PR2 & M11, M12, M13, M14\\
-PR3 & M14, M15, M9\\
+PR3 & M14, M15, M16, M9\\
 PR4 & M4, M5\\
 PR4, PR5, PR6 & M4, M5\\
 PR7 & M11\\
 PR8, PR9 & M14\\
-PR10, PR11, PR12 & M8, M15\\
+PR10, PR11, PR12 & M8, M15, M16\\
 PR13 & M7\\
 PR14 & M11, M12, M13\\
 PR15 & M8, M14\\
 PR17 & M5\\
 MS1 & M13\\
-SR2, SR3 & M15\\
+SR2, SR3 & M15, M16\\
 
 
 \bottomrule
