@@ -19,6 +19,7 @@
 \usepackage[section]{placeins}
 \usepackage{caption}
 \usepackage{fullpage}
+\usepackage{graphicx}
 
 \hypersetup{
 bookmarks=true,     % show bookmarks bar?
@@ -62,7 +63,7 @@ Date 2 & 1.1 & Notes\\
 
 \section{Symbols, Abbreviations and Acronyms}
 
-See SRS Documentation at \wss{give url}
+See SRS Documentation at \url{https://github.com/jeff-rey-wang/utrition/blob/3c91ed8d891c50d14bab9dd2f7ddcd5d3d465f56/docs/SRS/SRS.pdf}
 
 \wss{Also add any additional symbols, abbreviations or acronyms}
 
@@ -76,12 +77,11 @@ See SRS Documentation at \wss{give url}
 
 \section{Introduction}
 
-The following document details the Module Interface Specifications for
-\wss{Fill in your project name and description}
+The following document details the Module Interface Specifications for Utrition. Utrition is an application that will provide the nutritional facts for an inputted food item. Users can provide input through text, voice, or image. Utrition will also log past input food data for users to easily view their eating habits and nutritional intake.
 
 Complementary documents include the System Requirement Specifications
 and Module Guide.  The full documentation and implementation can be
-found at \url{...}.  \wss{provide the url for your repo}
+found at \url{https://github.com/jeff-rey-wang/utrition}.  \wss{provide the url for your repo}
 
 \section{Notation}
 
@@ -127,27 +127,33 @@ The following table is taken directly from the Module Guide document for this pr
 \begin{table}[h!]
 \centering
 \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
-\toprule
-\textbf{Level 1} & \textbf{Level 2}\\
-\midrule
-
-{Hardware-Hiding} & ~ \\
-\midrule
-
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding} & Input Parameters\\
-& Output Format\\
-& Output Verification\\
-& Temperature ODEs\\
-& Energy Equations\\ 
-& Control Module\\
-& Specification Parameters Module\\
-\midrule
-
-\multirow{3}{0.3\textwidth}{Software Decision} & {Sequence Data Structure}\\
-& ODE Solver\\
-& Plotting\\
-\bottomrule
-
+	\toprule
+	\textbf{Level 1} & \textbf{Level 2}\\
+	\midrule
+	
+	{Hardware-Hiding Module} & N/A \\
+	\midrule
+	
+	\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Application Path Module\\
+	& Home Page Module\\
+	& Profile Page Module\\
+	& Upload Page Module\\
+	& Image Upload Module\\
+	& Navigation Bar Module\\
+	& Backend Communication Module\\ 
+	& Nutrition Log Module\\
+	& Manual Upload Module \\
+	& Voice Upload Module \\
+	& Food Entry Module \\
+	\midrule
+	
+	\multirow{3}{0.3\textwidth}{Software Decision Module} & Image Classification Module\\
+	& Input Pre-Processing Module\\
+	& Training Dataset Module\\
+	& Nutritional Data Retriever Module\\
+	& User Log Data Structure Module\\
+	\bottomrule
+	
 \end{tabular}
 \caption{Module Hierarchy}
 \label{TblMH}
@@ -156,7 +162,7 @@ The following table is taken directly from the Module Guide document for this pr
 \newpage
 ~\newpage
 
-\section{MIS of \wss{Module Name}} \label{Module} \wss{Use labels for
+\section{MIS of Nutrition Log Module} \label{Module} \wss{Use labels for
   cross-referencing}
 
 \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
@@ -164,24 +170,25 @@ The following table is taken directly from the Module Guide document for this pr
 \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
 
 \subsection{Module}
-
+nutritionLog.py
 \wss{Short name for the module}
 
 \subsection{Uses}
-
+userLogData.py
 
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
+None
 
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\begin{tabular}{p{2cm} p{2.5cm} p{4cm} p{2cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-\wss{accessProg} & - & - & - \\
+disp\_data & - & React div element & - \\
 \hline
 \end{tabular}
 \end{center}
@@ -190,27 +197,27 @@ The following table is taken directly from the Module Guide document for this pr
 
 \subsubsection{State Variables}
 
+None
 \wss{Not all modules will have state variables.  State variables give the module
   a memory.}
 
 \subsubsection{Environment Variables}
-
+None
 \wss{This section is not necessary for all modules.  Its purpose is to capture
   when the module has external interaction with the environment, such as for a
   device driver, screen interface, keyboard, file, etc.}
 
 \subsubsection{Assumptions}
-
+None
 \wss{Try to minimize assumptions and anticipate programmer errors via
   exceptions, but for practical purposes assumptions are sometimes appropriate.}
 
 \subsubsection{Access Routine Semantics}
 
-\noindent \wss{accessProg}():
+\noindent disp\_data():
 \begin{itemize}
-\item transition: \wss{if appropriate} 
-\item output: \wss{if appropriate} 
-\item exception: \wss{if appropriate} 
+	\item output: $out$ := (get\_data() != NULL) $\Rightarrow$ React div with user data $|$ (get\_data() == NULL) $\Rightarrow$ React div displaying String stating "No user data available"
+	\item exception: None
 \end{itemize}
 
 \wss{A module without environment variables or state variables is unlikely to
@@ -221,7 +228,7 @@ The following table is taken directly from the Module Guide document for this pr
   will have one or the other.}
 
 \subsubsection{Local Functions}
-
+None
 \wss{As appropriate} \wss{These functions are for the purpose of specification.
   They are not necessarily something that is going to be implemented
   explicitly.  Even if they are implemented, they are not exported; they only
@@ -281,6 +288,271 @@ None
 
 \newpage
 
+\section{MIS of Food Entry Module} \label{Module} \wss{Use labels for
+	cross-referencing}
+
+\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+
+\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+
+\subsection{Template Module}
+
+foodEntry.py
+\wss{Short name for the module}
+
+\subsection{Uses}
+N/A
+
+\subsection{Syntax}
+
+\subsubsection{Exported Types}
+FoodEntry = ?
+
+\subsubsection{Exported Constants}
+None
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+	\begin{tabular}{p{3cm} p{5cm} p{5cm} p{2cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		FoodEntry & String, tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & FoodEntry & - \\
+		get\_food\_name & - & String & - \\
+		get\_food\_info & - & tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & - \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+food\_name: String\\
+food\_info: tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String)
+
+\wss{Not all modules will have state variables.  State variables give the module
+	a memory.}
+
+\subsubsection{Environment Variables}
+
+None
+
+\wss{This section is not necessary for all modules.  Its purpose is to capture
+	when the module has external interaction with the environment, such as for a
+	device driver, screen interface, keyboard, file, etc.}
+
+\subsubsection{Assumptions}
+
+The FoodEntry(food\_name, food\_info) constructor is called for each object instance before any other access
+routine is called for that object. The constructor can only be called once.
+
+\wss{Try to minimize assumptions and anticipate programmer errors via
+	exceptions, but for practical purposes assumptions are sometimes appropriate.}
+
+\subsubsection{Access Routine Semantics}
+
+\noindent FoodEntry($item, info$):
+\begin{itemize}
+	\item transition: $food\_name, food\_info :=$ item, info
+	\item output: $out :=$ self
+	\item exception: None
+\end{itemize}
+
+\noindent get\_food\_name():
+\begin{itemize}
+	\item output: $out :=$ food\_name
+	\item exception: None
+\end{itemize}
+
+\noindent get\_food\_info():
+\begin{itemize}
+	\item output: $out :=$ food\_info
+	\item exception: None
+\end{itemize}
+
+\wss{A module without environment variables or state variables is unlikely to
+	have a state transition.  In this case a state transition can only occur if
+	the module is changing the state of another module.}
+
+\wss{Modules rarely have both a transition and an output.  In most cases you
+	will have one or the other.}
+
+\subsubsection{Local Functions}
+
+None
+\wss{As appropriate} \wss{These functions are for the purpose of specification.
+	They are not necessarily something that is going to be implemented
+	explicitly.  Even if they are implemented, they are not exported; they only
+	have local scope.}
+
+\newpage
+
+\section{MIS of Nutritional Data Retriever Module} \label{Module} \wss{Use labels for
+	cross-referencing}
+
+\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+
+\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+
+\subsection{Module}
+
+nutritionalDataFetcher.py
+\wss{Short name for the module}
+
+\subsection{Uses}
+N/A
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+	\begin{tabular}{p{4cm} p{2cm} p{5cm} p{4.5cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		get\_nutritional\_data & String & tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & IllegalArgumentException \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+
+None
+\wss{Not all modules will have state variables.  State variables give the module
+	a memory.}
+
+\subsubsection{Environment Variables}
+
+None
+\wss{This section is not necessary for all modules.  Its purpose is to capture
+	when the module has external interaction with the environment, such as for a
+	device driver, screen interface, keyboard, file, etc.}
+
+\subsubsection{Assumptions}
+
+None
+\wss{Try to minimize assumptions and anticipate programmer errors via
+	exceptions, but for practical purposes assumptions are sometimes appropriate.}
+
+\subsubsection{Access Routine Semantics}
+
+\noindent get\_nutritional\_data(\textit{food\_item}):
+\begin{itemize}
+	\item output: result := tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String)
+	\item exception: (food\_item $\Rightarrow$ result := NULL) $\Rightarrow$ \mbox{IllegalArgumentException} 
+\end{itemize}
+
+\wss{A module without environment variables or state variables is unlikely to
+	have a state transition.  In this case a state transition can only occur if
+	the module is changing the state of another module.}
+
+\wss{Modules rarely have both a transition and an output.  In most cases you
+	will have one or the other.}
+
+\subsubsection{Local Functions}
+None
+
+\wss{As appropriate} \wss{These functions are for the purpose of specification.
+	They are not necessarily something that is going to be implemented
+	explicitly.  Even if they are implemented, they are not exported; they only
+	have local scope.}
+
+\newpage
+
+\section{MIS of User Log Data Structure Module} \label{Module} \wss{Use labels for
+	cross-referencing}
+
+\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+
+\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+
+\subsection{Module}
+
+userLogData.py
+\wss{Short name for the module}
+
+\subsection{Uses}
+foodEntry.py
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+	\begin{tabular}{p{2cm} p{5cm} p{3cm} p{2cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		add\_data & String, tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & - & - \\
+		get\_data & - & seq of FoodEntry & - \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+userData: seq of FoodEntry
+
+\wss{Not all modules will have state variables.  State variables give the module
+	a memory.}
+
+\subsubsection{Environment Variables}
+
+None
+
+\wss{This section is not necessary for all modules.  Its purpose is to capture
+	when the module has external interaction with the environment, such as for a
+	device driver, screen interface, keyboard, file, etc.}
+
+\subsubsection{Assumptions}
+
+None
+
+\wss{Try to minimize assumptions and anticipate programmer errors via
+	exceptions, but for practical purposes assumptions are sometimes appropriate.}
+
+\subsubsection{Access Routine Semantics}
+
+\noindent add\_data($food\_item, food\_info$):
+\begin{itemize}
+	\item transition: userData += new FoodEntry($food\_item$, $food\_info$)
+	\item exception: None
+\end{itemize}
+
+\noindent get\_data():
+\begin{itemize}
+	\item output: $out :=$ userData 
+	\item exception: None
+\end{itemize}
+
+\wss{A module without environment variables or state variables is unlikely to
+	have a state transition.  In this case a state transition can only occur if
+	the module is changing the state of another module.}
+
+\wss{Modules rarely have both a transition and an output.  In most cases you
+	will have one or the other.}
+
+\subsubsection{Local Functions}
+
+None
+\wss{As appropriate} \wss{These functions are for the purpose of specification.
+	They are not necessarily something that is going to be implemented
+	explicitly.  Even if they are implemented, they are not exported; they only
+	have local scope.}
+
+\newpage
+
 \section{MIS of \wss{Image Classification Module}} \label{Module}
 
 \subsection{Module}
@@ -323,9 +595,11 @@ None
 
 \subsubsection{Assumptions}
 
-\item{It is assumed that there is a relationship between the uploaded image and the image labels that the machine learning model is aware of.}
-
-\item{It is assumed that the food in an uploaded image has a one to one relation with a label that the machine learning model is aware of.}
+\begin{itemize}
+	\item{It is assumed that there is a relationship between the uploaded image and the image labels that the machine learning model is aware of.}
+	
+	\item{It is assumed that the food in an uploaded image has a one to one relation with a label that the machine learning model is aware of.}
+\end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
@@ -439,9 +713,11 @@ None
 
 \subsubsection{Local Functions}
 
-\item{unpickle(file): takes in a filepath and opens it into bytestream. Specific dictionary entries are retrieved and returned depending on the filepath that was passed as an argument}
-
-\item{main(): used for debugging a single file. Calls load\_data(None, None) and prints the resulting retrieved dictionary entries. }
+\begin{itemize}
+	\item{unpickle(file): takes in a filepath and opens it into bytestream. Specific dictionary entries are retrieved and returned depending on the filepath that was passed as an argument}
+	
+	\item{main(): used for debugging a single file. Calls load\_data(None, None) and prints the resulting retrieved dictionary entries. }
+\end{itemize}
 
 \newpage
 
