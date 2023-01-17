@@ -353,6 +353,7 @@ to be implemented.
 	\item[Services:]Converts the input image filename to a usable image path 
 	used by the Input Pre-Processing Module through string operations.
 	\item[Implemented By:] utrition\_backend/home/views.py
+ 	\item[Type of Module:] Library
 \end{description}
 
 \subsubsection{Nutrition Log Module (\mref{mInput})}
@@ -411,6 +412,7 @@ contents of the classified food.
 of the food in the image that the pixel array represents through a machine 
 learning model.
 \item[Implemented By:] MainML.py
+\item[Type of Module:] Library
 \end{description}
 
 \subsubsection{Input Pre-Processing Module (\mref{mInput})}
@@ -419,6 +421,7 @@ learning model.
 \item[Secrets:] Converts an image path into a pixel array that can be used for machine learning processes in the Image Classification Module.
 \item[Services:] Converts the input file path to a pixel array formatted as a multidimensional array of integers through accessing the image at the file path and concatenating its pixel values.
 \item[Implemented By:] Interface.py
+\item[Type of Module:] Library
 \end{description}
 
 \subsubsection{Training Dataset Module (\mref{mInput})}
@@ -427,6 +430,7 @@ learning model.
 \item[Secrets:] Creates a dictionary of known food identifiers for use by machine learning processes in the Image Classification Module.
 \item[Services:] Produces a dictionary of image labels and classes for use in the machine learning module in the Image Classification Module through parsing the training image, test image, and metadata files and appending the pixel array of the input image.
 \item[Implemented By:] DataHandler.py
+\item[Type of Module:] Library
 \end{description}
 
 \subsubsection{Nutritional Data Retriever Module (\mref{mInput})}
