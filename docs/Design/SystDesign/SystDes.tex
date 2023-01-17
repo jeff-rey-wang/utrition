@@ -207,8 +207,8 @@ The one specific case where Utrition will not notify the user of the specific er
 	\item Once the food image is sent to the back-end system, the machine learning algorithm begins a real-time stopwatch. After every iteration of the machine learning algorithm, the timer is checked. If the timer surpasses 10 seconds, an error message is sent to the back-end local server, which sends it to the front-end local server, which then sends it to the front-end interface to display the error message.
 	\item Once the back-end determines the food item, a POST request is sent to the Nutrionix API. The Nutritionix API will send back a response, and the response is verified by the Utrition back-end system. If the response is “Too many requests”, the user cannot submit more food items. Once an error message is detected by the Utrition back-end system, the message is sent to the back-end local server, which sends it to the front-end local server, which then sends it to the front-end interface to display the error message.
 	\item Once the back-end determines the food item, a POST request is sent to the Nutrionix API. The Nutritionix API will send back a response, and the response is verified by the Utrition back-end system. If the response is empty, the food item was not found in the Nutrionix API. The response is sent to the back-end local server, which sends it to the front-end local server, which then sends it to the front-end interface to display the error message.
-	\item is this feasible?
-	\item is this feasible?
+	\item After the back-end interface determines that the past nutritional logs folder is empty, the back-end returns an error message to the front-end interface's GET request through their respective local servers. The front-end interface displays the error message to the user.
+	\item If the back-end interface cannot find the past nutritional logs folder because it has been moved/deleted, the back-end returns an error message to the front-end interface's GET request through their respective local servers. The front-end interface displays the error message to the user.
 	\item Once the user requests the past foods graph to be displayed. The front-end system sends a request to the front-end local server, which travels to the back-end local server to the back-end system. If the back-end system cannot find any stored data, an error message is sent back to the local back-end server, which travels to the local front-end server to the front-end system. The error message is displayed to the user in the front-end interface.
 	\item Once the back-end determines the food item, a POST request is sent to the Nutrionix API. The Nutritionix API will send back a response, and the response is verified by the Utrition back-end system. If the response is a timed-out error, the user has an issue with their internet connection. Once an error message is detected by the Utrition back-end system, the message is sent to the back-end local server, which sends it to the front-end local server, which then sends it to the front-end interface to display the error message.
 	\item The learning rate of the machine learning algorithm is set to 0.005.
@@ -233,7 +233,7 @@ The one specific case where Utrition will not notify the user of the specific er
 
 \begin{enumerate}[{SR}1. ]
 	\item Utrition is available on GitHub.
-	\item feasible?
+	\item This design decision is covered by FR6's design decision.
 	\item Utrition only stores previously searched food items’ nutritional information on the users’ Utrition folder. Utrition does not communicate with other instances of Utrition on other devices.
 \end{enumerate}
 
