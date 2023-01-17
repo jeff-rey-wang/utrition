@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage{enumerate}
 \hypersetup{
     colorlinks,
     citecolor=blue,
@@ -151,7 +152,7 @@ The one specific case where Utrition will not notify the user of the specific er
 
 \subsection{Component Diagram}
 
-\subsection{Connection Between Requirements and Design} \label{SecConnection}
+\subsection{\href{../../SRS/SRS.pdf}{Connection Between Requirements and Design}} \label{SecConnection}
 
 \wss{The intention of this section is to document decisions that are made
   ``between'' the requirements and the design.  To satisfy some requirements,
@@ -159,6 +160,22 @@ The one specific case where Utrition will not notify the user of the specific er
   they are explicitly recorded here.  For instance, if a program has security
   requirements, a specific design decision may be made to satisfy those
   requirements with a password.}
+
+\subsubsection{Functional Requirements}
+
+\begin{enumerate}[{FR}1. ]
+	\item Provide user a screen with the option to click a button, which then leads the user to upload an image.
+	\item Provide the user a button to click on that allows them to enter another food item. After the second food item is entered, the button remains for more food items to be entered.
+	\item The food item(s) uploaded to the Utrition frontend will be condensed to a 32x32 pixel image, which is then turned into a 32x32 array. The array containing data for each pixel is then transferred to the Utrition backend. From there, the image is parsed through a TensorFlow machine learning algorithm which is trained on the CIFAR-100 dataset to determine the food item.
+	\item The Utrition backend provides the Nutritionix API with valid headers (x-app-id, x-app-key, x-remote-user-id) that allow the use of the API.
+	\item The Utrition backend interface sends a POST request to the Nutritionix API. The response to the POST request provides the backend interface with a JSON file containing the food’s macro-nutrients, micro-nutrients, and caloric details.
+	\item Once the Utrition backend has received the nutritional details of the food item from the Nutritionix API, the backend stores the nutritional information as a JSON file on the users’ Utrition folder.
+	\item Once the user requests to see past nutritional data, the frontend interface sends a GET request to the frontend local server. This request is passed to the backend local server, which then gets sent to the backend interface. The backend interface returns the data of all logged JSON files in the previously logged food items folder to the front-end interface (going through their respective local servers). The frontend interface displays the JSON files’ data in reverse-chronological order.
+	\item Once the Utrition backend interface receives the JSON file from the Nutritionix API, the data is sent to the local backend server, to the local frontend server, and then to the frontend interface. In the frontend interface, the JSON file has the “stringify” method applied to it to display the information to the user.
+	\item Once the user requests to see the past nutritional data graph, the frontend interface switches to a different user interface screen. From there, the front end interface sends a GET request to the frontend local server. This request is passed to the backend local server, which then gets sent to the backend interface. The backend interface returns the data of all logged JSON files in the previously logged food items folder to the front-end interface (going through their respective local servers). The frontend interface parses the data by using ChartJS to display a graph of past nutritional trends to the user.
+	
+	
+\end{enumerate}
 
 \section{System Variables}
 
