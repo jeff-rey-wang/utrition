@@ -166,20 +166,34 @@ Upload\\
 Profile
 \subsection{Syntax}
 \subsubsection{Exported Constants}
-N/A
+None
 \subsubsection{Exported Access Programs}
-N/A
+\begin{center}
+	\begin{tabular}{p{3cm} p{4cm} p{4cm} p{3cm}}
+		
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		App & - & App & - \\
+		\hline
+	\end{tabular}
+\end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
-N/A
+None
 \subsubsection{Environment Variables}
-URL: string
+$path$: string
 \subsubsection{Assumptions}
 User will not try and purposefully edit site path to a nonexistent page
 \subsubsection{Access Routine Semantics}
-N/A
+App():
+\begin{itemize}
+	\item transition: $path := "/"$
+	\item output: $out := self$
+	\item exception: None
+\end{itemize}
 \subsubsection{Local Functions}
-N/A
+None
 \newpage
 \section{Image Upload Module} \label{ImageUpload} 
 \subsection{Module}
@@ -187,30 +201,40 @@ ImageUpload
 \subsection{Uses}
 N/A
 \subsection{Syntax}
-\subsubsection{Exported Constants}
-ImageUpload = ?
+\subsubsection{Exported Types}
+ImageUpload
 \subsubsection{Exported Access Programs}
 \begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\begin{tabular}{p{3cm} p{4cm} p{4cm} p{3cm}}
 		
 	\hline
 	\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 	\hline
+	ImageUpload & - & ImageUpload &- \\
 	handleImage & Event & - & - \\
 	getData & - & - & badResponseError \\
+	setImage & string & - & - \\
+	setResponseData & JSON & - & - \\
 	\hline
 \end{tabular}
 \end{center}
 \subsubsection{State Variables}
-image
-responseData
+$image$: string\\
+$responseData$: JSON
 \subsubsection{Environment Variables}
-N/A
+None
 \subsubsection{Assumptions}
 Assumes file is not empty\\
 Assumes file is of appropriate type\\
 Assumes backend always sends SOME response
 \subsubsection{Access Routine Semantics}
+ImageUpload():
+\begin{itemize}
+	\item transition: $image, responseData := "", ""$
+		\item output: $out := self$
+	\item exception: None
+\end{itemize}
+\noindent
 handleImage(e):
 \begin{itemize}
 \item transition: set image to path of uploaded image
@@ -223,154 +247,137 @@ getData():
 backend\\ set responseData to the response
 \item exception: if error response, log the response code
 \end{itemize}
+
+\noindent setImage(s)
+\begin{itemize}
+	\item transition: $ image :=s $
+	\item exception: None
+\end{itemize}
+\noindent setResponseData(r)
+\begin{itemize}
+	\item transition: $ responseData:=r $
+	\item exception: None
+\end{itemize}
 \subsubsection{Local Functions}
-\noindent setImage: string $\rightarrow$\\
-\noindent setResponseData: response $\rightarrow$
+None
 \newpage
-\section{Navigation Bar Module} \label{Navbar} \wss{Use labels for
-cross-referencing}
+\section{Navigation Bar Module} \label{Navbar}
 \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
 \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
 \subsection{Module}
 NavBar
 \subsection{Uses}
+None
 \subsection{Syntax}
-\subsubsection{Exported Constants}
+\subsubsection{Exported Types}
+NavBar
 \subsubsection{Exported Access Programs}
 \begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
-	\hline
-	\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-	\hline
-	\wss{accessProg} & - & - & - \\
-	\hline
-\end{tabular}
+	\begin{tabular}{p{3cm} p{4cm} p{4cm} p{3cm}}
+		
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		NavBar & - & NavBar & - \\
+		to & Event &  & - \\
+		\hline
+	\end{tabular}
 \end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
+None
 \subsubsection{Environment Variables}
-\wss{This section is not necessary for all modules.  Its purpose is to capture
-when the module has external interaction with the environment, such as for a
-device driver, screen interface, keyboard, file, etc.}
+None
 \subsubsection{Assumptions}
-\wss{Try to minimize assumptions and anticipate programmer errors via
-exceptions, but for practical purposes assumptions are sometimes 
-appropriate.}
+Users will not try and purposefully change the paths for each button.
 \subsubsection{Access Routine Semantics}
-\noindent \wss{accessProg}():
+
+\noindent NavBar():
 \begin{itemize}
-\item transition: \wss{if appropriate} 
-\item output: \wss{if appropriate} 
-\item exception: \wss{if appropriate} 
+	\item output: $out := self$ 
+	\item exception: None
 \end{itemize}
-\wss{A module without environment variables or state variables is unlikely to
-have a state transition.  In this case a state transition can only occur if
-the module is changing the state of another module.}
-\wss{Modules rarely have both a transition and an output.  In most cases you
-will have one or the other.}
+
+\noindent to():
+\begin{itemize}
+\item transition: $path :=$ "/" $\lor \ path :=$ "/profile" $\lor \ path :=$ 
+"/upload" 
+\item exception: None
+\end{itemize}
 \subsubsection{Local Functions}
-\wss{As appropriate} \wss{These functions are for the purpose of specification.
-They are not necessarily something that is going to be implemented
-explicitly.  Even if they are implemented, they are not exported; they only
-have local scope.}
+None
 \newpage
-\section{Manual Logging Module} \label{ManualLogging} \wss{Use labels for
-cross-referencing}
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+\section{Manual Logging Module} \label{ManualLogging}
 \subsection{Module}
 ManualLog
 \subsection{Uses}
+None
 \subsection{Syntax}
-\subsubsection{Exported Constants}
+\subsubsection{Exported Types}
+ManualLog
 \subsubsection{Exported Access Programs}
 \begin{center}
 \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
 	\hline
 	\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 	\hline
-	\wss{accessProg} & - & - & - \\
+	ManualLog & - & ManualLog & - \\
 	\hline
 \end{tabular}
 \end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
-\wss{Not all modules will have state variables.  State variables give the module
-a memory.}
+None
 \subsubsection{Environment Variables}
-\wss{This section is not necessary for all modules.  Its purpose is to capture
-when the module has external interaction with the environment, such as for a
-device driver, screen interface, keyboard, file, etc.}
+None
 \subsubsection{Assumptions}
-\wss{Try to minimize assumptions and anticipate programmer errors via
-exceptions, but for practical purposes assumptions are sometimes 
-appropriate.}
+
 \subsubsection{Access Routine Semantics}
-\noindent \wss{accessProg}():
+\noindent ManualLog():
 \begin{itemize}
 \item transition: \wss{if appropriate} 
-\item output: \wss{if appropriate} 
+\item output: $out := self$ 
 \item exception: \wss{if appropriate} 
 \end{itemize}
-\wss{A module without environment variables or state variables is unlikely to
-have a state transition.  In this case a state transition can only occur if
-the module is changing the state of another module.}
-\wss{Modules rarely have both a transition and an output.  In most cases you
-will have one or the other.}
+
 \subsubsection{Local Functions}
-\wss{As appropriate} \wss{These functions are for the purpose of specification.
-They are not necessarily something that is going to be implemented
-explicitly.  Even if they are implemented, they are not exported; they only
-have local scope.}
+None
 \newpage
-\section{Voice Upload Module} \label{VoiceUpload} \wss{Use labels for
-cross-referencing}
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+\section{Voice Upload Module} \label{VoiceUpload} 
 \subsection{Module}
 VoiceUpload
 \subsection{Uses}
+None
 \subsection{Syntax}
-\subsubsection{Exported Constants}
+\subsubsection{Exported Types}
+VoiceUpload
 \subsubsection{Exported Access Programs}
 \begin{center}
 \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
 	\hline
 	\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 	\hline
-	\wss{accessProg} & - & - & - \\
+	VoiceUpload & - & VoiceUpload & - \\
 	\hline
 \end{tabular}
 \end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
-\wss{Not all modules will have state variables.  State variables give the module
-a memory.}
+None
 \subsubsection{Environment Variables}
-\wss{This section is not necessary for all modules.  Its purpose is to capture
-when the module has external interaction with the environment, such as for a
-device driver, screen interface, keyboard, file, etc.}
+None
 \subsubsection{Assumptions}
-\wss{Try to minimize assumptions and anticipate programmer errors via
-exceptions, but for practical purposes assumptions are sometimes 
-appropriate.}
+
 \subsubsection{Access Routine Semantics}
-\noindent \wss{accessProg}():
+\noindent VoiceUpload():
 \begin{itemize}
 \item transition: \wss{if appropriate} 
-\item output: \wss{if appropriate} 
+\item output: $out := self$ 
 \item exception: \wss{if appropriate} 
 \end{itemize}
-\wss{A module without environment variables or state variables is unlikely to
-have a state transition.  In this case a state transition can only occur if
-the module is changing the state of another module.}
-\wss{Modules rarely have both a transition and an output.  In most cases you
-will have one or the other.}
+
 \subsubsection{Local Functions}
-\wss{As appropriate} \wss{These functions are for the purpose of specification.
-They are not necessarily something that is going to be implemented
-explicitly.  Even if they are implemented, they are not exported; they only
-have local scope.}
+None
 \newpage
 \section{MIS of \wss{Module Name}} \label{Module} \wss{Use labels for
 cross-referencing}
