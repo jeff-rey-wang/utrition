@@ -130,6 +130,7 @@ your system and the environment around it.)}
 \section{Project Overview}
 
 \subsection{Normal Behaviour}
+
 In their command-line interface, users will travel to the Utrition directory. From there, users will enter commands "npm start" and "npm run start-backend" separately. Utrition's front-end and back-end interfaces will successfully connect to the user's localhost server. Users will be greeted with the Utrition's home page. They may travel to their profile page, where they can find their past nutritional data saved in a list. On this page, users may decide to view their nutritional trends in graph form. Users may also travel to the upload page, where they can input food item(s) to find their nutritional information. Users can input food items by 
 \begin{itemize}
 	\item Clicking on the search bar and typing in the food items. Each food item is separated by a space.
@@ -137,9 +138,16 @@ In their command-line interface, users will travel to the Utrition directory. Fr
 	\item Clicking on the upload button and then selecting an image of a food item. Users can include multiple images in their search by clicking on the upload button again.
 \end{itemize}
 Users finalize their search by clicking the search button. In return, the user will be shown the nutritional information for each food item searched. The nutritional information is acquired from utilizing the Nutritionix public API. The data is stored on the user's device, so that past nutritional trends can be viewed on their profile page.
+
 \subsection{Undesired Event Handling}
 
 \wss{How you will approach undesired events}
+
+A more in-depth look to Utrition's undesired event handling can be found in Utrition's \href{../../HazardAnalysis/HazardAnalysis.pdf}{Hazard Analysis} document.
+
+In all cases except for one, the Utrition front-end interface will notify the user of the issue disrupting normal use of the application. Most of these errors will be detected by the back-end interface of Utrition. As a result, the application's back-end interface will send the error message to the front-end interface through the user's local server for the front-end interface to display. Certain errors, such as incorrect image type, are detected by the front-end interface and will not have to travel through the local servers to deliver the error message to the user. 
+
+The one specific case where Utrition will not notify the user of the specific error is when Utrition closes unexpectedly. The cause of this rare issue is unknown to the developers, but the application will save its data periodically during use to ensure not much information is lost from the crash.
 
 \subsection{Component Diagram}
 
