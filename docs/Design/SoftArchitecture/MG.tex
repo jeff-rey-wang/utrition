@@ -228,6 +228,7 @@ actually be implemented.
 & Nutrition Log Module\\
 & Manual Upload Module \\
 & Voice Upload Module \\
+& Food Entry Module \\
 \midrule
 
 \multirow{3}{0.3\textwidth}{Software Decision Module} & Image Classification Module\\
@@ -389,7 +390,14 @@ contents of the classified food.
 \item[Type of Module:] React Component
 \end{description}
 
+\subsubsection{Food Entry Module (\mref{mInput})}
 
+\begin{description}
+	\item[Secrets:]Stores an individual food item and their nutritional facts as an object.
+	\item[Services:]A food item is stored as an object. The object contains the food item name and important nutritional information such as calories, fats, sugar content, etc.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Object
+\end{description}
 
 \subsection{Software Decision Module}
 
@@ -444,8 +452,8 @@ learning model.
 \subsubsection{User Log Data Structure Module (\mref{mInput})}
 
 \begin{description}
-	\item[Secrets:]Stores past user inputted food items and their nutritional facts.
-	\item[Services:]Every user inputted food item and their corresponding nutritional facts are stored in a dictionary. Each key value is the food name and the values are the nutritional facts stored as a .json.
+	\item[Secrets:]Stores all past user inputted food items and their nutritional facts.
+	\item[Services:]Every user inputted food item and their corresponding nutritional facts are stored in a sequence of FoodEntry objects.
 	\item[Implemented By:] Utrition
 \end{description}
 
