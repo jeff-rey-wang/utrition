@@ -185,7 +185,7 @@ None
 \subsubsection{Environment Variables}
 $path$: String
 \subsubsection{Assumptions}
-Users will not try to purposefully edit the site path to a nonexistent page
+Users will not try to purposefully edit the site path to a nonexistent page.
 \subsubsection{Access Routine Semantics}
 App():
 \begin{itemize}
@@ -685,7 +685,7 @@ $foodIdentified$: String
 \subsubsection{Environment Variables}
 None
 \subsubsection{Assumptions}
-It is assumed that there exists a valid image file at the provided image filepath.
+It is assumed that there exists a valid image file at the provided image file path.
 \subsubsection{Access Routine Semantics}
 \noindent open(path):
 \begin{itemize}
@@ -723,7 +723,7 @@ $flag$: $\mathbb{Z}$
 \subsubsection{Environment Variables}
 None
 \subsubsection{Assumptions}
-It is assumed the filepath and filetype of the CIFAR-100 datasets are respectively constant and standard.
+It is assumed the file path and file type of the CIFAR-100 datasets are respectively constant and standard.
 \subsubsection{Access Routine Semantics}
 \noindent loadData(array, f):
 \begin{itemize}
@@ -733,8 +733,8 @@ It is assumed the filepath and filetype of the CIFAR-100 datasets are respective
 \end{itemize}
 \subsubsection{Local Functions}
 \begin{itemize}
-	\item{unpickle(file): takes in a filepath and opens it into bytestream. Specific dictionary entries are retrieved and returned depending on the filepath that was passed as an argument}
-	\item{main(): used for debugging a single file. Calls load\_data(None, None) and prints the resulting retrieved dictionary entries. }
+	\item{unpickle(file): takes in a file path and opens it into bytestream. Specific dictionary entries are retrieved and returned depending on the filepath that was passed as an argument}
+	\item{main(): used for debugging a single file. Calls loadData(None, None) and prints the resulting retrieved dictionary entries. }
 \end{itemize}
 
 \newpage
@@ -765,7 +765,7 @@ $foodItem$: String
 \subsubsection{Environment Variables}
 None
 \subsubsection{Assumptions}
-It is assumed that there is a relationship between the uploaded image and the image labels that the machine learning model is aware of. It is also  assumed that the food in an uploaded image has a one to one relation with a label that the machine learning model is aware of.
+It is assumed that there is a relationship between the uploaded image and the image labels that the machine learning model is aware of. It is also assumed that the food in an uploaded image has a one to one relation with a label that the machine learning model is aware of.
 \subsubsection{Access Routine Semantics}
 \noindent startModel(array):
 \begin{itemize}
