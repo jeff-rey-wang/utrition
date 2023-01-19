@@ -54,8 +54,7 @@ urlcolor=cyan          % color of external links
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+January 18, 2023 & 1.0 & Initial Document\\
 \bottomrule
 \end{tabularx}
 
@@ -63,7 +62,7 @@ Date 2 & 1.1 & Notes\\
 
 \section{Symbols, Abbreviations and Acronyms}
 
-See SRS Documentation at \url{https://github.com/jeff-rey-wang/utrition/blob/3c91ed8d891c50d14bab9dd2f7ddcd5d3d465f56/docs/SRS/SRS.pdf}
+See SRS Documentation, \cite{SRS}, at \url{https://github.com/jeff-rey-wang/utrition/blob/3c91ed8d891c50d14bab9dd2f7ddcd5d3d465f56/docs/SRS/SRS.pdf}
 
 \wss{Also add any additional symbols, abbreviations or acronyms}
 
@@ -116,60 +115,56 @@ real & $\mathbb{R}$ & any number in (-$\infty$, $\infty$)\\
 The specification of \progname \ uses some derived data types: sequences, strings, and
 tuples. Sequences are lists filled with elements of the same data type. Strings
 are sequences of characters. Tuples contain a list of values, potentially of
-different types. In addition, \progname \ uses functions, which
+different types. Utrition also uses user frontend events to signal some function executions. The type JSON is heavily used to transport data to be displayed in the application interface. In addition, \progname \ uses functions, which
 are defined by the data types of their inputs and outputs. Local functions are
 described by giving their type signature followed by their specification.
 
 \section{Module Decomposition}
 
-The following table is taken directly from the Module Guide document for this project.
+The following table is taken directly from the Module Guide document, \cite{MG}, for this project.
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
-	\toprule
-	\textbf{Level 1} & \textbf{Level 2}\\
-	\midrule
-	
-	{Hardware-Hiding Module} & N/A \\
-	\midrule
-	
-	\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Application Path Module\\
-	& Home Page Module\\
-	& Profile Page Module\\
-	& Upload Page Module\\
-	& Image Upload Module\\
-	& Navigation Bar Module\\
-	& Backend Communication Module\\ 
-	& Nutrition Log Module\\
-	& Manual Upload Module \\
-	& Voice Upload Module \\
-	& Food Entry Module \\
-	\midrule
-	
-	\multirow{3}{0.3\textwidth}{Software Decision Module} & Image Classification Module\\
-	& Input Pre-Processing Module\\
-	& Training Dataset Module\\
-	& Nutritional Data Retriever Module\\
-	& User Log Data Structure Module\\
-	\bottomrule
-	
-\end{tabular}
-\caption{Module Hierarchy}
-\label{TblMH}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+		\toprule
+		\textbf{Level 1} & \textbf{Level 2}\\
+		\midrule
+		
+		{Hardware-Hiding Module} & N/A \\
+		\midrule
+		
+		\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Application Path Module\\
+		& Home Page Module\\
+		& Profile Page Module\\
+		& Nutrition Log Module\\
+		& Food Entry Module \\
+		& Upload Page Module\\
+		& Image Upload Module\\
+		& Manual Upload Module \\
+		& Voice Upload Module \\
+		& Navigation Bar Module\\
+		& Backend Communication Module\\ 
+		\midrule
+		
+		\multirow{3}{0.3\textwidth}{Software Decision Module} & Input Pre-Processing Module\\
+		& Training Dataset Module\\
+		& Image Classification Module\\
+		& Nutritional Data Retriever Module\\
+		& User Log Data Structure Module\\
+		\bottomrule
+		
+	\end{tabular}
+	\caption{Module Hierarchy}
+	\label{TblMH}
 \end{table}
 
-\newpage
 ~\newpage
 
 \section{Application Path Module} \label{App}
 \subsection{Module}
 App
 \subsection{Uses}
-NavBar\\
-Home\\
-Upload\\
-Profile
+NavBar, Home, Upload, Profile
 \subsection{Syntax}
 \subsubsection{Exported Constants}
 None
@@ -188,9 +183,9 @@ None
 \subsubsection{State Variables}
 None
 \subsubsection{Environment Variables}
-$path$: string
+$path$: String
 \subsubsection{Assumptions}
-User will not try and purposefully edit site path to a nonexistent page
+Users will not try to purposefully edit the site path to a nonexistent page.
 \subsubsection{Access Routine Semantics}
 App():
 \begin{itemize}
@@ -200,37 +195,235 @@ App():
 \end{itemize}
 \subsubsection{Local Functions}
 None
+
 \newpage
+
+\section{MIS of Home Page Module} \label{HomePage}
+\subsection{Module}
+Home
+\subsection{Uses}
+N/A
+\subsection{Syntax}
+\subsubsection{Exported Types}
+Home = ?
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		Home & - & Home & - \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Routine Semantics}
+\noindent Home():
+\begin{itemize}
+	\item transition: Page rendered with general information about Utrition
+	\item output: $out := self$
+	\item exception: None
+\end{itemize}
+\subsubsection{Local Functions}
+None
+
+\newpage
+
+\section{MIS of Profile Page Module} \label{ProfilePage}
+\subsection{Module}
+Profile
+\subsection{Uses}
+NutritionLog
+\subsection{Syntax}
+\subsubsection{Exported Types}
+Profile = ?
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		Profile & - & Profile & - \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Routine Semantics}
+\noindent Profile():
+\begin{itemize}
+	\item transition: Page rendered with information from NutritionLog
+	\item output: $out := self$
+	\item exception: None
+\end{itemize}
+\subsubsection{Local Functions}
+None
+
+\newpage
+
+\section{MIS of Nutrition Log Module} \label{NutritionLog}
+\subsection{Module}
+NutritionLog
+\subsection{Uses}
+UserLogData
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{2cm} p{2.5cm} p{4cm} p{2cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		dispData & - & Display component & - \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+$data$: UserLogData type
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Routine Semantics}
+\noindent dispData():
+\begin{itemize}
+	\item transition: $data$ := getData()
+	\item output: $out$ := ($data$ != NULL) $\Rightarrow$ Display component with user data $|$ ($data$ == NULL) $\Rightarrow$ Display component displaying String stating "No user data available"
+	\item exception: None
+\end{itemize}
+\subsubsection{Local Functions}
+None
+
+\newpage
+
+\section{MIS of Food Entry Module} \label{FoodEntry}
+\subsection{Template Module}
+FoodEntry
+\subsection{Uses}
+N/A
+\subsection{Syntax}
+\subsubsection{Exported Types}
+FoodEntry = ?
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{3cm} p{5cm} p{5cm} p{2cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		FoodEntry & String, tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & FoodEntry & - \\
+		getFoodName & - & String & - \\
+		getFoodInfo & - & tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & - \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+$food\_name$: String\\
+$food\_info$: tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String)
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+The FoodEntry(food\_name, food\_info) constructor is called for each object instance before any other access
+routine is called for that object. The constructor can only be called once.
+\subsubsection{Access Routine Semantics}
+\noindent FoodEntry($item, info$):
+\begin{itemize}
+	\item transition: $food\_name, food\_info := item, info$
+	\item output: $out := self$
+	\item exception: None
+\end{itemize}
+\noindent getFoodName():
+\begin{itemize}
+	\item output: $out := food\_name$
+	\item exception: None
+\end{itemize}
+\noindent getFoodInfo():
+\begin{itemize}
+	\item output: $out := food\_info$
+	\item exception: None
+\end{itemize}
+\subsubsection{Local Functions}
+None
+
+\newpage
+
+\section{MIS of Upload Page Module}
+\subsection{Module}
+Upload
+\subsection{Uses}
+ImageUpload, ManualUpload, VoiceUpload
+\subsection{Syntax}
+\subsubsection{Exported Types}
+Upload = ?
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		Upload & - & Upload & - \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Routine Semantics}
+\noindent Upload():
+\begin{itemize}
+	\item transition: Page rendered with components from ImageUpload, ManualUpload, and VoiceUpload
+	\item output: $out := self$
+	\item exception: None
+\end{itemize}
+\subsubsection{Local Functions}
+None
+
+\newpage
+
 \section{Image Upload Module} \label{ImageUpload} 
 \subsection{Module}
 ImageUpload
 \subsection{Uses}
-N/A
+BackComm
 \subsection{Syntax}
 \subsubsection{Exported Types}
 ImageUpload
 \subsubsection{Exported Access Programs}
 \begin{center}
 	\begin{tabular}{p{3cm} p{4cm} p{4cm} p{3cm}}
-		
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
 		ImageUpload & - & ImageUpload &- \\
 		handleImage & Event & - & - \\
-		getData & - & - & badResponseError \\
+		getData & - & - & BadResponseError \\
 		\hline
 	\end{tabular}
 \end{center}
 \subsubsection{State Variables}
-$image$: string\\
+$image$: String\\
 $responseData$: JSON
 \subsubsection{Environment Variables}
 None
 \subsubsection{Assumptions}
-Assumes file is not empty\\
-Assumes file is of appropriate type\\
-Assumes backend always sends SOME response
+The input file is of an appropriate type and not empty. The backend of Utrition will always send a response.
 \subsubsection{Access Routine Semantics}
 ImageUpload():
 \begin{itemize}
@@ -241,18 +434,16 @@ ImageUpload():
 \noindent
 handleImage(e):
 \begin{itemize}
-	\item transition: set image to path of uploaded image via setImage(e)
+	\item transition: $image :=$ path of uploaded image via $setImage(e)$
 	\item exception: None
 \end{itemize}
 \noindent
 getData():
 \begin{itemize}
 	\item transition: send image path, then listen for a response from 
-	backend\\ set responseData to the response
-	\item exception: if error response, log the response code
+	backend\\ setResponseData(response)
+	\item exception: ($responseData ==$ error) $\Rightarrow$ BadResponseError
 \end{itemize}
-
-
 \subsubsection{Local Functions}
 \noindent setImage(s)
 \begin{itemize}
@@ -264,105 +455,56 @@ getData():
 	\item transition: $ responseData:=r $
 	\item exception: None
 \end{itemize}
+
 \newpage
-\section{Navigation Bar Module} \label{Navbar}
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+
+\section{Manual Upload Module} \label{ManualUpload}
 \subsection{Module}
-NavBar
+ManualUpload
 \subsection{Uses}
-None
+BackComm
 \subsection{Syntax}
 \subsubsection{Exported Types}
-NavBar
-\subsubsection{Exported Access Programs}
-\begin{center}
-	\begin{tabular}{p{3cm} p{4cm} p{4cm} p{3cm}}
-		
-		\hline
-		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-		\hline
-		NavBar & - & NavBar & - \\
-		to & Event &  & - \\
-		\hline
-	\end{tabular}
-\end{center}
-\subsection{Semantics}
-\subsubsection{State Variables}
-None
-\subsubsection{Environment Variables}
-None
-\subsubsection{Assumptions}
-Users will not try and purposefully change the paths for each button.
-\subsubsection{Access Routine Semantics}
-
-\noindent NavBar():
-\begin{itemize}
-	\item output: $out := self$ 
-	\item exception: None
-\end{itemize}
-
-\noindent to():
-\begin{itemize}
-	\item transition: $path :=$ "/" $\lor \ path :=$ "/profile" $\lor \ path 
-	:=$ 
-	"/upload" 
-	\item exception: None
-\end{itemize}
-\subsubsection{Local Functions}
-None
-\newpage
-\section{Manual Logging Module} \label{ManualLogging}
-\subsection{Module}
-ManualLog
-\subsection{Uses}
-None
-\subsection{Syntax}
-\subsubsection{Exported Types}
-ManualLog
+ManualUpload = ?
 \subsubsection{Exported Access Programs}
 \begin{center}
 	\begin{tabular}{p{3cm} p{4cm} p{4cm} p{2cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
-		ManualLog & - & ManualLog & - \\
+		ManualUpload & - & ManualUpload & - \\
 		handleFoodItem & Event & - & - \\
-		getData & - & - & badResponseError \\
+		getData & - & - & BadResponseError \\
 		\hline
 	\end{tabular}
 \end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
-$foodDesc$ : (string, Integer)\\
+$foodDesc$ : (String, $\mathbb{Z}$)\\
 $responseData$: JSON
 \subsubsection{Environment Variables}
 None
 \subsubsection{Assumptions}
 None
 \subsubsection{Access Routine Semantics}
-\noindent ManualLog():
+\noindent ManualUpload():
 \begin{itemize}
 	\item transition: $foodDesc, responseData := $ "", ""
 	\item output: $out := self$ 
 	\item exception: None
 \end{itemize}
-
 \noindent handleFoodItem(e)
 \begin{itemize}
-	\item transition: Set foodDesc to be the contents of the text fields via 
-	setFoodDesc(e)
+	\item transition: $foodDesc :=$ the contents of the text fields via 
+	$setFoodDesc(e)$
 	\item exception: None
 \end{itemize}
-
-\noindent
-getData():
+\noindent getData():
 \begin{itemize}
 	\item transition: send food item, then listen for a response from 
-	backend\\ set responseData to the response \\ display nutritional output
-	\item exception: if error response, log the response code
+	backend\\ setResponseData(response) \\ display nutritional output
+	\item exception: ($responseData ==$ error) $\Rightarrow$ BadResponseError
 \end{itemize}
-
 \subsubsection{Local Functions}
 \noindent setFoodDesc((foodName, servings))
 \begin{itemize}
@@ -374,15 +516,17 @@ getData():
 	\item transition: $ responseData:=r $
 	\item exception: None
 \end{itemize}
+
 \newpage
+
 \section{Voice Upload Module} \label{VoiceUpload} 
 \subsection{Module}
 VoiceUpload
 \subsection{Uses}
-None
+BackComm
 \subsection{Syntax}
 \subsubsection{Exported Types}
-VoiceUpload
+VoiceUpload = ?
 \subsubsection{Exported Access Programs}
 \begin{center}
 	\begin{tabular}{p{3cm} p{4cm} p{4cm} p{2cm}}
@@ -391,13 +535,13 @@ VoiceUpload
 		\hline
 		VoiceUpload & - & VoiceUpload & - \\
 		handleVoiceInput & Event & - & - \\
-		getData & - & - & badResponseError \\
+		getData & - & - & BadResponseError \\
 		\hline
 	\end{tabular}
 \end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
-$ detectSpeech $: string\\
+$ detectSpeech $: String\\
 $responseData$: JSON
 \subsubsection{Environment Variables}
 None
@@ -410,22 +554,18 @@ None
 	\item output: $out := self$ 
 	\item exception: None
 \end{itemize}
-
 \noindent handleVoiceInput(e)
 \begin{itemize}
-	\item transition: Set detectSpeech to be the detected speech input via 
+	\item transition: $detectSpeech :=$ the detected speech input via 
 	setDetectSpeech(e)
 	\item exception: None
 \end{itemize}
-
-\noindent
-getData():
+\noindent getData():
 \begin{itemize}
 	\item transition: send voice input, then listen for a response from 
-	backend\\ set responseData to the response\\ display nutritional output
-	\item exception: if error response, log the response code
+	backend\\ setResponseData(response)\\ display nutritional output
+	\item exception: ($responseData ==$ error) $\Rightarrow$ BadResponseError
 \end{itemize}
-
 \subsubsection{Local Functions}
 \noindent setDetectSpeech(s)
 \begin{itemize}
@@ -437,379 +577,278 @@ getData():
 	\item transition: $ responseData:=r $
 	\item exception: None
 \end{itemize}
+
 \newpage
 
-\section{MIS of Nutrition Log Module} \label{Module} \wss{Use labels for
-  cross-referencing}
-
+\section{Navigation Bar Module} \label{Navbar}
 \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-
 \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
-
 \subsection{Module}
-nutritionLog.py
-\wss{Short name for the module}
-
+NavBar
 \subsection{Uses}
-userLogData.py
-
+N/A
 \subsection{Syntax}
-
-\subsubsection{Exported Constants}
-None
-
+\subsubsection{Exported Types}
+NavBar = ?
 \subsubsection{Exported Access Programs}
-
 \begin{center}
-\begin{tabular}{p{2cm} p{2.5cm} p{4cm} p{2cm}}
-\hline
-\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-\hline
-disp\_data & - & React div element & - \\
-\hline
-\end{tabular}
+	\begin{tabular}{p{3cm} p{4cm} p{4cm} p{3cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		NavBar & - & NavBar & - \\
+		changePage & Event &  & - \\
+		\hline
+	\end{tabular}
 \end{center}
-
 \subsection{Semantics}
-
 \subsubsection{State Variables}
-
 None
-\wss{Not all modules will have state variables.  State variables give the module
-  a memory.}
-
 \subsubsection{Environment Variables}
 None
-\wss{This section is not necessary for all modules.  Its purpose is to capture
-  when the module has external interaction with the environment, such as for a
-  device driver, screen interface, keyboard, file, etc.}
-
 \subsubsection{Assumptions}
-None
-\wss{Try to minimize assumptions and anticipate programmer errors via
-  exceptions, but for practical purposes assumptions are sometimes appropriate.}
-
+Users will not try to purposefully change the paths for each button.
 \subsubsection{Access Routine Semantics}
-
-\noindent disp\_data():
+\noindent NavBar():
 \begin{itemize}
-	\item output: $out$ := (get\_data() != NULL) $\Rightarrow$ React div with user data $|$ (get\_data() == NULL) $\Rightarrow$ React div displaying String stating "No user data available"
+	\item output: $out := self$ 
 	\item exception: None
 \end{itemize}
-
-\wss{A module without environment variables or state variables is unlikely to
-  have a state transition.  In this case a state transition can only occur if
-  the module is changing the state of another module.}
-
-\wss{Modules rarely have both a transition and an output.  In most cases you
-  will have one or the other.}
-
+\noindent changePage():
+\begin{itemize}
+	\item transition: $path :=$ "/" $\lor$ "/profile" $\lor$ "/upload" 
+	\item exception: None
+\end{itemize}
 \subsubsection{Local Functions}
 None
-\wss{As appropriate} \wss{These functions are for the purpose of specification.
-  They are not necessarily something that is going to be implemented
-  explicitly.  Even if they are implemented, they are not exported; they only
-  have local scope.}
 
 \newpage
 
-\section{MIS of Backend Communication Module} \label{Module}
-
+\section{MIS of Backend Communication Module} \label{BackComm}
 \subsection{Module}
-
-This module provides a way for user input to be passed to backend processing modules in order to eventually classify the input. This module is called after the user submits a valid input.
-
+BackComm
 \subsection{Uses}
-
-Input Pre-Processing Module
-
+InputPreProcess, NutritionalData
 \subsection{Syntax}
-
 \subsubsection{Exported Constants}
-
 None
-
 \subsubsection{Exported Access Programs}
-
 \begin{center}
 \begin{tabular}{p{2.5cm} p{0.5cm} p{4.5cm} p{5cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-display\_index & - & JSON Object: Consists of the food classified from the user input & If POST, return filepath to user upload (default state before user action) \\
+displayIndex & - & JSON & None \\
 \hline
 \end{tabular}
 \end{center}
-
 \subsection{Semantics}
-
 \subsubsection{State Variables}
-
 None
-
 \subsubsection{Environment Variables}
-
 None
-
 \subsubsection{Assumptions}
-
 It is assumed that the filename of the user inputted file will be of String format.
-
 \subsubsection{Access Routine Semantics}
-
-None
-
+\noindent displayIndex():
+\begin{itemize}
+	\item output: $out :=$ JSON consisting of the food classified from the user input 
+	\item exception: None
+\end{itemize}
 \subsubsection{Local Functions}
-
 None
 
 \newpage
 
-\section{MIS of Food Entry Module} \label{Module} \wss{Use labels for
-	cross-referencing}
-
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
-
-\subsection{Template Module}
-
-foodEntry.py
-\wss{Short name for the module}
-
+\section{MIS of Input Pre-Processing Module} \label{InputPreProcess}
+\subsection{Module}
+InputPreProcess
 \subsection{Uses}
-N/A
-
+ImageClassification
 \subsection{Syntax}
-
-\subsubsection{Exported Types}
-FoodEntry = ?
-
 \subsubsection{Exported Constants}
 None
-
 \subsubsection{Exported Access Programs}
-
 \begin{center}
-	\begin{tabular}{p{3cm} p{5cm} p{5cm} p{2cm}}
+	\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
-		FoodEntry & String, tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & FoodEntry & - \\
-		get\_food\_name & - & String & - \\
-		get\_food\_info & - & tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & - \\
+		open & String & String & - \\
 		\hline
 	\end{tabular}
 \end{center}
-
 \subsection{Semantics}
-
 \subsubsection{State Variables}
-food\_name: String\\
-food\_info: tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String)
-
-\wss{Not all modules will have state variables.  State variables give the module
-	a memory.}
-
+$filePath$: String\\
+$foodIdentified$: String
 \subsubsection{Environment Variables}
-
 None
-
-\wss{This section is not necessary for all modules.  Its purpose is to capture
-	when the module has external interaction with the environment, such as for a
-	device driver, screen interface, keyboard, file, etc.}
-
 \subsubsection{Assumptions}
-
-The FoodEntry(food\_name, food\_info) constructor is called for each object instance before any other access
-routine is called for that object. The constructor can only be called once.
-
-\wss{Try to minimize assumptions and anticipate programmer errors via
-	exceptions, but for practical purposes assumptions are sometimes appropriate.}
-
+It is assumed that there exists a valid image file at the provided image file path.
 \subsubsection{Access Routine Semantics}
-
-\noindent FoodEntry($item, info$):
+\noindent open(path):
 \begin{itemize}
-	\item transition: $food\_name, food\_info :=$ item, info
-	\item output: $out :=$ self
+	\item transition: $filePath := path$
+	\item output: $out := foodIdentified$
 	\item exception: None
 \end{itemize}
-
-\noindent get\_food\_name():
-\begin{itemize}
-	\item output: $out :=$ food\_name
-	\item exception: None
-\end{itemize}
-
-\noindent get\_food\_info():
-\begin{itemize}
-	\item output: $out :=$ food\_info
-	\item exception: None
-\end{itemize}
-
-\wss{A module without environment variables or state variables is unlikely to
-	have a state transition.  In this case a state transition can only occur if
-	the module is changing the state of another module.}
-
-\wss{Modules rarely have both a transition and an output.  In most cases you
-	will have one or the other.}
-
 \subsubsection{Local Functions}
-
 None
-\wss{As appropriate} \wss{These functions are for the purpose of specification.
-	They are not necessarily something that is going to be implemented
-	explicitly.  Even if they are implemented, they are not exported; they only
-	have local scope.}
 
 \newpage
 
-\section{MIS of Nutritional Data Retriever Module} \label{Module} \wss{Use labels for
-	cross-referencing}
-
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
-
+\section{MIS of Training Dataset Module} \label{TrainingDataset}
 \subsection{Module}
-
-nutritionalDataFetcher.py
-\wss{Short name for the module}
-
+TrainingDataset
 \subsection{Uses}
 N/A
-
 \subsection{Syntax}
-
 \subsubsection{Exported Constants}
 None
-
 \subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{2cm} p{5cm} p{5cm} p{2cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		loadData & seq of (seq of $\mathbb{Z}$), $\mathbb{Z}$ & Dictionary & - \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+$imageArray$: seq of (seq of $\mathbb{Z}$)\\
+$flag$: $\mathbb{Z}$
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+It is assumed the file path and file type of the CIFAR-100 datasets are respectively constant and standard.
+\subsubsection{Access Routine Semantics}
+\noindent loadData(array, f):
+\begin{itemize}
+	\item transition: $imageArray, flag := array, f$
+	\item output: $out :=$ Dictionary consisting of image labels and classes used in the machine learning model
+	\item exception: None
+\end{itemize}
+\subsubsection{Local Functions}
+\begin{itemize}
+	\item{unpickle(file): takes in a file path and opens it into bytestream. Specific dictionary entries are retrieved and returned depending on the filepath that was passed as an argument}
+	\item{main(): used for debugging a single file. Calls loadData(None, None) and prints the resulting retrieved dictionary entries. }
+\end{itemize}
 
+\newpage
+
+\section{MIS of Image Classification Module} \label{ImageClassification}
+\subsection{Module}
+ImageClassification
+\subsection{Uses}
+TrainingDataset
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+startModel & seq of (seq of $\mathbb{Z}$) & String & - \\
+\hline
+\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+$weights$: seq of (seq of $\mathbb{Z}$)\\
+$imageArray$ : seq of (seq of $\mathbb{Z}$)\\
+$foodItem$: String
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+It is assumed that there is a relationship between the uploaded image and the image labels that the machine learning model is aware of. It is also assumed that the food in an uploaded image has a one to one relation with a label that the machine learning model is aware of.
+\subsubsection{Access Routine Semantics}
+\noindent startModel(array):
+\begin{itemize}
+	\item transition: $imageArray := array$
+	\item output: $out := foodItem$
+	\item exception: None
+\end{itemize}
+\subsubsection{Local Functions}
+tf.compat.v1.train.GradientDescentOptimizer(learning\_rate).minimize(loss): Execute GradientDescentOptimizer and tries to minimize loss by computing the gradients of its trainable variables. Optimizes weights system variable on pass.
+
+\newpage
+
+\section{MIS of Nutritional Data Retriever Module} \label{NDR}
+\subsection{Module}
+NutritionalData
+\subsection{Uses}
+N/A
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
 \begin{center}
 	\begin{tabular}{p{4cm} p{2cm} p{5cm} p{4.5cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
-		get\_nutritional\_data & String & tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & IllegalArgumentException \\
+		getNutritionalData & String & tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & IllegalArgumentException \\
 		\hline
 	\end{tabular}
 \end{center}
-
 \subsection{Semantics}
-
 \subsubsection{State Variables}
-
-None
-\wss{Not all modules will have state variables.  State variables give the module
-	a memory.}
-
+$result$: tuple of Strings
 \subsubsection{Environment Variables}
-
 None
-\wss{This section is not necessary for all modules.  Its purpose is to capture
-	when the module has external interaction with the environment, such as for a
-	device driver, screen interface, keyboard, file, etc.}
-
 \subsubsection{Assumptions}
-
 None
-\wss{Try to minimize assumptions and anticipate programmer errors via
-	exceptions, but for practical purposes assumptions are sometimes appropriate.}
-
 \subsubsection{Access Routine Semantics}
-
-\noindent get\_nutritional\_data(\textit{food\_item}):
+\noindent getNutritionalData(\textit{food\_item}):
 \begin{itemize}
-	\item output: result := tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String)
-	\item exception: (food\_item $\Rightarrow$ result := NULL) $\Rightarrow$ \mbox{IllegalArgumentException} 
+	\item output: $result :=$ tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String)
+	\item exception: ($food\_item \Rightarrow result$ := NULL) $\Rightarrow$ \mbox{IllegalArgumentException} 
 \end{itemize}
-
-\wss{A module without environment variables or state variables is unlikely to
-	have a state transition.  In this case a state transition can only occur if
-	the module is changing the state of another module.}
-
-\wss{Modules rarely have both a transition and an output.  In most cases you
-	will have one or the other.}
-
 \subsubsection{Local Functions}
 None
 
-\wss{As appropriate} \wss{These functions are for the purpose of specification.
-	They are not necessarily something that is going to be implemented
-	explicitly.  Even if they are implemented, they are not exported; they only
-	have local scope.}
-
 \newpage
 
-\section{MIS of User Log Data Structure Module} \label{Module} \wss{Use labels for
-	cross-referencing}
-
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
-
+\section{MIS of User Log Data Structure Module} \label{ULD}
 \subsection{Module}
-
-userLogData.py
-\wss{Short name for the module}
-
+UserLogData
 \subsection{Uses}
-foodEntry.py
-
+FoodEntry
 \subsection{Syntax}
-
 \subsubsection{Exported Constants}
 None
-
 \subsubsection{Exported Access Programs}
-
 \begin{center}
 	\begin{tabular}{p{2cm} p{5cm} p{3cm} p{2cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
-		add\_data & String, tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & - & - \\
-		get\_data & - & seq of FoodEntry & - \\
+		addData & String, tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & - & - \\
+		getData & - & seq of FoodEntry & - \\
 		\hline
 	\end{tabular}
 \end{center}
-
 \subsection{Semantics}
-
 \subsubsection{State Variables}
-userData: seq of FoodEntry
-
-\wss{Not all modules will have state variables.  State variables give the module
-	a memory.}
-
+$userData$: seq of FoodEntry
 \subsubsection{Environment Variables}
-
 None
-
-\wss{This section is not necessary for all modules.  Its purpose is to capture
-	when the module has external interaction with the environment, such as for a
-	device driver, screen interface, keyboard, file, etc.}
-
 \subsubsection{Assumptions}
-
 None
-
-\wss{Try to minimize assumptions and anticipate programmer errors via
-	exceptions, but for practical purposes assumptions are sometimes appropriate.}
-
 \subsubsection{Access Routine Semantics}
-
-\noindent add\_data($food\_item, food\_info$):
+\noindent addData($food\_item, food\_info$):
 \begin{itemize}
-	\item transition: userData += new FoodEntry($food\_item$, $food\_info$)
+	\item transition: $userData$ += new FoodEntry($food\_item$, $food\_info$)
 	\item exception: None
 \end{itemize}
-
-\noindent get\_data():
+\noindent getData():
 \begin{itemize}
-	\item output: $out :=$ userData 
+	\item output: $out := userData$ 
 	\item exception: None
 \end{itemize}
 
@@ -827,362 +866,6 @@ None
 	They are not necessarily something that is going to be implemented
 	explicitly.  Even if they are implemented, they are not exported; they only
 	have local scope.}
-
-\newpage
-
-\section{MIS of Image Classification Module} \label{Module}
-
-\subsection{Module}
-
-This module takes image data formatted as a pixel array and returns the name of the food identified in the input image. This module is called from the Input Pre-Processing Module after it constructs the pixel array of the uploaded image.
-
-\subsection{Uses}
-
-Training Dataset Module
-
-\subsection{Syntax}
-
-\subsubsection{Exported Constants}
-
-None
-
-\subsubsection{Exported Access Programs}
-
-\begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
-\hline
-\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-\hline
-startModel & Array: Pixel array of the uploaded image file & String: Name of the
-food classified from
-the user input & - \\
-\hline
-\end{tabular}
-\end{center}
-
-\subsection{Semantics}
-
-\subsubsection{State Variables}
-
-weights: integer tensor with a size of 3072 by 100
-
-\subsubsection{Environment Variables}
-
-None
-
-\subsubsection{Assumptions}
-
-\begin{itemize}
-	\item{It is assumed that there is a relationship between the uploaded image and the image labels that the machine learning model is aware of.}
-	
-	\item{It is assumed that the food in an uploaded image has a one to one relation with a label that the machine learning model is aware of.}
-\end{itemize}
-
-\subsubsection{Access Routine Semantics}
-
-None
-
-\subsubsection{Local Functions}
-
-tf.compat.v1.train.GradientDescentOptimizer(learning\_rate).minimize(loss): Execute GradientDescentOptimizer and tries to minimize loss by computing the gradients of its trainable variables. Optimizes weights system variable on pass.
-
-\newpage
-
-\section{MIS of Input Pre-Processing Module} \label{Module}
-
-\subsection{Module}
-
-This module converts a user uploaded image into a pixel array and calls the Image Classification Module with the constructed pixel array. This module is called from the Backend Communication Module after it constructs the filepath to the uploaded image.
-
-\subsection{Uses}
-
-Image Classification Module
-
-\subsection{Syntax}
-
-\subsubsection{Exported Constants}
-
-None
-
-\subsubsection{Exported Access Programs}
-
-\begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
-\hline
-\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-\hline
-open & String: Filepath of user uploaded image file & String: Name of the
-food classified from
-the user input & - \\
-\hline
-\end{tabular}
-\end{center}
-
-\subsection{Semantics}
-
-\subsubsection{State Variables}
-
-None
-
-\subsubsection{Environment Variables}
-
-None
-
-\subsubsection{Assumptions}
-
-It is assumed that there exists a valid image file at the provided image filepath.
-
-\subsubsection{Access Routine Semantics}
-
-None
-
-\subsubsection{Local Functions}
-
-None
-
-\newpage
-
-\section{MIS of Training Dataset Module} \label{Module}
-
-\subsection{Module}
-
-This module constructs data sets of image and label data from the CIFAR-100 image training files. These datasets are what user-uploaded images are compared against in the Image Classification Module to identify the food present in the images. 
-
-\subsection{Uses}
-
-None
-
-\subsection{Syntax}
-
-\subsubsection{Exported Constants}
-
-None
-
-\subsubsection{Exported Access Programs}
-
-\begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
-\hline
-\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-\hline
-load\_data & \item{Array: Pixel array of the uploaded image file} \item{Integer: Flag to denote if an image was uploaded by the user} & Dictionary: Image labels and classes used in the machine learning model & - \\
-\hline
-\end{tabular}
-\end{center}
-
-\subsection{Semantics}
-
-\subsubsection{State Variables}
-
-None
-
-\subsubsection{Environment Variables}
-
-None
-
-\subsubsection{Assumptions}
-
-It is assumed the filepath and filetype of the CIFAR-100 datasets are respectively constant and standard.
-
-\subsubsection{Access Routine Semantics}
-
-None
-
-\subsubsection{Local Functions}
-
-\begin{itemize}
-	\item{unpickle(file): takes in a filepath and opens it into bytestream. Specific dictionary entries are retrieved and returned depending on the filepath that was passed as an argument}
-	
-	\item{main(): used for debugging a single file. Calls load\_data(None, None) and prints the resulting retrieved dictionary entries. }
-\end{itemize}
-
-\newpage
-
-
-
-\section{MIS of Upload Page Module}
-
-
-
-\subsection{Module}
-
-Upload
-
-\subsection{Uses}
-
-imageupload, voiceupload
-
-\subsection{Syntax}
-
-\subsubsection{Exported Constants}
-
-upload
-
-\subsubsection{Exported Access Programs}
-
-\begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
-\hline
-\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-\hline
-\wss{accessProg} & - & - & - \\
-\hline
-\end{tabular}
-\end{center}
-
-\subsection{Semantics}
-
-\subsubsection{State Variables}
-
-
-
-\subsubsection{Environment Variables}
-
-
-
-\subsubsection{Assumptions}
-
-
-
-\subsubsection{Access Routine Semantics}
-
-\noindent \wss{accessProg}():
-\begin{itemize}
-\item transition: \wss{if appropriate} 
-\item output: \wss{if appropriate} 
-\item exception: \wss{if appropriate} 
-\end{itemize}
-
-
-
-\subsubsection{Local Functions}
-
-
-\newpage
-
-
-
-
-
-
-\section{MIS of Profile Page Module}
-
-
-
-\subsection{Module}
-
-Profile
-
-\subsection{Uses}
-
-NutritionLog
-
-\subsection{Syntax}
-
-\subsubsection{Exported Constants}
-
-Profile
-
-\subsubsection{Exported Access Programs}
-
-\begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
-\hline
-\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-\hline
-\wss{accessProg} & - & - & - \\
-\hline
-\end{tabular}
-\end{center}
-
-\subsection{Semantics}
-
-\subsubsection{State Variables}
-
-
-
-\subsubsection{Environment Variables}
-
-
-\subsubsection{Assumptions}
-
-
-\subsubsection{Access Routine Semantics}
-
-\noindent \wss{accessProg}():
-\begin{itemize}
-\item transition: \wss{if appropriate} 
-\item output: \wss{if appropriate} 
-\item exception: \wss{if appropriate} 
-\end{itemize}
-
-
-
-
-\subsubsection{Local Functions}
-
-
-
-\newpage
-
-
-\section{MIS of Home Page Module}
-
-
-
-\subsection{Module}
-
-Home
-
-\subsection{Uses}
-
-NutritionLog
-
-\subsection{Syntax}
-
-\subsubsection{Exported Constants}
-
-Profile
-
-\subsubsection{Exported Access Programs}
-
-\begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
-\hline
-\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-\hline
-\wss{accessProg} & - & - & - \\
-\hline
-\end{tabular}
-\end{center}
-
-\subsection{Semantics}
-
-\subsubsection{State Variables}
-
-
-
-\subsubsection{Environment Variables}
-
-
-\subsubsection{Assumptions}
-
-
-\subsubsection{Access Routine Semantics}
-
-\noindent \wss{accessProg}():
-\begin{itemize}
-\item transition: \wss{if appropriate} 
-\item output: \wss{if appropriate} 
-\item exception: \wss{if appropriate} 
-\end{itemize}
-
-
-
-
-\subsubsection{Local Functions}
-
-
 
 \newpage
 

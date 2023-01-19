@@ -46,8 +46,7 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+January 18, 2023 & 1.0 & Initial Document\\
 \bottomrule
 \end{tabularx}
 
@@ -56,6 +55,13 @@ Date 2 & 1.1 & Notes\\
 \section{Reference Material}
 
 This section records information for easy reference.
+
+\subsection{Relevant Documentation}
+This document references multiple other documents that are listed below:
+
+\begin{itemize}
+	\item SRS, \cite{SRS}
+\end{itemize}
 
 \subsection{Abbreviations and Acronyms}
 
@@ -72,7 +78,7 @@ This section records information for easy reference.
   R & Requirement\\
   SC & Scientific Computing \\
   SRS & Software Requirements Specification\\
-  \progname & Explanation of program name\\
+  \progname & Application name\\
   UC & Unlikely Change \\
   \wss{etc.} & \wss{...}\\
   \bottomrule
@@ -101,7 +107,7 @@ hides represent likely future changes.  Design for change is valuable in SC,
 where modifications are frequent, especially during initial development as the
 solution space is explored.  
 
-Our design follows the rules layed out by \citet{ParnasEtAl1984}, as follows:
+Our design follows the rules laid out by \citet{ParnasEtAl1984}, as follows:
 \begin{itemize}
 \item System details that are likely to change independently should be the
   secrets of separate modules.
@@ -150,11 +156,9 @@ unlikely changes are listed in Section \ref{SecUchange}.
 
 \subsection{Anticipated Changes} \label{SecAchange}
 
-Anticipated changes are the source of the information that is to be hidden
-inside the modules. Ideally, changing one of the anticipated changes will only
-require changing the one module that hides the associated decision. The approach
-adapted here is called design for
-change.
+Anticipated changes identified below are small modifications to already existing modules. Ideally, implementing one of the anticipated changes will only
+require changing a single module. The Utrition team has specifically taken designing for
+change into account when creating modules.
 
 \begin{description}
 \item[\refstepcounter{acnum} \actheacnum \label{acHardware}:] The specific
@@ -168,10 +172,7 @@ change.
 
 \subsection{Unlikely Changes} \label{SecUchange}
 
-The module design should be as general as possible. However, a general system is
-more complex. Sometimes this complexity is not necessary. Fixing some design
-decisions at the system architecture stage can simplify the software design. If
-these decision should later need to be changed, then many parts of the design
+Unlikely changes to Utrition are listed below. These modifications are not expected to be implemented based on their unnecessary nature and difficulty of implementation. If any of these changes are implemented, many parts of the design
 will potentially need to be modified. Hence, it is not intended that these
 decisions will be changed.
 
@@ -190,26 +191,26 @@ below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
 
 \begin{description}
-\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Application Path Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Home Page Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Profile Page Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Upload Page Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Image Upload Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Navigation Bar Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Backend Communication Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Nutrition Log Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Manual Upload Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Voice Upload Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Image Classification Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Input Pre-Processing Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Training Dataset Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Nutritional Data Retriever Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] User Log Data Structure Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mHH}:] Food Entry Module
+\item [\refstepcounter{mnum} \mthemnum \label{mAP}:] Application Path Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mHP}:] Home Page Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mPP}:] Profile Page Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mNL}:] Nutrition Log Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mFE}:] Food Entry Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mUP}:] Upload Page Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mIU}:] Image Upload Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mMU}:] Manual Upload Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mVU}:] Voice Upload Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mNB}:] Navigation Bar Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mBC}:] Backend Communication Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mIP}:] Input Pre-Processing Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mTD}:] Training Dataset Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mIC}:] Image Classification Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mNDR}:] Nutritional Data Retriever Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mULD}:] User Log Data Structure Module
 \end{description}
 
 
-\begin{table}[h!]
+\begin{table}[H]
 \centering
 \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
 \toprule
@@ -222,19 +223,19 @@ actually be implemented.
 \multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Application Path Module\\
 & Home Page Module\\
 & Profile Page Module\\
+& Nutrition Log Module\\
+& Food Entry Module \\
 & Upload Page Module\\
 & Image Upload Module\\
-& Navigation Bar Module\\
-& Backend Communication Module\\ 
-& Nutrition Log Module\\
 & Manual Upload Module \\
 & Voice Upload Module \\
-& Food Entry Module \\
+& Navigation Bar Module\\
+& Backend Communication Module\\ 
 \midrule
 
-\multirow{3}{0.3\textwidth}{Software Decision Module} & Image Classification Module\\
-& Input Pre-Processing Module\\
+\multirow{3}{0.3\textwidth}{Software Decision Module} & Input Pre-Processing Module\\
 & Training Dataset Module\\
+& Image Classification Module\\
 & Nutritional Data Retriever Module\\
 & User Log Data Structure Module\\
 \bottomrule
@@ -266,7 +267,7 @@ Only the leaf modules in the hierarchy have to be implemented. If a dash
 (\emph{--}) is shown, this means that the module is not a leaf and will not have
 to be implemented.
 
-\subsection{Hardware Hiding Modules (\mref{mHH})}
+\subsection{Hardware Hiding Modules}
 
 \begin{description}
 \item[Secrets:]The data structure and algorithm used to implement the virtual
@@ -289,115 +290,116 @@ to be implemented.
 \item[Implemented By:] Utrition
 \end{description}
 
-\subsubsection{Application Path Module (\mref{mInput})}
+\subsubsection{Application Path Module (\mref{mAP})}
 
 \begin{description}
 	\item[Secrets:] The structure of the application.
-	\item[Services:] Imports all used React components, structures the basic 
+	\item[Services:] Imports all used React component to structure the basic 
 	interface of each page based on the path of the website.
 	\item[Implemented By:] Utrition
-	\item[Type of Module:] Main React Component
+	\item[Type of Module:] Record
 \end{description}
 
-\subsubsection{Home Page Module (\mref{mInput})}
+\subsubsection{Home Page Module (\mref{mHP})}
 
 \begin{description}
-\item[Secrets:]Contains the starting point of all other services. This starting page connects to all other pages.
-\item[Services:] Imports components relevant to the home page and organizes all components on page 
+\item[Secrets:]Displays all information needed on the Home Page.
+\item[Services:] Imports components relevant to the Home Page to organize all components on the page. 
 \item[Implemented By:] Utrition
-\item[Type of Module:] Object 
+\item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{Profile Page Module (\mref{mInput})}
+\subsubsection{Profile Page Module (\mref{mPP})}
 
 \begin{description}
-\item[Secrets:]Displays users past data
-\item[Services:] Imports components relevant to the users profile statistics and organizes all components on page 
+\item[Secrets:]Displays all information needed on the Profile Page.
+\item[Services:] Imports components relevant to the user's profile statistics to organize all components on the Profile Page.
 \item[Implemented By:] Utrition
-\item[Type of Module:] Object
+\item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{Upload Page Module (\mref{mInput})}
-
-\begin{description}
-\item[Secrets:]Takes in the users input and uploads it to the application.
-\item[Services:] Imports components relevant to image upload and voice upload and organizes all components on page 
-\item[Implemented By:] Utrition
-\item[Type of Module:] Object
-\end{description}
-
-\subsubsection{Image Upload Module (\mref{mInput})}
-
-\begin{description}
-	\item[Secrets:]Provides interface to allow user to log their meal by 
-	uploading an image.
-	\item[Services:]Formats input and queries backend regarding the nutritional 
-	contents of the classified food.
-	\item[Implemented By:] Utrition
-	\item[Type of Module:] React Component
-\end{description}
-\subsubsection{Navigation Bar Module (\mref{mInput})}
-
-\begin{description}
-	\item[Secrets:]Provides interface to allow user to navigate through various 
-	pages of the application
-	\item[Services:]Changes the path of the website to render new page based on 
-	user action.
-	\item[Implemented By:] Utrition
-	\item[Type of Module:] React Component
-\end{description}
-
-\subsubsection{Backend Communication Module (\mref{mInput})}
-
-\begin{description}
-	\item[Secrets:] Provides the ability for user input to be sent to the Input 
-	Pre-Processing Module.
-	\item[Services:]Converts the input image filename to a usable image path 
-	used by the Input Pre-Processing Module through string operations.
-	\item[Implemented By:] utrition\_backend/home/views.py
- 	\item[Type of Module:] Library
-\end{description}
-
-\subsubsection{Nutrition Log Module (\mref{mInput})}
+\subsubsection{Nutrition Log Module (\mref{mNL})}
 
 \begin{description}
 	\item[Secrets:]Displays the user's past inputs and their nutritional facts.
 	\item[Services:]Formats the data to be viewed in a visually pleasing manner 
-	on the Profile page.
+	on the Profile Page once imported from the Profile Page module.
 	\item[Implemented By:] Utrition
-	\item[Type of Module:] Abstract Data Type
+	\item[Type of Module:] Library
 	
 \end{description}
 
-\subsubsection{Manual Logging Module (\mref{mInput})}
-
-\begin{description}
-\item[Secrets:]Provides interface to allow user to log their meal by manual 
-entry of their meals.
-\item[Services:]Formats input and queries backend regarding the nutritional 
-contents of the specified food.
-\item[Implemented By:] Utrition
-\item[Type of Module:] React Component
-\end{description}
-
-\subsubsection{Voice Upload Module (\mref{mInput})}
-
-\begin{description}
-\item[Secrets:]Provides interface to allow user to log their meal by verbal 
-communication of their meals.
-\item[Services:]Formats input and queries backend regarding the nutritional 
-contents of the classified food.
-\item[Implemented By:] Utrition
-\item[Type of Module:] React Component
-\end{description}
-
-\subsubsection{Food Entry Module (\mref{mInput})}
+\subsubsection{Food Entry Module (\mref{mFE})}
 
 \begin{description}
 	\item[Secrets:]Stores an individual food item and their nutritional facts as an object.
 	\item[Services:]A food item is stored as an object. The object contains the food item name and important nutritional information such as calories, fats, sugar content, etc.
 	\item[Implemented By:] Utrition
 	\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Upload Page Module (\mref{mUP})}
+
+\begin{description}
+\item[Secrets:]Displays all information needed on the Upload Page.
+\item[Services:] Imports components relevant to image upload, manual upload, and voice upload to organize all components on the page. 
+\item[Implemented By:] Utrition
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Image Upload Module (\mref{mIU})}
+
+\begin{description}
+	\item[Secrets:]Provides interface to allow the user to log their meal by 
+	uploading an image.
+	\item[Services:]Formats input and queries backend regarding the nutritional 
+	contents of the classified food.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Manual Upload Module (\mref{mMU})}
+
+\begin{description}
+	\item[Secrets:]Provides interface to allow the user to log their meal by manual, textual 
+	entry of their meals.
+	\item[Services:]Formats input and queries backend regarding the nutritional 
+	contents of the specified food.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Voice Upload Module (\mref{mVU})}
+
+\begin{description}
+	\item[Secrets:]Provides interface to allow the user to log their meal by verbal 
+	communication of their meals.
+	\item[Services:]Formats input and queries backend regarding the nutritional 
+	contents of the classified food.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Navigation Bar Module (\mref{mNB})}
+
+\begin{description}
+	\item[Secrets:]Provides interface to allow the user to navigate through various 
+	pages of the application.
+	\item[Services:]Changes the path of the website to render a new page based on a 
+	user action.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Backend Communication Module (\mref{mBC})}
+
+\begin{description}
+	\item[Secrets:] Provides the ability for user input (in image form) to be sent to the Input 
+	Pre-Processing Module.
+	\item[Services:]Converts the input image filename to a usable image path 
+	used by the Input Pre-Processing Module through string operations.
+	\item[Implemented By:] Utrition
+ 	\item[Type of Module:] Library
 \end{description}
 
 \subsection{Software Decision Module}
@@ -413,49 +415,51 @@ contents of the classified food.
 \item[Implemented By:] Utrition
 \end{description}
 
-\subsubsection{Image Classification Module (\mref{mInput})}
+\subsubsection{Input Pre-Processing Module (\mref{mIP})}
+
+\begin{description}
+	\item[Secrets:] Converts an image path into a pixel array that can be used for machine learning processes in the Image Classification Module.
+	\item[Services:] Converts the input file path to a pixel array formatted as a multidimensional array of integers through accessing the image at the file path and concatenating its pixel values.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Library
+\end{description}
+
+\subsubsection{Training Dataset Module (\mref{mTD})}
+
+\begin{description}
+	\item[Secrets:] Creates a dictionary of known food identifiers for use by machine learning processes in the Image Classification Module.
+	\item[Services:] Produces a dictionary of image labels and classes for use in the machine learning code contained in the Image Classification Module. This is done by parsing the training image, test image, and metadata files and appending the pixel array of the input image.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Library
+\end{description}
+
+\subsubsection{Image Classification Module (\mref{mIC})}
 
 \begin{description}
 \item[Secrets:] Identifies the food present in a user image.
 \item[Services:]Converts the input image pixel array to a string classification 
-of the food in the image that the pixel array represents through a machine 
+of the food in the image through a machine 
 learning model.
-\item[Implemented By:] MainML.py
+\item[Implemented By:] Utrition
 \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{Input Pre-Processing Module (\mref{mInput})}
-
-\begin{description}
-\item[Secrets:] Converts an image path into a pixel array that can be used for machine learning processes in the Image Classification Module.
-\item[Services:] Converts the input file path to a pixel array formatted as a multidimensional array of integers through accessing the image at the file path and concatenating its pixel values.
-\item[Implemented By:] Interface.py
-\item[Type of Module:] Library
-\end{description}
-
-\subsubsection{Training Dataset Module (\mref{mInput})}
-
-\begin{description}
-\item[Secrets:] Creates a dictionary of known food identifiers for use by machine learning processes in the Image Classification Module.
-\item[Services:] Produces a dictionary of image labels and classes for use in the machine learning module in the Image Classification Module through parsing the training image, test image, and metadata files and appending the pixel array of the input image.
-\item[Implemented By:] DataHandler.py
-\item[Type of Module:] Library
-\end{description}
-
-\subsubsection{Nutritional Data Retriever Module (\mref{mInput})}
+\subsubsection{Nutritional Data Retriever Module (\mref{mNDR})}
 
 \begin{description}
 	\item[Secrets:]Retrieves nutritional information for an inputted food item.
 	\item[Services:]Using the input food item, a request is made to NutritionixAPI to fetch the nutritional data of this item.
 	\item[Implemented By:] Utrition
+	\item[Type of Module:] Library
 \end{description}
 
-\subsubsection{User Log Data Structure Module (\mref{mInput})}
+\subsubsection{User Log Data Structure Module (\mref{mULD})}
 
 \begin{description}
 	\item[Secrets:]Stores all past user inputted food items and their nutritional facts.
 	\item[Services:]Every user inputted food item and their corresponding nutritional facts are stored in a sequence of FoodEntry objects.
 	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Data Type
 \end{description}
 
 \section{Traceability Matrix} \label{SecTM}
@@ -471,35 +475,40 @@ requirements and between the modules and the anticipated changes. The requiremen
 \toprule
 \textbf{Req.} & \textbf{Modules}\\
 \midrule
-FR1 & M1, M2, M6, M9\\
-FR2 & M1, M2, M6, M9\\
-FR3 & M7, M11, M12, M13\\
-FR4 & M14\\
-FR5 & M7, M14, M15, M16\\
-FR6 & M15, M16\\
-FR7 & M15, M16\\
-FR8 & M8, M15. \\
-FR9 & M8, M15\\
-FR10 & M4, M7, M9\\
-FR11 & M4, M7, M10 \\
-FR12 & M10\\
-LF1 & M1, M2, M3, M4, M5, M6\\
-UH1 & M6\\
-UH2 & M15, M16\\
-UH5 & M8\\
-PR2 & M11, M12, M13, M14\\
-PR3 & M14, M15, M16, M9\\
-PR4 & M4, M5\\
-PR4, PR5, PR6 & M4, M5\\
-PR7 & M11\\
-PR8, PR9 & M14\\
-PR10, PR11, PR12 & M8, M15, M16\\
-PR13 & M7\\
-PR14 & M11, M12, M13\\
-PR15 & M8, M14\\
-PR17 & M5\\
+FR1 & M1, M6, M7\\
+FR2 & M1, M6, M7\\
+FR3 & M11, M12, M13, M14\\
+FR4 & M15\\
+FR5 & M5, M11, M15, M16\\
+FR6 & M5, M16\\
+FR7 & M5, M16\\
+FR8 & M3, M4, M16 \\
+FR9 & M3, M4, M16 \\
+FR10 & M6, M8, M11\\
+FR11 & M6, M9, M11 \\
+FR12 & M9\\
+LF1 & M1, M2, M3, M6, M10\\
+UH1 & M10\\
+UH2 & M5, M16\\
+UH5 & M4\\
+PR2 & M12, M13, M14, M15\\
+PR3 & M5, M15, M16\\
+PR4 & M6, M7\\
+PR5 & M6, M7\\
+PR6 & M6, M7\\
+PR7 & M14\\
+PR8 & M15\\
+PR9 & M15\\
+PR10 & M4, M5, M16\\
+PR11 & M4, M5, M16\\
+PR12 & M4, M5, M16\\
+PR13 & M11\\
+PR14 & M12, M13, M14\\
+PR15 & M4, M15\\
+PR17 & M7\\
 MS1 & M13\\
-SR2, SR3 & M15, M16\\
+SR2 & M5, M16\\
+SR3 & M5, M16\\
 
 
 \bottomrule
@@ -514,9 +523,9 @@ SR2, SR3 & M15, M16\\
 \toprule
 \textbf{AC} & \textbf{Modules}\\
 \midrule
-AC2 & M4, M5, M7, M9, M10\\
-AC3 & M2, M3, M4, M5, M6\\
-AC4 & M14\\
+AC2 & M6, M7, M8, M9, M11\\
+AC3 & M2, M3, M4, M6, M7, M10\\
+AC4 & M15\\
 AC5 & M13\\
 \bottomrule
 \end{tabular}
@@ -540,7 +549,7 @@ because they use modules from the lower levels.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{use_hierarchy.png}
-\caption{Use hierarchy among modules}
+\caption{Use Hierarchy Among Modules}
 \label{FigUH}
 \end{figure}
 
@@ -548,16 +557,5 @@ because they use modules from the lower levels.
 
 \bibliographystyle {plainnat}
 \bibliography{../../../refs/References}
-
-\newpage{}
-\section*{Appendix --- Reflection}
-
-The information in this section will be used to evaluate the team members on the
-graduate attribute of Lifelong Learning.  Please answer the following questions:
-
-\begin{enumerate}
-  \item 
-  \item 
-\end{enumerate}
 
 \end{document}
