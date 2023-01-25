@@ -24,4 +24,6 @@ yarn-error.log*
 
 *.pyc
 
+nutrition_log.csv
+
 userIcon.jpg

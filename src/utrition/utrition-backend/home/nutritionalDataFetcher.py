@@ -14,6 +14,7 @@ def get_nutritional_data(food_item):
 
 	result = {
 		"food_name": food_details['food_name'],
+		"serving_qty": food_details['serving_qty'],
 		"calories": food_details['nf_calories'],
 		"total_fat": food_details['nf_total_fat'],
 		"saturated_fat": food_details['nf_saturated_fat'],
