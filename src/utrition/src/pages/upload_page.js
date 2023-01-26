@@ -1,5 +1,6 @@
 import React from "react";
 import ImageUpload from "../components/imageupload/imageupload";
+import VoiceUpload from "../components/voiceupload/voiceupload";
 
 const Upload = () => {
   return (
@@ -18,6 +19,8 @@ const Upload = () => {
         Upload an Image
       </h1>
       <ImageUpload />
+      <h1 style={{ position: "relative" }}>Speak</h1>
+      <VoiceUpload />
     </div>
   );
 };
