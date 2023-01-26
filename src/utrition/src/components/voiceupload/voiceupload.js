@@ -5,7 +5,7 @@ const VoiceUpload = () => {
   const [speech, setSpeech] = useState("");
   const [responseData, setResponseData] = useState("");
 
-  return <div> VoiceUpload</div>;
+  return <div style={{ display: "grid", textJustify: "center" }}>Voice</div>;
 };
 
 export default VoiceUpload;
