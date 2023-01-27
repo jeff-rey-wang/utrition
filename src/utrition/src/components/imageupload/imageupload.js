@@ -23,7 +23,17 @@ const ImageUpload = () => {
     })
       .then((response) => {
         setResponseData({
-          food: response.data,
+          food_name: response.data.food_name,
+          calories: response.data.calories,
+          total_fat: response.data.total_fat,
+          saturated_fat: response.data.saturated_fat,
+          cholesterol: response.data.cholesterol,
+          sodium: response.data.sodium,
+          total_carbohydrate: response.data.total_carbohydrate,
+          dietary_fiber: response.data.dietary_fiber,
+          sugars: response.data.sugars,
+          protein: response.data.protein,
+          potassium: response.data.potassium,
         });
       })
       .catch((error) => {
@@ -40,7 +50,17 @@ const ImageUpload = () => {
       <input type="file" name="file" onChange={handleImage} />
       <button onClick={getData}>Submit</button>
       <div style={{ border: "solid" }}>
-        <pre>{JSON.stringify(responseData.food, null, 2)}</pre>
+        <pre>Food Item: {responseData.food_name}</pre>
+        <pre>Calories: {responseData.calories}</pre>
+        <pre>Total Fat: {responseData.total_fat}</pre>
+        <pre>Saturated Fat: {responseData.saturated_fat}</pre>
+        <pre>Cholesterol: {responseData.cholesterol}</pre>
+        <pre>Sodium: {responseData.sodium}</pre>
+        <pre>Total Carbohydrate: {responseData.total_carbohydrate}</pre>
+        <pre>Dietary Fiber: {responseData.dietary_fiber}</pre>
+        <pre>Sugar: {responseData.sugars}</pre>
+        <pre>Protein: {responseData.protein}</pre>
+        <pre>Potassium: {responseData.potassium}</pre>
       </div>
     </div>
   );

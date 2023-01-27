@@ -19,9 +19,12 @@ def display_index():
 		return foodPath
 	else:
 		myFood = interface.open("./ML/"+foodPath["path"].strip(' " " '))
+		
 		food_data = get_nutritional_data(myFood)
+		json_formatted_str = json.dumps(food_Data, indent=2)
+
 		log_data(food_data)
-		return jsonify(food_data)
+		return json_formatted_str
 
 def log_data(food_data):
 	timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
