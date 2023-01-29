@@ -26,11 +26,11 @@ def read_file():
             existing_data.append(row)
         existing_data = sorted(existing_data, key=lambda row: row[0], reverse=True)
 
-    return existing_data
+    return existing_data[1:]
 
 def find_entry(number):
     data = read_file()
-    return data[number]
+    return data[number-1]
 
 def total_calories_per_day(day=datetime.now().strftime("%d/%m/%Y")):
     sum = 0
@@ -43,7 +43,7 @@ def total_calories_per_day(day=datetime.now().strftime("%d/%m/%Y")):
     return sum
 
 def total_foods_per_day(day=datetime.now().strftime("%d/%m/%Y")):
-    foods = 0
+    foods = []
     data = read_file()
 
     for entry in data:
@@ -52,12 +52,23 @@ def total_foods_per_day(day=datetime.now().strftime("%d/%m/%Y")):
     
     return foods
 
-def total_calories_per_week(dates):
-    sum = 0
+def total_calories_per_day_summary_list():
+    foodData = []
+    sumPerDay = 0
+    foodsPerDay = []
 
-    for day in dates:
-        sum += total_calories_per_day(day)
-    return sum
+    data = read_file()
+    day = ""
+
+    for entry in data:
+        if day != entry[0][:10]:
+            day = entry[0][:10]
+
+            sumPerDay = total_calories_per_day(day)
+            foodsPerDay = total_foods_per_day(day)
+
+            foodData.append([day, sumPerDay, foodsPerDay])
+    return foodData
 
 def most_eaten_food():
     foods = []
