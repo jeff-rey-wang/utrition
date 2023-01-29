@@ -24,6 +24,7 @@ const ImageUpload = () => {
       .then((response) => {
         setResponseData({
           food_name: response.data.food_name,
+          serving_qty: response.data.serving_qty,
           calories: response.data.calories,
           total_fat: response.data.total_fat,
           saturated_fat: response.data.saturated_fat,
@@ -51,6 +52,7 @@ const ImageUpload = () => {
       <button onClick={getData}>Submit</button>
       <div style={{ border: "solid" }}>
         <pre>Food Item: {responseData.food_name}</pre>
+        <pre>Serving Quantity: {responseData.serving_qty}</pre>
         <pre>Calories: {responseData.calories}</pre>
         <pre>Total Fat: {responseData.total_fat}</pre>
         <pre>Saturated Fat: {responseData.saturated_fat}</pre>
