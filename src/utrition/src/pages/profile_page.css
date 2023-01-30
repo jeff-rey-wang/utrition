@@ -1,5 +1,7 @@
 body {
   background-color: #0b5345;
+  z-index: -1;
+  position: relative;
 }
 
 .most_eaten {

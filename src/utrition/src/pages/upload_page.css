@@ -1,0 +1,14 @@
+.left {
+  height: 200%;
+  width: 50%;
+  left: 0;
+  float: left;
+  /* background-color: red; */
+  z-index: 1;
+}
+
+.right {
+  height: 200%;
+  width: 50%;
+  right: 0;
+}
