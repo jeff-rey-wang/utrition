@@ -1,29 +1,95 @@
 import React from "react";
+import { useState } from "react";
 import ImageUpload from "../components/imageupload/imageupload";
 import ManualUpload from "../components/manualupload/manualupload";
 import VoiceUpload from "../components/voiceupload/voiceupload";
 import "./upload_page.css";
 
 const Upload = () => {
+  const Image = 0;
+  const Voice = 1;
+  const Manual = 2;
+
+  const [currentUpload, setCurrentUpload] = useState(1);
+
+  function renderImageUp() {
+    if (currentUpload !== Image) {
+      setCurrentUpload(Image);
+      console.log("image ran" + currentUpload);
+    }
+  }
+  function renderVoiceUp() {
+    if (currentUpload !== Voice) {
+      setCurrentUpload(Voice);
+      console.log("voice ran" + currentUpload);
+    }
+  }
+  function renderManualUp() {
+    if (currentUpload !== Manual) {
+      setCurrentUpload(Manual);
+      console.log("manual ran" + currentUpload);
+    }
+  }
   return (
-    <div
-      style={{
-        color: "#187d04",
-        display: "flex",
-        height: "100vh",
-      }}
-    >
+    <div class="upload-container">
       <div class="left"></div>
       <div class="right">
-        <div style={{ position: "absolute", top: "30%", padding: "35px 0px" }}>
+        <div class="instructions container">
+          <h2>How it works</h2>
+          <h1>Upload Your Meal</h1>
+          <h3>Choose one of the options below:</h3>
+        </div>
+        <div class="buttons container">
+          <button
+            class={"button " + (currentUpload === Image ? "selected" : "")}
+            onClick={renderImageUp()}
+          >
+            Image Upload
+          </button>
+          <button
+            class={"button " + (currentUpload === Voice ? "selected" : "")}
+            onClick={renderVoiceUp}
+          >
+            Voice Upload
+          </button>
+          <button
+            class={"button " + (currentUpload === Manual ? "selected" : "")}
+            onClick={renderManualUp}
+          >
+            Manual Upload
+          </button>
+        </div>
+        <div class="components container"></div>
+        <div
+          style={{
+            position: "absolute",
+            top: "30%",
+            padding: "35px 0px",
+            display: "none",
+          }}
+        >
           <h1>Upload an Image</h1>
           <ImageUpload />
         </div>
-        <div style={{ position: "absolute", top: "60%", padding: "35px 0px" }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "60%",
+            padding: "35px 0px",
+            display: "none",
+          }}
+        >
           <h1>Speak</h1>
           <VoiceUpload />
         </div>
-        <div style={{ position: "absolute", top: "110%", padding: "35px 0px" }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "110%",
+            padding: "35px 0px",
+            display: "none",
+          }}
+        >
           <h1>Please tell us what you ate!</h1>
 
           <h3>Example: I had three oranges and a grilled cheese sandwich</h3>
