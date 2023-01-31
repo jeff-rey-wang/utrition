@@ -18,6 +18,48 @@ def log_data(food_data):
                 filewriter.writerow(["Time", "Name", "Serving Quantity", "Serving Unit", "Serving Weight in Grams", "Calories", "Total Fat", "Saturated Fat", "Cholesterol", "Sodium", "Total Carbohydrate", "Dietary Fiber", "Sugars", "Protein", "Potassium"])
                 filewriter.writerow(csv_row)
 
+def calculateTotalNutrients(food_data):
+    food_name = []
+    calories = 0
+    total_fat = 0
+    saturated_fat = 0
+    cholesterol = 0
+    sodium = 0
+    total_carbohydrate = 0
+    dietary_fiber = 0
+    sugars = 0
+    protein = 0
+    potassium = 0
+
+    for entry in food_data:
+        food_name.append(entry["food_name"])
+        calories += float(entry["calories"])
+        total_fat += float(entry["total_fat"])
+        saturated_fat += float(entry["saturated_fat"])
+        cholesterol += float(entry["cholesterol"])
+        sodium += float(entry["sodium"])
+        total_carbohydrate += float(entry["total_carbohydrate"])
+        dietary_fiber += float(entry["dietary_fiber"])
+        sugars += float(entry["sugars"])
+        protein += float(entry["protein"])
+        potassium += float(entry["potassium"])
+
+    totalNutrients = {
+        "food_name": food_name,
+        "calories": round(calories, 2),
+        "total_fat": round(total_fat, 2),
+        "saturated_fat": round(saturated_fat, 2),
+        "cholesterol": round(cholesterol, 2),
+        "sodium": round(sodium, 2),
+        "total_carbohydrate": round(total_carbohydrate, 2),
+        "dietary_fiber": round(dietary_fiber, 2),
+        "sugars": round(sugars, 2),
+        "protein": round(protein, 2),
+        "potassium": round(potassium, 2),
+    }
+
+    return totalNutrients
+
 def read_file():
     existing_data = []
 
@@ -33,8 +75,10 @@ def read_file_as_json():
     dataInList = read_file()
     dataAsJson = []
     for entry in dataInList:
+        datetimeObject = datetime.strptime(entry[0], '%d/%m/%Y %H:%M:%S')
+        dateFormatted = datetimeObject.strftime("%b %d")
         food_data = {
-            "timestamp": entry[0],
+            "timestamp": dateFormatted,
             "food_name": entry[1],
             "serving_qty": entry[2],
             "serving_unit": entry[3],
@@ -65,6 +109,7 @@ def total_calories_per_day(day=datetime.now().strftime("%d/%m/%Y")):
         if day in entry[0]:
             sum += float(entry[5])
     
+    sum = round(sum, 2)
     return sum
 
 def total_foods_per_day(day=datetime.now().strftime("%d/%m/%Y")):
@@ -73,8 +118,9 @@ def total_foods_per_day(day=datetime.now().strftime("%d/%m/%Y")):
 
     for entry in data:
         if day in entry[0]:
-            foods.append(entry[1])
-    
+            foodStr = entry[1] + ", "
+            foods.append(foodStr)
+    foods[-1] = foods[-1][:-2]
     return foods
 
 def total_calories_per_day_summary_list():
@@ -92,8 +138,11 @@ def total_calories_per_day_summary_list():
             sumPerDay = total_calories_per_day(day)
             foodsPerDay = total_foods_per_day(day)
 
+            datetimeObject = datetime.strptime(day, '%d/%m/%Y')
+            dateFormatted = datetimeObject.strftime("%b %d")
+
             newEntry = {
-                "date": day,
+                "date": dateFormatted,
                 "sumPerDay": sumPerDay,
                 "foodsPerDay": foodsPerDay,
             }
