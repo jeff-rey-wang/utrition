@@ -4,18 +4,19 @@ from datetime import datetime
 import os
 
 def log_data(food_data):
-	timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-	csv_row = [timestamp, food_data["food_name"], food_data["serving_qty"], food_data["calories"], food_data["total_fat"], food_data["saturated_fat"], food_data["cholesterol"], food_data["sodium"], food_data["total_carbohydrate"], food_data["dietary_fiber"], food_data["sugars"], food_data["protein"]]
+    timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    for entry in food_data:
+        csv_row = [timestamp, entry["food_name"], entry["serving_qty"], entry["serving_unit"], entry["serving_weight_grams"], entry["calories"], entry["total_fat"], entry["saturated_fat"], entry["cholesterol"], entry["sodium"], entry["total_carbohydrate"], entry["dietary_fiber"], entry["sugars"], entry["protein"], entry["potassium"]]
 
-	if os.path.isfile("./nutrition_log.csv"):
-		with open("./nutrition_log.csv", 'a') as csvfile:
-			filewriter = writer(csvfile, delimiter=',')
-			filewriter.writerow(csv_row)
-	else:
-		with open("./nutrition_log.csv", 'w') as csvfile:
-			filewriter = writer(csvfile, delimiter=',')
-			filewriter.writerow(["Time", "Name", "Serving Quantity", "Calories", "Total Fat", "Saturated Fat", "Cholesterol", "Sodium", "Total Carbohydrate", "Dietary Fiber", "Sugars", "Protein"])
-			filewriter.writerow(csv_row)
+        if os.path.isfile("./nutrition_log.csv"):
+            with open("./nutrition_log.csv", 'a') as csvfile:
+                filewriter = writer(csvfile, delimiter=',')
+                filewriter.writerow(csv_row)
+        else:
+            with open("./nutrition_log.csv", 'w') as csvfile:
+                filewriter = writer(csvfile, delimiter=',')
+                filewriter.writerow(["Time", "Name", "Serving Quantity", "Serving Unit", "Serving Weight in Grams", "Calories", "Total Fat", "Saturated Fat", "Cholesterol", "Sodium", "Total Carbohydrate", "Dietary Fiber", "Sugars", "Protein", "Potassium"])
+                filewriter.writerow(csv_row)
 
 def read_file():
     existing_data = []
@@ -28,6 +29,30 @@ def read_file():
 
     return existing_data[1:]
 
+def read_file_as_json():
+    dataInList = read_file()
+    dataAsJson = []
+    for entry in dataInList:
+        food_data = {
+            "timestamp": entry[0],
+            "food_name": entry[1],
+            "serving_qty": entry[2],
+            "serving_unit": entry[3],
+            "serving_weight_grams": entry[4],
+            "calories": entry[5],
+            "total_fat": entry[6],
+            "saturated_fat": entry[7],
+            "cholesterol": entry[8],
+            "sodium": entry[9],
+            "total_carbohydrate": entry[10],
+            "dietary_fiber": entry[11],
+            "sugars": entry[12],
+            "protein": entry[13],
+            "potassium": entry[14],
+        }
+        dataAsJson.append(food_data)
+    return dataAsJson
+
 def find_entry(number):
     data = read_file()
     return data[number-1]
@@ -38,7 +63,7 @@ def total_calories_per_day(day=datetime.now().strftime("%d/%m/%Y")):
 
     for entry in data:
         if day in entry[0]:
-            sum += float(entry[3])
+            sum += float(entry[5])
     
     return sum
 
@@ -67,7 +92,13 @@ def total_calories_per_day_summary_list():
             sumPerDay = total_calories_per_day(day)
             foodsPerDay = total_foods_per_day(day)
 
-            foodData.append([day, sumPerDay, foodsPerDay])
+            newEntry = {
+                "date": day,
+                "sumPerDay": sumPerDay,
+                "foodsPerDay": foodsPerDay,
+            }
+
+            foodData.append(newEntry)
     return foodData
 
 def most_eaten_food():
