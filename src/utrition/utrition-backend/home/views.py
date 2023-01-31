@@ -27,19 +27,14 @@ def display_index():
 
 @home_view.route('/profile', methods=['GET'])
 def display_profile():
-	allFoods = read_file()
-	json_formatted_str = json.dumps(allFoods, indent=2)
+	allData = []
+	allData.append(read_file_as_json())
+	currentCalJson = {
+		"current_calories": total_calories_per_day()
+	}
+	allData.append(currentCalJson)
+	allData.append(most_eaten_food())
+	allData.append(total_calories_per_day_summary_list())
 
-	json_formatted_str += json.dumps(", ", indent=2)
-	totalCurrentCal = total_calories_per_day()
-	json_formatted_str += json.dumps(totalCurrentCal, indent=2)
-
-	json_formatted_str += json.dumps(", ", indent=2)
-	mostEatenFood = most_eaten_food()
-	json_formatted_str += mostEatenFood
-
-	json_formatted_str += json.dumps(", ", indent=2)
-	calSummary = total_calories_per_day_summary_list()
-	json_formatted_str += json.dumps(calSummary, indent=2)
-
+	json_formatted_str = json.dumps(allData, indent=2)
 	return json_formatted_str
