@@ -108,7 +108,4 @@ def most_eaten_food():
     for entry in data:
         foods.append(entry[1])
 
-    mostCommon = {
-        "mode": mode(foods)
-    }
-    return mostCommon
+    return mode(foods)
