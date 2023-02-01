@@ -1,10 +1,10 @@
 from statistics import mode
 from csv import reader, writer
-from datetime import datetime
+import datetime
 import os
 
 def log_data(food_data):
-    timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    timestamp = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     for entry in food_data:
         csv_row = [timestamp, entry["food_name"], entry["serving_qty"], entry["serving_unit"], entry["serving_weight_grams"], entry["calories"], entry["total_fat"], entry["saturated_fat"], entry["cholesterol"], entry["sodium"], entry["total_carbohydrate"], entry["dietary_fiber"], entry["sugars"], entry["protein"], entry["potassium"]]
 
@@ -67,15 +67,17 @@ def read_file():
         filereader = reader(csvfile, delimiter=',')
         for row in filereader:
             existing_data.append(row)
-        existing_data = sorted(existing_data, key=lambda row: row[0], reverse=True)
 
-    return existing_data[1:]
+        existing_data = existing_data[1:]
+        existing_data = sorted(existing_data, key=lambda row: datetime.datetime.strptime(row[0], '%d/%m/%Y %H:%M:%S'), reverse=True)
+
+    return existing_data
 
 def read_file_as_json():
     dataInList = read_file()
     dataAsJson = []
     for entry in dataInList:
-        datetimeObject = datetime.strptime(entry[0], '%d/%m/%Y %H:%M:%S')
+        datetimeObject = datetime.datetime.strptime(entry[0], '%d/%m/%Y %H:%M:%S')
         dateFormatted = datetimeObject.strftime("%b %d")
         food_data = {
             "timestamp": dateFormatted,
@@ -97,11 +99,7 @@ def read_file_as_json():
         dataAsJson.append(food_data)
     return dataAsJson
 
-def find_entry(number):
-    data = read_file()
-    return data[number-1]
-
-def total_calories_per_day(day=datetime.now().strftime("%d/%m/%Y")):
+def total_calories_per_day(day=datetime.datetime.now().strftime("%d/%m/%Y")):
     sum = 0
     data = read_file()
 
@@ -112,7 +110,7 @@ def total_calories_per_day(day=datetime.now().strftime("%d/%m/%Y")):
     sum = round(sum, 2)
     return sum
 
-def total_foods_per_day(day=datetime.now().strftime("%d/%m/%Y")):
+def total_foods_per_day(day=datetime.datetime.now().strftime("%d/%m/%Y")):
     foods = []
     data = read_file()
 
@@ -138,7 +136,7 @@ def total_calories_per_day_summary_list():
             sumPerDay = total_calories_per_day(day)
             foodsPerDay = total_foods_per_day(day)
 
-            datetimeObject = datetime.strptime(day, '%d/%m/%Y')
+            datetimeObject = datetime.datetime.strptime(day, '%d/%m/%Y')
             dateFormatted = datetimeObject.strftime("%b %d")
 
             newEntry = {
