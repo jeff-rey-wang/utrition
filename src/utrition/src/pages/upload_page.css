@@ -24,7 +24,7 @@
 
 .left {
   height: 200%;
-  width: 50%;
+  width: 40%;
   left: 0;
   float: left;
   /* background-color: red; */
@@ -34,7 +34,7 @@
 .right {
   /* background-color: blue; */
   height: 200%;
-  width: 50%;
+  width: 60%;
   right: 0;
 }
 

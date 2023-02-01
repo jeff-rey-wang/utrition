@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ManualUpload = () => {
+const TextUpload = () => {
   const [text, setText] = useState("");
   const [responseData, setResponseData] = useState("");
 
@@ -23,4 +23,4 @@ const ManualUpload = () => {
   );
 };
 
-export default ManualUpload;
+export default TextUpload;

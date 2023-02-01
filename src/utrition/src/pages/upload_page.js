@@ -1,14 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import ImageUpload from "../components/imageupload/imageupload";
-import ManualUpload from "../components/manualupload/manualupload";
+import TextUpload from "../components/textupload/textupload";
 import VoiceUpload from "../components/voiceupload/voiceupload";
 import "./upload_page.css";
 
 const Upload = () => {
   const Image = 0;
   const Voice = 1;
-  const Manual = 2;
+  const Text = 2;
 
   const [currentUpload, setCurrentUpload] = useState(1);
 
@@ -24,10 +24,10 @@ const Upload = () => {
       console.log("voice ran" + currentUpload);
     }
   }
-  function renderManualUp() {
-    if (currentUpload !== Manual) {
-      setCurrentUpload(Manual);
-      console.log("manual ran" + currentUpload);
+  function renderTextUp() {
+    if (currentUpload !== Text) {
+      setCurrentUpload(Text);
+      console.log("Text ran" + currentUpload);
     }
   }
   return (
@@ -53,10 +53,10 @@ const Upload = () => {
             Voice Upload
           </button>
           <button
-            class={"button " + (currentUpload === Manual ? "selected" : "")}
-            onClick={renderManualUp}
+            class={"button " + (currentUpload === Text ? "selected" : "")}
+            onClick={renderTextUp}
           >
-            Manual Upload
+            Text Upload
           </button>
         </div>
         <div class="components container"></div>
@@ -93,7 +93,7 @@ const Upload = () => {
           <h1>Please tell us what you ate!</h1>
 
           <h3>Example: I had three oranges and a grilled cheese sandwich</h3>
-          <ManualUpload />
+          <TextUpload />
         </div>
       </div>
     </div>
