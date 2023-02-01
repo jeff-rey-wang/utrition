@@ -6,18 +6,24 @@ body {
 
 .most_eaten {
   color: #d6952c;
-  font-size: xx-large;
+  font-size: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
 .average_cal {
   color: #aaa;
-  font-size: xx-large;
+  font-size: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
 .past_meals {
   color: #ffffff;
-  font-size: 80px;
+  font-size: 70px;
   border-bottom: 5px solid #ffffff;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
 .orange-square {
@@ -36,7 +42,7 @@ body {
 .large-text {
   font-weight: bold;
   margin-left: 10px;
-  margin-top: -10px;
+  margin-top: 10px;
   font-size: 20px;
   color: #ffffff;
 }
@@ -61,10 +67,36 @@ body {
 }
 
 .right_headers {
-  border-bottom: 1px solid blue;
+  border-bottom: 1px solid black;
+  border-right:  1px solid black;
   padding: 4px 6px;
 }
 
 td {
   padding: 4px 6px;
+}
+
+.right_data {
+  border-bottom:  1px solid black;
+  border-right:  1px solid black;;
+}
+
+.left_click_back{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.left_click_front{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.right_click_back{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.right_click_front{
+  margin-top: 10px;
+  margin-left: 10px;
 }

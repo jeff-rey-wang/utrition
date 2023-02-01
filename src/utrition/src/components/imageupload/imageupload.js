@@ -25,6 +25,8 @@ const ImageUpload = () => {
         setResponseData({
           food_name: response.data.food_name,
           serving_qty: response.data.serving_qty,
+          serving_unit: response.data.serving_unit,
+          serving_weight_grams: response.data.serving_weight_grams,
           calories: response.data.calories,
           total_fat: response.data.total_fat,
           saturated_fat: response.data.saturated_fat,
@@ -53,6 +55,8 @@ const ImageUpload = () => {
       <div style={{ border: "solid" }}>
         <pre>Food Item: {responseData.food_name}</pre>
         <pre>Serving Quantity: {responseData.serving_qty}</pre>
+        <pre>Serving Unit: {responseData.serving_unit}</pre>
+        <pre>Serving Weight in Grams: {responseData.serving_weight_grams}</pre>
         <pre>Calories: {responseData.calories}</pre>
         <pre>Total Fat: {responseData.total_fat}</pre>
         <pre>Saturated Fat: {responseData.saturated_fat}</pre>

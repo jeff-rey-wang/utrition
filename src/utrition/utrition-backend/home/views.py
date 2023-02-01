@@ -19,27 +19,23 @@ def display_index():
 		myFood = interface.open("./ML/"+foodPath["path"].strip(' " " '))
 		
 		food_data = get_nutritional_data(myFood)
-		json_formatted_str = json.dumps(food_data, indent=2)
-
 		log_data(food_data)
 
+		if len(food_data) > 1:
+			fullJSON = calculateTotalNutrients(food_data)
+			json_formatted_str = json.dumps(fullJSON, indent=2)
+		else:
+			json_formatted_str = json.dumps(food_data[0], indent=2)
 		return json_formatted_str
 
 @home_view.route('/profile', methods=['GET'])
 def display_profile():
-	allFoods = read_file()
-	json_formatted_str = json.dumps(allFoods, indent=2)
-
-	json_formatted_str += json.dumps(", ", indent=2)
-	totalCurrentCal = total_calories_per_day()
-	json_formatted_str += json.dumps(totalCurrentCal, indent=2)
-
-	json_formatted_str += json.dumps(", ", indent=2)
-	mostEatenFood = most_eaten_food()
-	json_formatted_str += mostEatenFood
-
-	json_formatted_str += json.dumps(", ", indent=2)
-	calSummary = total_calories_per_day_summary_list()
-	json_formatted_str += json.dumps(calSummary, indent=2)
-
+	fullJSON = {
+		"allFoodEntries": read_file_as_json(),
+		"currentCal": total_calories_per_day(), 
+		"mode": most_eaten_food(),
+		"caloricSummary": total_calories_per_day_summary_list(),
+	}
+	
+	json_formatted_str = json.dumps(fullJSON, indent=2)
 	return json_formatted_str

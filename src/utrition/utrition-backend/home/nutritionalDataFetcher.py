@@ -10,20 +10,26 @@ def get_nutritional_data(food_item):
 	query = {"query": food_item}
 	
 	post_response = requests.post("https://trackapi.nutritionix.com/v2/natural/nutrients", json=query, headers=headers)
-	food_details = post_response.json()['foods'][0]
+	food_details = post_response.json()['foods']
 
-	result = {
-		"food_name": food_details['food_name'],
-		"serving_qty": food_details['serving_qty'],
-		"calories": food_details['nf_calories'],
-		"total_fat": food_details['nf_total_fat'],
-		"saturated_fat": food_details['nf_saturated_fat'],
-		"cholesterol": food_details['nf_cholesterol'],
-		"sodium": food_details['nf_sodium'],
-		"total_carbohydrate": food_details['nf_total_carbohydrate'],
-		"dietary_fiber": food_details['nf_dietary_fiber'],
-		"sugars": food_details['nf_sugars'],
-		"protein": food_details['nf_protein'],
-		"potassium": food_details['nf_potassium'],
-	}	
-	return result
+	result_list = []
+
+	for food in food_details:
+		food_data = {
+			"food_name": food['food_name'],
+			"serving_qty": food['serving_qty'],
+			"serving_unit": food['serving_unit'],
+			"serving_weight_grams": food['serving_weight_grams'],
+			"calories": food['nf_calories'],
+			"total_fat": food['nf_total_fat'],
+			"saturated_fat": food['nf_saturated_fat'],
+			"cholesterol": food['nf_cholesterol'],
+			"sodium": food['nf_sodium'],
+			"total_carbohydrate": food['nf_total_carbohydrate'],
+			"dietary_fiber": food['nf_dietary_fiber'],
+			"sugars": food['nf_sugars'],
+			"protein": food['nf_protein'],
+			"potassium": food['nf_potassium'],
+		}
+		result_list.append(food_data)
+	return result_list
