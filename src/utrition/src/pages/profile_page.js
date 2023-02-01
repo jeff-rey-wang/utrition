@@ -154,7 +154,14 @@ const Profile = () => {
       )}
       </tbody>
     </table>
-    <button class = "left_click_back" onClick={left_click_backward}>Look at previous 4 entries</button><button class = "left_click_front" onClick={left_click_forward}>Look at next 4 entries</button>
+    {totalcal.index - 4 >= 0 ? (
+      <button class="left_click_back" onClick={left_click_backward}>
+        Look at previous 4 entries
+      </button>
+    ) : null} 
+    {totalcal.allFoodEntries && totalcal.index+4 < totalcal.allFoodEntries.length ? (
+      <button class = "left_click_front" onClick={left_click_forward}>Look at next 4 entries</button>
+    ) : null}
     </div>
     <div class= "right" style={{ flex: 1 }}>
       <table class = "right_table">
@@ -216,7 +223,12 @@ const Profile = () => {
         </tr>
         )}
       </table>
-      <button class = "right_click_back" onClick={right_click_backward}>Next Week</button><button class = "right_click_front" onClick={right_click_forward}>Previous Week</button>
+      {totalcal.right_index-7 >= 0 ? (
+        <button class = "right_click_back" onClick={right_click_backward}>Next Week</button>
+      ) : null}
+      {totalcal.caloricSummary && totalcal.right_index+7 < totalcal.caloricSummary.length ? (
+        <button class = "right_click_front" onClick={right_click_forward}>Previous Week</button>
+      ) : null}
     </div>
 </div>
 
