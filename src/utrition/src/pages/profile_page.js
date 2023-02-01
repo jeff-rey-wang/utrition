@@ -16,7 +16,8 @@ const Profile = () => {
         mode: response.data.mode,
         allFoodEntries: response.data.allFoodEntries,
         caloricSummary: response.data.caloricSummary,
-        index: 0
+        index: 0,
+        right_index: 0
       });
     })
     .catch((error) => {
@@ -40,9 +41,11 @@ const Profile = () => {
         mode: totalcal.mode,
         allFoodEntries: totalcal.allFoodEntries,
         caloricSummary: totalcal.caloricSummary,
-        index: totalcal.index+4
+        index: totalcal.index+4,
+        right_index: totalcal.right_index
     });
   }
+
   };
   const left_click_backward = () => {
     if (totalcal.index-4 < 0) {
@@ -53,7 +56,38 @@ const Profile = () => {
         mode: totalcal.mode,
         allFoodEntries: totalcal.allFoodEntries,
         caloricSummary: totalcal.caloricSummary,
-        index: totalcal.index-4
+        index: totalcal.index-4,
+        right_index: totalcal.right_index
+    });
+  }
+  };
+
+  const right_click_forward = () => {
+    if (totalcal.right_index+7 >= totalcal.caloricSummary.length) {
+      alert("There is no more data left on the previous weeks!")
+    } else {
+      settotalcal({
+        currentCal: totalcal.currentCal,
+        mode: totalcal.mode,
+        allFoodEntries: totalcal.allFoodEntries,
+        caloricSummary: totalcal.caloricSummary,
+        index: totalcal.index,
+        right_index: totalcal.right_index+7
+    });
+  }
+  };
+
+  const right_click_backward = () => {
+    if (totalcal.right_index-7 < 0) {
+      alert("There is no data left for the future weeks!")
+    } else {
+      settotalcal({
+        currentCal: totalcal.currentCal,
+        mode: totalcal.mode,
+        allFoodEntries: totalcal.allFoodEntries,
+        caloricSummary: totalcal.caloricSummary,
+        index: totalcal.index,
+        right_index: totalcal.right_index-7
     });
   }
   };
@@ -74,7 +108,7 @@ const Profile = () => {
           <td>
             <div>
               <div className="large-text">{totalcal.allFoodEntries[totalcal.index].food_name}</div>
-              <div className="small-text">serving quantity: {totalcal.allFoodEntries[totalcal.index].serving_qty}, serving unit: {totalcal.allFoodEntries[totalcal.index].serving_unit}, serving weight grams: {totalcal.allFoodEntries[totalcal.index].serving_weight_grams}, calories: {totalcal.allFoodEntries[totalcal.index].calories}, total fat: {totalcal.allFoodEntries[totalcal.index].total_fat}, saturated fat: {totalcal.allFoodEntries[totalcal.index].saturated_fat}, cholesterol: {totalcal.allFoodEntries[totalcal.index].cholesterol}, sodium: {totalcal.allFoodEntries[totalcal.index].sodium}, total carbohydrate: {totalcal.allFoodEntries[totalcal.index].total_carbohydrate}, dietary fiber: {totalcal.allFoodEntries[totalcal.index].dietary_fiber}, sugars: {totalcal.allFoodEntries[totalcal.index].sugars}, protein: {totalcal.allFoodEntries[totalcal.index].protein}, potassium: {totalcal.allFoodEntries[totalcal.index].potassium}</div>
+              <div className="small-text"><strong>serving quantity:</strong> {totalcal.allFoodEntries[totalcal.index].serving_qty}, <strong>serving unit:</strong> {totalcal.allFoodEntries[totalcal.index].serving_unit}, <strong>serving weight grams:</strong> {totalcal.allFoodEntries[totalcal.index].serving_weight_grams}, <strong>calories:</strong> {totalcal.allFoodEntries[totalcal.index].calories}, <strong>total fat:</strong> {totalcal.allFoodEntries[totalcal.index].total_fat}, <strong>saturated fat:</strong> {totalcal.allFoodEntries[totalcal.index].saturated_fat}, <strong>cholesterol:</strong> {totalcal.allFoodEntries[totalcal.index].cholesterol}, <strong>sodium:</strong> {totalcal.allFoodEntries[totalcal.index].sodium}, <strong>total carbohydrates:</strong> {totalcal.allFoodEntries[totalcal.index].total_carbohydrate}, <strong>dietary fiber:</strong> {totalcal.allFoodEntries[totalcal.index].dietary_fiber}, <strong>sugars:</strong> {totalcal.allFoodEntries[totalcal.index].sugars}, <strong>protein:</strong> {totalcal.allFoodEntries[totalcal.index].protein}, <strong>potassium:</strong> {totalcal.allFoodEntries[totalcal.index].potassium}</div>
             </div>
           </td>
         </tr>
@@ -120,7 +154,7 @@ const Profile = () => {
       )}
       </tbody>
     </table>
-    <button onClick={left_click_backward}>Look at previous 4 entries</button><button onClick={left_click_forward}>Look at next 4 entries</button>
+    <button class = "left_click_back" onClick={left_click_backward}>Look at previous 4 entries</button><button class = "left_click_front" onClick={left_click_forward}>Look at next 4 entries</button>
     </div>
     <div class= "right" style={{ flex: 1 }}>
       <table class = "right_table">
@@ -132,13 +166,57 @@ const Profile = () => {
           <th class = "right_headers">Total Calories</th> 
           <th class = "right_headers">What you ate</th>
         </tr>
-        <tr>
-          <td>{totalcal.caloricSummary && totalcal.caloricSummary[0].date}</td>
-          <td>{totalcal.caloricSummary && totalcal.caloricSummary[0].sumPerDay}</td>
-          <td>{totalcal.caloricSummary && totalcal.caloricSummary[0].foodsPerDay}</td>
+        {totalcal.caloricSummary && totalcal.caloricSummary.length >= 1 && totalcal.caloricSummary.length > totalcal.right_index && (
+        <tr class = "right_row_1">
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index].date}</td>
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index].sumPerDay}</td>
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index].foodsPerDay}</td>
         </tr>
+        )}
+        {totalcal.caloricSummary && totalcal.caloricSummary.length >= 2 && totalcal.caloricSummary.length > totalcal.right_index+1 && (
+        <tr class = "right_row_2">
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+1].date}</td>
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+1].sumPerDay}</td>
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+1].foodsPerDay}</td>
+        </tr>
+        )}
+        {totalcal.caloricSummary && totalcal.caloricSummary.length >= 3 && totalcal.caloricSummary.length > totalcal.right_index+2 && (
+        <tr class = "right_row_3">
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+2].date}</td>
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+2].sumPerDay}</td>
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+2].foodsPerDay}</td>
+        </tr>
+        )}
+        {totalcal.caloricSummary && totalcal.caloricSummary.length >= 4 && totalcal.caloricSummary.length > totalcal.right_index+3 && (
+        <tr class = "right_row_4">
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+3].date}</td>
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+3].sumPerDay}</td>
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+3].foodsPerDay}</td>
+        </tr>
+        )}
+        {totalcal.caloricSummary && totalcal.caloricSummary.length >= 5 && totalcal.caloricSummary.length > totalcal.right_index+4 && (
+        <tr class = "right_row_5">
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+4].date}</td>
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+4].sumPerDay}</td>
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+4].foodsPerDay}</td>
+        </tr>
+        )}
+        {totalcal.caloricSummary && totalcal.caloricSummary.length >= 6 && totalcal.caloricSummary.length > totalcal.right_index+5 && (
+        <tr class = "right_row_6">
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+5].date}</td>
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+5].sumPerDay}</td>
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+5].foodsPerDay}</td>
+        </tr>
+        )}
+        {totalcal.caloricSummary && totalcal.caloricSummary.length >= 7 && totalcal.caloricSummary.length > totalcal.right_index+6 && (
+        <tr class = "right_row_7">
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+6].date}</td>
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+6].sumPerDay}</td>
+          <td class = "right_data">{totalcal.caloricSummary && totalcal.caloricSummary[totalcal.right_index+6].foodsPerDay}</td>
+        </tr>
+        )}
       </table>
-      <button onClick={left_click_forward}>Change Data</button><button onClick={left_click_forward}>Change Data</button>
+      <button class = "right_click_back" onClick={right_click_backward}>Next Week</button><button class = "right_click_front" onClick={right_click_forward}>Previous Week</button>
     </div>
 </div>
 
