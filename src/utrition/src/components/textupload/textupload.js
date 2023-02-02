@@ -12,6 +12,7 @@ const TextUpload = () => {
   function handleSubmit(event) {
     event.preventDefault();
     console.log(text);
+    setText("");
   }
 
   return (
@@ -21,7 +22,8 @@ const TextUpload = () => {
           <div className={"instruction"}>
             <p>
               {" "}
-              Tell us what food you ate: (e.g. "I ate 3 pineapples, 1 Big Mac")
+              Tell us what food you ate: <br /> (e.g. "I ate 3 pineapples, 200g
+              of Greek Yogurt")
             </p>
           </div>
           <textarea
