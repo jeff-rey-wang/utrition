@@ -7,7 +7,7 @@
 }
 
 .instructions * {
-  padding: 2vh;
+  padding: 2.9%;
   left: 0;
 }
 .instructions h2 {
@@ -51,6 +51,11 @@
   background-color: antiquewhite;
   border: 2.5px solid #187d04;
   border-radius: 20px;
+  cursor: pointer;
+}
+.button:hover {
+  color: antiquewhite;
+  background: #187d04;
 }
 
 .buttons .selected {
@@ -59,9 +64,9 @@
 }
 
 .components {
-  background-color: aqua;
+  /* background-color: aqua; */
 }
 
 .container {
-  padding: 3vh;
+  padding: 4%;
 }

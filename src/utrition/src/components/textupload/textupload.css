@@ -1,0 +1,27 @@
+.instruction {
+  padding-bottom: 20px;
+}
+
+.text-input {
+  font-size: 14px;
+  font-weight: normal;
+  overflow-y: scroll;
+}
+
+form .button {
+  position: block;
+  left: 0;
+  margin: 4px 0px;
+}
+
+label {
+  display: block;
+  width: 100%;
+  margin: 5px 0px;
+}
+
+textarea {
+  resize: none;
+  border: 2.5px solid #187d04;
+  border-radius: 3px;
+}
