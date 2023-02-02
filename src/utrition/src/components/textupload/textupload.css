@@ -21,6 +21,7 @@ label {
 }
 
 textarea {
+  padding: 5px;
   resize: none;
   border: 2.5px solid #187d04;
   border-radius: 3px;

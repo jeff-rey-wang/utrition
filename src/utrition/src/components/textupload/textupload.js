@@ -10,6 +10,7 @@ const TextUpload = () => {
   }
 
   function handleSubmit(event) {
+    event.preventDefault();
     console.log(text);
   }
 
@@ -25,7 +26,7 @@ const TextUpload = () => {
           </div>
           <textarea
             id="text-input"
-            placeholder=" Type your food here:"
+            placeholder="Type your food here:"
             value={text}
             onChange={handleChange}
             cols={"50"}
