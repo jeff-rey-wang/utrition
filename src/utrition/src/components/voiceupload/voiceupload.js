@@ -38,9 +38,6 @@ const VoiceUpload = () => {
       method: "GET",
       headers: headers,
       url: "/upload",
-      // validateStatus: (status) => {
-      //   return true;
-      // },
     })
       .then((response) => {
         setResponseData({
@@ -62,11 +59,6 @@ const VoiceUpload = () => {
       })
       .catch((error) => {
         console.log(error.response.data);
-        // if (error.response) {
-        //   console.log(error.response.data)
-        //   console.log(error.response.status);
-        //   console.log(error.response.headers);
-        // }
       });
   }
 

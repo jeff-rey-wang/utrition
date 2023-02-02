@@ -8,7 +8,7 @@ const UploadContainer = () => {
   const Image = 0;
   const Voice = 1;
   const Text = 2;
-  const [currentUpload, setCurrentUpload] = useState(Image);
+  const [currentUpload, setCurrentUpload] = useState(Text);
 
   function renderDisplay(selected) {
     setCurrentUpload(selected);
