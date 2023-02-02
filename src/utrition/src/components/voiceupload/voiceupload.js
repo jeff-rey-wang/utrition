@@ -16,13 +16,13 @@ const VoiceUpload = () => {
   });
 
   const reset = () => {
-
+    window.location.reload(false);
   };
 
   const voice_submit = () => {
     var transcript = "";
     results.map((result) => (
-      transcript += result.transcript
+      transcript += " " + result.transcript
     ))
     console.log(transcript)
   };
@@ -42,7 +42,6 @@ const VoiceUpload = () => {
         {interimResult && <li>{interimResult}</li>}
       </ul>
       <br></br>
-      {/* <p>{result.transcript}</p> */}
       <button className={"button"} onClick={reset}>Reset</button>
       <button className={"button"} onClick={voice_submit}>Submit</button>
     </div>
