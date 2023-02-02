@@ -56,7 +56,7 @@ const ImageUpload = () => {
   return (
     <div style={{ flexDirection: "row" }}>
       <input type="file" name="file" onChange={handleImage} />
-      <button onClick={getData}>Submit</button>
+      <button class="button" onClick={getData}>Submit</button>
       <div style={{ border: "solid" }}>
         <pre>Food Item: {responseData.food_name}</pre>
         <pre>Serving Quantity: {responseData.serving_qty}</pre>

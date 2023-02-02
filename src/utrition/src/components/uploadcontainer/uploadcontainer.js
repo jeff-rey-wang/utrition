@@ -5,10 +5,10 @@ import ImageUpload from "../imageupload/imageupload";
 import "./uploadcontainer.css";
 
 const UploadContainer = () => {
-  const Image = 0;
+  const Image = 2;
   const Voice = 1;
-  const Text = 2;
-  const [currentUpload, setCurrentUpload] = useState(Text);
+  const Text = 0;
+  const [currentUpload, setCurrentUpload] = useState(Voice);
 
   function renderDisplay(selected) {
     setCurrentUpload(selected);
