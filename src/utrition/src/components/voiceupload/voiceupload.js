@@ -22,7 +22,7 @@ const VoiceUpload = () => {
   const voice_submit = () => {
     var transcript = "";
     results.map((result) => (
-      transcript += " " + result.transcript
+      transcript += result.transcript
     ))
     console.log(transcript)
   };
