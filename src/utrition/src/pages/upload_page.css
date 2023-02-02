@@ -1,6 +1,30 @@
+.upload-container {
+  color: #187d04;
+  display: flex;
+  height: 100vh;
+  padding: 0.5rem calc((100vw - 1000px) / 2);
+  background-color: antiquewhite;
+}
+
+.instructions * {
+  padding: 2.9%;
+  left: 0;
+}
+.instructions h2 {
+  font-weight: 600;
+  font-size: x-large;
+}
+.instructions h1 {
+  font-weight: 700;
+  font-size: xx-large;
+}
+.instructions h3 {
+  font-weight: 400;
+}
+
 .left {
   height: 200%;
-  width: 50%;
+  width: 40%;
   left: 0;
   float: left;
   /* background-color: red; */
@@ -8,7 +32,41 @@
 }
 
 .right {
+  /* background-color: blue; */
   height: 200%;
-  width: 50%;
+  width: 60%;
   right: 0;
+}
+
+.buttons {
+  align-content: center;
+}
+
+.button {
+  color: #187d04;
+  font-weight: 600;
+  height: 40px;
+  padding: 0 15px;
+  margin: 4px 10px;
+  background-color: antiquewhite;
+  border: 2.5px solid #187d04;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.button:hover {
+  color: antiquewhite;
+  background: #187d04;
+}
+
+.buttons .selected {
+  color: antiquewhite;
+  background-color: #187d04;
+}
+
+.components {
+  /* background-color: aqua; */
+}
+
+.container {
+  padding: 4%;
 }

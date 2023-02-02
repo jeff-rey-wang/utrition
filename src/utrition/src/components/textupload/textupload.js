@@ -1,26 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./textupload.css";
 
-const ImageUpload = () => {
-  const [image, setImage] = useState("");
+const TextUpload = () => {
+  const [text, setText] = useState("");
   const [responseData, setResponseData] = useState("");
-  function handleImage(e) {
-    setImage(e.target.files[0].name);
-  }
-  const headers = {
-    'upload_type': 'image',
+
+  function handleChange(event) {
+    setText(event.target.value);
   }
 
-  function getData() {
-    axios({
-      method: "POST",
-      headers: headers,
-      url: "/upload",
-      data: { path: JSON.stringify(image) },
-    })
-      .then((response) => response.json())
-      .catch((error) => console.log(error));
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(text);
+    setText("");
 
+    const headers = {
+      'upload_type': 'text',
+      'food_text': text,
+    }
     axios({
       method: "GET",
       headers: headers,
@@ -45,18 +43,32 @@ const ImageUpload = () => {
         });
       })
       .catch((error) => {
-        if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        }
+        console.log(error.response.data);
       });
   }
 
   return (
-    <div style={{ flexDirection: "row" }}>
-      <input type="file" name="file" onChange={handleImage} />
-      <button class="button" onClick={getData}>Submit</button>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <div className={"instruction"}>
+            <p>
+              {" "}
+              Tell us what food you ate: <br /> (e.g. "I ate 3 pineapples, 200g
+              of Greek Yogurt")
+            </p>
+          </div>
+          <textarea
+            id="text-input"
+            placeholder="Type your food here:"
+            value={text}
+            onChange={handleChange}
+            cols={"50"}
+            rows={"4"}
+          />
+        </label>
+        <input className={"button"} type="submit" value="Submit" />
+      </form>
       <div style={{ border: "solid" }}>
         <pre>Food Item: {responseData.food_name}</pre>
         <pre>Serving Quantity: {responseData.serving_qty}</pre>
@@ -77,4 +89,4 @@ const ImageUpload = () => {
   );
 };
 
-export default ImageUpload;
+export default TextUpload;

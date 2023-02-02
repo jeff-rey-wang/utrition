@@ -32,7 +32,7 @@ def calculateTotalNutrients(food_data):
     potassium = 0
 
     for entry in food_data:
-        food_name.append(entry["food_name"])
+        food_name.append(entry["food_name"] + ", ")
         calories += float(entry["calories"])
         total_fat += float(entry["total_fat"])
         saturated_fat += float(entry["saturated_fat"])
@@ -43,6 +43,8 @@ def calculateTotalNutrients(food_data):
         sugars += float(entry["sugars"])
         protein += float(entry["protein"])
         potassium += float(entry["potassium"])
+
+    food_name[-1] = food_name[-1][:-2]
 
     totalNutrients = {
         "food_name": food_name,
