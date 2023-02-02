@@ -28,6 +28,14 @@ def display_index():
 			json_formatted_str = json.dumps(food_data[0], indent=2)
 		return json_formatted_str
 
+# For voice & text upload
+def display_upload_results(food_string):
+	food_data = get_nutritional_data(food_string)
+	log_data(food_data)
+	fullJSON = calculateTotalNutrients(food_data)
+	json_formatted_str = json.dumps(fullJSON, indent=2)
+	return json_formatted_str
+
 @home_view.route('/profile', methods=['GET'])
 def display_profile():
 	fullJSON = {

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import useSpeechToText from "react-hook-speech-to-text";
 
+// const [responseData, setResponseData] = useState("");
+
 const VoiceUpload = () => {
   const {
     error,
