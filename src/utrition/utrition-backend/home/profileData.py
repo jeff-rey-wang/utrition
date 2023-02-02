@@ -33,17 +33,20 @@ def calculateTotalNutrients(food_data):
     potassium = 0
 
     for entry in food_data:
-        food_name.append(entry["food_name"] + ", ")
-        calories += float(entry["calories"])
-        total_fat += float(entry["total_fat"])
-        saturated_fat += float(entry["saturated_fat"])
-        cholesterol += float(entry["cholesterol"])
-        sodium += float(entry["sodium"])
-        total_carbohydrate += float(entry["total_carbohydrate"])
-        dietary_fiber += float(entry["dietary_fiber"])
-        sugars += float(entry["sugars"])
-        protein += float(entry["protein"])
-        potassium += float(entry["potassium"])
+        row = [entry["food_name"], entry["calories"], entry["total_fat"], entry["saturated_fat"], entry["cholesterol"], entry["sodium"], entry["total_carbohydrate"], entry["dietary_fiber"], entry["sugars"], entry["protein"], entry["potassium"]]
+        row = [0 if x is None else x for x in row]
+
+        food_name.append(row[0] + ", ")
+        calories += float(row[1])
+        total_fat += float(row[2])
+        saturated_fat += float(row[3])
+        cholesterol += float(row[4])
+        sodium += float(row[5])
+        total_carbohydrate += float(row[6])
+        dietary_fiber += float(row[7])
+        sugars += float(row[8])
+        protein += float(row[9])
+        potassium += float(row[10])
 
     food_name[-1] = food_name[-1][:-2]
 
