@@ -6,17 +6,31 @@ const TextUpload = () => {
   const [responseData, setResponseData] = useState("");
 
   function handleChange(event) {
-    this.setText({ value: event.target.value });
+    setText(event.target.value);
   }
 
-  function handleSubmit(event) {}
+  function handleSubmit(event) {
+    console.log(text);
+  }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <label>
-          Food:
-          <textarea value={text} onChange={handleChange} />
+          <div className={"instruction"}>
+            <p>
+              {" "}
+              Tell us what food you ate: (e.g. "I ate 3 pineapples, 1 Big Mac")
+            </p>
+          </div>
+          <textarea
+            id="text-input"
+            placeholder=" Type your food here:"
+            value={text}
+            onChange={handleChange}
+            cols={"50"}
+            rows={"4"}
+          />
         </label>
         <input className={"button"} type="submit" value="Submit" />
       </form>
