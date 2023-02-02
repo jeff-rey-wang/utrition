@@ -7,10 +7,14 @@ const ImageUpload = () => {
   function handleImage(e) {
     setImage(e.target.files[0].name);
   }
+  // const headers = {
+  //   'upload_type': 'image',
+  // }
 
   function getData() {
     axios({
       method: "POST",
+      // headers: headers,
       url: "/upload",
       data: { path: JSON.stringify(image) },
     })
@@ -19,6 +23,7 @@ const ImageUpload = () => {
 
     axios({
       method: "GET",
+      // headers: headers,
       url: "/upload",
     })
       .then((response) => {
