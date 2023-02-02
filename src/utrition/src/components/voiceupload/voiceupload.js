@@ -15,13 +15,25 @@ const VoiceUpload = () => {
     useLegacyResults: false,
   });
 
+  const reset = () => {
+
+  };
+
+  const voice_submit = () => {
+    var transcript = "";
+    results.map((result) => (
+      transcript += " " + result.transcript
+    ))
+    console.log(transcript)
+  };
+
   if (error) return <p>Web Speech API is not available in this browser 🤷‍</p>;
 
   return (
     <div>
-      <h1>Recording: {isRecording.toString()}</h1>
-      <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-        {isRecording ? "Stop Recording" : "Start Recording"}
+      <h3>Tell us what you ate:  {isRecording ? "🔊" : "🔇"	}</h3>
+      <button className={"button"} onClick={isRecording ? stopSpeechToText : startSpeechToText}>
+        {isRecording ? "❌ Stop Talking" : "📣 Start Talking"}
       </button>
       <ul>
         {results.map((result) => (
@@ -29,8 +41,10 @@ const VoiceUpload = () => {
         ))}
         {interimResult && <li>{interimResult}</li>}
       </ul>
-      <button onClick={null}>Reset</button>
-      <button onClick={null}>Send Meals</button>
+      <br></br>
+      {/* <p>{result.transcript}</p> */}
+      <button className={"button"} onClick={reset}>Reset</button>
+      <button className={"button"} onClick={voice_submit}>Submit</button>
     </div>
   );
 };
