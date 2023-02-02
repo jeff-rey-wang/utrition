@@ -2,64 +2,54 @@ import React from "react";
 import { useState } from "react";
 import ImageUpload from "../components/imageupload/imageupload";
 import TextUpload from "../components/textupload/textupload";
+import UploadContainer from "../components/uploadcontainer/uploadcontainer";
 import VoiceUpload from "../components/voiceupload/voiceupload";
 import "./upload_page.css";
 
 const Upload = () => {
-  const Image = 0;
+  const Image = 2;
   const Voice = 1;
-  const Text = 2;
+  const Text = 0;
 
-  const [currentUpload, setCurrentUpload] = useState(1);
+  const [currentUpload, setCurrentUpload] = useState(Text);
 
-  function renderImageUp() {
-    if (currentUpload !== Image) {
-      setCurrentUpload(Image);
-      console.log("image ran" + currentUpload);
-    }
-  }
-  function renderVoiceUp() {
-    if (currentUpload !== Voice) {
-      setCurrentUpload(Voice);
-      console.log("voice ran" + currentUpload);
-    }
-  }
-  function renderTextUp() {
-    if (currentUpload !== Text) {
-      setCurrentUpload(Text);
-      console.log("Text ran" + currentUpload);
+  function changeDisplay(selected) {
+    if (selected !== currentUpload) {
+      setCurrentUpload(selected);
     }
   }
   return (
-    <div class="upload-container">
-      <div class="left"></div>
-      <div class="right">
-        <div class="instructions container">
+    <div className="upload-container">
+      <div className="left"></div>
+      <div className="right">
+        <div className="instructions container">
           <h2>How it works</h2>
           <h1>Upload Your Meal</h1>
           <h3>Choose one of the options below:</h3>
         </div>
-        <div class="buttons container">
+        <div className="buttons container">
           <button
-            class={"button " + (currentUpload === Image ? "selected" : "")}
-            onClick={renderImageUp()}
+            className={"button " + (currentUpload === Text ? "selected" : "")}
+            onClick={() => changeDisplay(Text)}
           >
-            Image Upload
+            Text Upload
           </button>
           <button
-            class={"button " + (currentUpload === Voice ? "selected" : "")}
-            onClick={renderVoiceUp}
+            className={"button " + (currentUpload === Voice ? "selected" : "")}
+            onClick={() => changeDisplay(Voice)}
           >
             Voice Upload
           </button>
           <button
-            class={"button " + (currentUpload === Text ? "selected" : "")}
-            onClick={renderTextUp}
+            className={"button " + (currentUpload === Image ? "selected" : "")}
+            onClick={() => changeDisplay(Image)}
           >
-            Text Upload
+            Image Upload
           </button>
         </div>
-        <div class="components container"></div>
+        <div className="components container">
+          <UploadContainer />
+        </div>
         <div
           style={{
             position: "absolute",

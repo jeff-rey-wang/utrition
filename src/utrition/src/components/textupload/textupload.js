@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./textupload.css";
 
 const TextUpload = () => {
   const [text, setText] = useState("");
@@ -17,7 +18,7 @@ const TextUpload = () => {
           Food:
           <textarea value={text} onChange={handleChange} />
         </label>
-        <input type="submit" value="Submit" />
+        <input className={"button"} type="submit" value="Submit" />
       </form>
     </div>
   );
