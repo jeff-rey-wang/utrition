@@ -7,6 +7,7 @@ def log_data(food_data):
     timestamp = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     for entry in food_data:
         csv_row = [timestamp, entry["food_name"], entry["serving_qty"], entry["serving_unit"], entry["serving_weight_grams"], entry["calories"], entry["total_fat"], entry["saturated_fat"], entry["cholesterol"], entry["sodium"], entry["total_carbohydrate"], entry["dietary_fiber"], entry["sugars"], entry["protein"], entry["potassium"]]
+        csv_row = [0 if x is None else x for x in csv_row]
 
         if os.path.isfile("./nutrition_log.csv"):
             with open("./nutrition_log.csv", 'a') as csvfile:
