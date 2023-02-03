@@ -7,9 +7,9 @@ import VoiceUpload from "../components/voiceupload/voiceupload";
 import "./upload_page.css";
 
 const Upload = () => {
-  const Image = 2;
+  const Image = 0;
   const Voice = 1;
-  const Text = 0;
+  const Text = 2;
 
   const [currentUpload, setCurrentUpload] = useState(Text);
 
@@ -48,42 +48,7 @@ const Upload = () => {
           </button>
         </div>
         <div className="components container">
-          <UploadContainer />
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            top: "30%",
-            padding: "35px 0px",
-            display: "none",
-          }}
-        >
-          <h1>Upload an Image</h1>
-          <ImageUpload />
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            top: "60%",
-            padding: "35px 0px",
-            display: "none",
-          }}
-        >
-          <h1>Speak</h1>
-          <VoiceUpload />
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            top: "110%",
-            padding: "35px 0px",
-            display: "none",
-          }}
-        >
-          <h1>Please tell us what you ate!</h1>
-
-          <h3>Example: I had three oranges and a grilled cheese sandwich</h3>
-          <TextUpload />
+          <UploadContainer displayedUpload={currentUpload} />
         </div>
       </div>
     </div>

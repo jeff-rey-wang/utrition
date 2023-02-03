@@ -1,0 +1,29 @@
+.file-input-label {
+  color: #187d04;
+  font-weight: 600;
+  height: 40px;
+  width: 80%;
+  padding: 0 15px;
+  margin: 4px 10px;
+  background-color: antiquewhite;
+  border: 2.5px solid #187d04;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.select-button {
+  color: #187d04;
+  font-weight: 600;
+  height: 36.5px;
+  padding-right: 10px;
+  background-color: antiquewhite;
+  border: none;
+  border-right: 2.5px solid #187d04;
+  cursor: pointer;
+}
+
+.file-display {
+  padding: 0 15px;
+  font-weight: 400;
+  height: 36.5px;
+}

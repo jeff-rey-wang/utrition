@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import useSpeechToText from "react-hook-speech-to-text";
 
-
 const VoiceUpload = () => {
   const [responseData, setResponseData] = useState("");
 
@@ -24,15 +23,13 @@ const VoiceUpload = () => {
 
   function voice_submit() {
     var transcript = "";
-    results.map((result) => (
-      transcript += " " + result.transcript
-    ))
-    console.log(transcript)
+    results.map((result) => (transcript += " " + result.transcript));
+    console.log(transcript);
 
     const headers = {
-      'upload_type': 'voice',
-      'food_text': transcript,
-    }
+      upload_type: "voice",
+      food_text: transcript,
+    };
 
     axios({
       method: "GET",
@@ -66,8 +63,11 @@ const VoiceUpload = () => {
 
   return (
     <div>
-      <h3>Tell us what you ate:  {isRecording ? "🔊" : "🔇"	}</h3>
-      <button className={"button"} onClick={isRecording ? stopSpeechToText : startSpeechToText}>
+      <h3>Tell us what you ate: {isRecording ? "🔊" : "🔇"}</h3>
+      <button
+        className={"button"}
+        onClick={isRecording ? stopSpeechToText : startSpeechToText}
+      >
         {isRecording ? "❌ Stop Talking" : "📣 Start Talking"}
       </button>
       <ul>
@@ -77,8 +77,12 @@ const VoiceUpload = () => {
         {interimResult && <li>{interimResult}</li>}
       </ul>
       <br></br>
-      <button className={"button"} onClick={reset}>Reset</button>
-      <button className={"button"} onClick={voice_submit}>Submit</button>
+      <button className={"button"} onClick={reset}>
+        Reset
+      </button>
+      <button className={"button"} onClick={voice_submit}>
+        Submit
+      </button>
       <div style={{ border: "solid" }}>
         <pre>Food Item: {responseData.food_name}</pre>
         <pre>Serving Quantity: {responseData.serving_qty}</pre>

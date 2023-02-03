@@ -8,21 +8,31 @@ const UploadContainer = () => {
   const Image = 2;
   const Voice = 1;
   const Text = 0;
-  const [currentUpload, setCurrentUpload] = useState(Voice);
+  const [currentUpload, setCurrentUpload] = useState(displayedUpload);
 
   function renderDisplay(selected) {
     setCurrentUpload(selected);
   }
+const UploadContainer = ({ displayedUpload }) => {
+  const Image = 0;
+  const Voice = 1;
+  const Text = 2;
 
   return (
     <div con>
-      <div className={"component " + (currentUpload !== Text ? "hidden" : "")}>
+      <div
+        className={"component " + (displayedUpload !== Text ? "hidden" : "")}
+      >
         <TextUpload />
       </div>
-      <div className={"component " + (currentUpload !== Voice ? "hidden" : "")}>
+      <div
+        className={"component " + (displayedUpload !== Voice ? "hidden" : "")}
+      >
         <VoiceUpload />
       </div>
-      <div className={"component " + (currentUpload !== Image ? "hidden" : "")}>
+      <div
+        className={"component " + (displayedUpload !== Image ? "hidden" : "")}
+      >
         <ImageUpload />
       </div>
     </div>
