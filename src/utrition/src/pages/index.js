@@ -12,13 +12,14 @@ const Home = () => {
         alignItems: "left",
         fontSize: 40,
         fontWeight: 20,
+        width: "50%",
         marginTop: "5vh",
         // marginLeft: "20px",
         // left:"10px",
         // marginRight: "5vh",
         // right:"5px",
         backgroundColor: "#0B5345",
-        height: "40vh",
+        height: "30vh",
         // right: "50vh",
         width: "60%"
       }}>Where healthy... 
@@ -41,12 +42,12 @@ const Home = () => {
         // width: "50%",
         backgroundColor: "#0B5345",
         right: "70vh",
-        height: "20vh",
+        height: "25vh",
       }}>Utrition is an open source project where you have the choice to upload a picture, enter a voice message or type out what you 
       ate and Utrition will provide you with all the nutritional data of your meal!</h1>
 
       <h1 style={{
-        color: "#D6FF54",
+        color: "#E9FFA4",
         // display: "flex",
         fontSize: 30,
         fontFamily: 'Avenir',
@@ -70,7 +71,7 @@ const Home = () => {
 
 
 <h1 style={{
-        color: "#D6FF54",
+        color: "#E9FFA4",
         // display: "flex",
         fontSize: 30,
         fontFamily: 'Avenir',
@@ -88,13 +89,13 @@ const Home = () => {
         fontWeight: 'thin',
         // width: "50%",
         backgroundColor: "#0B5345",
-        height: "10vh",
+        height: "8vh",
         right: "70vh",
       }}>The upload page will generate your meals nutritional data. </h1>
 
 
 <h1 style={{
-        color: "#D6FF54",
+        color: "#E9FFA4",
         // display: "flex",
         fontSize: 30,
         fontFamily: 'Avenir',
@@ -118,7 +119,7 @@ const Home = () => {
 
 
       </div>
-      <div class="right" style={{right:"5px", marginTop: "5vh", marginRight: "10vh", backgroundColor: "#0B5345", width: "30%", position:"absolute"}}>
+      <div class="right" style={{right:"5px", marginTop: "8vh", marginRight: "20vh", backgroundColor: "#0B5345", width: "30%", position:"absolute"}}>
        <div style={{
           justifyContent: "right",
           // height: "20vh",
@@ -127,7 +128,7 @@ const Home = () => {
           // left:"100px",
           backgroundColor: "#EAFAF1",
           width: "40%"
-          }}><img style={{ width: 450, height: 750 }}src={require("./utritionfilter.jpg")} alt="Home Food"></img>
+          }}><img style={{ width: 440, height: 750 }}src={require("./utritionfilter.jpg")} alt="Home Food"></img>
         </div>
       </div>
       
