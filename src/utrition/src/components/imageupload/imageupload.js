@@ -15,8 +15,6 @@ const ImageUpload = () => {
   };
 
   const handleClick = (event) => {
-    console.log("click");
-    console.log(fileInput);
     fileInput.current.click();
   };
 
@@ -64,6 +62,7 @@ const ImageUpload = () => {
 
   return (
     <div>
+      <h3>Show us what you ate: </h3>
       <label className="file-input-label">
         <button className="select-button" onClick={handleClick}>
           Select Image

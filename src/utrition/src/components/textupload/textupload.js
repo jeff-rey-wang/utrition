@@ -12,13 +12,12 @@ const TextUpload = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(text);
     setText("");
 
     const headers = {
-      'upload_type': 'text',
-      'food_text': text,
-    }
+      upload_type: "text",
+      food_text: text,
+    };
     axios({
       method: "GET",
       headers: headers,
@@ -52,11 +51,8 @@ const TextUpload = () => {
       <form onSubmit={handleSubmit}>
         <label>
           <div className={"instruction"}>
-            <p>
-              {" "}
-              Tell us what food you ate: <br /> (e.g. "I ate 3 pineapples, 200g
-              of Greek Yogurt")
-            </p>
+            <h3>Tell us what food you ate:</h3>
+            <p>(e.g. "I ate 3 pineapples, 200g of Greek Yogurt")</p>
           </div>
           <textarea
             id="text-input"
