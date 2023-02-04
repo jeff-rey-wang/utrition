@@ -63,7 +63,7 @@ const ImageUpload = () => {
   return (
     <div>
       <h3>Show us what you ate: </h3>
-      <label className="file-input-label">
+      <label className="file-input-label" style={{ marginLeft: "0px" }}>
         <button className="select-button" onClick={handleClick}>
           Select Image
         </button>
@@ -76,7 +76,11 @@ const ImageUpload = () => {
         onChange={handleImage}
         hidden
       />
-      <button className={"button"} onClick={getData}>
+      <button
+        className={"button"}
+        style={{ marginLeft: "0px" }}
+        onClick={getData}
+      >
         Submit
       </button>
       <div style={{ border: "solid" }}>

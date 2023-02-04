@@ -65,7 +65,8 @@ const VoiceUpload = () => {
     <div>
       <h3>Tell us what you ate: {isRecording ? "🔊" : "🔇"}</h3>
       <button
-        className={"button"}
+        className={"button left-shift"}
+        style={{ marginLeft: "0px" }}
         onClick={isRecording ? stopSpeechToText : startSpeechToText}
       >
         {isRecording ? "❌ Stop Talking" : "📣 Start Talking"}
@@ -76,8 +77,11 @@ const VoiceUpload = () => {
         ))}
         {interimResult && <li>{interimResult}</li>}
       </ul>
-      <br></br>
-      <button className={"button"} onClick={reset}>
+      <button
+        className={"button"}
+        style={{ marginLeft: "0px" }}
+        onClick={reset}
+      >
         Reset
       </button>
       <button className={"button"} onClick={voice_submit}>
