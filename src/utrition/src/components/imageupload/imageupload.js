@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
+import "./imageupload.css";
 
 const ImageUpload = () => {
   const [image, setImage] = useState("");
   const [responseData, setResponseData] = useState("");
+  const fileInput = React.useRef(null);
+
   function handleImage(e) {
     setImage(e.target.files[0].name);
   }
   const headers = {
-    'upload_type': 'image',
-  }
+    upload_type: "image",
+  };
+
+  const handleClick = (event) => {
+    fileInput.current.click();
+  };
 
   function getData() {
     axios({
@@ -54,9 +61,28 @@ const ImageUpload = () => {
   }
 
   return (
-    <div style={{ flexDirection: "row" }}>
-      <input type="file" name="file" onChange={handleImage} />
-      <button class="button" onClick={getData}>Submit</button>
+    <div>
+      <h3>Show us what you ate: </h3>
+      <label className="file-input-label" style={{ marginLeft: "0px" }}>
+        <button className="select-button" onClick={handleClick}>
+          Select Image
+        </button>
+        <span className="file-display">{image}</span>
+      </label>
+      <input
+        type="file"
+        id="imageUpload"
+        ref={fileInput}
+        onChange={handleImage}
+        hidden
+      />
+      <button
+        className={"button"}
+        style={{ marginLeft: "0px" }}
+        onClick={getData}
+      >
+        Submit
+      </button>
       <div style={{ border: "solid" }}>
         <pre>Food Item: {responseData.food_name}</pre>
         <pre>Serving Quantity: {responseData.serving_qty}</pre>
