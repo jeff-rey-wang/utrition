@@ -20,8 +20,28 @@ const Upload = () => {
   }
   return (
     <div className="upload-container">
-      <div className="left"></div>
+      <div className="left">
+      <div style={{
+          justifyContent: "right",
+          marginTop:"40px",
+          display: "grid",
+          float: "right",
+          // left:"100px",
+          backgroundColor: "#EAFAF1",
+          width: "30%"
+          }}><img style={{ width: 400, height: 475 }}src={require("./upload.jpeg")} alt="Home Food"></img>
+        </div>
+      </div>
       <div className="right">
+      <div style={{
+          justifyContent: "right",
+          marginTop:"40px",
+          // display: "grid",
+          float: "right",
+          // left:"100px",
+          width: "65%"
+          }}>
+        </div>
         <div className="instructions container">
           <h2>How it works</h2>
           <h1>Upload Your Meal</h1>
@@ -48,6 +68,13 @@ const Upload = () => {
           </button>
         </div>
         <div className="components container">
+        <div style={{
+          marginTop:"15px",
+          height: "10px"
+          // display: "grid",
+          // left:"100px",
+          }}>
+        </div>
           <UploadContainer displayedUpload={currentUpload} />
         </div>
       </div>

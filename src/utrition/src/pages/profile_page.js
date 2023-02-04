@@ -93,10 +93,10 @@ const Profile = () => {
   };
 
   return (
-  <div style={{ display: "flex", padding: "0.5rem calc((100vw - 1000px) / 2)" }}>
+  <div style={{ display: "flex", padding: "0.5rem calc((100vw - 1100px) / 2)" }}>
     <div class="left" style={{ flex: 1, height: "5vh" }}>
-      <div class="most_eaten" style={{color: "#FFC300", height: "5vh"}}>Your most eaten food is a {totalcal.mode}</div>
-      <div class="average_cal" style={{color: "#E9FFA4", height: "15vh"}}>Your total calories consumed for today is {totalcal.currentCal}</div>
+      <div class="most_eaten" style={{color: "#FFC300", height: "55px"}}>Your most eaten food is a {totalcal.mode}</div>
+      <div class="average_cal" style={{color: "#E9FFA4", height: "85px"}}>Your total calories consumed for today is {totalcal.currentCal}</div>
       <dic class="past_meals">PAST MEALS</dic>
       <table class = "left_table">
       <tbody>
@@ -163,7 +163,7 @@ const Profile = () => {
       <button class = "left_click_front" onClick={left_click_forward}>Look at next 4 entries</button>
     ) : null}
     </div>
-    <div class= "right" style={{ flex: 1, float: "right", left:"60px" }}>
+    <div class= "right" style={{ flex: 1, marginLeft: "100px"}}>
       <table class = "right_table">
         <caption class = "right_caption">
           My Caloric Intake

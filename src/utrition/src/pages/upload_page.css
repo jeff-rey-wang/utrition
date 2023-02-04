@@ -1,9 +1,9 @@
 .upload-container {
   color: #187d04;
   display: flex;
-  height: 100vh;
+  height: 150vh;
   padding: 0.5rem calc((100vw - 1000px) / 2);
-  background-color: antiquewhite;
+  background-color: #faebd7;
 }
 
 .instructions * {
