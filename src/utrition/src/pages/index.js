@@ -12,6 +12,7 @@ const Home = () => {
         alignItems: "left",
         fontSize: 40,
         fontWeight: 20,
+        width: "50%",
         marginTop: "5vh",
         // marginLeft: "20px",
         // left:"10px",
@@ -118,7 +119,7 @@ const Home = () => {
 
 
       </div>
-      <div class="right" style={{right:"5px", marginTop: "5vh", marginRight: "10vh", backgroundColor: "#0B5345", width: "30%", position:"absolute"}}>
+      <div class="right" style={{right:"5px", marginTop: "8vh", marginRight: "20vh", backgroundColor: "#0B5345", width: "30%", position:"absolute"}}>
        <div style={{
           justifyContent: "right",
           // height: "20vh",
@@ -127,7 +128,7 @@ const Home = () => {
           // left:"100px",
           backgroundColor: "#EAFAF1",
           width: "40%"
-          }}><img style={{ width: 450, height: 750 }}src={require("./utritionfilter.jpg")} alt="Home Food"></img>
+          }}><img style={{ width: 440, height: 750 }}src={require("./utritionfilter.jpg")} alt="Home Food"></img>
         </div>
       </div>
       
