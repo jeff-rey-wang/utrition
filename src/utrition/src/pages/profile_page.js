@@ -93,7 +93,7 @@ const Profile = () => {
 
   return (
     <div
-      style={{ display: "flex", padding: "0.5rem calc((100vw - 1300px) / 2)" }}
+      style={{ display: "flex", padding: "0.5rem calc((100vw - 1100px) / 2)" }}
     >
       <div class="left" style={{ flex: 1, height: "5vh" }}>
         <div class="most_eaten" style={{ color: "#FFC300", height: "55px" }}>

@@ -2,7 +2,7 @@
   color: #187d04;
   display: flex;
   height: fit-content;
-  padding: 0.5rem calc((100vw - 1300px) / 2);
+  padding: 0 calc((100vw - 1100px) / 2);
   background-color: #faebd7;
 }
 
@@ -24,7 +24,7 @@
 
 .left {
   height: fit-content;
-  width: 40%;
+  width: 45%;
   left: 0;
   float: left;
   /* background-color: red; */
@@ -34,7 +34,7 @@
 .right {
   /* background-color: blue; */
   height: fit-content;
-  width: 60%;
+  width: 55%;
   right: 0;
 }
 
@@ -63,15 +63,9 @@
   background-color: #187d04;
 }
 
-.image-container {
-  justify-content: right;
-  margin-top: "40px";
-  display: "grid";
-  float: "right";
-  background: "#EAFAF1";
-  width: "30%";
+.components {
+  padding: 4% 4% 0 4%;
 }
-
 .container {
   padding: 4%;
 }

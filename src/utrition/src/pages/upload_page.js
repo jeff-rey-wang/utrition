@@ -20,8 +20,14 @@ const Upload = () => {
       <div className="left">
         <div className="image-container">
           <img
-            style={{ width: 400, height: 475 }}
-            src={require("./upload.jpeg")}
+            style={{
+              height: "100%",
+              width: "100%",
+              maxWidth: "700px",
+              overflow: "hidden",
+              // height: 475
+            }}
+            src={require("./utritionfilter.jpg")}
             alt="Home Food"
           ></img>
         </div>
@@ -52,10 +58,9 @@ const Upload = () => {
             Image Upload
           </button>
         </div>
-        <div className="components container">
+        <div className="components">
           <UploadContainer displayedUpload={currentUpload} />
         </div>
-        <div className="display container"></div>
       </div>
     </div>
   );

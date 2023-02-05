@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div
       style={{
-        padding: "0.5rem calc((100vw - 1300px) / 2)",
+        padding: "0 calc((100vw - 1100px) / 2)",
         display: "flex",
         height: "fit-content",
       }}
@@ -12,7 +12,9 @@ const Home = () => {
       <div
         class="left-container"
         style={{
+          position: "relative",
           color: "#EAFAF1",
+          left: "0px",
           display: "grid",
           float: "left",
           justifyContent: "left",
@@ -21,14 +23,8 @@ const Home = () => {
           fontWeight: 20,
           width: "50%",
           marginTop: "5vh",
-          // marginLeft: "20px",
-          // left:"10px",
-          // marginRight: "5vh",
-          // right:"5px",
           backgroundColor: "#0B5345",
-          height: "30vh",
-          // right: "50vh",
-          width: "60%",
+          height: "fit-content",
         }}
       >
         Where healthy...
@@ -58,9 +54,11 @@ const Home = () => {
             height: "25vh",
           }}
         >
-          Utrition is an open source project that allows you to track your nutritional intake. You have the choice to upload
-          a picture, enter a voice message or type out what you ate and Utrition
-          will provide you with all the nutritional data of your meal! Past meals are tracked to give you a full overview of your daily food consumption.
+          Utrition is an open source project that allows you to track your
+          nutritional intake. You have the choice to upload a picture, enter a
+          voice message or type out what you ate and Utrition will provide you
+          with all the nutritional data of your meal! Past meals are tracked to
+          give you a full overview of your daily food consumption.
         </h1>
         <h1
           style={{
@@ -155,32 +153,22 @@ const Home = () => {
         class="right-container"
         style={{
           right: "0px",
-          marginTop: "8vh",
-          marginRight: "20vh",
           backgroundColor: "#0B5345",
-          width: "30%",
-          position: "absolute",
+          width: "50%",
+          position: "relative",
         }}
       >
-        <div
+        <img
           style={{
-            position: "relative",
-            justifyContent: "right",
-            // height: "20vh",
-            display: "grid",
-            float: "right",
-            right: "0px",
-            // left:"100px",
-            backgroundColor: "#EAFAF1",
-            // width: "40%",
+            height: "100%",
+            width: "100%",
+            objectFit: "cover",
+            padding: "0 10px",
+            // height:
           }}
-        >
-          <img
-            style={{ width: 440, height: 750 }}
-            src={require("./utritionfilter.jpg")}
-            alt="Home Food"
-          ></img>
-        </div>
+          src={require("./upload.jpeg")}
+          alt="Home Food"
+        ></img>
       </div>
     </div>
   );
