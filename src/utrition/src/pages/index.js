@@ -2,9 +2,15 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div style={{ padding: "0.5rem calc((100vw - 1000px) / 2)" }}>
+    <div
+      style={{
+        padding: "0.5rem calc((100vw - 1300px) / 2)",
+        display: "flex",
+        height: "fit-content",
+      }}
+    >
       <div
-        class="left"
+        class="left-container"
         style={{
           color: "#EAFAF1",
           display: "grid",
@@ -146,9 +152,9 @@ const Home = () => {
         </h1>
       </div>
       <div
-        class="right"
+        class="right-container"
         style={{
-          right: "5px",
+          right: "0px",
           marginTop: "8vh",
           marginRight: "20vh",
           backgroundColor: "#0B5345",
@@ -158,13 +164,15 @@ const Home = () => {
       >
         <div
           style={{
+            position: "relative",
             justifyContent: "right",
             // height: "20vh",
             display: "grid",
             float: "right",
+            right: "0px",
             // left:"100px",
             backgroundColor: "#EAFAF1",
-            width: "40%",
+            // width: "40%",
           }}
         >
           <img
