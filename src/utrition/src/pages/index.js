@@ -58,9 +58,9 @@ const Home = () => {
             height: "25vh",
           }}
         >
-          Utrition is an open source project where you have the choice to upload
+          Utrition is an open source project that allows you to track your nutritional intake. You have the choice to upload
           a picture, enter a voice message or type out what you ate and Utrition
-          will provide you with all the nutritional data of your meal!
+          will provide you with all the nutritional data of your meal! Past meals are tracked to give you a full overview of your daily food consumption.
         </h1>
         <h1
           style={{
