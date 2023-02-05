@@ -97,7 +97,7 @@ const Profile = () => {
     >
       <div class="left" style={{ flex: 1, height: "5vh" }}>
         <div class="most_eaten" style={{ color: "#FFC300", height: "55px" }}>
-          Your most eaten food is a {totalcal.mode}
+          Your most eaten food: {totalcal.mode}
         </div>
         <div class="average_cal" style={{ color: "#E9FFA4", height: "85px" }}>
           Your total calories consumed for today is {totalcal.currentCal}
