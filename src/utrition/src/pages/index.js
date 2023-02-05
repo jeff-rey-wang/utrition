@@ -89,7 +89,7 @@ const Home = () => {
             right: "70vh",
           }}
         >
-          Your choice! Take a picture of your meal, write down what you ate or
+          Your choice! Take a picture of your meal, type out what you ate or
           record a voice message.{" "}
         </h1>
         <h1
@@ -119,7 +119,7 @@ const Home = () => {
             right: "70vh",
           }}
         >
-          The upload page will generate your meals nutritional data.{" "}
+          The upload page will generate your meal's nutritional data.{" "}
         </h1>
         <h1
           style={{
