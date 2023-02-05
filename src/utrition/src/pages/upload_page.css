@@ -1,7 +1,7 @@
 .upload-container {
   color: #187d04;
   display: flex;
-  height: 150vh;
+  height: fit-content;
   padding: 0.5rem calc((100vw - 1000px) / 2);
   background-color: #faebd7;
 }
@@ -23,7 +23,7 @@
 }
 
 .left {
-  height: 200%;
+  height: fit-content;
   width: 40%;
   left: 0;
   float: left;
@@ -33,7 +33,7 @@
 
 .right {
   /* background-color: blue; */
-  height: 200%;
+  height: fit-content;
   width: 60%;
   right: 0;
 }
@@ -63,8 +63,13 @@
   background-color: #187d04;
 }
 
-.components {
-  /* background-color: aqua; */
+.image-container {
+  justify-content: right;
+  margin-top: "40px";
+  display: "grid";
+  float: "right";
+  background: "#EAFAF1";
+  width: "30%";
 }
 
 .container {
