@@ -87,21 +87,49 @@ const VoiceUpload = () => {
       <button className={"button"} onClick={voice_submit}>
         Submit
       </button>
-      <div style={{ marginTop: "20px", border: "solid" }}>
-        <pre>Food Item: {responseData.food_name}</pre>
-        <pre>Serving Quantity: {responseData.serving_qty}</pre>
-        <pre>Serving Unit: {responseData.serving_unit}</pre>
-        <pre>Serving Weight in Grams: {responseData.serving_weight_grams}</pre>
-        <pre>Calories: {responseData.calories}</pre>
-        <pre>Total Fat: {responseData.total_fat}</pre>
-        <pre>Saturated Fat: {responseData.saturated_fat}</pre>
-        <pre>Cholesterol: {responseData.cholesterol}</pre>
-        <pre>Sodium: {responseData.sodium}</pre>
-        <pre>Total Carbohydrate: {responseData.total_carbohydrate}</pre>
-        <pre>Dietary Fiber: {responseData.dietary_fiber}</pre>
-        <pre>Sugar: {responseData.sugars}</pre>
-        <pre>Protein: {responseData.protein}</pre>
-        <pre>Potassium: {responseData.potassium}</pre>
+      <div style={{ marginTop: "20px" }}>
+        <pre hidden={responseData.food_name ? false : true}>
+          Food Item: {responseData.food_name}
+        </pre>
+        <pre hidden={responseData.serving_qty ? false : true}>
+          Serving Quantity: {responseData.serving_qty}
+        </pre>
+        <pre hidden={responseData.serving_qty ? false : true}>
+          Serving Unit: {responseData.serving_unit}
+        </pre>
+        <pre hidden={responseData.serving_weight_grams ? false : true}>
+          Serving Weight in Grams: {responseData.serving_weight_grams}
+        </pre>
+        <pre hidden={responseData.calories ? false : true}>
+          Calories: {responseData.calories}
+        </pre>
+        <pre hidden={responseData.total_fat ? false : true}>
+          Total Fat: {responseData.total_fat}
+        </pre>
+        <pre hidden={responseData.saturated_fat ? false : true}>
+          Saturated Fat: {responseData.saturated_fat}
+        </pre>
+        <pre hidden={responseData.cholesterol ? false : true}>
+          Cholesterol: {responseData.cholesterol}
+        </pre>
+        <pre hidden={responseData.sodium ? false : true}>
+          Sodium: {responseData.sodium}
+        </pre>
+        <pre hidden={responseData.total_carbohydrate ? false : true}>
+          Total Carbohydrate: {responseData.total_carbohydrate}
+        </pre>
+        <pre hidden={responseData.serving_qty ? false : true}>
+          Dietary Fiber: {responseData.dietary_fiber}
+        </pre>
+        <pre hidden={responseData.sugars ? false : true}>
+          Sugar: {responseData.sugars}
+        </pre>
+        <pre hidden={responseData.protein ? false : true}>
+          Protein: {responseData.protein}
+        </pre>
+        <pre hidden={responseData.potassium ? false : true}>
+          Potassium: {responseData.potassium}
+        </pre>
       </div>
     </div>
   );
