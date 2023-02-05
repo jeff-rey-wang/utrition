@@ -1,9 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import ImageUpload from "../components/imageupload/imageupload";
-import TextUpload from "../components/textupload/textupload";
 import UploadContainer from "../components/uploadcontainer/uploadcontainer";
-import VoiceUpload from "../components/voiceupload/voiceupload";
 import "./upload_page.css";
 
 const Upload = () => {
@@ -20,7 +17,15 @@ const Upload = () => {
   }
   return (
     <div className="upload-container">
-      <div className="left"></div>
+      <div className="left">
+        <div className="image-container">
+          <img
+            style={{ width: 400, height: 475 }}
+            src={require("./upload.jpeg")}
+            alt="Home Food"
+          ></img>
+        </div>
+      </div>
       <div className="right">
         <div className="instructions container">
           <h2>How it works</h2>
@@ -50,6 +55,7 @@ const Upload = () => {
         <div className="components container">
           <UploadContainer displayedUpload={currentUpload} />
         </div>
+        <div className="display container"></div>
       </div>
     </div>
   );

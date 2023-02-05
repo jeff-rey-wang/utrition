@@ -87,7 +87,7 @@ const VoiceUpload = () => {
       <button className={"button"} onClick={voice_submit}>
         Submit
       </button>
-      <div style={{ border: "solid" }}>
+      <div style={{ marginTop: "20px", border: "solid" }}>
         <pre>Food Item: {responseData.food_name}</pre>
         <pre>Serving Quantity: {responseData.serving_qty}</pre>
         <pre>Serving Unit: {responseData.serving_unit}</pre>

@@ -65,7 +65,7 @@ const TextUpload = () => {
         </label>
         <input className={"button"} type="submit" value="Submit" />
       </form>
-      <div style={{ border: "solid" }}>
+      <div style={{ border: "solid", marginTop: "20px" }}>
         <pre>Food Item: {responseData.food_name}</pre>
         <pre>Serving Quantity: {responseData.serving_qty}</pre>
         <pre>Serving Unit: {responseData.serving_unit}</pre>

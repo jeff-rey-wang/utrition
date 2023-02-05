@@ -26,6 +26,27 @@ body {
   margin-top: 10px;
 }
 
+.button {
+  color: #187d04;
+  font-weight: 600;
+  height: 40px;
+  padding: 0 15px;
+  margin: 4px 10px;
+  background-color: antiquewhite;
+  border: 2.5px solid #187d04;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.button:hover {
+  color: antiquewhite;
+  background: #187d04;
+}
+
+.buttons .selected {
+  color: antiquewhite;
+  background-color: #187d04;
+}
+
 .orange-square {
   margin-top: 15px;
   margin-left: 10px;
@@ -36,7 +57,7 @@ body {
   text-align: center;
   padding: 12px;
   font-size: 25px;
-  color: #03583b;
+  color: #ffffff;
   font-weight: bold;
 }
 .large-text {
@@ -60,9 +81,9 @@ body {
 }
 .right_caption {
   border: 1px solid black;
-  background-color: lightblue;
+  background-color: #EAFAF1;
   font-weight: bold;
-  color: brown;
+  color: rgb(25, 160, 43);
   font-size: xx-large;
 }
 
