@@ -7,7 +7,9 @@ def create_app(config_file):
     build_app.config.from_pyfile(
         config_file
     )  # Configure application with settings file, not strictly necessary
-    build_app.register_blueprint(home_view)  # Register url's so application knows what to do
+    build_app.register_blueprint(
+        home_view
+    )  # Register url's so application knows what to do
     return build_app
 
 
