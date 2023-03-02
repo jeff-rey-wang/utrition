@@ -48,12 +48,14 @@ const Upload = () => {
           <button
             className={"button " + (currentUpload === Voice ? "selected" : "")}
             onClick={() => changeDisplay(Voice)}
+            data-testid="textuploadbutton"
           >
             Voice Upload
           </button>
           <button
             className={"button " + (currentUpload === Image ? "selected" : "")}
             onClick={() => changeDisplay(Image)}
+            data-testid="voice button"
           >
             Image Upload
           </button>
