@@ -1,12 +1,15 @@
 import numpy as np
 import pickle
+import os
 
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 # convert from bytestream to object
 def unpickle(file):
     with open(file, "rb") as f:  # files are in byte stream
         dict = pickle.load(f, encoding="latin1")  # convert from byte stream to object
-        if file == "ML/cifar-100-python/meta":
+        if file == os.path.abspath(BASE_DIR + "/ML/cifar-100-python/meta"):
             x = dict["fine_label_names"]
             return x
         else:
@@ -18,9 +21,9 @@ def unpickle(file):
 
 
 def load_data(flag, PA):
-    trainFile = "ML/cifar-100-python/train"
-    testFile = "ML/cifar-100-python/test"
-    metaFile = "ML/cifar-100-python/meta"
+    trainFile = os.path.abspath(BASE_DIR + "/ML/cifar-100-python/train")
+    testFile = os.path.abspath(BASE_DIR + "/ML/cifar-100-python/test")
+    metaFile = os.path.abspath(BASE_DIR + "/ML/cifar-100-python/meta")
 
     data_train, fine_train = unpickle(trainFile)
     data_test, fine_test = unpickle(testFile)
