@@ -1,5 +1,10 @@
 name: run-actions
-on: [push, pull_request]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
   run-tests:
     runs-on: ubuntu-latest
@@ -11,5 +16,21 @@ jobs:
           python-version: "3.7"
       - name: Install pytest
         run: pip3 install pytest
+      - name: Run Tests
+        run: pytest
+  run-linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.7"
       - name: Install pylint
         run: pip3 install pylint
+      - name: Install black
+        run: pip3 install black
+      - name: run pylint
+        run: pylint ./src/ --ignore node_modules
+      - name: run black
+        run: black --check ./src/ 
