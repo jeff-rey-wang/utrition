@@ -1,10 +1,9 @@
 import sys
-import os
-import csv
-import datetime
 sys.path.append("src/utrition/utrition-backend/")
-
 from home.profileData import log_data, read_file
+
+import os
+import datetime
 
 
 def test_log_data():
@@ -33,24 +32,26 @@ def test_log_data():
     with open("./nutrition_log.csv", "r") as f:
         lines = f.readlines()
     assert len(lines) == 2  # header + 1 data row
-    assert lines[1].strip() == ",".join([
-        datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
-        "Test Food",
-        "1",
-        "unit",
-        "100",
-        "200",
-        "10",
-        "2",
-        "20",
-        "300",
-        "30",
-        "5",
-        "10",
-        "5",
-        "200"
-    ])
-    
+    assert lines[1].strip() == ",".join(
+        [
+            datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+            "Test Food",
+            "1",
+            "unit",
+            "100",
+            "200",
+            "10",
+            "2",
+            "20",
+            "300",
+            "30",
+            "5",
+            "10",
+            "5",
+            "200",
+        ]
+    )
+
     # Delete the CSV file
     os.remove("./nutrition_log.csv")
 

@@ -1,10 +1,9 @@
-import json
-from unittest.mock import patch
-import requests
 import sys
 sys.path.append("src/utrition/utrition-backend/")
-
 from home.nutritionalDataFetcher import get_nutritional_data
+
+import json
+from unittest.mock import patch
 
 
 def test_get_nutritional_data_JSON_from_string_input():
@@ -12,7 +11,7 @@ def test_get_nutritional_data_JSON_from_string_input():
         {
             "food_name": "banana",
             "serving_qty": 1.0,
-            "serving_unit": "medium (7\" to 7-7/8\" long)",
+            "serving_unit": 'medium (7" to 7-7/8" long)',
             "serving_weight_grams": 118.0,
             "calories": 105.0,
             "total_fat": 0.4,
@@ -34,7 +33,7 @@ def test_get_nutritional_data_JSON_from_string_input():
                 {
                     "food_name": "banana",
                     "serving_qty": 1.0,
-                    "serving_unit": "medium (7\" to 7-7/8\" long)",
+                    "serving_unit": 'medium (7" to 7-7/8" long)',
                     "serving_weight_grams": 118.0,
                     "nf_calories": 105.0,
                     "nf_total_fat": 0.4,
