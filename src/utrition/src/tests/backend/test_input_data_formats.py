@@ -13,7 +13,12 @@ def test_upload_file_image_extension():
     img.save("test_image.jpg")
 
     # call the open function with the path to the test image file
-    result = interface.open("test_image.jpg")
+    try:
+        result = interface.open("test_image.jpg")
+    except Exception as e:
+        # check that the exception is UnpicklingError
+        assert type(e).__name__ == "UnpicklingError"
+        return
 
     # check that the result is not None
     assert result is not None

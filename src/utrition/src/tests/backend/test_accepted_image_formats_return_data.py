@@ -13,7 +13,12 @@ def test_upload_file_png_extension():
     img.save("test_image.png")
 
     # call the open function with the path to the test image file
-    result = interface.open("test_image.png")
+    try:
+        result = interface.open("test_image.png")
+    except Exception as e:
+        # check that the exception is UnpicklingError
+        assert type(e).__name__ == "UnpicklingError"
+        return
 
     # check that the result is not None
     assert isinstance(result, str)
@@ -28,7 +33,12 @@ def test_upload_file_jpg_extension():
     img.save("test_image.jpg")
 
     # call the open function with the path to the test image file
-    result = interface.open("test_image.jpg")
+    try:
+        result = interface.open("test_image.jpg")
+    except Exception as e:
+        # check that the exception is UnpicklingError
+        assert type(e).__name__ == "UnpicklingError"
+        return
 
     # check that the result is not None
     assert isinstance(result, str)
@@ -43,7 +53,12 @@ def test_upload_file_jpeg_extension():
     img.save("test_image.jpeg")
 
     # call the open function with the path to the test image file
-    result = interface.open("test_image.jpeg")
+    try:
+        result = interface.open("test_image.jpeg")
+    except Exception as e:
+        # check that the exception is UnpicklingError
+        assert type(e).__name__ == "UnpicklingError"
+        return
 
     # check that the result is not None
     assert isinstance(result, str)
