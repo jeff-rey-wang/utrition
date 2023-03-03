@@ -1,4 +1,5 @@
 import sys
+
 sys.path.append("src/utrition/utrition-backend/")
 from home.nutritionalDataFetcher import get_nutritional_data
 

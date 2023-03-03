@@ -1,4 +1,5 @@
 import sys
+
 sys.path.append("src/utrition/utrition-backend/")
 from home.profileData import log_data, read_file
 
