@@ -45,6 +45,7 @@
 		\textbf{symbol} & \textbf{description}\\
 		\midrule 
 		T & Test\\
+		BMI & Body Mass Index\\
 		\bottomrule
 	\end{tabular}\\
 	
@@ -70,6 +71,11 @@
 	\section{Nonfunctional Requirements Evaluation}
 	
 	\subsection{Usability}
+	Apart from the more defined tests discussed above, additional usability testing was conducted on several participants to obtain feedback regarding Utrition's overall quality and user experience. A semi-structured interview was conducted on a total of 5 individuals of different genders and ethnicities to provide a wide range of opinions and suggestions. The interview process consisted of a brief explanation of the application, sample tasks for the participant to perform, and a series of questions. The raw notes from each interview can be found in Appendix A.
+	
+	Many useful insights were gathered from the interview results. When participants were asked to input mulitple food entries, most opted for text or voice upload options. The majority of participants did not read the instructions, but completed the task quickly and with ease. Common likes brought up by participants included the colour scheme and layout of the application, the ease of use regarding food entry upload, and the depth of information found on the profile page.
+	
+	In terms of common dislikes, many participants wanted to see units beside the nutritional data they were receiving, more error messages when something goes wrong, and to have meals grouped together based on input time when viewing the profile page. Additional features that individuals wish to see in feature revisions include BMI inputs from the user, goal setting, and a graph displaying past food input information. Greater explanation on implementation changes are discussed in section 7.
 	
 	\subsection{Performance}
 	
@@ -77,11 +83,22 @@
 	
 	\section{Comparison to Existing Implementation}	
 	
-	This section will not be appropriate for every project.
+	N/A
 	
 	\section{Unit Testing}
 	
 	\section{Changes Due to Testing}
+	
+	Due to the feedback collected during usability testing, Utrition's implementation will undergo changes to provide the best user experience possible. Taking into consideration the time constraints and the most commonly discussed improvements, these changes will be implemented:
+	\begin{itemize}
+		\item Add "Get Started" button to home page to take user to input a food item
+		\item Add units to nutritional data output
+		\item Create error messages for cases where inputted food item is not identifiable 
+		\item Group entries in food history table based on entries submitted together
+		\item Fix "reset" button in voice upload functionality to remain on current page
+		\item Add graph to display past food entry data
+		\item Optional height and weight user inputs to calculate BMI and recommended calories per day 
+	\end{itemize}
 	
 	\section{Automated Testing}
 	
@@ -90,6 +107,262 @@
 	\section{Trace to Modules}		
 	
 	\section{Code Coverage Metrics}
+	
+	\section*{Appendix A}
+	\subsection*{Informal User Testing Notes}
+	\subsubsection*{User \#1, 22 year-old, male, interviewed on 03/01/2023:}	
+	Expectations:
+	\begin{itemize}
+		\item Do actions: search for food, see baseline nutritional stats, and more in depth stats
+		\item Scan a variety of foods
+		\item Track calories, see projection
+		\item See if I'm over/under a goal
+		\item Set goals
+		\item Personalization via profile, personalized results (save meal prep, meal sets)
+		\item Make recommendations on diet, substitutions on diet
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Wants feedback on which type of upload is selected
+		\item Inputting natural language into text/voice upload, with complete sentences
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Instant feedback, fast
+		\item Minimal steps to upload
+		\item Likes how it confirms what foods got uploaded
+		\item How it shows the general nutrition facts that most people are looking for
+		\item Likes the summarization and history of past foods
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Wants to show the number of food/quantity eaten when food is submitted and nutritional total
+		shown
+		\item Wants to be able to show expanded form of breakdown
+		\item Add units to the nutrition data shown
+		\item Bug when you enter food and separate them with “enter” new line character
+		\item Doesn’t like how half the upload is “useless”, wants the functionality to be most of the page;
+		focus of page is only on half of the page (wants it more central in line of page)
+		\item “How it works” text does not make sense, taking up space
+		\item Want profile/upload buttons on main page instead of heading nav bar since there are only 2
+		options
+		\item Paragraph on first page too long
+		\item Main page: “Make a choice!” text does not make sense
+		\item Want a sticky nav bar
+		\item Text input
+		\subitem Want to be able to press “enter” button to submit text
+		\item Profile page
+		\subitem Want more personalization to the profile page (goals ie. Lose/gain weight)
+		\subitem Add link to external souce to see estimated calories for a person of height/weight
+		\subitem Hard to read nutritional facts on profile page under “past meals”, also in caloric intake
+		table, maybe break it down and format it better and make it more readable; it is hard to
+		scan and find what you want
+		\subitem “look at next 4 entries” button: expended it to append 4 entries to bottom of list
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item Show a weekly graph to show progression 
+		\subitem Good way to show progression visually, summarizes information
+	\end{itemize}
+
+	\subsubsection*{User \#2, 22 year-old, male, interviewed on 02/28/2023:}
+	Expectations:
+	\begin{itemize}
+		\item Give it name of meal, or meal components and be able to show the nutritional
+		information about the meal
+		\item Look at all the food eaten in a period of time and return nutritional value
+		\item How will the program know what you are trying to describe? some feature to detect
+		food
+		\item Logging and Viewing → At a high level
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Reads instructions on homepage
+		\item Bouncing back from homepage to upload page to read instructions
+		\item Instructions don’t exist in the same place as where the interaction occurs
+		\item Enters the food individually, and specifies some amount for the yogurt
+		\item Submits and reads information about the food
+		\item Forgets to stop the recording before submitting, application continues to record
+		after submission
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Good layout
+		\item Good separate pages
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Wants units for nutrients
+		\subitem Not consistent between nutrients, so should specify
+		\item Should output the quantity inputted by the user to ensure the quantity was taken into consideration when calculating nutritional information
+		\item Automatically stop recording?
+		\item Uploaded image is only allowed to exist in specific folder, doesn’t give a relative
+		path back to the backend
+		\item Meal components are listed separately even if they are one meal; need to communicate
+		if items were eaten at the same time
+		\item Instead of scrolling by 4 entries, can instead scroll by date/meal rather than an arbitrary
+		4 entries
+		\item Reset brings the user back to the text upload (should go back to voice upload)
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item Get started button?!
+		\item Graph to measure eating trends over time
+		\item Profile page information could be better displayed
+		\item Instead of instantly displaying information on each meal item, have brief information, and can expand for more information
+	\end{itemize}
+
+	\subsubsection*{User \#3, 22 year-old, female, interviewed on 03/02/2023:}
+	Expectations:
+	\begin{itemize}
+		\item MyFitnessPal
+		\item Nutritional information is returned based on brand of food
+		\item Macronutrients, more than just calories
+		\item Separated into meals or snacks
+		\item Input user information; weight, track weight
+		\item Estimate how much calories needed to reach some “goal weight” (also given by
+		user)
+		\item Tracking progress on some MACRONUTRIENT goal per day e.g. “daily protein
+		goal”
+		\item Give advice on types of food that you should be eating
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Clicked upload page
+		\item Didn’t read instructions
+		\item Wasn’t completely sure if multiple inputs were allowed; referred to example to clarify
+		\item Used Voice Upload
+		\item Didn’t press stop recording before submitting
+		\subitem Kept recording
+		\item Thai basil ground beef was recorded as “thai basil, ground beef”
+		\item Nutritional information probably not accurate, portion size not communicated
+		\item Didn’t occur to specify exact portions when speaking to the applications
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Showed calories right away
+		\item Ease of input
+		\item Aesthetic
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Portions are assumed; not exactly accurate
+		\subitem Would prefer to put in servings themselves
+		\subitem Accuracy over ease of input
+		\item Date + Caloric Intake → Not necessary useful enough to be put front and centre; can be
+		put onto a different page/accessed if necessary
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item PAST Meals should be separated into breakfast, lunch, dinner, snack, etc.
+		\subitem Bundled into one entry
+		\item Water intake?!
+	\end{itemize}
+
+	\subsubsection*{User \#4, 22 year-old, male, interviewed on 02/27/2023:}
+	Expectations:
+	\begin{itemize}
+		\item Something like MyFitnessPal
+		\item Enter food
+		\item Gives calories, macro, carbs, etc.
+		\item From homepage, expects picture to be given that is similar and it identifies everything
+		\item Does not want to specify quantities manually with image upload
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Read instructions before use
+		\item Used text upload as default
+		\item Uploaded mulitple items using both text and voice upload
+		\item Tested using \& symbol (worked as intended)
+		\item Viewed food entries in profile page
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Likes pictures on website
+		\item Really likes landing page
+		\item Colours are nice
+		\item Good text font and size
+		\item Likes voice upload functionality
+		\item Likes most eaten food on profile page
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Have get started button to take you to upload page
+		\item Nutrition facts should be rearranged nicer
+		\item Have units for nutrition facts
+		\item Have calories and more important ones at the top or bigger
+		\item Split calories for each individual food item for multiple?
+		\item Submit food entry on enter
+		\item Be able to change serving unit (how big serving is)
+		\item Have more error handling (if not food, spell wrong)
+		\item Reset button in voice upload takes you to text upload
+		\item Might not need upload button at top (just have buttons on profile and landing page)
+		\item Add vertical padding for bottom of page so content is not at very bottom
+		\item Use arrows for going between pages of food entries
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item Total nutrients in day summary (carbs, protein, fat)
+		\item Be able to set goals of how much you want to eat
+		\subitem Give insights on goal progression
+		\item Gets sense of meals eaten and give suggestions on what to eat to reach goals
+		\item Warnings if you are eating something really unhealthy
+		\item Should have graph (visuals better than text)
+		\item Time when input in past meals
+			\item More concerned with what was apart of which meal
+		\item Wants to be able to delete entries
+		\item Wants to know how many pages of saved food entries there are
+		\item Have filters for past food entry display (ex. sort by day)
+	\end{itemize}
+
+	\subsubsection*{User \#5, 22 year-old, female, interviewed on 02/28/2023:}
+	Expectations:
+	\begin{itemize}
+		\item  MyFitnessPal
+		\item Nutritional information for food items
+		\item Be able to use food while going out (like McDonald's brand and Starbucks for example)
+		\item Ethnic foods available
+		\item Have to upload all the ingredients
+		\item Would like an app to use on her phone
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Wasn't sure if she could use specific brands
+		\item Didn’t know can input multiple items (thought she could with comma but probably needs it more
+		explicit)
+		\item Didn’t use natural language
+		\item  Disappointed in image upload (only 6 foods and food pictures have to be already downloaded to
+		the computer, says its useless)
+		\item A little bit confused about the button language on the profile page “Next should look at most
+		recent stuff” need to make more clear
+		\item Doesn’t really care about most eaten food
+		\item Accepted pizza without asking what type
+		\item Oreo mcflurry showed as oreo AND mcflurry
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Colours are nice
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Bold food stats in upload page
+		\item Remove serving unit and quanitity if multiple food items inputted
+		\item Need to put units in upload page
+		\item Need a static graph so she can be able to spam click the next or previous buttons without
+		having to move her mouse
+		\item Should notify user if there is a typo/food item that is not being searched
+		\item Put units in total calories
+		\item Format upload page nicer: food item, serving, unit should be on left and nutritional facts on the
+		right
+		\item Don’t upload photo or take picture from laptop
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item Want BMI calculator to calculate calorie deficit and differentiate from other apps
+		\item Protein calculator on how to tone up, can put other sections in task bar
+		\item Fiber and iron addition
+		\item Select what options they would like displayed to them on profile page
+	\end{itemize}
 	
 	\bibliographystyle{plainnat}
 	\bibliography{../../refs/References}
