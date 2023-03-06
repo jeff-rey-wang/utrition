@@ -3,7 +3,9 @@ import Home from './index';
 
 test('renders title text', () => {
   render(<Home />);
+  // make virtual dom, makes component
   const linkElement = screen.getByText(/meets happy/i);
+  // on screen find makes happy
   expect(linkElement).toBeInTheDocument();
 });
 
