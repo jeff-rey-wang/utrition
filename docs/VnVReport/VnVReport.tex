@@ -45,6 +45,7 @@
 		\textbf{symbol} & \textbf{description}\\
 		\midrule 
 		T & Test\\
+		BMI & Body Mass Index\\
 		\bottomrule
 	\end{tabular}\\
 	
@@ -69,19 +70,609 @@
 	
 	\section{Nonfunctional Requirements Evaluation}
 	
+	\subsection{Look and Feel}
+	
+	\begin{enumerate}
+		\item{LF-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: A developer from Durum Wheat Semolina has launched the Utrition app.
+		
+		Input/Condition: The developer measures the distance between the displayed user interface components.
+		
+		Output/Result: The distance between user interface components must surpass 20 pixels.
+		
+		How test will be performed: Each developer launches the Utrition app and opens the \href{https://www.rapidtables.com/web/tools/pixel-ruler.html}{Pixel Measuring Tool}. The developer will use the tool by viewing a page on Utrition, then clicking “Print Screen'' on their keyboard. The developer then pastes the screenshot into the tool. The developer clicks the two spots he would like to measure distance from.
+		
+		\textbf{Results}: Test passed, output matched the expected result. All testing developers reported that all the visually distinct user interface components were at least 20 pixels away from one another. This ensures the visual components of the application will be visually pleasing, easy to read, and more intuitive to follow.
+		
+	\end{enumerate}
+	
 	\subsection{Usability}
+	Apart from the more defined tests discussed above, additional usability testing was conducted on several participants to obtain feedback regarding Utrition's overall quality and user experience. A semi-structured interview was conducted on a total of 5 individuals of different genders and ethnicities to provide a wide range of opinions and suggestions. The interview process consisted of a brief explanation of the application, sample tasks for the participant to perform, and a series of questions. The raw notes from each interview can be found in Appendix A.
+	
+	Many useful insights were gathered from the interview results. When participants were asked to input mulitple food entries, most opted for text or voice upload options. The majority of participants did not read the instructions, but completed the task quickly and with ease. Common likes brought up by participants included the colour scheme and layout of the application, the ease of use regarding food entry upload, and the depth of information found on the profile page.
+	
+	In terms of common dislikes, many participants wanted to see units beside the nutritional data they were receiving, more error messages when something goes wrong, and to have meals grouped together based on input time when viewing the profile page. Additional features that individuals wish to see in feature revisions include BMI inputs from the user, goal setting, and a graph displaying past food input information. Greater explanation on implementation changes are discussed in section 7.
+	
+	\begin{enumerate}
+		
+		\item{UH-1}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user is viewing a page of the user interface.
+		
+		Input/Condition: The user clicks on the “Menu” button located at the bottom of the user interface.
+		
+		Output/Result: The user will be brought to the main menu screen.
+		
+		How test will be performed: A developer of Durum Wheat Semolina will access every page listed in “Initial State” and will attempt to reach the main menu in 2 or less clicks from the respective page.
+		
+		\textbf{Results}: Test passed, output matched the expected result. All testing developers were able to access the main menu in exactly 1 click from any page. All pages were tested; Main page, Upload page, Profile page
+		
+		
+		\item{UH-2}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has previously entered 5 items in Utrition and is now viewing the main menu.
+		
+		Input: The user makes the request to view past nutritional data.
+		
+		Output: The user views a list displaying all 5 food items with their respective details in: food name, calories, fat, sodium, proteins, carbohydrates, sugars, and date entered.
+		
+		How test will be performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and access the main menu. The developer will upload an image of different food items 5 times, with a minimum 1 minute time difference between each input. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer navigates to the past inputted foods area and views the list displaying the 5 different food items and their respective details.
+		
+		\textbf{Results}: Test passed, output matched the expected result. After submitting the 5 food items into the image upload component, the developer navigated to the Profile page, where they reported that the expected nutritional data corresponding to the uploaded food items were displayed on the page.
+		
+		\item{UH-3}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has previously entered 5 items in Utrition and has requested to view their past inputted food items.
+		
+		Input/Condition: The user navigates to the screen where they can view their past nutritional data in a chart format.
+		
+		Output/Result: The user views a chart displaying all 5 food items with their respective details in: food name, calories, proteins, carbohydrates, sugars, and date entered.
+		
+		How test will be performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and access the main menu. The developer will upload an image of different food items 5 times, with a minimum 1 minute time difference between each input. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer navigates to the past inputted foods area where they can view their statistics as a chart. The developer views a chart displaying 5 different food items and their respective details.
+		
+		\textbf{Results}: Test passed, output matched the expected result. After submitting the 5 food items into the image upload component, the developer navigated to the Profile page, where they reported that the expected nutritional data corresponding to the uploaded food items were displayed on the page within a chart.
+		
+		\item{UH-4}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: Utrition’s main menu is opened on the user’s personal device.
+		
+		Input/Condition: The user uploads a photo of food.
+		
+		Output/Result: The user views the food’s nutritional information.
+		
+		How test will be performed: Each developer of Durum Wheat Semolina will load Utrition on to their personal device. Each developer will ask 2 people aged 14 or older to upload and retrieve the nutritional data of the food item “pineapple.jpg” found in the utrition/test/testPhotos directory. The developer will track the time it takes for each test. 90\% of the panel must complete the task in under 2 minutes.
+		
+		\textbf{Results}: Test passed, output matched the expected result. All 6 testing users were able complete the task in under 2 minutes, with an average time of 1.5 minutes.
+		
+		\item{UH-5}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition’s main menu.
+		
+		Input/Condition: The user views every page of the user interface.
+		
+		Output/Result: The user will see the respective symbol associated with every mention of calories, fat, sodium carbohydrates, sugar, and protein.
+		
+		How test will be performed: On each screen, including the main menu, a developer on Durum Wheat Semolina will check if there is a symbol associated with every mention of calories, fat, sodium carbohydrates, sugar, and protein. The developer will open Utrition on their personal device. The developer will upload a .png image of food found in the utrition/test/testPhotos directory. The developer will view the nutritional information venture through each page to confirm the correct symbols appear.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer reported that every expected nutritional data type had a corresponding label that was easily identifiable.
+		
+		\item{UH-6}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has previously entered 2 items in Utrition and is now viewing the main menu.
+		
+		Input/Condition: The user views every page of the user interface.
+		
+		Output/Result: The user does not see any backend calculations.
+		
+		How test will be performed: On each screen, a developer on Durum Wheat Semolina will check if any backend calculations are displayed to the user. The developer will open Utrition on their personal device and access the main menu. The developer will upload an image of two different food items, with a minimum of 1 minute between the inputs. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer will view all pages to ensure no backend calculations are visible.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer reported that no backend calculations were visible on the user interface during the image upload user experience process.
+		
+		\item{UH-7}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user opens Utrition with a stable internet connection.
+		
+		Input/Condition: The user views every page of the user interface.
+		
+		Output/Result: 
+		\begin{itemize}
+			\item Utrition is available to be used by users at all times.
+			\item The user does not hear Utrition generate any sound.
+		\end{itemize}
+		
+		How test will be performed: On each screen, a developer on Durum Wheat Semolina will check if a sound plays. The developer will open Utrition on their personal device. The developer will upload an image of food. The uploaded image of the food item will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer will view the nutritional information. The developer then will view the past inputs and the nutritional information chart.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer reported a smooth user experience during the image upload process with a stable internet connection. The testing developer also noted that the application did not generate any audio, with speakers on maximum volume.
+		
+		\item{UH-8}
+		
+		Type: Static and Manual.
+		
+		Initial State: A developer on Durum Wheat Semolina views Utrition’s GitHub page. 
+		
+		Input/Condition: The developer checks every directory for an audio file.
+		
+		Output/Result: The developer removes all audio files found in Utrition’s GitHub.
+		
+		How test will be performed: The developer loads into Utrition’s \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} and views the files in every directory. For each directory the developer will check for the following file types:
+		
+		\begin{itemize}
+			\item MP3
+			\item AAC
+			\item Ogg Vorbis
+			\item FLAC
+			\item ALAC
+			\item WAV
+			\item AIFF
+			\item DSD
+			\item PCM
+		\end{itemize}
+	
+	\textbf{Results}: Test passed, output matched the expected result. After inspecting Utrition's public repository, the testing developer reported no outstanding files of the above file types.
+	
+	\end{enumerate}
 	
 	\subsection{Performance}
 	
-	\subsection{etc.}
+	\begin{enumerate}
+		
+		\item{PT-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has previously entered 10 items in Utrition.
+		
+		Input/Condition: The user views every page of the user interface.
+		
+		Output/Result: The user will be able to access every page of the user interface in 2 seconds or less.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will measure the time it takes for each new screen to load using a stopwatch. The developer will open Utrition on their personal device. The developer will upload an image of different food items 10 times, with a minimum 1 minute time difference between the inputs. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer will navigate to each screen, timing each transition.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer reported that the navigation and loading time for every page took less than 1 second.
+		
+		\item{PT-2} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input/Condition: The user uploads 3 images simultaneously.
+		
+		Output/Result: 
+		\begin{itemize}
+			\item The user is able to view the identification for all 3 food items in 10 or less seconds.
+			\item The user is able to view the nutritional information for all 3 food items in 5 or less seconds.
+		\end{itemize}
+		
+		How test will be performed: A developer on Durum Wheat Semolina will 
+		open Utrition. The developer 
+		will upload three images of food found in the utrition/test/testPhotos 
+		directory. The developer clicks to view 
+		the foods’ nutritional information. The developer measures the amount 
+		of time it takes for Utrition to notify the user of the name of the 
+		identified food items. The developer measures the amount of time it 
+		takes for the system to change from the food identification interface 
+		to the nutritional information interface.
+		
+		\textbf{Results}: Test failed. The developer reported that multiple images were not able to be uploaded simultaneously, and had to be uploaded consecutively. After uploading an image, the developer reported that it took less than 5 seconds for the food to be identified and for the food's nutritional data to be displayed.
+		
+		\item{PT-3}
+		
+		Type: Functional, Dynamic, Automatic
+		
+		Initial State: Nutritional data of a food item is contained in the 
+		system.
+		
+		Input/Condition: The user requests to display the nutritional information of a 
+		food item.
+		
+		Output/Result: The system will generate the HTML body to be displayed on 
+		the user 
+		interface.
+		
+		How test will be performed: The test will measure if this interaction 
+		was completed in 5 seconds or less.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer requested for the nutrirtional information of 15 different items, and reported that the nutritional data of a food item was fetched and displayed on the user interface in less than 5 seconds, with an average time of 0.6 seconds.
+		
+		\item{PT-4} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input/Condition: The user uploads an image of food.
+		
+		Output/Result: The food is correctly identified, and the correlated nutritional facts are correct.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and upload the images of the following foods separately (images found in utrition/test/testPhotos directory):
+		\begin{itemize}
+			\item Uncooked Pork
+			\item Corn
+			\item Lettuce
+			\item Beef
+			\item Penne Pasta
+			\item Rice
+			\item Milk
+			\item Butter
+			\item Wheat Bread
+			\item Orange Juice
+		\end{itemize} 
+		
+		The developer will check the accuracy of each identified food item and 
+		their respective nutritional facts. 70\% of the images must be identified correctly. 90\% of the nutrition facts for the correctly identified foods will be given correctly.
+		
+		\textbf{Results}: Test failed. The testing developer reported that none of the above food items were correctly identified. This result was expected, as the image classifcation model training data sample size was constrained to a small number of food items.
+		
+		\item{PT-5}
+		
+		Type: Functional, Dynamic, and Automatic.
+		
+		Initial State: System contains a set of images; all with foods, and of 
+		extension .jpg, .png, or .jpeg.
+		
+		Input/Condition: System prompted to process the image, for each image 
+		within the provided set (images found in utrition/test/testPhotos directory).
+		
+		Output/Result: For each image, the system should identify the food 
+		present in an image and return the name of the food item as a string.
+		
+		How test will be performed: The test will check if among all the 
+		provided images, more than 90\% of the images have been assessed 
+		correctly.
+		
+		\textbf{Results}: Test passed, output matched the expected result. From uploading the images in the provided set 15 times, the developer reported that the system processed the food item correctly 14 times. 93 \% of the images were assessed corrrectly.
+		
+		\item{PT-6}
+		
+		Type: Functional, Dynamic, and Automatic.
+		
+		Initial State: System contains a set of images; some with and others 
+		without foods, and of extension .jpg, .png, or 
+		.jpeg.
+		
+		Input/Condition: System prompted to process image, for each image 
+		within the provided set (images found in utrition/test/testPhotos directory).
+		
+		Output/Result: The system should identify the food present in an image, 
+		and return the name of the food item as a string, and prompt the user 
+		if no food is detected.
+		
+		How test will be performed: The test will check if among all the 
+		provided images, more than 70\% of the images have been assessed 
+		correctly.
+		
+		\textbf{Results}: Test failed. The testing developer reported that  60\% of the images had been assessed correctly, with the failing tests being with images of no food items.
+		
+		\item{PT-7} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input/Condition: The user uploads 4 photos of different food items.
+		
+		Output/Result: The user is notified that they are not able to proceed with viewing the identified foods or their nutritional information.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and attempt to upload four images of random food items found in the utrition/test/testPhotos directory. The developer is notified with an error informing them that only 3 images can be uploaded at once.
+		
+		\textbf{Results}: Test failed. The testing developer reported that no error message was displayed, and that the application only accepts multiple images to be uploaded consecutively.
+		
+		\item{PT-8} 
+		
+		Type: Static and Manual.
+		
+		Initial State: A developer on Durum Wheat Semolina opens their internet browser.
+		
+		Input/Condition: The developer is able to access Utrition’s  \href{https://github.com/jeff-rey-wang/utrition}{GitHub} and download the repository on to their personal device.
+		
+		Output/Result: Utrition is able to be downloaded.
+		
+		How test will be performed: The developer will access Utrition’s GitHub on their personal device’s web browser. The developer will click on “Code”, and then “Download ZIP”. The developer will verify that Utrition has been downloaded on to their device.
+		
+		\textbf{Results}: Test passed, output matched the expected result. All 6 testing developers were able to download and access Utrition's public GitHub repository.
+		
+		\item{PT-9} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input/Condition: The user uploads a very large photo (more than 30MB) for Utrition to identify.
+		
+		Output/Result: The user is notified that they are not able to proceed with viewing the identified foods or their nutritional information.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and upload “art.png” found in the utrition/test/testPhotos directory. The developer is notified that they cannot proceed with viewing the nutritional information unless they decrease the uploaded image’s file size.
+		
+		\textbf{Results}: Test failed. The testing developer reported that no error message was displayed on the user interface when a large image file was uploaded.
+		
+		\item{PT-10} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input/Condition: The user uploads an unintelligible image for Utrition to identify.
+		
+		Output/Result: The user is notified that Utrition is not confident in the system’s identification. The system will suggest uploading another image.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will 
+		open Utrition and upload “desk.jpg” found in the utrition/test/testPhotos directory. The developer 
+		is notified that the machine learning algorithm is not confident in the 
+		identification of the food, and that they should upload another image.
+		
+		\textbf{Results}: Test failed. The testing developer reported that no message was displayed on the user interface describing the low image classification confidence.
+		
+		\item{PT-11}
+		
+		Type: Functional, Dynamic, and Automatic.
+		
+		Initial State: The system is identifying food objects within the user's 
+		uploaded image(s).
+		
+		Input/Condition: Uploaded image.
+		
+		Output/Result: An error message is displayed prompting the user of a failed 
+		identification.
+		
+		How test will be performed: The test will check if an error message element has been rendered.
+		
+		\textbf{Results}: Test failed. The testing developer reported that no error message was displayed on the user interface following a failed identification.
+		
+		\item{PT-12}
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition without connecting to the internet.
+		
+		Input/Condition: The user uploads an image for Utrition to identify.
+		
+		Output/Result: The user is notified that the system is unable to retrieve nutritional information because they are not connected to the internet.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will open Utrition upload a random working image found in the utrition/test/testPhotos directory. The developer is notified that they are not connected to the internet after 20 seconds.
+		
+		\textbf{Results}: Test failed. The testing developer reported that no error message was displayed on the user interface when there was no internet connection. 
+		
+		\item{PT-13} 
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input/Condition: The user uploads an image for Utrition to identify.
+		
+		Output/Result: The user is notified that the system has identified the food item, but could not find the food’s nutritional data.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and upload “dragonfruit.jpg” found in the utrition/test/testPhotos directory. The developer is notified that they have uploaded an image of a “Dragon Fruit”, but the nutritional data cannot be found.
+		
+		\textbf{Results}: Test failed. The testing developer reported that the image of a "Dragon Fruit" was not correctly identified.
+		
+		\item{PT-14} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user opens Utrition without previously inputting any food items.
+		
+		Input/Condition: The user attempts to view their past inputs' nutritional information as text and as a chart.
+		
+		Output/Result: The user views an empty list with column entries: food name, calories, proteins, carbohydrates, sugars, and date entered. The user will see an empty canvas for the chart, and text detailing that there are no previous nutritional logs.
+		
+		How test will be performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and view nutritional data from past inputs. A message displays “There are no previous food items recorded" and an empty chart.
+		
+		\textbf{Results}: Test failed. The testing developer reported that an empty chart was displayed, but the message "There are no previous food items recorded" was not displayed on the user interface.
+		
+		\item{PT-15}
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: A user loads into Utrition.
+		
+		Input/Condition: The user uploads a PDF document as an image.
+		
+		Output/Result: The user is notified that they are not able to proceed with viewing the identified foods or their nutritional information.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will open Utrition upload the image “waffle.pdf” to Utrition from the utrition/test/testPhotos directory. The developer is notified that they cannot upload the file since Utrition does not support “.pdf” file types.
+		
+		\textbf{Results}: Test failed. The testing developer reported that no error message was visible on the user interface.
+		
+	\end{enumerate}
+	
+	\subsection{Operational and Environmental}
+	
+	\begin{enumerate}
+		
+		\item{OE-1} 
+		
+		Type: Static and Manual.
+		
+		Initial State: A user aged 14 or older has read Utrition’s “README.md” located at the bottom of the \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} page.
+		
+		Input/Condition: The user installs Utrition on their personal device.
+		
+		Output/Result: The intended demographic is able to install Utrition on their computer.
+		
+		How test will be performed: Each developer on Durum Wheat Semolina will test 5 individuals aged 14 and above to install Utrition. The test passes if 95\% of users can install Utrition.
+		
+		\textbf{Results}: Test passed, output matched the expected result. All 5 testing users were able to install Utrition from the public GitHub repository.
+		
+		\item{OE-2} 
+		
+		Type: Static and Manual.
+		
+		Initial State: A user visits Utrition’s \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} page.
+		
+		Input/Condition: The user checks that the latest change to Utrition’s GitHub is not after April 30th, 2023.
+		
+		Output/Result: Utrition will not have any updates after the final release.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will visit Utrition’s GitHub page bi-yearly to ensure no updates are made to Utrition’s GitHub.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The last modified date of the Utrition GitHub repository is before April 30th, 2023.
+		
+	\end{enumerate}
+	
+	\subsection{Maintainability and Support}
+	
+	\begin{enumerate}
+		
+		\item{MS-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The developer is in the utrition/src/database directory.
+		
+		Input/Condition: The developer switches the database file found in the database directory for another database.
+		
+		Output/Result: Backend developers are able to upload new data to Utrition’s database.
+		
+		How test will be performed: The developer travels to the utrition/src/database directory on their device. The developer replaces the database found in the directory with “testdatabase.jpg”, which can be found in the utrition/test/testPhotos directory. The developer launches Utrition on their device to see that the system still runs.	
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer was able to replace the previous database file with a new database file that contained different entries. Both database files were of the same schema.
+		
+		\item{MS-2} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has installed Utrition on to their Windows, macOS, or Linux device.
+		
+		Input/Condition: The user is able to upload an image of food and view all pages of the user interface.
+		
+		Output/Result: All of Utrition’s functionality can be accessed by Windows, macOS, and Linux devices.
+		
+		How test will be performed: Developers of Durum Wheat Semolina will install Utrition on one of each Windows, macOS, and Linux device. The developer will open Utrition on the device and upload a random image of a food item found in the utrition/test/testPhotos directory. The developer sees their foods’ nutritional information. The developer can view past inputs' nutritional data and chart.
+		
+		\textbf{Results}: Test passed, output matched the expected result. 3 users reported a smooth and expected user experience during the image upload process, with each user accessing the system through a different operating system (Windows, macOS, Linux).
+		
+	\end{enumerate}
+	
+	\subsection{Security}
+	
+	\begin{enumerate}
+		
+		\item{ST-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user is viewing the nutritional facts for a food item they uploaded.
+		
+		Input/Condition: After idling for 3 minutes, the user closes Utrition and reopens it.
+		
+		Output/Result: The user will open Utrition and will view the nutritional facts of the image in the past inputs section.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and will upload “waffle.jpg” found in the utrition/test/testPhotos directory. The developer views the nutritional facts of a waffle, and then idles for 3 minutes. After the elapsed time, the developer closes their instance of Utrition and opens it again. The developer can view the nutritional facts of the waffle in the past inputs section.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer was able to consistently view the nutritional facts of the waffle after the elapsed idle time, and after restarting the application. 
+		
+		\item{ST-2} 
+		
+		Type: Static and Manual.
+		
+		Initial State: A Durum Wheat Semolina developer visits Utrition’s \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} page.
+		
+		Input/Condition: The developer checks the userdata directory for any files.
+		
+		Output/Result: The userdata folder will be empty on GitHub, so Utrition will only contain personalized data once downloaded on a user's device.
+		
+		How test will be performed: The developer loads into Utrition’s \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} and goes into the utrition/src/userdata directory. The developer ensures that no userdata is preloaded into Utrition’s GitHub.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer reported that there was no user data after downloading a fresh version of the system from Utrition's GitHub.
+		
+		
+	\end{enumerate}
+	
+	\subsection{Cultural}
+	
+	\begin{enumerate}
+		\item{CT-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: Utrition’s main menu is being displayed to a user.
+		
+		Input/Condition: The user is told by a Durum Wheat Semolina developer to find culturally insensitive material.
+		
+		Output/Result: The user will be questioned after 5 minutes of searching if they have found any culturally insensitive material while using Utrition.
+		
+		How test will be performed: Each developer will approach 5 peers with Utrition’s main menu open on the developer’s device. The developer will give full control over to their peers and will tell their peers to search for culturally insensitive material. After 5 minutes are up, the developer will ask their peers if they have found any culturally insensitive material. This test passes if 95\% of users could not find any culturally insensitive material.
+		
+		\textbf{Results}: Test passed, output matched the expected result. A survey that was conducted after users were able to explore the application showed that 100\% of users did not find any culturally insensitive material on the system.
+		
+	\end{enumerate}
+
+	\subsection{Legal}
+	
+	\begin{enumerate}
+		\item{LT-1}
+		
+		Type: Static and Manual.
+		
+		Initial State: A developer of Durum Wheat Semolina views Utrition’s \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} repository.
+		
+		Input/Condition: The developer inspects all code to ensure Utrition is following Canada’s Anti-Spam Legislation Requirements for Installing Computer Programs, Canada’s Guide for Publishing Open Source Code, Google’s HTML/CSS Style Guide, and Google’s guide for material design.
+		
+		Output/Result: Utrition is in compliance with all the standards laid out by the SRS document.
+		
+		How test will be performed: The developer goes into the utrition/src directory, and then opens the link to one of the following guides:
+		\begin{itemize}
+			\item \href{https://crtc.gc.ca/eng/internet/install.htm}{Canada’s Anti-Spam Legislation Requirements for Installing Computer Programs}
+			\item \href{https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/open-source-software/guide-for-publishing-open-source-code.html}{Guide for Publishing Open Source Code}
+			\item \href{https://google.github.io/styleguide/jsguide.html}{Google JavaScript Style Guide}
+			\item \href{https://google.github.io/styleguide/htmlcssguide.html}{Google HTML/CSS Style Guide}
+			\item \href{https://material.io/design}{Material Design Guide}
+		\end{itemize}
+		The developer will go into each module found in the utrition/src directory, and will inspect the code to ensure that each rule outlined in Canada’s or Google’s guide is strictly adhered to.
+		
+		\textbf{Results}: Test failed. The testing developer reported that there were inconsistencies in the code, regarding the standards outlined in the style guides.
+		
+		\item{LT-2}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: A Durum Wheat Semolina developer has completed a module for Utrition, and has Pylint installed on their device.
+		
+		Input/Condition: The developer runs Pylint on their code.
+		
+		Output/Result: Pylint will notify the developer if there needs to be changes to the code to ensure Utrition adheres to the PEP8 Python coding conventions.
+		
+		How test will be performed: The developer will open their command prompt and travel to the directory with the finished code (utrition/src) by using “cd”. The developer runs Pylint on the finished code by typing “pylint finishedmodule.py” in their command prompt. The name “finishedmodule.py” is a placeholder for any future modules that Utrition will implement in the future. The command prompt will notify the developer to make any necessary changes.
+		
+		\textbf{Results}: Test failed. The testing developer reported that there were inconsistencies in the code, regarding the standards outlined in the PEP8 conventions.
+		
+		
+	\end{enumerate}
 	
 	\section{Comparison to Existing Implementation}	
 	
-	This section will not be appropriate for every project.
+	N/A
 	
 	\section{Unit Testing}
 	
 	\section{Changes Due to Testing}
+	
+	Due to the feedback collected during usability testing, Utrition's implementation will undergo changes to provide the best user experience possible. Taking into consideration the time constraints and the most commonly discussed improvements, these changes will be implemented:
+	\begin{itemize}
+		\item Add "Get Started" button to home page to take user to input a food item
+		\item Add units to nutritional data output
+		\item Create error messages for cases where inputted food item is not identifiable 
+		\item Group entries in food history table based on entries submitted together
+		\item Fix "reset" button in voice upload functionality to remain on current page
+		\item Add graph to display past food entry data
+		\item Optional height and weight user inputs to calculate BMI and recommended calories per day 
+	\end{itemize}
 	
 	\section{Automated Testing}
 	
@@ -90,6 +681,262 @@
 	\section{Trace to Modules}		
 	
 	\section{Code Coverage Metrics}
+	
+	\section*{Appendix A}
+	\subsection*{Informal User Testing Notes}
+	\subsubsection*{User \#1, 22 year-old, male, interviewed on 03/01/2023:}	
+	Expectations:
+	\begin{itemize}
+		\item Do actions: search for food, see baseline nutritional stats, and more in depth stats
+		\item Scan a variety of foods
+		\item Track calories, see projection
+		\item See if I'm over/under a goal
+		\item Set goals
+		\item Personalization via profile, personalized results (save meal prep, meal sets)
+		\item Make recommendations on diet, substitutions on diet
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Wants feedback on which type of upload is selected
+		\item Inputting natural language into text/voice upload, with complete sentences
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Instant feedback, fast
+		\item Minimal steps to upload
+		\item Likes how it confirms what foods got uploaded
+		\item How it shows the general nutrition facts that most people are looking for
+		\item Likes the summarization and history of past foods
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Wants to show the number of food/quantity eaten when food is submitted and nutritional total
+		shown
+		\item Wants to be able to show expanded form of breakdown
+		\item Add units to the nutrition data shown
+		\item Bug when you enter food and separate them with “enter” new line character
+		\item Doesn’t like how half the upload is “useless”, wants the functionality to be most of the page;
+		focus of page is only on half of the page (wants it more central in line of page)
+		\item “How it works” text does not make sense, taking up space
+		\item Want profile/upload buttons on main page instead of heading nav bar since there are only 2
+		options
+		\item Paragraph on first page too long
+		\item Main page: “Make a choice!” text does not make sense
+		\item Want a sticky nav bar
+		\item Text input
+		\subitem Want to be able to press “enter” button to submit text
+		\item Profile page
+		\subitem Want more personalization to the profile page (goals ie. Lose/gain weight)
+		\subitem Add link to external souce to see estimated calories for a person of height/weight
+		\subitem Hard to read nutritional facts on profile page under “past meals”, also in caloric intake
+		table, maybe break it down and format it better and make it more readable; it is hard to
+		scan and find what you want
+		\subitem “look at next 4 entries” button: expended it to append 4 entries to bottom of list
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item Show a weekly graph to show progression 
+		\subitem Good way to show progression visually, summarizes information
+	\end{itemize}
+
+	\subsubsection*{User \#2, 22 year-old, male, interviewed on 02/28/2023:}
+	Expectations:
+	\begin{itemize}
+		\item Give it name of meal, or meal components and be able to show the nutritional
+		information about the meal
+		\item Look at all the food eaten in a period of time and return nutritional value
+		\item How will the program know what you are trying to describe? some feature to detect
+		food
+		\item Logging and Viewing → At a high level
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Reads instructions on homepage
+		\item Bouncing back from homepage to upload page to read instructions
+		\item Instructions don’t exist in the same place as where the interaction occurs
+		\item Enters the food individually, and specifies some amount for the yogurt
+		\item Submits and reads information about the food
+		\item Forgets to stop the recording before submitting, application continues to record
+		after submission
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Good layout
+		\item Good separate pages
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Wants units for nutrients
+		\subitem Not consistent between nutrients, so should specify
+		\item Should output the quantity inputted by the user to ensure the quantity was taken into consideration when calculating nutritional information
+		\item Automatically stop recording?
+		\item Uploaded image is only allowed to exist in specific folder, doesn’t give a relative
+		path back to the backend
+		\item Meal components are listed separately even if they are one meal; need to communicate
+		if items were eaten at the same time
+		\item Instead of scrolling by 4 entries, can instead scroll by date/meal rather than an arbitrary
+		4 entries
+		\item Reset brings the user back to the text upload (should go back to voice upload)
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item Get started button?!
+		\item Graph to measure eating trends over time
+		\item Profile page information could be better displayed
+		\item Instead of instantly displaying information on each meal item, have brief information, and can expand for more information
+	\end{itemize}
+
+	\subsubsection*{User \#3, 22 year-old, female, interviewed on 03/02/2023:}
+	Expectations:
+	\begin{itemize}
+		\item MyFitnessPal
+		\item Nutritional information is returned based on brand of food
+		\item Macronutrients, more than just calories
+		\item Separated into meals or snacks
+		\item Input user information; weight, track weight
+		\item Estimate how much calories needed to reach some “goal weight” (also given by
+		user)
+		\item Tracking progress on some MACRONUTRIENT goal per day e.g. “daily protein
+		goal”
+		\item Give advice on types of food that you should be eating
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Clicked upload page
+		\item Didn’t read instructions
+		\item Wasn’t completely sure if multiple inputs were allowed; referred to example to clarify
+		\item Used Voice Upload
+		\item Didn’t press stop recording before submitting
+		\subitem Kept recording
+		\item Thai basil ground beef was recorded as “thai basil, ground beef”
+		\item Nutritional information probably not accurate, portion size not communicated
+		\item Didn’t occur to specify exact portions when speaking to the applications
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Showed calories right away
+		\item Ease of input
+		\item Aesthetic
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Portions are assumed; not exactly accurate
+		\subitem Would prefer to put in servings themselves
+		\subitem Accuracy over ease of input
+		\item Date + Caloric Intake → Not necessary useful enough to be put front and centre; can be
+		put onto a different page/accessed if necessary
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item PAST Meals should be separated into breakfast, lunch, dinner, snack, etc.
+		\subitem Bundled into one entry
+		\item Water intake?!
+	\end{itemize}
+
+	\subsubsection*{User \#4, 22 year-old, male, interviewed on 02/27/2023:}
+	Expectations:
+	\begin{itemize}
+		\item Something like MyFitnessPal
+		\item Enter food
+		\item Gives calories, macro, carbs, etc.
+		\item From homepage, expects picture to be given that is similar and it identifies everything
+		\item Does not want to specify quantities manually with image upload
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Read instructions before use
+		\item Used text upload as default
+		\item Uploaded mulitple items using both text and voice upload
+		\item Tested using \& symbol (worked as intended)
+		\item Viewed food entries in profile page
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Likes pictures on website
+		\item Really likes landing page
+		\item Colours are nice
+		\item Good text font and size
+		\item Likes voice upload functionality
+		\item Likes most eaten food on profile page
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Have get started button to take you to upload page
+		\item Nutrition facts should be rearranged nicer
+		\item Have units for nutrition facts
+		\item Have calories and more important ones at the top or bigger
+		\item Split calories for each individual food item for multiple?
+		\item Submit food entry on enter
+		\item Be able to change serving unit (how big serving is)
+		\item Have more error handling (if not food, spell wrong)
+		\item Reset button in voice upload takes you to text upload
+		\item Might not need upload button at top (just have buttons on profile and landing page)
+		\item Add vertical padding for bottom of page so content is not at very bottom
+		\item Use arrows for going between pages of food entries
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item Total nutrients in day summary (carbs, protein, fat)
+		\item Be able to set goals of how much you want to eat
+		\subitem Give insights on goal progression
+		\item Gets sense of meals eaten and give suggestions on what to eat to reach goals
+		\item Warnings if you are eating something really unhealthy
+		\item Should have graph (visuals better than text)
+		\item Time when input in past meals
+			\item More concerned with what was apart of which meal
+		\item Wants to be able to delete entries
+		\item Wants to know how many pages of saved food entries there are
+		\item Have filters for past food entry display (ex. sort by day)
+	\end{itemize}
+
+	\subsubsection*{User \#5, 22 year-old, female, interviewed on 02/28/2023:}
+	Expectations:
+	\begin{itemize}
+		\item  MyFitnessPal
+		\item Nutritional information for food items
+		\item Be able to use food while going out (like McDonald's brand and Starbucks for example)
+		\item Ethnic foods available
+		\item Have to upload all the ingredients
+		\item Would like an app to use on her phone
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Wasn't sure if she could use specific brands
+		\item Didn’t know can input multiple items (thought she could with comma but probably needs it more
+		explicit)
+		\item Didn’t use natural language
+		\item  Disappointed in image upload (only 6 foods and food pictures have to be already downloaded to
+		the computer, says its useless)
+		\item A little bit confused about the button language on the profile page “Next should look at most
+		recent stuff” need to make more clear
+		\item Doesn’t really care about most eaten food
+		\item Accepted pizza without asking what type
+		\item Oreo mcflurry showed as oreo AND mcflurry
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Colours are nice
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Bold food stats in upload page
+		\item Remove serving unit and quanitity if multiple food items inputted
+		\item Need to put units in upload page
+		\item Need a static graph so she can be able to spam click the next or previous buttons without
+		having to move her mouse
+		\item Should notify user if there is a typo/food item that is not being searched
+		\item Put units in total calories
+		\item Format upload page nicer: food item, serving, unit should be on left and nutritional facts on the
+		right
+		\item Don’t upload photo or take picture from laptop
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item Want BMI calculator to calculate calorie deficit and differentiate from other apps
+		\item Protein calculator on how to tone up, can put other sections in task bar
+		\item Fiber and iron addition
+		\item Select what options they would like displayed to them on profile page
+	\end{itemize}
 	
 	\bibliographystyle{plainnat}
 	\bibliography{../../refs/References}
