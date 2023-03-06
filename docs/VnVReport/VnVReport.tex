@@ -225,7 +225,265 @@
 	
 	\subsection{Performance}
 	
-	
+	\begin{enumerate}
+		
+		\item{PT-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has previously entered 10 items in Utrition.
+		
+		Input/Condition: The user views every page of the user interface.
+		
+		Output/Result: The user will be able to access every page of the user interface in 2 seconds or less.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will measure the time it takes for each new screen to load using a stopwatch. The developer will open Utrition on their personal device. The developer will upload an image of different food items 10 times, with a minimum 1 minute time difference between the inputs. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer will navigate to each screen, timing each transition.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer reported that the navigation and loading time for every page took less than 1 second.
+		
+		\item{PT-2} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input/Condition: The user uploads 3 images simultaneously.
+		
+		Output/Result: 
+		\begin{itemize}
+			\item The user is able to view the identification for all 3 food items in 10 or less seconds.
+			\item The user is able to view the nutritional information for all 3 food items in 5 or less seconds.
+		\end{itemize}
+		
+		How test will be performed: A developer on Durum Wheat Semolina will 
+		open Utrition. The developer 
+		will upload three images of food found in the utrition/test/testPhotos 
+		directory. The developer clicks to view 
+		the foods’ nutritional information. The developer measures the amount 
+		of time it takes for Utrition to notify the user of the name of the 
+		identified food items. The developer measures the amount of time it 
+		takes for the system to change from the food identification interface 
+		to the nutritional information interface.
+		
+		\textbf{Results}: Test failed. The developer reported that multiple images were not able to be uploaded simultaneously, and had to be uploaded consecutively. After uploading an image, the developer reported that it took less than 5 seconds for the food to be identified and for the food's nutritional data to be displayed.
+		
+		\item{PT-3}
+		
+		Type: Functional, Dynamic, Automatic
+		
+		Initial State: Nutritional data of a food item is contained in the 
+		system.
+		
+		Input/Condition: The user requests to display the nutritional information of a 
+		food item.
+		
+		Output/Result: The system will generate the HTML body to be displayed on 
+		the user 
+		interface.
+		
+		How test will be performed: The test will measure if this interaction 
+		was completed in 5 seconds or less.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer requested for the nutrirtional information of 15 different items, and reported that the nutritional data of a food item was fetched and displayed on the user interface in less than 5 seconds, with an average time of 0.6 seconds.
+		
+		\item{PT-4} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input/Condition: The user uploads an image of food.
+		
+		Output/Result: The food is correctly identified, and the correlated nutritional facts are correct.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and upload the images of the following foods separately (images found in utrition/test/testPhotos directory):
+		\begin{itemize}
+			\item Uncooked Pork
+			\item Corn
+			\item Lettuce
+			\item Beef
+			\item Penne Pasta
+			\item Rice
+			\item Milk
+			\item Butter
+			\item Wheat Bread
+			\item Orange Juice
+		\end{itemize} 
+		
+		The developer will check the accuracy of each identified food item and 
+		their respective nutritional facts. 70\% of the images must be identified correctly. 90\% of the nutrition facts for the correctly identified foods will be given correctly.
+		
+		\textbf{Results}: Test failed. The testing developer reported that none of the above food items were correctly identified. This result was expected, as the image classifcation model training data sample size was constrained to a small number of food items.
+		
+		\item{PT-5}
+		
+		Type: Functional, Dynamic, and Automatic.
+		
+		Initial State: System contains a set of images; all with foods, and of 
+		extension .jpg, .png, or .jpeg.
+		
+		Input/Condition: System prompted to process the image, for each image 
+		within the provided set (images found in utrition/test/testPhotos directory).
+		
+		Output/Result: For each image, the system should identify the food 
+		present in an image and return the name of the food item as a string.
+		
+		How test will be performed: The test will check if among all the 
+		provided images, more than 90\% of the images have been assessed 
+		correctly.
+		
+		\textbf{Results}: Test passed, output matched the expected result. From uploading the images in the provided set 15 times, the developer reported that the system processed the food item correctly 14 times. 93 \% of the images were assessed corrrectly.
+		
+		\item{PT-6}
+		
+		Type: Functional, Dynamic, and Automatic.
+		
+		Initial State: System contains a set of images; some with and others 
+		without foods, and of extension .jpg, .png, or 
+		.jpeg.
+		
+		Input/Condition: System prompted to process image, for each image 
+		within the provided set (images found in utrition/test/testPhotos directory).
+		
+		Output/Result: The system should identify the food present in an image, 
+		and return the name of the food item as a string, and prompt the user 
+		if no food is detected.
+		
+		How test will be performed: The test will check if among all the 
+		provided images, more than 70\% of the images have been assessed 
+		correctly.
+		
+		\textbf{Results}: Test failed. The testing developer reported that  60\% of the images had been assessed correctly, with the failing tests being with images of no food items.
+		
+		\item{PT-7} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input/Condition: The user uploads 4 photos of different food items.
+		
+		Output/Result: The user is notified that they are not able to proceed with viewing the identified foods or their nutritional information.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and attempt to upload four images of random food items found in the utrition/test/testPhotos directory. The developer is notified with an error informing them that only 3 images can be uploaded at once.
+		
+		\textbf{Results}: Test failed. The testing developer reported that no error message was displayed, and that the application only accepts multiple images to be uploaded consecutively.
+		
+		\item{PT-8} 
+		
+		Type: Static and Manual.
+		
+		Initial State: A developer on Durum Wheat Semolina opens their internet browser.
+		
+		Input/Condition: The developer is able to access Utrition’s  \href{https://github.com/jeff-rey-wang/utrition}{GitHub} and download the repository on to their personal device.
+		
+		Output/Result: Utrition is able to be downloaded.
+		
+		How test will be performed: The developer will access Utrition’s GitHub on their personal device’s web browser. The developer will click on “Code”, and then “Download ZIP”. The developer will verify that Utrition has been downloaded on to their device.
+		
+		\textbf{Results}: Test passed, output matched the expected result. All 6 testing developers were able to download and access Utrition's public GitHub repository.
+		
+		\item{PT-9} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input/Condition: The user uploads a very large photo (more than 30MB) for Utrition to identify.
+		
+		Output/Result: The user is notified that they are not able to proceed with viewing the identified foods or their nutritional information.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and upload “art.png” found in the utrition/test/testPhotos directory. The developer is notified that they cannot proceed with viewing the nutritional information unless they decrease the uploaded image’s file size.
+		
+		\textbf{Results}: Test failed. The testing developer reported that no error message was displayed on the user interface when a large image file was uploaded.
+		
+		\item{PT-10} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input/Condition: The user uploads an unintelligible image for Utrition to identify.
+		
+		Output/Result: The user is notified that Utrition is not confident in the system’s identification. The system will suggest uploading another image.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will 
+		open Utrition and upload “desk.jpg” found in the utrition/test/testPhotos directory. The developer 
+		is notified that the machine learning algorithm is not confident in the 
+		identification of the food, and that they should upload another image.
+		
+		\textbf{Results}: Test failed. The testing developer reported that no message was displayed on the user interface describing the low image classification confidence.
+		
+		\item{PT-11}
+		
+		Type: Functional, Dynamic, and Automatic.
+		
+		Initial State: The system is identifying food objects within the user's 
+		uploaded image(s).
+		
+		Input/Condition: Uploaded image.
+		
+		Output/Result: An error message is displayed prompting the user of a failed 
+		identification.
+		
+		How test will be performed: The test will check if an error message element has been rendered.
+		
+		\textbf{Results}: Test failed. The testing developer reported that no error message was displayed on the user interface following a failed identification.
+		
+		\item{PT-12}
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition without connecting to the internet.
+		
+		Input/Condition: The user uploads an image for Utrition to identify.
+		
+		Output/Result: The user is notified that the system is unable to retrieve nutritional information because they are not connected to the internet.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will open Utrition upload a random working image found in the utrition/test/testPhotos directory. The developer is notified that they are not connected to the internet after 20 seconds.
+		
+		\textbf{Results}: Test failed. The testing developer reported that no error message was displayed on the user interface when there was no internet connection. 
+		
+		\item{PT-13} 
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input/Condition: The user uploads an image for Utrition to identify.
+		
+		Output/Result: The user is notified that the system has identified the food item, but could not find the food’s nutritional data.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and upload “dragonfruit.jpg” found in the utrition/test/testPhotos directory. The developer is notified that they have uploaded an image of a “Dragon Fruit”, but the nutritional data cannot be found.
+		
+		\textbf{Results}: Test failed. The testing developer reported that the image of a "Dragon Fruit" was not correctly identified.
+		
+		\item{PT-14} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user opens Utrition without previously inputting any food items.
+		
+		Input/Condition: The user attempts to view their past inputs' nutritional information as text and as a chart.
+		
+		Output/Result: The user views an empty list with column entries: food name, calories, proteins, carbohydrates, sugars, and date entered. The user will see an empty canvas for the chart, and text detailing that there are no previous nutritional logs.
+		
+		How test will be performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and view nutritional data from past inputs. A message displays “There are no previous food items recorded" and an empty chart.
+		
+		\textbf{Results}: Test failed. The testing developer reported that an empty chart was displayed, but the message "There are no previous food items recorded" was not displayed on the user interface.
+		
+		\item{PT-15}
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: A user loads into Utrition.
+		
+		Input/Condition: The user uploads a PDF document as an image.
+		
+		Output/Result: The user is notified that they are not able to proceed with viewing the identified foods or their nutritional information.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will open Utrition upload the image “waffle.pdf” to Utrition from the utrition/test/testPhotos directory. The developer is notified that they cannot upload the file since Utrition does not support “.pdf” file types.
+		
+		\textbf{Results}: Test failed. The testing developer reported that no error message was visible on the user interface.
+		
+	\end{enumerate}
 	
 	\subsection{etc.}
 	
