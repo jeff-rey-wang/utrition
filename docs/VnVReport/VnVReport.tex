@@ -553,7 +553,101 @@
 		
 	\end{enumerate}
 	
-	\subsection{title}
+	\subsection{Security}
+	
+	\begin{enumerate}
+		
+		\item{ST-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user is viewing the nutritional facts for a food item they uploaded.
+		
+		Input/Condition: After idling for 3 minutes, the user closes Utrition and reopens it.
+		
+		Output/Result: The user will open Utrition and will view the nutritional facts of the image in the past inputs section.
+		
+		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and will upload “waffle.jpg” found in the utrition/test/testPhotos directory. The developer views the nutritional facts of a waffle, and then idles for 3 minutes. After the elapsed time, the developer closes their instance of Utrition and opens it again. The developer can view the nutritional facts of the waffle in the past inputs section.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer was able to consistently view the nutritional facts of the waffle after the elapsed idle time, and after restarting the application. 
+		
+		\item{ST-2} 
+		
+		Type: Static and Manual.
+		
+		Initial State: A Durum Wheat Semolina developer visits Utrition’s \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} page.
+		
+		Input/Condition: The developer checks the userdata directory for any files.
+		
+		Output/Result: The userdata folder will be empty on GitHub, so Utrition will only contain personalized data once downloaded on a user's device.
+		
+		How test will be performed: The developer loads into Utrition’s \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} and goes into the utrition/src/userdata directory. The developer ensures that no userdata is preloaded into Utrition’s GitHub.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer reported that there was no user data after downloading a fresh version of the system from Utrition's GitHub.
+		
+		
+	\end{enumerate}
+	
+	\subsection{Cultural}
+	
+	\begin{enumerate}
+		\item{CT-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: Utrition’s main menu is being displayed to a user.
+		
+		Input/Condition: The user is told by a Durum Wheat Semolina developer to find culturally insensitive material.
+		
+		Output/Result: The user will be questioned after 5 minutes of searching if they have found any culturally insensitive material while using Utrition.
+		
+		How test will be performed: Each developer will approach 5 peers with Utrition’s main menu open on the developer’s device. The developer will give full control over to their peers and will tell their peers to search for culturally insensitive material. After 5 minutes are up, the developer will ask their peers if they have found any culturally insensitive material. This test passes if 95\% of users could not find any culturally insensitive material.
+		
+		\textbf{Results}: Test passed, output matched the expected result. A survey that was conducted after users were able to explore the application showed that 100\% of users did not find any culturally insensitive material on the system.
+		
+	\end{enumerate}
+
+	\subsection{Legal}
+	
+	\begin{enumerate}
+		\item{LT-1}
+		
+		Type: Static and Manual.
+		
+		Initial State: A developer of Durum Wheat Semolina views Utrition’s \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} repository.
+		
+		Input/Condition: The developer inspects all code to ensure Utrition is following Canada’s Anti-Spam Legislation Requirements for Installing Computer Programs, Canada’s Guide for Publishing Open Source Code, Google’s HTML/CSS Style Guide, and Google’s guide for material design.
+		
+		Output/Result: Utrition is in compliance with all the standards laid out by the SRS document.
+		
+		How test will be performed: The developer goes into the utrition/src directory, and then opens the link to one of the following guides:
+		\begin{itemize}
+			\item \href{https://crtc.gc.ca/eng/internet/install.htm}{Canada’s Anti-Spam Legislation Requirements for Installing Computer Programs}
+			\item \href{https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/open-source-software/guide-for-publishing-open-source-code.html}{Guide for Publishing Open Source Code}
+			\item \href{https://google.github.io/styleguide/jsguide.html}{Google JavaScript Style Guide}
+			\item \href{https://google.github.io/styleguide/htmlcssguide.html}{Google HTML/CSS Style Guide}
+			\item \href{https://material.io/design}{Material Design Guide}
+		\end{itemize}
+		The developer will go into each module found in the utrition/src directory, and will inspect the code to ensure that each rule outlined in Canada’s or Google’s guide is strictly adhered to.
+		
+		\textbf{Results}: Test failed. The testing developer reported that there were inconsistencies in the code, regarding the standards outlined in the style guides.
+		
+		\item{LT-2}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: A Durum Wheat Semolina developer has completed a module for Utrition, and has Pylint installed on their device.
+		
+		Input/Condition: The developer runs Pylint on their code.
+		
+		Output/Result: Pylint will notify the developer if there needs to be changes to the code to ensure Utrition adheres to the PEP8 Python coding conventions.
+		
+		How test will be performed: The developer will open their command prompt and travel to the directory with the finished code (utrition/src) by using “cd”. The developer runs Pylint on the finished code by typing “pylint finishedmodule.py” in their command prompt. The name “finishedmodule.py” is a placeholder for any future modules that Utrition will implement in the future. The command prompt will notify the developer to make any necessary changes.
+		
+		\textbf{Results}: Test failed. The testing developer reported that there were inconsistencies in the code, regarding the standards outlined in the PEP8 conventions.
+		
+		
+	\end{enumerate}
 	
 	\section{Comparison to Existing Implementation}	
 	
