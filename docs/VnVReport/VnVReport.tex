@@ -519,7 +519,41 @@
 		
 	\end{enumerate}
 	
-	\subsection{etc.}
+	\subsection{Maintainability and Support}
+	
+	\begin{enumerate}
+		
+		\item{MS-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The developer is in the utrition/src/database directory.
+		
+		Input/Condition: The developer switches the database file found in the database directory for another database.
+		
+		Output/Result: Backend developers are able to upload new data to Utrition’s database.
+		
+		How test will be performed: The developer travels to the utrition/src/database directory on their device. The developer replaces the database found in the directory with “testdatabase.jpg”, which can be found in the utrition/test/testPhotos directory. The developer launches Utrition on their device to see that the system still runs.	
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer was able to replace the previous database file with a new database file that contained different entries. Both database files were of the same schema.
+		
+		\item{MS-2} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has installed Utrition on to their Windows, macOS, or Linux device.
+		
+		Input/Condition: The user is able to upload an image of food and view all pages of the user interface.
+		
+		Output/Result: All of Utrition’s functionality can be accessed by Windows, macOS, and Linux devices.
+		
+		How test will be performed: Developers of Durum Wheat Semolina will install Utrition on one of each Windows, macOS, and Linux device. The developer will open Utrition on the device and upload a random image of a food item found in the utrition/test/testPhotos directory. The developer sees their foods’ nutritional information. The developer can view past inputs' nutritional data and chart.
+		
+		\textbf{Results}: Test passed, output matched the expected result. 3 users reported a smooth and expected user experience during the image upload process, with each user accessing the system through a different operating system (Windows, macOS, Linux).
+		
+	\end{enumerate}
+	
+	\subsection{title}
 	
 	\section{Comparison to Existing Implementation}	
 	
