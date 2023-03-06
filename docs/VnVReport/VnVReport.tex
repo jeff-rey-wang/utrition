@@ -69,9 +69,163 @@
 	
 	\section{Nonfunctional Requirements Evaluation}
 	
+	\subsection{Look and Feel}
+	
+	\begin{enumerate}
+		\item{LF-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: A developer from Durum Wheat Semolina has launched the Utrition app.
+		
+		Input/Condition: The developer measures the distance between the displayed user interface components.
+		
+		Output/Result: The distance between user interface components must surpass 20 pixels.
+		
+		How test will be performed: Each developer launches the Utrition app and opens the \href{https://www.rapidtables.com/web/tools/pixel-ruler.html}{Pixel Measuring Tool}. The developer will use the tool by viewing a page on Utrition, then clicking “Print Screen'' on their keyboard. The developer then pastes the screenshot into the tool. The developer clicks the two spots he would like to measure distance from.
+		
+		\textbf{Results}: Test passed, output matched the expected result. All testing developers reported that all the visually distinct user interface components were at least 20 pixels away from one another. This ensures the visual components of the application will be visually pleasing, easy to read, and more intuitive to follow.
+		
+	\end{enumerate}
+	
 	\subsection{Usability}
 	
+	\begin{enumerate}
+		
+		\item{UH-1}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user is viewing a page of the user interface.
+		
+		Input/Condition: The user clicks on the “Menu” button located at the bottom of the user interface.
+		
+		Output/Result: The user will be brought to the main menu screen.
+		
+		How test will be performed: A developer of Durum Wheat Semolina will access every page listed in “Initial State” and will attempt to reach the main menu in 2 or less clicks from the respective page.
+		
+		\textbf{Results}: Test passed, output matched the expected result. All testing developers were able to access the main menu in exactly 1 click from any page. All pages were tested; Main page, Upload page, Profile page
+		
+		
+		\item{UH-2}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has previously entered 5 items in Utrition and is now viewing the main menu.
+		
+		Input: The user makes the request to view past nutritional data.
+		
+		Output: The user views a list displaying all 5 food items with their respective details in: food name, calories, fat, sodium, proteins, carbohydrates, sugars, and date entered.
+		
+		How test will be performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and access the main menu. The developer will upload an image of different food items 5 times, with a minimum 1 minute time difference between each input. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer navigates to the past inputted foods area and views the list displaying the 5 different food items and their respective details.
+		
+		\textbf{Results}: Test passed, output matched the expected result. After submitting the 5 food items into the image upload component, the developer navigated to the Profile page, where they reported that the expected nutritional data corresponding to the uploaded food items were displayed on the page.
+		
+		\item{UH-3}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has previously entered 5 items in Utrition and has requested to view their past inputted food items.
+		
+		Input/Condition: The user navigates to the screen where they can view their past nutritional data in a chart format.
+		
+		Output/Result: The user views a chart displaying all 5 food items with their respective details in: food name, calories, proteins, carbohydrates, sugars, and date entered.
+		
+		How test will be performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and access the main menu. The developer will upload an image of different food items 5 times, with a minimum 1 minute time difference between each input. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer navigates to the past inputted foods area where they can view their statistics as a chart. The developer views a chart displaying 5 different food items and their respective details.
+		
+		\textbf{Results}: Test passed, output matched the expected result. After submitting the 5 food items into the image upload component, the developer navigated to the Profile page, where they reported that the expected nutritional data corresponding to the uploaded food items were displayed on the page within a chart.
+		
+		\item{UH-4}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: Utrition’s main menu is opened on the user’s personal device.
+		
+		Input/Condition: The user uploads a photo of food.
+		
+		Output/Result: The user views the food’s nutritional information.
+		
+		How test will be performed: Each developer of Durum Wheat Semolina will load Utrition on to their personal device. Each developer will ask 2 people aged 14 or older to upload and retrieve the nutritional data of the food item “pineapple.jpg” found in the utrition/test/testPhotos directory. The developer will track the time it takes for each test. 90\% of the panel must complete the task in under 2 minutes.
+		
+		\textbf{Results}: Test passed, output matched the expected result. All 6 testing users were able complete the task in under 2 minutes, with an average time of 1.5 minutes.
+		
+		\item{UH-5}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition’s main menu.
+		
+		Input/Condition: The user views every page of the user interface.
+		
+		Output/Result: The user will see the respective symbol associated with every mention of calories, fat, sodium carbohydrates, sugar, and protein.
+		
+		How test will be performed: On each screen, including the main menu, a developer on Durum Wheat Semolina will check if there is a symbol associated with every mention of calories, fat, sodium carbohydrates, sugar, and protein. The developer will open Utrition on their personal device. The developer will upload a .png image of food found in the utrition/test/testPhotos directory. The developer will view the nutritional information venture through each page to confirm the correct symbols appear.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer reported that every expected nutritional data type had a corresponding label that was easily identifiable.
+		
+		\item{UH-6}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has previously entered 2 items in Utrition and is now viewing the main menu.
+		
+		Input/Condition: The user views every page of the user interface.
+		
+		Output/Result: The user does not see any backend calculations.
+		
+		How test will be performed: On each screen, a developer on Durum Wheat Semolina will check if any backend calculations are displayed to the user. The developer will open Utrition on their personal device and access the main menu. The developer will upload an image of two different food items, with a minimum of 1 minute between the inputs. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer will view all pages to ensure no backend calculations are visible.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer reported that no backend calculations were visible on the user interface during the image upload user experience process.
+		
+		\item{UH-7}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user opens Utrition with a stable internet connection.
+		
+		Input/Condition: The user views every page of the user interface.
+		
+		Output/Result: 
+		\begin{itemize}
+			\item Utrition is available to be used by users at all times.
+			\item The user does not hear Utrition generate any sound.
+		\end{itemize}
+		
+		How test will be performed: On each screen, a developer on Durum Wheat Semolina will check if a sound plays. The developer will open Utrition on their personal device. The developer will upload an image of food. The uploaded image of the food item will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer will view the nutritional information. The developer then will view the past inputs and the nutritional information chart.
+		
+		\textbf{Results}: Test passed, output matched the expected result. The testing developer reported a smooth user experience during the image upload process with a stable internet connection. The testing developer also noted that the application did not generate any audio, with speakers on maximum volume.
+		
+		\item{UH-8}
+		
+		Type: Static and Manual.
+		
+		Initial State: A developer on Durum Wheat Semolina views Utrition’s GitHub page. 
+		
+		Input/Condition: The developer checks every directory for an audio file.
+		
+		Output/Result: The developer removes all audio files found in Utrition’s GitHub.
+		
+		How test will be performed: The developer loads into Utrition’s \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} and views the files in every directory. For each directory the developer will check for the following file types:
+		
+		\begin{itemize}
+			\item MP3
+			\item AAC
+			\item Ogg Vorbis
+			\item FLAC
+			\item ALAC
+			\item WAV
+			\item AIFF
+			\item DSD
+			\item PCM
+		\end{itemize}
+	
+	\textbf{Results}: Test passed, output matched the expected result. After inspecting Utrition's public repository, the testing developer reported no outstanding files of the above file types.
+	
+	\end{enumerate}
+	
 	\subsection{Performance}
+	
+	
 	
 	\subsection{etc.}
 	
