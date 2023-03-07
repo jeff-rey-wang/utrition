@@ -2,6 +2,7 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{float}
 \usepackage{hyperref}
 \hypersetup{
 	colorlinks,
@@ -851,12 +852,6 @@
 	\end{enumerate}
 	
 	\subsection{Usability}
-	Apart from the more defined tests discussed above, additional usability testing was conducted on several participants to obtain feedback regarding Utrition's overall quality and user experience. A semi-structured interview was conducted on a total of 5 individuals of different genders and ethnicities to provide a wide range of opinions and suggestions. The interview process consisted of a brief explanation of the application, sample tasks for the participant to perform, and a series of questions. The raw notes from each interview can be found in Appendix A.
-	
-	Many useful insights were gathered from the interview results. When participants were asked to input mulitple food entries, most opted for text or voice upload options. The majority of participants did not read the instructions, but completed the task quickly and with ease. Common likes brought up by participants included the colour scheme and layout of the application, the ease of use regarding food entry upload, and the depth of information found on the profile page.
-	
-	In terms of common dislikes, many participants wanted to see units beside the nutritional data they were receiving, more error messages when something goes wrong, and to have meals grouped together based on input time when viewing the profile page. Additional features that individuals wish to see in feature revisions include BMI inputs from the user, goal setting, and a graph displaying past food input information. Greater explanation on implementation changes are discussed in section 7.
-	
 	\begin{enumerate}
 		
 		\item{UH-1}
@@ -989,6 +984,12 @@
 	\textbf{Results}: Test passed, output matched the expected result. After inspecting Utrition's public repository, the testing developer reported no outstanding files of the above file types.
 	
 	\end{enumerate}
+
+	Apart from the more defined tests discussed above, additional usability testing was conducted on several participants to obtain feedback regarding Utrition's overall quality and user experience. A semi-structured interview was conducted on a total of 5 individuals of different genders and ethnicities to provide a wide range of opinions and suggestions. The interview process consisted of a brief explanation of the application, sample tasks for the participant to perform, and a series of questions. The raw notes from each interview can be found in Appendix A.
+	
+	Many useful insights were gathered from the interview results. When participants were asked to input mulitple food entries, most opted for text or voice upload options. The majority of participants did not read the instructions, but completed the task quickly and with ease. Common likes brought up by participants included the colour scheme and layout of the application, the ease of use regarding food entry upload, and the depth of information found on the profile page.
+	
+	In terms of common dislikes, many participants wanted to see units beside the nutritional data they were receiving, more error messages when something goes wrong, and to have meals grouped together based on input time when viewing the profile page. Additional features that individuals wish to see in feature revisions include BMI inputs from the user, goal setting, and a graph displaying past food input information. Greater explanation on implementation changes are discussed in section 7.
 	
 	\subsection{Performance}
 	
@@ -1198,6 +1199,7 @@
 		\textbf{Results}: Test failed. The testing developer reported that no error message was displayed on the user interface following a failed identification.
 		
 		\item{PT-12}
+		
 		Type: Functional, Dynamic, and Manual.
 		
 		Initial State: The user loads into Utrition without connecting to the internet.
@@ -1211,6 +1213,7 @@
 		\textbf{Results}: Test failed. The testing developer reported that no error message was displayed on the user interface when there was no internet connection. 
 		
 		\item{PT-13} 
+		
 		Type: Functional, Dynamic, and Manual.
 		
 		Initial State: The user loads into Utrition.
@@ -1238,6 +1241,7 @@
 		\textbf{Results}: Test failed. The testing developer reported that an empty chart was displayed, but the message "There are no previous food items recorded" was not displayed on the user interface.
 		
 		\item{PT-15}
+		
 		Type: Functional, Dynamic, and Manual.
 		
 		Initial State: A user loads into Utrition.
@@ -1462,11 +1466,209 @@
 	
 	\section{Trace to Requirements}
 	
+	\newpage
+	\begin{table}[H]
+		\caption {Traceability between Tests and Functional Requirements}
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			FR1                     & The user must have the ability to upload a 
+			digital image of a standard image type to the 
+			system.                                                                     
+			&
+			\begin{tabular}[c]{@{}l@{}}one-upload-3\\
+				one-upload-4\\
+				one-upload-auto-1\\ 
+				one-upload-auto-2\end{tabular}                                                  
+			\\                                                    \hline
+			FR3                     & The system will be able to identify the type of 
+			food that is captured in an 
+			image.                                                                      
+			&
+			\begin{tabular}[c]{@{}l@{}}image-identification-1\\ 
+				image-identification-2\\ 
+				image-identification-3\\current-nutrition-1\end{tabular}                   
+			
+			\\ 
+			\hline
+			FR4                     & The system will be able to make an API call to an 
+			external database of nutrition facts for a variety of foods, including 
+			their macro-nutrients, micro-nutrients, and caloric details. & 
+			\begin{tabular}[c]{@{}l@{}}api-1\\ 
+				current-nutrition-1\end{tabular}                                        
+			\\ \hline
+			FR5                     & The system will be able to retrieve the nutrition 
+			facts for a specific 
+			food.                                                                       
+			&
+			\begin{tabular}[c]{@{}l@{}}api-1\\ 
+				log-data-read-data-1\\ 
+				current-nutrition-1\end{tabular}                                        
+			\\
+			\hline
+			FR6                     & The system will log the nutritional data of a 
+			food.                                                                       
+			&  
+			\begin{tabular}[c]{@{}l@{}}api-1\\ 
+				log-data-read-data-1\\ 
+				current-nutrition-1\end{tabular}                                        
+			\\ \hline
+			FR7                     & The user will be able to access the nutritional 
+			data of previously logged 
+			foods.                                                                      
+			&
+			\begin{tabular}[c]{@{}l@{}}log-data-read-data-1\\
+				past-nutrition-read-data-2\end{tabular}                       \\ \hline
+			FR8                     & The system will display the nutritional information of a food to the user.                                                                                                            & \begin{tabular}[c]{@{}l@{}}current-nutrition-1\\ past-nutrition-read-data-2\end{tabular} \\ \hline
+			
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\caption{Traceability between Tests and Non-Functional Requirements}
+		\begin{tabularx}{\linewidth}{|l|X|l|}
+			\hline
+			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
+			\hline
+			LF1 & The distance between user interface components must exceed 20 pixels. & LF-1 \\
+			\hline
+			UH1 & The user will be able to navigate to the main menu from any page in 2 clicks. & UH-1 \\
+			\hline
+			UH2 & The user must be able to view every past inputted food item. & UH-2, UH-3 \\
+			\hline
+			UH3 & 90\% of a test panel of the target demographic should be able to upload their food and retrieve the corresponding nutritional facts in under 2 minutes. & UH-4 \\
+			\hline
+			UH4 & Every clickable object will have a symbol associated with it. Calories, fat, sodium, carbohydrates, sugar, and protein will have a symbol associated next to it.
+			& UH-5 \\
+			\hline
+			UH5 & All backend calculations, such as identifying the uploaded food and retrieving the nutritional information, will not be displayed to the user. & UH-6 \\
+			\hline
+			UH6 & There will be no sound used by the Utrition web application.  & UH-7, UH-8 \\
+			\hline
+			PR1 & The time between the user’s click and displaying the new UI will not exceed 2 seconds. & PT-1 \\
+			\hline
+			PR2 & After uploading a picture, Utrition will always display the 
+			identified food item within 10 seconds in a test with multiple 
+			images. & PT-2 \\
+			\hline
+		\end{tabularx}
+		\label{tab:Non-Functional Traceability}
+	\end{table}
+	\begin{table}[H]
+		\begin{tabularx}{\textwidth}{|l|X|l|}
+			\hline
+			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
+			\hline
+			PR3 & After identifying the correct food item, Utrition will always 
+			display the nutritional facts within 5 seconds in a test with 
+			multiple images. & \begin{tabular}[c]{@{}l@{}}
+				PT-2, PT-3\end{tabular}\\
+			\hline
+			PR4 & Error message should prompt user upon upload of an abnormal 
+			image. & PT-15\\
+			\hline
+			PR5 & Error message should prompt user upon upload of an image 
+			larger than 30MB. & PT-9\\
+			\hline
+			PR6 & Error message should prompt user upon upload of more than 3 
+			images. & PT-7\\
+			\hline
+			PR7 & Error message should prompt user upon failure to identify 
+			any food items in the uploaded image. & 
+			\begin{tabular}[c]{@{}l@{}}PT-10, PT-11 
+			\end{tabular}\\
+			\hline
+			PR8 & Error message should prompt user to try again upon failure 
+			to request nutritional info regarding food items in the uploaded image. & PT-12\\
+			\hline
+			PR9 & Error message should notify user that the nutritional 
+			information pertaining to their food item does not exist. & PT-13\\
+			\hline
+			PR10 & Error message should notify user upon failure to access 
+			user's past nutritional info. & PT-14\\
+			\hline
+			PR11 & Error message should notify user if user's past nutritional 
+			info has been deleted. & PT-14\\
+			\hline
+			PR12 & Error message should prompt user if user's past nutritional 
+			info cannot be depicted on a chart. & PT-14\\
+			\hline
+			PR13 & Request will time out after 20 seconds, and user will be 
+			prompted that their device is not connected to the internet. & PT-12\\
+			\hline
+		\end{tabularx}
+	\end{table}
+	
+	\begin{table}[H]
+		%identification-accuracy-2
+		\begin{tabularx}{\textwidth}{|l|X|l|}
+			\hline
+			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
+			\hline
+			PR14 & In a test with multiple images, Utrition will identify and 
+			display the correct food with an average accuracy of 70\%. & 
+			\begin{tabular}[c]{@{}l@{}}PT-4, PT-6 \end{tabular}\\
+			\hline
+			PR15 & In a test with multiple images, Utrition will display the 
+			correct nutritional information for an identified food 90\% of the 
+			time. & \begin{tabular}[c]{@{}l@{}}PT-4, PT-5 \end{tabular}\\
+			\hline
+			PR16 & Since Utrition is a local web app, the user will always be allowed to use Utrition unless their device or internet connection is down. & PT-4\\
+			\hline
+			PR17 & The system will not allow more than 3 photos to be uploaded at once. & PT-2, PT-7\\
+			\hline
+			PR18 & Utrition is a local web app and does not depend on a server. & PT-8\\
+			\hline
+			PR19 & Utrition will be available to use on GitHub for an indefinite amount of time. & PT-8\\
+			\hline
+			OE1 & Users will be able to find and pull the repository on to their personal device. & PT-8\\
+			\hline
+			OE2 & 95\% of a test panel with the intended demographic will be able to install Utrition after reading the installation guide. & OE-1\\
+			\hline
+			OE3 & Utrition’s GitHub repository will receive no updates after final implementation. & OE-2\\
+			\hline
+			MS1 & Any backend developer is able to successfully upload new data to Utrition’s machine learning model at any time during development.  & MS-1\\
+			\hline
+		\end{tabularx}
+	\end{table}
+	
+	\begin{table}[H]
+		\begin{tabularx}{\textwidth}{|l|X|l|}
+			\hline
+			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
+			\hline
+			MS2 & All users will be able to view the support manuals on how to install and use Utrition. & OE-1\\
+			\hline
+			MS3 & 100\% of the tested Windows, macOS, and Linux devices should be able to use all functionality provided for Utrition. & MS-2\\
+			\hline
+			SR1 & Anyone will be able to pull the open-source project from GitHub. & PT-8, OE-1 \\
+			\hline
+			SR2 & Utrition will save user data every 3 minutes throughout the 
+			application runtime. & ST-1\\
+			\hline
+			SR3 & Utrition will not contain personalized data from one user on another user's system. & ST-2\\
+			\hline
+			CP1 & 95\% of the test panel agrees that Utrition does not provide any culturally insensitive content to the user. & CT-1\\
+			\hline
+			LR1 & No malicious software will be present in Utrition’s GitHub repository. & LT-1\\
+			\hline
+			LR2 & Durum Wheat Semolina will not commit infractions when following Canada’s guide. & LT-1\\
+			\hline
+			LR3 & Pylint will be used throughout development to ensure every pull request contains properly formatted code. & LT-2\\
+			\hline
+			LR4 & Before every pull request, code will be reviewed to ensure no violations of the standards occur.  & LT-1\\
+			\hline
+			LR5 & Utrition's user interface will be reviewed to ensure all fonts and colours adhere to the style guide.  & LT-1\\
+			\hline
+		\end{tabularx}
+	\end{table}
+	
 	\section{Trace to Modules}		
 	
 	\section{Code Coverage Metrics}
 
-	\text{The automated tests have the following code coverage. The remaining code that was not covered by these tests was covered through manual testing.}
+	The automated tests have the following code coverage. The remaining code that was not covered by these tests was covered through manual testing.
     \begin{table}[htb]
         \begin{tabular}{lllll}
         Filename                                                     & Statements & Missed statements & Coverage &  \\
