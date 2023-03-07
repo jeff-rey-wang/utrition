@@ -1199,6 +1199,7 @@
 		\textbf{Results}: Test failed. The testing developer reported that no error message was displayed on the user interface following a failed identification.
 		
 		\item{PT-12}
+		
 		Type: Functional, Dynamic, and Manual.
 		
 		Initial State: The user loads into Utrition without connecting to the internet.
@@ -1212,6 +1213,7 @@
 		\textbf{Results}: Test failed. The testing developer reported that no error message was displayed on the user interface when there was no internet connection. 
 		
 		\item{PT-13} 
+		
 		Type: Functional, Dynamic, and Manual.
 		
 		Initial State: The user loads into Utrition.
@@ -1239,6 +1241,7 @@
 		\textbf{Results}: Test failed. The testing developer reported that an empty chart was displayed, but the message "There are no previous food items recorded" was not displayed on the user interface.
 		
 		\item{PT-15}
+		
 		Type: Functional, Dynamic, and Manual.
 		
 		Initial State: A user loads into Utrition.
@@ -1474,11 +1477,11 @@
 			digital image of a standard image type to the 
 			system.                                                                     
 			&
-			\begin{tabular}[c]{@{}l@{}}one-upload-1\\ 
-				one-upload-2\end{tabular}                                                  
-			\\
-			\hline
-			FR2                     & The user shall have the ability to upload multiple digital images of standard image types to the system.                                                                              & multi-upload-1                                                                                               \\ \hline
+			\begin{tabular}[c]{@{}l@{}}one-upload-3\\
+				one-upload-4\\
+				one-upload-auto-1\\ 
+				one-upload-auto-2\end{tabular}                                                  
+			\\                                                    \hline
 			FR3                     & The system will be able to identify the type of 
 			food that is captured in an 
 			image.                                                                      
@@ -1500,7 +1503,7 @@
 			food.                                                                       
 			&
 			\begin{tabular}[c]{@{}l@{}}api-1\\ 
-				read-data-1\\ 
+				log-data-read-data-1\\ 
 				current-nutrition-1\end{tabular}                                        
 			\\
 			\hline
@@ -1508,18 +1511,16 @@
 			food.                                                                       
 			&  
 			\begin{tabular}[c]{@{}l@{}}api-1\\ 
-				log-data-1\\ 
+				log-data-read-data-1\\ 
 				current-nutrition-1\end{tabular}                                        
 			\\ \hline
 			FR7                     & The user will be able to access the nutritional 
 			data of previously logged 
 			foods.                                                                      
 			&
-			\begin{tabular}[c]{@{}l@{}}read-data-1\\ read-data-2\\ read-data-3\\ 
-				past-nutrition-text-1\\ 
-				past-nutrition-graph-1\end{tabular}                       \\ \hline
-			FR8                     & The system will display the nutritional information of a food to the user.                                                                                                            & \begin{tabular}[c]{@{}l@{}}current-nutrition-1\\ past-nutrition-text-1\\ past-nutrition-graph-1\end{tabular} \\ \hline
-			FR9                     & The system will display the history of logged nutritional data in a graph.                                                                                                            & past-nutrition-graph-1                                                                                       \\ \hline
+			\begin{tabular}[c]{@{}l@{}}log-data-read-data-1\\
+				past-nutrition-read-data-2\end{tabular}                       \\ \hline
+			FR8                     & The system will display the nutritional information of a food to the user.                                                                                                            & \begin{tabular}[c]{@{}l@{}}current-nutrition-1\\ past-nutrition-read-data-2\end{tabular} \\ \hline
 			
 		\end{tabular}
 	\end{table}
