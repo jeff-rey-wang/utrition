@@ -42,7 +42,7 @@ def test_upload_file_text_extension():
         # check that the exception is UnidentifiedImageError
         assert type(e).__name__ == "UnidentifiedImageError"
 
-    # check that the userFlag global variable has not been set to 1
+    # check that the userFlag global variable has been set to 1
     assert interface.userFlag == 1
 
     # clean up the temporary test file
