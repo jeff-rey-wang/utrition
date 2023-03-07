@@ -145,32 +145,6 @@
 	\subsection{Upload Page}
 	\subsubsection{Image Upload}
 	\begin{enumerate}
-		
-		\item{Test Name: one-upload-1}
-		
-		Initial State: No image in the system. User is on the "Upload" page with "Image Upload" selected.
-		
-		Input: A User clicks on "Select Image" and selects an image file of type .png, .jpg, or .jpeg (images found in utrition/test/testPhotos directory) of an apple.
-		
-		Expected Results: The system accepts the image upload and returns the nutritional information for an apple. 
-		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester clicked on "Image Upload" and then "Select Image". The tester selects a photo of an apple with extension .png, .jpg, or .jpeg found in the utrition/test/testPhotos directory.
-		
-		Actual Results: The actual results matched up with the expected results. 
-		
-		\item{Test Name: one-upload-2}
-		
-		Initial State: No image in the system. User is on the "Upload" page with "Image Upload" selected.
-		
-		Input: A User clicks on "Select Image" and selects a file of extension .txt to be uploaded into the system (found in utrition/test/testPhotos directory).
-		
-		Expected Results: The system will not contain the uploaded file. An error message will be returned.
-		
-		How The Test Was Performed: A file of type .txt has been saved on the 
-		tester's device. The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester clicked on "Image Upload" and then "Select Image". The user selected and upload a file of type .txt.
-		
-		Actual Results: The actual results matched up with the expected results.
-		
 		\item{Test Name: one-upload-3}
 		
 		Initial State: User is on the "Upload" page with "Image Upload" selected.
@@ -380,7 +354,7 @@
 		
 		Expected Results: The nutritional facts for 2 pieces of Kimchi and 3 chicken wings is displayed to the user.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester clicked on the "Voice Upload" button and then clicked on the "Start Talking" button. The tester verbally said "I ate two pieces of Kimchi period king yes" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button. The tester clicked on the "Start Talking" button. The tester verbally said "three chicken wings" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button.
+		How The Test Was Performed: After the tester completed the steps laid out in test case voice-upload-2, the tester clicked on the "Start Talking" button. The tester verbally said "three chicken wings" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -392,7 +366,7 @@
 		
 		Expected Results: The "Upload" page refreshes and resets, which means the user is met with the "Text Upload" button selected. After clicking on the "Voice Upload" button, the user sees no previous entries and is able to click the "Start Talking" button.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester clicked on the "Voice Upload" button and then clicked on the "Start Talking" button. The tester verbally said "I ate two pieces of Kimchi period king yes" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button. The tester clicked on the "Start Talking" button. The tester verbally said "three chicken wings" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button. The tester then clicked on the "Start Talking" button and then clicked on the "Reset" button. The tester clicked on the "Voice Upload" button again to double check the page was cleared.
+		How The Test Was Performed: After the tester completed the steps laid out in test case voice-upload-3, the tester then clicked on the "Start Talking" button and then clicked on the "Reset" button. The tester clicked on the "Voice Upload" button again to double check the page was cleared.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -452,7 +426,7 @@
 		
 		Expected Results: The nutritional facts for a can of sprite is displayed to the user.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester clicked on the "Voice Upload" button and then clicked on the "Start Talking" button. The tester verbally said "Hey now, you're a rock star. Get the show on, get paid" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button. The tester clicked on the "Start Talking" button. The tester verbally said "a can of sprite" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button.
+		How The Test Was Performed: After the tester completed the steps laid out in test case voice-upload-9, the tester clicked on the "Start Talking" button. The tester verbally said "a can of sprite" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -540,7 +514,7 @@
 		
 		Expected Results: The user is able to see that their most eaten food is yogurt, their total calories consumed for today is 142.88 (calories in 1 cup of yogurt), and the nutritional values of yogurt next to the current date.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester clicked on "Profile" found in the taskbar.
+		How The Test Was Performed: After the tester completed the steps laid out in test case text-upload-1, the tester clicked on "Profile" found in the taskbar.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -552,7 +526,7 @@
 		
 		Expected Results: The user is able to see that their most eaten food is yogurt, their total calories consumed for today is 428.64, the nutritional values of yogurt next to the current date is shown three times, and the total calories of three cups of yogurt is summed on the right table.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester repeats the previous step two more times. The tester clicked on "Profile" found in the taskbar.
+		How The Test Was Performed: After the tester completed the steps laid out in test case text-upload-1 three times, the tester clicked on "Profile" found in the taskbar.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -572,11 +546,11 @@
 		
 		Initial State: User has completed test case "profile-3".
 		
-		Input: User clicks on "Voice Upload" and then "Start Talking". User says "2 cheeseburgers random random random how was your day?" and then clicks on "Stop Talking". User clicks on the "Submit" button, and clicks on "Profile" found in the taskbar.
+		Input: User clicks on "Upload" found in the taskbar. User clicks on "Voice Upload" and then "Start Talking". User says "2 cheeseburgers random random random how was your day?" and then clicks on "Stop Talking". User clicks on the "Submit" button, and clicks on "Profile" found in the taskbar.
 		
 		Expected Results: The user is able to see that their most eaten food is a cheeseburger, their total calories consumed for today is 3207.74, the nutritional value of 2 cheeseburgers next to the current date, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, and the nutritional value of 2 cheeseburgers next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 4 cheeseburgers is summed on the right table.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester repeats the previous step two more times. Then, the tester inputted "i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text box and clicked "Submit". The tester clicked on "Voice Upload" and then "Start Talking". Tester said "2 cheeseburgers random random random how was your day?" and then clicked on "Stop Talking". Tester clicked on the "Submit" button. The tester clicked on "Profile" found in the taskbar.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-3, the tester clicked on "Upload" in the taskbar. The tester clicked on "Voice Upload" and then "Start Talking". Tester said "2 cheeseburgers random random random how was your day?" and then clicked on "Stop Talking". Tester clicked on the "Submit" button. The tester clicked on "Profile" found in the taskbar.
 		
 		Actual Results: The most eaten food is still yogurt instead of cheeseburger due to yogurt being inputted 3 different times and cheeseburger being inputted twice.
 		
@@ -588,7 +562,7 @@
 		
 		Expected Results: The user is able to see that their most eaten food is a cheeseburger, their total calories consumed for today is 4278.36, the nutritional value of 1 cheeseburger next to the current date, the nutritional values of 1 cheeseburger next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of 1 chicken breast next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 6 cheeseburgers is summed on the right table.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester repeats the previous step two more times. Then, the tester inputted "i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text box and clicked "Submit". The tester clicked on "Voice Upload" and then "Start Talking". Tester said "2 cheeseburgers random random random how was your day?" and then clicked on "Stop Talking". Tester clicked on the "Submit" button. The tester clicked on "Text Upload" and then typed "cheeseburger and cheeseburger". Tester clicked on the "Submit" button. The tester clicked on "Profile" found in the taskbar.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-4, the tester clicked on "Upload" found in the taskbar. The tester clicked on "Text Upload" and then typed "cheeseburger and cheeseburger". Tester clicked on the "Submit" button. The tester clicked on "Profile" found in the taskbar.
 		
 		Actual Results: The most eaten food is still yogurt instead of cheeseburger due to 2 cheeseburgers and 1 cheeseburger being seen by the system as two different food items.
 		
@@ -600,7 +574,7 @@
 		
 		Expected Results: User is able to see the nutritional information for: 100g of a martini, 2 cheeseburgers, a cup of yogurt, and another cup of yogurt all next to the current date.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester repeats the previous step two more times. Then, the tester inputted "i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text box and clicked "Submit". The tester clicked on "Voice Upload" and then "Start Talking". Tester said "2 cheeseburgers random random random how was your day?" and then clicked on "Stop Talking". Tester clicked on the "Submit" button. The tester clicked on "Text Upload" and then typed "cheeseburger and cheeseburger". Tester clicked on the "Submit" button. The tester clicked on "Profile" found in the taskbar. The tester clicked on the "Look at next 4 entries" button.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-5, the tester clicked on the "Look at next 4 entries" button.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -612,7 +586,7 @@
 		
 		Expected Results: User is able to see the nutritional information for 1 cup of yogurt.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester repeats the previous step two more times. Then, the tester inputted "i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text box and clicked "Submit". The tester clicked on "Voice Upload" and then "Start Talking". Tester said "2 cheeseburgers random random random how was your day?" and then clicked on "Stop Talking". Tester clicked on the "Submit" button. The tester clicked on "Text Upload" and then typed "cheeseburger and cheeseburger". Tester clicked on the "Submit" button. The tester clicked on "Profile" found in the taskbar. The tester clicked on the "Look at next 4 entries" button and then presses it again.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-6, the tester clicked on the "Look at next 4 entries" button.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -624,7 +598,7 @@
 		
 		Expected Results: User is able to see the nutritional information for: 100g of a martini, 2 cheeseburgers, a cup of yogurt, and another cup of yogurt all next to the current date.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester repeats the previous step two more times. Then, the tester inputted "i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text box and clicked "Submit". The tester clicked on "Voice Upload" and then "Start Talking". Tester said "2 cheeseburgers random random random how was your day?" and then clicked on "Stop Talking". Tester clicked on the "Submit" button. The tester clicked on "Text Upload" and then typed "cheeseburger and cheeseburger". Tester clicked on the "Submit" button. The tester clicked on "Profile" found in the taskbar. The tester clicked on the "Look at next 4 entries" button and then presses it again. The tester clicked on the "Look at previous 4 entries" button.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-7, the tester clicked on the "Look at previous 4 entries" button.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -642,13 +616,13 @@
 		
 		\item{Test Name: profile-10}
 		
-		Initial State: User has inputted a cup of yogurt into Utrition for 15 days and is now viewing the "Profile" page
+		Initial State: User has completed test case "profile-9" and is viewing the "Profile" page.
 		
-		Input: User clicks on the "Previous Week" button twice.
+		Input: User clicks on the "Previous Week" button.
 		
 		Expected Results: The table is updated to show the first day the user inputted a food item (yogurt) into Utrition.
 		
-		How The Test Was Performed: The tester went into the directory "utrition$\backslash$src$\backslash$utrition$\backslash$utrition-backend" and opened the "nutrition\_log.csv" file. The tester faked data for yogurt by making sure each column was filled out with appropriate data (Time having format d/m/Y H:M:S, Name must be a string, serving unit must be a string, and the rest filled with floats), and then copying and pasting the data for 14 other rows (15 in total). Each row had a different date associated with it. The tester saved the "nutrition\_log.csv" changes, and refreshed the "Profile" page. The tester clicked on the "Previous Week" button twice.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-9, the tester clicked on the "Previous Week" button.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -672,7 +646,7 @@
 		
 		Expected Results: The table is updated to show the following food items with their attached date and calorie information: Salsa and Salsa, Sour Cream, Poutine, Pickle, Cucumber, Cashew, and Sprite.
 		
-		How The Test Was Performed: The tester went into the directory "utrition$\backslash$src$\backslash$utrition$\backslash$utrition-backend" and opened the "nutrition\_log.csv" file. The tester faked data for the food items by making sure each column was filled out with appropriate data (Time having format d/m/Y H:M:S, serving unit must be a string, and the rest filled with floats), and then copying and pasting the data for 14 other rows (15 in total). Each row had a different date associated with it. The tester added in the "Name" column the following 15 food items in increasing order by date: Apple, Banana, Celery, Orange, Grapefruit, Chicken, Cheeseburger, Pizza, Sprite, Cashew, Cucumber, Pickle, Poutine, Sour Cream, and Salsa. The tester copied and pasted the Salsa row once more at the bottom of the excel file. The tester saved the "nutrition\_log.csv" changes, and refreshed the "Profile" page. The tester clicked on the "Previous Week" button twice, and the "Next Week" button twice.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-11, the tester went into the directory "utrition$\backslash$src$\backslash$utrition$\backslash$utrition-backend" and opened the "nutrition\_log.csv" file. The tester copied and pasted the Salsa row once more at the bottom of the excel file. The tester saved the "nutrition\_log.csv" changes, and refreshed the "Profile" page. The tester clicked on the "Previous Week" button twice, and the "Next Week" button twice.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -1328,7 +1302,7 @@
 	\section{Unit Testing}
 	
 	\section{Changes Due to Testing}
-
+	\subsection{Changes Due to Usability Testing}
 	Due to the feedback collected during usability testing, Utrition's implementation will undergo changes to provide the best user experience possible. Taking into consideration the time constraints and the most commonly discussed improvements, these changes will be implemented:
 	\begin{itemize}
 		\item Add "Get Started" button to home page to take user to input a food item
@@ -1340,17 +1314,16 @@
 		\item Optional height and weight user inputs to calculate BMI and recommended calories per day 
 	\end{itemize}
 
-  (WILL UPDATE THIS LATER TO SENTENCES JUSTINA SORRY!!!)
-	chiken showed as chicken
-	oreo mcflurry showed as oreo and mcflurry
-	Mcdonald cheeseburger = cheeseburger
-	"apple enter-key banana" doesnt work = (enter submits) 
-	"Reset" resets the whole thign even whats entered in text box
-	"start talking" continues to listen even after clicking away to text section
-	most eaten food: yogurt inputted 3 times takes precedence over 2 cheeseburgers inputted twice
-	most eaten food: 2 cheeseburgers is seen different than 1 cheeseburger
-	most logged food 
-	
+	\subsection{Changes Due to Functional Requirements Testing}
+	Due to the failed test cases during functional requirements testing, Utrition's implementation will undergo changes to provide the best user experience possible. Taking into consideration the time constraints and the highest severity issues, these changes will be implemented:
+	\begin{itemize}
+		\item The "Enter" key on a user's keyboard will submit the user's response rather than create a new line.
+		\item Switching to a new upload section (Text Upload, Voice Upload, or Image Upload) will remove all inputs from the previous upload page. 
+		\item The "Voice Upload" section will not continue listening after the section has been clicked off of.
+		\item The "Reset" button will not push the user to the "Text Upload" section when they are not on it.
+		\item "Your most eaten food" will be changed to "Your most logged food".
+	\end{itemize}		
+
 	\section{Automated Testing}
 	
 	\section{Trace to Requirements}
@@ -1424,7 +1397,7 @@
 		\item Look at all the food eaten in a period of time and return nutritional value
 		\item How will the program know what you are trying to describe? some feature to detect
 		food
-		\item Logging and Viewing → At a high level
+		\item Logging and Viewing $\rightarrow$ At a high level
 	\end{itemize}
 	Experience:
 	\begin{itemize}
@@ -1500,7 +1473,7 @@
 		\item Portions are assumed; not exactly accurate
 		\subitem Would prefer to put in servings themselves
 		\subitem Accuracy over ease of input
-		\item Date + Caloric Intake → Not necessary useful enough to be put front and centre; can be
+		\item Date + Caloric Intake $\rightarrow$ Not necessary useful enough to be put front and centre; can be
 		put onto a different page/accessed if necessary
 	\end{itemize}
 	Additional features:
