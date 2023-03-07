@@ -2,6 +2,7 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{float}
 \usepackage{hyperref}
 \hypersetup{
 	colorlinks,
@@ -145,32 +146,6 @@
 	\subsection{Upload Page}
 	\subsubsection{Image Upload}
 	\begin{enumerate}
-		
-		\item{Test Name: one-upload-1}
-		
-		Initial State: No image in the system. User is on the "Upload" page with "Image Upload" selected.
-		
-		Input: A User clicks on "Select Image" and selects an image file of type .png, .jpg, or .jpeg (images found in utrition/test/testPhotos directory) of an apple.
-		
-		Expected Results: The system accepts the image upload and returns the nutritional information for an apple. 
-		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester clicked on "Image Upload" and then "Select Image". The tester selects a photo of an apple with extension .png, .jpg, or .jpeg found in the utrition/test/testPhotos directory.
-		
-		Actual Results: The actual results matched up with the expected results. 
-		
-		\item{Test Name: one-upload-2}
-		
-		Initial State: No image in the system. User is on the "Upload" page with "Image Upload" selected.
-		
-		Input: A User clicks on "Select Image" and selects a file of extension .txt to be uploaded into the system (found in utrition/test/testPhotos directory).
-		
-		Expected Results: The system will not contain the uploaded file. An error message will be returned.
-		
-		How The Test Was Performed: A file of type .txt has been saved on the 
-		tester's device. The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester clicked on "Image Upload" and then "Select Image". The user selected and upload a file of type .txt.
-		
-		Actual Results: The actual results matched up with the expected results.
-		
 		\item{Test Name: one-upload-3}
 		
 		Initial State: User is on the "Upload" page with "Image Upload" selected.
@@ -192,6 +167,73 @@
 		Expected Results: No nutritional information will be returned to the user.
 		
 		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester clicked on "Image Upload" and then the "Submit" button.
+		
+		Actual Results: The actual results matched up with the expected results.
+
+		\item{Test Name: one-upload-auto-1}
+		
+		Initial State: The system contains a generated JPG image of red pixels with dimensions 128 x 128.
+		
+		Input: The generated image is passed as an argument to interface.open(), with the result saved to the variable 'result'.
+		
+		Expected Results: The variable 'result' is not None and the userFlag for interface has been set to 1. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: The generated image is passed to interface.open, which is the starting point for the machine learning image classification pipeline. If the test returns not None that means the pipeline executed successfully for the passed file. If the userFlag is set to 1 that means that interface.open() was passed some data.
+		
+		Actual Results: The actual results matched up with the expected results.
+        \item{Test Name: one-upload-auto-2}
+		
+		Initial State: The system contains a generated txt file with text "test content".
+		
+		Input: The generated text file is passed as an argument to interface.open().
+		
+		Expected Results: An UnidentifiedImageError is thrown and the userFlag for interface has been set to 1.
+		
+		How The Test Was Performed: The generated text file is passed to interface.open, which is the starting point for the machine learning image classification pipeline. If the test throws an UnidentifiedImageError that means that the format of the data passed is not valid for image classification. If the userFlag is set to 1 that means that interface.open() was passed some data.
+		
+		Actual Results: The actual results matched up with the expected results. 
+        \item{Test Name: image-identification-1}
+		
+		Initial State: The system contains a generated PNG image of red pixels with dimensions 128 x 128.
+		
+		Input: The generated image is passed as an argument to interface.open(), with the result saved to the variable 'result'.
+		
+		Expected Results: The variable 'result' is a string. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: The generated image is passed to interface.open, which is the starting point for the machine learning image classification pipeline. If the test returns a string that means that the pipeline not only executed successfully, but also returned an image classification result for the submitted image.
+		
+		Actual Results: The actual results matched up with the expected results.
+        \item{Test Name: image-identification-2}
+		
+		Initial State: The system contains a generated JPG image of red pixels with dimensions 128 x 128.
+		
+		Input: The generated image is passed as an argument to interface.open(), with the result saved to the variable 'result'.
+		
+		Expected Results: The variable 'result' is a string. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: The generated image is passed to interface.open, which is the starting point for the machine learning image classification pipeline. If the test returns a string that means that the pipeline not only executed successfully, but also returned an image classification result for the submitted image.
+		
+		Actual Results: The actual results matched up with the expected results.
+        \item{Test Name: image-identification-3}
+		
+		Initial State: The system contains a generated JPEG image of red pixels with dimensions 128 x 128.
+		
+		Input: The generated image is passed as an argument to interface.open(), with the result saved to the variable 'result'.
+		
+		Expected Results: The variable 'result' is a string. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: The generated image is passed to interface.open, which is the starting point for the machine learning image classification pipeline. If the test returns a string that means that the pipeline not only executed successfully, but also returned an image classification result for the submitted image.
+		
+		Actual Results: The actual results matched up with the expected results.
+        \item{Test Name: current-nutrition-1}
+		
+		Initial State: The system contains a generated JPEG image of red pixels with dimensions 128 x 128. The system contains a list of one object of mocked JSON data. The classification of the sample image and the food\_name of the mocked JSON data are set to the same value, linking the two pieces of data.
+		
+		Input: A nested function call is made to get\_nutrition\_data() with an argument interface.open() whose own argument is the generated image. The result of this call is saved to the variable 'result'.
+		
+		Expected Results: The variable "result" will will be a list of length 1. The value of "result" will be equal to the mocked JSON data. The value of "result" will successfully convert to JSON format without any errors. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: This is the overall black box test of our image classification system. It tests the whole process of classifying an image and retrieving JSON nutrition data for that image classification. If the test returns a list of one item, it means that the image was successfully classified and that the classification was equal to the food\_name in the mocked JSON data.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -245,7 +287,7 @@
 		
 		Expected Results: No nutritional facts will be displayed to the user.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "yoogurt" into the text upload box and pressed the "Submit" button.
+		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester pressed the "Submit" button.
 		
 		Actual Results: The actual results matched up with the expected results.
 	
@@ -257,7 +299,7 @@
 		
 		Expected Results: No nutritional facts will be displayed to the user.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "yoogurt" into the text upload box and pressed the "Submit" button.
+		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "chiken" into the text upload box and pressed the "Submit" button.
 		
 		Actual Results: The nutritional facts for 3 ounces of chicken was displayed to the user.
 		
@@ -380,7 +422,7 @@
 		
 		Expected Results: The nutritional facts for 2 pieces of Kimchi and 3 chicken wings is displayed to the user.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester clicked on the "Voice Upload" button and then clicked on the "Start Talking" button. The tester verbally said "I ate two pieces of Kimchi period king yes" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button. The tester clicked on the "Start Talking" button. The tester verbally said "three chicken wings" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button.
+		How The Test Was Performed: After the tester completed the steps laid out in test case voice-upload-2, the tester clicked on the "Start Talking" button. The tester verbally said "three chicken wings" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -392,7 +434,7 @@
 		
 		Expected Results: The "Upload" page refreshes and resets, which means the user is met with the "Text Upload" button selected. After clicking on the "Voice Upload" button, the user sees no previous entries and is able to click the "Start Talking" button.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester clicked on the "Voice Upload" button and then clicked on the "Start Talking" button. The tester verbally said "I ate two pieces of Kimchi period king yes" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button. The tester clicked on the "Start Talking" button. The tester verbally said "three chicken wings" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button. The tester then clicked on the "Start Talking" button and then clicked on the "Reset" button. The tester clicked on the "Voice Upload" button again to double check the page was cleared.
+		How The Test Was Performed: After the tester completed the steps laid out in test case voice-upload-3, the tester then clicked on the "Start Talking" button and then clicked on the "Reset" button. The tester clicked on the "Voice Upload" button again to double check the page was cleared.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -402,7 +444,7 @@
 		
 		Input: User clicks on the "Reset" button.
 		
-		Expected Results: The "Upload" page refreshes and resets, which means the user is met with the "Text Upload" button selected. After clicking on the "Voice Upload" button, the user is met with the normal "Voice Upload" page
+		Expected Results: The "Upload" page refreshes and resets, which means the user is met with the "Text Upload" button selected. After clicking on the "Voice Upload" button, the user is met with the normal "Voice Upload" page.
 		
 		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester clicked on the "Voice Upload" button and then clicked on the "Reset" button. The tester clicked on the "Voice Upload" button again to double check the page was cleared. 
 		
@@ -452,7 +494,7 @@
 		
 		Expected Results: The nutritional facts for a can of sprite is displayed to the user.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester clicked on the "Voice Upload" button and then clicked on the "Start Talking" button. The tester verbally said "Hey now, you're a rock star. Get the show on, get paid" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button. The tester clicked on the "Start Talking" button. The tester verbally said "a can of sprite" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button.
+		How The Test Was Performed: After the tester completed the steps laid out in test case voice-upload-9, the tester clicked on the "Start Talking" button. The tester verbally said "a can of sprite" and pressed the "Stop Talking" button. Then the tester pressed the "Submit" button.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -540,7 +582,7 @@
 		
 		Expected Results: The user is able to see that their most eaten food is yogurt, their total calories consumed for today is 142.88 (calories in 1 cup of yogurt), and the nutritional values of yogurt next to the current date.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester clicked on "Profile" found in the taskbar.
+		How The Test Was Performed: After the tester completed the steps laid out in test case text-upload-1, the tester clicked on "Profile" found in the taskbar.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -552,7 +594,7 @@
 		
 		Expected Results: The user is able to see that their most eaten food is yogurt, their total calories consumed for today is 428.64, the nutritional values of yogurt next to the current date is shown three times, and the total calories of three cups of yogurt is summed on the right table.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester repeats the previous step two more times. The tester clicked on "Profile" found in the taskbar.
+		How The Test Was Performed: After the tester completed the steps laid out in test case text-upload-1 three times, the tester clicked on "Profile" found in the taskbar.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -564,7 +606,7 @@
 		
 		Expected Results: The user is able to see that their most eaten food is yogurt, their total calories consumed for today is 2137.12, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of a cup of yogurt next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 2 cheeseburgers is summed on the right table.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester repeats the previous step two more times. Then, the tester inputs "i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text box and clicked "Submit". The tester clicked on "Profile" found in the taskbar.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-2, the tester completed test case "multi-text-upload-3". The tester clicked on "Profile" found in the taskbar.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -572,11 +614,11 @@
 		
 		Initial State: User has completed test case "profile-3".
 		
-		Input: User clicks on "Voice Upload" and then "Start Talking". User says "2 cheeseburgers random random random how was your day?" and then clicks on "Stop Talking". User clicks on the "Submit" button, and clicks on "Profile" found in the taskbar.
+		Input: User clicks on "Upload" found in the taskbar. User clicks on "Voice Upload" and then "Start Talking". User says "2 cheeseburgers random random random how was your day?" and then clicks on "Stop Talking". User clicks on the "Submit" button, and clicks on "Profile" found in the taskbar.
 		
 		Expected Results: The user is able to see that their most eaten food is a cheeseburger, their total calories consumed for today is 3207.74, the nutritional value of 2 cheeseburgers next to the current date, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, and the nutritional value of 2 cheeseburgers next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 4 cheeseburgers is summed on the right table.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester repeats the previous step two more times. Then, the tester inputted "i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text box and clicked "Submit". The tester clicked on "Voice Upload" and then "Start Talking". Tester said "2 cheeseburgers random random random how was your day?" and then clicked on "Stop Talking". Tester clicked on the "Submit" button. The tester clicked on "Profile" found in the taskbar.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-3, the tester clicked on "Upload" in the taskbar. The tester clicked on "Voice Upload" and then "Start Talking". Tester said "2 cheeseburgers random random random how was your day?" and then clicked on "Stop Talking". Tester clicked on the "Submit" button. The tester clicked on "Profile" found in the taskbar.
 		
 		Actual Results: The most eaten food is still yogurt instead of cheeseburger due to yogurt being inputted 3 different times and cheeseburger being inputted twice.
 		
@@ -588,7 +630,7 @@
 		
 		Expected Results: The user is able to see that their most eaten food is a cheeseburger, their total calories consumed for today is 4278.36, the nutritional value of 1 cheeseburger next to the current date, the nutritional values of 1 cheeseburger next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of 1 chicken breast next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 6 cheeseburgers is summed on the right table.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester repeats the previous step two more times. Then, the tester inputted "i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text box and clicked "Submit". The tester clicked on "Voice Upload" and then "Start Talking". Tester said "2 cheeseburgers random random random how was your day?" and then clicked on "Stop Talking". Tester clicked on the "Submit" button. The tester clicked on "Text Upload" and then typed "cheeseburger and cheeseburger". Tester clicked on the "Submit" button. The tester clicked on "Profile" found in the taskbar.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-4, the tester clicked on "Upload" found in the taskbar. The tester clicked on "Text Upload" and then typed "cheeseburger and cheeseburger". Tester clicked on the "Submit" button. The tester clicked on "Profile" found in the taskbar.
 		
 		Actual Results: The most eaten food is still yogurt instead of cheeseburger due to 2 cheeseburgers and 1 cheeseburger being seen by the system as two different food items.
 		
@@ -600,7 +642,7 @@
 		
 		Expected Results: User is able to see the nutritional information for: 100g of a martini, 2 cheeseburgers, a cup of yogurt, and another cup of yogurt all next to the current date.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester repeats the previous step two more times. Then, the tester inputted "i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text box and clicked "Submit". The tester clicked on "Voice Upload" and then "Start Talking". Tester said "2 cheeseburgers random random random how was your day?" and then clicked on "Stop Talking". Tester clicked on the "Submit" button. The tester clicked on "Text Upload" and then typed "cheeseburger and cheeseburger". Tester clicked on the "Submit" button. The tester clicked on "Profile" found in the taskbar. The tester clicked on the "Look at next 4 entries" button.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-5, the tester clicked on the "Look at next 4 entries" button.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -612,7 +654,7 @@
 		
 		Expected Results: User is able to see the nutritional information for 1 cup of yogurt.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester repeats the previous step two more times. Then, the tester inputted "i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text box and clicked "Submit". The tester clicked on "Voice Upload" and then "Start Talking". Tester said "2 cheeseburgers random random random how was your day?" and then clicked on "Stop Talking". Tester clicked on the "Submit" button. The tester clicked on "Text Upload" and then typed "cheeseburger and cheeseburger". Tester clicked on the "Submit" button. The tester clicked on "Profile" found in the taskbar. The tester clicked on the "Look at next 4 entries" button and then presses it again.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-6, the tester clicked on the "Look at next 4 entries" button.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -624,7 +666,7 @@
 		
 		Expected Results: User is able to see the nutritional information for: 100g of a martini, 2 cheeseburgers, a cup of yogurt, and another cup of yogurt all next to the current date.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "cup of yogurt" into the text upload box and pressed the "Submit" button. The tester repeats the previous step two more times. Then, the tester inputted "i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text box and clicked "Submit". The tester clicked on "Voice Upload" and then "Start Talking". Tester said "2 cheeseburgers random random random how was your day?" and then clicked on "Stop Talking". Tester clicked on the "Submit" button. The tester clicked on "Text Upload" and then typed "cheeseburger and cheeseburger". Tester clicked on the "Submit" button. The tester clicked on "Profile" found in the taskbar. The tester clicked on the "Look at next 4 entries" button and then presses it again. The tester clicked on the "Look at previous 4 entries" button.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-7, the tester clicked on the "Look at previous 4 entries" button.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -642,13 +684,13 @@
 		
 		\item{Test Name: profile-10}
 		
-		Initial State: User has inputted a cup of yogurt into Utrition for 15 days and is now viewing the "Profile" page
+		Initial State: User has completed test case "profile-9" and is viewing the "Profile" page.
 		
-		Input: User clicks on the "Previous Week" button twice.
+		Input: User clicks on the "Previous Week" button.
 		
 		Expected Results: The table is updated to show the first day the user inputted a food item (yogurt) into Utrition.
 		
-		How The Test Was Performed: The tester went into the directory "utrition$\backslash$src$\backslash$utrition$\backslash$utrition-backend" and opened the "nutrition\_log.csv" file. The tester faked data for yogurt by making sure each column was filled out with appropriate data (Time having format d/m/Y H:M:S, Name must be a string, serving unit must be a string, and the rest filled with floats), and then copying and pasting the data for 14 other rows (15 in total). Each row had a different date associated with it. The tester saved the "nutrition\_log.csv" changes, and refreshed the "Profile" page. The tester clicked on the "Previous Week" button twice.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-9, the tester clicked on the "Previous Week" button.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
@@ -672,11 +714,121 @@
 		
 		Expected Results: The table is updated to show the following food items with their attached date and calorie information: Salsa and Salsa, Sour Cream, Poutine, Pickle, Cucumber, Cashew, and Sprite.
 		
-		How The Test Was Performed: The tester went into the directory "utrition$\backslash$src$\backslash$utrition$\backslash$utrition-backend" and opened the "nutrition\_log.csv" file. The tester faked data for the food items by making sure each column was filled out with appropriate data (Time having format d/m/Y H:M:S, serving unit must be a string, and the rest filled with floats), and then copying and pasting the data for 14 other rows (15 in total). Each row had a different date associated with it. The tester added in the "Name" column the following 15 food items in increasing order by date: Apple, Banana, Celery, Orange, Grapefruit, Chicken, Cheeseburger, Pizza, Sprite, Cashew, Cucumber, Pickle, Poutine, Sour Cream, and Salsa. The tester copied and pasted the Salsa row once more at the bottom of the excel file. The tester saved the "nutrition\_log.csv" changes, and refreshed the "Profile" page. The tester clicked on the "Previous Week" button twice, and the "Next Week" button twice.
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-11, the tester went into the directory "utrition$\backslash$src$\backslash$utrition$\backslash$utrition-backend" and opened the "nutrition\_log.csv" file. The tester copied and pasted the Salsa row once more at the bottom of the excel file. The tester saved the "nutrition\_log.csv" changes, and refreshed the "Profile" page. The tester clicked on the "Previous Week" button twice, and the "Next Week" button twice.
 		
 		Actual Results: The actual results matched up with the expected results.
 		
+		\item{Test Name: profile-13}
+		
+		Initial State: User has no entries saved on their device and is viewing the "Profile" page.
+		
+		Input: User clicks on "Profile" found in the taskbar.
+		
+		Expected Results: The user is able to see the following headers with no nutritional information near them: Your most eaten food, Your total calories consumed for today, PAST MEALS, and My Caloric Intake.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on "Profile" found in the taskbar. The tester clicked on "Profile" one more time.
+		
+		Actual Results: The actual results matched up with the expected results.
+
+		\item{Test Name: api-1}
+		
+		Initial State: The system contains a mocked JSON response for the food "banana".
+		
+		Input: A request is made to get\_nutritional\_data() with the argument "banana" and the result is stored in the variable "result".
+		
+		Expected Results: The variable "result" will be a list of length 1 and will match the mocked data for "banana". Additionally, the contents of "result" will be able to be converted to JSON format without any errors.
+		
+		How The Test Was Performed: Nutritional JSON data is mocked in our system for the food "banana", meaning that when a request is made to our nutritional data fetcher for "banana", it will return the mocked result if the request processes successfully. The returning value will be a list of length 1, signifying that one JSON object was returned for the input "banana".
+		
+		Actual Results: The actual results matched up with the expected results.
+        \item{Test Name: log-data-read-data-1}
+		
+		Initial State: The system contains a list of one object of sample JSON data.
+		
+		Input: The sample data is logged to a CSV file and then a request to read the CSV file is made with the results of the request saved to the variable "lines".
+		
+		Expected Results: The variable "lines" will will be of length 2. The value at the second index of the list will equal the sample data when converted from a list format to a JSON object format. 
+		
+		How The Test Was Performed: The sample data is sent to our CSV logger function to create an entry for the data as well as its header row detailing the keys of the key value JSON pairings. To account for this header row, after we read the CSV file line by line with the built-in Python function readlines(), we check that the length of the returning list is 2.
+		
+		Actual Results: The actual results matched up with the expected results.
+        \item{Test Name: past-nutrition-text-read-data-2}
+		
+		Initial State: The system contains a list of four distinct object of sample JSON data.
+		
+		Input: The sample data is logged to a CSV file and then the read\_file() function is called with its result saved to the variable "result".
+		
+		Expected Results: The variable "result" will will be of length 4.
+		
+		How The Test Was Performed: The sample data is sent to our CSV logger function to create entries for each data as well as an overall header row detailing the keys of the key value JSON pairings. Our read\_file() function then reads the CSV file, ignoring the header row, and returns a sorted list of data objects. Since the header row is ignored, we can check that the length of the list of data returned is exactly equal to the number of data points we had in our sample data.
+		
+		Actual Results: The actual results matched up with the expected results.
+
+        \item{Test Name: read-data-3}
+		
+		Test was removed from Revision 0. Utrition no longer retrieves CSV data by querying for a specific food, making testing for a request for an un-logged food unnecessary.
+
+        \item{Test Name: past-nutrition-graph}
+		
+		Test was removed from Revision 0. Utrition no longer supports displaying graphs of logged food.
+		
 	\end{enumerate}
+
+	\subsection{Nutritional Facts Display}
+	\begin{enumerate}
+		\item{Display-elements-1\\}
+		
+		Control: Functional, Automatic.
+		
+		Initial State: Tester will be located on a page of the utrition application.
+		
+		Input: The tester will attempt to render page to see if necessary elements exist.
+		
+		Output: The framework replies with if elements exist.
+		
+		Test Case Derivation: The testing framework should reply that the text and image does exist upon the user opening the utrition application.
+		
+		How test will be performed: the tester will mock the utrition application home page screen and will check to see if the elements exist for the user.
+
+		Results: The text and images do exist on the home page. This test passes sucessfully.
+
+		\item{correct-path-1\\}
+		
+		Control: Functional, Automatic.
+		
+		Initial State: Tester will start on home page
+		
+		Input: Tester will click hyperlink to go to a different page
+		
+		Output: The tester will be taken to the new page specified in hyperlink
+		
+		Test Case Derivation: The testing framework should reply with the newly rendered page
+		
+		How test will be performed: The tester will attempt to mock a user input event clicking onto the specified hyperlink area by rendering a mocked version of the home page. Upon clicking the hyperlink area of the profile page the testing framework should reply with a rendered profile page.
+
+		Results: The tester can successfully navigate to the profile page to view nutritional facts.
+
+	\end{enumerate}
+
+	\subsection{Call and Fetch API Response}
+	\begin{enumerate}
+		\item{axios-call-1\\}
+		
+		Control: Functional, Automatic.
+		
+		Initial State: The text upload functionality has not yet been used.
+		
+		Input: The tester will attempt to make an axios call
+		
+		Output: The tester will receive an http request back from the backend.
+		
+		Test Case Derivation: The testing framework should reply with a not null value to ensure that there has been a succesful call made to the backend
+		
+		How test will be performed: Tester will create mocked text upload function to test to see if the front end can successfully mkae and receive http calls. 
+
+		Results: The tester is able to receive something back from the axios call.
+	\end{enumerate}
+
 
 	\section{Nonfunctional Requirements Evaluation}
 	
@@ -700,12 +852,6 @@
 	\end{enumerate}
 	
 	\subsection{Usability}
-	Apart from the more defined tests discussed above, additional usability testing was conducted on several participants to obtain feedback regarding Utrition's overall quality and user experience. A semi-structured interview was conducted on a total of 5 individuals of different genders and ethnicities to provide a wide range of opinions and suggestions. The interview process consisted of a brief explanation of the application, sample tasks for the participant to perform, and a series of questions. The raw notes from each interview can be found in Appendix A.
-	
-	Many useful insights were gathered from the interview results. When participants were asked to input mulitple food entries, most opted for text or voice upload options. The majority of participants did not read the instructions, but completed the task quickly and with ease. Common likes brought up by participants included the colour scheme and layout of the application, the ease of use regarding food entry upload, and the depth of information found on the profile page.
-	
-	In terms of common dislikes, many participants wanted to see units beside the nutritional data they were receiving, more error messages when something goes wrong, and to have meals grouped together based on input time when viewing the profile page. Additional features that individuals wish to see in feature revisions include BMI inputs from the user, goal setting, and a graph displaying past food input information. Greater explanation on implementation changes are discussed in section 7.
-	
 	\begin{enumerate}
 		
 		\item{UH-1}
@@ -838,6 +984,12 @@
 	\textbf{Results}: Test passed, output matched the expected result. After inspecting Utrition's public repository, the testing developer reported no outstanding files of the above file types.
 	
 	\end{enumerate}
+
+	Apart from the more defined tests discussed above, additional usability testing was conducted on several participants to obtain feedback regarding Utrition's overall quality and user experience. A semi-structured interview was conducted on a total of 5 individuals of different genders and ethnicities to provide a wide range of opinions and suggestions. The interview process consisted of a brief explanation of the application, sample tasks for the participant to perform, and a series of questions. The raw notes from each interview can be found in Appendix A.
+	
+	Many useful insights were gathered from the interview results. When participants were asked to input mulitple food entries, most opted for text or voice upload options. The majority of participants did not read the instructions, but completed the task quickly and with ease. Common likes brought up by participants included the colour scheme and layout of the application, the ease of use regarding food entry upload, and the depth of information found on the profile page.
+	
+	In terms of common dislikes, many participants wanted to see units beside the nutritional data they were receiving, more error messages when something goes wrong, and to have meals grouped together based on input time when viewing the profile page. Additional features that individuals wish to see in feature revisions include BMI inputs from the user, goal setting, and a graph displaying past food input information. Greater explanation on implementation changes are discussed in section 7.
 	
 	\subsection{Performance}
 	
@@ -1047,6 +1199,7 @@
 		\textbf{Results}: Test failed. The testing developer reported that no error message was displayed on the user interface following a failed identification.
 		
 		\item{PT-12}
+		
 		Type: Functional, Dynamic, and Manual.
 		
 		Initial State: The user loads into Utrition without connecting to the internet.
@@ -1060,6 +1213,7 @@
 		\textbf{Results}: Test failed. The testing developer reported that no error message was displayed on the user interface when there was no internet connection. 
 		
 		\item{PT-13} 
+		
 		Type: Functional, Dynamic, and Manual.
 		
 		Initial State: The user loads into Utrition.
@@ -1087,6 +1241,7 @@
 		\textbf{Results}: Test failed. The testing developer reported that an empty chart was displayed, but the message "There are no previous food items recorded" was not displayed on the user interface.
 		
 		\item{PT-15}
+		
 		Type: Functional, Dynamic, and Manual.
 		
 		Initial State: A user loads into Utrition.
@@ -1272,7 +1427,7 @@
 	\section{Unit Testing}
 	
 	\section{Changes Due to Testing}
-
+	\subsection{Changes Due to Usability Testing}
 	Due to the feedback collected during usability testing, Utrition's implementation will undergo changes to provide the best user experience possible. Taking into consideration the time constraints and the most commonly discussed improvements, these changes will be implemented:
 	\begin{itemize}
 		\item Add "Get Started" button to home page to take user to input a food item
@@ -1284,24 +1439,246 @@
 		\item Optional height and weight user inputs to calculate BMI and recommended calories per day 
 	\end{itemize}
 
-  (WILL UPDATE THIS LATER TO SENTENCES JUSTINA SORRY!!!)
-	chiken showed as chicken
-	oreo mcflurry showed as oreo and mcflurry
-	Mcdonald cheeseburger = cheeseburger
-	"apple enter-key banana" doesnt work = (enter submits) 
-	"Reset" resets the whole thign even whats entered in text box
-	"start talking" continues to listen even after clicking away to text section
-	most eaten food: yogurt inputted 3 times takes precedence over 2 cheeseburgers inputted twice
-	most eaten food: 2 cheeseburgers is seen different than 1 cheeseburger
-	most logged food 
-	
+	\subsection{Changes Due to Functional Requirements Testing}
+	Due to the failed test cases during functional requirements testing, Utrition's implementation will undergo changes to provide the best user experience possible. Taking into consideration the time constraints and the highest severity issues, these changes will be implemented:
+	\begin{itemize}
+		\item The "Enter" key on a user's keyboard will submit the user's response rather than create a new line.
+		\item Switching to a new upload section (Text Upload, Voice Upload, or Image Upload) will remove all inputs from the previous upload page. 
+		\item The "Voice Upload" section will not continue listening after the section has been clicked off of.
+		\item The "Reset" button will not push the user to the "Text Upload" section when they are not on it.
+		\item "Your most eaten food" will be changed to "Your most logged food".
+	\end{itemize}		
+
 	\section{Automated Testing}
+
+	The following tests are classified as automated tests:
+    \begin{itemize}
+        \item one-upload-auto-1
+        \item one-upload-auto-2
+        \item image-identification-1
+        \item image-identification-2
+        \item image-identification-3
+        \item api-1
+        \item log-data-read-data-1
+        \item past-nutrition-text-read-data-2
+        \item current-nutrition-1
+    \end{itemize}
 	
 	\section{Trace to Requirements}
+	
+	\newpage
+	\begin{table}[H]
+		\caption {Traceability between Tests and Functional Requirements}
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			FR1                     & The user must have the ability to upload a 
+			digital image of a standard image type to the 
+			system.                                                                     
+			&
+			\begin{tabular}[c]{@{}l@{}}one-upload-3\\
+				one-upload-4\\
+				one-upload-auto-1\\ 
+				one-upload-auto-2\end{tabular}                                                  
+			\\                                                    \hline
+			FR3                     & The system will be able to identify the type of 
+			food that is captured in an 
+			image.                                                                      
+			&
+			\begin{tabular}[c]{@{}l@{}}image-identification-1\\ 
+				image-identification-2\\ 
+				image-identification-3\\current-nutrition-1\end{tabular}                   
+			
+			\\ 
+			\hline
+			FR4                     & The system will be able to make an API call to an 
+			external database of nutrition facts for a variety of foods, including 
+			their macro-nutrients, micro-nutrients, and caloric details. & 
+			\begin{tabular}[c]{@{}l@{}}api-1\\ 
+				current-nutrition-1\end{tabular}                                        
+			\\ \hline
+			FR5                     & The system will be able to retrieve the nutrition 
+			facts for a specific 
+			food.                                                                       
+			&
+			\begin{tabular}[c]{@{}l@{}}api-1\\ 
+				log-data-read-data-1\\ 
+				current-nutrition-1\end{tabular}                                        
+			\\
+			\hline
+			FR6                     & The system will log the nutritional data of a 
+			food.                                                                       
+			&  
+			\begin{tabular}[c]{@{}l@{}}api-1\\ 
+				log-data-read-data-1\\ 
+				current-nutrition-1\end{tabular}                                        
+			\\ \hline
+			FR7                     & The user will be able to access the nutritional 
+			data of previously logged 
+			foods.                                                                      
+			&
+			\begin{tabular}[c]{@{}l@{}}log-data-read-data-1\\
+				past-nutrition-read-data-2\end{tabular}                       \\ \hline
+			FR8                     & The system will display the nutritional information of a food to the user.                                                                                                            & \begin{tabular}[c]{@{}l@{}}current-nutrition-1\\ past-nutrition-read-data-2\end{tabular} \\ \hline
+			
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\caption{Traceability between Tests and Non-Functional Requirements}
+		\begin{tabularx}{\linewidth}{|l|X|l|}
+			\hline
+			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
+			\hline
+			LF1 & The distance between user interface components must exceed 20 pixels. & LF-1 \\
+			\hline
+			UH1 & The user will be able to navigate to the main menu from any page in 2 clicks. & UH-1 \\
+			\hline
+			UH2 & The user must be able to view every past inputted food item. & UH-2, UH-3 \\
+			\hline
+			UH3 & 90\% of a test panel of the target demographic should be able to upload their food and retrieve the corresponding nutritional facts in under 2 minutes. & UH-4 \\
+			\hline
+			UH4 & Every clickable object will have a symbol associated with it. Calories, fat, sodium, carbohydrates, sugar, and protein will have a symbol associated next to it.
+			& UH-5 \\
+			\hline
+			UH5 & All backend calculations, such as identifying the uploaded food and retrieving the nutritional information, will not be displayed to the user. & UH-6 \\
+			\hline
+			UH6 & There will be no sound used by the Utrition web application.  & UH-7, UH-8 \\
+			\hline
+			PR1 & The time between the user’s click and displaying the new UI will not exceed 2 seconds. & PT-1 \\
+			\hline
+			PR2 & After uploading a picture, Utrition will always display the 
+			identified food item within 10 seconds in a test with multiple 
+			images. & PT-2 \\
+			\hline
+		\end{tabularx}
+		\label{tab:Non-Functional Traceability}
+	\end{table}
+	\begin{table}[H]
+		\begin{tabularx}{\textwidth}{|l|X|l|}
+			\hline
+			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
+			\hline
+			PR3 & After identifying the correct food item, Utrition will always 
+			display the nutritional facts within 5 seconds in a test with 
+			multiple images. & \begin{tabular}[c]{@{}l@{}}
+				PT-2, PT-3\end{tabular}\\
+			\hline
+			PR4 & Error message should prompt user upon upload of an abnormal 
+			image. & PT-15\\
+			\hline
+			PR5 & Error message should prompt user upon upload of an image 
+			larger than 30MB. & PT-9\\
+			\hline
+			PR6 & Error message should prompt user upon upload of more than 3 
+			images. & PT-7\\
+			\hline
+			PR7 & Error message should prompt user upon failure to identify 
+			any food items in the uploaded image. & 
+			\begin{tabular}[c]{@{}l@{}}PT-10, PT-11 
+			\end{tabular}\\
+			\hline
+			PR8 & Error message should prompt user to try again upon failure 
+			to request nutritional info regarding food items in the uploaded image. & PT-12\\
+			\hline
+			PR9 & Error message should notify user that the nutritional 
+			information pertaining to their food item does not exist. & PT-13\\
+			\hline
+			PR10 & Error message should notify user upon failure to access 
+			user's past nutritional info. & PT-14\\
+			\hline
+			PR11 & Error message should notify user if user's past nutritional 
+			info has been deleted. & PT-14\\
+			\hline
+			PR12 & Error message should prompt user if user's past nutritional 
+			info cannot be depicted on a chart. & PT-14\\
+			\hline
+			PR13 & Request will time out after 20 seconds, and user will be 
+			prompted that their device is not connected to the internet. & PT-12\\
+			\hline
+		\end{tabularx}
+	\end{table}
+	
+	\begin{table}[H]
+		%identification-accuracy-2
+		\begin{tabularx}{\textwidth}{|l|X|l|}
+			\hline
+			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
+			\hline
+			PR14 & In a test with multiple images, Utrition will identify and 
+			display the correct food with an average accuracy of 70\%. & 
+			\begin{tabular}[c]{@{}l@{}}PT-4, PT-6 \end{tabular}\\
+			\hline
+			PR15 & In a test with multiple images, Utrition will display the 
+			correct nutritional information for an identified food 90\% of the 
+			time. & \begin{tabular}[c]{@{}l@{}}PT-4, PT-5 \end{tabular}\\
+			\hline
+			PR16 & Since Utrition is a local web app, the user will always be allowed to use Utrition unless their device or internet connection is down. & PT-4\\
+			\hline
+			PR17 & The system will not allow more than 3 photos to be uploaded at once. & PT-2, PT-7\\
+			\hline
+			PR18 & Utrition is a local web app and does not depend on a server. & PT-8\\
+			\hline
+			PR19 & Utrition will be available to use on GitHub for an indefinite amount of time. & PT-8\\
+			\hline
+			OE1 & Users will be able to find and pull the repository on to their personal device. & PT-8\\
+			\hline
+			OE2 & 95\% of a test panel with the intended demographic will be able to install Utrition after reading the installation guide. & OE-1\\
+			\hline
+			OE3 & Utrition’s GitHub repository will receive no updates after final implementation. & OE-2\\
+			\hline
+			MS1 & Any backend developer is able to successfully upload new data to Utrition’s machine learning model at any time during development.  & MS-1\\
+			\hline
+		\end{tabularx}
+	\end{table}
+	
+	\begin{table}[H]
+		\begin{tabularx}{\textwidth}{|l|X|l|}
+			\hline
+			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
+			\hline
+			MS2 & All users will be able to view the support manuals on how to install and use Utrition. & OE-1\\
+			\hline
+			MS3 & 100\% of the tested Windows, macOS, and Linux devices should be able to use all functionality provided for Utrition. & MS-2\\
+			\hline
+			SR1 & Anyone will be able to pull the open-source project from GitHub. & PT-8, OE-1 \\
+			\hline
+			SR2 & Utrition will save user data every 3 minutes throughout the 
+			application runtime. & ST-1\\
+			\hline
+			SR3 & Utrition will not contain personalized data from one user on another user's system. & ST-2\\
+			\hline
+			CP1 & 95\% of the test panel agrees that Utrition does not provide any culturally insensitive content to the user. & CT-1\\
+			\hline
+			LR1 & No malicious software will be present in Utrition’s GitHub repository. & LT-1\\
+			\hline
+			LR2 & Durum Wheat Semolina will not commit infractions when following Canada’s guide. & LT-1\\
+			\hline
+			LR3 & Pylint will be used throughout development to ensure every pull request contains properly formatted code. & LT-2\\
+			\hline
+			LR4 & Before every pull request, code will be reviewed to ensure no violations of the standards occur.  & LT-1\\
+			\hline
+			LR5 & Utrition's user interface will be reviewed to ensure all fonts and colours adhere to the style guide.  & LT-1\\
+			\hline
+		\end{tabularx}
+	\end{table}
 	
 	\section{Trace to Modules}		
 	
 	\section{Code Coverage Metrics}
+
+	The automated tests have the following code coverage. The remaining code that was not covered by these tests was covered through manual testing.
+    \begin{table}[htb]
+        \begin{tabular}{lllll}
+        Filename                                                     & Statements & Missed statements & Coverage &  \\
+        ML/DataHandler.py              & 71         & 6                 & 92\%     &  \\
+        ML/Interface.py                & 16         & 0                 & 100\%    &  \\
+        ML/MainML.py                   & 42         & 0                 & 100\%    &  \\
+        home/nutritionalDataFetcher.py & 11         & 0                 & 100\%    &  \\
+        home/profileData.py            & 103        & 71                & 31\%     & 
+        \end{tabular}
+    \end{table}
 	
 	\section*{Appendix A}
 	\subsection*{Informal User Testing Notes}
@@ -1368,7 +1745,7 @@
 		\item Look at all the food eaten in a period of time and return nutritional value
 		\item How will the program know what you are trying to describe? some feature to detect
 		food
-		\item Logging and Viewing → At a high level
+		\item Logging and Viewing $\rightarrow$ At a high level
 	\end{itemize}
 	Experience:
 	\begin{itemize}
@@ -1444,7 +1821,7 @@
 		\item Portions are assumed; not exactly accurate
 		\subitem Would prefer to put in servings themselves
 		\subitem Accuracy over ease of input
-		\item Date + Caloric Intake → Not necessary useful enough to be put front and centre; can be
+		\item Date + Caloric Intake $\rightarrow$ Not necessary useful enough to be put front and centre; can be
 		put onto a different page/accessed if necessary
 	\end{itemize}
 	Additional features:
