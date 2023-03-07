@@ -678,6 +678,62 @@
 		
 	\end{enumerate}
 
+	\subsection{Nutritional Facts Display}
+	\begin{enumerate}
+		\item{Display-elements-1\\}
+		
+		Control: Functional, Automatic.
+		
+		Initial State: Tester will be located on a page of the utrition application.
+		
+		Input: The tester will attempt to render page to see if necessary elements exist.
+		
+		Output: The framework replies with if elements exist.
+		
+		Test Case Derivation: The testing framework should reply that the text and image does exist upon the user opening the utrition application.
+		
+		How test will be performed: the tester will mock the utrition application home page screen and will check to see if the elements exist for the user.
+
+		Results: The text and images do exist on the home page. This test passes sucessfully.
+
+		\item{correct-path-1\\}
+		
+		Control: Functional, Automatic.
+		
+		Initial State: Tester will start on home page
+		
+		Input: Tester will click hyperlink to go to a different page
+		
+		Output: The tester will be taken to the new page specified in hyperlink
+		
+		Test Case Derivation: The testing framework should reply with the newly rendered page
+		
+		How test will be performed: The tester will attempt to mock a user input event clicking onto the specified hyperlink area by rendering a mocked version of the home page. Upon clicking the hyperlink area of the profile page the testing framework should reply with a rendered profile page.
+
+		Results: The tester can successfully navigate to the profile page to view nutritional facts.
+
+	\end{enumerate}
+
+	\subsection{Call and Fetch API Response}
+	\begin{enumerate}
+		\item{axios-call-1\\}
+		
+		Control: Functional, Automatic.
+		
+		Initial State: The text upload functionality has not yet been used.
+		
+		Input: The tester will attempt to make an axios call
+		
+		Output: The tester will receive an http request back from the backend.
+		
+		Test Case Derivation: The testing framework should reply with a not null value to ensure that there has been a succesful call made to the backend
+		
+		How test will be performed: Tester will create mocked text upload function to test to see if the front end can successfully mkae and receive http calls. 
+
+		Results: The tester is able to receive something back from the axios call.
+	\end{enumerate}
+
+
 	\section{Nonfunctional Requirements Evaluation}
 	
 	\subsection{Look and Feel}
