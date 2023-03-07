@@ -194,6 +194,73 @@
 		How The Test Was Performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester clicked on "Image Upload" and then the "Submit" button.
 		
 		Actual Results: The actual results matched up with the expected results.
+
+		\item{Test Name: one-upload-auto-1}
+		
+		Initial State: The system contains a generated JPG image of red pixels with dimensions 128 x 128.
+		
+		Input: The generated image is passed as an argument to interface.open(), with the result saved to the variable 'result'.
+		
+		Expected Results: The variable 'result' is not None and the userFlag for interface has been set to 1. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: The generated image is passed to interface.open, which is the starting point for the machine learning image classification pipeline. If the test returns not None that means the pipeline executed successfully for the passed file. If the userFlag is set to 1 that means that interface.open() was passed some data.
+		
+		Actual Results: The actual results matched up with the expected results.
+        \item{Test Name: one-upload-auto-2}
+		
+		Initial State: The system contains a generated txt file with text "test content".
+		
+		Input: The generated text file is passed as an argument to interface.open().
+		
+		Expected Results: An UnidentifiedImageError is thrown and the userFlag for interface has been set to 1.
+		
+		How The Test Was Performed: The generated text file is passed to interface.open, which is the starting point for the machine learning image classification pipeline. If the test throws an UnidentifiedImageError that means that the format of the data passed is not valid for image classification. If the userFlag is set to 1 that means that interface.open() was passed some data.
+		
+		Actual Results: The actual results matched up with the expected results. 
+        \item{Test Name: image-identification-1}
+		
+		Initial State: The system contains a generated PNG image of red pixels with dimensions 128 x 128.
+		
+		Input: The generated image is passed as an argument to interface.open(), with the result saved to the variable 'result'.
+		
+		Expected Results: The variable 'result' is a string. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: The generated image is passed to interface.open, which is the starting point for the machine learning image classification pipeline. If the test returns a string that means that the pipeline not only executed successfully, but also returned an image classification result for the submitted image.
+		
+		Actual Results: The actual results matched up with the expected results.
+        \item{Test Name: image-identification-2}
+		
+		Initial State: The system contains a generated JPG image of red pixels with dimensions 128 x 128.
+		
+		Input: The generated image is passed as an argument to interface.open(), with the result saved to the variable 'result'.
+		
+		Expected Results: The variable 'result' is a string. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: The generated image is passed to interface.open, which is the starting point for the machine learning image classification pipeline. If the test returns a string that means that the pipeline not only executed successfully, but also returned an image classification result for the submitted image.
+		
+		Actual Results: The actual results matched up with the expected results.
+        \item{Test Name: image-identification-3}
+		
+		Initial State: The system contains a generated JPEG image of red pixels with dimensions 128 x 128.
+		
+		Input: The generated image is passed as an argument to interface.open(), with the result saved to the variable 'result'.
+		
+		Expected Results: The variable 'result' is a string. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: The generated image is passed to interface.open, which is the starting point for the machine learning image classification pipeline. If the test returns a string that means that the pipeline not only executed successfully, but also returned an image classification result for the submitted image.
+		
+		Actual Results: The actual results matched up with the expected results.
+        \item{Test Name: current-nutrition-1}
+		
+		Initial State: The system contains a generated JPEG image of red pixels with dimensions 128 x 128. The system contains a list of one object of mocked JSON data. The classification of the sample image and the food\_name of the mocked JSON data are set to the same value, linking the two pieces of data.
+		
+		Input: A nested function call is made to get\_nutrition\_data() with an argument interface.open() whose own argument is the generated image. The result of this call is saved to the variable 'result'.
+		
+		Expected Results: The variable "result" will will be a list of length 1. The value of "result" will be equal to the mocked JSON data. The value of "result" will successfully convert to JSON format without any errors. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: This is the overall black box test of our image classification system. It tests the whole process of classifying an image and retrieving JSON nutrition data for that image classification. If the test returns a list of one item, it means that the image was successfully classified and that the classification was equal to the food\_name in the mocked JSON data.
+		
+		Actual Results: The actual results matched up with the expected results.
 		
 		\item{Test Name: multi-upload-1}
 		
@@ -675,6 +742,48 @@
 		How The Test Was Performed: The tester went into the directory "utrition$\backslash$src$\backslash$utrition$\backslash$utrition-backend" and opened the "nutrition\_log.csv" file. The tester faked data for the food items by making sure each column was filled out with appropriate data (Time having format d/m/Y H:M:S, serving unit must be a string, and the rest filled with floats), and then copying and pasting the data for 14 other rows (15 in total). Each row had a different date associated with it. The tester added in the "Name" column the following 15 food items in increasing order by date: Apple, Banana, Celery, Orange, Grapefruit, Chicken, Cheeseburger, Pizza, Sprite, Cashew, Cucumber, Pickle, Poutine, Sour Cream, and Salsa. The tester copied and pasted the Salsa row once more at the bottom of the excel file. The tester saved the "nutrition\_log.csv" changes, and refreshed the "Profile" page. The tester clicked on the "Previous Week" button twice, and the "Next Week" button twice.
 		
 		Actual Results: The actual results matched up with the expected results.
+
+		\item{Test Name: api-1}
+		
+		Initial State: The system contains a mocked JSON response for the food "banana".
+		
+		Input: A request is made to get\_nutritional\_data() with the argument "banana" and the result is stored in the variable "result".
+		
+		Expected Results: The variable "result" will be a list of length 1 and will match the mocked data for "banana". Additionally, the contents of "result" will be able to be converted to JSON format without any errors.
+		
+		How The Test Was Performed: Nutritional JSON data is mocked in our system for the food "banana", meaning that when a request is made to our nutritional data fetcher for "banana", it will return the mocked result if the request processes successfully. The returning value will be a list of length 1, signifying that one JSON object was returned for the input "banana".
+		
+		Actual Results: The actual results matched up with the expected results.
+        \item{Test Name: log-data-read-data-1}
+		
+		Initial State: The system contains a list of one object of sample JSON data.
+		
+		Input: The sample data is logged to a CSV file and then a request to read the CSV file is made with the results of the request saved to the variable "lines".
+		
+		Expected Results: The variable "lines" will will be of length 2. The value at the second index of the list will equal the sample data when converted from a list format to a JSON object format. 
+		
+		How The Test Was Performed: The sample data is sent to our CSV logger function to create an entry for the data as well as its header row detailing the keys of the key value JSON pairings. To account for this header row, after we read the CSV file line by line with the built-in Python function readlines(), we check that the length of the returning list is 2.
+		
+		Actual Results: The actual results matched up with the expected results.
+        \item{Test Name: past-nutrition-text-read-data-2}
+		
+		Initial State: The system contains a list of four distinct object of sample JSON data.
+		
+		Input: The sample data is logged to a CSV file and then the read\_file() function is called with its result saved to the variable "result".
+		
+		Expected Results: The variable "result" will will be of length 4.
+		
+		How The Test Was Performed: The sample data is sent to our CSV logger function to create entries for each data as well as an overall header row detailing the keys of the key value JSON pairings. Our read\_file() function then reads the CSV file, ignoring the header row, and returns a sorted list of data objects. Since the header row is ignored, we can check that the length of the list of data returned is exactly equal to the number of data points we had in our sample data.
+		
+		Actual Results: The actual results matched up with the expected results.
+
+        \item{Test Name: read-data-3}
+		
+		Test was removed from Revision 0. Utrition no longer retrieves CSV data by querying for a specific food, making testing for a request for an un-logged food unnecessary.
+
+        \item{Test Name: past-nutrition-graph}
+		
+		Test was removed from Revision 0. Utrition no longer supports displaying graphs of logged food.
 		
 	\end{enumerate}
 
@@ -1352,12 +1461,37 @@
 	most logged food 
 	
 	\section{Automated Testing}
+
+	The following tests are classified as automated tests:
+    \begin{itemize}
+        \item one-upload-auto-1
+        \item one-upload-auto-2
+        \item image-identification-1
+        \item image-identification-2
+        \item image-identification-3
+        \item api-1
+        \item log-data-read-data-1
+        \item past-nutrition-text-read-data-2
+        \item current-nutrition-1
+    \end{itemize}
 	
 	\section{Trace to Requirements}
 	
 	\section{Trace to Modules}		
 	
 	\section{Code Coverage Metrics}
+
+	\text{The automated tests have the following code coverage. The remaining code that was not covered by these tests was covered through manual testing.}
+    \begin{table}[htb]
+        \begin{tabular}{lllll}
+        Filename                                                     & Statements & Missed statements & Coverage &  \\
+        ML/DataHandler.py              & 71         & 6                 & 92\%     &  \\
+        ML/Interface.py                & 16         & 0                 & 100\%    &  \\
+        ML/MainML.py                   & 42         & 0                 & 100\%    &  \\
+        home/nutritionalDataFetcher.py & 11         & 0                 & 100\%    &  \\
+        home/profileData.py            & 103        & 71                & 31\%     & 
+        \end{tabular}
+    \end{table}
 	
 	\section*{Appendix A}
 	\subsection*{Informal User Testing Notes}
