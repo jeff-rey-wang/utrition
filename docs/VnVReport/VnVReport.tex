@@ -1482,45 +1482,176 @@
 				one-upload-auto-1\\ 
 				one-upload-auto-2\end{tabular}                                                  
 			\\                                                    \hline
-			FR3                     & The system will be able to identify the type of 
+			FR2                     & The system will be able to identify the type of 
 			food that is captured in an 
 			image.                                                                      
 			&
-			\begin{tabular}[c]{@{}l@{}}image-identification-1\\ 
+			\begin{tabular}[c]{@{}l@{}}one-upload-3\\
+				one-upload-4\\
+				image-identification-1\\ 
 				image-identification-2\\ 
 				image-identification-3\\current-nutrition-1\end{tabular}                   
 			
 			\\ 
 			\hline
-			FR4                     & The system will be able to make an API call to an 
+			FR3                     & The system will be able to make an API call to an 
 			external database of nutrition facts for a variety of foods, including 
 			their macro-nutrients, micro-nutrients, and caloric details. & 
-			\begin{tabular}[c]{@{}l@{}}api-1\\ 
+			\begin{tabular}[c]{@{}l@{}}
+				api-1\\ 
 				current-nutrition-1\end{tabular}                                        
 			\\ \hline
-			FR5                     & The system will be able to retrieve the nutrition 
+			FR4                     & The system will be able to retrieve the nutrition 
 			facts for a specific 
 			food.                                                                       
 			&
-			\begin{tabular}[c]{@{}l@{}}api-1\\ 
+			\begin{tabular}[c]{@{}l@{}}one-upload-3\\
+				api-1\\ 
 				log-data-read-data-1\\ 
-				current-nutrition-1\end{tabular}                                        
+				current-nutrition-1\\
+				text-upload-1\\
+				text-upload-2\\
+				text-upload-6\\
+				text-upload-7\\
+				text-upload-8\\
+				multi-text-upload-1\\
+				multi-text-upload-2\\
+				multi-text-upload-3\\
+				voice-upload-1\\
+				voice-upload-2\\
+				voice-upload-3\\
+				voice-upload-9\\
+				voice-upload-10\\
+				voice-upload-11\\
+				voice-upload-12\\
+				multi-voice-upload-1\\
+				multi-voice-upload-2\\
+				multi-voice-upload-3\end{tabular}                                        
 			\\
 			\hline
-			FR6                     & The system will log the nutritional data of a 
+			FR5                     & The system will log the nutritional data of a 
 			food.                                                                       
 			&  
 			\begin{tabular}[c]{@{}l@{}}api-1\\ 
 				log-data-read-data-1\\ 
 				current-nutrition-1\end{tabular}                                        
 			\\ \hline
-			FR7                     & The user will be able to access the nutritional 
+			FR6                     & The user will be able to access the nutritional 
 			data of previously logged 
 			foods.                                                                      
 			&
 			\begin{tabular}[c]{@{}l@{}}log-data-read-data-1\\
 				past-nutrition-read-data-2\end{tabular}                       \\ \hline
-			FR8                     & The system will display the nutritional information of a food to the user.                                                                                                            & \begin{tabular}[c]{@{}l@{}}current-nutrition-1\\ past-nutrition-read-data-2\end{tabular} \\ \hline
+			
+			FR7                     & The system will display the nutritional information of a food to the user.                                                                                                            & \begin{tabular}[c]{@{}l@{}}current-nutrition-1\\ past-nutrition-read-data-2\\
+			text-upload-1\\
+			text-upload-2\\
+			text-upload-6\\
+			text-upload-7\\
+			text-upload-8\\
+			multi-text-upload-1\\
+			multi-text-upload-2\\
+			multi-text-upload-3\\
+			voice-upload-1\\
+			voice-upload-2\\
+			voice-upload-3\\
+			voice-upload-9\\
+			voice-upload-10\\
+			voice-upload-11\\
+			voice-upload-12\\
+			multi-voice-upload-1\\
+			multi-voice-upload-2\\
+			multi-voice-upload-3\end{tabular} \\ \hline
+			
+			FR8                     & The user must have the ability to upload the text of a food input to the system.                                               & \begin{tabular}[c]{@{}l@{}}text-upload-1\\
+			text-upload-2\\
+			text-upload-3\\
+			text-upload-4\\
+			text-upload-5\\
+			text-upload-6\\
+			text-upload-7\\
+			text-upload-8\end{tabular} \\ \hline
+			
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			FR9                     & The user must have the ability to upload multiple texts of food inputs to the system.
+			& \begin{tabular}[c]{@{}l@{}}multi-text-upload-1\\
+			multi-text-upload-2\\
+			multi-text-upload-3\end{tabular} \\ \hline
+			
+			FR10                     & The user must have the ability to upload a food input by speaking to the system.
+			& \begin{tabular}[c]{@{}l@{}}voice-upload-1\\
+			voice-upload-2\\
+			voice-upload-7\\
+			voice-upload-8\\
+			voice-upload-9\\
+			voice-upload-10\\
+			voice-upload-11\\
+			voice-upload-12\end{tabular} \\ \hline
+			
+			FR11                     & The user must have the ability to upload multiple food inputs by speaking to the system.                                                                                                            & \begin{tabular}[c]{@{}l@{}}voice-upload-3\\
+			multi-voice-upload-1\\
+			multi-voice-upload-2\\
+			multi-voice-upload-3\end{tabular} \\ \hline
+			
+			FR12                     & The system will be able to convert vocal input into text.                                                                                                            & \begin{tabular}[c]{@{}l@{}}voice-upload-1\\
+			voice-upload-2\\
+			voice-upload-3\\
+			voice-upload-8\\
+			voice-upload-9\\
+			voice-upload-10\\
+			voice-upload-11\\
+			voice-upload-12\\
+			multi-voice-upload-1\\
+			multi-voice-upload-2\\
+			multi-voice-upload-3\end{tabular} \\ \hline
+			
+			FR13                     & The user must have the ability to restart their voice upload to the system.                                                                                                           & \begin{tabular}[c]{@{}l@{}}voice-upload-4\\
+			voice-upload-5\\
+			voice-upload-6\end{tabular} \\ \hline
+			
+			FR14                     & The system will be able to identify the type of food(s) that is captured in a complex sentence.                                                                                                            & \begin{tabular}[c]{@{}l@{}}text-upload-2\\
+			text-upload-7\\
+			text-upload-8\\
+			multi-text-upload-3\\
+			voice-upload-1\\
+			voice-upload-2\\
+			voice-upload-3\\
+			voice-upload-10\\
+			voice-upload-11\\
+			multi-voice-upload-1\\
+			multi-voice-upload-2\\
+			multi-voice-upload-3\end{tabular} \\ \hline
+			
+			FR15                     & The user must have the ability to select between uploading food(s) through image, text, or voice.                                                                                                    & \begin{tabular}[c]{@{}l@{}}voice-upload-12\end{tabular} \\ \hline
+			
+			FR16                     & The system will display the user's most logged food.                                                                                                            & \begin{tabular}[c]{@{}l@{}}\end{tabular} \\ \hline
+			
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			FR17                     & The system will display the user's total calories consumed for the day.                                                                                                           & \begin{tabular}[c]{@{}l@{}}\end{tabular} \\ \hline
+			
+			FR18                     & The system will display a summary of the foods consumed and their total calories for each of the past 7 days.                                                                                                            & \begin{tabular}[c]{@{}l@{}}\end{tabular} \\ \hline
+			
+			FR19                     & The user will be able to access the summary of the foods consumed and their total calories for all days with a food inputted.                                                                                                            & \begin{tabular}[c]{@{}l@{}}\end{tabular} \\ \hline
+			
+			FR20                     & The user will be able to access the Home page, the Upload page, and the Profile page on every page.                                                                                                            & \begin{tabular}[c]{@{}l@{}}upload-page-1\\ profile-page-1\\
+			home-page-1\\
+			home-page-2\\
+			profile-page-2\\
+			upload-page-2\end{tabular} \\ \hline
 			
 		\end{tabular}
 	\end{table}
