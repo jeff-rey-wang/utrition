@@ -137,20 +137,19 @@ The following table is taken directly from the Module Guide document, \cite{MG},
 		& Home Page Module\\
 		& Profile Page Module\\
 		& Nutrition Log Module\\
-		& Food Entry Module \\
 		& Upload Page Module\\
+		& Upload Container Module \\
 		& Image Upload Module\\
-		& Manual Upload Module \\
+		& Text Upload Module \\
 		& Voice Upload Module \\
-		& Navigation Bar Module\\
-		& Backend Communication Module\\ 
+		& Navigation Bar Module\\ 
 		\midrule
 		
 		\multirow{3}{0.3\textwidth}{Software Decision Module} & Input Pre-Processing Module\\
 		& Training Dataset Module\\
 		& Image Classification Module\\
 		& Nutritional Data Retriever Module\\
-		& User Log Data Structure Module\\
+		& Profile Data Calculation Module\\
 		\bottomrule
 		
 	\end{tabular}
@@ -309,62 +308,11 @@ None
 
 \newpage
 
-\section{MIS of Food Entry Module} \label{FoodEntry}
-\subsection{Template Module}
-FoodEntry
-\subsection{Uses}
-N/A
-\subsection{Syntax}
-\subsubsection{Exported Types}
-FoodEntry = ?
-\subsubsection{Exported Access Programs}
-\begin{center}
-	\begin{tabular}{p{3cm} p{5cm} p{5cm} p{2cm}}
-		\hline
-		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-		\hline
-		FoodEntry & String, tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & FoodEntry & - \\
-		getFoodName & - & String & - \\
-		getFoodInfo & - & tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & - \\
-		\hline
-	\end{tabular}
-\end{center}
-\subsection{Semantics}
-\subsubsection{State Variables}
-$food\_name$: String\\
-$food\_info$: tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String)
-\subsubsection{Environment Variables}
-None
-\subsubsection{Assumptions}
-The FoodEntry(food\_name, food\_info) constructor is called for each object instance before any other access
-routine is called for that object. The constructor can only be called once.
-\subsubsection{Access Routine Semantics}
-\noindent FoodEntry($item, info$):
-\begin{itemize}
-	\item transition: $food\_name, food\_info := item, info$
-	\item output: $out := self$
-	\item exception: None
-\end{itemize}
-\noindent getFoodName():
-\begin{itemize}
-	\item output: $out := food\_name$
-	\item exception: None
-\end{itemize}
-\noindent getFoodInfo():
-\begin{itemize}
-	\item output: $out := food\_info$
-	\item exception: None
-\end{itemize}
-\subsubsection{Local Functions}
-None
-
-\newpage
-
 \section{MIS of Upload Page Module}
 \subsection{Module}
 Upload
 \subsection{Uses}
-ImageUpload, ManualUpload, VoiceUpload
+UploadContainer
 \subsection{Syntax}
 \subsubsection{Exported Types}
 Upload = ?
@@ -388,10 +336,43 @@ None
 \subsubsection{Access Routine Semantics}
 \noindent Upload():
 \begin{itemize}
-	\item transition: Page rendered with components from ImageUpload, ManualUpload, and VoiceUpload
+	\item transition: Page rendered with components from ImageUpload, 
+	TextUpload, and VoiceUpload
 	\item output: $out := self$
 	\item exception: None
 \end{itemize}
+\subsubsection{Local Functions}
+None
+
+\newpage
+
+\section{MIS of Upload Container Module} \label{UploadContainer}
+\subsection{Template Module}
+UploadContainer
+\subsection{Uses}
+ImageUpload, TextUpload, VoiceUpload
+\subsection{Syntax}
+\subsubsection{Exported Types}
+UploadContainer = ?
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{3cm} p{5cm} p{5cm} p{2cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		UploadContainer & $\mathbb{Z}$ & UploadContainer & - \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Routine Semantics}
+None
 \subsubsection{Local Functions}
 None
 
@@ -401,7 +382,7 @@ None
 \subsection{Module}
 ImageUpload
 \subsection{Uses}
-BackComm
+None
 \subsection{Syntax}
 \subsubsection{Exported Types}
 ImageUpload
@@ -458,21 +439,21 @@ getData():
 
 \newpage
 
-\section{Manual Upload Module} \label{ManualUpload}
+\section{Text Upload Module} \label{TextUpload}
 \subsection{Module}
-ManualUpload
+TextUpload
 \subsection{Uses}
-BackComm
+None
 \subsection{Syntax}
 \subsubsection{Exported Types}
-ManualUpload = ?
+TextUpload = ?
 \subsubsection{Exported Access Programs}
 \begin{center}
 	\begin{tabular}{p{3cm} p{4cm} p{4cm} p{2cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
-		ManualUpload & - & ManualUpload & - \\
+		TextUpload & - & TextUpload & - \\
 		handleFoodItem & Event & - & - \\
 		getData & - & - & BadResponseError \\
 		\hline
@@ -487,7 +468,7 @@ None
 \subsubsection{Assumptions}
 None
 \subsubsection{Access Routine Semantics}
-\noindent ManualUpload():
+\noindent TextUpload():
 \begin{itemize}
 	\item transition: $foodDesc, responseData := $ "", ""
 	\item output: $out := self$ 
@@ -523,7 +504,7 @@ None
 \subsection{Module}
 VoiceUpload
 \subsection{Uses}
-BackComm
+None
 \subsection{Syntax}
 \subsubsection{Exported Types}
 VoiceUpload = ?
@@ -617,42 +598,6 @@ Users will not try to purposefully change the paths for each button.
 \noindent changePage():
 \begin{itemize}
 	\item transition: $path :=$ "/" $\lor$ "/profile" $\lor$ "/upload" 
-	\item exception: None
-\end{itemize}
-\subsubsection{Local Functions}
-None
-
-\newpage
-
-\section{MIS of Backend Communication Module} \label{BackComm}
-\subsection{Module}
-BackComm
-\subsection{Uses}
-InputPreProcess, NutritionalData
-\subsection{Syntax}
-\subsubsection{Exported Constants}
-None
-\subsubsection{Exported Access Programs}
-\begin{center}
-\begin{tabular}{p{2.5cm} p{0.5cm} p{4.5cm} p{5cm}}
-\hline
-\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-\hline
-displayIndex & - & JSON & None \\
-\hline
-\end{tabular}
-\end{center}
-\subsection{Semantics}
-\subsubsection{State Variables}
-None
-\subsubsection{Environment Variables}
-None
-\subsubsection{Assumptions}
-It is assumed that the filename of the user inputted file will be of String format.
-\subsubsection{Access Routine Semantics}
-\noindent displayIndex():
-\begin{itemize}
-	\item output: $out :=$ JSON consisting of the food classified from the user input 
 	\item exception: None
 \end{itemize}
 \subsubsection{Local Functions}
@@ -806,7 +751,10 @@ None
 \subsubsection{Access Routine Semantics}
 \noindent getNutritionalData(\textit{food\_item}):
 \begin{itemize}
-	\item output: $result :=$ tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String)
+	\item output: $result :=$ tuple of (food\_name: String, calories: String, 
+	total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: 
+	String, total\_carbohydrate: String, dietary\_fiber: String, sugars: 
+	String, protein: String, potassium: String)
 	\item exception: ($food\_item \Rightarrow result$ := NULL) $\Rightarrow$ \mbox{IllegalArgumentException} 
 \end{itemize}
 \subsubsection{Local Functions}
@@ -814,41 +762,87 @@ None
 
 \newpage
 
-\section{MIS of User Log Data Structure Module} \label{ULD}
+\section{MIS of Profile Data Calculation Module} \label{PDC}
 \subsection{Module}
-UserLogData
+ProfileData
 \subsection{Uses}
-FoodEntry
+os, datetime
 \subsection{Syntax}
 \subsubsection{Exported Constants}
 None
 \subsubsection{Exported Access Programs}
 \begin{center}
-	\begin{tabular}{p{2cm} p{5cm} p{3cm} p{2cm}}
+	\begin{tabular}{p{6.2cm} p{5cm} p{2.5cm} p{2cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
-		addData & String, tuple of (food\_name: String, calories: String, total\_fat: String, saturated\_fat: String, cholesterol: String, sodium: String, total\_carbohydrate: String, dietary\_fiber: String, sugars: String, protein: String, potassium: String) & - & - \\
-		getData & - & seq of FoodEntry & - \\
+		
+		logData & JSON  & - & - \\
+		calculateTotalNutrients & JSON  & seq of String & - \\
+		readFile & -  & seq of JSON & - \\
+		readFileAsJson & -  & JSON & - \\
+		totalCaloriesPerDay & Date  & $\mathbb{R}$ & - \\
+		totalFoodsPerDay & Date  & $\mathbb{Z}$ & - \\
+		totalCaloriesPerDaySummaryList & -  & seq of JSON & - \\
+		mostEatenFood & -  & $\mathbb{R}$ & - \\
 		\hline
 	\end{tabular}
 \end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
-$userData$: seq of FoodEntry
+None
 \subsubsection{Environment Variables}
 None
 \subsubsection{Assumptions}
 None
 \subsubsection{Access Routine Semantics}
-\noindent addData($food\_item, food\_info$):
+\noindent logData(foodData):
 \begin{itemize}
-	\item transition: $userData$ += new FoodEntry($food\_item$, $food\_info$)
+	\item transition: $nutritionLog += csvRow : String$ 
 	\item exception: None
 \end{itemize}
-\noindent getData():
+\noindent calculateTotalNutrients(foodData):
 \begin{itemize}
-	\item output: $out := userData$ 
+	\item output: $out :=$\{foodName : String, calories: $\mathbb{R}$, 
+	totalFat: $\mathbb{R}$, saturatedFat: $\mathbb{R}$, cholesterol: 
+	$\mathbb{R}$, sodium: $\mathbb{R}$, totalCarbohydrate: $\mathbb{R}$, 
+	dietaryFibre: $\mathbb{R}$, sugars: $\mathbb{R}$, protein: $\mathbb{R}$, 
+	potassium: $\mathbb{R}$\} 
+	\item exception: None
+\end{itemize}
+\noindent readFile():
+\begin{itemize}
+	\item output: $out :=$ seq of Row: String 
+	\item exception: None
+\end{itemize}
+\noindent readFileAsJson():
+\begin{itemize}
+	\item output: $out := $\{timeStamp: String, foodName : String, calories: 
+	$\mathbb{R}$, 
+	totalFat: $\mathbb{R}$, saturatedFat: $\mathbb{R}$, cholesterol: 
+	$\mathbb{R}$, sodium: $\mathbb{R}$, totalCarbohydrate: $\mathbb{R}$, 
+	dietaryFibre: $\mathbb{R}$, sugars: $\mathbb{R}$, protein: $\mathbb{R}$, 
+	potassium: $\mathbb{R}$\} 
+	\item exception: None
+\end{itemize}
+\noindent totalCaloriesPerDay(day):
+\begin{itemize}
+	\item output: $out := \sum_{i=0}^{|foods|-1}food_i.calories$ 
+	\item exception: None
+\end{itemize}
+\noindent totalFoodsPerDay(day):
+\begin{itemize}
+	\item output: $out := \sum_{i=1}^{|foods|} 1$ 
+	\item exception: None
+\end{itemize}
+\noindent totalCaloriesPerDaySummaryList():
+\begin{itemize}
+	\item output: $out := \text{seq of $\{data, sumPerDay, foodsPerDay\}$}$ 
+	\item exception: None
+\end{itemize}
+\noindent mostEatenFood():
+\begin{itemize}
+	\item output: $out := mode(\text{seq of foods})$ 
 	\item exception: None
 \end{itemize}
 
