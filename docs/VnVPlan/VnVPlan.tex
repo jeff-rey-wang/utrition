@@ -253,12 +253,11 @@
 	\section{System Test Description}
 	
 	\subsection{Tests for Functional Requirements}
-	The below areas cover all the nine functional requirements outlined in the SRS, dividing the functional requirements into three distinct sections. The first section details user actions associated with image upload and encompasses FR1 and FR2. The second section details image processing done by the system which encompasses FR3, FR4, FR5, FR6, and FR7. Lastly, the third section outlines the user steps to view nutritional data which correlates to groupings of functional requirements.
+	The below areas cover all the twenty functional requirements outlined in the SRS, dividing the functional requirements into seven distinct sections. The first section details user actions associated with image upload and encompasses FR1, FR2, FR3, FR4, FR7, and FR15. The second section details image processing done by the system which encompasses FR3, FR4, FR5, FR6, and FR7. The third section outlines the user steps to view nutritional data which correlates to groupings of functional requirements. The fourth section details the ability for the user to upload food items through text and encompasses FR3, FR4, FR7, FR8, FR9, FR14, and FR15. The fifth section details the ability for the user to upload food items through speech and encompasses FR3, FR4, FR7, FR10, FR11, FR12, FR13, FR14, and FR15. The sixth section showcases what must be displayed when a user is viewing their profile and encompasses FR5, FR6, FR7, FR16, FR17, FR18, and FR19. The last section details tests to ensure the navigation task bar is always present and allows users to freely travel between pages. The last section encompasses FR20.
 	
 	\subsubsection{Image Upload}
-	This section has three tests, with each corresponding to an action the user 
-	can take with Utrition, corresponding to FR1 and FR2 in the SRS. 
-	Testing that users can successfully submit one or multiple images is 
+	This section has four tests, with each corresponding to an image upload action the user can take with Utrition. The tests deal with FR1, FR2, FR3, FR4, FR7, and FR15 in the SRS. 
+	Testing that users can successfully submit one image is 
 	important to the core functionality of the other components of the 
 	application.
 	
@@ -267,38 +266,6 @@
 	\begin{enumerate}
 		
 		\item{one-upload-1\\}
-		
-		Control: Functional, Dynamic, and Manual.
-		
-		Initial State: No image in the system.
-		
-		Input: An image file of type .png, .jpg, or .jpeg (images found in utrition/test/testPhotos directory).
-		
-		Output: The system accepts the image upload.
-		
-		Test Case Derivation: The system should accept an uploaded image file from the user.
-		
-		How test will be performed: A locally stored image will be uploaded to 
-		the application through the image upload prompt.
-		
-		\item{one-upload-2\\}
-		
-		Control: Functional, Dynamic, and Manual.
-		
-		Initial State: No image in the system.
-		
-		Input: A file of extension .txt will be uploaded into the system (found in utrition/test/testPhotos directory).
-		
-		Output: The system will not contain the uploaded file. An error message 
-		will be returned.
-		
-		Test Case Derivation: The system should only save the inputted image if 
-		it is of the proper file extension.
-		
-		How test will be performed: A file of type .txt will be saved on the 
-		tester's device. The tester will upload this file to the system.
-		
-		\item{one-upload-3\\}
 		
 		Control: Functional, Dynamic, and Manual.
 		
@@ -312,7 +279,7 @@
 		
 		How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will click on "Image Upload" and then "Select Image". The tester selects "apple.jpeg" found in the utrition/test/testPhotos directory. The tester clicks on the "Image Upload" button and then clicks on the "Submit" button.
 		
-		\item{one-upload-4\\}
+		\item{one-upload-2\\}
 		
 		Control: Functional, Dynamic, and Manual.
 		
@@ -511,6 +478,10 @@
 	\end{enumerate}
 
 	\subsubsection{Text Upload}
+	This section has twelve tests, with each corresponding to an text upload action the user can take with Utrition. The tests deal with FR3, FR4, FR7, FR8, FR9, FR14, and FR15 in the SRS. Testing that users can successfully submit text inputs to identify food items is 
+	important to the core functionality of the other components of the 
+	application.
+	
 	\begin{enumerate}
 	\item{text-upload-1\\}
 	
@@ -625,6 +596,7 @@
 	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will type "half a McDonald's cheeseburger" into the text upload box and will press the "Submit" button.
 	
 	\paragraph{Multi-Text Upload}
+	\paragraph{Multi-Text Upload}
 	
 	\item{multi-text-upload-1\\}
 	
@@ -685,6 +657,11 @@
 	\end{enumerate}
 
 	\subsubsection{Voice Upload}
+	This section has fifteen tests, with each corresponding to an voice upload action the user can take with Utrition. The tests deal with FR3, FR4, FR7, FR10, FR11, FR12, FR13, FR14, and FR15 in the SRS. 
+	Testing that users can successfully submit speech inputs is 
+	important to the core functionality of the other components of the 
+	application.
+	
 	\begin{enumerate}
 	\item{voice-upload-1\\}
 	
@@ -853,7 +830,7 @@
 	Test Case Derivation: Only food items said on the "Voice Upload" section should be picked up by the system.
 	
 	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester clicks on the "Voice Upload" button and then clicks on the "Start Talking" button. The tester verbally says "2 oranges" and then the tester presses on the "Text Upload" button. The tester says "a slice of an apple" and then clicks on the "Voice Upload" button. The tester presses the "Submit" button.
-	
+		\paragraph{Multi-Voice Upload}
 		\paragraph{Multi-Voice Upload}
 	\item{multi-voice-upload-1\\}
 	
@@ -900,6 +877,8 @@
 \end{enumerate}
 	
 	\subsubsection{Profile Page}
+	This section has thirteen tests, with each corresponding to the user viewing their nutritional logs and profile on Utrition. The tests deal with FR5, FR6, FR7, FR16, FR17, FR18, and FR19 in the SRS. Testing that users can successfully log and view their past inputs ensures the main functionality of the Utrition application.
+	
 	\begin{enumerate}
 		\item{profile-1\\}
 		
@@ -1086,6 +1065,8 @@
 	\end{enumerate}
 	
 	\subsubsection{Taskbar}
+	This section has six tests, with each corresponding to the actions the user can take with the navigation taskbar in Utrition. The tests deal with FR20 in the SRS. Testing that users can successfully navigate throughout the Utrition application is important to ensure freedom of use for the application.
+	
 	\begin{enumerate}
 		\item{upload-page-1\\}
 		

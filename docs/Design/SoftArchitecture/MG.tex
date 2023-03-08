@@ -195,18 +195,18 @@ actually be implemented.
 \item  [\refstepcounter{mnum} \mthemnum \label{mHP}:] Home Page Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mPP}:] Profile Page Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mNL}:] Nutrition Log Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mFE}:] Food Entry Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mUP}:] Upload Page Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mUC}:] Upload Container Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mIU}:] Image Upload Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mMU}:] Manual Upload Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mTU}:] Text Upload Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mVU}:] Voice Upload Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mNB}:] Navigation Bar Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mBC}:] Backend Communication Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mIP}:] Input Pre-Processing Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mTD}:] Training Dataset Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mIC}:] Image Classification Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mNDR}:] Nutritional Data Retriever Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mULD}:] User Log Data Structure Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mPDC}:] Profile Data Calculation 
+Module
 \end{description}
 
 
@@ -224,20 +224,19 @@ actually be implemented.
 & Home Page Module\\
 & Profile Page Module\\
 & Nutrition Log Module\\
-& Food Entry Module \\
 & Upload Page Module\\
+& Upload Container Module \\
 & Image Upload Module\\
-& Manual Upload Module \\
+& Text Upload Module \\
 & Voice Upload Module \\
-& Navigation Bar Module\\
-& Backend Communication Module\\ 
+& Navigation Bar Module\\ 
 \midrule
 
 \multirow{3}{0.3\textwidth}{Software Decision Module} & Input Pre-Processing Module\\
 & Training Dataset Module\\
 & Image Classification Module\\
 & Nutritional Data Retriever Module\\
-& User Log Data Structure Module\\
+& Profile Data Calculation Module\\
 \bottomrule
 
 \end{tabular}
@@ -329,22 +328,25 @@ to be implemented.
 	
 \end{description}
 
-\subsubsection{Food Entry Module (\mref{mFE})}
-
-\begin{description}
-	\item[Secrets:]Stores an individual food item and their nutritional facts as an object.
-	\item[Services:]A food item is stored as an object. The object contains the food item name and important nutritional information such as calories, fats, sugar content, etc.
-	\item[Implemented By:] Utrition
-	\item[Type of Module:] Abstract Object
-\end{description}
-
 \subsubsection{Upload Page Module (\mref{mUP})}
 
 \begin{description}
-\item[Secrets:]Displays all information needed on the Upload Page.
-\item[Services:] Imports components relevant to image upload, manual upload, and voice upload to organize all components on the page. 
+\item[Secrets:]Displays all objects needed on the Upload Page.
+\item[Services:] Imports components required to upload data, and organizes all 
+components within the page. 
 \item[Implemented By:] Utrition
 \item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Upload Container Module (\mref{mUC})}
+
+\begin{description}
+	\item[Secrets:]Provides interface to allow the user to log their meal by 
+	uploading an image.
+	\item[Services:]Imports components relevant to image upload, text upload, 
+	and voice upload to organize all components on the page.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Object
 \end{description}
 
 \subsubsection{Image Upload Module (\mref{mIU})}
@@ -358,7 +360,7 @@ to be implemented.
 	\item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{Manual Upload Module (\mref{mMU})}
+\subsubsection{Text Upload Module (\mref{mTU})}
 
 \begin{description}
 	\item[Secrets:]Provides interface to allow the user to log their meal by manual, textual 
@@ -389,17 +391,6 @@ to be implemented.
 	user action.
 	\item[Implemented By:] Utrition
 	\item[Type of Module:] Abstract Object
-\end{description}
-
-\subsubsection{Backend Communication Module (\mref{mBC})}
-
-\begin{description}
-	\item[Secrets:] Provides the ability for user input (in image form) to be sent to the Input 
-	Pre-Processing Module.
-	\item[Services:]Converts the input image filename to a usable image path 
-	used by the Input Pre-Processing Module through string operations.
-	\item[Implemented By:] Utrition
- 	\item[Type of Module:] Library
 \end{description}
 
 \subsection{Software Decision Module}
@@ -453,11 +444,13 @@ learning model.
 	\item[Type of Module:] Library
 \end{description}
 
-\subsubsection{User Log Data Structure Module (\mref{mULD})}
+\subsubsection{Profile Data Calculation Module (\mref{mPDC})}
 
 \begin{description}
-	\item[Secrets:]Stores all past user inputted food items and their nutritional facts.
-	\item[Services:]Every user inputted food item and their corresponding nutritional facts are stored in a sequence of FoodEntry objects.
+	\item[Secrets:]Stores all past user inputted food items and their 
+	nutritional facts.
+	\item[Services:]Every user inputted food item and their corresponding 
+	nutritional facts are stored in a sequence of FoodEntry objects.
 	\item[Implemented By:] Utrition
 	\item[Type of Module:] Abstract Data Type
 \end{description}
