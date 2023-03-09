@@ -409,6 +409,20 @@
 		How test will be performed: The API response will be verified that the 
 		contents are as expected.
 		
+		\item{axios-call-1\\}
+		
+		Control: Functional and Automatic.
+		
+		Initial State: The text upload functionality has not yet been used.
+		
+		Input: The tester will attempt to make an axios call
+		
+		Output: The tester will receive an http request back from the backend.
+		
+		Test Case Derivation: The testing framework should reply with a not null value to ensure that there has been a successful call made to the backend
+		
+		How test will be performed: Tester will create mocked text upload function to test to see if the front end can successfully make and receive http calls.
+		
 	\end{enumerate}
 	
 	\paragraph{Logging Data}
@@ -474,7 +488,39 @@
 		Test Case Derivation: The system will keep a record of all analysed foods for the user, allowing the user to request to see the nutritional data of their past uploads. This data can be displayed in a human readable textual format.
 		
 		How test will be performed: The program will automatically test that a file of pre-logged foods can be processed to return their corresponding nutritional data as text.
+			
+	\end{enumerate}
+
+	\paragraph{Viewing webpages}
+
+	\begin{enumerate}
+		\item{display-elements-1\\}
 		
+		Control: Functional and Automatic.
+		
+		Initial State: Tester will be located on a page of the Utrition application.
+		
+		Input: The tester will attempt to render page to see if necessary elements exist.
+		
+		Output: The framework replies with if elements exist.
+		
+		Test Case Derivation: The testing framework should reply that the text and image does exist upon the user opening the Utrition application.
+		
+		How test will be performed: the tester will mock the Utrition application home page screen and will check to see if the elements exist for the user.
+		
+		\item{correct-path-1\\}
+		
+		Control: Functional and Automatic.
+		
+		Initial State: Tester will start on home page
+		
+		Input: Tester will click hyperlink to go to a different page
+		
+		Output: The tester will be taken to the new page specified in hyperlink
+		
+		Test Case Derivation: The testing framework should reply with the newly rendered page
+		
+		How test will be performed: The tester will attempt to mock a user input event clicking onto the specified hyperlink area by rendering a mocked version of the home page. Upon clicking the hyperlink area of the profile page the testing framework should reply with a rendered profile page.
 	\end{enumerate}
 
 	\subsubsection{Text Upload}
