@@ -38,7 +38,7 @@ def get_nutritional_data(food_item):
                 "potassium": food["nf_potassium"],
             }
             result_list.append(food_data)
-    except:
+    except KeyError:
         result_list.append({"error_msg": "Food item not found, try entering something else!"})
 
     return result_list
