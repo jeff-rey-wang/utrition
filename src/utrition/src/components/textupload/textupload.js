@@ -41,7 +41,6 @@ const TextUpload = () => {
           potassium: response.data.potassium,
           error_msg: response.data.error_msg,
         });
-        console.log(response)
       })
       .catch((error) => {
         console.log(error.response.data);
