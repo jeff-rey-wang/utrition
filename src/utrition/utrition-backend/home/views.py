@@ -25,13 +25,16 @@ def display_index():
         myFood = request.headers["food_text"]
 
     food_data = get_nutritional_data(myFood)
-    log_data(food_data)
-
-    if len(food_data) > 1:
-        fullJSON = calculateTotalNutrients(food_data)
-        json_formatted_str = json.dumps(fullJSON, indent=2)
-    else:
-        json_formatted_str = json.dumps(food_data[0], indent=2)
+    try:
+        log_data(food_data)
+        
+        if len(food_data) > 1:
+            fullJSON = calculateTotalNutrients(food_data)
+            json_formatted_str = json.dumps(fullJSON, indent=2)
+        else:
+            json_formatted_str = json.dumps(food_data[0], indent=2)
+    except:
+         json_formatted_str = json.dumps({'error_msg': "Food item not found, try entering something else!"}, indent=2)
     return json_formatted_str
 
 
