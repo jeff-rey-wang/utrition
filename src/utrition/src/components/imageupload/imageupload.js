@@ -18,17 +18,19 @@ const ImageUpload = () => {
     fileInput.current.click();
   };
 
-  function getData() {
-    axios({
+  async function getData() {
+    const formData = new FormData();
+    formData.append('image', fileInput.current.files[0]);
+    await axios({
       method: "POST",
       headers: headers,
       url: "/upload",
-      data: { path: JSON.stringify(image) },
+      data: formData,
     })
       .then((response) => response.json())
       .catch((error) => console.log(error));
 
-    axios({
+    await axios({
       method: "GET",
       headers: headers,
       url: "/upload",
