@@ -16,8 +16,8 @@ def display_index():
 
     if upload_type == "image":
         if request.method == "POST":
-            image = request.files['image']
-            image.save('./ML/uploaded_images/' + image.filename)
+            image = request.files["image"]
+            image.save("./ML/uploaded_images/" + image.filename)
             foodPath = image.filename
             return foodPath
         else:
