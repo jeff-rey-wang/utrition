@@ -16,10 +16,12 @@ def display_index():
 
     if upload_type == "image":
         if request.method == "POST":
-            foodPath = request.get_json()
+            image = request.files['image']
+            image.save('./ML/uploaded_images/' + image.filename)
+            foodPath = image.filename
             return foodPath
         else:
-            myFood = interface.open("./ML/" + foodPath["path"].strip(' " " '))
+            myFood = interface.open("./ML/uploaded_images/" + foodPath)
 
     elif upload_type == "voice" or upload_type == "text":
         myFood = request.headers["food_text"]
