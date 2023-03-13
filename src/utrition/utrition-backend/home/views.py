@@ -34,7 +34,9 @@ def display_index():
         else:
             json_formatted_str = json.dumps(food_data[0], indent=2)
     except KeyError:
-        json_formatted_str = json.dumps({'error_msg': "Food item not found, try entering something else!"}, indent=2)
+        json_formatted_str = json.dumps(
+            {"error_msg": "Food item not found, try entering something else!"}, indent=2
+        )
     return json_formatted_str
 
 
