@@ -126,7 +126,7 @@ const Profile = () => {
                         <strong>serving unit:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].serving_unit},{" "}
                         </div><div className="small-text">
-                        <strong>serving weight grams:</strong>{" "}
+                        <strong>serving weight:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index]
                             .serving_weight_grams
@@ -201,7 +201,7 @@ const Profile = () => {
                         }
                         ,
                         </div><div className="small-text">
-                        <strong>serving weight grams:</strong>{" "}
+                        <strong>serving weight:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .serving_weight_grams
@@ -292,7 +292,7 @@ const Profile = () => {
                         }
                         ,
                         </div><div className="small-text">
-                        <strong>serving weight grams:</strong>{" "}
+                        <strong>serving weight:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .serving_weight_grams
@@ -383,7 +383,7 @@ const Profile = () => {
                         }
                         ,
                         </div><div className="small-text">
-                        <strong>serving weight grams:</strong>{" "}
+                        <strong>serving weight:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .serving_weight_grams
