@@ -130,8 +130,16 @@ const BMI = () => {
         axios({
             method: "POST",
             url: "/bmi",
-            user_bmi: user_bmi,
-            user_calories: user_calories,
+            heightUnit: heightUnit,
+            heightFeet: heightFeet,
+            heightInches: heightInches,
+            heightCm: heightCm,
+            weightUnit: weightUnit,
+            weight: weight,
+            birthSex: birthSex,
+            activityLevel: activityLevel,
+            age: age,
+
           })
             .then((response) => response.json())
             .catch((error) => console.log(error));
