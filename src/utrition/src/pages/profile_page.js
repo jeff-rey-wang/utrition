@@ -131,42 +131,42 @@ const Profile = () => {
                           totalcal.allFoodEntries[totalcal.index]
                             .serving_weight_grams
                         }
-                        ,
+                        g,
                         </div><div className="small-text"> 
                         <strong>calories:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].calories},{" "}
                         </div><div className="small-text">
                         <strong>total fat:</strong>{" "}
-                        {totalcal.allFoodEntries[totalcal.index].total_fat},{" "}
+                        {totalcal.allFoodEntries[totalcal.index].total_fat}g,{" "}
                         </div><div className="small-text">
                         <strong>saturated fat:</strong>{" "}
-                        {totalcal.allFoodEntries[totalcal.index].saturated_fat},{" "}
+                        {totalcal.allFoodEntries[totalcal.index].saturated_fat}g,{" "}
                         </div><div className="small-text">
                         <strong>cholesterol:</strong>{" "}
-                        {totalcal.allFoodEntries[totalcal.index].cholesterol},{" "}
+                        {totalcal.allFoodEntries[totalcal.index].cholesterol}mg,{" "}
                         </div><div className="small-text">
                         <strong>sodium:</strong>{" "}
-                        {totalcal.allFoodEntries[totalcal.index].sodium},{" "}
+                        {totalcal.allFoodEntries[totalcal.index].sodium}mg,{" "}
                         </div><div className="small-text">
                         <strong>total carbohydrates:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index]
                             .total_carbohydrate
                         }
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>dietary fiber:</strong>{" "}
-                        {totalcal.allFoodEntries[totalcal.index].dietary_fiber},{" "}
+                        {totalcal.allFoodEntries[totalcal.index].dietary_fiber}g,{" "}
                         </div><div className="small-text">
                         <strong>sugars:</strong>{" "}
-                        {totalcal.allFoodEntries[totalcal.index].sugars},{" "}
+                        {totalcal.allFoodEntries[totalcal.index].sugars}g,{" "}
                         </div><div className="small-text">
                         <strong>protein:</strong>{" "}
-                        {totalcal.allFoodEntries[totalcal.index].protein},{" "}
+                        {totalcal.allFoodEntries[totalcal.index].protein}g,{" "}
                         </div><div className="small-text">
                         <strong>potassium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].potassium}
-                        
+                        mg
                       </div>
                     </div>
                   </td>
@@ -206,7 +206,7 @@ const Profile = () => {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .serving_weight_grams
                         }
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>calories:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].calories}
@@ -214,51 +214,51 @@ const Profile = () => {
                         </div><div className="small-text">
                         <strong>total fat:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].total_fat}
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>saturated fat:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .saturated_fat
                         }
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>cholesterol:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .cholesterol
                         }
-                        ,
+                        mg,
                         </div><div className="small-text">
                         <strong>sodium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].sodium}
-                        ,
+                        mg,
                         </div><div className="small-text">
                         <strong>total carbohydrate:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .total_carbohydrate
                         }
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>dietary fiber:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .dietary_fiber
                         }
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>sugars:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].sugars}
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>protein:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].protein}
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>potassium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].potassium}
-                      </div>
+                      mg</div>
                     </div>
                   </td>
                 </tr>
@@ -297,7 +297,7 @@ const Profile = () => {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .serving_weight_grams
                         }
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>calories:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].calories}
@@ -305,51 +305,51 @@ const Profile = () => {
                         </div><div className="small-text">
                         <strong>total fat:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].total_fat}
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>saturated fat:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .saturated_fat
                         }
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>cholesterol:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .cholesterol
                         }
-                        ,
+                        mg,
                         </div><div className="small-text">
                         <strong>sodium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].sodium}
-                        ,
+                        mg,
                         </div><div className="small-text">
                         <strong>total carbohydrate:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .total_carbohydrate
                         }
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>dietary fiber:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .dietary_fiber
                         }
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>sugars:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].sugars}
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>protein:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].protein}
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>potassium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].potassium}
-                      </div>
+                      mg</div>
                     </div>
                   </td>
                 </tr>
@@ -388,7 +388,7 @@ const Profile = () => {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .serving_weight_grams
                         }
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>calories:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].calories}
@@ -396,51 +396,51 @@ const Profile = () => {
                         </div><div className="small-text">
                         <strong>total fat:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].total_fat}
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>saturated fat:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .saturated_fat
                         }
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>cholesterol:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .cholesterol
                         }
-                        ,
+                        mg,
                         </div><div className="small-text">
                         <strong>sodium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].sodium}
-                        ,
+                        mg,
                         </div><div className="small-text">
                         <strong>total carbohydrate:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .total_carbohydrate
                         }
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>dietary fiber:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .dietary_fiber
                         }
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>sugars:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].sugars}
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>protein:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].protein}
-                        ,
+                        g,
                         </div><div className="small-text">
                         <strong>potassium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].potassium}
-                      </div>
+                      mg</div>
                     </div>
                   </td>
                 </tr>
