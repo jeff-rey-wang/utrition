@@ -3,7 +3,6 @@ from csv import reader, writer
 import datetime
 import os
 
-
 def log_data(food_data):
     timestamp = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     for entry in food_data:
@@ -131,6 +130,40 @@ def read_file():
         )
 
     return existing_data
+
+# IN PROGRESS
+# def delete_entry(index):
+#     all_entries = read_file()
+#     i = 0
+
+#     for entry in all_entries:
+#         i += 1
+#         if i == index:
+#             all_entries.remove(entry)
+#             break
+
+#     with open('./nutrition_log.csv', 'w') as csvfile:
+#         filewriter = writer(csvfile, delimiter=",")
+#         filewriter.writerow(
+#             [
+#                 "Time",
+#                 "Name",
+#                 "Serving Quantity",
+#                 "Serving Unit",
+#                 "Serving Weight in Grams",
+#                 "Calories",
+#                 "Total Fat",
+#                 "Saturated Fat",
+#                 "Cholesterol",
+#                 "Sodium",
+#                 "Total Carbohydrate",
+#                 "Dietary Fiber",
+#                 "Sugars",
+#                 "Protein",
+#                 "Potassium",
+#             ]
+#         )
+#         filewriter.writerow(csv_row)
 
 
 def read_file_as_json():
