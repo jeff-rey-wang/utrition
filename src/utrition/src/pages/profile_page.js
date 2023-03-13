@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./profile_page.css";
 
 const Profile = () => {
@@ -460,6 +461,11 @@ const Profile = () => {
         ) : null}
       </div>
       <div class="right" style={{ flex: 1, marginLeft: "100px" }}>
+      <Link to="/bmi"
+            class="bmibutton button"
+          >
+            Edit Profile Statistics
+          </Link>
         <table class="right_table">
           <caption class="right_caption">My Caloric Intake</caption>
           <tr>

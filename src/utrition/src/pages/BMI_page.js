@@ -5,6 +5,7 @@ import "./BMI_page.css";
 
 
 const BMI = () => {
+    const [birthSex, setBirthSex] = useState("");
     const [weight, setWeight] = useState("");
     const [weightUnit, setWeightUnit] = useState("kg");
     const [heightCm, setHeightCm] = useState("");
@@ -14,7 +15,16 @@ const BMI = () => {
     const [age, setAge] = useState("");
     const [activityLevel, setActivityLevel] = useState("Sedentary");
     const [errorMessage, setErrorMessage] = useState("");
+    const [bmiMessage, setBmiMessage] = useState("");
+    const [CaloriesMessage, setCaloriesMessage] = useState("");
+    let user_height = 0.0;
+    let user_weight = 0.0;
+    let user_calories = 0.0;
+    let user_bmi = 0.0;
   
+    const handleBirthSexChange = (event) => {
+        setBirthSex(event.target.value);
+    };
     const handleWeightChange = (event) => {
       setWeight(event.target.value);
     };
@@ -52,17 +62,76 @@ const BMI = () => {
       if (!weight || (heightUnit === "ft"  && !heightCm) || (heightUnit === "ft" && !heightFeet && !heightInches) || !age || !activityLevel) {
         setErrorMessage("Please fill out all fields.");
       } else {
+        if (heightUnit === "ft" ){
+            user_height = heightFeet * 30.48 + heightInches * 2.54;
+        }
+        else{
+            user_height = heightCm;
+        }
+        if (weightUnit === "lbs"){
+            user_weight = weight * 0.45359237;
+        }
+        else{
+            user_weight = weight;
+        }
+        if (birthSex === "Male"){
+            if (activityLevel === "Sedentary"){
+                user_calories = Math.round((1.2 * (66 + 13.7 * user_weight + 5 * user_height - 6.8 * age))*100)/100;
+            }
+            else if (activityLevel === "Lightly active"){
+                user_calories = Math.round((1.375 * (66 + 13.7 * user_weight + 5 * user_height - 6.8 * age))*100)/100;
+            }
+            else if (activityLevel === "Moderately active"){
+                user_calories = Math.round((1.55 * (66 + 13.7 * user_weight + 5 * user_height - 6.8 * age))*100)/100;
+            }
+            else if (activityLevel === "Very active"){
+                user_calories = Math.round((1.725 * (66 + 13.7 * user_weight + 5 * user_height - 6.8 * age))*100)/100;
+            }
+            else{
+                user_calories = Math.round((1.9 * (66 + 13.7 * user_weight + 5 * user_height - 6.8 * age))*100)/100;
+            }
+        }
+        else{
+            if (activityLevel === "Sedentary"){
+                user_calories = Math.round((1.2 * (655 + 9.6 * user_weight + 1.8 * user_height - 4.7 * age))*100)/100;
+            }
+            else if (activityLevel === "Lightly active"){
+                user_calories = Math.round((1.375 * (655 + 9.6 * user_weight + 1.8 * user_height - 4.7 * age))*100)/100;
+            }
+            else if (activityLevel === "Moderately active"){
+                user_calories = Math.round((1.55 * (655 + 9.6 * user_weight + 1.8 * user_height - 4.7 * age))*100)/100;
+            }
+            else if (activityLevel === "Very active"){
+                user_calories = Math.round((1.725 * (655 + 9.6 * user_weight + 1.8 * user_height - 4.7 * age))*100)/100;
+            }
+            else{
+                user_calories = Math.round((1.9 * (655 + 9.6 * user_weight + 1.8 * user_height - 4.7 * age))*100)/100;
+            }
+        }
+
+        user_bmi = Math.round((user_weight/Math.pow(user_height/100,2)) * 10) / 10;
+
+        if (user_bmi < 18.5){
+            setBmiMessage(`Your BMI is ${user_bmi}, which means you are underweight!`);
+            setCaloriesMessage(`You need to eat more than ${user_calories} calories today if you'd like to gain some weight.`);
+        }
+        else if (user_bmi <= 24.9 && user_bmi >= 18.5){
+            setBmiMessage(`Your BMI is ${user_bmi}, which means you are normal weight!`);
+            setCaloriesMessage(`You need to eat around ${user_calories} calories today if you'd like to maintain your weight!`);
+        }
+        else if (user_bmi <= 29.9 && user_bmi >= 25){
+            setBmiMessage(`Your BMI is ${user_bmi}, which means you are overweight weight!`);
+            setCaloriesMessage(`You need to eat less than ${user_calories} calories today if you'd like to lose some weight!`);
+        }
+        else {
+            setBmiMessage(`Your BMI is ${user_bmi}, which means you are obese!`);
+            setCaloriesMessage(`You need to eat less than ${user_calories} calories today if you'd like to lose some weight!`);
+        }
         axios({
             method: "POST",
             url: "/bmi",
-            weight: weight,
-            weightUnit: weightUnit,
-            heightCm: heightCm,
-            heightFeet: heightFeet,
-            heightInches: heightInches,
-            heightUnit: heightUnit,
-            age: age,
-            activityLevel: activityLevel,
+            user_bmi: user_bmi,
+            user_calories: user_calories,
           })
             .then((response) => response.json())
             .catch((error) => console.log(error));
@@ -74,7 +143,22 @@ const BMI = () => {
     return (
       <div>
         <div className="title">BMI Calculator</div>
+        <div className="explanation">Enter in the fields below to find out if you're at a healthy weight!
+        Use the following to determine activity level: Sedentary = BMR x 1.2 (little or no exercise, desk job)
+Lightly active = BMR x 1.375 (light exercise/ sports 1-3 days/week)
+Moderately active = BMR x 1.55 (moderate exercise/ sports 6-7 days/week)
+Very active = BMR x 1.725 (hard exercise every day, or exercising 2 xs/day)
+Extra active = BMR x 1.9 (hard exercise 2 or more times per day, or training for
+marathon, or triathlon, etc) THINKING ABOUT MAKING THIS A TABLE TBH, PROB WILL BE MORE READABLE</div>
         <form className="BMIform" onSubmit={handleSubmit}>
+        <label>
+        Birth Sex:
+        <select value={birthSex} onChange={handleBirthSexChange}>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        </label>
+        <br />
           <label>
             Weight:
             <input type="number" min="0" max="1500" value={weight} onChange={handleWeightChange} />
@@ -121,6 +205,8 @@ const BMI = () => {
           <button type="submit">Calculate BMI</button>
           {errorMessage && <div className="error">{errorMessage}</div>}
         </form>
+        {bmiMessage && <div className="bmiii">{bmiMessage}</div>}
+        {CaloriesMessage && <div className="calories">{CaloriesMessage}</div>}
         {errorMessage && errorMessage === "Your statistics have been saved!" && <div className = "links">
         <Link to="/upload"
             class="uploadbutton button"
