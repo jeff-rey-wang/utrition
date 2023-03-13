@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./BMI_page.css";
 
 
@@ -51,11 +52,25 @@ const BMI = () => {
       if (!weight || (heightUnit === "ft"  && !heightCm) || (heightUnit === "ft" && !heightFeet && !heightInches) || !age || !activityLevel) {
         setErrorMessage("Please fill out all fields.");
       } else {
-        setErrorMessage("");
-        // do something with the user input
-      }
+        axios({
+            method: "POST",
+            url: "/bmi",
+            weight: weight,
+            weightUnit: weightUnit,
+            heightCm: heightCm,
+            heightFeet: heightFeet,
+            heightInches: heightInches,
+            heightUnit: heightUnit,
+            age: age,
+            activityLevel: activityLevel,
+          })
+            .then((response) => response.json())
+            .catch((error) => console.log(error));
+            setErrorMessage("Your statistics have been saved!");
+        }
+
     };
-  
+
     return (
       <div>
         <div className="title">BMI Calculator</div>
@@ -74,7 +89,7 @@ const BMI = () => {
             {heightUnit === "cm" ? (
               <input type="number" min="0" max="300" value={heightCm} onChange={handleHeightCmChange} />
             ) : (
-              <div>
+              <div style ={{display: "inline-block"}} >
                 <input type="number" min="0" max="8" value={heightFeet} onChange={handleHeightFeetChange} />
                 <span>ft</span>
                 <input type="number" min="0" max="12"value={heightInches} onChange={handleHeightInchesChange} />
@@ -106,6 +121,18 @@ const BMI = () => {
           <button type="submit">Calculate BMI</button>
           {errorMessage && <div className="error">{errorMessage}</div>}
         </form>
+        {errorMessage && errorMessage === "Your statistics have been saved!" && <div className = "links">
+        <Link to="/upload"
+            class="uploadbutton button"
+          >
+            Upload what you ate to Utrition!
+          </Link>
+        <Link to="/profile"
+            class="profilebutton button"
+          >
+            Check out your profile!
+          </Link>
+      </div>}
       </div>
     );
   };
