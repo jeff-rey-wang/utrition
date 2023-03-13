@@ -122,36 +122,51 @@ const Profile = () => {
                       <div className="small-text">
                         <strong>serving quantity:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].serving_qty},{" "}
+                        </div><div className="small-text">
                         <strong>serving unit:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].serving_unit},{" "}
+                        </div><div className="small-text">
                         <strong>serving weight grams:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index]
                             .serving_weight_grams
                         }
-                        , <strong>calories:</strong>{" "}
+                        ,
+                        </div><div className="small-text"> 
+                        <strong>calories:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].calories},{" "}
+                        </div><div className="small-text">
                         <strong>total fat:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].total_fat},{" "}
+                        </div><div className="small-text">
                         <strong>saturated fat:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].saturated_fat},{" "}
+                        </div><div className="small-text">
                         <strong>cholesterol:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].cholesterol},{" "}
+                        </div><div className="small-text">
                         <strong>sodium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].sodium},{" "}
+                        </div><div className="small-text">
                         <strong>total carbohydrates:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index]
                             .total_carbohydrate
                         }
-                        , <strong>dietary fiber:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>dietary fiber:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].dietary_fiber},{" "}
+                        </div><div className="small-text">
                         <strong>sugars:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].sugars},{" "}
+                        </div><div className="small-text">
                         <strong>protein:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].protein},{" "}
+                        </div><div className="small-text">
                         <strong>potassium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].potassium}
+                        
                       </div>
                     </div>
                   </td>
@@ -177,47 +192,71 @@ const Profile = () => {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .serving_qty
                         }
-                        , <strong>serving unit:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>serving unit:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .serving_unit
                         }
-                        , <strong>serving weight grams:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>serving weight grams:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .serving_weight_grams
                         }
-                        , <strong>calories:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>calories:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].calories}
-                        , <strong>total fat:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>total fat:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].total_fat}
-                        , <strong>saturated fat:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>saturated fat:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .saturated_fat
                         }
-                        , <strong>cholesterol:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>cholesterol:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .cholesterol
                         }
-                        , <strong>sodium:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>sodium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].sodium}
-                        , <strong>total carbohydrate:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>total carbohydrate:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .total_carbohydrate
                         }
-                        , <strong>dietary fiber:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>dietary fiber:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .dietary_fiber
                         }
-                        , <strong>sugars:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>sugars:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].sugars}
-                        , <strong>protein:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>protein:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].protein}
-                        , <strong>potassium:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>potassium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].potassium}
                       </div>
                     </div>
@@ -244,47 +283,71 @@ const Profile = () => {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .serving_qty
                         }
-                        , <strong>serving unit:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>serving unit:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .serving_unit
                         }
-                        , <strong>serving weight grams:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>serving weight grams:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .serving_weight_grams
                         }
-                        , <strong>calories:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>calories:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].calories}
-                        , <strong>total fat:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>total fat:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].total_fat}
-                        , <strong>saturated fat:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>saturated fat:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .saturated_fat
                         }
-                        , <strong>cholesterol:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>cholesterol:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .cholesterol
                         }
-                        , <strong>sodium:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>sodium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].sodium}
-                        , <strong>total carbohydrate:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>total carbohydrate:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .total_carbohydrate
                         }
-                        , <strong>dietary fiber:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>dietary fiber:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .dietary_fiber
                         }
-                        , <strong>sugars:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>sugars:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].sugars}
-                        , <strong>protein:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>protein:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].protein}
-                        , <strong>potassium:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>potassium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].potassium}
                       </div>
                     </div>
@@ -311,47 +374,71 @@ const Profile = () => {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .serving_qty
                         }
-                        , <strong>serving unit:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>serving unit:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .serving_unit
                         }
-                        , <strong>serving weight grams:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>serving weight grams:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .serving_weight_grams
                         }
-                        , <strong>calories:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>calories:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].calories}
-                        , <strong>total fat:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>total fat:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].total_fat}
-                        , <strong>saturated fat:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>saturated fat:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .saturated_fat
                         }
-                        , <strong>cholesterol:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>cholesterol:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .cholesterol
                         }
-                        , <strong>sodium:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>sodium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].sodium}
-                        , <strong>total carbohydrate:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>total carbohydrate:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .total_carbohydrate
                         }
-                        , <strong>dietary fiber:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>dietary fiber:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .dietary_fiber
                         }
-                        , <strong>sugars:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>sugars:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].sugars}
-                        , <strong>protein:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>protein:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].protein}
-                        , <strong>potassium:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>potassium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].potassium}
                       </div>
                     </div>
