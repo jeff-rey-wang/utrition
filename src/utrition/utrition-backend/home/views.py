@@ -50,7 +50,7 @@ def display_profile():
         "mode": most_eaten_food(),
         "caloricSummary": total_calories_per_day_summary_list(),
         "bmi": calculate_bmi(),
-        "recommendedCal": calculate_recommended_calories()
+        "recommendedCal": calculate_recommended_calories(),
     }
 
     json_formatted_str = json.dumps(fullJSON, indent=2)
@@ -63,7 +63,7 @@ def display_settings():
         update_user_settings(request.form)
     fullJSON = {
         "user_bmi": calculate_bmi(),
-        "user_calories": calculate_recommended_calories()
+        "user_calories": calculate_recommended_calories(),
     }
     json_formatted_str = json.dumps(fullJSON, indent=2)
     return json_formatted_str
