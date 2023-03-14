@@ -151,14 +151,40 @@ const BMI = () => {
     return (
       <div>
         <div className="title">BMI Calculator</div>
-        <div className="explanation">Enter in the fields below to find out if you're at a healthy weight!
-        Use the following to determine activity level: Sedentary = BMR x 1.2 (little or no exercise, desk job)
-Lightly active = BMR x 1.375 (light exercise/ sports 1-3 days/week)
-Moderately active = BMR x 1.55 (moderate exercise/ sports 6-7 days/week)
-Very active = BMR x 1.725 (hard exercise every day, or exercising 2 xs/day)
-Extra active = BMR x 1.9 (hard exercise 2 or more times per day, or training for
-marathon, or triathlon, etc) THINKING ABOUT MAKING THIS A TABLE TBH, PROB WILL BE MORE READABLE</div>
+        <div className="explanation">Take a look at the following chart to determine your activity level and then complete the form below!
+        </div>
+        <table className="activity-level">
+      <thead>
+        <tr>
+          <th>Activity Level</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sedentary</td>
+          <td>Little or no exercise / Desk job</td>
+        </tr>
+        <tr>
+          <td>Lightly active</td>
+          <td>Light exercise / Sports 1-3 days per week</td>
+        </tr>
+        <tr>
+          <td>Moderately active</td>
+          <td>Moderate exercise / Sports 6-7 days per week</td>
+        </tr>
+        <tr>
+          <td>Very active</td>
+          <td>Hard exercise every day / Exercising 2 times per day</td>
+        </tr>
+        <tr>
+          <td>Extra active</td>
+          <td>Hard exercise 2 or more times per day / Training for marathon, triathlon, etc</td>
+        </tr>
+      </tbody>
+    </table>
         <form className="BMIform" onSubmit={handleSubmit}>
+        <h2 className="formtitle">Enter Your Statistics</h2>
         <label>
         Birth Sex:
         <select value={birthSex} onChange={handleBirthSexChange}>
@@ -210,7 +236,7 @@ marathon, or triathlon, etc) THINKING ABOUT MAKING THIS A TABLE TBH, PROB WILL B
             </select>
           </label>
           <br />
-          <button type="submit">Calculate BMI</button>
+          <button className="submitbutton" type="submit">Calculate BMI</button>
           {errorMessage && <div className="error">{errorMessage}</div>}
         </form>
         {bmiMessage && <div className="bmiii">{bmiMessage}</div>}

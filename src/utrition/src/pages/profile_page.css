@@ -51,7 +51,7 @@ body {
   margin-top: 15px;
   margin-left: 10px;
   width: 85px;
-  height: 85px;
+  height: 250px;
   background-color: orange;
   border-radius: 20px;
   text-align: center;
@@ -124,4 +124,103 @@ td {
 
 .bmibutton{
   font-size: x-large;
+}
+
+.delete-entry{
+  background-color: #ff6b6b;
+  border: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: small;
+  border-radius: 20px;
+  margin-top: 138px;
+  margin-left: -7px;
+  transition: background-color 0.2s ease; 
+}
+
+.delete-entry:hover {
+  background-color: #e65a5a; 
+}
+
+.overlay {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-content {
+  background-color: #faebd7;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay-header {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 25%;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.overlay-header h2 {
+  margin: 0;
+  color: #187d04;
+}
+
+.close {
+  font-size: 28px;
+  font-weight: bold;
+  color: #187d04;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #0c3c03;;
+  text-shadow: 0 0 5px #fff;
+}
+
+.overlay-no {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #e65a5a;
+  transition: background-color 0.3s ease;
+  color: #faebd7;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.overlay-yes {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #26c407;
+  transition: background-color 0.3s ease;
+  color: #faebd7;
+  margin-left: 30%;
+}
+
+.overlay-no:hover {
+  background-color: #632727;
+}
+
+.overlay-yes:hover {
+  background-color: #187d04;
 }

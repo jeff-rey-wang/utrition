@@ -5,6 +5,8 @@ import "./profile_page.css";
 
 const Profile = () => {
   const [totalcal, settotalcal] = useState({});
+  const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
+  const [entryToDelete, setEntryToDelete] = useState(null);
 
   function getData() {
     axios({
@@ -92,6 +94,80 @@ const Profile = () => {
     }
   };
 
+  const handleDeleteEntry = (entry) => {
+    setEntryToDelete(entry);
+    setShowConfirmationDialog(true);
+  };
+
+  const handleCancelDelete = () => {
+    setShowConfirmationDialog(false);
+    setEntryToDelete(null);
+  };
+
+  async function handleConfirmDelete(){
+    await axios({
+      method: "POST",
+      url: "/profile",
+      indexToDelete: entryToDelete,
+    })
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
+    await axios({
+        method: "GET",
+        url: "/profile",
+      })
+        .then((response) => {
+          settotalcal({
+            currentCal: response.data.currentCal,
+            mode: response.data.mode,
+            allFoodEntries: response.data.allFoodEntries,
+            caloricSummary: response.data.caloricSummary,
+            index: totalcal.index,
+            right_index: totalcal.right_index,
+          });
+        })
+        .catch((error) => {
+          if (error.response) {
+            console.log(error.response);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          }
+        });
+    setShowConfirmationDialog(false);
+    setEntryToDelete(null);
+  };
+
+  const renderConfirmationDialog = () => {
+
+    if (!showConfirmationDialog) {
+      return null;
+    }
+
+    return (
+    <div className="overlay">
+          <div className="overlay-content">
+            <div className="overlay-header">
+              <span className="close" onClick={handleCancelDelete}>
+                &times;
+              </span>
+              <h2>Confirm Delete</h2>
+            </div>
+            <div className="overlay-body">
+              <p>Are you sure you want to delete the {totalcal.allFoodEntries[entryToDelete].food_name} entry?</p>
+            </div>
+            <div className="overlay-footer">
+            <button className="overlay-yes" onClick={handleConfirmDelete}>
+                Yes
+              </button>
+              <button className="overlay-no" onClick={handleCancelDelete}>
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+    );
+  };
+
   return (
     <div
       style={{ display: "flex", padding: "0.5rem calc((100vw - 1100px) / 2)" }}
@@ -113,6 +189,16 @@ const Profile = () => {
                   <td>
                     <div className="orange-square">
                       {totalcal.allFoodEntries[totalcal.index].timestamp}
+                    <button
+                        className="delete-entry"
+                        onClick={() =>
+                          handleDeleteEntry(
+                            totalcal.index
+                          )
+                        }
+                      >
+                        Delete
+                      </button>
                     </div>
                   </td>
                   <td>
@@ -180,6 +266,16 @@ const Profile = () => {
                   <td>
                     <div className="orange-square">
                       {totalcal.allFoodEntries[totalcal.index + 1].timestamp}
+                      <button
+                        className="delete-entry"
+                        onClick={() =>
+                          handleDeleteEntry(
+                            totalcal.index + 1
+                          )
+                        }
+                      >
+                        Delete
+                      </button>
                     </div>
                   </td>
                   <td>
@@ -271,6 +367,16 @@ const Profile = () => {
                   <td>
                     <div className="orange-square">
                       {totalcal.allFoodEntries[totalcal.index + 2].timestamp}
+                      <button
+                        className="delete-entry"
+                        onClick={() =>
+                          handleDeleteEntry(
+                            totalcal.index + 2
+                          )
+                        }
+                      >
+                        Delete
+                      </button>
                     </div>
                   </td>
                   <td>
@@ -362,6 +468,16 @@ const Profile = () => {
                   <td>
                     <div className="orange-square">
                       {totalcal.allFoodEntries[totalcal.index + 3].timestamp}
+                      <button
+                        className="delete-entry"
+                        onClick={() =>
+                          handleDeleteEntry(
+                            totalcal.index + 3
+                          )
+                        }
+                      >
+                        Delete
+                      </button>
                     </div>
                   </td>
                   <td>
@@ -448,6 +564,7 @@ const Profile = () => {
               )}
           </tbody>
         </table>
+        {renderConfirmationDialog()}
         {totalcal.index - 4 >= 0 ? (
           <button class="left_click_back button" onClick={left_click_backward}>
             Look at previous 4 entries
