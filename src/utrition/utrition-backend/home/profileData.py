@@ -4,6 +4,7 @@ import datetime
 import os
 import json
 
+
 def log_data(food_data):
     timestamp = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     for entry in food_data:
@@ -137,7 +138,7 @@ def delete_entry(index):
     all_entries = read_file()
     all_entries.pop(int(index))
 
-    with open('./nutrition_log.csv', 'w') as csvfile:
+    with open("./nutrition_log.csv", "w") as csvfile:
         filewriter = writer(csvfile, delimiter=",")
         filewriter.writerow(
             [
