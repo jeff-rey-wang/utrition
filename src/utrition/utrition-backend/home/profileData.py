@@ -147,7 +147,7 @@ def delete_entry(index):
         filewriter.writerow(
             [
                 "Date",
-                "Time"
+                "Time",
                 "Name",
                 "Serving Quantity",
                 "Serving Unit",
