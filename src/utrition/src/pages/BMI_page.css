@@ -1,0 +1,70 @@
+.title{
+    flex: 1;
+    height: 5vh;
+    text-align: center;
+    color:#faebd7;
+    text-decoration: underline; 
+    font-size: xx-large;
+}
+.explanation{
+    flex: 1;
+    margin: auto;
+    margin-bottom: 30px;
+    width: 50%;
+    text-align: center;
+    color:#faebd7;
+    font-size: x-large;
+}
+      /*If we want to remove stepper arrows uncomment this
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+       
+      input[type=number] {
+        -moz-appearance: textfield;
+      }*/
+
+.BMIform{flex: 1;
+    text-align: center;
+    background-color:#faebd7; 
+    height: fit-content;
+    width: fit-content;
+    margin:auto;
+    padding: 8px;}
+
+.links{
+    text-align: center;
+    margin-top: 30px;
+    white-space: nowrap;
+}
+
+.uploadbutton{
+    padding: 5px;
+}
+.profilebutton{
+    padding: 5px;
+}
+
+.error{
+    margin-top: 10px;
+}
+
+.bmiii{flex: 1;
+    text-align: center;
+    background-color:#faebd7; 
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    margin-top: 20px;
+    padding: 8px;}
+
+.calories{flex: 1;
+    text-align: center;
+    background-color:#faebd7; 
+    height: fit-content;
+    width: fit-content;
+    margin:auto;
+    margin-top: 10px;
+    padding: 8px;}
