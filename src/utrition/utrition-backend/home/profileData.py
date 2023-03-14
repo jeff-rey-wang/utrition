@@ -2,6 +2,7 @@ from statistics import mode
 from csv import reader, writer
 import datetime
 import os
+import json
 
 
 def log_data(food_data):
@@ -162,51 +163,51 @@ def read_file_as_json():
 
 def to_metric(heightCm, heightFT, heightInches, heightUnit, weight, weightUnit):
     if heightUnit == "ft":
-        user_height = heightFT * 30.48 + heightInches * 2.54
+        user_height = int(heightFT) * 30.48 + int(heightInches) * 2.54
     else:
-        user_height = heightCm
+        user_height = int(heightCm)
     
     if weightUnit == "lbs":
-        user_weight = weight * 0.45359237
+        user_weight = int(weight) * 0.45359237
     else:
-        user_weight = weight
+        user_weight = int(weight)
     
     return user_weight, user_height
 
 
 def read_user_settings():
     if os.path.isfile("./user.json"):    
-        with open("user.json", "r") as jsonfile:
+        with open("./user.json", "r", encoding='utf-8') as jsonfile:
             return json.load(jsonfile)
     else:
         null_info = {
-            "weight": -1.0,
+            "weight": 0,
             "weightUnit": "",
-            "heightCm": -1.0,
-            "heightFT": -1,
-            "heightInches": -1.0,
+            "heightCm": 0,
+            "heightFT": 0,
+            "heightInches": 0,
             "heightUnit": "",
-            "age": -1,
+            "age": 0,
             "gender": "",
             "activityLevel": ""
         }
         return null_info
 
 
-def update_user_settings(birthSex="", heightCm=-1.0, heightFT=-1, heightInches=-1.0, heightUnit="", weight=-1.0, weightUnit="", age=-1, activityLevel=""):
+def update_user_settings(birthSex="", heightCm=-1, heightFT=-1, heightInches=-1, heightUnit="", weight=-1, weightUnit="", age=-1, activityLevel=""):
     if os.path.isfile("./user.json"):
         data = read_user_settings()
         if birthSex != "":
             data["gender"] = birthSex
-        if weight != -1.0:
+        if weight != -1:
             data["weight"] = weight
         if weightUnit != "":
             data["weightUnit"] = weightUnit
-        if heightCm != -1.0:
+        if heightCm != -1:
             data["heightCm"] = heightCm
         if heightFT != -1:
             data["heightFT"] = heightFT
-        if heightInches != -1.0:
+        if heightInches != -1:
             data["heightInches"] = heightInches
         if heightUnit != "":
             data["heightUnit"] = heightUnit
@@ -214,8 +215,11 @@ def update_user_settings(birthSex="", heightCm=-1.0, heightFT=-1, heightInches=-
             data["age"] = age
         if activityLevel != "":
             data["activityLevel"] = activityLevel
-        myJSON = json.dump(data, jsonfile)
-        jsonfile.close()
+        with open("./user.json", "w") as jsonfile:
+            #myJSON = json.dump(data, jsonfile)
+            myJSON = json.dumps(data)
+            jsonfile.write(myJSON)
+            jsonfile.close()
     else:
         with open("./user.json", "w") as jsonfile:
             user_info = {
@@ -300,14 +304,13 @@ def most_eaten_food():
 def calculate_bmi():
     data = read_user_settings()
     weight, height = to_metric(data["heightCm"], data["heightFT"], data["heightInches"], data["heightUnit"], data["weight"], data["weightUnit"])
-
     return round(weight/pow(height/100,2), 2)
 
 
 def calculate_recommended_calories():
     data = read_user_settings()
     weight, height = to_metric(data["heightCm"], data["heightFT"], data["heightInches"], data["heightUnit"], data["weight"], data["weightUnit"])
-    age = data["age"]
+    age = int(data["age"])
     birthSex = data["gender"]
     activityLevel = data["activityLevel"]
 
