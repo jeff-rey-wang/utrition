@@ -215,7 +215,7 @@ def to_metric_height(heightCm, heightFT, heightInches, heightUnit):
 
 
 def read_user_settings():
-    if os.path.isfile("./user.json"):
+    if os.path.isfile("./user.json") and 0 != os.path.getsize('./user.json'):
         with open("./user.json", "r", encoding="utf-8") as jsonfile:
             return json.load(jsonfile)
     else:
