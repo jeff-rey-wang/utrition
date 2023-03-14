@@ -92,19 +92,19 @@ const BMI = () => {
       //   })
       //   .catch((error) => console.log(error));
       
-      if (responseData.user_bmi < 18.5){
+      if (responseData.user_bmi && responseData.user_bmi < 18.5){
           setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are underweight!`);
           setCaloriesMessage(`You need to eat more than ${responseData.user_calories} calories today if you'd like to gain some weight.`);
       }
-      else if (responseData.user_bmi <= 24.9 && responseData.user_bmi >= 18.5){
+      else if (responseData.user_bmi && responseData.user_bmi <= 24.9 && responseData.user_bmi >= 18.5){
           setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are normal weight!`);
           setCaloriesMessage(`You need to eat around ${responseData.user_calories} calories today if you'd like to maintain your weight!`);
       }
-      else if (responseData.user_bmi <= 29.9 && responseData.user_bmi >= 25){
+      else if (responseData.user_bmi && responseData.user_bmi <= 29.9 && responseData.user_bmi >= 25){
           setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are overweight weight!`);
           setCaloriesMessage(`You need to eat less than ${responseData.user_calories} calories today if you'd like to lose some weight!`);
       }
-      else {
+      else if (responseData.user_bmi && responseData.user_bmi >= 30){
           setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are obese!`);
           setCaloriesMessage(`You need to eat less than ${responseData.user_calories} calories today if you'd like to lose some weight!`);
       }
