@@ -59,6 +59,7 @@ def display_profile():
     json_formatted_str = json.dumps(fullJSON, indent=2)
     return json_formatted_str
 
+
 @home_view.route("/settings", methods=["GET"])
 def display_settings():
     settings = read_user_settings()
@@ -78,6 +79,7 @@ def display_settings():
         return json_formatted_str
     else:
         return settings
+
 
 @home_view.route("/bmi", methods=["POST"])
 def display_bmi():
