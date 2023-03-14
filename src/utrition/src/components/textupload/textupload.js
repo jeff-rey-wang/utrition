@@ -39,6 +39,7 @@ const TextUpload = () => {
           sugars: response.data.sugars,
           protein: response.data.protein,
           potassium: response.data.potassium,
+          error_msg: response.data.error_msg,
         });
       })
       .catch((error) => {
@@ -107,6 +108,9 @@ const TextUpload = () => {
         </pre>
         <pre hidden={responseData.potassium ? false : true}>
           Potassium: {responseData.potassium}
+        </pre>
+        <pre hidden={responseData.error_msg ? false : true}>
+          {responseData.error_msg}
         </pre>
       </div>
     </div>

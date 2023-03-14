@@ -1,0 +1,142 @@
+.title{
+    flex: 1;
+    text-align: center;
+    color:#faebd7;
+    text-decoration: underline; 
+    font-size: xx-large;
+    margin: auto;
+    margin-top: 10px;
+}
+.explanation{
+    flex: 1;
+    margin: auto;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    text-align: center;
+    color:#faebd7;
+    font-size: x-large;
+    white-space: nowrap;
+}
+      /*If we want to remove stepper arrows uncomment this
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+       
+      input[type=number] {
+        -moz-appearance: textfield;
+      }*/
+
+.BMIform{flex: 1;
+    text-align: center;
+    background-color:#faebd7; 
+    height: fit-content;
+    width: fit-content;
+    margin:auto;
+    margin-top: 20px;
+    padding: 8px;
+    border: 2px solid #a49a8e;
+}
+
+.links{
+    text-align: center;
+    margin-top: 30px;
+    white-space: nowrap;
+}
+
+.uploadbutton{
+    padding: 5px;
+}
+.profilebutton{
+    padding: 5px;
+}
+
+.error{
+    margin-top: 10px;
+}
+
+.bmiii{flex: 1;
+    text-align: center;
+    background-color:#faebd7; 
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    margin-top: 20px;
+    padding: 8px;}
+
+.calories{flex: 1;
+    text-align: center;
+    background-color:#faebd7; 
+    height: fit-content;
+    width: fit-content;
+    margin:auto;
+    margin-top: 10px;
+    padding: 8px;}
+
+.activity-level {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 400px; 
+    margin-top: 20px;
+    flex: 1;
+    text-align: center;
+    margin:auto;
+    border: 2px solid #a49a8e;
+}
+
+.activity-level th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+
+.activity-level td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.activity-level th {
+    background-color: #faebd7;
+}
+
+.activity-level td {
+    font-size: 14px;
+}
+
+.activity-level tr:nth-child(even) {
+    background-color: #faebd7;
+}
+
+.activity-level tr:nth-child(odd) {
+    background-color: rgb(229, 215, 198);
+}
+
+input,select{
+    margin-left: 10px;
+    background-color: rgb(229, 215, 198);
+    border: 1px solid #a49a8e;
+}
+
+label{
+    font-weight: bold;
+}
+
+.submitbutton{
+    font-size: large;
+    background-color: rgb(229, 215, 198);
+    border: 2px solid #a49a8e;
+    padding: 3px 5px;
+}
+
+.submitbutton:hover{
+    background-color: rgb(191, 180, 166);
+}
+
+.formtitle{
+    padding-bottom: 10px;
+    text-decoration: underline;
+    text-underline-position: under;
+}

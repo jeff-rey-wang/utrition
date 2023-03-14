@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./profile_page.css";
 
 const Profile = () => {
   const [totalcal, settotalcal] = useState({});
+  const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
+  const [entryToDelete, setEntryToDelete] = useState(null);
 
   function getData() {
     axios({
@@ -91,6 +94,80 @@ const Profile = () => {
     }
   };
 
+  const handleDeleteEntry = (entry) => {
+    setEntryToDelete(entry);
+    setShowConfirmationDialog(true);
+  };
+
+  const handleCancelDelete = () => {
+    setShowConfirmationDialog(false);
+    setEntryToDelete(null);
+  };
+
+  async function handleConfirmDelete(){
+    await axios({
+      method: "POST",
+      url: "/profile",
+      indexToDelete: entryToDelete,
+    })
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
+    await axios({
+        method: "GET",
+        url: "/profile",
+      })
+        .then((response) => {
+          settotalcal({
+            currentCal: response.data.currentCal,
+            mode: response.data.mode,
+            allFoodEntries: response.data.allFoodEntries,
+            caloricSummary: response.data.caloricSummary,
+            index: totalcal.index,
+            right_index: totalcal.right_index,
+          });
+        })
+        .catch((error) => {
+          if (error.response) {
+            console.log(error.response);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          }
+        });
+    setShowConfirmationDialog(false);
+    setEntryToDelete(null);
+  };
+
+  const renderConfirmationDialog = () => {
+
+    if (!showConfirmationDialog) {
+      return null;
+    }
+
+    return (
+    <div className="overlay">
+          <div className="overlay-content">
+            <div className="overlay-header">
+              <span className="close" onClick={handleCancelDelete}>
+                &times;
+              </span>
+              <h2>Confirm Delete</h2>
+            </div>
+            <div className="overlay-body">
+              <p>Are you sure you want to delete the {totalcal.allFoodEntries[entryToDelete].food_name} entry?</p>
+            </div>
+            <div className="overlay-footer">
+            <button className="overlay-yes" onClick={handleConfirmDelete}>
+                Yes
+              </button>
+              <button className="overlay-no" onClick={handleCancelDelete}>
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+    );
+  };
+
   return (
     <div
       style={{ display: "flex", padding: "0.5rem calc((100vw - 1100px) / 2)" }}
@@ -112,6 +189,16 @@ const Profile = () => {
                   <td>
                     <div className="orange-square">
                       {totalcal.allFoodEntries[totalcal.index].timestamp}
+                    <button
+                        className="delete-entry"
+                        onClick={() =>
+                          handleDeleteEntry(
+                            totalcal.index
+                          )
+                        }
+                      >
+                        Delete
+                      </button>
                     </div>
                   </td>
                   <td>
@@ -122,36 +209,51 @@ const Profile = () => {
                       <div className="small-text">
                         <strong>serving quantity:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].serving_qty},{" "}
+                        </div><div className="small-text">
                         <strong>serving unit:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].serving_unit},{" "}
-                        <strong>serving weight grams:</strong>{" "}
+                        </div><div className="small-text">
+                        <strong>serving weight:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index]
                             .serving_weight_grams
                         }
-                        , <strong>calories:</strong>{" "}
+                        g,
+                        </div><div className="small-text"> 
+                        <strong>calories:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].calories},{" "}
+                        </div><div className="small-text">
                         <strong>total fat:</strong>{" "}
-                        {totalcal.allFoodEntries[totalcal.index].total_fat},{" "}
+                        {totalcal.allFoodEntries[totalcal.index].total_fat}g,{" "}
+                        </div><div className="small-text">
                         <strong>saturated fat:</strong>{" "}
-                        {totalcal.allFoodEntries[totalcal.index].saturated_fat},{" "}
+                        {totalcal.allFoodEntries[totalcal.index].saturated_fat}g,{" "}
+                        </div><div className="small-text">
                         <strong>cholesterol:</strong>{" "}
-                        {totalcal.allFoodEntries[totalcal.index].cholesterol},{" "}
+                        {totalcal.allFoodEntries[totalcal.index].cholesterol}mg,{" "}
+                        </div><div className="small-text">
                         <strong>sodium:</strong>{" "}
-                        {totalcal.allFoodEntries[totalcal.index].sodium},{" "}
+                        {totalcal.allFoodEntries[totalcal.index].sodium}mg,{" "}
+                        </div><div className="small-text">
                         <strong>total carbohydrates:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index]
                             .total_carbohydrate
                         }
-                        , <strong>dietary fiber:</strong>{" "}
-                        {totalcal.allFoodEntries[totalcal.index].dietary_fiber},{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>dietary fiber:</strong>{" "}
+                        {totalcal.allFoodEntries[totalcal.index].dietary_fiber}g,{" "}
+                        </div><div className="small-text">
                         <strong>sugars:</strong>{" "}
-                        {totalcal.allFoodEntries[totalcal.index].sugars},{" "}
+                        {totalcal.allFoodEntries[totalcal.index].sugars}g,{" "}
+                        </div><div className="small-text">
                         <strong>protein:</strong>{" "}
-                        {totalcal.allFoodEntries[totalcal.index].protein},{" "}
+                        {totalcal.allFoodEntries[totalcal.index].protein}g,{" "}
+                        </div><div className="small-text">
                         <strong>potassium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index].potassium}
+                        mg
                       </div>
                     </div>
                   </td>
@@ -164,6 +266,16 @@ const Profile = () => {
                   <td>
                     <div className="orange-square">
                       {totalcal.allFoodEntries[totalcal.index + 1].timestamp}
+                      <button
+                        className="delete-entry"
+                        onClick={() =>
+                          handleDeleteEntry(
+                            totalcal.index + 1
+                          )
+                        }
+                      >
+                        Delete
+                      </button>
                     </div>
                   </td>
                   <td>
@@ -177,49 +289,73 @@ const Profile = () => {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .serving_qty
                         }
-                        , <strong>serving unit:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>serving unit:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .serving_unit
                         }
-                        , <strong>serving weight grams:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>serving weight:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .serving_weight_grams
                         }
-                        , <strong>calories:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>calories:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].calories}
-                        , <strong>total fat:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>total fat:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].total_fat}
-                        , <strong>saturated fat:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>saturated fat:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .saturated_fat
                         }
-                        , <strong>cholesterol:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>cholesterol:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .cholesterol
                         }
-                        , <strong>sodium:</strong>{" "}
+                        mg,
+                        </div><div className="small-text">
+                        <strong>sodium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].sodium}
-                        , <strong>total carbohydrate:</strong>{" "}
+                        mg,
+                        </div><div className="small-text">
+                        <strong>total carbohydrate:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .total_carbohydrate
                         }
-                        , <strong>dietary fiber:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>dietary fiber:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 1]
                             .dietary_fiber
                         }
-                        , <strong>sugars:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>sugars:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].sugars}
-                        , <strong>protein:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>protein:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].protein}
-                        , <strong>potassium:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>potassium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 1].potassium}
-                      </div>
+                      mg</div>
                     </div>
                   </td>
                 </tr>
@@ -231,6 +367,16 @@ const Profile = () => {
                   <td>
                     <div className="orange-square">
                       {totalcal.allFoodEntries[totalcal.index + 2].timestamp}
+                      <button
+                        className="delete-entry"
+                        onClick={() =>
+                          handleDeleteEntry(
+                            totalcal.index + 2
+                          )
+                        }
+                      >
+                        Delete
+                      </button>
                     </div>
                   </td>
                   <td>
@@ -244,49 +390,73 @@ const Profile = () => {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .serving_qty
                         }
-                        , <strong>serving unit:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>serving unit:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .serving_unit
                         }
-                        , <strong>serving weight grams:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>serving weight:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .serving_weight_grams
                         }
-                        , <strong>calories:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>calories:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].calories}
-                        , <strong>total fat:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>total fat:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].total_fat}
-                        , <strong>saturated fat:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>saturated fat:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .saturated_fat
                         }
-                        , <strong>cholesterol:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>cholesterol:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .cholesterol
                         }
-                        , <strong>sodium:</strong>{" "}
+                        mg,
+                        </div><div className="small-text">
+                        <strong>sodium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].sodium}
-                        , <strong>total carbohydrate:</strong>{" "}
+                        mg,
+                        </div><div className="small-text">
+                        <strong>total carbohydrate:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .total_carbohydrate
                         }
-                        , <strong>dietary fiber:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>dietary fiber:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 2]
                             .dietary_fiber
                         }
-                        , <strong>sugars:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>sugars:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].sugars}
-                        , <strong>protein:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>protein:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].protein}
-                        , <strong>potassium:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>potassium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 2].potassium}
-                      </div>
+                      mg</div>
                     </div>
                   </td>
                 </tr>
@@ -298,6 +468,16 @@ const Profile = () => {
                   <td>
                     <div className="orange-square">
                       {totalcal.allFoodEntries[totalcal.index + 3].timestamp}
+                      <button
+                        className="delete-entry"
+                        onClick={() =>
+                          handleDeleteEntry(
+                            totalcal.index + 3
+                          )
+                        }
+                      >
+                        Delete
+                      </button>
                     </div>
                   </td>
                   <td>
@@ -311,55 +491,80 @@ const Profile = () => {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .serving_qty
                         }
-                        , <strong>serving unit:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>serving unit:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .serving_unit
                         }
-                        , <strong>serving weight grams:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>serving weight:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .serving_weight_grams
                         }
-                        , <strong>calories:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>calories:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].calories}
-                        , <strong>total fat:</strong>{" "}
+                        ,
+                        </div><div className="small-text">
+                        <strong>total fat:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].total_fat}
-                        , <strong>saturated fat:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>saturated fat:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .saturated_fat
                         }
-                        , <strong>cholesterol:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>cholesterol:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .cholesterol
                         }
-                        , <strong>sodium:</strong>{" "}
+                        mg,
+                        </div><div className="small-text">
+                        <strong>sodium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].sodium}
-                        , <strong>total carbohydrate:</strong>{" "}
+                        mg,
+                        </div><div className="small-text">
+                        <strong>total carbohydrate:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .total_carbohydrate
                         }
-                        , <strong>dietary fiber:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>dietary fiber:</strong>{" "}
                         {
                           totalcal.allFoodEntries[totalcal.index + 3]
                             .dietary_fiber
                         }
-                        , <strong>sugars:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>sugars:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].sugars}
-                        , <strong>protein:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>protein:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].protein}
-                        , <strong>potassium:</strong>{" "}
+                        g,
+                        </div><div className="small-text">
+                        <strong>potassium:</strong>{" "}
                         {totalcal.allFoodEntries[totalcal.index + 3].potassium}
-                      </div>
+                      mg</div>
                     </div>
                   </td>
                 </tr>
               )}
           </tbody>
         </table>
+        {renderConfirmationDialog()}
         {totalcal.index - 4 >= 0 ? (
           <button class="left_click_back button" onClick={left_click_backward}>
             Look at previous 4 entries
@@ -373,6 +578,11 @@ const Profile = () => {
         ) : null}
       </div>
       <div class="right" style={{ flex: 1, marginLeft: "100px" }}>
+      <Link to="/bmi"
+            class="bmibutton button"
+          >
+            Edit Profile Statistics
+          </Link>
         <table class="right_table">
           <caption class="right_caption">My Caloric Intake</caption>
           <tr>
