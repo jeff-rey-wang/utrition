@@ -5,25 +5,37 @@ body {
 }
 
 .most_eaten {
-  color: #d6952c;
-  font-size: 30px;
+  color: #FFC300;
+  font-size: 3vw;
   margin-left: 10px;
   margin-top: 10px;
 }
 
 .average_cal {
-  color: #aaa;
-  font-size: 30px;
+  color: #E9FFA4;
+  font-size: 3vw;
   margin-left: 10px;
   margin-top: 20px;
 }
 
 .past_meals {
   color: #ffffff;
-  font-size: 70px;
+  font-size: 7vw;
   border-bottom: 5px solid #ffffff;
   margin-left: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .most_eaten {
+    font-size: 30px;
+  }
+  .average_cal {
+    font-size: 30px;
+  }
+  .past_meals {
+    font-size: 70px;
+  }
 }
 
 .button {
@@ -122,8 +134,9 @@ td {
   margin-left: 10px;
 }
 
-.bmibutton{
+.settingsbutton{
   font-size: x-large;
+  margin-top: 20px;
 }
 
 .delete-entry{
@@ -223,4 +236,75 @@ td {
 
 .overlay-yes:hover {
   background-color: #187d04;
+}
+
+.bmidisplay{
+  color: #E9FFA4;
+  font-size: 3vw;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .bmidisplay {
+    font-size: 30px;
+  }}
+
+.bmii {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 400px; 
+  flex: 1;
+  text-align: center;
+  border: 2px solid #a49a8e;
+  margin-left: 7px;
+}
+
+.bmii th {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  color: #187d04;
+}
+
+
+.bmii td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  color: #26c407;
+  text-align: center;
+}
+
+.bmii th {
+  background-color: #faebd7;
+}
+
+.bmii td {
+  font-size: 14px;
+}
+
+.bmii tr:nth-child(even) {
+  background-color: #faebd7;
+}
+
+.bmii tr:nth-child(odd) {
+  background-color: rgb(229, 215, 198);
+}
+
+.explanationbutton{
+  background-color: transparent;
+  border: transparent;
+  margin-left: 7px;
+  margin-bottom: 20px;
+  color: #faebd7;
+  padding: 3px 5px;
+}
+.explanationbutton:hover{
+  background-color: #062b24;
+}
+
+.closebmi {
+  margin-top: 7px;
+  margin-left: 7px;
 }
