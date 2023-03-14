@@ -161,22 +161,26 @@ def read_file_as_json():
     return dataAsJson
 
 
-def to_metric(heightCm, heightFT, heightInches, heightUnit, weight, weightUnit):
-    if heightUnit == "ft":
-        user_height = int(heightFT) * 30.48 + int(heightInches) * 2.54
-    else:
-        user_height = int(heightCm)
-    
+def to_metric_weight(weight, weightUnit):
     if weightUnit == "lbs":
         user_weight = int(weight) * 0.45359237
     else:
         user_weight = int(weight)
-    
-    return user_weight, user_height
+
+    return user_weight
+
+
+def to_metric_height(heightCm, heightFT, heightInches, heightUnit):
+    if heightUnit == "ft":
+        user_height = int(heightFT) * 30.48 + int(heightInches) * 2.54
+    else:
+        user_height = int(heightCm)
+
+    return user_height
 
 
 def read_user_settings():
-    if os.path.isfile("./user.json"):    
+    if os.path.isfile("./user.json"):
         with open("./user.json", "r", encoding='utf-8') as jsonfile:
             return json.load(jsonfile)
     else:
@@ -194,29 +198,28 @@ def read_user_settings():
         return null_info
 
 
-def update_user_settings(birthSex="", heightCm=-1, heightFT=-1, heightInches=-1, heightUnit="", weight=-1, weightUnit="", age=-1, activityLevel=""):
+def update_user_settings(changedVal):
     if os.path.isfile("./user.json"):
         data = read_user_settings()
-        if birthSex != "":
-            data["gender"] = birthSex
-        if weight != -1:
-            data["weight"] = weight
-        if weightUnit != "":
-            data["weightUnit"] = weightUnit
-        if heightCm != -1:
-            data["heightCm"] = heightCm
-        if heightFT != -1:
-            data["heightFT"] = heightFT
-        if heightInches != -1:
-            data["heightInches"] = heightInches
-        if heightUnit != "":
-            data["heightUnit"] = heightUnit
-        if age != -1:
-            data["age"] = age
-        if activityLevel != "":
-            data["activityLevel"] = activityLevel
+        if changedVal['birthSex'] != "":
+            data["gender"] = changedVal['birthSex']
+        if changedVal['weight'] != "":
+            data["weight"] = changedVal['weight']
+        if changedVal['weightUnit'] != "":
+            data["weightUnit"] = changedVal['weightUnit']
+        if changedVal['heightCm'] != "":
+            data["heightCm"] = changedVal['heightCm']
+        if changedVal['heightFeet'] != "":
+            data["heightFT"] = changedVal['heightFeet']
+        if changedVal['heightInches'] != "":
+            data["heightInches"] = changedVal['heightInches']
+        if changedVal['heightUnit'] != "":
+            data["heightUnit"] = changedVal['heightUnit']
+        if changedVal['age'] != "":
+            data["age"] = changedVal['age']
+        if changedVal['activityLevel'] != "":
+            data["activityLevel"] = changedVal['activityLevel']
         with open("./user.json", "w") as jsonfile:
-            #myJSON = json.dump(data, jsonfile)
             myJSON = json.dumps(data)
             jsonfile.write(myJSON)
             jsonfile.close()
@@ -303,13 +306,15 @@ def most_eaten_food():
 
 def calculate_bmi():
     data = read_user_settings()
-    weight, height = to_metric(data["heightCm"], data["heightFT"], data["heightInches"], data["heightUnit"], data["weight"], data["weightUnit"])
+    weight = to_metric_weight(data["weight"], data["weightUnit"])
+    height = to_metric_height(data["heightCm"], data["heightFT"], data["heightInches"], data["heightUnit"])
     return round(weight/pow(height/100,2), 2)
 
 
 def calculate_recommended_calories():
     data = read_user_settings()
-    weight, height = to_metric(data["heightCm"], data["heightFT"], data["heightInches"], data["heightUnit"], data["weight"], data["weightUnit"])
+    weight = to_metric_weight(data["weight"], data["weightUnit"])
+    height = to_metric_height(data["heightCm"], data["heightFT"], data["heightInches"], data["heightUnit"])
     age = int(data["age"])
     birthSex = data["gender"]
     activityLevel = data["activityLevel"]
@@ -329,5 +334,5 @@ def calculate_recommended_calories():
         calories = round(activityMultiplier * (9.99 * weight + 6.25 * height - 4.92 * age + 5), 2)
     else:
         calories = round(activityMultiplier * (9.99 * weight + 6.25 * height - 4.92 * age - 161), 2)
-    
+
     return calories
