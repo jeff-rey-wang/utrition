@@ -59,14 +59,28 @@ def display_profile():
     json_formatted_str = json.dumps(fullJSON, indent=2)
     return json_formatted_str
 
-
-@home_view.route("/bmi", methods=["GET", "POST"])
+@home_view.route("/settings", methods=["GET"])
 def display_settings():
+    settings = read_user_settings()
+    if 0 == settings:
+        fullJSON = {
+            "weight": "",
+            "weightUnit": "",
+            "heightCm": "",
+            "heightFT": "",
+            "heightInches": "",
+            "heightUnit": "",
+            "age": "",
+            "gender": "",
+            "activityLevel": "",
+        }
+        json_formatted_str = json.dumps(fullJSON, indent=2)
+        return json_formatted_str
+    else:
+        return settings
+
+@home_view.route("/bmi", methods=["POST"])
+def display_bmi():
     if request.method == "POST":
         update_user_settings(request.form)
-    fullJSON = {
-        "user_bmi": calculate_bmi(),
-        "user_calories": calculate_recommended_calories(),
-    }
-    json_formatted_str = json.dumps(fullJSON, indent=2)
-    return json_formatted_str
+        return ""

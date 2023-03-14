@@ -219,18 +219,7 @@ def read_user_settings():
         with open("./user.json", "r", encoding="utf-8") as jsonfile:
             return json.load(jsonfile)
     else:
-        null_info = {
-            "weight": 0,
-            "weightUnit": "",
-            "heightCm": 0,
-            "heightFT": 0,
-            "heightInches": 0,
-            "heightUnit": "",
-            "age": 0,
-            "gender": "",
-            "activityLevel": "",
-        }
-        return null_info
+        return 0
 
 
 def update_user_settings(changedVal):
@@ -344,6 +333,9 @@ def most_eaten_food():
 
 def calculate_bmi():
     data = read_user_settings()
+    if 0 == len(data):
+        return 0
+
     weight = to_metric_weight(data["weight"], data["weightUnit"])
     height = to_metric_height(
         data["heightCm"], data["heightFT"], data["heightInches"], data["heightUnit"]
@@ -353,6 +345,9 @@ def calculate_bmi():
 
 def calculate_recommended_calories():
     data = read_user_settings()
+    if 0 == len(data):
+        return 0
+
     weight = to_metric_weight(data["weight"], data["weightUnit"])
     height = to_metric_height(
         data["heightCm"], data["heightFT"], data["heightInches"], data["heightUnit"]
