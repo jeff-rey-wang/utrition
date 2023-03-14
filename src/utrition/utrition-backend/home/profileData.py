@@ -132,39 +132,34 @@ def read_file():
 
     return existing_data
 
-# IN PROGRESS
-# def delete_entry(index):
-#     all_entries = read_file()
-#     i = 0
 
-#     for entry in all_entries:
-#         i += 1
-#         if i == index:
-#             all_entries.remove(entry)
-#             break
+def delete_entry(index):
+    all_entries = read_file()
+    all_entries.pop(int(index))
 
-#     with open('./nutrition_log.csv', 'w') as csvfile:
-#         filewriter = writer(csvfile, delimiter=",")
-#         filewriter.writerow(
-#             [
-#                 "Time",
-#                 "Name",
-#                 "Serving Quantity",
-#                 "Serving Unit",
-#                 "Serving Weight in Grams",
-#                 "Calories",
-#                 "Total Fat",
-#                 "Saturated Fat",
-#                 "Cholesterol",
-#                 "Sodium",
-#                 "Total Carbohydrate",
-#                 "Dietary Fiber",
-#                 "Sugars",
-#                 "Protein",
-#                 "Potassium",
-#             ]
-#         )
-#         filewriter.writerow(csv_row)
+    with open('./nutrition_log.csv', 'w') as csvfile:
+        filewriter = writer(csvfile, delimiter=",")
+        filewriter.writerow(
+            [
+                "Time",
+                "Name",
+                "Serving Quantity",
+                "Serving Unit",
+                "Serving Weight in Grams",
+                "Calories",
+                "Total Fat",
+                "Saturated Fat",
+                "Cholesterol",
+                "Sodium",
+                "Total Carbohydrate",
+                "Dietary Fiber",
+                "Sugars",
+                "Protein",
+                "Potassium",
+            ]
+        )
+        for entry in all_entries:
+            filewriter.writerow(entry)
 
 
 def read_file_as_json():

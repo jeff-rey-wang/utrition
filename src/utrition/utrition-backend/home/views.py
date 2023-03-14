@@ -42,8 +42,11 @@ def display_index():
     return json_formatted_str
 
 
-@home_view.route("/profile", methods=["GET"])
+@home_view.route("/profile", methods=["GET", "POST"])
 def display_profile():
+    if request.method == "POST":
+        delete_entry(request.form["index"])
+        return ""
     fullJSON = {
         "allFoodEntries": read_file_as_json(),
         "currentCal": total_calories_per_day(),

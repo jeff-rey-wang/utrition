@@ -105,10 +105,12 @@ const Profile = () => {
   };
 
   async function handleConfirmDelete(){
+    const formData = new FormData();
+    formData.append('index', entryToDelete);
     await axios({
       method: "POST",
       url: "/profile",
-      indexToDelete: entryToDelete,
+      data: formData,
     })
       .then((response) => response.json())
       .catch((error) => console.log(error));
