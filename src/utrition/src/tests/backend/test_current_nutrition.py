@@ -77,3 +77,4 @@ def test_current_nutrition():
 
     # clean up the temporary test image file
     os.remove("test_image.jpg")
+    os.remove("userIcon.jpg")
