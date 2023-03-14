@@ -160,7 +160,7 @@ def read_file_as_json():
     return dataAsJson
 
 
-def to_metric(heightCm, heightFT, heightInches, heightUnit, weight, weightUnit)
+def to_metric(heightCm, heightFT, heightInches, heightUnit, weight, weightUnit):
     if heightUnit == "ft":
         user_height = heightFT * 30.48 + heightInches * 2.54
     else:
@@ -180,37 +180,37 @@ def read_user_settings():
             return json.load(jsonfile)
     else:
         null_info = {
-            "weight": "",
+            "weight": -1.0,
             "weightUnit": "",
-            "heightCm": "",
-            "heightFT": "",
-            "heightInches": "",
+            "heightCm": -1.0,
+            "heightFT": -1,
+            "heightInches": -1.0,
             "heightUnit": "",
-            "age": "",
+            "age": -1,
             "gender": "",
             "activityLevel": ""
         }
         return null_info
 
 
-def update_user_settings(birthSex="", heightCm="", heightFT="", heightInches="", heightUnit="", weight="", weightUnit="", age="", activityLevel=""):
+def update_user_settings(birthSex="", heightCm=-1.0, heightFT=-1, heightInches=-1.0, heightUnit="", weight=-1.0, weightUnit="", age=-1, activityLevel=""):
     if os.path.isfile("./user.json"):
         data = read_user_settings()
         if birthSex != "":
             data["gender"] = birthSex
-        if weight != "":
+        if weight != -1.0:
             data["weight"] = weight
         if weightUnit != "":
             data["weightUnit"] = weightUnit
-        if heightCm != "":
+        if heightCm != -1.0:
             data["heightCm"] = heightCm
-        if heightFT != "":
+        if heightFT != -1:
             data["heightFT"] = heightFT
-        if heightInches != "":
+        if heightInches != -1.0:
             data["heightInches"] = heightInches
         if heightUnit != "":
             data["heightUnit"] = heightUnit
-        if age != "":
+        if age != -1:
             data["age"] = age
         if activityLevel != "":
             data["activityLevel"] = activityLevel
