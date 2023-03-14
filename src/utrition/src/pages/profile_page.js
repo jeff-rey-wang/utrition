@@ -190,7 +190,7 @@ const Profile = () => {
                 <tr class="row_1">
                   <td>
                     <div className="orange-square">
-                      {totalcal.allFoodEntries[totalcal.index].timestamp}
+                      {totalcal.allFoodEntries[totalcal.index].date}
                     <button
                         className="delete-entry"
                         onClick={() =>
@@ -267,7 +267,7 @@ const Profile = () => {
                 <tr class="row_2">
                   <td>
                     <div className="orange-square">
-                      {totalcal.allFoodEntries[totalcal.index + 1].timestamp}
+                      {totalcal.allFoodEntries[totalcal.index + 1].date}
                       <button
                         className="delete-entry"
                         onClick={() =>
@@ -368,7 +368,7 @@ const Profile = () => {
                 <tr class="row_3">
                   <td>
                     <div className="orange-square">
-                      {totalcal.allFoodEntries[totalcal.index + 2].timestamp}
+                      {totalcal.allFoodEntries[totalcal.index + 2].date}
                       <button
                         className="delete-entry"
                         onClick={() =>
@@ -469,7 +469,7 @@ const Profile = () => {
                 <tr class="row_4">
                   <td>
                     <div className="orange-square">
-                      {totalcal.allFoodEntries[totalcal.index + 3].timestamp}
+                      {totalcal.allFoodEntries[totalcal.index + 3].date}
                       <button
                         className="delete-entry"
                         onClick={() =>

@@ -7,9 +7,12 @@ import json
 
 def log_data(food_data):
     timestamp = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    datetimeObject = datetime.datetime.strptime(timestamp, "%d/%m/%Y %H:%M:%S")
+    time = datetime.datetime.strftime(datetimeObject, "%I:%M %p")
     for entry in food_data:
         csv_row = [
             timestamp,
+            time,
             entry["food_name"],
             entry["serving_qty"],
             entry["serving_unit"],
@@ -36,6 +39,7 @@ def log_data(food_data):
                 filewriter = writer(csvfile, delimiter=",")
                 filewriter.writerow(
                     [
+                        "Date",
                         "Time",
                         "Name",
                         "Serving Quantity",
@@ -142,7 +146,8 @@ def delete_entry(index):
         filewriter = writer(csvfile, delimiter=",")
         filewriter.writerow(
             [
-                "Time",
+                "Date",
+                "Time"
                 "Name",
                 "Serving Quantity",
                 "Serving Unit",
@@ -170,21 +175,22 @@ def read_file_as_json():
         datetimeObject = datetime.datetime.strptime(entry[0], "%d/%m/%Y %H:%M:%S")
         dateFormatted = datetimeObject.strftime("%b %d")
         food_data = {
-            "timestamp": dateFormatted,
-            "food_name": entry[1],
-            "serving_qty": entry[2],
-            "serving_unit": entry[3],
-            "serving_weight_grams": entry[4],
-            "calories": entry[5],
-            "total_fat": entry[6],
-            "saturated_fat": entry[7],
-            "cholesterol": entry[8],
-            "sodium": entry[9],
-            "total_carbohydrate": entry[10],
-            "dietary_fiber": entry[11],
-            "sugars": entry[12],
-            "protein": entry[13],
-            "potassium": entry[14],
+            "date": dateFormatted,
+            "time": entry[1],
+            "food_name": entry[2],
+            "serving_qty": entry[3],
+            "serving_unit": entry[4],
+            "serving_weight_grams": entry[5],
+            "calories": entry[6],
+            "total_fat": entry[7],
+            "saturated_fat": entry[8],
+            "cholesterol": entry[9],
+            "sodium": entry[10],
+            "total_carbohydrate": entry[11],
+            "dietary_fiber": entry[12],
+            "sugars": entry[13],
+            "protein": entry[14],
+            "potassium": entry[15],
         }
         dataAsJson.append(food_data)
     return dataAsJson
@@ -277,7 +283,7 @@ def total_calories_per_day(day=datetime.datetime.now().strftime("%d/%m/%Y")):
 
     for entry in data:
         if day in entry[0]:
-            sum += float(entry[5])
+            sum += float(entry[6])
 
     sum = round(sum, 2)
     return sum
@@ -289,7 +295,7 @@ def total_foods_per_day(day=datetime.datetime.now().strftime("%d/%m/%Y")):
 
     for entry in data:
         if day in entry[0]:
-            foodStr = entry[1] + ", "
+            foodStr = entry[2] + ", "
             foods.append(foodStr)
     foods[-1] = foods[-1][:-2]
     return foods
@@ -327,8 +333,11 @@ def most_eaten_food():
     foods = []
     data = read_file()
 
+    if 0 == len(data):
+        return ""
+
     for entry in data:
-        foods.append(entry[1])
+        foods.append(entry[2])
 
     return mode(foods)
 
