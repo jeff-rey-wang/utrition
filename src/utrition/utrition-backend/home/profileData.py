@@ -160,6 +160,81 @@ def read_file_as_json():
     return dataAsJson
 
 
+def to_metric(heightCm, heightFT, heightInches, heightUnit, weight, weightUnit)
+    if heightUnit == "ft":
+        user_height = heightFT * 30.48 + heightInches * 2.54
+    else:
+        user_height = heightCm
+    
+    if weightUnit == "lbs":
+        user_weight = weight * 0.45359237
+    else:
+        user_weight = weight
+    
+    return user_weight, user_height
+
+
+def read_user_settings():
+    if os.path.isfile("./user.json"):    
+        with open("user.json", "r") as jsonfile:
+            return json.load(jsonfile)
+    else:
+        null_info = {
+            "weight": "",
+            "weightUnit": "",
+            "heightCm": "",
+            "heightFT": "",
+            "heightInches": "",
+            "heightUnit": "",
+            "age": "",
+            "gender": "",
+            "activityLevel": ""
+        }
+        return null_info
+
+
+def update_user_settings(birthSex="", heightCm="", heightFT="", heightInches="", heightUnit="", weight="", weightUnit="", age="", activityLevel=""):
+    if os.path.isfile("./user.json"):
+        data = read_user_settings()
+        if birthSex != "":
+            data["gender"] = birthSex
+        if weight != "":
+            data["weight"] = weight
+        if weightUnit != "":
+            data["weightUnit"] = weightUnit
+        if heightCm != "":
+            data["heightCm"] = heightCm
+        if heightFT != "":
+            data["heightFT"] = heightFT
+        if heightInches != "":
+            data["heightInches"] = heightInches
+        if heightUnit != "":
+            data["heightUnit"] = heightUnit
+        if age != "":
+            data["age"] = age
+        if activityLevel != "":
+            data["activityLevel"] = activityLevel
+        myJSON = json.dump(data, jsonfile)
+        jsonfile.close()
+    else:
+        with open("./user.json", "w") as jsonfile:
+            user_info = {
+                "weight": weight,
+                "weightUnit": weightUnit,
+                "heightCm": heightCm,
+                "heightFT": heightFT,
+                "heightInches": heightInches,
+                "heightUnit": heightUnit,
+                "age": age,
+                "gender": birthSex,
+                "activityLevel": activityLevel
+            }
+            myJSON = json.dumps(user_info)
+
+            jsonfile.write(myJSON)
+            jsonfile.close()
+
+
 def total_calories_per_day(day=datetime.datetime.now().strftime("%d/%m/%Y")):
     sum = 0
     data = read_file()
@@ -220,3 +295,36 @@ def most_eaten_food():
         foods.append(entry[1])
 
     return mode(foods)
+
+
+def calculate_bmi():
+    data = read_user_settings()
+    weight, height = to_metric(data["heightCm"], data["heightFT"], data["heightInches"], data["heightUnit"], data["weight"], data["weightUnit"])
+
+    return round(weight/pow(height/100,2), 2)
+
+
+def calculate_recommended_calories():
+    data = read_user_settings()
+    weight, height = to_metric(data["heightCm"], data["heightFT"], data["heightInches"], data["heightUnit"], data["weight"], data["weightUnit"])
+    age = data["age"]
+    birthSex = data["gender"]
+    activityLevel = data["activityLevel"]
+
+    if activityLevel == "Sedentary":
+        activityMultiplier = 1.2
+    elif activityLevel == "Lightly active":
+        activityMultiplier = 1.375
+    elif activityLevel == "Moderately active":
+        activityMultiplier = 1.55
+    elif activityLevel == "Very active":
+        activityMultiplier = 1.725
+    else:
+        activityMultiplier = 1.9
+
+    if birthSex == "Male":
+        calories = round(activityMultiplier * (9.99 * weight + 6.25 * height - 4.92 * age + 5), 2)
+    else:
+        calories = round(activityMultiplier * (9.99 * weight + 6.25 * height - 4.92 * age - 161), 2)
+    
+    return calories

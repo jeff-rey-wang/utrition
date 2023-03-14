@@ -49,6 +49,8 @@ def display_profile():
         "currentCal": total_calories_per_day(),
         "mode": most_eaten_food(),
         "caloricSummary": total_calories_per_day_summary_list(),
+        "bmi": calculate_bmi(),
+        "recommendedCal": calculate_recommended_calories()
     }
 
     json_formatted_str = json.dumps(fullJSON, indent=2)
