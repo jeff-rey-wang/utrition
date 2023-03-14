@@ -49,7 +49,21 @@ def display_profile():
         "currentCal": total_calories_per_day(),
         "mode": most_eaten_food(),
         "caloricSummary": total_calories_per_day_summary_list(),
+        "bmi": calculate_bmi(),
+        "recommendedCal": calculate_recommended_calories(),
     }
 
+    json_formatted_str = json.dumps(fullJSON, indent=2)
+    return json_formatted_str
+
+
+@home_view.route("/bmi", methods=["GET", "POST"])
+def display_settings():
+    if request.method == "POST":
+        update_user_settings(request.form)
+    fullJSON = {
+        "user_bmi": calculate_bmi(),
+        "user_calories": calculate_recommended_calories(),
+    }
     json_formatted_str = json.dumps(fullJSON, indent=2)
     return json_formatted_str

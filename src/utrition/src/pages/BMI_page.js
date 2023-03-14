@@ -17,10 +17,7 @@ const BMI = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [bmiMessage, setBmiMessage] = useState("");
     const [CaloriesMessage, setCaloriesMessage] = useState("");
-    let user_height = 0.0;
-    let user_weight = 0.0;
-    let user_calories = 0.0;
-    let user_bmi = 0.0;
+    const [responseData, setResponseData] = useState("");
   
     const handleBirthSexChange = (event) => {
         setBirthSex(event.target.value);
@@ -35,7 +32,7 @@ const BMI = () => {
   
     const handleHeightCmChange = (event) => {
         setHeightCm(event.target.value);
-      };
+    };
 
     const handleHeightFeetChange = (event) => {
       setHeightFeet(event.target.value);
@@ -56,96 +53,71 @@ const BMI = () => {
     const handleActivityLevelChange = (event) => {
       setActivityLevel(event.target.value);
     };
+
+    async function getData() {
+      const formData = new FormData();
+      formData.append('heightUnit', heightUnit);
+      formData.append('heightFeet', heightFeet);
+      formData.append('heightInches', heightInches);
+      formData.append('heightCm', heightCm);
+      formData.append('weightUnit', weightUnit);
+      formData.append('weight', weight);
+      formData.append('birthSex', birthSex);
+      formData.append('activityLevel', activityLevel);
+      formData.append('age', age);
+      await axios({
+        method: "POST",
+        url: "/bmi",
+        data: formData
+      })
+      .then((response) => {
+        setResponseData({
+          user_bmi: response.data.user_bmi,
+          user_calories: response.data.user_calories
+        });
+      })
+      .catch((error) => console.log(error));
+      
+      setErrorMessage("Your statistics have been saved!");
+      
+      // axios({
+      //   method: "GET",
+      //   url: "/bmi"
+      // })
+      //   .then((response) => {
+      //     setResponseData({
+      //       user_bmi: response.data.bmi,
+      //       user_calories: response.data.calories
+      //     });
+      //   })
+      //   .catch((error) => console.log(error));
+      
+      if (responseData.user_bmi < 18.5){
+          setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are underweight!`);
+          setCaloriesMessage(`You need to eat more than ${responseData.user_calories} calories today if you'd like to gain some weight.`);
+      }
+      else if (responseData.user_bmi <= 24.9 && responseData.user_bmi >= 18.5){
+          setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are normal weight!`);
+          setCaloriesMessage(`You need to eat around ${responseData.user_calories} calories today if you'd like to maintain your weight!`);
+      }
+      else if (responseData.user_bmi <= 29.9 && responseData.user_bmi >= 25){
+          setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are overweight weight!`);
+          setCaloriesMessage(`You need to eat less than ${responseData.user_calories} calories today if you'd like to lose some weight!`);
+      }
+      else {
+          setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are obese!`);
+          setCaloriesMessage(`You need to eat less than ${responseData.user_calories} calories today if you'd like to lose some weight!`);
+      }
+    }
   
     const handleSubmit = (event) => {
       event.preventDefault();
       if (!weight || (heightUnit === "ft"  && !heightCm) || (heightUnit === "ft" && !heightFeet && !heightInches) || !age || !activityLevel) {
         setErrorMessage("Please fill out all fields.");
-      } else {
-        if (heightUnit === "ft" ){
-            user_height = heightFeet * 30.48 + heightInches * 2.54;
-        }
-        else{
-            user_height = heightCm;
-        }
-        if (weightUnit === "lbs"){
-            user_weight = weight * 0.45359237;
-        }
-        else{
-            user_weight = weight;
-        }
-        if (birthSex === "Male"){
-            if (activityLevel === "Sedentary"){
-                user_calories = Math.round((1.2 * (66 + 13.7 * user_weight + 5 * user_height - 6.8 * age))*100)/100;
-            }
-            else if (activityLevel === "Lightly active"){
-                user_calories = Math.round((1.375 * (66 + 13.7 * user_weight + 5 * user_height - 6.8 * age))*100)/100;
-            }
-            else if (activityLevel === "Moderately active"){
-                user_calories = Math.round((1.55 * (66 + 13.7 * user_weight + 5 * user_height - 6.8 * age))*100)/100;
-            }
-            else if (activityLevel === "Very active"){
-                user_calories = Math.round((1.725 * (66 + 13.7 * user_weight + 5 * user_height - 6.8 * age))*100)/100;
-            }
-            else{
-                user_calories = Math.round((1.9 * (66 + 13.7 * user_weight + 5 * user_height - 6.8 * age))*100)/100;
-            }
-        }
-        else{
-            if (activityLevel === "Sedentary"){
-                user_calories = Math.round((1.2 * (655 + 9.6 * user_weight + 1.8 * user_height - 4.7 * age))*100)/100;
-            }
-            else if (activityLevel === "Lightly active"){
-                user_calories = Math.round((1.375 * (655 + 9.6 * user_weight + 1.8 * user_height - 4.7 * age))*100)/100;
-            }
-            else if (activityLevel === "Moderately active"){
-                user_calories = Math.round((1.55 * (655 + 9.6 * user_weight + 1.8 * user_height - 4.7 * age))*100)/100;
-            }
-            else if (activityLevel === "Very active"){
-                user_calories = Math.round((1.725 * (655 + 9.6 * user_weight + 1.8 * user_height - 4.7 * age))*100)/100;
-            }
-            else{
-                user_calories = Math.round((1.9 * (655 + 9.6 * user_weight + 1.8 * user_height - 4.7 * age))*100)/100;
-            }
-        }
-
-        user_bmi = Math.round((user_weight/Math.pow(user_height/100,2)) * 10) / 10;
-
-        if (user_bmi < 18.5){
-            setBmiMessage(`Your BMI is ${user_bmi}, which means you are underweight!`);
-            setCaloriesMessage(`You need to eat more than ${user_calories} calories today if you'd like to gain some weight.`);
-        }
-        else if (user_bmi <= 24.9 && user_bmi >= 18.5){
-            setBmiMessage(`Your BMI is ${user_bmi}, which means you are normal weight!`);
-            setCaloriesMessage(`You need to eat around ${user_calories} calories today if you'd like to maintain your weight!`);
-        }
-        else if (user_bmi <= 29.9 && user_bmi >= 25){
-            setBmiMessage(`Your BMI is ${user_bmi}, which means you are overweight weight!`);
-            setCaloriesMessage(`You need to eat less than ${user_calories} calories today if you'd like to lose some weight!`);
-        }
-        else {
-            setBmiMessage(`Your BMI is ${user_bmi}, which means you are obese!`);
-            setCaloriesMessage(`You need to eat less than ${user_calories} calories today if you'd like to lose some weight!`);
-        }
-        axios({
-            method: "POST",
-            url: "/bmi",
-            heightUnit: heightUnit,
-            heightFeet: heightFeet,
-            heightInches: heightInches,
-            heightCm: heightCm,
-            weightUnit: weightUnit,
-            weight: weight,
-            birthSex: birthSex,
-            activityLevel: activityLevel,
-            age: age,
-
-          })
-            .then((response) => response.json())
-            .catch((error) => console.log(error));
-            setErrorMessage("Your statistics have been saved!");
-        }
-
+      } 
+      else {
+        getData()
+      }
     };
 
     return (
