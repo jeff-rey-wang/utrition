@@ -226,15 +226,15 @@ def update_user_settings(changedVal):
     else:
         with open("./user.json", "w") as jsonfile:
             user_info = {
-                "weight": weight,
-                "weightUnit": weightUnit,
-                "heightCm": heightCm,
-                "heightFT": heightFT,
-                "heightInches": heightInches,
-                "heightUnit": heightUnit,
-                "age": age,
-                "gender": birthSex,
-                "activityLevel": activityLevel
+                "weight": changedVal['weight'],
+                "weightUnit": changedVal['weightUnit'],
+                "heightCm": changedVal['heightCm'],
+                "heightFT": changedVal['heightFeet'],
+                "heightInches": changedVal['heightInches'],
+                "heightUnit": changedVal['heightUnit'],
+                "age": changedVal['age'],
+                "gender": changedVal['birthSex'],
+                "activityLevel": changedVal['activityLevel']
             }
             myJSON = json.dumps(user_info)
 
