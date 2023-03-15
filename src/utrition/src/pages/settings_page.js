@@ -7,11 +7,19 @@ const Settings = () => {
     function getData() {
         axios({
           method: "GET",
-          url: "/profile",
+          url: "/settings",
         })
           .then((response) => {
             setusersettings({
-              swag: response.data.placeholder
+              weight: response.data.weight,
+              weightUnit: response.data.weightUnit,
+              heightCm: response.data.heightCm,
+              heightFT: response.data.heightFT,
+              heightInches: response.data.heightInches,
+              heightUnit: response.data.heightUnit,
+              age: response.data.age,
+              gender: response.data.gender,
+              activityLevel: response.data.activityLevel,
             });
           })
           .catch((error) => {
@@ -27,56 +35,66 @@ const Settings = () => {
       }, []);
 
     return (
-        <form className="BMIform">
-        <h2 className="formtitle">Enter Your Statistics</h2>
+        <form className="SettingsForm">
+        <h2 className="formtitle">Your User Settings</h2>
         <label>
         Birth Sex:
-        <select value={"PLACEHOLDER"} disabled>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
+        <select disabled>
+        {usersettings.gender === '' ? (
+          <option>N/A</option>) : (
+          <option>{usersettings.gender}</option>)
+        }
         </select>
         </label>
         <br />
           <label>
             Weight:
-            <input type="number" min="0" max="1500" value={"aass"} disabled placeholder="aa"/>
-            <select value={"WEIGHTUNIT"} disabled>
-              <option value="kg">kg</option>
-              <option value="lbs">lbs</option>
+            {usersettings.weight === '' ? (<input type="number" min="0" max="1500" disabled placeholder="N/A"/>) : (
+            <input type="number" min="0" max="1500" disabled placeholder={usersettings.weight}/>)}
+            <select  disabled>
+            {usersettings.weightUnit === '' ? (
+          <option>N/A</option>) : (
+          <option>{usersettings.weightUnit}</option>) 
+        }
             </select>
           </label>
           <br />
           <label>
             Height:
-            {"HEIGHT UNIT == PLACEHOLDER" === "cm" ? (
-              <input type="number" min="0" max="300" value={"PLACEHOLDER"} />
+            {usersettings.heightUnit === '' ? (<input type="number" min="0" max="300" disabled placeholder="N/A" />)
+            : (usersettings.heightUnit === "cm" ? (
+              <input type="number" min="0" max="300" disabled placeholder={usersettings.heightCm} />
             ) : (
               <div style ={{display: "inline-block"}} >
-                <input type="number" min="0" max="8" value={"PLACEHOLDER"}/>
+                <input type="number" min="0" max="8" disabled placeholder={usersettings.heightFT}/>
                 <span>ft</span>
-                <input type="number" min="0" max="12"value={"PLACEHOLDER"} />
+                <input type="number" min="0" max="12" disabled placeholder={usersettings.heightInches} />
                 <span>in</span>
               </div>
-            )}
-            <select value={"PLACEHOLDER"}>
-              <option value="cm">cm</option>
-              <option value="ft">ft</option>
+            ))}
+            <select disabled>
+            {usersettings.heightUnit === '' ? (
+          <option>N/A</option>) : (
+          <option>{usersettings.heightUnit}</option>) 
+        }
             </select>
           </label>
           <br />
           <label>
             Age:
-            <input type="number" min="0" max="120" value={"PLACEHOLDER"}/>
+            {usersettings.age === '' ? (
+            <input type="number" min="0" max="120" disabled placeholder="N/A"/>) : (
+            <input type="number" min="0" max="120" disabled placeholder={usersettings.age}/>
+            )}
           </label>
           <br />
           <label>
             Activity Level:
-            <select value={"PLACEHOLDER"}>
-              <option value="Sedentary">Sedentary</option>
-              <option value="Lightly active">Lightly active</option>
-              <option value="Moderately active">Moderately active</option>
-              <option value="Very active">Very active</option>
-              <option value="Extra active">Extra active</option>
+            <select disabled>
+            {usersettings.activityLevel === '' ? (
+          <option>N/A</option>) : (
+          <option>{usersettings.activityLevel}</option>) 
+        }
             </select>
           </label>
           <br />

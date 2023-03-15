@@ -5,7 +5,7 @@ import "./BMI_page.css";
 
 
 const BMI = () => {
-    const [birthSex, setBirthSex] = useState("");
+    const [birthSex, setBirthSex] = useState("Male");
     const [weight, setWeight] = useState("");
     const [weightUnit, setWeightUnit] = useState("kg");
     const [heightCm, setHeightCm] = useState("");

@@ -333,7 +333,7 @@ def most_eaten_food():
 
 def calculate_bmi():
     data = read_user_settings()
-    if 0 == len(data):
+    if 0 == (data):
         return 0
 
     weight = to_metric_weight(data["weight"], data["weightUnit"])
@@ -345,7 +345,7 @@ def calculate_bmi():
 
 def calculate_recommended_calories():
     data = read_user_settings()
-    if 0 == len(data):
+    if 0 == (data):
         return 0
 
     weight = to_metric_weight(data["weight"], data["weightUnit"])
