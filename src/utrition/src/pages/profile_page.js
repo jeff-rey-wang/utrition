@@ -7,6 +7,11 @@ const Profile = () => {
   const [totalcal, settotalcal] = useState({});
   const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
   const [entryToDelete, setEntryToDelete] = useState(null);
+  const [showTable, setShowTable] = useState(false);
+
+  function handleExplanationClick() {
+    setShowTable(!showTable);
+  }
 
   function getData() {
     axios({
@@ -19,6 +24,8 @@ const Profile = () => {
           mode: response.data.mode,
           allFoodEntries: response.data.allFoodEntries,
           caloricSummary: response.data.caloricSummary,
+          bmi : response.data.bmi,
+          recommendedCal : response.data.recommendedCal,
           index: 0,
           right_index: 0,
         });
@@ -44,6 +51,8 @@ const Profile = () => {
         mode: totalcal.mode,
         allFoodEntries: totalcal.allFoodEntries,
         caloricSummary: totalcal.caloricSummary,
+        bmi : totalcal.bmi,
+        recommendedCal : totalcal.recommendedCal,
         index: totalcal.index + 4,
         right_index: totalcal.right_index,
       });
@@ -58,6 +67,8 @@ const Profile = () => {
         mode: totalcal.mode,
         allFoodEntries: totalcal.allFoodEntries,
         caloricSummary: totalcal.caloricSummary,
+        bmi : totalcal.bmi,
+        recommendedCal : totalcal.recommendedCal,
         index: totalcal.index - 4,
         right_index: totalcal.right_index,
       });
@@ -73,6 +84,8 @@ const Profile = () => {
         mode: totalcal.mode,
         allFoodEntries: totalcal.allFoodEntries,
         caloricSummary: totalcal.caloricSummary,
+        bmi : totalcal.bmi,
+        recommendedCal : totalcal.recommendedCal,
         index: totalcal.index,
         right_index: totalcal.right_index + 7,
       });
@@ -88,6 +101,8 @@ const Profile = () => {
         mode: totalcal.mode,
         allFoodEntries: totalcal.allFoodEntries,
         caloricSummary: totalcal.caloricSummary,
+        bmi : totalcal.bmi,
+        recommendedCal : totalcal.recommendedCal,
         index: totalcal.index,
         right_index: totalcal.right_index - 7,
       });
@@ -105,10 +120,12 @@ const Profile = () => {
   };
 
   async function handleConfirmDelete(){
+    const formData = new FormData();
+    formData.append('index', entryToDelete);
     await axios({
       method: "POST",
       url: "/profile",
-      indexToDelete: entryToDelete,
+      data: formData,
     })
       .then((response) => response.json())
       .catch((error) => console.log(error));
@@ -122,6 +139,8 @@ const Profile = () => {
             mode: response.data.mode,
             allFoodEntries: response.data.allFoodEntries,
             caloricSummary: response.data.caloricSummary,
+            bmi : response.data.bmi,
+            recommendedCal : response.data.recommendedCal,
             index: totalcal.index,
             right_index: totalcal.right_index,
           });
@@ -168,18 +187,36 @@ const Profile = () => {
     );
   };
 
+  function getBMIMessage(bmi) {
+    if (bmi < 18.5) {
+      return "which means you are underweight!";
+    } else if (bmi <= 24.9 && bmi >= 18.5) {
+      return "which means you are normal weight!";
+    } else if (bmi <= 29.9 && bmi >= 25) {
+      return "which means you are overweight!";
+    } else if (bmi >= 30) {
+      return "which means you are obese!";
+    } else {
+      return "";
+    }
+  }
+
   return (
     <div
       style={{ display: "flex", padding: "0.5rem calc((100vw - 1100px) / 2)" }}
     >
       <div class="left" style={{ flex: 1, height: "5vh" }}>
-        <div class="most_eaten" style={{ color: "#FFC300", height: "55px" }}>
-          Your most eaten food: {totalcal.mode}
+        <div class="most_eaten">
+          Your most logged food: {totalcal.mode}
         </div>
-        <div class="average_cal" style={{ color: "#E9FFA4", height: "85px" }}>
+        {totalcal.recommendedCal && totalcal.recommendedCal ? (
+          <div class="average_cal">
+          Today you have eaten {totalcal.currentCal} calories out of {totalcal.recommendedCal} calories to maintain your weight.
+        </div>) : (
+        <div class="average_cal">
           Your total calories consumed for today is {totalcal.currentCal}
-        </div>
-        <dic class="past_meals">PAST MEALS</dic>
+        </div>)}
+        <div class="past_meals">PAST MEALS</div>
         <table class="left_table">
           <tbody>
             {totalcal.allFoodEntries &&
@@ -188,7 +225,7 @@ const Profile = () => {
                 <tr class="row_1">
                   <td>
                     <div className="orange-square">
-                      {totalcal.allFoodEntries[totalcal.index].timestamp}
+                      {totalcal.allFoodEntries[totalcal.index].date}
                     <button
                         className="delete-entry"
                         onClick={() =>
@@ -265,7 +302,7 @@ const Profile = () => {
                 <tr class="row_2">
                   <td>
                     <div className="orange-square">
-                      {totalcal.allFoodEntries[totalcal.index + 1].timestamp}
+                      {totalcal.allFoodEntries[totalcal.index + 1].date}
                       <button
                         className="delete-entry"
                         onClick={() =>
@@ -366,7 +403,7 @@ const Profile = () => {
                 <tr class="row_3">
                   <td>
                     <div className="orange-square">
-                      {totalcal.allFoodEntries[totalcal.index + 2].timestamp}
+                      {totalcal.allFoodEntries[totalcal.index + 2].date}
                       <button
                         className="delete-entry"
                         onClick={() =>
@@ -467,7 +504,7 @@ const Profile = () => {
                 <tr class="row_4">
                   <td>
                     <div className="orange-square">
-                      {totalcal.allFoodEntries[totalcal.index + 3].timestamp}
+                      {totalcal.allFoodEntries[totalcal.index + 3].date}
                       <button
                         className="delete-entry"
                         onClick={() =>
@@ -578,11 +615,56 @@ const Profile = () => {
         ) : null}
       </div>
       <div class="right" style={{ flex: 1, marginLeft: "100px" }}>
-      <Link to="/bmi"
-            class="bmibutton button"
+        <div class="settingsbutton">
+      <Link to="/settings"
+      className="button"
           >
             Edit Profile Statistics
           </Link>
+          </div>
+          <div>
+      {totalcal.bmi && (
+        <div>
+          <div className="bmidisplay">
+            Your BMI is {totalcal.bmi}, {getBMIMessage(totalcal.bmi)}
+          </div>
+          <div className="bmiexplanation">
+            <button className = "explanationbutton" onClick={handleExplanationClick}>How close am I to being classified differently?</button>
+          </div>
+        </div>
+      )}
+      {showTable && (
+        <div>
+          <table className="bmii">
+            <thead>
+              <tr>
+                <th>BMI</th>
+                <th>Classification</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{'<' + '18.5'}</td>
+                <td>Underweight</td>
+              </tr>
+              <tr>
+                <td>18.5–24.9</td>
+                <td>Normal weight</td>
+              </tr>
+              <tr>
+                <td>25–29.9</td>
+                <td>Overweight</td>
+              </tr>
+              <tr>
+                <td>{'>' + '30'}</td>
+                <td>Obesity</td>
+              </tr>
+            </tbody>
+          </table>
+          <button className="closebmi button" onClick={handleExplanationClick}>Close</button>
+        </div>
+      )}
+    </div>
         <table class="right_table">
           <caption class="right_caption">My Caloric Intake</caption>
           <tr>

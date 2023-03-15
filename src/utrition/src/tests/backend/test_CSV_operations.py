@@ -36,6 +36,7 @@ def test_log_data():
     assert lines[1].strip() == ",".join(
         [
             datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+            datetime.datetime.now().strftime("%I:%M %p"),
             "Test Food",
             "1",
             "unit",
