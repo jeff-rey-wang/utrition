@@ -433,13 +433,6 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \end{itemize}
 
 \begin{itemize}
-    \item [\FillFRNumber] The user shall have the ability to upload multiple digital images of \textbf{standard image types} to the system.\newline
-    \textbf{Formalization}: $\forall x \cdot x \in A \mid x = \text{Images}, A = \{\text{\textbf{standard image types}}\}$\newline
-    \textbf{Rationale}: In order for the system to return the total nutritional content of a users meal, the user would have to upload multiple images of the individual components of their meal for the system to identify. The images shall be saved on the user’s device, which can then be selected.\newline
-    \textbf{Priority}: Medium
-\end{itemize}
-
-\begin{itemize}
     \item [\FillFRNumber] The system will be able to identify the type of food that is captured in an image.\newline 
     \textbf{Formalization}: $\forall x \cdot \exists y \cdot y \in B \mid x = \text{Images}, B = \{\text{food label type}\}$\newline
     \textbf{Rationale}: In order for the system to return the nutritional content of a food, the system must first identify the food present in an image.\newline
@@ -479,20 +472,26 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \end{itemize}
 
 \begin{itemize}
-	\item [\FillFRNumber] The system will display the history of logged nutritional data in a graph.\newline 
-	\textbf{Rationale:} Previously tracked nutritional statistics will be rendered in a graph as a function over time. This display will be a visual indicator of trends and overall progress.\newline
-	\textbf{Priority:} Medium
-\end{itemize}
-
-\begin{itemize}
-	\item [\FillFRNumber] The system will be able to receive text input from the user.\newline 
+	\item [\FillFRNumber] The user must have the ability to upload the text of a food input to the system.\newline 
 	\textbf{Rationale:} Users must be able to access the nutritional data of a food through typing its name.\newline
 	\textbf{Priority:} High
 \end{itemize}
 
 \begin{itemize}
-	\item [\FillFRNumber] The system will be able to receive vocal input from the user.\newline 
+	\item [\FillFRNumber] The user must have the ability to upload multiple texts of food inputs to the system.\newline 
+	\textbf{Rationale:} Users must be able to access the nutritional data of multiple foods through typing their name.\newline
+	\textbf{Priority:} High
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The user must have the ability to upload a food input by speaking to the system.\newline 
 	\textbf{Rationale:}Users must be able to vocally input the food they want the nutritional data for.\newline
+	\textbf{Priority:} Medium
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The user must have the ability to upload multiple food inputs by speaking to the system.\newline 
+	\textbf{Rationale:}Users must be able to vocally input the foods they want the nutritional data for.\newline
 	\textbf{Priority:} Medium
 \end{itemize}
 
@@ -500,6 +499,54 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 	\item [\FillFRNumber] The system will be able to convert vocal input into text.\newline 
 	\textbf{Rationale:} The system must be able to convert voice to text to allow retrieving nutritional data for the input.\newline
 	\textbf{Priority:} Medium
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The user must have the ability to restart their voice upload to the system. \newline
+	\textbf{Rationale:} The system must allow the user to correct their misinputs. \newline
+	\textbf{Priority:} Medium
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The system will be able to identify the type of food(s) that is captured in a complex sentence. \newline
+	\textbf{Rationale:} The system must be able to decipher the food items in a long-winded sentence. Users should be allowed to use their normal speech or texting abilities to input food items. \newline
+	\textbf{Priority:} Medium
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The user must have the ability to select between uploading food(s) through image, text, or voice. \newline
+	\textbf{Rationale:} The system must allow the user to select what type of input they would like to use. \newline
+	\textbf{Priority:} High
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The system will display the user's most logged food. \newline
+	\textbf{Rationale:} Certain users will be interested in what foods they have eaten the most. \newline
+	\textbf{Priority:} Low
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The system will display the user's total calories consumed for the day. \newline
+	\textbf{Rationale:} Users will want to count their calories to ensure they don't go over their daily limit. \newline
+	\textbf{Priority:} Medium
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The system will display a summary of the foods consumed and their total calories for each of the past 7 days. \newline
+	\textbf{Rationale:} Users will want to count their calories and foods they've eaten to ensure they haven't been having too many cheat days. \newline
+	\textbf{Priority:} Medium
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The user will be able to access the summary of the foods consumed and their total calories for all days with a food inputted. \newline
+	\textbf{Rationale:}  Users will want to access their calories and foods they've eaten to check if they've been sticking to their diet. \newline
+	\textbf{Priority:} Medium
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The user will be able to access the Home page, the Upload page, and the Profile page on every page. \newline
+	\textbf{Rationale:}  Users will be able to access every page, so their use of Utrition is not restricted. \newline
+	\textbf{Priority:} High
 \end{itemize}
 
 \section{Non-Functional Requirements}

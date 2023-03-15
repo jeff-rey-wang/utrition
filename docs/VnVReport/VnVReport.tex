@@ -2,6 +2,7 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{float}
 \usepackage{hyperref}
 \hypersetup{
 	colorlinks,
@@ -30,8 +31,7 @@
 	\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 		\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 		\midrule
-		Date 1 & 1.0 & Notes\\
-		Date 2 & 1.1 & Notes\\
+		March 8, 2023 & 1.0 & Initial Version\\
 		\bottomrule
 	\end{tabularx}
 	
@@ -44,7 +44,26 @@
 		\toprule		
 		\textbf{symbol} & \textbf{description}\\
 		\midrule 
-		T & Test\\
+		API & Application programming interface\\
+		App & Application\\
+		BMI & Body Mass Index\\
+		CP & Cultural and Political Requirement\\
+		CT & Cultural Test\\
+		FR & Functional Requirement\\
+		LF & Look and Feel\\
+		LR & Legal Requirement\\
+		LT & Legal Test\\
+		MS & Maintainability and Support\\
+		OE & Operational and Environmental\\
+		POC & Proof of Concept\\
+		PR& Performance Requirement\\
+		PT& Performance Test\\
+		SRS & Software Requirements Specification\\
+		SR & Security Requirement\\
+		ST & Security Test\\
+		UH & Usability and Humanity\\
+		UI & User Interface\\
+		VnV & Verification and Validation\\
 		\bottomrule
 	\end{tabular}\\
 	
@@ -63,33 +82,2432 @@
 	
 	\pagenumbering{arabic}
 	
-	This document ...
+	The purpose of this document is to display the results of Utrition's testing. All tests were previously discussed in the VnV plan. Based on the results of the tests, changes being made to Utrition's implementation is also provided. 
 	
 	\section{Functional Requirements Evaluation}
+	\subsection{Image Upload}
+	\begin{enumerate}
+		\item{Test Name: one-upload-1}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Image Upload" selected.
+		
+		Input: A User clicks on ``Select Image" and selects the image file ``apple.jpeg" found in the utrition/test/testPhotos directory. User clicks on ``Text Upload" and then clicks on ``Image Upload" and then clicks on the ``Submit" button.
+		
+		Expected Results: The system accepts the image upload and returns the nutritional information for an apple. 
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on ``Image Upload" and then ``Select Image". The tester selects ``apple.jpeg" found in the utrition/test/testPhotos directory. The tester clicks on the ``Image Upload" button and then clicks on the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. 
+		
+		\item{Test Name: one-upload-2}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: No image in the system. User is on the ``Upload" page with ``Image Upload" selected.
+		
+		Input: A User clicks on the ``Submit" button.
+		
+		Expected Results: No nutritional information will be returned to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on ``Image Upload" and then the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+
+		\item{Test Name: one-upload-auto-1}
+		
+		Type: Functional, Dynamic, Automatic.
+		
+		Initial State: The system contains a generated JPG image of red pixels with dimensions 128 x 128.
+		
+		Input: The generated image is passed as an argument to interface.open(), with the result saved to the variable 'result'.
+		
+		Expected Results: The variable 'result' is not None and the userFlag for interface has been set to 1. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: The generated image is passed to interface.open(), which is the starting point for the machine learning image classification pipeline. If the test returns not None that means the pipeline executed successfully for the passed file. If the userFlag is set to 1 that means that interface.open() was passed some data.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+        \item{Test Name: one-upload-auto-2}
+        
+        Type: Functional, Dynamic, Automatic.
+		
+		Initial State: The system contains a generated txt file with text ``test content".
+		
+		Input: The generated text file is passed as an argument to interface.open().
+		
+		Expected Results: An UnidentifiedImageError is thrown and the userFlag for interface has been set to 1.
+		
+		How The Test Was Performed: The generated text file is passed to interface.open(), which is the starting point for the machine learning image classification pipeline. If the test throws an UnidentifiedImageError that means that the format of the data passed is not valid for image classification. If the userFlag is set to 1 that means that interface.open() was passed some data.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. 
+		
+	\end{enumerate}
+		
+	\subsection{Image Identification}
+	\begin{enumerate}
+		
+        \item{Test Name: image-identification-1}
+        
+        Type: Functional and Automatic.
+		
+		Initial State: The system contains a generated PNG image of red pixels with dimensions 128 x 128.
+		
+		Input: The generated image is passed as an argument to interface.open(), with the result saved to the variable 'result'.
+		
+		Expected Results: The variable 'result' is a string. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: The generated image is passed to interface.open(), which is the starting point for the machine learning image classification pipeline. If the test returns a string that means that the pipeline not only executed successfully, but also returned an image classification result for the submitted image.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+        \item{Test Name: image-identification-2}
+		
+		Type: Functional and Automatic.
+		
+		Initial State: The system contains a generated JPG image of red pixels with dimensions 128 x 128.
+		
+		Input: The generated image is passed as an argument to interface.open(), with the result saved to the variable 'result'.
+		
+		Expected Results: The variable 'result' is a string. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: The generated image is passed to interface.open(), which is the starting point for the machine learning image classification pipeline. If the test returns a string that means that the pipeline not only executed successfully, but also returned an image classification result for the submitted image.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+        \item{Test Name: image-identification-3}
+        
+        Type: Functional and Automatic.
+		
+		Initial State: The system contains a generated JPEG image of red pixels with dimensions 128 x 128.
+		
+		Input: The generated image is passed as an argument to interface.open(), with the result saved to the variable 'result'.
+		
+		Expected Results: The variable 'result' is a string. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: The generated image is passed to interface.open(), which is the starting point for the machine learning image classification pipeline. If the test returns a string that means that the pipeline not only executed successfully, but also returned an image classification result for the submitted image.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+	\end{enumerate}
+		
+	\subsection{Call and Fetch API Response}
+	\begin{enumerate}
+		\item{Test Name: api-1}
+		
+		Type: Functional, Automatic.
+		
+		Initial State: The system contains a mocked JSON response for the food ``banana".
+		
+		Input: A request is made to get\_nutritional\_data() with the argument ``banana" and the result is stored in the variable ``result".
+		
+		Expected Results: The variable ``result" will be a list of length 1 and will match the mocked data for ``banana". Additionally, the contents of ``result" will be able to be converted to JSON format without any errors.
+		
+		How The Test Was Performed: Nutritional JSON data is mocked in our system for the food ``banana", meaning that when a request is made to our nutritional data fetcher for ``banana", it will return the mocked result if the request processes successfully. The returning value will be a list of length 1, signifying that one JSON object was returned for the input ``banana".
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: axios-call-1}
+		
+		Type: Functional, Automatic.
+		
+		Initial State: The text upload functionality has not yet been used.
+		
+		Input: The tester will attempt to make an axios call
+		
+		Expected Results: The tester will receive an http request back from the backend.
+		
+		How The Test Was Performed: Tester will create mocked text upload function to test to see if the front end can successfully make and receive http calls. 
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+	\end{enumerate}
+
+	\subsection{Logging Data}
+
+	\begin{enumerate}
+		\item{Test Name: log-data-read-data-1}
+		
+		Type: Functional, Automatic.
+		
+		Initial State: The system contains a list of one object of sample JSON data.
+		
+		Input: The sample data is logged to a CSV file and then a request to read the CSV file is made with the results of the request saved to the variable ``lines".
+		
+		Expected Results: The variable ``lines" will be of length 2. The value at the second index of the list will equal the sample data when converted from a list format to a JSON object format. 
+		
+		How The Test Was Performed: The sample data is sent to our CSV logger function to create an entry for the data as well as its header row detailing the keys of the key value JSON pairings. To account for this header row, after we read the CSV file line by line with the built-in Python function readlines(), we check that the length of the returning list is 2.
+		
+		\textbf{Actual Results}: The actual results matched up with the expected results.
+	\end{enumerate}
+
+	\subsection{Nutritional Facts Display}
+	\begin{enumerate}
+		
+        \item{Test Name: current-nutrition-1}
+        
+        Type: Functional, Dynamic, Automatic.
+		
+		Initial State: The system contains a generated JPEG image of red pixels with dimensions 128 x 128. The system contains a list of one object of mocked JSON data. The classification of the sample image and the food\_name of the mocked JSON data are set to the same value, linking the two pieces of data.
+		
+		Input: A nested function call is made to get\_nutrition\_data() with an argument interface.open() whose own argument is the generated image. The result of this call is saved to the variable 'result'.
+		
+		Expected Results: The variable ``result" will be a list of length 1. The value of ``result" will be equal to the mocked JSON data. The value of ``result" will successfully convert to JSON format without any errors. There is also exception handling for an UnpicklingError, an error that can occur on some computers that is unrelated to the scope of the test.
+		
+		How The Test Was Performed: This is the overall black box test of our image classification system. It tests the whole process of classifying an image and retrieving JSON nutrition data for that image classification. If the test returns a list of one item, it means that the image was successfully classified and that the classification was equal to the food\_name in the mocked JSON data.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: past-nutrition-text-read-data-2}
+		
+		Type: Functional, Dynamic, Automatic.
+		
+		Initial State: The system contains a list of four distinct object of sample JSON data.
+		
+		Input: The sample data is logged to a CSV file and then the read\_file() function is called with its result saved to the variable ``result".
+		
+		Expected Results: The variable ``result" will be of length 4.
+		
+		How The Test Was Performed: The sample data is sent to our CSV logger function to create entries for each data as well as an overall header row detailing the keys of the key value JSON pairings. Our read\_file() function then reads the CSV file, ignoring the header row, and returns a sorted list of data objects. Since the header row is ignored, we can check that the length of the list of data returned is exactly equal to the number of data points we had in our sample data.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: display-elements-1}
+		
+		Type: Functional, Automatic.
+		
+		Initial State: Tester will be located on a page of the Utrition application.
+		
+		Input: The tester will attempt to render page to see if the necessary elements exist.
+		
+		Expected Results: The framework replies with if elements exist.
+		
+		How The Test Was Performed: the tester will mock the Utrition application home page screen and will check to see if the elements exist for the user.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: correct-path-1}
+		
+		Type: Functional, Automatic.
+		
+		Initial State: Tester will start on home page.
+		
+		Input: Tester will click hyperlink to go to a different page.
+		
+		Expected Results: The tester will be taken to the new page specified in hyperlink.
+		
+		How The Test Was Performed: The tester will attempt to mock a user input event clicking onto the specified hyperlink area by rendering a mocked version of the home page. Upon clicking the hyperlink area of the profile page, the testing framework should reply with a rendered profile page.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+	\end{enumerate}
+
+	\subsection{Text Upload}
+	\begin{enumerate}
+		
+		\item{Test Name: text-upload-1}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Text Upload" selected.
+		
+		Input: User inputs ``cup of yogurt" into the text upload box and then clicks on the ``Submit" button
+		
+		Expected Results: The nutritional facts for a cup of yogurt are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``cup of yogurt" into the text upload box and pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: text-upload-2}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Text Upload" selected.
+		
+		Input: User inputs ``i had and ate 3 pieces of shumai" into the text upload box and then clicks on the ``Submit" button
+		
+		Expected Results: The nutritional facts for 3 pieces of shumai is displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``i had and ate 3 pieces of shumai" into the text upload box and pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: text-upload-3}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Text Upload" selected.
+		
+		Input: User inputs ``avacadoe" into the text upload box and then clicks on the ``Submit" button
+		
+		Expected Results: No nutritional facts will be displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``avacadoe" into the text upload box and pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: text-upload-4}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Text Upload" selected.
+		
+		Input: User inputs nothing into the text upload box and then clicks on the ``Submit" button
+		
+		Expected Results: No nutritional facts will be displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
 	
+		\item{Test Name: text-upload-5}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Text Upload" selected.
+		
+		Input: User inputs ``chiken" into the text upload box and then clicks on the ``Submit" button
+		
+		Expected Results: No nutritional facts will be displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``chiken" into the text upload box and pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test failed. The nutritional facts for 3 ounces of chicken were displayed to the user.
+		
+		\item{Test Name: text-upload-6}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Text Upload" selected.
+		
+		Input: User inputs ``oreo mcflurry" into the text upload box and then clicks on the ``Submit" button
+		
+		Expected Results: The nutritional facts for an Oreo McFlurry are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``oreo mcflurry" into the text upload box and pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test failed. The nutritional facts for an Oreo were displayed in combination with the nutritional facts for a McFlurry instead of an Oreo McFlurry.
+		
+		\item{Test Name: text-upload-7}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Text Upload" selected.
+		
+		Input: User inputs ``yuhddasdihijdsahdaihdhi chicken shawarma wrap asgyudy1hu13h123hej" into the text upload box and then clicks on the ``Voice Upload" button. User clicks on the ``Text Upload" button and clicks ``Submit"
+		
+		Expected Results: The nutritional facts for a chicken shawarma wrap are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``yuhddasdihijdsahdaihdhi chicken shawarma wrap asgyudy1hu13h123hej" into the text upload box and pressed the ``Voice Upload" button. The tester then clicked on the ``Text Upload" button and then the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: text-upload-8}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Text Upload" selected.
+		
+		Input: User inputs ``half a McDonald's cheeseburger" into the text upload box and then clicks on the ``Submit" button
+		
+		Expected Results: The nutritional facts for half of a McDonald's cheeseburger are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``half a McDonald's cheeseburger" into the text upload box and pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test failed. The nutritional facts for half of a standard cheeseburger were displayed to the user instead of a McDonald's cheeseburger.
+		
+		\item{Test Name: multi-text-upload-1}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Text Upload" selected.
+		
+		Input: User inputs ``apple" and ``banana" on two separate lines into the text upload box and then clicks on the ``Submit" button.
+		
+		Expected Results: The nutritional facts for an apple and a banana are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``apple" into the text upload box and then pressed enter. The tester typed ``banana" and pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test failed. No nutritional information was displayed to the user.
+		
+		\item{Test Name: multi-text-upload-2}
+		
+		Type: Functional, Dynamic, Manual.
+	
+		Initial State: User is on the ``Upload" page with ``Text Upload" selected.
+		
+		Input: User inputs ``3 kit kat bars, 100g of salt, and 2 cucumbers" into the text upload box and then clicks on the ``Submit" button.
+		
+		Expected Results: The nutritional facts for 3 Kit Kat bars, 100g of salt, and 2 cucumbers are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``3 kit kat bars, 100g of salt, and 2 cucumbers" into the text upload box and then pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: multi-text-upload-3}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Text Upload" selected.
+		
+		Input: User inputs ``i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text upload box and then clicks on the ``Submit" button.
+		
+		Expected Results: The nutritional facts for 2 pieces of chicken breast, 100g of a martini, and 2 cheeseburgers are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text upload box and then pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: multi-text-upload-4}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Text Upload" selected.
+		
+		Input: User inputs ``ubdhsjsbubahasjvdhasbhdabhsdbh asbdh ahbsdbajsdbhashbdb 1 slice of cheese b2b23b2b3b2b3b2b 2 grapefruits aaahhhhh 100g of apple sauce ajjdjj2j2j3j23j who goes there? yup its me! aaa 1 slice of white bread celery" into the text upload box and then clicks on the ``Submit" button.
+		
+		Expected Results: The nutritional facts for 1 slice of cheese and 2 grapefruits, 100g of apple sauce, 1 slice of white bread, and 1 celery are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``ubdhsjsbubahasjvdhasbhdabhsdbh asbdh ahbsdbajsdbhashbdb 1 slice of cheese b2b23b2b3b2b3b2b 2 grapefruits aaahhhhh 100g of apple sauce ajjdjj2j2j3j23j who goes there? yup its me! aaa 1 slice of white bread celery" into the text upload box and then pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+	\end{enumerate}
+	\subsection{Voice Upload}
+	\begin{enumerate}
+		\item{Test Name: voice-upload-1}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Voice Upload" selected.
+		
+		Input: User clicks on the ``Start Talking" button and says out loud ``I ate a slice of apple pie". User clicks on the ``Submit" button.
+		
+		Expected Results: The nutritional facts for a slice of apple pie are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on the ``Voice Upload" button and then clicked on the ``Start Talking" button. The tester verbally said ``I ate a slice of apple pie." and pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: voice-upload-2}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Voice Upload" selected.
+		
+		Input: User clicks on the ``Start Talking" button and says out loud ``I ate two pieces of Kimchi period king yes". User clicks on the ``Stop Talking" button and then clicks on the ``Submit" Button.
+		
+		Expected Results: The nutritional facts for 2 pieces of Kimchi are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on the ``Voice Upload" button and then clicked on the ``Start Talking" button. The tester verbally said ``I ate two pieces of Kimchi period king yes" and pressed the ``Stop Talking" button. Then the tester pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: voice-upload-3}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has just completed test case voice-upload-2.
+		
+		Input: User clicks on the ``Start Talking" button and says out loud ``three chicken wings". User clicks on the ``Stop Talking" button and then clicks on the ``Submit" Button.
+		
+		Expected Results: The nutritional facts for 2 pieces of Kimchi and 3 chicken wings was displayed to the user.
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case voice-upload-2, the tester clicked on the ``Start Talking" button. The tester verbally said ``three chicken wings" and pressed the ``Stop Talking" button. Then the tester pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: voice-upload-4}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has just completed test case voice-upload-3.
+		
+		Input: User clicks on the ``Start Talking" button and then the ``Reset" button.
+		
+		Expected Results: The ``Upload" page refreshes and resets, which means the user is met with the ``Text Upload" button selected. After clicking on the ``Voice Upload" button, the user sees no previous entries and is able to click the ``Start Talking" button.
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case voice-upload-3, the tester then clicked on the ``Start Talking" button and then clicked on the ``Reset" button. The tester clicked on the ``Voice Upload" button again to double check the page was cleared.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: voice-upload-5}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Voice Upload" selected.
+		
+		Input: User clicks on the ``Reset" button.
+		
+		Expected Results: The ``Upload" page refreshes and resets, which means the user is met with the ``Text Upload" button selected. After clicking on the ``Voice Upload" button, the user is met with the normal ``Voice Upload" page.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on the ``Voice Upload" button and then clicked on the ``Reset" button. The tester clicked on the ``Voice Upload" button again to double check the page was cleared. 
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: voice-upload-6}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page and has typed ``apple" in the text box found in ``Text Upload".
+		
+		Input: User clicks on ``Voice Upload" and then User clicks on the ``Reset" button.
+		
+		Expected Results: The ``Upload" page refreshes and resets, which means the user is met with the ``Text Upload" button selected. The user is able to see ``apple" in the text box.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``apple" in the text box. The tester clicked on the ``Voice Upload" button and then clicked on the ``Reset" button.
+		
+		\textbf{Actual Results}: Test failed. ``apple" no longer appears in the text box in ``Text Upload".
+		
+		\item{Test Name: voice-upload-7}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Voice Upload" selected.
+		
+		Input: User clicks on the ``Submit" button.
+		
+		Expected Results: No nutritional facts will be displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on the ``Voice Upload" button and then clicked on the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: voice-upload-8}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Voice Upload" selected.
+		
+		Input: User clicks on the ``Start Talking" button and says out loud ``Hey now, you're a rock star. Get the show on, get paid". User clicks on the ``Stop Talking" button and then clicks on the ``Submit" Button.
+		
+		Expected Results: No nutritional facts will be displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on the ``Voice Upload" button and then clicked on the ``Start Talking" button. The tester verbally said ``Hey now, you're a rock star. Get the show on, get paid" and pressed the ``Stop Talking" button. Then the tester pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: voice-upload-9}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has just completed test case voice-upload-8.
+		
+		Input: User clicks on the ``Start Talking" button and says out loud ``a can of sprite". User clicks on the ``Stop Talking" button and then clicks on the ``Submit" Button.
+		
+		Expected Results: The nutritional facts for a can of sprite are displayed to the user.
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case voice-upload-9, the tester clicked on the ``Start Talking" button. The tester verbally said ``a can of sprite" and pressed the ``Stop Talking" button. Then the tester pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: voice-upload-10}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Voice Upload" selected.
+		
+		Input: User clicks on the ``Start Talking" button and says out loud ``Ahhh! Don't scare me like that. a pound of white rice. so by the way im vegan lol". User clicks on the ``Stop Talking" button and then clicks on the ``Submit" Button.
+		
+		Expected Results: The nutritional facts for a pound of white rice are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on the ``Voice Upload" button and then clicked on the ``Start Talking" button. The tester verbally said ``Ahhh! Don't scare me like that. a pound of white rice. so by the way im vegan lol" and pressed the ``Stop Talking" button. Then the tester pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+	
+		\item{Test Name: voice-upload-11}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Voice Upload" selected.
+		
+		Input: User clicks on the ``Start Talking" button and says out loud ``I ate 2 eggs benedicts". User clicks on ``Stop Talking" and then clicks on ``Text Upload". User clicks on ``Voice Upload" and then the ``Submit" button.
+		
+		Expected Results: The nutritional facts for 2 eggs benedicts are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on the ``Voice Upload" button and then clicked on the ``Start Talking" button. The tester verbally said ``I ate 2 eggs benedicts" and pressed the ``Stop Talking" button. Then the tester pressed on the ``Text Upload" button and then the ``Voice Upload" button. The tester pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: voice-upload-12}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Voice Upload" selected.
+		
+		Input: User clicks on the ``Start Talking" button and says out loud ``2 oranges". User clicks on ``Text Upload". User says out loud ``a slice of an apple" User clicks on ``Voice Upload" and then the ``Submit" button.
+		
+		Expected Results: The nutritional facts for 2 oranges are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on the ``Voice Upload" button and then clicked on the ``Start Talking" button. The tester verbally said ``2 oranges" and then the tester pressed on the ``Text Upload" button. The tester said ``a slice of an apple" and then clicked on the ``Voice Upload" button. The tester pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test failed. The nutritional facts for 2 oranges and a slice of an apple were displayed to the user.
+		
+		\item{Test Name: multi-voice-upload-1}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Voice Upload" selected.
+		
+		Input: User clicks on the ``Start Talking" button and says out loud ``Today I ate 3 spoons of peanut butter, I know im a mess. I also had 3 whole baguettes with a side of 100 G of salsa. Then to top it all off I ate 1 carrot cake." User clicks the ``Submit" button.
+		
+		Expected Results: The nutritional facts for 3 spoons of peanut butter, 3 whole baguettes, 100g of salsa, and 1 whole carrot cake are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on the ``Voice Upload" button and then clicked on the ``Start Talking" button. The tester verbally said ``Today I ate 3 spoons of peanut butter, I know im a mess. I also had 3 whole baguettes with a side of 100 G of salsa. Then to top it all off I ate 1 carrot cake". The tester pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: multi-voice-upload-2}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Voice Upload" selected.
+		
+		Input: User clicks on the ``Start Talking" button and says out loud ``100 grams of hummus, 2 bowls of mac and cheese". The user pauses for 5 seconds and then says ``2 teaspoons of vegetable oil". User clicks the ``Submit" button.
+		
+		Expected Results: The nutritional facts for 100g of hummus, 2 bowls of mac and cheese, and 2 teaspoons of vegetable oil are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on the ``Voice Upload" button and then clicked on the ``Start Talking" button. The tester verbally said ``100 grams of hummus, 2 bowls of mac and cheese". The tester paused for 5 seconds and said ``2 teaspoons of vegetable oil". The tester pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: multi-voice-upload-3}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page with ``Voice Upload" selected.
+		
+		Input: User clicks on the ``Start Talking" button and says out loud ``ausdhjasdihjashduih (gibberish) 2 grams of Pina Colada ausdhjasdihjashduih (gibberish) penguin 1 pineapple ausdhjasdihjashduih (gibberish)". User clicks the ``Submit" button.
+		
+		Expected Results: The nutritional facts for 2g of Pina Colada and 1 whole pineapple are displayed to the user.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on the ``Voice Upload" button and then clicked on the ``Start Talking" button. The tester verbally said ``ausdhjasdihjashduih (gibberish) 2 grams of Pina Colada ausdhjasdihjashduih (gibberish) penguin 1 pineapple ausdhjasdihjashduih (gibberish)". The tester pressed the ``Submit" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+	\end{enumerate}
+
+	\subsection{Profile Page}
+	\begin{enumerate}
+		\item{Test Name: profile-1}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has completed test case ``text-upload-1".
+		
+		Input: User clicks on ``Profile" found in the taskbar.
+		
+		Expected Results: The user is able to see that their most eaten food is yogurt, their total calories consumed for today is 142.88 (calories in 1 cup of yogurt), and the nutritional values of yogurt next to the current date.
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case text-upload-1, the tester clicked on ``Profile" found in the taskbar.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: profile-2}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has completed test case ``text-upload-1" three times.
+		
+		Input: User clicks on ``Profile" found in the taskbar.
+		
+		Expected Results: The user is able to see that their most eaten food is yogurt, their total calories consumed for today is 428.64, the nutritional values of yogurt next to the current date is shown three times, and the total calories of three cups of yogurt is summed on the right table.
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case text-upload-1 three times, the tester clicked on ``Profile" found in the taskbar.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: profile-3}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has completed test case ``profile-2".
+		
+		Input: User completes test case ``multi-text-upload-3" and then clicks on ``Profile" found in the taskbar.
+		
+		Expected Results: The user is able to see that their most eaten food is yogurt, their total calories consumed for today is 2137.12, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of a cup of yogurt next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 2 cheeseburgers is summed on the right table.
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-2, the tester completed test case ``multi-text-upload-3". The tester clicked on ``Profile" found in the taskbar.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: profile-4}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has completed test case ``profile-3".
+		
+		Input: User clicks on ``Upload" found in the taskbar. User clicks on ``Voice Upload" and then ``Start Talking". User says ``2 cheeseburgers random random random how was your day?" and then clicks on ``Stop Talking". User clicks on the ``Submit" button and clicks on ``Profile" found in the taskbar.
+		
+		Expected Results: The user is able to see that their most eaten food is a cheeseburger, their total calories consumed for today is 3207.74, the nutritional value of 2 cheeseburgers next to the current date, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, and the nutritional value of 2 cheeseburgers next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 4 cheeseburgers is summed on the right table.
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-3, the tester clicked on ``Upload" in the taskbar. The tester clicked on ``Voice Upload" and then ``Start Talking". Tester said ``2 cheeseburgers random random random how was your day?" and then clicked on ``Stop Talking". Tester clicked on the ``Submit" button. The tester clicked on ``Profile" found in the taskbar.
+		
+		\textbf{Actual Results}: Test failed. The most eaten food is still yogurt instead of cheeseburger due to yogurt being inputted 3 different times and cheeseburger being inputted twice.
+		
+		\item{Test Name: profile-5}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has completed test case ``profile-4" and is viewing the ``Upload" page
+		
+		Input: User clicks on ``Text Upload" and then types ``cheeseburger and cheeseburger". User clicks on the ``Submit" button and clicks on ``Profile" found in the taskbar.
+		
+		Expected Results: The user is able to see that their most eaten food is a cheeseburger, their total calories consumed for today is 4278.36, the nutritional value of 1 cheeseburger next to the current date, the nutritional values of 1 cheeseburger next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of 1 chicken breast next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 6 cheeseburgers is summed on the right table.
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-4, the tester clicked on ``Upload" found in the taskbar. The tester clicked on ``Text Upload" and then typed ``cheeseburger and cheeseburger". Tester clicked on the ``Submit" button. The tester clicked on ``Profile" found in the taskbar.
+		
+		\textbf{Actual Results}: Test failed. The most eaten food is still yogurt instead of cheeseburger due to 2 cheeseburgers and 1 cheeseburger being seen by the system as two different food items.
+		
+		\item{Test Name: profile-6}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has completed test case ``profile-5" and is viewing the ``Profile" page.
+		
+		Input: User clicks on ``Look at next 4 entries".
+		
+		Expected Results: User is able to see the nutritional information for: 100g of a martini, 2 cheeseburgers, a cup of yogurt, and another cup of yogurt all next to the current date.
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-5, the tester clicked on the ``Look at next 4 entries" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: profile-7}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has completed test case ``profile-6" and is viewing the ``Profile" page.
+		
+		Input: User clicks on ``Look at next 4 entries".
+		
+		Expected Results: User is able to see the nutritional information for 1 cup of yogurt.
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-6, the tester clicked on the ``Look at next 4 entries" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: profile-8}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has completed test case ``profile-7" and is viewing the ``Profile" page.
+		
+		Input: User clicks on ``Look at previous 4 entries".
+		
+		Expected Results: User is able to see the nutritional information for: 100g of a martini, 2 cheeseburgers, a cup of yogurt, and another cup of yogurt all next to the current date.
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-7, the tester clicked on the ``Look at previous 4 entries" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: profile-9}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has inputted a cup of yogurt into Utrition for 15 days and is now viewing the ``Profile" page.
+		
+		Input: User clicks on the ``Previous Week" button.
+		
+		Expected Results: The table is updated to show the previous 7 days in which a cup of yogurt was inputted into Utrition. 
+		
+		How The Test Was Performed: The tester went into the directory ``utrition$\backslash$src$\backslash$utrition$\backslash$utrition-backend" and opened the ``nutrition\_log.csv" file. The tester faked data for yogurt by making sure each column was filled out with appropriate data (Time having format d/m/Y H:M:S, Name must be a string, serving unit must be a string, and the rest filled with floats), and then copying and pasting the data for 14 other rows (15 in total). Each row had a different date associated with it. The tester saved the ``nutrition\_log.csv" changes and refreshed the ``Profile" page. The tester clicked on the ``Previous Week" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: profile-10}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has completed test case ``profile-9" and is viewing the ``Profile" page.
+		
+		Input: User clicks on the ``Previous Week" button.
+		
+		Expected Results: The table is updated to show the first day the user inputted a food item (yogurt) into Utrition.
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-9, the tester clicked on the ``Previous Week" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: profile-11}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: Food items were inputted into Utrition on 15 different days. In increasing order, the following food items were inputted: Apple, Banana, Celery, Orange, Grapefruit, Chicken, Cheeseburger, Pizza, Sprite, Cashew, Cucumber, Pickle, Poutine, Sour Cream, and Salsa.
+		
+		Input: User clicks on the ``Previous Week" button twice. Then, the user clicks on the ``Next Week" button once.
+		
+		Expected Results: The table is updated to show the following food items with their attached date and calorie information: Pizza, Cheeseburger, Chicken, Grapefruit, Orange, Celery, and Banana.
+		
+		How The Test Was Performed: The tester went into the directory ``utrition$\backslash$src$\backslash$utrition$\backslash$utrition-backend" and opened the ``nutrition\_log.csv" file. The tester faked data for the food items by making sure each column was filled out with appropriate data (Time having format d/m/Y H:M:S, serving unit must be a string, and the rest filled with floats), and then copying and pasting the data for 14 other rows (15 in total). Each row had a different date associated with it. The tester added in the ``Name" column the following 15 food items in increasing order by date: Apple, Banana, Celery, Orange, Grapefruit, Chicken, Cheeseburger, Pizza, Sprite, Cashew, Cucumber, Pickle, Poutine, Sour Cream, and Salsa. The tester saved the ``nutrition\_log.csv" changes and refreshed the ``Profile" page. The tester clicked on the ``Previous Week" button twice and the ``Next Week" button once.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: profile-12}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State:  User has completed test case ``profile-11" but has now added an extra row of salsa having the same data as the previous salsa entry.
+		
+		Input: User clicks on the ``Previous Week" button twice. Then, the user clicks on the ``Next Week" button twice.
+		
+		Expected Results: The table is updated to show the following food items with their attached date and calorie information: Salsa and Salsa, Sour Cream, Poutine, Pickle, Cucumber, Cashew, and Sprite.
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-11, the tester went into the directory ``utrition$\backslash$src$\backslash$utrition$\backslash$utrition-backend" and opened the ``nutrition\_log.csv" file. The tester copied and pasted the Salsa row once more at the bottom of the excel file. The tester saved the ``nutrition\_log.csv" changes and refreshed the ``Profile" page. The tester clicked on the ``Previous Week" button twice and the ``Next Week" button twice.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: profile-13}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has no entries saved on their device and is viewing the ``Profile" page.
+		
+		Input: User clicks on ``Profile" found in the taskbar.
+		
+		Expected Results: The user is able to see the following headers with no nutritional information near them: Your most eaten food, Your total calories consumed for today, PAST MEALS, and My Caloric Intake.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Profile" found in the taskbar. The tester clicked on ``Profile" one more time.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+
+	\end{enumerate}
+
+	\subsection{Taskbar}
+	\begin{enumerate}
+		\item{Test Name: upload-page-1}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Home" page.
+		
+		Input: User clicks on the ``Upload" button.
+		
+		Expected Results: The user views the ``Upload" page.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: profile-page-1}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Home" page.
+		
+		Input: User clicks on the ``Profile" button.
+		
+		Expected Results: The user views the ``Profile" page.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Profile" found in the taskbar.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: home-page-1}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page.
+		
+		Input: User clicks on the ``Utrition" button.
+		
+		Expected Results: The user views the ``Home" page.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on ``Utrition" found in the taskbar.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: home-page-2}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Profile" page.
+		
+		Input: User clicks on the ``Utrition" button.
+		
+		Expected Results: The user views the ``Home" page.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Profile" found in the taskbar. The tester clicked on ``Utrition" found in the taskbar.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: profile-page-2}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Upload" page.
+		
+		Input: User clicks on the ``Profile" button.
+		
+		Expected Results: The user views the ``Profile" page.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on ``Profile" found in the taskbar.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: upload-page-2}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is on the ``Profile" page.
+		
+		Input: User clicks on the ``Upload" button.
+		
+		Expected Results: The user views the ``Upload" page.
+		
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Profile" found in the taskbar. The tester clicked on ``Upload" found in the taskbar.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+	\end{enumerate}
+
 	\section{Nonfunctional Requirements Evaluation}
 	
+	\subsection{Look and Feel}
+	
+	\begin{enumerate}
+		\item{LF-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: A developer from Durum Wheat Semolina has launched the Utrition app.
+		
+		Input: The developer measures the distance between the displayed user interface components.
+		
+		Expected Results: The distance between user interface components must surpass 20 pixels.
+		
+		How The Test Was Performed: Each developer launches the Utrition app and opens the \href{https://www.rapidtables.com/web/tools/pixel-ruler.html}{Pixel Measuring Tool}. The developer will use the tool by viewing a page on Utrition, then clicking “Print Screen'' on their keyboard. The developer then pastes the screenshot into the tool. The developer clicks the two spots he would like to measure distance from.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. All testing developers reported that all the visually distinct user interface components were at least 20 pixels away from one another. This ensures the visual components of the application will be visually pleasing, easy to read, and more intuitive to follow.
+		
+	\end{enumerate}
+	
 	\subsection{Usability}
+	\begin{enumerate}
+		
+		\item{UH-1}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user is viewing a page of the user interface.
+		
+		Input: The user clicks on the “Menu” button located at the bottom of the user interface.
+		
+		Expected Results: The user will be brought to the main menu screen.
+		
+		How The Test Was Performed: A developer of Durum Wheat Semolina will access every page listed in “Initial State” and will attempt to reach the main menu in 2 or less clicks from the respective page.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. All testing developers were able to access the main menu in exactly 1 click from any page. All pages were tested; Main page, Upload page, Profile page.
+		
+		
+		\item{UH-2}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has previously entered 5 items in Utrition and is now viewing the main menu.
+		
+		Input: The user makes the request to view past nutritional data.
+		
+		Expected Results: The user views a list displaying all 5 food items with their respective details in: food name, calories, fat, sodium, proteins, carbohydrates, sugars, and date entered.
+		
+		How The Test Was Performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and access the main menu. The developer will upload an image of different food items 5 times, with a minimum 1 minute time difference between each input. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer navigates to the past inputted foods area and views the list displaying the 5 different food items and their respective details.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. After submitting the 5 food items into the image upload component, the developer navigated to the Profile page, where they reported that the expected nutritional data corresponding to the uploaded food items were displayed on the page.
+		
+		\item{UH-3}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has previously entered 5 items in Utrition and has requested to view their past inputted food items.
+		
+		Input: The user navigates to the screen where they can view their past nutritional data in a chart format.
+		
+		Expected Results: The user views a chart displaying all 5 food items with their respective details in: food name, calories, proteins, carbohydrates, sugars, and date entered.
+		
+		How The Test Was Performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and access the main menu. The developer will upload an image of different food items 5 times, with a minimum 1 minute time difference between each input. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer navigates to the past inputted foods area where they can view their statistics as a chart. The developer views a chart displaying 5 different food items and their respective details.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. After submitting the 5 food items into the image upload component, the developer navigated to the Profile page, where they reported that the expected nutritional data corresponding to the uploaded food items were displayed on the page within a chart.
+		
+		\item{UH-4}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: Utrition’s main menu is opened on the user’s personal device.
+		
+		Input: The user uploads a photo of food.
+		
+		Expected Results: The user views the food’s nutritional information.
+		
+		How The Test Was Performed: Each developer of Durum Wheat Semolina will load Utrition on to their personal device. Each developer will ask 2 people aged 14 or older to upload and retrieve the nutritional data of the food item “pineapple.jpg” found in the utrition/test/testPhotos directory. The developer will track the time it takes for each test. 90\% of the panel must complete the task in under 2 minutes.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. All 6 testing users were able complete the task in under 2 minutes, with an average time of 1.5 minutes.
+		
+		\item{UH-5}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition’s main menu.
+		
+		Input: The user views every page of the user interface.
+		
+		Expected Results: The user will see the respective symbol associated with every mention of calories, fat, sodium carbohydrates, sugar, and protein.
+		
+		How The Test Was Performed: On each screen, including the main menu, a developer on Durum Wheat Semolina will check if there is a symbol associated with every mention of calories, fat, sodium carbohydrates, sugar, and protein. The developer will open Utrition on their personal device. The developer will upload a .png image of food found in the utrition/test/testPhotos directory. The developer will view the nutritional information venture through each page to confirm the correct symbols appear.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. The testing developer reported that every expected nutritional data type had a corresponding label that was easily identifiable.
+		
+		\item{UH-6}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has previously entered 2 items in Utrition and is now viewing the main menu.
+		
+		Input: The user views every page of the user interface.
+		
+		Expected Results: The user does not see any backend calculations.
+		
+		How The Test Was Performed: On each screen, a developer on Durum Wheat Semolina will check if any backend calculations are displayed to the user. The developer will open Utrition on their personal device and access the main menu. The developer will upload an image of two different food items, with a minimum of 1 minute between the inputs. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer will view all pages to ensure no backend calculations are visible.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. The testing developer reported that no backend calculations were visible on the user interface during the image upload user experience process.
+		
+		\item{UH-7}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user opens Utrition with a stable internet connection.
+		
+		Input: The user views every page of the user interface.
+		
+		Expected Results: 
+		\begin{itemize}
+			\item Utrition is available to be used by users at all times.
+			\item The user does not hear Utrition generate any sound.
+		\end{itemize}
+		
+		How The Test Was Performed: On each screen, a developer on Durum Wheat Semolina will check if a sound plays. The developer will open Utrition on their personal device. The developer will upload an image of food. The uploaded image of the food item will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer will view the nutritional information. The developer then will view the past inputs and the nutritional information chart.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. The testing developer reported a smooth user experience during the image upload process with a stable internet connection. The testing developer also noted that the application did not generate any audio, with speakers on maximum volume.
+		
+		\item{UH-8}
+		
+		Type: Static and Manual.
+		
+		Initial State: A developer on Durum Wheat Semolina views Utrition’s GitHub page. 
+		
+		Input: The developer checks every directory for an audio file.
+		
+		Expected Results: The developer removes all audio files found in Utrition’s GitHub.
+		
+		How The Test Was Performed: The developer loads into Utrition’s \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} and views the files in every directory. For each directory the developer will check for the following file types:
+		
+		\begin{itemize}
+			\item MP3
+			\item AAC
+			\item Ogg Vorbis
+			\item FLAC
+			\item ALAC
+			\item WAV
+			\item AIFF
+			\item DSD
+			\item PCM
+		\end{itemize}
+	
+	\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. After inspecting Utrition's public repository, the testing developer reported no outstanding files of the above file types.
+	
+	\end{enumerate}
+
+	Apart from the more defined tests discussed above, additional usability testing was conducted on several participants to obtain feedback regarding Utrition's overall quality and user experience. A semi-structured interview was conducted on a total of 5 individuals of different genders and ethnicities to provide a wide range of opinions and suggestions. The interview process consisted of a brief explanation of the application, sample tasks for the participant to perform, and a series of questions. The raw notes from each interview can be found in Appendix A.
+	
+	Many useful insights were gathered from the interview results. When participants were asked to input multiple food entries, most opted for text or voice upload options. The majority of participants did not read the instructions but completed the task quickly and with ease. Common likes brought up by participants included the colour scheme and layout of the application, the ease of use regarding food entry upload, and the depth of information found on the profile page.
+	
+	In terms of common dislikes, many participants wanted to see units beside the nutritional data they were receiving, more error messages when something goes wrong, and to have meals grouped together based on input time when viewing the profile page. Additional features that individuals wish to see in feature revisions include BMI inputs from the user, goal setting, and a graph displaying past food input information. Greater explanation on implementation changes is discussed in section 7.2.
 	
 	\subsection{Performance}
 	
-	\subsection{etc.}
+	\begin{enumerate}
+		
+		\item{PT-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has previously entered 10 items in Utrition.
+		
+		Input: The user views every page of the user interface.
+		
+		Expected Results: The user will be able to access every page of the user interface in 2 seconds or less.
+		
+		How The Test Was Performed: A developer on Durum Wheat Semolina will measure the time it takes for each new screen to load using a stopwatch. The developer will open Utrition on their personal device. The developer will upload an image of different food items 10 times, with a minimum 1 minute time difference between the inputs. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer will navigate to each screen, timing each transition.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. The testing developer reported that the navigation and loading time for every page took less than 1 second.
+		
+		\item{PT-2} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input: The user uploads 3 images simultaneously.
+		
+		Expected Results: 
+		\begin{itemize}
+			\item The user is able to view the identification for all 3 food items in 10 or less seconds.
+			\item The user is able to view the nutritional information for all 3 food items in 5 or less seconds.
+		\end{itemize}
+		
+		How The Test Was Performed: A developer on Durum Wheat Semolina will 
+		open Utrition. The developer 
+		will upload three images of food found in the utrition/test/testPhotos 
+		directory. The developer clicks to view 
+		the foods’ nutritional information. The developer measures the amount 
+		of time it takes for Utrition to notify the user of the name of the 
+		identified food items. The developer measures the amount of time it 
+		takes for the system to change from the food identification interface 
+		to the nutritional information interface.
+		
+		\textbf{Actual Results}: Test failed. The developer reported that multiple images were not able to be uploaded simultaneously and had to be uploaded consecutively. After uploading an image, the developer reported that it took less than 5 seconds for the food to be identified and for the food's nutritional data to be displayed.
+		
+		\item{PT-3}
+		
+		Type: Functional, Dynamic, Automatic
+		
+		Initial State: Nutritional data of a food item is contained in the 
+		system.
+		
+		Input: The user requests to display the nutritional information of a 
+		food item.
+		
+		Expected Results: The system will generate the HTML body to be displayed on 
+		the user 
+		interface.
+		
+		How The Test Was Performed: The test will measure if this interaction 
+		was completed in 5 seconds or less.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. The testing developer requested for the nutrirtional information of 15 different items, and reported that the nutritional data of a food item was fetched and displayed on the user interface in less than 5 seconds, with an average time of 0.6 seconds.
+		
+		\item{PT-4} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input: The user uploads an image of food.
+		
+		Expected Results: The food is correctly identified, and the correlated nutritional facts are correct.
+		
+		How The Test Was Performed: A developer on Durum Wheat Semolina will open Utrition and upload the images of the following foods separately (images found in utrition/test/testPhotos directory):
+		\begin{itemize}
+			\item Uncooked Pork
+			\item Corn
+			\item Lettuce
+			\item Beef
+			\item Penne Pasta
+			\item Rice
+			\item Milk
+			\item Butter
+			\item Wheat Bread
+			\item Orange Juice
+		\end{itemize} 
+		
+		The developer will check the accuracy of each identified food item and 
+		their respective nutritional facts. 70\% of the images must be identified correctly. 90\% of the nutrition facts for the correctly identified foods will be given correctly.
+		
+		\textbf{Actual Results}: Test failed. The testing developer reported that none of the above food items were correctly identified. This result was expected, as the image classification model training data sample size was constrained to a small number of food items.
+		
+		\item{PT-5}
+		
+		Type: Functional, Dynamic, and Automatic.
+		
+		Initial State: System contains a set of images; all with foods, and of 
+		extension .jpg, .png, or .jpeg.
+		
+		Input: System prompted to process the image, for each image 
+		within the provided set (images found in utrition/test/testPhotos directory).
+		
+		Expected Results: For each image, the system should identify the food 
+		present in an image and return the name of the food item as a string.
+		
+		How The Test Was Performed: The test will check if among all the 
+		provided images, more than 90\% of the images have been assessed 
+		correctly.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. From uploading the images in the provided set 15 times, the developer reported that the system processed the food item correctly 14 times. 93 \% of the images were assessed correctly.
+		
+		\item{PT-6}
+		
+		Type: Functional, Dynamic, and Automatic.
+		
+		Initial State: System contains a set of images; some with and others 
+		without foods, and of extension .jpg, .png, or 
+		.jpeg.
+		
+		Input: System prompted to process image, for each image 
+		within the provided set (images found in utrition/test/testPhotos directory).
+		
+		Expected Results: The system should identify the food present in an image, 
+		and return the name of the food item as a string, and prompt the user 
+		if no food is detected.
+		
+		How The Test Was Performed: The test will check if among all the 
+		provided images, more than 70\% of the images have been assessed 
+		correctly.
+		
+		\textbf{Actual Results}: Test failed. The testing developer reported that 60\% of the images had been assessed correctly, with the failing tests being with images of no food items.
+		
+		\item{PT-7} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input: The user uploads 4 photos of different food items.
+		
+		Expected Results: The user is notified that they are not able to proceed with viewing the identified foods or their nutritional information.
+		
+		How The Test Was Performed: A developer on Durum Wheat Semolina will open Utrition and attempt to upload four images of random food items found in the utrition/test/testPhotos directory. The developer is notified with an error informing them that only 3 images can be uploaded at once.
+		
+		\textbf{Actual Results}: Test failed. The testing developer reported that no error message was displayed, and that the application only accepts multiple images to be uploaded consecutively.
+		
+		\item{PT-8} 
+		
+		Type: Static and Manual.
+		
+		Initial State: A developer on Durum Wheat Semolina opens their internet browser.
+		
+		Input: The developer is able to access Utrition’s  \href{https://github.com/jeff-rey-wang/utrition}{GitHub} and download the repository on to their personal device.
+		
+		Expected Results: Utrition is able to be downloaded.
+		
+		How The Test Was Performed: The developer will access Utrition’s GitHub on their personal device’s web browser. The developer will click on “Code”, and then “Download ZIP”. The developer will verify that Utrition has been downloaded on to their device.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. All 6 testing developers were able to download and access Utrition's public GitHub repository.
+		
+		\item{PT-9} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input: The user uploads a very large photo (more than 30MB) for Utrition to identify.
+		
+		Expected Results: The user is notified that they are not able to proceed with viewing the identified foods or their nutritional information.
+		
+		How The Test Was Performed: A developer on Durum Wheat Semolina will open Utrition and upload “art.png” found in the utrition/test/testPhotos directory. The developer is notified that they cannot proceed with viewing the nutritional information unless they decrease the uploaded image’s file size.
+		
+		\textbf{Actual Results}: Test failed. The testing developer reported that no error message was displayed on the user interface when a large image file was uploaded.
+		
+		\item{PT-10} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input: The user uploads an unintelligible image for Utrition to identify.
+		
+		Expected Results: The user is notified that Utrition is not confident in the system’s identification. The system will suggest uploading another image.
+		
+		How The Test Was Performed: A developer on Durum Wheat Semolina will 
+		open Utrition and upload “desk.jpg” found in the utrition/test/testPhotos directory. The developer 
+		is notified that the machine learning algorithm is not confident in the 
+		identification of the food, and that they should upload another image.
+		
+		\textbf{Actual Results}: Test failed. The testing developer reported that no message was displayed on the user interface describing the low image classification confidence.
+		
+		\item{PT-11}
+		
+		Type: Functional, Dynamic, and Automatic.
+		
+		Initial State: The system is identifying food objects within the user's 
+		uploaded image(s).
+		
+		Input: Uploaded image.
+		
+		Results: An error message is displayed prompting the user of a failed 
+		identification.
+		
+		How The Test Was Performed: The test will check if an error message element has been rendered.
+		
+		\textbf{Actual Results}: Test failed. The testing developer reported that no error message was displayed on the user interface following a failed identification.
+		
+		\item{PT-12}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition without connecting to the internet.
+		
+		Input: The user uploads an image for Utrition to identify.
+		
+		Expected Results: The user is notified that the system is unable to retrieve nutritional information because they are not connected to the internet.
+		
+		How The Test Was Performed: A developer on Durum Wheat Semolina will open Utrition upload a random working image found in the utrition/test/testPhotos directory. The developer is notified that they are not connected to the internet after 20 seconds.
+		
+		\textbf{Actual Results}: Test failed. The testing developer reported that no error message was displayed on the user interface when there was no internet connection. 
+		
+		\item{PT-13} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user loads into Utrition.
+		
+		Input: The user uploads an image for Utrition to identify.
+		
+		Expected Results: The user is notified that the system has identified the food item but could not find the food’s nutritional data.
+		
+		How The Test Was Performed: A developer on Durum Wheat Semolina will open Utrition and upload “dragonfruit.jpg” found in the utrition/test/testPhotos directory. The developer is notified that they have uploaded an image of a “Dragon Fruit”, but the nutritional data cannot be found.
+		
+		\textbf{Actual Results}: Test failed. The testing developer reported that the image of a ``Dragon Fruit" was not correctly identified.
+		
+		\item{PT-14} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user opens Utrition without previously inputting any food items.
+		
+		Input: The user attempts to view their past inputs' nutritional information as text and as a chart.
+		
+		Expected Results: The user views an empty list with column entries: food name, calories, proteins, carbohydrates, sugars, and date entered. The user will see an empty canvas for the chart, and text detailing that there are no previous nutritional logs.
+		
+		How The Test Was Performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and view nutritional data from past inputs. A message displays ``There are no previous food items recorded" and an empty chart.
+		
+		\textbf{Actual Results}: Test failed. The testing developer reported that an empty chart was displayed, but the message ``There are no previous food items recorded" was not displayed on the user interface.
+		
+		\item{PT-15}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: A user loads into Utrition.
+		
+		Input: The user uploads a PDF document as an image.
+		
+		Expected Results: The user is notified that they are not able to proceed with viewing the identified foods or their nutritional information.
+		
+		How The Test Was Performed: A developer on Durum Wheat Semolina will open Utrition upload the image “waffle.pdf” to Utrition from the utrition/test/testPhotos directory. The developer is notified that they cannot upload the file since Utrition does not support “.pdf” file types.
+		
+		\textbf{Actual Results}: Test failed. The testing developer reported that no error message was visible on the user interface.
+		
+	\end{enumerate}
+	
+	\subsection{Operational and Environmental}
+	
+	\begin{enumerate}
+		
+		\item{OE-1} 
+		
+		Type: Static and Manual.
+		
+		Initial State: A user aged 14 or older has read Utrition’s “README.md” located at the bottom of the \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} page.
+		
+		Input: The user installs Utrition on their personal device.
+		
+		Expected Results: The intended demographic is able to install Utrition on their computer.
+		
+		How The Test Was Performed: Each developer on Durum Wheat Semolina will test 5 individuals aged 14 and above to install Utrition. The test passes if 95\% of users can install Utrition.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. All 5 testing users were able to install Utrition from the public GitHub repository.
+		
+		\item{OE-2} 
+		
+		Type: Static and Manual.
+		
+		Initial State: A user visits Utrition’s \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} page.
+		
+		Input: The user checks that the latest change to Utrition’s GitHub is not after April 30th, 2023.
+		
+		Expected Results: Utrition will not have any updates after the final release.
+		
+		How The Test Was Performed: A developer on Durum Wheat Semolina will visit Utrition’s GitHub page bi-yearly to ensure no updates are made to Utrition’s GitHub.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. The last modified date of the Utrition GitHub repository is before April 30th, 2023.
+		
+	\end{enumerate}
+	
+	\subsection{Maintainability and Support}
+	
+	\begin{enumerate}
+		
+		\item{MS-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The developer is in the utrition/src/database directory.
+		
+		Input: The developer switches the database file found in the database directory for another database.
+		
+		Expected Results: Backend developers are able to upload new data to Utrition’s database.
+		
+		How The Test Was Performed: The developer travels to the utrition/src/database directory on their device. The developer replaces the database found in the directory with “testdatabase.jpg”, which can be found in the utrition/test/testPhotos directory. The developer launches Utrition on their device to see that the system still runs.	
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. The testing developer was able to replace the previous database file with a new database file that contained different entries. Both database files were of the same schema.
+		
+		\item{MS-2} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user has installed Utrition on to their Windows, macOS, or Linux device.
+		
+		Input: The user is able to upload an image of food and view all pages of the user interface.
+		
+		Expected Results: All of Utrition’s functionality can be accessed by Windows, macOS, and Linux devices.
+		
+		How The Test Was Performed: Developers of Durum Wheat Semolina will install Utrition on one of each Windows, macOS, and Linux device. The developer will open Utrition on the device and upload a random image of a food item found in the utrition/test/testPhotos directory. The developer sees their foods’ nutritional information. The developer can view past inputs' nutritional data and chart.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. 3 users reported a smooth and expected user experience during the image upload process, with each user accessing the system through a different operating system (Windows, macOS, Linux).
+		
+	\end{enumerate}
+	
+	\subsection{Security}
+	
+	\begin{enumerate}
+		
+		\item{ST-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: The user is viewing the nutritional facts for a food item they uploaded.
+		
+		Input: After idling for 3 minutes, the user closes Utrition and reopens it.
+		
+		Expected Results: The user will open Utrition and will view the nutritional facts of the image in the past inputs section.
+		
+		How The Test Was Performed: A developer on Durum Wheat Semolina will open Utrition and will upload “waffle.jpg” found in the utrition/test/testPhotos directory. The developer views the nutritional facts of a waffle, and then idles for 3 minutes. After the elapsed time, the developer closes their instance of Utrition and opens it again. The developer can view the nutritional facts of the waffle in the past inputs section.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. The testing developer was able to consistently view the nutritional facts of the waffle after the elapsed idle time, and after restarting the application. 
+		
+		\item{ST-2} 
+		
+		Type: Static and Manual.
+		
+		Initial State: A Durum Wheat Semolina developer visits Utrition’s \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} page.
+		
+		Input: The developer checks the userdata directory for any files.
+		
+		Expected Results: The userdata folder will be empty on GitHub, so Utrition will only contain personalized data once downloaded on a user's device.
+		
+		How The Test Was Performed: The developer loads into Utrition’s \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} and goes into the utrition/src/userdata directory. The developer ensures that no userdata is preloaded into Utrition’s GitHub.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. The testing developer reported that there was no user data after downloading a fresh version of the system from Utrition's GitHub.
+		
+		
+	\end{enumerate}
+	
+	\subsection{Cultural}
+	
+	\begin{enumerate}
+		\item{CT-1} 
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: Utrition’s main menu is being displayed to a user.
+		
+		Input: The user is told by a Durum Wheat Semolina developer to find culturally insensitive material.
+		
+		Expected Results: The user will be questioned after 5 minutes of searching if they have found any culturally insensitive material while using Utrition.
+		
+		How The Test Was Performed: Each developer will approach 5 peers with Utrition’s main menu open on the developer’s device. The developer will give full control over to their peers and will tell their peers to search for culturally insensitive material. After 5 minutes are up, the developer will ask their peers if they have found any culturally insensitive material. This test passes if 95\% of users could not find any culturally insensitive material.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results. A survey that was conducted after users were able to explore the application showed that 100\% of users did not find any culturally insensitive material on the system.
+		
+	\end{enumerate}
+
+	\subsection{Legal}
+	
+	\begin{enumerate}
+		\item{LT-1}
+		
+		Type: Static and Manual.
+		
+		Initial State: A developer of Durum Wheat Semolina views Utrition’s \href{https://github.com/jeff-rey-wang/utrition/}{GitHub} repository.
+		
+		Input: The developer inspects all code to ensure Utrition is following Canada’s Anti-Spam Legislation Requirements for Installing Computer Programs, Canada’s Guide for Publishing Open Source Code, Google’s HTML/CSS Style Guide, and Google’s guide for material design.
+		
+		Expected Results: Utrition is in compliance with all the standards laid out by the SRS document.
+		
+		How The Test Was Performed: The developer goes into the utrition/src directory, and then opens the link to one of the following guides:
+		\begin{itemize}
+			\item \href{https://crtc.gc.ca/eng/internet/install.htm}{Canada’s Anti-Spam Legislation Requirements for Installing Computer Programs}
+			\item \href{https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/open-source-software/guide-for-publishing-open-source-code.html}{Guide for Publishing Open Source Code}
+			\item \href{https://google.github.io/styleguide/jsguide.html}{Google JavaScript Style Guide}
+			\item \href{https://google.github.io/styleguide/htmlcssguide.html}{Google HTML/CSS Style Guide}
+			\item \href{https://material.io/design}{Material Design Guide}
+		\end{itemize}
+		The developer will go into each module found in the utrition/src directory and will inspect the code to ensure that each rule outlined in Canada’s or Google’s guide is strictly adhered to.
+		
+		\textbf{Actual Results}: Test failed. The testing developer reported that there were inconsistencies in the code, regarding the standards outlined in the style guides.
+		
+		\item{LT-2}
+		
+		Type: Functional, Dynamic, and Manual.
+		
+		Initial State: A Durum Wheat Semolina developer has completed a module for Utrition and has Pylint installed on their device.
+		
+		Input: The developer runs Pylint on their code.
+		
+		Expected Results: Pylint will notify the developer if there needs to be changes to the code to ensure Utrition adheres to the PEP8 Python coding conventions.
+		
+		How The Test Was Performed: The developer will open their command prompt and travel to the directory with the finished code (utrition/src) by using “cd”. The developer runs Pylint on the finished code by typing “pylint finishedmodule.py” in their command prompt. The name “finishedmodule.py” is a placeholder for any future modules that Utrition will implement in the future. The command prompt will notify the developer to make any necessary changes.
+		
+		\textbf{Actual Results}: Test failed. The testing developer reported that there were inconsistencies in the code, regarding the standards outlined in the PEP8 conventions.
+		
+		
+	\end{enumerate}
 	
 	\section{Comparison to Existing Implementation}	
 	
-	This section will not be appropriate for every project.
+	N/A
 	
 	\section{Unit Testing}
 	
-	\section{Changes Due to Testing}
+	For this project, the majority of testing for functional and nonfunctional requirements was conducted through manual testing. The developers conducted manual tests to measure how the system reacted to possible scenarios and interactions. The automated unit testing of specific core functions in the backend of the application can be seen in the Functional Requirements Evaluation of Nutritional Facts Display (3.4), and Call and Fetch API Response (3.5).
 	
+	\section{Changes Due to Testing}
+	\subsection{Changes Due to Functional Requirements Testing}
+	Due to the failed test cases during functional requirements testing, Utrition's implementation will be improved in the following ways:
+	\begin{itemize}
+		\item The ``Enter" key on a user's keyboard will submit the user's response rather than create a new line during text upload.
+		\item Switching to a new upload section (Text Upload, Voice Upload, or Image Upload) will remove all inputs from the previous upload page. 
+		\item The ``Voice Upload" section will not continue listening after the section has been clicked off of.
+		\item The ``Reset" button will not push the user to the ``Text Upload" section when they are not on it.
+		\item ``Your most eaten food" will be changed to ``Your most logged food".
+	\end{itemize}
+
+	\subsection{Changes Due to Usability Testing}
+	Due to the feedback collected during usability testing, Utrition's implementation will undergo changes to provide the best user experience possible. Taking into consideration the time constraints and the most commonly discussed improvements, these changes will be implemented:
+	\begin{itemize}
+		\item Add ``Get Started" button to home page to take user to input a food item
+		\item Add units to nutritional data output
+		\item Create error messages for cases where inputted food item is not identifiable 
+		\item Group entries in food history table based on entries submitted together
+		\item Add graph to display past food entry data
+		\item Optional height and weight user inputs to calculate BMI and recommended calories per day 
+	\end{itemize}		
+
 	\section{Automated Testing}
+
+	The following tests are classified as automated tests:
+    \begin{itemize}
+        \item one-upload-auto-1
+        \item one-upload-auto-2
+        \item image-identification-1
+        \item image-identification-2
+        \item image-identification-3
+        \item api-1
+        \item log-data-read-data-1
+        \item past-nutrition-text-read-data-2
+        \item current-nutrition-1
+        \item display-elements-1
+        \item correct-path-1
+        \item axios-call-1
+    \end{itemize}
 	
 	\section{Trace to Requirements}
 	
-	\section{Trace to Modules}		
+	\begin{table}[H]
+		\caption {Traceability between Tests and Functional Requirements}
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			FR1                     & The user must have the ability to upload a 
+			digital image of a standard image type to the 
+			system.                                                                     
+			&
+			\begin{tabular}[c]{@{}l@{}}one-upload-1\\
+				one-upload-2\\
+				one-upload-auto-1\\ 
+				one-upload-auto-2\end{tabular}                                                  
+			\\                                                    \hline
+			FR2                     & The system will be able to identify the type of 
+			food that is captured in an 
+			image.                                                                      
+			&
+			\begin{tabular}[c]{@{}l@{}}one-upload-1\\
+				one-upload-2\\
+				image-identification-1\\ 
+				image-identification-2\\ 
+				image-identification-3\\current-nutrition-1\end{tabular}                   
+			
+			\\ 
+			\hline
+			FR3                     & The system will be able to make an API call to an 
+			external database of nutrition facts for a variety of foods, including 
+			their macro-nutrients, micro-nutrients, and caloric details. & 
+			\begin{tabular}[c]{@{}l@{}}
+				api-1\\ 
+				current-nutrition-1\\
+				axios-call-1\end{tabular}                       
+			\\ \hline
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                                                               
+			\\ \hline
+			FR4                     & The system will be able to retrieve the nutrition 
+			facts for a specific 
+			food.                                                                       
+			&
+			\begin{tabular}[c]{@{}l@{}}one-upload-1\\
+				api-1\\ 
+				log-data-read-data-1\\ 
+				current-nutrition-1\\
+				text-upload-1\\
+				text-upload-2\\
+				text-upload-6\\
+				text-upload-7\\
+				text-upload-8\\
+				multi-text-upload-1\\
+				multi-text-upload-2\\
+				multi-text-upload-3\\
+				voice-upload-1\\
+				voice-upload-2\\
+				voice-upload-3\\
+				voice-upload-9\\
+				voice-upload-10\\
+				voice-upload-11\\
+				voice-upload-12\\
+				multi-voice-upload-1\\
+				multi-voice-upload-2\\
+				multi-voice-upload-3\\
+				profile-4\\
+				profile-5\end{tabular}                                        
+			\\
+			\hline
+			
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                                                               
+			\\ \hline
+			FR5                     & The system will log the nutritional data of a 
+			food.                                                                       
+			&  
+			\begin{tabular}[c]{@{}l@{}}api-1\\ 
+				log-data-read-data-1\\ 
+				current-nutrition-1\\
+				profile-1\\
+				profile-2\\
+				profile-3\\
+				profile-4\\
+				profile-5\end{tabular}                                        
+			\\ \hline
+			FR6                     & The user will be able to access the nutritional 
+			data of previously logged 
+			foods.                                                                      
+			&
+			\begin{tabular}[c]{@{}l@{}}log-data-read-data-1\\
+				past-nutrition-read-data-2\\
+				profile-1\\
+				profile-2\\
+				profile-3\\
+				profile-4\\
+				profile-5\\
+				profile-6\\
+				profile-7\\
+				profile-8\\
+				profile-9\\
+				profile-10\\
+				profile-11\\
+				profile-12\\
+				profile-13\end{tabular}                       \\ \hline
+			
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                                                               
+			\\ \hline
+			
+			FR7                     & The system will display the nutritional information of a food to the user.                                                                                                            & \begin{tabular}[c]{@{}l@{}}current-nutrition-1\\ past-nutrition-read-data-2\\
+				text-upload-1\\
+				text-upload-2\\
+				text-upload-6\\
+				text-upload-7\\
+				text-upload-8\\
+				multi-text-upload-1\\
+				multi-text-upload-2\\
+				multi-text-upload-3\\
+				voice-upload-1\\
+				voice-upload-2\\
+				voice-upload-3\\
+				voice-upload-9\\
+				voice-upload-10\\
+				voice-upload-11\\
+				voice-upload-12\\
+				multi-voice-upload-1\\
+				multi-voice-upload-2\\
+				multi-voice-upload-3\\
+				display-elements-1\\
+				axios-call-1\end{tabular} \\ \hline
+			
+			FR8                     & The user must have the ability to upload the text of a food input to the system.                                               & \begin{tabular}[c]{@{}l@{}}text-upload-1\\
+				text-upload-2\\
+				text-upload-3\\
+				text-upload-4\\
+				text-upload-5\\
+				text-upload-6\\
+				text-upload-7\\
+				text-upload-8\end{tabular} \\ \hline
+			
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			FR9                     & The user must have the ability to upload multiple texts of food inputs to the system.
+			& \begin{tabular}[c]{@{}l@{}}multi-text-upload-1\\
+			multi-text-upload-2\\
+			multi-text-upload-3\\
+			profile-5\end{tabular} \\ \hline
+			
+			FR10                     & The user must have the ability to upload a food input by speaking to the system.
+			& \begin{tabular}[c]{@{}l@{}}voice-upload-1\\
+			voice-upload-2\\
+			voice-upload-7\\
+			voice-upload-8\\
+			voice-upload-9\\
+			voice-upload-10\\
+			voice-upload-11\\
+			voice-upload-12\\
+			profile-4\end{tabular} \\ \hline
+			
+			FR11                     & The user must have the ability to upload multiple food inputs by speaking to the system.                                                                                                            & \begin{tabular}[c]{@{}l@{}}voice-upload-3\\
+			multi-voice-upload-1\\
+			multi-voice-upload-2\\
+			multi-voice-upload-3\end{tabular} \\ \hline
+			
+			FR12                     & The system will be able to convert vocal input into text.                                                                                                            & \begin{tabular}[c]{@{}l@{}}voice-upload-1\\
+			voice-upload-2\\
+			voice-upload-3\\
+			voice-upload-8\\
+			voice-upload-9\\
+			voice-upload-10\\
+			voice-upload-11\\
+			voice-upload-12\\
+			multi-voice-upload-1\\
+			multi-voice-upload-2\\
+			multi-voice-upload-3\\
+			profile-4\end{tabular} \\ \hline
+			
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			
+			FR13                     & The user must have the ability to restart their voice upload to the system.                                                                                                           & \begin{tabular}[c]{@{}l@{}}voice-upload-4\\
+				voice-upload-5\\
+				voice-upload-6\end{tabular} \\ \hline
+			
+			FR14                     & The system will be able to identify the type of food(s) that is captured in a complex sentence.                                                                                                            & \begin{tabular}[c]{@{}l@{}}text-upload-2\\
+				text-upload-7\\
+				text-upload-8\\
+				multi-text-upload-3\\
+				voice-upload-1\\
+				voice-upload-2\\
+				voice-upload-3\\
+				voice-upload-10\\
+				voice-upload-11\\
+				multi-voice-upload-1\\
+				multi-voice-upload-2\\
+				multi-voice-upload-3\\
+				profile-4\end{tabular} \\ \hline
+			
+			FR15                     & The user must have the ability to select between uploading food(s) through image, text, or voice.                                                                                                    & \begin{tabular}[c]{@{}l@{}}voice-upload-12\\
+				correct-path-1\end{tabular} \\ \hline
+			
+			FR16                     & The system will display the user's most logged food.                                                                                                            & \begin{tabular}[c]{@{}l@{}}profile-1\\
+				profile-2\\
+				profile-3\\
+				profile-4\\
+				profile-5\\
+				profile-13\\
+				display-elements-1\\
+				axios-call-1\end{tabular} \\ \hline
+			
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			FR17                     & The system will display the user's total calories consumed for the day.                                                                                                           & \begin{tabular}[c]{@{}l@{}}profile-1\\
+			profile-2\\
+			profile-3\\
+			profile-4\\
+			profile-5\\
+			profile-13\\
+			display-elements-1\\
+			axios-call-1\end{tabular} \\ \hline
+			
+			FR18                     & The system will display a summary of the foods consumed and their total calories for each of the past 7 days.                                                                                                            & \begin{tabular}[c]{@{}l@{}}profile-1\\
+			profile-2\\
+			profile-3\\
+			profile-4\\
+			profile-5\\
+			profile-9\\
+			profile-10\\
+			profile-11\\
+			profile-12\\
+			profile-13\\
+			display-elements-1\\
+			axios-call-1\end{tabular} \\ \hline
+			
+			FR19                     & The user will be able to access the summary of the foods consumed and their total calories for all days with a food inputted.                                                                                                            & \begin{tabular}[c]{@{}l@{}}profile-1\\
+			profile-2\\
+			profile-3\\
+			profile-4\\
+			profile-5\\
+			profile-9\\
+			profile-10\\
+			profile-11\\
+			profile-12\\
+			profile-13\end{tabular} \\ \hline
+			
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			FR20                     & The user will be able to access the Home page, the Upload page, and the Profile page on every page.                                                                                                            & \begin{tabular}[c]{@{}l@{}}upload-page-1\\ profile-page-1\\
+				home-page-1\\
+				home-page-2\\
+				profile-page-2\\
+				upload-page-2\\
+				correct-path-1\end{tabular} \\ \hline
+			
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\caption{Traceability between Tests and NonFunctional Requirements}
+		\begin{tabularx}{\linewidth}{|l|X|l|}
+			\hline
+			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
+			\hline
+			LF1 & The distance between user interface components must exceed 20 pixels. & LF-1 \\
+			\hline
+			UH1 & The user will be able to navigate to the main menu from any page in 2 clicks. & UH-1 \\
+			\hline
+			UH2 & The user must be able to view every past inputted food item. & UH-2, UH-3 \\
+			\hline
+			UH3 & 90\% of a test panel of the target demographic should be able to upload their food and retrieve the corresponding nutritional facts in under 2 minutes. & UH-4 \\
+			\hline
+			UH4 & Every clickable object will have a symbol associated with it. Calories, fat, sodium, carbohydrates, sugar, and protein will have a symbol associated next to it.
+			& UH-5 \\
+			\hline
+			UH5 & All backend calculations, such as identifying the uploaded food and retrieving the nutritional information, will not be displayed to the user. & UH-6 \\
+			\hline
+			UH6 & There will be no sound used by the Utrition web application.  & UH-7, UH-8 \\
+			\hline
+			PR1 & The time between the user’s click and displaying the new UI will not exceed 2 seconds. & PT-1 \\
+			\hline
+			PR2 & After uploading a picture, Utrition will always display the 
+			identified food item within 10 seconds in a test with multiple 
+			images. & PT-2 \\
+			\hline
+		\end{tabularx}
+		\label{tab:NonFunctional Traceability}
+	\end{table}
+	\begin{table}[H]
+		\begin{tabularx}{\textwidth}{|l|X|l|}
+			\hline
+			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
+			\hline
+			PR3 & After identifying the correct food item, Utrition will always 
+			display the nutritional facts within 5 seconds in a test with 
+			multiple images. & \begin{tabular}[c]{@{}l@{}}
+				PT-2, PT-3\end{tabular}\\
+			\hline
+			PR4 & Error message should prompt user upon upload of an abnormal 
+			image. & PT-15\\
+			\hline
+			PR5 & Error message should prompt user upon upload of an image 
+			larger than 30MB. & PT-9\\
+			\hline
+			PR6 & Error message should prompt user upon upload of more than 3 
+			images. & PT-7\\
+			\hline
+			PR7 & Error message should prompt user upon failure to identify 
+			any food items in the uploaded image. & 
+			\begin{tabular}[c]{@{}l@{}}PT-10, PT-11 
+			\end{tabular}\\
+			\hline
+			PR8 & Error message should prompt user to try again upon failure 
+			to request nutritional info regarding food items in the uploaded image. & PT-12\\
+			\hline
+			PR9 & Error message should notify user that the nutritional 
+			information pertaining to their food item does not exist. & PT-13\\
+			\hline
+			PR10 & Error message should notify user upon failure to access 
+			user's past nutritional info. & PT-14\\
+			\hline
+			PR11 & Error message should notify user if user's past nutritional 
+			info has been deleted. & PT-14\\
+			\hline
+			PR12 & Error message should prompt user if user's past nutritional 
+			info cannot be depicted on a chart. & PT-14\\
+			\hline
+			PR13 & Request will time out after 20 seconds, and user will be 
+			prompted that their device is not connected to the internet. & PT-12\\
+			\hline
+		\end{tabularx}
+	\end{table}
+	
+	\begin{table}[H]
+		%identification-accuracy-2
+		\begin{tabularx}{\textwidth}{|l|X|l|}
+			\hline
+			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
+			\hline
+			PR14 & In a test with multiple images, Utrition will identify and 
+			display the correct food with an average accuracy of 70\%. & 
+			\begin{tabular}[c]{@{}l@{}}PT-4, PT-6 \end{tabular}\\
+			\hline
+			PR15 & In a test with multiple images, Utrition will display the 
+			correct nutritional information for an identified food 90\% of the 
+			time. & \begin{tabular}[c]{@{}l@{}}PT-4, PT-5 \end{tabular}\\
+			\hline
+			PR16 & Since Utrition is a local web app, the user will always be allowed to use Utrition unless their device or internet connection is down. & PT-4\\
+			\hline
+			PR17 & The system will not allow more than 3 photos to be uploaded at once. & PT-2, PT-7\\
+			\hline
+			PR18 & Utrition is a local web app and does not depend on a server. & PT-8\\
+			\hline
+			PR19 & Utrition will be available to use on GitHub for an indefinite amount of time. & PT-8\\
+			\hline
+			OE1 & Users will be able to find and pull the repository on to their personal device. & PT-8\\
+			\hline
+			OE2 & 95\% of a test panel with the intended demographic will be able to install Utrition after reading the installation guide. & OE-1\\
+			\hline
+			OE3 & Utrition’s GitHub repository will receive no updates after final implementation. & OE-2\\
+			\hline
+			MS1 & Any backend developer is able to successfully upload new data to Utrition’s machine learning model at any time during development.  & MS-1\\
+			\hline
+		\end{tabularx}
+	\end{table}
+
+	\begin{table}[H]
+		\begin{tabularx}{\textwidth}{|l|X|l|}
+			\hline
+			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
+			\hline
+			MS2 & All users will be able to view the support manuals on how to install and use Utrition. & OE-1\\
+			\hline
+			MS3 & 100\% of the tested Windows, macOS, and Linux devices should be able to use all functionality provided for Utrition. & MS-2\\
+			\hline
+			SR1 & Anyone will be able to pull the open-source project from GitHub. & PT-8, OE-1 \\
+			\hline
+			SR2 & Utrition will save user data every 3 minutes throughout the 
+			application runtime. & ST-1\\
+			\hline
+			SR3 & Utrition will not contain personalized data from one user on another user's system. & ST-2\\
+			\hline
+			CP1 & 95\% of the test panel agrees that Utrition does not provide any culturally insensitive content to the user. & CT-1\\
+			\hline
+			LR1 & No malicious software will be present in Utrition’s GitHub repository. & LT-1\\
+			\hline
+			LR2 & Durum Wheat Semolina will not commit infractions when following Canada’s guide. & LT-1\\
+			\hline
+			LR3 & Pylint will be used throughout development to ensure every pull request contains properly formatted code. & LT-2\\
+			\hline
+			LR4 & Before every pull request, code will be reviewed to ensure no violations of the standards occur.  & LT-1\\
+			\hline
+			LR5 & Utrition's user interface will be reviewed to ensure all fonts and colours adhere to the style guide.  & LT-1\\
+			\hline
+		\end{tabularx}
+	\end{table}
+	\section{Trace to Modules}
+	\newpage
+	\begin{table}[H]
+		\caption {Traceability between Modules and Functional Tests}
+		\begin{tabular}{|p{2.3cm}|p{2.5cm}|p{6.5cm}|}
+			
+			\hline
+			\textbf{Module \#} & 
+			\textbf{Name} &
+			\textbf{Test ID(s)}\\
+			\hline
+			M1 & Application Path Module &
+			\begin{tabular}[c]{@{}l@{}}
+				upload-page-1\\
+				upload-page-2\\
+				profile-page-1\\
+				profile-page-2
+			\end{tabular} \ \ \  
+			\begin{tabular}[c]{@{}l@{}}
+				home-page-1\\
+				home-page-2\\
+				correct-path-1
+			\end{tabular} \\                                                    
+			\hline
+			M2 & Home Page Module &
+			\begin{tabular}[c]{@{}l@{}}
+				display-elements-1
+			\end{tabular} \\ 
+			\hline
+			M3 & Profile Page Module &
+			\begin{tabular}[c]{@{}l@{}}
+				profile-1\\
+				profile-2\\
+				profile-3\\
+				profile-4\\
+				profile-5\\
+				profile-6\\
+				profile-7
+			\end{tabular} \ \ \ \ \ \ \ \ \ \ \ 
+			\begin{tabular}{@{}l@{}}
+				profile-8\\
+				profile-9\\
+				profile-10\\
+				profile-11\\
+				profile-12\\
+				profile-13
+			\end{tabular} \\                                                    
+			\hline
+			M4 & Nutrition Log Module &
+			\begin{tabular}[]{@{}ll@{}}
+				profile-6& \ \ \ \ \ \ \ \ \  profile-10\\
+				profile-7& \ \ \ \ \ \ \ \ \ profile-11\\
+				profile-8& \ \ \ \ \ \ \ \ \ profile-12\\
+				profile-9& \ \ \ \ \ \ \ \ \ profile-13
+			\end{tabular}
+			\begin{tabular}[]{@{}l@{}}
+				log-data-read-data-1\\
+				past-nutrition-text-read-data-2
+			\end{tabular} \\ 
+			\hline
+			M5 & Upload Page Module &
+			\begin{tabular}[c]{@{}l@{}}
+				one-upload-1
+			\end{tabular} \\                                                    
+			\hline
+			M6 & Upload Container Module &
+			\begin{tabular}[c]{@{}l@{}}
+				one-upload-1\\
+				voice-upload-4\\
+				voice-upload-6
+			\end{tabular} \\ 
+			\hline
+			M7 & Image Upload Module &
+			\begin{tabular}[c]{@{}l@{}}
+				one-upload-1\\
+				one-upload-2\\
+				axios-call-1
+			\end{tabular}\\
+			\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[H]
+		\begin{tabular}{|p{2.3cm}|p{2.4cm}|p{6.75cm}|}               
+			\hline
+			\textbf{Module \#} & 
+			\textbf{Name} &
+			\textbf{Test ID(s)}\\
+			\hline
+			M8 & Text Upload Module &
+			\begin{tabular}[c]{@{}l@{}}
+				text-upload-1\\
+				text-upload-2\\
+				text-upload-3\\
+				text-upload-4\\
+				text-upload-5\\
+				text-upload-6\\
+				text-upload-7
+			\end{tabular} \ \ \ 
+			\begin{tabular}[c]{@{}l@{}}
+				text-upload-8\\
+				multi-text-upload-1\\
+				multi-text-upload-2\\
+				multi-text-upload-3\\
+				multi-text-upload-4\\
+				axios-call-1
+			\end{tabular} \\ 
+			\hline
+			M9 & Voice Upload Module &
+			\begin{tabular}[c]{@{}l@{}}
+				voice-upload-1\\
+				voice-upload-2\\
+				voice-upload-3\\
+				voice-upload-4\\
+				voice-upload-5\\
+				voice-upload-6\\
+				voice-upload-7\\
+				voice-upload-8\\
+			\end{tabular} \ \ 
+			\begin{tabular}[c]{@{}l@{}}
+				voice-upload-9\\
+				voice-upload-10\\
+				voice-upload-11\\
+				voice-upload-12\\
+				multi-voice-upload-1\\
+				multi-voice-upload-2\\
+				multi-voice-upload-3\\
+				axios-call-1
+			\end{tabular} \\                                                    
+			\hline
+			M10 & Navigation Bar Module &
+			\begin{tabular}[c]{@{}l@{}}
+				upload-page-1\\
+				upload-page-2\\
+				profile-page-1
+			\end{tabular} \ \ \
+			\begin{tabular}[c]{@{}l@{}}
+				profile-page-2\\
+				home-page-1\\
+				home-page-2
+			\end{tabular} \\ 
+			\hline
+			M11 & Input Pre-Processing Module &
+			\begin{tabular}[c]{@{}l@{}}
+				one-upload-1
+			\end{tabular} \\                                                    
+			\hline
+			M12 & Training Dataset Module &
+			\begin{tabular}[c]{@{}l@{}}
+				one-upload-1
+			\end{tabular} \\ 
+			\hline
+			M13 & Image Classification Module &
+			\begin{tabular}[c]{@{}l@{}}
+				one-upload-auto-1\\
+				image-identification-1\\
+				image-identification-2\\
+				image-identification-3
+			\end{tabular} \\                                                    
+			\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[H]
+		\begin{tabular}{|p{2.3cm}|p{2.68cm}|p{6.5cm}|}
+			\hline
+			\textbf{Module \#} & 
+			\textbf{Name} &
+			\textbf{Test ID(s)}\\
+			\hline
+			M14 & Nutritional Data Retriever Module &
+			\begin{tabular}[c]{@{}l@{}}
+				current-nutrition-1\\
+				text-upload-3\\
+				text-upload-4\\
+				text-upload-5\\
+				text-upload-6\\
+				text-upload-7\\
+				text-upload-8\\
+				multi-text-upload-1\\
+				multi-text-upload-3\\
+				multi-text-upload-4\\
+				voice-upload-2\\
+				voice-upload-7\\
+				voice-upload-8\\
+				voice-upload-9\\
+				voice-upload-10\\
+				voice-upload-12\\
+				multi-voice-upload-1\\
+				multi-voice-upload-3\\
+				api-1
+			\end{tabular} \\ 
+			\hline
+			M15 & Profile Data Calculation Module &
+			\begin{tabular}[c]{@{}l@{}}
+				profile-1\\
+				profile-2\\
+				profile-3\\
+				profile-4\\
+				profile-5
+			\end{tabular}\\
+		\hline 
+		\end{tabular}                                                  
+	\end{table}	
 	
 	\section{Code Coverage Metrics}
+
+	The automated tests have the following code coverage. The remaining code that was not covered by these tests was covered through manual testing.
+    \begin{table}[htb]
+        \begin{tabular}{lllll}
+        Filename                                                     & Statements & Missed statements & Coverage &  \\
+        ML/DataHandler.py              & 71         & 6                 & 92\%     &  \\
+        ML/Interface.py                & 16         & 0                 & 100\%    &  \\
+        ML/MainML.py                   & 42         & 0                 & 100\%    &  \\
+        home/nutritionalDataFetcher.py & 11         & 0                 & 100\%    &  \\
+        home/profileData.py            & 103        & 71                & 31\%     & 
+        \end{tabular}
+    \end{table}
+	
+	\section*{Appendix A}
+	\subsection*{Informal User Testing Notes}
+	\subsubsection*{User \#1, 22 year-old, male, interviewed on 03/01/2023:}	
+	Expectations:
+	\begin{itemize}
+		\item Do actions: search for food, see baseline nutritional stats, and more in depth stats
+		\item Scan a variety of foods
+		\item Track calories, see projection
+		\item See if I'm over/under a goal
+		\item Set goals
+		\item Personalization via profile, personalized results (save meal prep, meal sets)
+		\item Make recommendations on diet, substitutions on diet
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Wants feedback on which type of upload is selected
+		\item Inputting natural language into text/voice upload, with complete sentences
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Instant feedback, fast
+		\item Minimal steps to upload
+		\item Likes how it confirms what foods got uploaded
+		\item How it shows the general nutrition facts that most people are looking for
+		\item Likes the summarization and history of past foods
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Wants to show the number of food/quantity eaten when food is submitted and nutritional total
+		shown
+		\item Wants to be able to show expanded form of breakdown
+		\item Add units to the nutrition data shown
+		\item Bug when you enter food and separate them with “enter” new line character
+		\item Doesn’t like how half the upload is “useless”, wants the functionality to be most of the page;
+		focus of page is only on half of the page (wants it more central in line of page)
+		\item “How it works” text does not make sense, taking up space
+		\item Want profile/upload buttons on main page instead of heading nav bar since there are only 2
+		options
+		\item Paragraph on first page too long
+		\item Main page: “Make a choice!” text does not make sense
+		\item Want a sticky nav bar
+		\item Text input
+		\subitem Want to be able to press “enter” button to submit text
+		\item Profile page
+		\subitem Want more personalization to the profile page (goals ie. Lose/gain weight)
+		\subitem Add link to external source to see estimated calories for a person of height/weight
+		\subitem Hard to read nutritional facts on profile page under “past meals”, also in caloric intake
+		table, maybe break it down and format it better and make it more readable; it is hard to
+		scan and find what you want
+		\subitem “look at next 4 entries” button: expended it to append 4 entries to bottom of list
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item Show a weekly graph to show progression 
+		\subitem Good way to show progression visually, summarizes information
+	\end{itemize}
+
+	\subsubsection*{User \#2, 22 year-old, male, interviewed on 02/28/2023:}
+	Expectations:
+	\begin{itemize}
+		\item Give it name of meal, or meal components and be able to show the nutritional
+		information about the meal
+		\item Look at all the food eaten in a period of time and return nutritional value
+		\item How will the program know what you are trying to describe? some feature to detect
+		food
+		\item Logging and Viewing $\rightarrow$ At a high level
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Reads instructions on homepage
+		\item Bouncing back from homepage to upload page to read instructions
+		\item Instructions don’t exist in the same place as where the interaction occurs
+		\item Enters the food individually, and specifies some amount for the yogurt
+		\item Submits and reads information about the food
+		\item Forgets to stop the recording before submitting, application continues to record
+		after submission
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Good layout
+		\item Good separate pages
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Wants units for nutrients
+		\subitem Not consistent between nutrients, so should specify
+		\item Should output the quantity inputted by the user to ensure the quantity was taken into consideration when calculating nutritional information
+		\item Automatically stop recording?
+		\item Uploaded image is only allowed to exist in specific folder, doesn’t give a relative
+		path back to the backend
+		\item Meal components are listed separately even if they are one meal; need to communicate
+		if items were eaten at the same time
+		\item Instead of scrolling by 4 entries, can instead scroll by date/meal rather than an arbitrary
+		4 entries
+		\item Reset brings the user back to the text upload (should go back to voice upload)
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item Get started button?!
+		\item Graph to measure eating trends over time
+		\item Profile page information could be better displayed
+		\item Instead of instantly displaying information on each meal item, have brief information, and can expand for more information
+	\end{itemize}
+
+	\subsubsection*{User \#3, 22 year-old, female, interviewed on 03/02/2023:}
+	Expectations:
+	\begin{itemize}
+		\item MyFitnessPal
+		\item Nutritional information is returned based on brand of food
+		\item Macronutrients, more than just calories
+		\item Separated into meals or snacks
+		\item Input user information; weight, track weight
+		\item Estimate how much calories needed to reach some “goal weight” (also given by
+		user)
+		\item Tracking progress on some MACRONUTRIENT goal per day e.g. “daily protein
+		goal”
+		\item Give advice on types of food that you should be eating
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Clicked upload page
+		\item Didn’t read instructions
+		\item Wasn’t completely sure if multiple inputs were allowed; referred to example to clarify
+		\item Used Voice Upload
+		\item Didn’t press stop recording before submitting
+		\subitem Kept recording
+		\item Thai basil ground beef was recorded as “thai basil, ground beef”
+		\item Nutritional information probably not accurate, portion size not communicated
+		\item Didn’t occur to specify exact portions when speaking to the applications
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Showed calories right away
+		\item Ease of input
+		\item Aesthetic
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Portions are assumed; not exactly accurate
+		\subitem Would prefer to put in servings themselves
+		\subitem Accuracy over ease of input
+		\item Date + Caloric Intake $\rightarrow$ Not necessary useful enough to be put front and centre; can be
+		put onto a different page/accessed if necessary
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item PAST Meals should be separated into breakfast, lunch, dinner, snack, etc.
+		\subitem Bundled into one entry
+		\item Water intake?!
+	\end{itemize}
+
+	\subsubsection*{User \#4, 22 year-old, male, interviewed on 02/27/2023:}
+	Expectations:
+	\begin{itemize}
+		\item Something like MyFitnessPal
+		\item Enter food
+		\item Gives calories, macro, carbs, etc.
+		\item From homepage, expects picture to be given that is similar and it identifies everything
+		\item Does not want to specify quantities manually with image upload
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Read instructions before use
+		\item Used text upload as default
+		\item Uploaded multiple items using both text and voice upload
+		\item Tested using \& symbol (worked as intended)
+		\item Viewed food entries in profile page
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Likes pictures on website
+		\item Really likes landing page
+		\item Colours are nice
+		\item Good text font and size
+		\item Likes voice upload functionality
+		\item Likes most eaten food on profile page
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Have get started button to take you to upload page
+		\item Nutrition facts should be rearranged nicer
+		\item Have units for nutrition facts
+		\item Have calories and more important ones at the top or bigger
+		\item Split calories for each individual food item for multiple?
+		\item Submit food entry on enter
+		\item Be able to change serving unit (how big serving is)
+		\item Have more error handling (if not food, spell wrong)
+		\item Reset button in voice upload takes you to text upload
+		\item Might not need upload button at top (just have buttons on profile and landing page)
+		\item Add vertical padding for bottom of page so content is not at very bottom
+		\item Use arrows for going between pages of food entries
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item Total nutrients in day summary (carbs, protein, fat)
+		\item Be able to set goals of how much you want to eat
+		\subitem Give insights on goal progression
+		\item Gets sense of meals eaten and give suggestions on what to eat to reach goals
+		\item Warnings if you are eating something really unhealthy
+		\item Should have graph (visuals better than text)
+		\item Time when input in past meals
+			\item More concerned with what was apart of which meal
+		\item Wants to be able to delete entries
+		\item Wants to know how many pages of saved food entries there are
+		\item Have filters for past food entry display (ex. sort by day)
+	\end{itemize}
+
+	\subsubsection*{User \#5, 22 year-old, female, interviewed on 02/28/2023:}
+	Expectations:
+	\begin{itemize}
+		\item  MyFitnessPal
+		\item Nutritional information for food items
+		\item Be able to use food while going out (like McDonald's brand and Starbucks for example)
+		\item Ethnic foods available
+		\item Have to upload all the ingredients
+		\item Would like an app to use on her phone
+	\end{itemize}
+	Experience:
+	\begin{itemize}
+		\item Wasn't sure if she could use specific brands
+		\item Didn’t know can input multiple items (thought she could with comma but probably needs it more
+		explicit)
+		\item Didn’t use natural language
+		\item  Disappointed in image upload (only 6 foods and food pictures have to be already downloaded to
+		the computer, says its useless)
+		\item A little bit confused about the button language on the profile page “Next should look at most
+		recent stuff” need to make more clear
+		\item Doesn’t really care about most eaten food
+		\item Accepted pizza without asking what type
+		\item Oreo mcflurry showed as oreo AND mcflurry
+	\end{itemize}
+	Likes:
+	\begin{itemize}
+		\item Colours are nice
+	\end{itemize}
+	Improvements:
+	\begin{itemize}
+		\item Bold food stats in upload page
+		\item Remove serving unit and quantity if multiple food items inputted
+		\item Need to put units in upload page
+		\item Need a static graph so she can be able to spam click the next or previous buttons without
+		having to move her mouse
+		\item Should notify user if there is a typo/food item that is not being searched
+		\item Put units in total calories
+		\item Format upload page nicer: food item, serving, unit should be on left and nutritional facts on the
+		right
+		\item Don’t upload photo or take picture from laptop
+	\end{itemize}
+	Additional features:
+	\begin{itemize}
+		\item Want BMI calculator to calculate calorie deficit and differentiate from other apps
+		\item Protein calculator on how to tone up, can put other sections in task bar
+		\item Fiber and iron addition
+		\item Select what options they would like displayed to them on profile page
+	\end{itemize}
 	
 	\bibliographystyle{plainnat}
 	\bibliography{../../refs/References}
@@ -117,5 +2535,7 @@
 		most
 		teams will have had to deviate from their original VnV Plan.)
 	\end{enumerate}
+	There have been many changes from what was originally stated in the VnV plan. Most changes were due to project scope revisions (i.e. adding and removing requirements) or infeasibility of tests. After our POC demonstration, Utrition's scope was altered from only allowing a user to upload an image to also allowing text and voice upload. Due to this, our development team did not have tests planned for these new requirements as they had not been created at the time. The VnV plan has now been updated to test this functionality. Additionally, some tests that were previously created were removed because they were either no longer relevant with the altered scope or infeasible in terms of time/resources. Now that all team members have worked on a large project, identifying these time/resource constraints will make it easier for planning in future projects. Lastly, semi-structured interviews (usability testing) were added to provide unrestrained feedback from users regarding all aspects of Utrition's functionality and UI. Previously, our development team had not considered the possibility of user testing, but this was later pursued after all the feedback received during the POC and Revision 0 demonstrations proved to be helpful. It was not possible for Utrition's development team to anticipate the specific scope changes that occurred. However, we now know going forward to anticipate requirements changes (causing additions and deletions of tests) when user testing or demonstrations are conducted. 
+
 	
 \end{document}

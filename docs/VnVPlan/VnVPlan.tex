@@ -253,12 +253,11 @@
 	\section{System Test Description}
 	
 	\subsection{Tests for Functional Requirements}
-	The below areas cover all the nine functional requirements outlined in the SRS, dividing the functional requirements into three distinct sections. The first section details user actions associated with image upload and encompasses FR1 and FR2. The second section details image processing done by the system which encompasses FR3, FR4, FR5, FR6, and FR7. Lastly, the third section outlines the user steps to view nutritional data which correlates to groupings of functional requirements.
+	The below areas cover all the twenty functional requirements outlined in the SRS, dividing the functional requirements into seven distinct sections. The first section details user actions associated with image upload and encompasses FR1, FR2, FR3, FR4, FR7, and FR15. The second section details image processing done by the system which encompasses FR3, FR4, FR5, FR6, and FR7. The third section outlines the user steps to view nutritional data which correlates to groupings of functional requirements. The fourth section details the ability for the user to upload food items through text and encompasses FR3, FR4, FR7, FR8, FR9, FR14, and FR15. The fifth section details the ability for the user to upload food items through speech and encompasses FR3, FR4, FR7, FR10, FR11, FR12, FR13, FR14, and FR15. The sixth section showcases what must be displayed when a user is viewing their profile and encompasses FR5, FR6, FR7, FR16, FR17, FR18, and FR19. The last section details tests to ensure the navigation task bar is always present and allows users to freely travel between pages. The last section encompasses FR20.
 	
 	\subsubsection{Image Upload}
-	This section has three tests, with each corresponding to an action the user 
-	can take with Utrition, corresponding to FR1 and FR2 in the SRS. 
-	Testing that users can successfully submit one or multiple images is 
+	This section has four tests, with each corresponding to an image upload action the user can take with Utrition. The tests deal with FR1, FR2, FR3, FR4, FR7, and FR15 in the SRS. 
+	Testing that users can successfully submit one image is 
 	important to the core functionality of the other components of the 
 	application.
 	
@@ -270,24 +269,51 @@
 		
 		Control: Functional, Dynamic, and Manual.
 		
-		Initial State: No image in the system.
+		Initial State: User is on the "Upload" page with "Image Upload" selected.
 		
-		Input: An image file of type .png, .jpg, or .jpeg (images found in utrition/test/testPhotos directory).
+		Input: A User clicks on "Select Image" and selects an the image file "apple.jpeg" found in the utrition/test/testPhotos directory. User clicks on "Text Upload" and then clicks on "Image Upload" and then clicks on the "Submit" button.
 		
-		Output: The system accepts the image upload.
+		Output: The system accepts the image upload and returns the nutritional information for an apple. 
 		
-		Test Case Derivation: The system should accept an uploaded image file from the user.
+		Test Case Derivation: User should be able to view the nutritional information of an apple on their screen.
 		
-		How test will be performed: A locally stored image will be uploaded to 
-		the application through the image upload prompt.
+		How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will click on "Image Upload" and then "Select Image". The tester selects "apple.jpeg" found in the utrition/test/testPhotos directory. The tester clicks on the "Image Upload" button and then clicks on the "Submit" button.
 		
 		\item{one-upload-2\\}
 		
 		Control: Functional, Dynamic, and Manual.
 		
-		Initial State: No image in the system.
+		Initial State: No image in the system. User is on the "Upload" page with "Image Upload" selected.
 		
-		Input: A file of extension .txt will be uploaded into the system (found in utrition/test/testPhotos directory).
+		Input: A User clicks on the "Submit" button.
+		
+		Output: No nutritional information will be returned to the user.
+		
+		Test Case Derivation: The system should not break when the user does not submit an image.
+		
+		How test will be performed: The tester will open Utrition and clicks on "Upload" found in the taskbar. The tester clicks on "Image Upload" and then the "Submit" button.
+		
+		\item{one-upload-auto-1\\}
+		
+		Control: Functional, Dynamic, Automatic.
+		
+		Initial State: The system contains a generated JPG image of red pixels with dimensions 128 x 128.
+		
+        Input: The generated image is passed as an argument to interface.open(), with the result saved to the variable 'result'.
+
+		Output: The system accepts the image upload.
+		
+		Test Case Derivation: The system should accept an uploaded image file from the user.
+		
+		How test will be performed: The generated image is passed to interface.open, which is the starting point for the machine learning image classification pipeline. If the test returns a value it means the pipeline executed successfully for the passed file.
+		
+		\item{one-upload-auto-2\\}
+		
+		Control: Functional, Dynamic, Automatic.
+		
+		Initial State: The system contains a generated txt file with text "test content".
+		
+		Input: The generated text file is passed as an argument to interface.open().
 		
 		Output: The system will not contain the uploaded file. An error message 
 		will be returned.
@@ -295,31 +321,9 @@
 		Test Case Derivation: The system should only save the inputted image if 
 		it is of the proper file extension.
 		
-		How test will be performed: A file of type .txt will be saved on the 
-		tester's device. The tester will upload this file to the system.
-		
+		How test will be performed: The generated text file is passed to interface.open, which is the starting point for the machine learning image classification pipeline. If the test throws an UnidentifiedImageError that means that the format of the data passed is not valid for image classification.
+
 	\end{enumerate}
-	
-	\paragraph{Multi-image upload}
-	
-	\begin{enumerate}
-		
-		\item{multi-upload-1\\}
-		
-		Control: Functional, Dynamic, and Manual.
-		
-		Initial State: No image in the system.
-		
-		Input: Three image files of type .png, .jpg, or .jpeg (images found in utrition/test/testPhotos directory).
-		
-		Output: The system accepts the image uploads.
-		
-		Test Case Derivation: The system should accept multiple uploaded image files from the user at the same time.
-		
-		How test will be performed: Three locally stored images will be uploaded to the application through image upload prompts. 
-		
-	\end{enumerate}
-	
 	
 	\subsubsection{Image Processing}
 	This section contains tests that relate to the processing of an image 
@@ -405,88 +409,41 @@
 		How test will be performed: The API response will be verified that the 
 		contents are as expected.
 		
+		\item{axios-call-1\\}
+		
+		Control: Functional and Automatic.
+		
+		Initial State: The text upload functionality has not yet been used.
+		
+		Input: The tester will attempt to make an axios call
+		
+		Output: The tester will receive an http request back from the backend.
+		
+		Test Case Derivation: The testing framework should reply with a not null value to ensure that there has been a successful call made to the backend
+		
+		How test will be performed: Tester will create mocked text upload function to test to see if the front end can successfully make and receive http calls.
+		
 	\end{enumerate}
 	
 	\paragraph{Logging Data}
 	
 	\begin{enumerate}
 		
-		\item{log-data-1\\}
+		\item{log-data-read-data-1\\}
 		
 		Control: Functional and Automatic.
 		
-		Initial State: System contains nutritional data of a food item.
+		Initial State: The system contains a list of one object of sample JSON data.
 		
-		Input: Request to log the data to the database.
+		Input: The sample data is logged to a CSV file and then a request to read the CSV file is made.
 		
-		Output: Database is updated as the system writes the data to the 
-		database.
+		Output: The output will be of length 2. The value at the second index of the list will equal the sample data when converted from a list format to a JSON object format. 
 		
 		Test Case Derivation: Nutritional data of a food will be saved for 
 		future reference. This is done by logging the data to the database.
 		
-		How test will be performed: After the system receives the request to 
-		update the database, the database will be verified that it is updated 
-		with the new data.
+		How test will be performed: The sample data is sent to our CSV logger function to create an entry for the data as well as its header row detailing the keys of the key value JSON pairings. To account for this header row, after we read the CSV file line by line, we check that the length of the returning list is 2.
 		
-	\end{enumerate}
-	
-	\paragraph{Reading Data}
-	
-	\begin{enumerate}
-		
-		\item{read-data-1\\}
-		
-		Control: Functional and Automatic.
-		
-		Initial State: Database contains nutritional data of a food item.
-		
-		Input: Request to fetch the data of a particular food item.
-		
-		Output: Nutritional data of the requested food item.
-		
-		Test Case Derivation: The system shall be able to fetch previously 
-		recorded data.
-		
-		How test will be performed: After the system receives the request to 
-		fetch the data of a food item, the returned data will be verified that 
-		it matches with the saved data in the database.
-		
-		\item{read-data-2\\}
-		
-		Control: Functional and Automatic
-		
-		Initial State: Database contains nutritional data of 5 different dates.
-		
-		Input: Request to fetch the data from the last 3 most recent dates.
-		
-		Output: A list of the nutritional data from the last 3 most recent 
-		dates.
-		
-		Test Case Derivation: The system shall be able to fetch previously 
-		recorded data. The system shall be able to fetch data from a range of 
-		dates.
-		
-		How test will be performed: The nutritional data from the 3 most recent 
-		dates will be verified if it matches the data in the database.
-		
-		\item{read-data-3\\}
-		
-		Control: Functional and Automatic
-		
-		Initial State: Database contains nutritional data.
-		
-		Input: Request to fetch the data of a particular food item that is not 
-		logged in the database.
-		
-		Output: No data is returned.
-		
-		Test Case Derivation: The system shall be able to fetch previously 
-		recorded data. This is an edge case for if the system is requested to 
-		read data from the database that does not exist. In this case, no data 
-		will be returned.
-		
-		How test will be performed: The output will be verified to be empty.
 	\end{enumerate}
 	
 	\subsubsection{Nutritional Facts Display}
@@ -518,7 +475,7 @@
 	
 	\begin{enumerate}
 		
-		\item{past-nutrition-text-1\\}
+		\item{past-nutrition-text-read-data-2\\}
 		
 		Control: Functional, Dynamic, and Automatic
 		
@@ -531,28 +488,718 @@
 		Test Case Derivation: The system will keep a record of all analysed foods for the user, allowing the user to request to see the nutritional data of their past uploads. This data can be displayed in a human readable textual format.
 		
 		How test will be performed: The program will automatically test that a file of pre-logged foods can be processed to return their corresponding nutritional data as text.
-		
+			
 	\end{enumerate}
-	
-	\paragraph{Viewing graphical nutritional data of logged foods}
+
+	\paragraph{Viewing webpages}
+
+	\begin{enumerate}
+		\item{display-elements-1\\}
+		
+		Control: Functional and Automatic.
+		
+		Initial State: Tester will be located on a page of the Utrition application.
+		
+		Input: The tester will attempt to render page to see if necessary elements exist.
+		
+		Output: The framework replies with if elements exist.
+		
+		Test Case Derivation: The testing framework should reply that the text and image does exist upon the user opening the Utrition application.
+		
+		How test will be performed: the tester will mock the Utrition application home page screen and will check to see if the elements exist for the user.
+		
+		\item{correct-path-1\\}
+		
+		Control: Functional and Automatic.
+		
+		Initial State: Tester will start on home page
+		
+		Input: Tester will click hyperlink to go to a different page
+		
+		Output: The tester will be taken to the new page specified in hyperlink
+		
+		Test Case Derivation: The testing framework should reply with the newly rendered page
+		
+		How test will be performed: The tester will attempt to mock a user input event clicking onto the specified hyperlink area by rendering a mocked version of the home page. Upon clicking the hyperlink area of the profile page the testing framework should reply with a rendered profile page.
+	\end{enumerate}
+
+	\subsubsection{Text Upload}
+	This section has twelve tests, with each corresponding to an text upload action the user can take with Utrition. The tests deal with FR3, FR4, FR7, FR8, FR9, FR14, and FR15 in the SRS. Testing that users can successfully submit text inputs to identify food items is 
+	important to the core functionality of the other components of the 
+	application.
 	
 	\begin{enumerate}
+	\item{text-upload-1\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Text Upload" selected.
+	
+	Input: User inputs "cup of yogurt" into the text upload box and then clicks on the "Submit" button
+	
+	Output: The nutritional facts for a cup of yogurt is displayed to the user.
+	
+	Test Case Derivation: The basic usage of the text upload functional requirement should work properly.
+	
+	How test will be performed: The tester will open Utrition and click on "Upload" found in the taskbar. The tester will type "cup of yogurt" into the text upload box and press the "Submit" button.
+	
+	\item{text-upload-2\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Text Upload" selected.
+	
+	Input: User inputs "i had and ate 3 pieces of shumai" into the text upload box and then clicks on the "Submit" button
+	
+	Output: The nutritional facts for 3 pieces of shumai is displayed to the user.
+	
+	Test Case Derivation: Ethnic foods should be available for the user to input. User should be able to use complex phrases instead of just food items.
+	
+	How test will be performed: The tester will open Utrition and click on "Upload" found in the taskbar. The tester will type "i had and ate 3 pieces of shumai" into the text upload box and press the "Submit" button.
+	
+	\item{text-upload-3\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Text Upload" selected.
+	
+	Input: User inputs "avacadoe" into the text upload box and then clicks on the "Submit" button
+	
+	Output: No nutritional facts will be displayed to the user.
+	
+	Test Case Derivation: Typos should not break the Utrition system.
+	
+	How test will be performed: The tester will open Utrition and click on "Upload" found in the taskbar. The tester will type "avacadoe" into the text upload box and press the "Submit" button.
+	
+	\item{text-upload-4\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Text Upload" selected.
+	
+	Input: User inputs nothing into the text upload box and then clicks on the "Submit" button
+	
+	Output: No nutritional facts will be displayed to the user.
+	
+	Test Case Derivation: Empty inputs should not break the Utrition system.
+	
+	How test will be performed: The tester will open Utrition and clicks on "Upload" found in the taskbar. The tester will type nothing into the text upload box and will press the "Submit" button.
+	
+	\item{text-upload-5\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Text Upload" selected.
+	
+	Input: User inputs "chiken" into the text upload box and then clicks on the "Submit" button
+	
+	Output: No nutritional facts will be displayed to the user.
+	
+	Test Case Derivation: Typos should not bring any results to the user.
+	
+	How test will be performed: The tester will open Utrition and clicks on "Upload" found in the taskbar. The tester will type "chiken" into the text upload box and will press the "Submit" button.
+	
+	\item{text-upload-6\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Text Upload" selected.
+	
+	Input: User inputs "oreo mcflurry" into the text upload box and then clicks on the "Submit" button
+	
+	Output: The nutritional facts for an Oreo McFlurry is displayed to the user.
+	
+	Test Case Derivation: Popular food brands should be available to the user to input.
+	
+	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will type "oreo mcflurry" into the text upload box and will press the "Submit" button.
+	
+	\item{text-upload-7\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Text Upload" selected.
+	
+	Input: User inputs "yuhddasdihijdsahdaihdhi chicken shawarma wrap asgyudy1hu13h123hej" into the text upload box and then clicks on the "Voice Upload" button. User clicks on the "Text Upload" button and clicks "Submit"
+	
+	Output: The nutritional facts for a chicken shawarma wrap is displayed to the user.
+	
+	Test Case Derivation: The system should be able to decipher food items in a flood of gibberish.
+	
+	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will type "yuhddasdihijdsahdaihdhi chicken shawarma wrap asgyudy1hu13h123hej" into the text upload box and will press the "Voice Upload" button. The tester then clicks on the "Text Upload" button and then the "Submit" button.
+	
+	\item{text-upload-8\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Text Upload" selected.
+	
+	Input: User inputs "half a McDonald's cheeseburger" into the text upload box and then clicks on the "Submit" button
+	
+	Output: The nutritional facts for half of a McDonald's cheeseburger is displayed to the user.
+	
+	Test Case Derivation: The user should be able to use normal speech to declare the serving size of food items they consume.
+	
+	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will type "half a McDonald's cheeseburger" into the text upload box and will press the "Submit" button.
+	
+	\paragraph{Multi-Text Upload}
+	\paragraph{Multi-Text Upload}
+	
+	\item{multi-text-upload-1\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Text Upload" selected.
+	
+	Input: User inputs "apple" and "banana" on two separate lines into the text upload box and then clicks on the "Submit" button.
+	
+	Output: The nutritional facts for an apple and a banana is displayed to the user.
+	
+	Test Case Derivation: The user should be allowed to input food items on multiple lines that separate them.
+	
+	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will type "apple" into the text upload box and then presses enter. The tester will type "banana" and press the "Submit" button.
+	
+	\item{multi-text-upload-2\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Text Upload" selected.
+	
+	Input: User inputs "3 kit kat bars, 100g of salt, and 2 cucumbers" into the text upload box and then clicks on the "Submit" button.
+	
+	Output: The nutritional facts for 3 Kit Kat bars, 100g of salt, and 2 cucumbers is displayed to the user.
+	
+	Test Case Derivation: User should be allowed to input multiple food items, and be able to specify serving sizes for food items (without requiring all food items to have their serving sizes declared).
+	
+	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will type "3 kit kat bars, 100g of salt, and 2 cucumbers" into the text upload box and then presses the "Submit" button.
+	
+	\item{multi-text-upload-3\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Text Upload" selected.
+	
+	Input: User inputs "i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text upload box and then clicks on the "Submit" button.
+	
+	Output: The nutritional facts for 2 pieces of chicken breast, 100g of a martini, and 2 cheeseburgers is displayed to the user.
+	
+	Test Case Derivation: The system should be able to detect multiple food items even when surrounded by incorrect use of grammar.
+	
+	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will type "i ate two pieces of chicken breast... also had 100g of a martini. . . . . . . . . 2 Cheeseburger!!!!!11" into the text upload box and then will press the "Submit" button.
+	
+	\item{multi-text-upload-4\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Text Upload" selected.
+	
+	Input: User inputs "ubdhsjsbubahasjvdhasbhdabhsdbh asbdh ahbsdbajsdbhashbdb 1 slice of cheese b2b23b2b3b2b3b2b 2 grapefruits aaahhhhh 100g of apple sauce ajjdjj2j2j3j23j who goes there? yup its me! aaa 1 slice of white bread celery" into the text upload box and then clicks on the "Submit" button.
+	
+	Output: The nutritional facts for 1 slice of cheese and 2 grapefruits, 100g of apple sauce, 1 slice of white bread, and 1 celery is displayed to the user.
+	
+	Test Case Derivation: The system should be able to detect multiple food items even when surrounded by gibberish and random symbols.
+	
+	How test will be performed: The tester opened Utrition and clicked on "Upload" found in the taskbar. The tester typed "ubdhsjsbubahasjvdhasbhdabhsdbh asbdh ahbsdbajsdbhashbdb 1 slice of cheese b2b23b2b3b2b3b2b 2 grapefruits aaahhhhh 100g of apple sauce ajjdjj2j2j3j23j who goes there? yup its me! aaa 1 slice of white bread celery" into the text upload box and then pressed the "Submit" button.
+
+	\end{enumerate}
+
+	\subsubsection{Voice Upload}
+	This section has fifteen tests, with each corresponding to an voice upload action the user can take with Utrition. The tests deal with FR3, FR4, FR7, FR10, FR11, FR12, FR13, FR14, and FR15 in the SRS. 
+	Testing that users can successfully submit speech inputs is 
+	important to the core functionality of the other components of the 
+	application.
+	
+	\begin{enumerate}
+	\item{voice-upload-1\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Voice Upload" selected.
+	
+	Input: User clicks on the "Start Talking" button and says out loud "I ate a slice of apple pie". User clicks on the "Submit" button.
+	
+	Output: The nutritional facts for a slice of apple pie is displayed to the user.
+	
+	Test Case Derivation: The user should be able to input a normal spoken phrase to search up a food item.
+	
+	How test will be performed: The tester will open Utrition and clicks on "Upload" found in the taskbar. The tester will click on the "Voice Upload" button and then will click on the "Start Talking" button. The tester verbally says "I ate a slice of apple pie." and presses the "Submit" button.
+	
+	\item{voice-upload-2\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Voice Upload" selected.
+	
+	Input: User clicks on the "Start Talking" button and says out loud "I ate two pieces of Kimchi period king yes". User clicks on the "Stop Talking" button and then clicks on the "Submit" Button.
+	
+	Output: The nutritional facts for 2 pieces of Kimchi is displayed to the user.
+	
+	Test Case Derivation: The voice detection system should be able to detect ethnic foods. The system should not be confused by random words that aren't food.
+	
+	How test will be performed: The tester will open Utrition and clicks on "Upload" found in the taskbar. The tester will click on the "Voice Upload" button and then clicks on the "Start Talking" button. The tester verbally says "I ate two pieces of Kimchi period king yes" and presses the "Stop Talking" button. Then the tester will press the "Submit" button.
+	
+	\item{voice-upload-3\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User has just completed test case voice-upload-2.
+	
+	Input: User clicks on the "Start Talking" button and says out loud "three chicken wings". User clicks on the "Stop Talking" button and then clicks on the "Submit" Button.
+	
+	Output: The nutritional facts for 2 pieces of Kimchi and 3 chicken wings is displayed to the user.
+	
+	Test Case Derivation: Since the user does not reset the input, the previous input should still remain in the system.
+	
+	How test will be performed: After the tester completes the steps laid out in test case voice-upload-2, the tester will click on the "Start Talking" button. The tester verbally says "three chicken wings" and presses the "Stop Talking" button. Then the tester will press the "Submit" button.
+	
+	\item{voice-upload-4\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User has just completed test case voice-upload-3.
+	
+	Input: User clicks on the "Start Talking" button and then the "Reset" button.
+	
+	Output: The "Upload" page refreshes and resets, which means the user is met with the "Text Upload" button selected. After clicking on the "Voice Upload" button, the user sees no previous entries and is able to click the "Start Talking" button.
+	
+	Test Case Derivation: The system should allow the user to reset their input in the middle of giving an input.
+	
+	How test will be performed: After the tester completes the steps laid out in test case voice-upload-3, the tester will click on the "Start Talking" button and then click on the "Reset" button. The tester will click on the "Voice Upload" button again to double check the page was cleared.
+	
+	\item{voice-upload-5\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Voice Upload" selected.
+	
+	Input: User clicks on the "Reset" button.
+	
+	Output: The "Upload" page refreshes and resets, which means the user is met with the "Text Upload" button selected. After clicking on the "Voice Upload" button, the user is met with the normal "Voice Upload" page.
+	
+	Test Case Derivation: The system should allow the user to reset their input without giving an input.
+	
+	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will click on the "Voice Upload" button and then clicks on the "Reset" button. The tester will click on the "Voice Upload" button again to double check the page was cleared. 
+	
+	\item{voice-upload-6\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page and has typed "apple" in the text box found in "Text Upload".
+	
+	Input: User clicks on "Voice Upload" and then User clicks on the "Reset" button.
+	
+	Output: The "Upload" page refreshes and resets, which means the user is met with the "Text Upload" button selected. The user is able to see "apple" in the text box.
+	
+	Test Case Derivation: The "Reset" button should only reset the input in the "Voice Upload" section.
+	
+	How test will be performed: The tester will Utrition and clicked on "Upload" found in the taskbar. The tester types "apple" in the text box. The tester clicks on the "Voice Upload" button and then clicks on the "Reset" button.
+	
+	\item{voice-upload-7\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Voice Upload" selected.
+	
+	Input: User clicks on the "Submit" button.
+	
+	Output: No nutritional facts will be displayed to the user.
+	
+	Test Case Derivation: The system should not break when submitting nothing on the "Voice Upload" section.
+	
+	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester clicks on the "Voice Upload" button and then clicks on the "Submit" button.
+	
+	\item{voice-upload-8\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Voice Upload" selected.
+	
+	Input: User clicks on the "Start Talking" button and says out loud "Hey now, you're a rock star. Get the show on, get paid". User clicks on the "Stop Talking" button and then clicks on the "Submit" Button.
+	
+	Output: No nutritional facts will be displayed to the user.
+	
+	Test Case Derivation: No food items should be identified and displayed to the user when there is none in the input.
+	
+	How test will be performed: The tester will open Utrition and clicks on "Upload" found in the taskbar. The tester clicks on the "Voice Upload" button and then clicks on the "Start Talking" button. The tester verbally says "Hey now, you're a rock star. Get the show on, get paid" and presses the "Stop Talking" button. Then the tester presses the "Submit" button.
+	
+	\item{voice-upload-9\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User has just completed test case voice-upload-8.
+	
+	Input: User clicks on the "Start Talking" button and says out loud "a can of sprite". User clicks on the "Stop Talking" button and then clicks on the "Submit" Button.
+	
+	Output: The nutritional facts for a can of sprite is displayed to the user.
+	
+	Test Case Derivation: Without resetting and after a submitted sequence with no food items, the system should be able to identify inputted food items.
+	
+	How test will be performed: After the tester completes the steps laid out in test case voice-upload-9, the tester will click on the "Start Talking" button. The tester verbally says "a can of sprite" and presses the "Stop Talking" button. Then the tester will press the "Submit" button.
+	
+	\item{voice-upload-10\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Voice Upload" selected.
+	
+	Input: User clicks on the "Start Talking" button and says out loud "Ahhh! Don't scare me like that. a pound of white rice. so by the way im vegan lol". User clicks on the "Stop Talking" button and then clicks on the "Submit" Button.
+	
+	Output: The nutritional facts for a pound of white rice is displayed to the user.
+	
+	Test Case Derivation: A food item sneaked into a coherent sentence should be able to be identified by the system. 
+	
+	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester clicks on the "Voice Upload" button and then clicks on the "Start Talking" button. The tester verbally says "Ahhh! Don't scare me like that. a pound of white rice. so by the way im vegan lol" and presses the "Stop Talking" button. Then the tester presses the "Submit" button.
+	
+	\item{voice-upload-11\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Voice Upload" selected.
+	
+	Input: User clicks on the "Start Talking" button and says out loud "I ate 2 eggs benedicts". User clicks on "Stop Talking" and then clicks on "Text Upload". User clicks on "Voice Upload" and then the "Submit" button.
+	
+	Output: The nutritional facts for 2 eggs benedicts is displayed to the user.
+	
+	Test Case Derivation: Unique food items containing more than two words in a phrase should be identified by the system.
+	
+	How test will be performed: The tester will open Utrition and clicks on "Upload" found in the taskbar. The tester will click on the "Voice Upload" button and then clicks on the "Start Talking" button. The tester verbally says "I ate 2 eggs benedicts" and presses the "Stop Talking" button. Then the tester presses on the "Text Upload" button and then the "Voice Upload" button. The tester presses the "Submit" button.
+	
+	\item{voice-upload-12\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Voice Upload" selected.
+	
+	Input: User clicks on the "Start Talking" button and says out loud "2 oranges". User clicks on "Text Upload". User says out loud "a slice of an apple" User clicks on "Voice Upload" and then the "Submit" button.
+	
+	Output: The nutritional facts for 2 oranges is displayed to the user.
+	
+	Test Case Derivation: Only food items said on the "Voice Upload" section should be picked up by the system.
+	
+	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester clicks on the "Voice Upload" button and then clicks on the "Start Talking" button. The tester verbally says "2 oranges" and then the tester presses on the "Text Upload" button. The tester says "a slice of an apple" and then clicks on the "Voice Upload" button. The tester presses the "Submit" button.
+		\paragraph{Multi-Voice Upload}
+		\paragraph{Multi-Voice Upload}
+	\item{multi-voice-upload-1\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Voice Upload" selected.
+	
+	Input: User clicks on the "Start Talking" button and says out loud "Today I ate 3 spoons of peanut butter, I know im a mess. I also had 3 whole baguettes with a side of 100 G of salsa. Then to top it all off I ate 1 carrot cake." User clicks the "Submit" button.
+	
+	Output: The nutritional facts for 3 spoons of peanut butter, 3 whole baguettes, 100g of salsa, and 1 whole carrot cake is displayed to the user.
+	
+	Test Case Derivation: User should be able to say a complex sentence with multiple food items. User should be able to specify serving sizes of foods if they choose to do so.
+	
+	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester clicks on the "Voice Upload" button and then clicks on the "Start Talking" button. The tester verbally says "Today I ate 3 spoons of peanut butter, I know im a mess. I also had 3 whole baguettes with a side of 100 G of salsa. Then to top it all off I ate 1 carrot cake". The tester presses the "Submit" button.
+	
+	\item{multi-voice-upload-2\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Voice Upload" selected.
+	
+	Input: User clicks on the "Start Talking" button and says out loud "100 grams of hummus, 2 bowls of mac and cheese". The user pauses for 5 seconds and then says "2 teaspoons of vegetable oil". User clicks the "Submit" button.
+	
+	Output: The nutritional facts for 100g of hummus, 2 bowls of mac and cheese, and 2 teaspoons of vegetable oil is displayed to the user.
+	
+	Test Case Derivation: The user should be able to list out the food items instead of speaking a normal phrase to the system. The user should be able to pause during their input.
+	
+	How test will be performed: The tester will open Utrition and clicks on "Upload" found in the taskbar. The tester clicks on the "Voice Upload" button and then clicks on the "Start Talking" button. The tester verbally says "100 grams of hummus, 2 bowls of mac and cheese". The tester pauses for 5 seconds and says "2 teaspoons of vegetable oil". The tester presses the "Submit" button.
+	
+	\item{multi-voice-upload-3\\}
+	
+	Control: Functional, Dynamic, and Manual.
+	
+	Initial State: User is on the "Upload" page with "Voice Upload" selected.
+	
+	Input: User clicks on the "Start Talking" button and says out loud "ausdhjasdihjashduih (gibberish) 2 grams of Pina Colada ausdhjasdihjashduih (gibberish) penguin 1 pineapple ausdhjasdihjashduih (gibberish)". User clicks the "Submit" button.
+	
+	Output: The nutritional facts for 2g of Pina Colada and 1 whole pineapple is displayed to the user.
+	
+	Test Case Derivation: The system should be able to identify the multiple food items surrounded by gibberish.
+	
+	How test will be performed: The tester will open Utrition and clicks on "Upload" found in the taskbar. The tester clicks on the "Voice Upload" button and then clicks on the "Start Talking" button. The tester verbally says "ausdhjasdihjashduih (gibberish) 2 grams of Pina Colada ausdhjasdihjashduih (gibberish) penguin 1 pineapple ausdhjasdihjashduih (gibberish)". The tester presses the "Submit" button.
+	
+\end{enumerate}
+	
+	\subsubsection{Profile Page}
+	This section has thirteen tests, with each corresponding to the user viewing their nutritional logs and profile on Utrition. The tests deal with FR5, FR6, FR7, FR16, FR17, FR18, and FR19 in the SRS. Testing that users can successfully log and view their past inputs ensures the main functionality of the Utrition application.
+	
+	\begin{enumerate}
+		\item{profile-1\\}
 		
-		\item{past-nutrition-graph-1\\}
+		Control: Functional, Dynamic, and Manual.
 		
-		Control: Functional, Dynamic, and Automatic
+		Initial State: User has completed test case "text-upload-1".
 		
-		Initial State: Logged foods exist in system
+		Input: User clicks on "Profile" found in the taskbar.
 		
-		Input: Request to view nutritional data of logged foods as graph
+		Output: The user is able to see that their most eaten food is yogurt, their total calories consumed for today is 142.88 (calories in 1 cup of yogurt), and the nutritional values of yogurt next to the current date.
 		
-		Output: The nutritional data of past logged foods in a graphical format
+		Test Case Derivation: The system should properly display the profile page with only one food item inputted into the system.
 		
-		Test Case Derivation: The system will keep a record of all analysed foods for the user, allowing the user to request to see the nutritional data of their past uploads. This data can be displayed in a graphical format.
+		How test will be performed: After the tester completes the steps laid out in test case text-upload-1, the tester will click on "Profile" found in the taskbar.
 		
-		How test will be performed: The program will automatically test that a file of pre-logged foods can be processed to return their corresponding nutritional data in the form of a graph.
+		\item{profile-2\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case "text-upload-1" three times.
+		
+		Input: User clicks on "Profile" found in the taskbar.
+		
+		Output: The user is able to see that their most eaten food is yogurt, their total calories consumed for today is 428.64, the nutritional values of yogurt next to the current date is shown three times, and the total calories of three cups of yogurt is summed on the right table.
+		
+		Test Case Derivation: The system should properly display the profile page with three of the same food item inputted into the system.
+		
+		How test will be performed: After the tester completes the steps laid out in test case text-upload-1 three times, the tester will click on "Profile" found in the taskbar.
+		
+		\item{profile-3\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case "profile-2".
+		
+		Input: User completes test case "multi-text-upload-3" and then clicks on "Profile" found in the taskbar.
+		
+		Output: The user is able to see that their most eaten food is yogurt, their total calories consumed for today is 2137.12, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of a cup of yogurt next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 2 cheeseburgers is summed on the right table.
+		
+		Test Case Derivation: The system should properly display the profile page with a multitude of different food items inputted into the system.
+		
+		How test will be performed: After the tester completes the steps laid out in test case profile-2, the tester completes test case "multi-text-upload-3". The tester will then click on "Profile" found in the taskbar.
+		
+		\item{profile-4\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case "profile-3".
+		
+		Input: User clicks on "Upload" found in the taskbar. User clicks on "Voice Upload" and then "Start Talking". User says "2 cheeseburgers random random random how was your day?" and then clicks on "Stop Talking". User clicks on the "Submit" button, and clicks on "Profile" found in the taskbar.
+		
+		Output: The user is able to see that their most eaten food is a cheeseburger, their total calories consumed for today is 3207.74, the nutritional value of 2 cheeseburgers next to the current date, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, and the nutritional value of 2 cheeseburgers next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 4 cheeseburgers is summed on the right table.
+		
+		Test Case Derivation: The system should properly display the user's most eaten food being a cheeseburger.
+		
+		How test will be performed: After the tester completes the steps laid out in test case profile-3, the tester will click on "Upload" in the taskbar. The tester clicks on "Voice Upload" and then "Start Talking". Tester says "2 cheeseburgers random random random how was your day?" and then clicks on "Stop Talking". Tester clicks on the "Submit" button. The tester clicks on "Profile" found in the taskbar.
+		
+		\item{profile-5\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case "profile-4" and is viewing the "Upload" page
+		
+		Input: User clicks on "Text Upload" and then types "cheeseburger and cheeseburger" . User clicks on the "Submit" button, and clicks on "Profile" found in the taskbar.
+		
+		Output: The user is able to see that their most eaten food is a cheeseburger, their total calories consumed for today is 4278.36, the nutritional value of 1 cheeseburger next to the current date, the nutritional values of 1 cheeseburger next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of 1 chicken breast next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 6 cheeseburgers is summed on the right table.
+		
+		Test Case Derivation: The system should properly display the user's most eaten food being a cheeseburger. The system should properly display the cheeseburger's nutritional information even when given in different serving sizes and formats.
+		
+		How test will be performed: After the tester completes the steps laid out in test case profile-4, the tester clicks on "Upload" found in the taskbar. The tester clicks on "Text Upload" and then types "cheeseburger and cheeseburger". Tester clicks on the "Submit" button. The tester clicks on "Profile" found in the taskbar.
+		
+		\item{profile-6\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case "profile-5" and is viewing the "Profile" page.
+		
+		Input: User clicks on "Look at next 4 entries".
+		
+		Output: User is able to see the nutritional information for: 100g of a martini, 2 cheeseburgers, a cup of yogurt, and another cup of yogurt all next to the current date.
+		
+		Test Case Derivation: The system should allow the user to look at the nutritional information of their previously entered entries.
+		
+		How test will be performed: After the tester completes the steps laid out in test case profile-5, the tester will click on the "Look at next 4 entries" button.
+		
+		\item{profile-7\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case "profile-6" and is viewing the "Profile" page.
+		
+		Input: User clicks on "Look at next 4 entries".
+		
+		Output: User is able to see the nutritional information for 1 cup of yogurt.
+		
+		Test Case Derivation: The system should allow the user to look at the nutritional information of their previously entered entry.
+		
+		How test will be performed: After the tester completes the steps laid out in test case profile-6, the tester will click on the "Look at next 4 entries" button.
+		
+		\item{profile-8\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case "profile-7" and is viewing the "Profile" page.
+		
+		Input: User clicks on "Look at previous 4 entries".
+		
+		Output: User is able to see the nutritional information for: 100g of a martini, 2 cheeseburgers, a cup of yogurt, and another cup of yogurt all next to the current date.
+		
+		Test Case Derivation: The system should allow the user to look at the nutritional information of their most recently entered entries.
+		
+		How test will be performed: After the tester completes the steps laid out in test case profile-7, the tester will click on the "Look at previous 4 entries" button.
+		
+		\item{profile-9\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has inputted a cup of yogurt into Utrition for 15 days and is now viewing the "Profile" page
+		
+		Input: User clicks on the "Previous Week" button.
+		
+		Output: The table is updated to show the previous 7 days in which a cup of yogurt was inputted into Utrition. 
+		
+		Test Case Derivation: The system should allow the user to look at the weekly summary of their previously entered entries. Even if the entries are the same.
+		
+		How test will be performed: The tester will go into the directory "utrition$\backslash$src$\backslash$utrition$\backslash$utrition-backend" and open the "nutrition\_log.csv" file. The tester will fake data for yogurt by making sure each column is filled out with appropriate data (Time having format d/m/Y H:M:S, Name must be a string, serving unit must be a string, and the rest filled with floats), and then copying and pasting the data for 14 other rows (15 in total). Each row will have a different date associated with it. The tester saves the "nutrition\_log.csv" changes, and refreshes the "Profile" page. The tester clicks on the "Previous Week" button.
+		
+		\item{profile-10\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case "profile-9" and is viewing the "Profile" page.
+		
+		Input: User clicks on the "Previous Week" button.
+		
+		Output: The table is updated to show the first day the user inputted a food item (yogurt) into Utrition.
+		
+		Test Case Derivation: The system should allow the user to look at the weekly summary of their previously entered entry. Even if the previous entries are the same.
+		
+		How test will be performed: After the tester completes the steps laid out in test case profile-9, the tester will click on the "Previous Week" button.
+		
+		\item{profile-11\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: Food items were inputted into Utrition on 15 different days. In increasing order, the following food items were inputted: Apple, Banana, Celery, Orange, Grapefruit, Chicken, Cheeseburger, Pizza, Sprite, Cashew, Cucumber, Pickle, Poutine, Sour Cream, and Salsa.
+		
+		Input: User clicks on the "Previous Week" button twice. Then, the user clicks on the "Next Week" button once.
+		
+		Output: The table is updated to show the following food items with their attached date and calorie information: Pizza, Cheeseburger, Chicken, Grapefruit, Orange, Celery, and Banana.
+		
+		Test Case Derivation: The system should allow the user to look at the weekly summary of their previously entered entries. Both button functionalities should work properly.
+		
+		How test will be performed: The tester will go into the directory "utrition$\backslash$src$\backslash$utrition$\backslash$utrition-backend" and will open the "nutrition\_log.csv" file. The tester fakes data for the food items by making sure each column was filled out with appropriate data (Time having format d/m/Y H:M:S, serving unit must be a string, and the rest filled with floats), and then copying and pasting the data for 14 other rows (15 in total). Each row will have a different date associated with it. The tester adds in the "Name" column the following 15 food items in increasing order by date: Apple, Banana, Celery, Orange, Grapefruit, Chicken, Cheeseburger, Pizza, Sprite, Cashew, Cucumber, Pickle, Poutine, Sour Cream, and Salsa. The tester saves the "nutrition\_log.csv" changes, and refreshes the "Profile" page. The tester clicks on the "Previous Week" button twice, and the "Next Week" button once.
+		
+		\item{profile-12\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State:  User has completed test case "profile-11" but has now added an extra row of salsa having the same data as the previous salsa entry.
+		
+		Input: User clicks on the "Previous Week" button twice. Then, the user clicks on the "Next Week" button twice.
+		
+		Output: The table is updated to show the following food items with their attached date and calorie information: Salsa and Salsa, Sour Cream, Poutine, Pickle, Cucumber, Cashew, and Sprite.
+		
+		Test Case Derivation: The system should allow the user to look at the weekly summary of their previously entered entries. Even if there are multiple entries on the same day.
+		
+		How test will be performed: After the tester completes the steps laid out in test case profile-11, the tester will go into the directory "utrition$\backslash$src$\backslash$utrition$\backslash$utrition-backend" and will open the "nutrition\_log.csv" file. The tester copies and pastes the Salsa row once more at the bottom of the excel file. The tester will save the "nutrition\_log.csv" changes, and refreshes the "Profile" page. The tester clicks on the "Previous Week" button twice, and the "Next Week" button twice.
+		
+		\item{profile-13\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has no entries saved on their device and is viewing the "Profile" page.
+		
+		Input: User clicks on "Profile" found in the taskbar.
+		
+		Output: The user is able to see the following headers with no nutritional information near them: Your most eaten food, Your total calories consumed for today, PAST MEALS, and My Caloric Intake.
+		
+		Test Case Derivation: The system should not break if no entries are found on the user's personal device.
+		
+		How test will be performed: The tester will open Utrition and click on "Profile" found in the taskbar. The tester will click on "Profile" one more time.
 		
 	\end{enumerate}
+	
+	\subsubsection{Taskbar}
+	This section has six tests, with each corresponding to the actions the user can take with the navigation taskbar in Utrition. The tests deal with FR20 in the SRS. Testing that users can successfully navigate throughout the Utrition application is important to ensure freedom of use for the application.
+	
+	\begin{enumerate}
+		\item{upload-page-1\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User is on the "Home" page.
+		
+		Input: User clicks on the "Upload" button.
+		
+		Output: The user views the "Upload" page.
+		
+		Test Case Derivation: User should be able to view the "Upload" page from the "Home" page.
+		
+		How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar.
+		
+		\item{profile-page-1\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User is on the "Home" page.
+		
+		Input: User clicks on the "Profile" button.
+		
+		Output: The user views the "Profile" page.
+		
+		Test Case Derivation: User should be able to view the "Profile" page from the "Home" page.
+		
+		How test will be performed: The tester will open Utrition and will click on "Profile" found in the taskbar.
+		
+		\item{home-page-1\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User is on the "Upload" page.
+		
+		Input: User clicks on the "Utrition" button.
+		
+		Output: The user views the "Home" page.
+		
+		Test Case Derivation: User should be able to view the "Home" page from the "Upload" page.
+		
+		How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will click on "Utrition" found in the taskbar.
+		
+		\item{home-page-2\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User is on the "Profile" page.
+		
+		Input: User clicks on the "Utrition" button.
+		
+		Output: The user views the "Home" page.
+		
+		Test Case Derivation: User should be able to view the "Home" page from the "Profile" page.
+		
+		How test will be performed: The tester will open Utrition and will click on "Profile" found in the taskbar. The tester will click on "Utrition" found in the taskbar.
+		
+		\item{profile-page-2\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User is on the "Upload" page.
+		
+		Input: User clicks on the "Profile" button.
+		
+		Output: The user views the "Profile" page.
+		
+		Test Case Derivation: User should be able to view the "Profile" page from the "Upload" page.
+		
+		How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will click on "Profile" found in the taskbar.
+		
+		\item{upload-page-2\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User is on the "Profile" page.
+		
+		Input: User clicks on the "Upload" button.
+		
+		Output: The user views the "Upload" page.
+		
+		Test Case Derivation: User should be able to view the "Upload" page from the "Profile" page.
+		
+		How test will be performed: The tester will open Utrition and will click on "Profile" found in the taskbar. The tester will click on "Upload" found in the taskbar.
+		
+	\end{enumerate}
+	
 	\subsection{Traceability Between Test Cases and Functional Requirements}
 	
 	\newpage
@@ -567,10 +1214,11 @@
 	system.                                                                     
 	                 &
 	\begin{tabular}[c]{@{}l@{}}one-upload-1\\ 
-	one-upload-2\end{tabular}                                                  
+	one-upload-2\\
+	one-upload-auto-1\\
+	one-upload-auto-2\end{tabular}                                                  
 	                                            \\
 	 \hline
-	FR2                     & The user shall have the ability to upload multiple digital images of standard image types to the system.                                                                              & multi-upload-1                                                                                               \\ \hline
 	FR3                     & The system will be able to identify the type of 
 	food that is captured in an 
 	image.                                                                      
@@ -592,7 +1240,7 @@
 	food.                                                                       
 	                                   &
 	 \begin{tabular}[c]{@{}l@{}}api-1\\ 
-		read-data-1\\ 
+		log-data-read-data-1\\ 
 		current-nutrition-1\end{tabular}                                        
 		                                                    \\
 		 \hline
@@ -600,18 +1248,16 @@
 	food.                                                                       
 	                                                            &  
 	\begin{tabular}[c]{@{}l@{}}api-1\\ 
-		log-data-1\\ 
+		log-data-read-data-1\\ 
 		current-nutrition-1\end{tabular}                                        
 		                                               \\ \hline
 	FR7                     & The user will be able to access the nutritional 
 	data of previously logged 
 	foods.                                                                      
 	                                &
-	 \begin{tabular}[c]{@{}l@{}}read-data-1\\ read-data-2\\ read-data-3\\ 
-	past-nutrition-text-1\\ 
-	past-nutrition-graph-1\end{tabular}                       \\ \hline
-	FR8                     & The system will display the nutritional information of a food to the user.                                                                                                            & \begin{tabular}[c]{@{}l@{}}current-nutrition-1\\ past-nutrition-text-1\\ past-nutrition-graph-1\end{tabular} \\ \hline
-	FR9                     & The system will display the history of logged nutritional data in a graph.                                                                                                            & past-nutrition-graph-1                                                                                       \\ \hline
+	 \begin{tabular}[c]{@{}l@{}}log-data-read-data-1\\ past-nutrition-text-read-data-2\\ 
+	past-nutrition-text-read-data-2\end{tabular}                       \\ \hline
+	FR8                     & The system will display the nutritional information of a food to the user.                                                                                                            & \begin{tabular}[c]{@{}l@{}}current-nutrition-1\\ past-nutrition-text-read-data-2\end{tabular} \\ \hline
 	
 	\end{tabular}
 	\caption {Traceability between System Tests and Functional Requirements}
@@ -772,6 +1418,8 @@
 			\item PCM
 		\end{itemize}
 	\end{enumerate}
+
+	Semi-structured interviewing will also be conducted to further receive insights and feedback regarding Utrition's overall implementation.
 	
 	\subsubsection{Performance Testing}
 	
@@ -1374,7 +2022,14 @@
 	\subsection{Usability Survey Questions}
 	
 	\wss{This is a section that would be appropriate for some projects.}
-	N/A
+	The following questions will be asked to participants during usability testing.
+	\begin{itemize}
+		\item What are your expectations (ex. features) for the application? 
+		\item How was your experience performing a typical use case? What did you struggle with? 
+		\item What did you like about the application? 
+		\item What should be improved upon? 
+		\item What additional features do you think will be useful to have in the application? 
+	\end{itemize}
 	
 	\newpage{}
 	\section*{Appendix --- Reflection}

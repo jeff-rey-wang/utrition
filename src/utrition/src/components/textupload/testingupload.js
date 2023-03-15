@@ -7,7 +7,8 @@ const TextUploadmock = () => {
   const [responseData, setResponseData] = useState("");
   
   function handleSubmit() {
-
+  // event.preventDefault();
+  // setText("");
 
   const headers = {
     upload_type: "text",
