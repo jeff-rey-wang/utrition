@@ -28,6 +28,7 @@ def test_upload_file_image_extension():
 
     # clean up the temporary test image file
     os.remove("test_image.jpg")
+    os.remove("userIcon.jpg")
 
 
 def test_upload_file_text_extension():
