@@ -51,7 +51,7 @@ const BMI = () => {
       setActivityLevel(event.target.value);
     };
 
-    async function getData() {
+    function getData() {
       const formData = new FormData();
       formData.append('heightUnit', heightUnit);
       formData.append('heightFeet', heightFeet);
@@ -62,7 +62,7 @@ const BMI = () => {
       formData.append('birthSex', birthSex);
       formData.append('activityLevel', activityLevel);
       formData.append('age', age);
-      await axios({
+    axios({
         method: "POST",
         url: "/bmi",
         data: formData
