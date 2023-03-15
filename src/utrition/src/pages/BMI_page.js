@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import "./BMI_page.css";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const BMI = () => {
@@ -15,6 +16,7 @@ const BMI = () => {
     const [age, setAge] = useState("");
     const [activityLevel, setActivityLevel] = useState("Sedentary");
     const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
 
     const handleBirthSexChange = (event) => {
         setBirthSex(event.target.value);
@@ -67,9 +69,10 @@ const BMI = () => {
         url: "/bmi",
         data: formData
       })
-        .then((response) => response.json())
+        .then((response) => {
+          navigate("/settings");
+        })
         .catch((error) => console.log(error));
-      setErrorMessage("Your statistics have been saved!");
     }
   
     const handleSubmit = (event) => {
@@ -84,41 +87,8 @@ const BMI = () => {
 
     return (
       <div>
-        <div className="title">BMI Calculator</div>
-        <div className="explanation">Take a look at the following chart to determine your activity level and then complete the form below!
-        </div>
-        <table className="activity-level">
-      <thead>
-        <tr>
-          <th>Activity Level</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Sedentary</td>
-          <td>Little or no exercise / Desk job</td>
-        </tr>
-        <tr>
-          <td>Lightly active</td>
-          <td>Light exercise / Sports 1-3 days per week</td>
-        </tr>
-        <tr>
-          <td>Moderately active</td>
-          <td>Moderate exercise / Sports 6-7 days per week</td>
-        </tr>
-        <tr>
-          <td>Very active</td>
-          <td>Hard exercise every day / Exercising 2 times per day</td>
-        </tr>
-        <tr>
-          <td>Extra active</td>
-          <td>Hard exercise 2 or more times per day / Training for marathon, triathlon, etc</td>
-        </tr>
-      </tbody>
-    </table>
         <form className="BMIform" onSubmit={handleSubmit}>
-        <h2 className="formtitle">Enter Your Statistics</h2>
+        <h2 className="formtitle">Edit Your Statistics</h2>
         <label>
         Birth Sex:
         <select value={birthSex} onChange={handleBirthSexChange}>
@@ -170,21 +140,43 @@ const BMI = () => {
             </select>
           </label>
           <br />
-          <button className="submitbutton" type="submit">Calculate BMI</button>
+          <button className="submitbutton" type="submit">Save</button>
+          <Link to="/settings" className="submitbutton">Cancel</Link>
           {errorMessage && <div className="error">{errorMessage}</div>}
         </form>
-        {errorMessage && errorMessage === "Your statistics have been saved!" && <div className = "links">
-        <Link to="/upload"
-            class="uploadbutton button"
-          >
-            Upload what you ate to Utrition!
-          </Link>
-        <Link to="/profile"
-            class="profilebutton button"
-          >
-            Check out your profile!
-          </Link>
-      </div>}
+        {errorMessage && errorMessage === "Your statistics have been saved!"}
+        <div className="explanation">Take a look at the following chart to determine your activity level and then complete the form below!
+        </div>
+        <table className="activity-level">
+      <thead>
+        <tr>
+          <th>Activity Level</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sedentary</td>
+          <td>Little or no exercise / Desk job</td>
+        </tr>
+        <tr>
+          <td>Lightly active</td>
+          <td>Light exercise / Sports 1-3 days per week</td>
+        </tr>
+        <tr>
+          <td>Moderately active</td>
+          <td>Moderate exercise / Sports 6-7 days per week</td>
+        </tr>
+        <tr>
+          <td>Very active</td>
+          <td>Hard exercise every day / Exercising 2 times per day</td>
+        </tr>
+        <tr>
+          <td>Extra active</td>
+          <td>Hard exercise 2 or more times per day / Training for marathon, triathlon, etc</td>
+        </tr>
+      </tbody>
+    </table>
       </div>
     );
   };
