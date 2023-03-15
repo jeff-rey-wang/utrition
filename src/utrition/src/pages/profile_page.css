@@ -149,7 +149,7 @@ td {
   display: inline-block;
   font-size: small;
   border-radius: 20px;
-  margin-top: 138px;
+  margin-top: 20px;
   margin-left: -7px;
   transition: background-color 0.2s ease; 
 }
@@ -307,4 +307,31 @@ td {
 .closebmi {
   margin-top: 7px;
   margin-left: 7px;
+}
+
+.timetimetime{
+  margin-top: 20px;
+  margin-left: -9px;
+  width: 80px;
+  height: 75px;
+  background-color: rgb(255, 0, 183);
+  border-radius: 20px;
+  text-align: center;
+  padding: 7px;
+  font-size: 25px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.date-square{
+  margin-left: -4.5px;
+  width: 70px;
+  height: 75px;
+  background-color: rgb(255, 64, 0);
+  border-radius: 20px;
+  text-align: center;
+  padding: 7px;
+  font-size: 25px;
+  color: #ffffff;
+  font-weight: bold;
 }
