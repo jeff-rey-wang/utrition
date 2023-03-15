@@ -225,7 +225,12 @@ const Profile = () => {
                 <tr class="row_1">
                   <td>
                     <div className="orange-square">
+                      <div className = "date-square">
                       {totalcal.allFoodEntries[totalcal.index].date}
+                      </div>
+                      <div className = "timetimetime">
+                      {totalcal.allFoodEntries[totalcal.index].time}
+                      </div>
                     <button
                         className="delete-entry"
                         onClick={() =>
@@ -302,7 +307,12 @@ const Profile = () => {
                 <tr class="row_2">
                   <td>
                     <div className="orange-square">
+                      <div className = "date-square">
                       {totalcal.allFoodEntries[totalcal.index + 1].date}
+                      </div>
+                      <div className = "timetimetime">
+                      {totalcal.allFoodEntries[totalcal.index + 1].time}
+                      </div>
                       <button
                         className="delete-entry"
                         onClick={() =>
@@ -403,7 +413,12 @@ const Profile = () => {
                 <tr class="row_3">
                   <td>
                     <div className="orange-square">
+                    <div className = "date-square">
                       {totalcal.allFoodEntries[totalcal.index + 2].date}
+                      </div>
+                      <div className = "timetimetime">
+                      {totalcal.allFoodEntries[totalcal.index + 2].time}
+                      </div>
                       <button
                         className="delete-entry"
                         onClick={() =>
@@ -504,7 +519,12 @@ const Profile = () => {
                 <tr class="row_4">
                   <td>
                     <div className="orange-square">
+                    <div className = "date-square">
                       {totalcal.allFoodEntries[totalcal.index + 3].date}
+                      </div>
+                      <div className = "timetimetime">
+                      {totalcal.allFoodEntries[totalcal.index + 3].time}
+                      </div>
                       <button
                         className="delete-entry"
                         onClick={() =>
