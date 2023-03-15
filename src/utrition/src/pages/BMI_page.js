@@ -15,10 +15,7 @@ const BMI = () => {
     const [age, setAge] = useState("");
     const [activityLevel, setActivityLevel] = useState("Sedentary");
     const [errorMessage, setErrorMessage] = useState("");
-    const [bmiMessage, setBmiMessage] = useState("");
-    const [CaloriesMessage, setCaloriesMessage] = useState("");
-    const [responseData, setResponseData] = useState("");
-  
+
     const handleBirthSexChange = (event) => {
         setBirthSex(event.target.value);
     };
@@ -70,49 +67,14 @@ const BMI = () => {
         url: "/bmi",
         data: formData
       })
-      .then((response) => {
-        setResponseData({
-          user_bmi: response.data.user_bmi,
-          user_calories: response.data.user_calories
-        });
-      })
-      .catch((error) => console.log(error));
-      
+        .then((response) => response.json())
+        .catch((error) => console.log(error));
       setErrorMessage("Your statistics have been saved!");
-      
-      // axios({
-      //   method: "GET",
-      //   url: "/bmi"
-      // })
-      //   .then((response) => {
-      //     setResponseData({
-      //       user_bmi: response.data.bmi,
-      //       user_calories: response.data.calories
-      //     });
-      //   })
-      //   .catch((error) => console.log(error));
-      
-      if (responseData.user_bmi && responseData.user_bmi < 18.5){
-          setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are underweight!`);
-          setCaloriesMessage(`You need to eat more than ${responseData.user_calories} calories today if you'd like to gain some weight.`);
-      }
-      else if (responseData.user_bmi && responseData.user_bmi <= 24.9 && responseData.user_bmi >= 18.5){
-          setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are normal weight!`);
-          setCaloriesMessage(`You need to eat around ${responseData.user_calories} calories today if you'd like to maintain your weight!`);
-      }
-      else if (responseData.user_bmi && responseData.user_bmi <= 29.9 && responseData.user_bmi >= 25){
-          setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are overweight weight!`);
-          setCaloriesMessage(`You need to eat less than ${responseData.user_calories} calories today if you'd like to lose some weight!`);
-      }
-      else if (responseData.user_bmi && responseData.user_bmi >= 30){
-          setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are obese!`);
-          setCaloriesMessage(`You need to eat less than ${responseData.user_calories} calories today if you'd like to lose some weight!`);
-      }
     }
   
     const handleSubmit = (event) => {
       event.preventDefault();
-      if (!weight || (heightUnit === "ft"  && !heightCm) || (heightUnit === "ft" && !heightFeet && !heightInches) || !age || !activityLevel) {
+      if (!weight || (heightUnit === "cm"  && !heightCm) || (heightUnit === "ft" && !heightFeet && !heightInches) || !age || !activityLevel) {
         setErrorMessage("Please fill out all fields.");
       } 
       else {
@@ -211,8 +173,6 @@ const BMI = () => {
           <button className="submitbutton" type="submit">Calculate BMI</button>
           {errorMessage && <div className="error">{errorMessage}</div>}
         </form>
-        {bmiMessage && <div className="bmiii">{bmiMessage}</div>}
-        {CaloriesMessage && <div className="calories">{CaloriesMessage}</div>}
         {errorMessage && errorMessage === "Your statistics have been saved!" && <div className = "links">
         <Link to="/upload"
             class="uploadbutton button"
