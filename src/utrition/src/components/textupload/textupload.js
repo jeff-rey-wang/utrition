@@ -6,6 +6,12 @@ const TextUpload = () => {
   const [text, setText] = useState("");
   const [responseData, setResponseData] = useState("");
 
+  const keyDownEvent = (event) => {
+    if (event.keyCode === 13) {
+      handleSubmit(event);
+    }
+  };
+
   function handleChange(event) {
     setText(event.target.value);
   }
@@ -49,7 +55,7 @@ const TextUpload = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onKeyDown={keyDownEvent} onSubmit={handleSubmit}>
         <label>
           <div className={"instruction"}>
             <h3>Tell us what food you ate:</h3>
@@ -64,7 +70,9 @@ const TextUpload = () => {
             rows={"4"}
           />
         </label>
-        <input className={"button"} type="submit" value="Submit" />
+        <button type="submit" className={"button"}>
+          Submit
+        </button>
       </form>
       <div style={{ marginTop: "20px" }}>
         <pre hidden={responseData.food_name ? false : true}>
