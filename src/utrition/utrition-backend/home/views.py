@@ -62,8 +62,8 @@ def display_profile():
     dates = [d["date"] for d in profile_data]
     calories = [c["sumPerDay"] for c in profile_data]
 
-    dates=dates[::-1]
-    calories=calories[::-1]
+    dates = dates[::-1]
+    calories = calories[::-1]
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=dates, y=calories, mode="lines"))
