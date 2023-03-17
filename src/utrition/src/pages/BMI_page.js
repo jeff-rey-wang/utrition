@@ -86,7 +86,8 @@ const BMI = () => {
     };
 
     return (
-      <div>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <div className="left" style={{ flex: 1, height: "5vh" }}>
         <form className="BMIform" onSubmit={handleSubmit}>
         <h2 className="formtitle">Edit Your Statistics</h2>
         <label>
@@ -141,13 +142,16 @@ const BMI = () => {
           </label>
           <br />
           <button className="submitbutton" type="submit">Save</button>
-          <Link to="/settings" className="submitbutton">Cancel</Link>
+          <Link to="/settings" className="cancelbutton">Cancel</Link>
           {errorMessage && <div className="error">{errorMessage}</div>}
         </form>
         {errorMessage && errorMessage === "Your statistics have been saved!"}
-        <div className="explanation">Take a look at the following chart to determine your activity level and then complete the form below!
+        
+    </div>
+        <div class="right" style={{ flex: 1, height: "5vh" }}>
+        <div className="explanation2">To determine your activity level look at the chart below!
         </div>
-        <table className="activity-level">
+        <table className="activity-level2">
       <thead>
         <tr>
           <th>Activity Level</th>
@@ -177,6 +181,10 @@ const BMI = () => {
         </tr>
       </tbody>
     </table>
+
+    
+      
+        </div>
       </div>
     );
   };

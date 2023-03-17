@@ -203,19 +203,8 @@ const Profile = () => {
 
   return (
     <div
-      style={{ display: "flex", padding: "0.5rem calc((100vw - 1100px) / 2)" }}
-    >
+      style={{ display: "flex", padding: "0.5rem calc((100vw - 1100px) / 2)" }}>
       <div class="left" style={{ flex: 1, height: "5vh" }}>
-        <div class="most_eaten">
-          Your most logged food: {totalcal.mode}
-        </div>
-        {totalcal.recommendedCal && totalcal.recommendedCal ? (
-          <div class="average_cal">
-          Today you have eaten {totalcal.currentCal} calories out of {totalcal.recommendedCal} calories to maintain your weight.
-        </div>) : (
-        <div class="average_cal">
-          Your total calories consumed for today is {totalcal.currentCal}
-        </div>)}
         <div class="past_meals">PAST MEALS</div>
         <table class="left_table">
           <tbody>
@@ -642,6 +631,16 @@ const Profile = () => {
             Edit Profile Statistics
           </Link>
           </div>
+          <div class="most_eaten">
+          Your most logged food: {totalcal.mode}
+        </div>
+        {totalcal.recommendedCal && totalcal.recommendedCal ? (
+          <div class="average_cal">
+          Today you have eaten {totalcal.currentCal} calories out of {totalcal.recommendedCal} calories to maintain your weight.
+        </div>) : (
+        <div class="average_cal">
+          Your total calories consumed for today is {totalcal.currentCal}
+        </div>)}
           <div>
       {totalcal.bmi && (
         <div>

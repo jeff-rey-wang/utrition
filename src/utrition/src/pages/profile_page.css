@@ -86,7 +86,7 @@ body {
 }
 
 .right_table {
-  margin-top: 150px;
+  margin-top: 10px;
   border: 1px solid black;
   background-color: white;
   border-collapse: collapse;
@@ -238,8 +238,12 @@ td {
   background-color: #187d04;
 }
 
+.overlay-body {
+  text-align: center;
+}
+
 .bmidisplay{
-  color: #E9FFA4;
+  color: #FFC300;;
   font-size: 3vw;
   margin-left: 10px;
   margin-top: 20px;
