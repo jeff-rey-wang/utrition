@@ -28,15 +28,17 @@
         -moz-appearance: textfield;
       }*/
 
-.SettingsForm{flex: 1;
+.SettingsForm{
+    margin-top: 90px !important;
+    flex: 1;
     text-align: center;
     background-color:#faebd7; 
     height: fit-content;
     width: fit-content;
     margin:auto;
     margin-top: 20px;
-    padding: 8px;
-    border: 2px solid #a49a8e;
+    padding: 30px;
+    border: 10px solid orange;
 }
 
 .SettingsForm input{
@@ -143,4 +145,18 @@ label{
     padding-bottom: 10px;
     text-decoration: underline;
     text-underline-position: under;
+}
+
+.settingss {
+    text-decoration: none;
+    color: black;
+    font-size: large;
+    background-color: rgb(229, 215, 198);
+    border: 2px solid #a49a8e;
+    padding: 3px 5px;
+    margin-left: 10px;
+}
+
+.settingss:hover{
+    background-color: rgb(191, 180, 166);
 }

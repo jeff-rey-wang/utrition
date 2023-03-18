@@ -17,6 +17,19 @@
     font-size: x-large;
     white-space: nowrap;
 }
+
+.explanation2{
+    color:#faebd7;
+    font-size: large;
+    text-align: center;
+    margin-bottom: 5px;
+    margin-top: 85px !important;
+    margin-left: 80px;
+    margin-right: auto;
+    max-width: 400px; 
+
+}
+
       /*If we want to remove stepper arrows uncomment this
       input::-webkit-outer-spin-button,
       input::-webkit-inner-spin-button {
@@ -28,15 +41,17 @@
         -moz-appearance: textfield;
       }*/
 
-.BMIform{flex: 1;
+.BMIform{
+    flex: 1;
     text-align: center;
     background-color:#faebd7; 
     height: fit-content;
     width: fit-content;
-    margin:auto;
-    margin-top: 20px;
-    padding: 8px;
-    border: 2px solid #a49a8e;
+    margin-left: auto;
+    margin-right: 80px;
+    margin-top: 90px;
+    padding: 30px;
+    border: 10px solid orange;
 }
 
 .links{
@@ -74,43 +89,44 @@
     margin-top: 10px;
     padding: 8px;}
 
-.activity-level {
+.activity-level2 {
     border-collapse: collapse;
     width: 100%;
     max-width: 400px; 
     margin-top: 20px;
     flex: 1;
     text-align: center;
-    margin:auto;
+    margin-left: 80px;
+    margin-right: auto;
     border: 2px solid #a49a8e;
 }
 
-.activity-level th {
+.activity-level2 th {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
 }
 
 
-.activity-level td {
+.activity-level2 td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
 }
 
-.activity-level th {
+.activity-level2 th {
     background-color: #faebd7;
 }
 
-.activity-level td {
+.activity-level2 td {
     font-size: 14px;
 }
 
-.activity-level tr:nth-child(even) {
+.activity-level2 tr:nth-child(even) {
     background-color: #faebd7;
 }
 
-.activity-level tr:nth-child(odd) {
+.activity-level2 tr:nth-child(odd) {
     background-color: rgb(229, 215, 198);
 }
 
@@ -129,9 +145,24 @@ label{
     background-color: rgb(229, 215, 198);
     border: 2px solid #a49a8e;
     padding: 3px 5px;
+    margin-right: 10px;
 }
 
 .submitbutton:hover{
+    background-color: rgb(191, 180, 166);
+}
+
+.cancelbutton {
+    text-decoration: none;
+    color: black;
+    font-size: large;
+    background-color: rgb(229, 215, 198);
+    border: 2px solid #a49a8e;
+    padding: 3px 5px;
+    margin-left: 10px;
+}
+
+.cancelbutton:hover{
     background-color: rgb(191, 180, 166);
 }
 

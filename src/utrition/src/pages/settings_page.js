@@ -99,7 +99,7 @@ const Settings = () => {
           </label>
           <br />
           <Link to="/bmi"
-            class="settings button"
+            className="settingss"
           >
             Edit Settings
           </Link>
