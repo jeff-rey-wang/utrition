@@ -10,6 +10,27 @@ body {
   margin-left: 10px;
   margin-top: 10px;
 }
+.arrowright{
+  text-align: center;
+  background-color:#0B5345;
+  height: 40px;
+  width: 150px;
+  margin:auto;
+  margin-top: 20px;
+  padding: 8px;
+  border: 2px solid #0B5345;
+}
+
+.arrowleft{
+  text-align: center;
+  background-color:#0B5345;
+  height: 40px;
+  width: 150px;
+  margin:auto;
+  margin-top: 20px;
+  padding: 8px;
+  border: 2px solid #0B5345;
+}
 
 .average_cal {
   color: #E9FFA4;
