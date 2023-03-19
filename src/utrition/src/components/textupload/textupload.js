@@ -85,37 +85,37 @@ const TextUpload = () => {
           Serving Unit: {responseData.serving_unit}
         </pre>
         <pre hidden={responseData.serving_weight_grams ? false : true}>
-          Serving Weight in Grams: {responseData.serving_weight_grams}
+          Serving Weight: {responseData.serving_weight_grams}g
         </pre>
         <pre hidden={responseData.calories ? false : true}>
           Calories: {responseData.calories}
         </pre>
         <pre hidden={responseData.total_fat ? false : true}>
-          Total Fat: {responseData.total_fat}
+          Total Fat: {responseData.total_fat}g
         </pre>
         <pre hidden={responseData.saturated_fat ? false : true}>
-          Saturated Fat: {responseData.saturated_fat}
+          Saturated Fat: {responseData.saturated_fat}g
         </pre>
         <pre hidden={responseData.cholesterol ? false : true}>
-          Cholesterol: {responseData.cholesterol}
+          Cholesterol: {responseData.cholesterol}mg
         </pre>
         <pre hidden={responseData.sodium ? false : true}>
-          Sodium: {responseData.sodium}
+          Sodium: {responseData.sodium}mg
         </pre>
         <pre hidden={responseData.total_carbohydrate ? false : true}>
-          Total Carbohydrate: {responseData.total_carbohydrate}
+          Total Carbohydrate: {responseData.total_carbohydrate}g
         </pre>
         <pre hidden={responseData.serving_qty ? false : true}>
-          Dietary Fiber: {responseData.dietary_fiber}
+          Dietary Fiber: {responseData.dietary_fiber}g
         </pre>
         <pre hidden={responseData.sugars ? false : true}>
-          Sugar: {responseData.sugars}
+          Sugar: {responseData.sugars}g
         </pre>
         <pre hidden={responseData.protein ? false : true}>
-          Protein: {responseData.protein}
+          Protein: {responseData.protein}g
         </pre>
         <pre hidden={responseData.potassium ? false : true}>
-          Potassium: {responseData.potassium}
+          Potassium: {responseData.potassium}mg
         </pre>
         <pre hidden={responseData.error_msg ? false : true}>
           {responseData.error_msg}
