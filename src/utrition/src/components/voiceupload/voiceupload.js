@@ -4,6 +4,7 @@ import useSpeechToText from "react-hook-speech-to-text";
 
 const VoiceUpload = () => {
   const [responseData, setResponseData] = useState("");
+  const [softReset, forceSoftReset] = useState(true);
 
   const {
     error,
@@ -17,8 +18,9 @@ const VoiceUpload = () => {
     useLegacyResults: false,
   });
 
-  const reset = () => {
-    window.location.reload(false);
+  function reset() {
+    results.splice(0, results.length);
+    forceSoftReset(!softReset);
   };
 
   function voice_submit() {
@@ -30,7 +32,7 @@ const VoiceUpload = () => {
       upload_type: "voice",
       food_text: transcript,
     };
-
+    results.splice(0, results.length);
     axios({
       method: "GET",
       headers: headers,

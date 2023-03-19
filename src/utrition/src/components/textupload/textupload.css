@@ -2,10 +2,18 @@
   padding-bottom: 20px;
 }
 
-.text-input {
+#text-input {
   font-size: 14px;
   font-weight: normal;
   overflow-y: scroll;
+  padding: 5px;
+  resize: none;
+  border: 2.5px solid #187d04;
+  border-radius: 3px;
+  /* margin-left: 0;
+  background-color: white;
+  height: 100px;
+  text-align: ; */
 }
 
 form .button {
@@ -18,11 +26,4 @@ label {
   display: block;
   width: 100%;
   margin: 5px 0px;
-}
-
-textarea {
-  padding: 5px;
-  resize: none;
-  border: 2.5px solid #187d04;
-  border-radius: 3px;
 }

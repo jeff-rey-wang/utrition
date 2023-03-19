@@ -203,19 +203,8 @@ const Profile = () => {
 
   return (
     <div
-      style={{ display: "flex", padding: "0.5rem calc((100vw - 1100px) / 2)" }}
-    >
+      style={{ display: "flex", padding: "0.5rem calc((100vw - 1100px) / 2)" }}>
       <div class="left" style={{ flex: 1, height: "5vh" }}>
-        <div class="most_eaten">
-          Your most logged food: {totalcal.mode}
-        </div>
-        {totalcal.recommendedCal && totalcal.recommendedCal ? (
-          <div class="average_cal">
-          Today you have eaten {totalcal.currentCal} calories out of {totalcal.recommendedCal} calories to maintain your weight.
-        </div>) : (
-        <div class="average_cal">
-          Your total calories consumed for today is {totalcal.currentCal}
-        </div>)}
         <div class="past_meals">PAST MEALS</div>
         <table class="left_table">
           <tbody>
@@ -225,7 +214,12 @@ const Profile = () => {
                 <tr class="row_1">
                   <td>
                     <div className="orange-square">
+                      <div className = "date-square">
                       {totalcal.allFoodEntries[totalcal.index].date}
+                      </div>
+                      <div className = "timetimetime">
+                      {totalcal.allFoodEntries[totalcal.index].time}
+                      </div>
                     <button
                         className="delete-entry"
                         onClick={() =>
@@ -302,7 +296,12 @@ const Profile = () => {
                 <tr class="row_2">
                   <td>
                     <div className="orange-square">
+                      <div className = "date-square">
                       {totalcal.allFoodEntries[totalcal.index + 1].date}
+                      </div>
+                      <div className = "timetimetime">
+                      {totalcal.allFoodEntries[totalcal.index + 1].time}
+                      </div>
                       <button
                         className="delete-entry"
                         onClick={() =>
@@ -403,7 +402,12 @@ const Profile = () => {
                 <tr class="row_3">
                   <td>
                     <div className="orange-square">
+                    <div className = "date-square">
                       {totalcal.allFoodEntries[totalcal.index + 2].date}
+                      </div>
+                      <div className = "timetimetime">
+                      {totalcal.allFoodEntries[totalcal.index + 2].time}
+                      </div>
                       <button
                         className="delete-entry"
                         onClick={() =>
@@ -504,7 +508,12 @@ const Profile = () => {
                 <tr class="row_4">
                   <td>
                     <div className="orange-square">
+                    <div className = "date-square">
                       {totalcal.allFoodEntries[totalcal.index + 3].date}
+                      </div>
+                      <div className = "timetimetime">
+                      {totalcal.allFoodEntries[totalcal.index + 3].time}
+                      </div>
                       <button
                         className="delete-entry"
                         onClick={() =>
@@ -622,6 +631,16 @@ const Profile = () => {
             Edit Profile Statistics
           </Link>
           </div>
+          <div class="most_eaten">
+          Your most logged food: {totalcal.mode}
+        </div>
+        {totalcal.recommendedCal && totalcal.recommendedCal ? (
+          <div class="average_cal">
+          Today you have eaten {totalcal.currentCal} calories out of {totalcal.recommendedCal} calories to maintain your weight.
+        </div>) : (
+        <div class="average_cal">
+          Your total calories consumed for today is {totalcal.currentCal}
+        </div>)}
           <div>
       {totalcal.bmi && (
         <div>
@@ -822,6 +841,10 @@ const Profile = () => {
             Previous Week
           </button>
         ) : null}
+        <img className="graphh"
+          src={require("./data_graph.png")}
+          alt="User Data Graph"
+        ></img>
       </div>
     </div>
   );

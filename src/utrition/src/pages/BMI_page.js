@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import "./BMI_page.css";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const BMI = () => {
-    const [birthSex, setBirthSex] = useState("");
+    const [birthSex, setBirthSex] = useState("Male");
     const [weight, setWeight] = useState("");
     const [weightUnit, setWeightUnit] = useState("kg");
     const [heightCm, setHeightCm] = useState("");
@@ -15,10 +16,8 @@ const BMI = () => {
     const [age, setAge] = useState("");
     const [activityLevel, setActivityLevel] = useState("Sedentary");
     const [errorMessage, setErrorMessage] = useState("");
-    const [bmiMessage, setBmiMessage] = useState("");
-    const [CaloriesMessage, setCaloriesMessage] = useState("");
-    const [responseData, setResponseData] = useState("");
-  
+    const navigate = useNavigate();
+
     const handleBirthSexChange = (event) => {
         setBirthSex(event.target.value);
     };
@@ -54,7 +53,7 @@ const BMI = () => {
       setActivityLevel(event.target.value);
     };
 
-    async function getData() {
+    function getData() {
       const formData = new FormData();
       formData.append('heightUnit', heightUnit);
       formData.append('heightFeet', heightFeet);
@@ -65,54 +64,20 @@ const BMI = () => {
       formData.append('birthSex', birthSex);
       formData.append('activityLevel', activityLevel);
       formData.append('age', age);
-      await axios({
+    axios({
         method: "POST",
         url: "/bmi",
         data: formData
       })
-      .then((response) => {
-        setResponseData({
-          user_bmi: response.data.user_bmi,
-          user_calories: response.data.user_calories
-        });
-      })
-      .catch((error) => console.log(error));
-      
-      setErrorMessage("Your statistics have been saved!");
-      
-      // axios({
-      //   method: "GET",
-      //   url: "/bmi"
-      // })
-      //   .then((response) => {
-      //     setResponseData({
-      //       user_bmi: response.data.bmi,
-      //       user_calories: response.data.calories
-      //     });
-      //   })
-      //   .catch((error) => console.log(error));
-      
-      if (responseData.user_bmi && responseData.user_bmi < 18.5){
-          setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are underweight!`);
-          setCaloriesMessage(`You need to eat more than ${responseData.user_calories} calories today if you'd like to gain some weight.`);
-      }
-      else if (responseData.user_bmi && responseData.user_bmi <= 24.9 && responseData.user_bmi >= 18.5){
-          setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are normal weight!`);
-          setCaloriesMessage(`You need to eat around ${responseData.user_calories} calories today if you'd like to maintain your weight!`);
-      }
-      else if (responseData.user_bmi && responseData.user_bmi <= 29.9 && responseData.user_bmi >= 25){
-          setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are overweight weight!`);
-          setCaloriesMessage(`You need to eat less than ${responseData.user_calories} calories today if you'd like to lose some weight!`);
-      }
-      else if (responseData.user_bmi && responseData.user_bmi >= 30){
-          setBmiMessage(`Your BMI is ${responseData.user_bmi}, which means you are obese!`);
-          setCaloriesMessage(`You need to eat less than ${responseData.user_calories} calories today if you'd like to lose some weight!`);
-      }
+        .then((response) => {
+          navigate("/settings");
+        })
+        .catch((error) => console.log(error));
     }
   
     const handleSubmit = (event) => {
       event.preventDefault();
-      if (!weight || (heightUnit === "ft"  && !heightCm) || (heightUnit === "ft" && !heightFeet && !heightInches) || !age || !activityLevel) {
+      if (!weight || (heightUnit === "cm"  && !heightCm) || (heightUnit === "ft" && !heightFeet && !heightInches) || !age || !activityLevel) {
         setErrorMessage("Please fill out all fields.");
       } 
       else {
@@ -121,42 +86,10 @@ const BMI = () => {
     };
 
     return (
-      <div>
-        <div className="title">BMI Calculator</div>
-        <div className="explanation">Take a look at the following chart to determine your activity level and then complete the form below!
-        </div>
-        <table className="activity-level">
-      <thead>
-        <tr>
-          <th>Activity Level</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Sedentary</td>
-          <td>Little or no exercise / Desk job</td>
-        </tr>
-        <tr>
-          <td>Lightly active</td>
-          <td>Light exercise / Sports 1-3 days per week</td>
-        </tr>
-        <tr>
-          <td>Moderately active</td>
-          <td>Moderate exercise / Sports 6-7 days per week</td>
-        </tr>
-        <tr>
-          <td>Very active</td>
-          <td>Hard exercise every day / Exercising 2 times per day</td>
-        </tr>
-        <tr>
-          <td>Extra active</td>
-          <td>Hard exercise 2 or more times per day / Training for marathon, triathlon, etc</td>
-        </tr>
-      </tbody>
-    </table>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <div className="left" style={{ flex: 1, height: "5vh" }}>
         <form className="BMIform" onSubmit={handleSubmit}>
-        <h2 className="formtitle">Enter Your Statistics</h2>
+        <h2 className="formtitle">Edit Your Statistics</h2>
         <label>
         Birth Sex:
         <select value={birthSex} onChange={handleBirthSexChange}>
@@ -208,23 +141,50 @@ const BMI = () => {
             </select>
           </label>
           <br />
-          <button className="submitbutton" type="submit">Calculate BMI</button>
+          <button className="submitbutton" type="submit">Save</button>
+          <Link to="/settings" className="cancelbutton">Cancel</Link>
           {errorMessage && <div className="error">{errorMessage}</div>}
         </form>
-        {bmiMessage && <div className="bmiii">{bmiMessage}</div>}
-        {CaloriesMessage && <div className="calories">{CaloriesMessage}</div>}
-        {errorMessage && errorMessage === "Your statistics have been saved!" && <div className = "links">
-        <Link to="/upload"
-            class="uploadbutton button"
-          >
-            Upload what you ate to Utrition!
-          </Link>
-        <Link to="/profile"
-            class="profilebutton button"
-          >
-            Check out your profile!
-          </Link>
-      </div>}
+        {errorMessage && errorMessage === "Your statistics have been saved!"}
+        
+    </div>
+        <div class="right" style={{ flex: 1, height: "5vh" }}>
+        <div className="explanation2">To determine your activity level look at the chart below!
+        </div>
+        <table className="activity-level2">
+      <thead>
+        <tr>
+          <th>Activity Level</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sedentary</td>
+          <td>Little or no exercise / Desk job</td>
+        </tr>
+        <tr>
+          <td>Lightly active</td>
+          <td>Light exercise / Sports 1-3 days per week</td>
+        </tr>
+        <tr>
+          <td>Moderately active</td>
+          <td>Moderate exercise / Sports 6-7 days per week</td>
+        </tr>
+        <tr>
+          <td>Very active</td>
+          <td>Hard exercise every day / Exercising 2 times per day</td>
+        </tr>
+        <tr>
+          <td>Extra active</td>
+          <td>Hard exercise 2 or more times per day / Training for marathon, triathlon, etc</td>
+        </tr>
+      </tbody>
+    </table>
+
+    
+      
+        </div>
       </div>
     );
   };

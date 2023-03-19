@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from .nutritionalDataFetcher import get_nutritional_data
 from .profileData import *
 import ML.Interface as interface
+import plotly.graph_objs as go
 import json
 
 home_view = Blueprint("home_view", __name__)
@@ -56,17 +57,49 @@ def display_profile():
         "recommendedCal": calculate_recommended_calories(),
     }
 
+    # generate graph
+    profile_data = total_calories_per_day_summary_list()
+    dates = [d["date"] for d in profile_data]
+    calories = [c["sumPerDay"] for c in profile_data]
+
+    dates = dates[::-1]
+    calories = calories[::-1]
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=dates, y=calories, mode="lines"))
+    fig.update_layout(
+        title="Calories per day", xaxis_title="Date", yaxis_title="Calories"
+    )
+    print(os.path)
+    fig.write_image("../src/pages/data_graph.png")
+
     json_formatted_str = json.dumps(fullJSON, indent=2)
     return json_formatted_str
 
 
-@home_view.route("/bmi", methods=["GET", "POST"])
+@home_view.route("/settings", methods=["GET"])
 def display_settings():
+    settings = read_user_settings()
+    if 0 == settings:
+        fullJSON = {
+            "weight": "",
+            "weightUnit": "",
+            "heightCm": "",
+            "heightFT": "",
+            "heightInches": "",
+            "heightUnit": "",
+            "age": "",
+            "gender": "",
+            "activityLevel": "",
+        }
+        json_formatted_str = json.dumps(fullJSON, indent=2)
+        return json_formatted_str
+    else:
+        return settings
+
+
+@home_view.route("/bmi", methods=["POST"])
+def display_bmi():
     if request.method == "POST":
         update_user_settings(request.form)
-    fullJSON = {
-        "user_bmi": calculate_bmi(),
-        "user_calories": calculate_recommended_calories(),
-    }
-    json_formatted_str = json.dumps(fullJSON, indent=2)
-    return json_formatted_str
+        return ""
