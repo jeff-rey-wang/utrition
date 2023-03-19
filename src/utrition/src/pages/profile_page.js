@@ -612,15 +612,22 @@ const Profile = () => {
         </table>
         {renderConfirmationDialog()}
         {totalcal.index - 4 >= 0 ? (
-          <button class="left_click_back button" onClick={left_click_backward}>
-            Look at previous 4 entries
+          <button class="arrowleft" onClick={left_click_backward}>
+            <img src={require("./leftarrow.png")} style={{ height: "50px",
+          width: "100px",
+        }}/>
           </button>
         ) : null}
         {totalcal.allFoodEntries &&
         totalcal.index + 4 < totalcal.allFoodEntries.length ? (
-          <button class="left_click_front button" onClick={left_click_forward}>
-            Look at next 4 entries
-          </button>
+          // <button class="left_click_front button" onClick={left_click_forward}>
+          //   Look at next 4 entries
+          // </button>
+          <button className="arrowright" onClick={left_click_forward}>
+          <img src={require("./rightarrow.png")} style={{ height: "50px",
+          width: "100px",
+        }}/>
+        </button>
         ) : null}
       </div>
       <div class="right" style={{ flex: 1, marginLeft: "100px" }}>

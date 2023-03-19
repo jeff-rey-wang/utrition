@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "./index.css";
 
 const Home = () => {
   return (
@@ -55,10 +57,9 @@ const Home = () => {
           }}
         >
           Utrition is an open source project that allows you to track your
-          nutritional intake. You have the choice to upload a picture, enter a
+          progress towards your health goals. You have the choice to upload a picture, enter a
           voice message or type out what you ate and Utrition will provide you
-          with all the nutritional data of your meal! Past meals are tracked to
-          give you a full overview of your daily food consumption.
+          with all the nutritional data of your meal! 
         </h1>
         <h1
           style={{
@@ -148,6 +149,13 @@ const Home = () => {
         >
           Check your profile to see everything you ate!
         </h1>
+          <Link to="/upload"
+            class="bmibutton button"
+          >
+            Get started!
+          </Link>
+
+          
       </div>
       <div
         class="right-container"
@@ -160,7 +168,8 @@ const Home = () => {
       >
         <img
           style={{
-            height: "100%",
+            height: "95%",
+            marginTop: "6vh",
             width: "100%",
             objectFit: "cover",
             padding: "0 10px",
