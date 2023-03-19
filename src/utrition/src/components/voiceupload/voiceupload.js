@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useSpeechToText from "react-hook-speech-to-text";
 
@@ -17,6 +17,12 @@ const VoiceUpload = () => {
     continuous: true,
     useLegacyResults: false,
   });
+
+  useEffect(() => {
+    return () => {
+        stopSpeechToText()
+    }
+  })
 
   function reset() {
     results.splice(0, results.length);
