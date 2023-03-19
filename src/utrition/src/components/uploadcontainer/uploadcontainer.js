@@ -12,18 +12,15 @@ const UploadContainer = ({ displayedUpload }) => {
 
   function selectComponent(){
         if (displayedUpload === Image) {
-          console.log("img")
           return (<div className={"component"}>
             <ImageUpload />
           </div>);  
         } else if (displayedUpload === Voice) {
-          console.log("voice")
           return (<div className={"component"}>
             <VoiceUpload />
           </div>); 
         }
         else if(displayedUpload === Text) {
-          console.log("txt")
           return (<div className={"component"}>
             <TextUpload />
           </div>); 
