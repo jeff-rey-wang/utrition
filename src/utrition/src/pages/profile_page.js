@@ -649,7 +649,7 @@ const Profile = () => {
           Your total calories consumed for today is {totalcal.currentCal}
         </div>)}
           <div>
-      {totalcal.bmi && (
+      {totalcal && totalcal.bmi !== 0 && (
         <div>
           <div className="bmidisplay">
             Your BMI is {totalcal.bmi}, {getBMIMessage(totalcal.bmi)}
