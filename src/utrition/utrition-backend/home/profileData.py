@@ -138,7 +138,7 @@ def read_file():
     return existing_data
 
 
-def delete_entry(index=1):
+def delete_entry(index=0):
     all_entries = read_file()
     all_entries.pop(int(index))
 

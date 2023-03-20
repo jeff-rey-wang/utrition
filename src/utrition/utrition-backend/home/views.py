@@ -13,23 +13,23 @@ foodPath = ""
 @home_view.route("/upload", methods=["GET", "POST"])
 def display_index():
     global foodPath
+    myFood = ""
     upload_type = request.headers["upload_type"]
 
     if upload_type == "image":
         if request.method == "POST":
-            if request.files["image"]:
-                image = request.files["image"]
-                image.save("./ML/uploaded_images/" + image.filename)
-                foodPath = image.filename
-                return foodPath
-            else:
-                delete_entry(request.form["index"])
-                return ""
+            image = request.files["image"]
+            image.save("./ML/uploaded_images/" + image.filename)
+            foodPath = image.filename
+            return foodPath
         else:
             myFood = interface.open("./ML/uploaded_images/" + foodPath)
-
     elif upload_type == "voice" or upload_type == "text":
         myFood = request.headers["food_text"]
+    elif upload_type == "confirm":
+        if request.method == "POST":
+            delete_entry()
+            return ""
 
     food_data = get_nutritional_data(myFood)
     try:
@@ -74,7 +74,6 @@ def display_profile():
     fig.update_layout(
         title="Calories per day", xaxis_title="Date", yaxis_title="Calories"
     )
-    print(os.path)
     fig.write_image("../src/pages/data_graph.png")
 
     json_formatted_str = json.dumps(fullJSON, indent=2)
