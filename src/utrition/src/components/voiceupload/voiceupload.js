@@ -20,12 +20,13 @@ const VoiceUpload = () => {
 
   useEffect(() => {
     return () => {
-        stopSpeechToText()
+        stopSpeechToText();
     }
-  })
+  }, [])
 
   function reset() {
     results.splice(0, results.length);
+    setResponseData("");
     forceSoftReset(!softReset);
   };
 
