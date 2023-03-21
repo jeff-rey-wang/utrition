@@ -3,6 +3,7 @@ from .nutritionalDataFetcher import get_nutritional_data
 from .profileData import *
 import ML.Interface as interface
 import plotly.graph_objs as go
+import plotly.io as pio
 import json
 
 home_view = Blueprint("home_view", __name__)
@@ -74,7 +75,9 @@ def display_profile():
     fig.update_layout(
         title="Calories per day", xaxis_title="Date", yaxis_title="Calories"
     )
-    fig.write_image("../src/pages/data_graph.png")
+    image_bytes = pio.to_image(fig, format="png", width=800, height=600)
+    with open("../src/pages/data_graph.png", "wb") as f:
+        f.write(image_bytes)
 
     json_formatted_str = json.dumps(fullJSON, indent=2)
     return json_formatted_str
