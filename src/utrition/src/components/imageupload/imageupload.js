@@ -39,7 +39,7 @@ const ImageUpload = () => {
   async function handleIncorrectData() {
     setCorrectFood(false);
     const formData = new FormData();
-    formData.append('index', null);
+    formData.append('index', "");
     await axios({
       method: "POST",
       headers: headers_confirm,

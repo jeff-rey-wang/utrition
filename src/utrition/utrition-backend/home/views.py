@@ -14,6 +14,7 @@ foodPath = ""
 @home_view.route("/upload", methods=["GET", "POST"])
 def display_index():
     global foodPath
+    myFood = ""
     upload_type = request.headers["upload_type"]
 
     if upload_type == "image":
@@ -24,9 +25,12 @@ def display_index():
             return foodPath
         else:
             myFood = interface.open("./ML/uploaded_images/" + foodPath)
-
     elif upload_type == "voice" or upload_type == "text":
         myFood = request.headers["food_text"]
+    elif upload_type == "confirm":
+        if request.method == "POST":
+            delete_entry()
+            return ""
 
     food_data = get_nutritional_data(myFood)
     try:
