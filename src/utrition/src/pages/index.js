@@ -53,13 +53,13 @@ const Home = () => {
             // width: "50%",
             backgroundColor: "#0B5345",
             right: "70vh",
-            height: "15vh",
+            height: "25vh",
           }}
         >
           Utrition is an open source project that allows you to track your
           progress towards your health goals. You have the choice to upload a picture, enter a
           voice message or type out what you ate and Utrition will provide you
-          with all the nutritional data of your meal! 
+          with all the nutritional data of your meal! Go to the settings page and input your personal statistics and Utrition will help you keep track of how many calaroies you should be consuming.
         </h1>
         <h1
           style={{
@@ -168,8 +168,8 @@ const Home = () => {
       >
         <img
           style={{
-            height: "95%",
-            marginTop: "6vh",
+            height: "100%",
+            // marginTop: "6vh",
             width: "100%",
             objectFit: "cover",
             padding: "0 10px",
