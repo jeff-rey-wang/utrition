@@ -53,13 +53,14 @@ const Home = () => {
             // width: "50%",
             backgroundColor: "#0B5345",
             right: "70vh",
-            height: "25vh",
+            height: "30vh",
           }}
         >
           Utrition is an open source project that allows you to track your
           progress towards your health goals. You have the choice to upload a picture, enter a
           voice message or type out what you ate and Utrition will provide you
-          with all the nutritional data of your meal! Go to the settings page and input your personal statistics and Utrition will help you keep track of how many calaroies you should be consuming.
+          with all the nutritional data of your meal! All your meals and their nutritional data is saved in your profile.
+          For further customization, go to the settings page to input your personal statistics which Utrition will use to calculate your recommended calories per day.
         </h1>
         <h1
           style={{
@@ -73,7 +74,7 @@ const Home = () => {
             right: "70vh",
           }}
         >
-          Step One: Make a choice!
+          Step One: Upload your meal!
         </h1>
         <h1
           style={{
@@ -88,7 +89,7 @@ const Home = () => {
             right: "70vh",
           }}
         >
-          Your choice! Take a picture of your meal, type out what you ate or
+          Take a picture of your meal, type out what you ate or
           record a voice message.{" "}
         </h1>
         <h1
@@ -103,7 +104,7 @@ const Home = () => {
             right: "70vh",
           }}
         >
-          Step Two: Upload your meal.
+          Step Two: View nutritional facts.
         </h1>
         <h1
           style={{
@@ -114,11 +115,11 @@ const Home = () => {
             fontWeight: "thin",
             // width: "50%",
             backgroundColor: "#0B5345",
-            height: "8vh",
+            height: "7vh",
             right: "70vh",
           }}
         >
-          The upload page will generate your meal's nutritional data.{" "}
+          Utrition will display your meal's nutritional data.{" "}
         </h1>
         <h1
           style={{
@@ -143,7 +144,7 @@ const Home = () => {
             fontWeight: "thin",
             // width: "50%",
             backgroundColor: "#0B5345",
-            height: "10vh",
+            height: "8vh",
             right: "70vh",
           }}
         >
