@@ -161,7 +161,7 @@ td {
 }
 
 .delete-entry{
-  background-color: #ff6b6b;
+  background-color: #b24a00;
   border: none;
   color: #ffffff;
   padding: 8px 16px;
@@ -339,7 +339,7 @@ td {
   margin-left: -9px;
   width: 80px;
   height: 75px;
-  background-color: rgb(255, 0, 183);
+  background-color: rgb(83, 237, 1);
   border-radius: 20px;
   text-align: center;
   padding: 7px;
