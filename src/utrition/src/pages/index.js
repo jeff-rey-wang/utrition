@@ -53,7 +53,7 @@ const Home = () => {
             // width: "50%",
             backgroundColor: "#0B5345",
             right: "70vh",
-            height: "25vh",
+            height: "15vh",
           }}
         >
           Utrition is an open source project that allows you to track your
@@ -154,8 +154,8 @@ const Home = () => {
           >
             Get started!
           </Link>
-
           
+
       </div>
       <div
         class="right-container"
