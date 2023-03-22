@@ -49,7 +49,7 @@ const ImageUpload = () => {
       .then()
       .catch((error) => console.log(error));
       setResponseData({
-        error_msg: "Please try again or use a different image."
+        error_msg: "Please try again or input your food items using text or voice upload."
       })
       setShowConfirmationDialog(false);
   }
