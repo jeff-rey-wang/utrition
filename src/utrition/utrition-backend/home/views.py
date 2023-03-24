@@ -36,6 +36,22 @@ def display_index():
     try:
         log_data(food_data)
 
+        profile_data = total_calories_per_day_summary_list()
+        dates = [d["date"] for d in profile_data]
+        calories = [c["sumPerDay"] for c in profile_data]
+
+        dates = dates[::-1]
+        calories = calories[::-1]
+
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=dates, y=calories, mode="lines"))
+        fig.update_layout(
+            title="Calories per day", xaxis_title="Date", yaxis_title="Calories"
+        )
+        image_bytes = pio.to_image(fig, format="png", width=800, height=600)
+        with open("../src/pages/data_graph.png", "wb") as f:
+            f.write(image_bytes)
+
         if len(food_data) > 1:
             fullJSON = calculateTotalNutrients(food_data)
             json_formatted_str = json.dumps(fullJSON, indent=2)
@@ -61,23 +77,6 @@ def display_profile():
         "bmi": calculate_bmi(),
         "recommendedCal": calculate_recommended_calories(),
     }
-
-    # generate graph
-    profile_data = total_calories_per_day_summary_list()
-    dates = [d["date"] for d in profile_data]
-    calories = [c["sumPerDay"] for c in profile_data]
-
-    dates = dates[::-1]
-    calories = calories[::-1]
-
-    fig = go.Figure()
-    fig.add_trace(go.Scatter(x=dates, y=calories, mode="lines"))
-    fig.update_layout(
-        title="Calories per day", xaxis_title="Date", yaxis_title="Calories"
-    )
-    image_bytes = pio.to_image(fig, format="png", width=800, height=600)
-    with open("../src/pages/data_graph.png", "wb") as f:
-        f.write(image_bytes)
 
     json_formatted_str = json.dumps(fullJSON, indent=2)
     return json_formatted_str
