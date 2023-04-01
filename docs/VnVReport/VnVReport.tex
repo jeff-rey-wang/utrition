@@ -753,7 +753,7 @@
 		
 		Input: User clicks on ``Text Upload" and then types ``cheeseburger and cheeseburger". User clicks on the ``Submit" button and clicks on ``Profile" found in the taskbar.
 		
-		Expected Results: The user is able to see that their most eaten food is a cheeseburger, their total calories consumed for today is 4278.36, the nutritional value of 1 cheeseburger next to the current date, the nutritional values of 1 cheeseburger next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of 1 chicken breast next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 6 cheeseburgers is summed on the right table.
+		Expected Results: The user is able to see that their most eaten food is a cheeseburger, their total calories consumed for today is 4278.36, the nutritional value of 1 cheeseburger next to the current date, the nutritional values of 1 cheeseburger next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of 2 chicken breasts next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 6 cheeseburgers is summed on the right table.
 		
 		How The Test Was Performed: After the tester completed the steps laid out in test case profile-4, the tester clicked on ``Upload" found in the taskbar. The tester clicked on ``Text Upload" and then typed ``cheeseburger and cheeseburger". Tester clicked on the ``Submit" button. The tester clicked on ``Profile" found in the taskbar.
 		
@@ -870,7 +870,110 @@
 		How The Test Was Performed: The tester opened Utrition and clicked on ``Profile" found in the taskbar. The tester clicked on ``Profile" one more time.
 		
 		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: profile-14}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has completed test case ``profile-5"
+		
+		Input: User clicks on the ``Delete" button for the inputted item of ``2 cheeseburgers" and confirms the deletion for the food item.
+		
+		Expected Results: The user sees the food items: ``1 cheeseburger", ``1 cheeseburger", ``2 chicken breasts", and ``100g of martini" under the header ``PAST MEALS".
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-5, the tester clicked on the ``Delete" button found beside the inputted item of ``2 cheeseburgers". The tester clicked on the "Yes" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: profile-15}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has completed test case ``profile-14"
+		
+		Input: User clicks on the ``Delete" button for the inputted item of ``1 cheeseburger" and denies the deletion for the food item.
+		
+		Expected Results: The user sees the food items: ``1 cheeseburger", ``1 cheeseburger", ``2 chicken breasts", and ``100g of martini" under the header ``PAST MEALS".
+		
+		How The Test Was Performed: After the tester completed the steps laid out in test case profile-14, the tester clicked on the ``Delete" button found beside the inputted item of ``1 cheeseburgers". The tester clicked on the "No" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
 
+	\end{enumerate}
+	\subsection{Settings Page}
+	\begin{enumerate}
+		\item{Test Name: settings-page-1}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User is viewing the ``Edit Your Statistics" page.
+		
+		Input: User adds the following input to the statistics page and then clicks the ``Save" button:
+		
+	\begin{itemize}
+		\item Birth Sex: ``Male"
+		\item Weight: ``80kg"
+		\item Height: ``180cm"
+		\item Age: ``22"
+		\item Activity Level: ``Moderately Active"
+	\end{itemize}
+		
+		Expected Results: The user views the ``Your User Settings" page with the updated values.
+		
+		How The Test Was Performed: Tester clicked on ``Profile" found in the taskbar. Tester clicked on the ``Edit Profile Statisctics" button. Tester clicked on the ``Edit Settings" button. Tester clicked on the text input boxes and inputted the test values as seen in ``Input". Tester selected the appropriate gender and activity level as seen in ``Input". Tester clicked on ``Save".
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: settings-page-2}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has previously completed test case ``text-upload-1" and has just completed test case ``settings-page-1".
+		
+		Input: User clicks on ``Profile" found in the taskbar and clicks on the ``How close am I to being classified differently?" button.
+		
+		Expected Results: The user is able to see the nutritional information of yogurt on the left side of the page. On the right side of the page, the user is able to see that the most logged food is yogurt, they have eaten 142.88 calories out of 2822.49 calories, their BMI is 24.69, they are normal weight, a BMI table showing the ranges for appropriate weight, a caloric intake summary chart showing yogurt, and a graph showing the appropriate date and calories.
+		
+		How The Test Was Performed: Tester completed ``text-upload-1" and then completed ``settings-page-1". Tester clicked on ``Profile" found in the taskbar, and then clicked on the ``How close am I to being classified differently?" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: settings-page-3}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has completed test case ``settings-page-2"
+		
+		Input: User clicks on ``Edit Settings" button, adds the following input to the statistics page, and then clicks the ``Save" button:
+		
+		\begin{itemize}
+			\item Birth Sex: ``Female"
+			\item Weight: ``200lbs"
+			\item Height: ``5ft 5in"
+			\item Age: ``19"
+			\item Activity Level: ``Sedentary"
+		\end{itemize}
+		
+		Expected Results: The user views the ``Your User Settings" page with the updated values.
+		
+		How The Test Was Performed: After completing test case ``settings-page-2", tester clicked on ``Profile" found in the taskbar. Tester clicked on the ``Edit Profile Statisctics" button. Tester clicked on the ``Edit Settings" button. Tester clicked on the text input boxes and inputted the test values as seen in ``Input". Tester selected the appropriate gender and activity level as seen in ``Input". Tester clicked on ``Save".
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
+		\item{Test Name: settings-page-4}
+		
+		Type: Functional, Dynamic, Manual.
+		
+		Initial State: User has completed test case ``settings-page-3".
+		
+		Input: User clicks on ``Profile" found in the taskbar and clicks on the ``How close am I to being classified differently?" button.
+		
+		Expected Results: The user is able to see the nutritional information of yogurt on the left side of the page. On the right side of the page, the user is able to see that the most logged food is yogurt, they have eaten 142.88 calories out of 2020.41 calories, their BMI is 33.28, they are obese, a BMI table showing the ranges for appropriate weight, a caloric intake summary chart showing yogurt, and a graph showing the appropriate date and calories.
+		
+		How The Test Was Performed: After tester completed ``settings-page-3", tester clicked on ``Profile" found in the taskbar, and then clicked on the ``How close am I to being classified differently?" button.
+		
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
+		
 	\end{enumerate}
 
 	\subsection{Taskbar}
@@ -1894,6 +1997,32 @@
 				profile-page-2\\
 				upload-page-2\\
 				correct-path-1\end{tabular} \\ \hline
+			
+		FR18                     & The system will display a summary of the foods consumed and their total calories for each of the past 7 days.                                                                                                            & \begin{tabular}[c]{@{}l@{}}profile-1\\
+		profile-2\\
+		profile-3\\
+		profile-4\\
+		profile-5\\
+		profile-9\\
+		profile-10\\
+		profile-11\\
+		profile-12\\
+		profile-13\\
+		display-elements-1\\
+		axios-call-1\end{tabular} \\ \hline
+	
+FR18                     & The system will display a summary of the foods consumed and their total calories for each of the past 7 days.                                                                                                            & \begin{tabular}[c]{@{}l@{}}profile-1\\
+profile-2\\
+profile-3\\
+profile-4\\
+profile-5\\
+profile-9\\
+profile-10\\
+profile-11\\
+profile-12\\
+profile-13\\
+display-elements-1\\
+axios-call-1\end{tabular} \\ \hline
 			
 		\end{tabular}
 	\end{table}

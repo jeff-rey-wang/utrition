@@ -1108,6 +1108,112 @@
 		
 		How test will be performed: The tester will open Utrition and click on "Profile" found in the taskbar. The tester will click on "Profile" one more time.
 		
+		\item{profile-14\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case ``profile-5"
+		
+		Input: User clicks on the ``Delete" button for the inputted item of ``2 cheeseburgers" and confirms the deletion for the food item.
+		
+		Output: The user sees the food items: ``1 cheeseburger", ``1 cheeseburger", ``2 chicken breasts", and ``100g of martini" under the header ``PAST MEALS".
+		
+		Test Case Derivation: User should be allowed to delete food items. After deletion of food item, the list should be properly updated.
+		
+		How test will be performed: After the tester completes the steps laid out in test case profile-5, the tester will click on the ``Delete" button found beside the inputted item of ``2 cheeseburgers". The tester will click on the "Yes" button.
+		
+		\item{profile-15\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case ``profile-14"
+		
+		Input: User clicks on the ``Delete" button for the inputted item of ``1 cheeseburger" and denies the deletion for the food item.
+		
+		Output: The user sees the food items: ``1 cheeseburger", ``1 cheeseburger", ``2 chicken breasts", and ``100g of martini" under the header ``PAST MEALS".
+		
+		Test Case Derivation: After the tester completes the steps laid out in test case profile-14, the tester will click on the ``Delete" button found beside the inputted item of ``1 cheeseburgers". The tester will click on the "No" button.
+		
+		How test will be performed: The tester will open Utrition and click on "Profile" found in the taskbar. The tester will click on "Profile" one more time.
+		
+	\end{enumerate}
+	
+	\subsubsection{Settings Page}
+	This section has four tests that deal with the settings page and the appropriate update to the profile page after receiving the user's statistics.  The tests deal with FR22, FR23, FR24, FR25, and FR26 in the SRS. Testing to ensure the user settings page works is vital in order to stand out from the other food tracking applications.
+	
+	\begin{enumerate}
+		\item{settings-page-1\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User is viewing the ``Edit Your Statistics" page.
+		
+		Input: User adds the following input to the statistics page and then clicks the ``Save" button:
+		
+		\begin{itemize}
+			\item Birth Sex: ``Male"
+			\item Weight: ``80kg"
+			\item Height: ``180cm"
+			\item Age: ``22"
+			\item Activity Level: ``Moderately Active"
+		\end{itemize}
+		
+		Output: The user views the ``Your User Settings" page with the updated values.
+		
+		Test Case Derivation: User should be able to put in their user statistics to learn more about healthy eating habits.
+		
+		How test will be performed: Tester will click on ``Profile" found in the taskbar. Tester clicks on the ``Edit Profile Statisctics" button. Tester clicks on the ``Edit Settings" button. Tester clicks on the text input boxes and inputs the test values as seen in ``Input". Tester selects the appropriate gender and activity level as seen in ``Input". Tester clicks on ``Save".
+		
+		\item{settings-page-2\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has previously completed test case ``text-upload-1" and has just completed test case ``settings-page-1".
+		
+		Input: User clicks on ``Profile" found in the taskbar and clicks on the ``How close am I to being classified differently?" button.
+		
+		Output: The user is able to see the nutritional information of yogurt on the left side of the page. On the right side of the page, the user is able to see that the most logged food is yogurt, they have eaten 142.88 calories out of 2822.49 calories, their BMI is 24.69, they are normal weight, a BMI table showing the ranges for appropriate weight, a caloric intake summary chart showing yogurt, and a graph showing the appropriate date and calories.
+		
+		Test Case Derivation: User statistics must properly reflect in the profile page, and provide the user information that is relevant to their statistics.
+		
+		How test will be performed: Tester completes ``text-upload-1" and then completes ``settings-page-1". Then, the tester will click on ``Profile" found in the taskbar, and then clicks on the ``How close am I to being classified differently?" button.
+		
+		\item{settings-page-3\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case ``settings-page-2"
+		
+		Input: User clicks on ``Edit Settings" button, adds the following input to the statistics page, and then clicks the ``Save" button:
+		
+		\begin{itemize}
+			\item Birth Sex: ``Female"
+			\item Weight: ``200lbs"
+			\item Height: ``5ft 5in"
+			\item Age: ``19"
+			\item Activity Level: ``Sedentary"
+		\end{itemize}
+		
+		Output: The user views the ``Your User Settings" page with the updated values.
+		
+		Test Case Derivation: User should be able to edit their statistics.
+		
+		How test will be performed: After the tester completes test case ``settings-page-2", tester will click on ``Profile" found in the taskbar. Tester clicks on the ``Edit Profile Statisctics" button. Tester clicks on the ``Edit Settings" button. Tester clicks on the text input boxes and inputs the test values as seen in ``Input". Tester selects the appropriate gender and activity level as seen in ``Input". Tester clicks on ``Save".
+		
+		\item{settings-page-4\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case ``settings-page-3".
+		
+		Input: User clicks on ``Profile" found in the taskbar and clicks on the ``How close am I to being classified differently?" button.
+		
+		Output: The user is able to see the nutritional information of yogurt on the left side of the page. On the right side of the page, the user is able to see that the most logged food is yogurt, they have eaten 142.88 calories out of 2020.41 calories, their BMI is 33.28, they are obese, a BMI table showing the ranges for appropriate weight, a caloric intake summary chart showing yogurt, and a graph showing the appropriate date and calories.
+		
+		Test Case Derivation: Modified statistics and the information regarding it should properly reflect in the profile page.
+		
+		How test will be performed: After tester completes ``settings-page-3", tester will click on ``Profile" found in the taskbar, and then clicks on the ``How close am I to being classified differently?" button.
+		
 	\end{enumerate}
 	
 	\subsubsection{Taskbar}
