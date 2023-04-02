@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./profile_page.css";
 
 const Profile = () => {
+  // Define state variables using the useState hook
   const [totalcal, settotalcal] = useState({});
   const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
   const [entryToDelete, setEntryToDelete] = useState(null);

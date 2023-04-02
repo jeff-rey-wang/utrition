@@ -3,33 +3,41 @@ import axios from "axios";
 import "./textupload.css";
 
 const TextUpload = () => {
+  // State variables to store user input and API response data
   const [text, setText] = useState("");
   const [responseData, setResponseData] = useState("");
 
+  // Function to handle "Enter" key press event
   const keyDownEvent = (event) => {
     if (event.keyCode === 13) {
       handleSubmit(event);
     }
   };
 
+  // Function to handle input change event
   function handleChange(event) {
     setText(event.target.value);
   }
 
+  // Function to handle form submission
   function handleSubmit(event) {
     event.preventDefault();
     setText("");
 
+    // Set request headers
     const headers = {
       upload_type: "text",
       food_text: text,
     };
+
+    // Send GET request to API endpoint
     axios({
       method: "GET",
       headers: headers,
       url: "/upload",
     })
       .then((response) => {
+        // Update response data state with API response data
         setResponseData({
           food_name: response.data.food_name,
           serving_qty: response.data.serving_qty,
@@ -57,10 +65,12 @@ const TextUpload = () => {
     <div>
       <form onKeyDown={keyDownEvent} onSubmit={handleSubmit}>
         <label>
+          {/* Input field instructions */}
           <div className={"instruction"}>
             <h3>Tell us what food you ate:</h3>
             <p>(e.g. "I ate 3 pineapples, 200g of Greek Yogurt")</p>
           </div>
+          {/* Text input field */}
           <textarea
             id="text-input"
             placeholder="Type your food here:"
@@ -70,10 +80,12 @@ const TextUpload = () => {
             rows={"4"}
           />
         </label>
+        {/* Submit button */}
         <button type="submit" className={"button"}>
           Submit
         </button>
       </form>
+      {/* Display API response data */}
       <div style={{ marginTop: "20px" }}>
         <pre hidden={responseData.food_name ? false : true}>
           Food Item: {responseData.food_name}

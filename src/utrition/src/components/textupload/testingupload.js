@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-// export function handleSubmit()
 
 const TextUploadmock = () => {
   const [text, setText] = useState("");
   const [responseData, setResponseData] = useState("");
   
   function handleSubmit() {
-  // event.preventDefault();
-  // setText("");
-
   const headers = {
     upload_type: "text",
     food_text: text,
@@ -41,11 +37,7 @@ const TextUploadmock = () => {
       console.log(error.response.data);
     });
     console.log(response)
-}
-// export const fn4 = (number) => {
-//   return fn2(number);
-// }
-// handleSubmit()
+  }
 };
 
 export default TextUploadmock;
