@@ -9,7 +9,7 @@ const UploadContainer = ({ displayedUpload }) => {
   const Voice = 1;
   const Text = 2;
 
-
+  // Selects which component to display based on the displayedUpload prop
   function selectComponent(){
         if (displayedUpload === Image) {
           return (<div className={"component"}>
