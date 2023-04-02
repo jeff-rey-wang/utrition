@@ -89,7 +89,7 @@
 	\wss{Say what software is being tested.  Give its name and a brief overview 
 	of
 		its general functions.}
-		The purpose behind this document is to provide the testing plan that Utrition will undergo during its development period. This plan will ensure a high-quality final product. Utrition is an application that allows individuals to discover the nutritional value of the foods they are consuming and track their previously eaten meals. This software consists of three main functions that are being tested such as image upload, image processing, and displaying nutritional information.
+		The purpose behind this document is to provide the testing plan that Utrition will undergo during its development period. This plan will ensure a high-quality final product. Utrition is an application that allows individuals to discover the nutritional value of the foods they are consuming, track their previously eaten meals, and provide dietary insight on given user information. This software consists of eight main functions that are being tested such as image upload, image processing, displaying nutritional information, text upload, voice upload, profile page display, settings page display, and the taskbar for navigation.
 	
 	\subsection{Objectives}
 	
@@ -101,7 +101,7 @@
 		qualities,
 		just those that are most important.}
 		
-		The objectives for Utrition's VnV plan is to confirm that the implementation and documentation is as effective as possible to produce the best final product. Firstly, the developers of Utrition would like to ensure the correctness of the application's internal processes. The team must ensure that the artificial intelligence can correctly identify the food that is depicted in the uploaded image. The output the nutritional information must also be correct. Since the application is health-based, all nutritional facts must be correct since users will be using this information to influence their eating habits. Additionally, the Utrition application must be robust in order to deal with common and uncommon errors that may potentially occur. One such error is the user uploading an image of the wrong type. All tests in this document are written to ensure that the code meets these objectives. 
+		The objectives for Utrition's VnV plan is to confirm that the implementation and documentation is as effective as possible to produce the best final product. Firstly, the developers of Utrition would like to ensure the correctness of the application's internal processes. The team must ensure that the artificial intelligence can correctly identify the food that is depicted in the uploaded image. The team must also ensure that text and voice upload methods are properly made, so that unusual inputs can still be understood by the system. The output the nutritional information must also be correct. Since the application is health-based, all nutritional facts must be correct since users will be using this information to influence their eating habits. Additionally, the Utrition application must be robust in order to deal with common and uncommon errors that may potentially occur. One such error is the user uploading an image of the wrong type. All tests in this document are written to ensure that the code meets these objectives. 
 	
 	\subsection{Relevant Documentation}
 	
@@ -253,7 +253,7 @@
 	\section{System Test Description}
 	
 	\subsection{Tests for Functional Requirements}
-	The below areas cover all the twenty functional requirements outlined in the SRS, dividing the functional requirements into seven distinct sections. The first section details user actions associated with image upload and encompasses FR1, FR2, FR3, FR4, FR7, and FR15. The second section details image processing done by the system which encompasses FR3, FR4, FR5, FR6, and FR7. The third section outlines the user steps to view nutritional data which correlates to groupings of functional requirements. The fourth section details the ability for the user to upload food items through text and encompasses FR3, FR4, FR7, FR8, FR9, FR14, and FR15. The fifth section details the ability for the user to upload food items through speech and encompasses FR3, FR4, FR7, FR10, FR11, FR12, FR13, FR14, and FR15. The sixth section showcases what must be displayed when a user is viewing their profile and encompasses FR5, FR6, FR7, FR16, FR17, FR18, and FR19. The last section details tests to ensure the navigation task bar is always present and allows users to freely travel between pages. The last section encompasses FR20.
+	The below areas cover all the twenty functional requirements outlined in the SRS, dividing the functional requirements into seven distinct sections. The first section details user actions associated with image upload and encompasses FR1, FR2, FR3, FR4, FR7, and FR15. The second section details image processing done by the system which encompasses FR3, FR4, FR5, FR6, and FR7. The third section outlines the user steps to view nutritional data which correlates to groupings of functional requirements. The fourth section details the ability for the user to upload food items through text and encompasses FR3, FR4, FR7, FR8, FR9, FR14, and FR15. The fifth section details the ability for the user to upload food items through speech and encompasses FR3, FR4, FR7, FR10, FR11, FR12, FR13, FR14, and FR15. The sixth section showcases what must be displayed when a user is viewing their profile and encompasses FR5, FR6, FR7, FR16, FR17, FR18, FR19, and FR21. The seventh section details Utrition's ability to save the user's information to display relevant facts about their well-being and diet. The seventh section encompasses FR22, FR23, FR24, FR25, and FR26. The last section details tests to ensure the navigation task bar is always present and allows users to freely travel between pages. The last section encompasses FR20.
 	
 	\subsubsection{Image Upload}
 	This section has four tests, with each corresponding to an image upload action the user can take with Utrition. The tests deal with FR1, FR2, FR3, FR4, FR7, and FR15 in the SRS. 
@@ -934,7 +934,7 @@
 		
 		Input: User clicks on "Profile" found in the taskbar.
 		
-		Output: The user is able to see that their most eaten food is yogurt, their total calories consumed for today is 142.88 (calories in 1 cup of yogurt), and the nutritional values of yogurt next to the current date.
+		Output: The user is able to see that their most logged food is yogurt, their total calories consumed for today is 142.88 (calories in 1 cup of yogurt), the nutritional values of yogurt next to the current date, and a graph depicting calories versus date.
 		
 		Test Case Derivation: The system should properly display the profile page with only one food item inputted into the system.
 		
@@ -948,7 +948,7 @@
 		
 		Input: User clicks on "Profile" found in the taskbar.
 		
-		Output: The user is able to see that their most eaten food is yogurt, their total calories consumed for today is 428.64, the nutritional values of yogurt next to the current date is shown three times, and the total calories of three cups of yogurt is summed on the right table.
+		Output: The user is able to see that their most logged food is yogurt, their total calories consumed for today is 428.64, the nutritional values of yogurt next to the current date is shown three times, the total calories of three cups of yogurt is summed on the right table, and a graph depicting calories versus date.
 		
 		Test Case Derivation: The system should properly display the profile page with three of the same food item inputted into the system.
 		
@@ -962,7 +962,7 @@
 		
 		Input: User completes test case "multi-text-upload-3" and then clicks on "Profile" found in the taskbar.
 		
-		Output: The user is able to see that their most eaten food is yogurt, their total calories consumed for today is 2137.12, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of a cup of yogurt next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 2 cheeseburgers is summed on the right table.
+		Output: The user is able to see that their most logged food is yogurt, their total calories consumed for today is 2137.12, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of a cup of yogurt next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 2 cheeseburgers is summed on the right table. The user is able to see a graph depicting calories versus date.
 		
 		Test Case Derivation: The system should properly display the profile page with a multitude of different food items inputted into the system.
 		
@@ -976,9 +976,9 @@
 		
 		Input: User clicks on "Upload" found in the taskbar. User clicks on "Voice Upload" and then "Start Talking". User says "2 cheeseburgers random random random how was your day?" and then clicks on "Stop Talking". User clicks on the "Submit" button, and clicks on "Profile" found in the taskbar.
 		
-		Output: The user is able to see that their most eaten food is a cheeseburger, their total calories consumed for today is 3207.74, the nutritional value of 2 cheeseburgers next to the current date, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, and the nutritional value of 2 cheeseburgers next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 4 cheeseburgers is summed on the right table.
+		Output: The user is able to see that their most logged food is a cheeseburger, their total calories consumed for today is 3207.74, the nutritional value of 2 cheeseburgers next to the current date, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, and the nutritional value of 2 cheeseburgers next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 4 cheeseburgers is summed on the right table. The user is able to see a graph depicting calories versus date.
 		
-		Test Case Derivation: The system should properly display the user's most eaten food being a cheeseburger.
+		Test Case Derivation: The system should properly display the user's most logged food being a cheeseburger.
 		
 		How test will be performed: After the tester completes the steps laid out in test case profile-3, the tester will click on "Upload" in the taskbar. The tester clicks on "Voice Upload" and then "Start Talking". Tester says "2 cheeseburgers random random random how was your day?" and then clicks on "Stop Talking". Tester clicks on the "Submit" button. The tester clicks on "Profile" found in the taskbar.
 		
@@ -990,9 +990,9 @@
 		
 		Input: User clicks on "Text Upload" and then types "cheeseburger and cheeseburger" . User clicks on the "Submit" button, and clicks on "Profile" found in the taskbar.
 		
-		Output: The user is able to see that their most eaten food is a cheeseburger, their total calories consumed for today is 4278.36, the nutritional value of 1 cheeseburger next to the current date, the nutritional values of 1 cheeseburger next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of 1 chicken breast next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 6 cheeseburgers is summed on the right table.
+		Output: The user is able to see that their most logged food is a cheeseburger, their total calories consumed for today is 4278.36, the nutritional value of 1 cheeseburger next to the current date, the nutritional values of 1 cheeseburger next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of 1 chicken breast next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 6 cheeseburgers is summed on the right table. The user is able to see a graph depicting calories versus date.
 		
-		Test Case Derivation: The system should properly display the user's most eaten food being a cheeseburger. The system should properly display the cheeseburger's nutritional information even when given in different serving sizes and formats.
+		Test Case Derivation: The system should properly display the user's most logged food being a cheeseburger. The system should properly display the cheeseburger's nutritional information even when given in different serving sizes and formats.
 		
 		How test will be performed: After the tester completes the steps laid out in test case profile-4, the tester clicks on "Upload" found in the taskbar. The tester clicks on "Text Upload" and then types "cheeseburger and cheeseburger". Tester clicks on the "Submit" button. The tester clicks on "Profile" found in the taskbar.
 		
@@ -1102,11 +1102,117 @@
 		
 		Input: User clicks on "Profile" found in the taskbar.
 		
-		Output: The user is able to see the following headers with no nutritional information near them: Your most eaten food, Your total calories consumed for today, PAST MEALS, and My Caloric Intake.
+		Output: The user is able to see the following headers with no nutritional information near them: Your most logged food, Your total calories consumed for today, PAST MEALS, and My Caloric Intake.
 		
 		Test Case Derivation: The system should not break if no entries are found on the user's personal device.
 		
 		How test will be performed: The tester will open Utrition and click on "Profile" found in the taskbar. The tester will click on "Profile" one more time.
+		
+		\item{profile-14\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case ``profile-5"
+		
+		Input: User clicks on the ``Delete" button for the inputted item of ``2 cheeseburgers" and confirms the deletion for the food item.
+		
+		Output: The user sees the food items: ``1 cheeseburger", ``1 cheeseburger", ``2 chicken breasts", and ``100g of martini" under the header ``PAST MEALS".
+		
+		Test Case Derivation: User should be allowed to delete food items. After deletion of food item, the list should be properly updated.
+		
+		How test will be performed: After the tester completes the steps laid out in test case profile-5, the tester will click on the ``Delete" button found beside the inputted item of ``2 cheeseburgers". The tester will click on the "Yes" button.
+		
+		\item{profile-15\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case ``profile-14"
+		
+		Input: User clicks on the ``Delete" button for the inputted item of ``1 cheeseburger" and denies the deletion for the food item.
+		
+		Output: The user sees the food items: ``1 cheeseburger", ``1 cheeseburger", ``2 chicken breasts", and ``100g of martini" under the header ``PAST MEALS".
+		
+		Test Case Derivation: After the tester completes the steps laid out in test case profile-14, the tester will click on the ``Delete" button found beside the inputted item of ``1 cheeseburgers". The tester will click on the "No" button.
+		
+		How test will be performed: The tester will open Utrition and click on "Profile" found in the taskbar. The tester will click on "Profile" one more time.
+		
+	\end{enumerate}
+	
+	\subsubsection{Settings Page}
+	This section has four tests that deal with the settings page and the appropriate update to the profile page after receiving the user's statistics.  The tests deal with FR22, FR23, FR24, FR25, and FR26 in the SRS. Testing to ensure the user settings page works is vital in order to stand out from the other food tracking applications.
+	
+	\begin{enumerate}
+		\item{settings-page-1\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User is viewing the ``Edit Your Statistics" page.
+		
+		Input: User adds the following input to the statistics page and then clicks the ``Save" button:
+		
+		\begin{itemize}
+			\item Birth Sex: ``Male"
+			\item Weight: ``80kg"
+			\item Height: ``180cm"
+			\item Age: ``22"
+			\item Activity Level: ``Moderately Active"
+		\end{itemize}
+		
+		Output: The user views the ``Your User Settings" page with the updated values.
+		
+		Test Case Derivation: User should be able to put in their user statistics to learn more about healthy eating habits.
+		
+		How test will be performed: Tester will click on ``Profile" found in the taskbar. Tester clicks on the ``Edit Profile Statisctics" button. Tester clicks on the ``Edit Settings" button. Tester clicks on the text input boxes and inputs the test values as seen in ``Input". Tester selects the appropriate gender and activity level as seen in ``Input". Tester clicks on ``Save".
+		
+		\item{settings-page-2\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has previously completed test case ``text-upload-1" and has just completed test case ``settings-page-1".
+		
+		Input: User clicks on ``Profile" found in the taskbar and clicks on the ``How close am I to being classified differently?" button.
+		
+		Output: The user is able to see the nutritional information of yogurt on the left side of the page. On the right side of the page, the user is able to see that the most logged food is yogurt, they have logged 142.88 calories out of 2822.49 calories, their BMI is 24.69, they are normal weight, a BMI table showing the ranges for appropriate weight, a caloric intake summary chart showing yogurt, and a graph showing the appropriate date and calories.
+		
+		Test Case Derivation: User statistics must properly reflect in the profile page, and provide the user information that is relevant to their statistics.
+		
+		How test will be performed: Tester completes ``text-upload-1" and then completes ``settings-page-1". Then, the tester will click on ``Profile" found in the taskbar, and then clicks on the ``How close am I to being classified differently?" button.
+		
+		\item{settings-page-3\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case ``settings-page-2"
+		
+		Input: User clicks on ``Edit Settings" button, adds the following input to the statistics page, and then clicks the ``Save" button:
+		
+		\begin{itemize}
+			\item Birth Sex: ``Female"
+			\item Weight: ``200lbs"
+			\item Height: ``5ft 5in"
+			\item Age: ``19"
+			\item Activity Level: ``Sedentary"
+		\end{itemize}
+		
+		Output: The user views the ``Your User Settings" page with the updated values.
+		
+		Test Case Derivation: User should be able to edit their statistics.
+		
+		How test will be performed: After the tester completes test case ``settings-page-2", tester will click on ``Profile" found in the taskbar. Tester clicks on the ``Edit Profile Statisctics" button. Tester clicks on the ``Edit Settings" button. Tester clicks on the text input boxes and inputs the test values as seen in ``Input". Tester selects the appropriate gender and activity level as seen in ``Input". Tester clicks on ``Save".
+		
+		\item{settings-page-4\\}
+		
+		Control: Functional, Dynamic, and Manual.
+		
+		Initial State: User has completed test case ``settings-page-3".
+		
+		Input: User clicks on ``Profile" found in the taskbar and clicks on the ``How close am I to being classified differently?" button.
+		
+		Output: The user is able to see the nutritional information of yogurt on the left side of the page. On the right side of the page, the user is able to see that the most logged food is yogurt, they have logged 142.88 calories out of 2020.41 calories, their BMI is 33.28, they are obese, a BMI table showing the ranges for appropriate weight, a caloric intake summary chart showing yogurt, and a graph showing the appropriate date and calories.
+		
+		Test Case Derivation: Modified statistics and the information regarding it should properly reflect in the profile page.
+		
+		How test will be performed: After tester completes ``settings-page-3", tester will click on ``Profile" found in the taskbar, and then clicks on the ``How close am I to being classified differently?" button.
 		
 	\end{enumerate}
 	

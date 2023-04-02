@@ -9,6 +9,8 @@ const Profile = () => {
   const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
   const [entryToDelete, setEntryToDelete] = useState(null);
   const [showTable, setShowTable] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
 
   function handleExplanationClick() {
     setShowTable(!showTable);
@@ -41,6 +43,9 @@ const Profile = () => {
   }
   useEffect(() => {
     getData();
+    const image = new Image();
+    image.src = require("./data_graph.png");
+    image.onload = () => setIsImageLoaded(true);
   }, []);
 
   const left_click_forward = () => {
@@ -849,10 +854,13 @@ const Profile = () => {
             Previous Week
           </button>
         ) : null}
-        <img className="graphh"
+        {isImageLoaded && (
+        <img
+          className="graphh"
           src={require("./data_graph.png")}
           alt="User Data Graph"
-        ></img>
+        />
+      )}
       </div>
     </div>
   );
