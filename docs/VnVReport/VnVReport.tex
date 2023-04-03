@@ -32,6 +32,7 @@
 		\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 		\midrule
 		March 8, 2023 & 1.0 & Initial Version\\
+		April 3, 2023 & 2.0 & Fixed GitHub Issues, Added New Tests, Updated Past Failed Tests, Updated Traceability Matrix \\
 		\bottomrule
 	\end{tabularx}
 	
@@ -422,13 +423,13 @@
 		
 		Initial State: User is on the ``Upload" page with ``Text Upload" selected.
 		
-		Input: User inputs ``apple" and ``banana" on two separate lines into the text upload box and then clicks on the ``Submit" button.
+		Input: User inputs ``apple" and ``banana" into the text upload box and then presses the ``Enter" key on their keyboard.
 		
 		Expected Results: The nutritional facts for an apple and a banana are displayed to the user.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``apple" into the text upload box and then pressed enter. The tester typed ``banana" and pressed the ``Submit" button.
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``apple banana" into the text upload box and then pressed enter. 
 		
-		\textbf{Actual Results}: Test failed. No nutritional information was displayed to the user.
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
 		
 		\item{Test Name: multi-text-upload-2}
 		
@@ -525,9 +526,9 @@
 		
 		Input: User clicks on the ``Start Talking" button and then the ``Reset" button.
 		
-		Expected Results: The ``Upload" page refreshes and resets, which means the user is met with the ``Text Upload" button selected. After clicking on the ``Voice Upload" button, the user sees no previous entries and is able to click the ``Start Talking" button.
+		Expected Results: The ``Upload" page resets and the user sees no previous uploaded entries. The user is able to click the ``Stop Talking" button.
 		
-		How The Test Was Performed: After the tester completed the steps laid out in test case voice-upload-3, the tester then clicked on the ``Start Talking" button and then clicked on the ``Reset" button. The tester clicked on the ``Voice Upload" button again to double check the page was cleared.
+		How The Test Was Performed: After the tester completed the steps laid out in test case voice-upload-3, the tester then clicked on the ``Start Talking" button and then clicked on the ``Reset" button. The tester clicked on the ``Stop Talking" button again, and the button is properly updated to ``Start Talking".
 		
 		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
 		
@@ -539,9 +540,9 @@
 		
 		Input: User clicks on the ``Reset" button.
 		
-		Expected Results: The ``Upload" page refreshes and resets, which means the user is met with the ``Text Upload" button selected. After clicking on the ``Voice Upload" button, the user is met with the normal ``Voice Upload" page.
+		Expected Results: The ``Upload" page resets. The user is met with the normal ``Voice Upload" page.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on the ``Voice Upload" button and then clicked on the ``Reset" button. The tester clicked on the ``Voice Upload" button again to double check the page was cleared. 
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on the ``Voice Upload" button and then clicked on the ``Reset" button. 
 		
 		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
 		
@@ -553,11 +554,11 @@
 		
 		Input: User clicks on ``Voice Upload" and then User clicks on the ``Reset" button.
 		
-		Expected Results: The ``Upload" page refreshes and resets, which means the user is met with the ``Text Upload" button selected. The user is able to see ``apple" in the text box.
+		Expected Results: The ``Upload" page resets. The user is no longer able to see ``apple" in the text box.
 		
-		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``apple" in the text box. The tester clicked on the ``Voice Upload" button and then clicked on the ``Reset" button.
+		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester typed ``apple" in the text box. The tester clicked on the ``Voice Upload" button and then clicked on the ``Reset" button. The tester clicked on the ``Text Upload" button and no longer sees ``apple" in the text box.
 		
-		\textbf{Actual Results}: Test failed. ``apple" no longer appears in the text box in ``Text Upload".
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
 		
 		\item{Test Name: voice-upload-7}
 		
@@ -637,11 +638,11 @@
 		
 		Input: User clicks on the ``Start Talking" button and says out loud ``2 oranges". User clicks on ``Text Upload". User says out loud ``a slice of an apple" User clicks on ``Voice Upload" and then the ``Submit" button.
 		
-		Expected Results: The nutritional facts for 2 oranges are displayed to the user.
+		Expected Results: No nutritional facts will be displayed to the user.
 		
 		How The Test Was Performed: The tester opened Utrition and clicked on ``Upload" found in the taskbar. The tester clicked on the ``Voice Upload" button and then clicked on the ``Start Talking" button. The tester verbally said ``2 oranges" and then the tester pressed on the ``Text Upload" button. The tester said ``a slice of an apple" and then clicked on the ``Voice Upload" button. The tester pressed the ``Submit" button.
 		
-		\textbf{Actual Results}: Test failed. The nutritional facts for 2 oranges and a slice of an apple were displayed to the user.
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
 		
 		\item{Test Name: multi-voice-upload-1}
 		
@@ -739,11 +740,11 @@
 		
 		Input: User clicks on ``Upload" found in the taskbar. User clicks on ``Voice Upload" and then ``Start Talking". User says ``2 cheeseburgers random random random how was your day?" and then clicks on ``Stop Talking". User clicks on the ``Submit" button and clicks on ``Profile" found in the taskbar.
 		
-		Expected Results: The user is able to see that their most logged food is a cheeseburger, their total calories consumed for today is 3207.74, the nutritional value of 2 cheeseburgers next to the current date, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, and the nutritional value of 2 cheeseburgers next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 4 cheeseburgers is summed on the right table. The user is able to see a graph depicting calories versus date.
+		Expected Results: The user is able to see that their most logged food is yogurt, their total calories consumed for today is 3207.74, the nutritional value of 2 cheeseburgers next to the current date, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, and the nutritional value of 2 cheeseburgers next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 4 cheeseburgers is summed on the right table. The user is able to see a graph depicting calories versus date.
 		
 		How The Test Was Performed: After the tester completed the steps laid out in test case profile-3, the tester clicked on ``Upload" in the taskbar. The tester clicked on ``Voice Upload" and then ``Start Talking". Tester said ``2 cheeseburgers random random random how was your day?" and then clicked on ``Stop Talking". Tester clicked on the ``Submit" button. The tester clicked on ``Profile" found in the taskbar.
 		
-		\textbf{Actual Results}: Test failed. The most logged food is still yogurt instead of cheeseburger due to yogurt being inputted 3 different times and cheeseburger being inputted twice.
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
 		
 		\item{Test Name: profile-5}
 		
@@ -753,11 +754,11 @@
 		
 		Input: User clicks on ``Text Upload" and then types ``cheeseburger and cheeseburger". User clicks on the ``Submit" button and clicks on ``Profile" found in the taskbar.
 		
-		Expected Results: The user is able to see that their most logged food is a cheeseburger, their total calories consumed for today is 4278.36, the nutritional value of 1 cheeseburger next to the current date, the nutritional values of 1 cheeseburger next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of 2 chicken breasts next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 6 cheeseburgers is summed on the right table. The user is able to see a graph depicting calories versus date.
+		Expected Results: The user is able to see that their most logged food is yogurt, their total calories consumed for today is 4278.36, the nutritional value of 1 cheeseburger next to the current date, the nutritional values of 1 cheeseburger next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of 2 chicken breasts next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 6 cheeseburgers is summed on the right table. The user is able to see a graph depicting calories versus date.
 		
 		How The Test Was Performed: After the tester completed the steps laid out in test case profile-4, the tester clicked on ``Upload" found in the taskbar. The tester clicked on ``Text Upload" and then typed ``cheeseburger and cheeseburger". Tester clicked on the ``Submit" button. The tester clicked on ``Profile" found in the taskbar.
 		
-		\textbf{Actual Results}: Test failed. The most logged food is still yogurt instead of cheeseburger due to 2 cheeseburgers and 1 cheeseburger being seen by the system as two different food items.
+		\textbf{Actual Results}: Test passed. The actual results matched up with the expected results.
 		
 		\item{Test Name: profile-6}
 		
@@ -2019,6 +2020,18 @@ data.                                                                           
 	settings-page-2\\
 	settings-page-4\end{tabular} \\ \hline
 			
+			FR27                     &The system shall be able to display a graph of user caloric trends.                                                                                                            & \begin{tabular}[c]{@{}l@{}}
+				profile-1\\
+				profile-2\\
+				profile-3\\
+				profile-4\\
+				profile-5\\
+				settings-page-2\\
+				settings-page-4\end{tabular} \\ \hline
+			
+			FR28                     &PLACEHOLDER FOR CAT TO UPDATE SRS                                                                                                            & \begin{tabular}[c]{@{}l@{}}
+				profile-14\\
+				profile-15\end{tabular} \\ \hline
 		\end{tabular}
 	\end{table}
 	

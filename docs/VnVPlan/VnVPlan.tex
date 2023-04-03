@@ -32,6 +32,8 @@
 		\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 		\midrule
 		11/02/2022 & 1.0 & Completed Version 1\\
+		07/03/2023 & 2.0 & Added New Tests To Account For New FRs\\
+		03/04/2023 & 3.0 & Added New Tests To Account For New FRs, Updated General Information Section, Updated Traceability Matrix\\
 		\bottomrule
 	\end{tabularx}
 	
@@ -650,13 +652,13 @@
 	
 	Initial State: User is on the "Upload" page with "Text Upload" selected.
 	
-	Input: User inputs "apple" and "banana" on two separate lines into the text upload box and then clicks on the "Submit" button.
+	Input: User inputs ``apple" and ``banana" into the text upload box and then presses the ``Enter" key on their keyboard.
 	
 	Output: The nutritional facts for an apple and a banana is displayed to the user.
 	
-	Test Case Derivation: The user should be allowed to input food items on multiple lines that separate them.
+	Test Case Derivation: The user should be allowed to use the ``Enter" key on their keyboard to submit a response.
 	
-	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will type "apple" into the text upload box and then presses enter. The tester will type "banana" and press the "Submit" button.
+	How test will be performed: The tester will open Utrition and click on ``Upload" found in the taskbar. The tester will type ``apple banana" into the text upload box and then press enter. 
 	
 	\item{multi-text-upload-2\\}
 	
@@ -759,11 +761,11 @@
 	
 	Input: User clicks on the "Start Talking" button and then the "Reset" button.
 	
-	Output: The "Upload" page refreshes and resets, which means the user is met with the "Text Upload" button selected. After clicking on the "Voice Upload" button, the user sees no previous entries and is able to click the "Start Talking" button.
+	Output: The ``Upload" page resets and the user sees no previous uploaded entries. The user is able to click the ``Stop Talking" button.
 	
 	Test Case Derivation: The system should allow the user to reset their input in the middle of giving an input.
 	
-	How test will be performed: After the tester completes the steps laid out in test case voice-upload-3, the tester will click on the "Start Talking" button and then click on the "Reset" button. The tester will click on the "Voice Upload" button again to double check the page was cleared.
+	How test will be performed: After the tester completed the steps laid out in test case voice-upload-3, the tester then clicked on the ``Start Talking" button and then clicked on the ``Reset" button. The tester clicked on the ``Stop Talking" button again, and the button is properly updated to ``Start Talking".
 	
 	\item{voice-upload-5\\}
 	
@@ -773,25 +775,25 @@
 	
 	Input: User clicks on the "Reset" button.
 	
-	Output: The "Upload" page refreshes and resets, which means the user is met with the "Text Upload" button selected. After clicking on the "Voice Upload" button, the user is met with the normal "Voice Upload" page.
+	Output: The ``Upload" page resets. The user is met with the normal ``Voice Upload" page.
 	
 	Test Case Derivation: The system should allow the user to reset their input without giving an input.
 	
-	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will click on the "Voice Upload" button and then clicks on the "Reset" button. The tester will click on the "Voice Upload" button again to double check the page was cleared. 
+	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester will click on the "Voice Upload" button and then clicks on the "Reset" button. 
 	
 	\item{voice-upload-6\\}
 	
 	Control: Functional, Dynamic, and Manual.
 	
-	Initial State: User is on the "Upload" page and has typed "apple" in the text box found in "Text Upload".
+	Initial State: User is on the ``Upload" page and has typed ``apple" in the text box found in ``Text Upload".
 	
 	Input: User clicks on "Voice Upload" and then User clicks on the "Reset" button.
 	
-	Output: The "Upload" page refreshes and resets, which means the user is met with the "Text Upload" button selected. The user is able to see "apple" in the text box.
+	Output: The ``Upload" page resets. The user is no longer able to see ``apple" in the text box.
 	
 	Test Case Derivation: The "Reset" button should only reset the input in the "Voice Upload" section.
 	
-	How test will be performed: The tester will Utrition and clicked on "Upload" found in the taskbar. The tester types "apple" in the text box. The tester clicks on the "Voice Upload" button and then clicks on the "Reset" button.
+	How test will be performed: The tester will open Utrition and click on ``Upload" found in the taskbar. The tester types ``apple" in the text box. The tester clicks on the ``Voice Upload" button and then clicks on the ``Reset" button. The tester clicks on the ``Text Upload" button and no longer sees ``apple" in the text box.
 	
 	\item{voice-upload-7\\}
 	
@@ -871,9 +873,9 @@
 	
 	Input: User clicks on the "Start Talking" button and says out loud "2 oranges". User clicks on "Text Upload". User says out loud "a slice of an apple" User clicks on "Voice Upload" and then the "Submit" button.
 	
-	Output: The nutritional facts for 2 oranges is displayed to the user.
+	Output: No nutritional facts will be displayed to the user.
 	
-	Test Case Derivation: Only food items said on the "Voice Upload" section should be picked up by the system.
+	Test Case Derivation: Once the user clicks away from the ``Voice Upload" section, the page should reset.
 	
 	How test will be performed: The tester will open Utrition and will click on "Upload" found in the taskbar. The tester clicks on the "Voice Upload" button and then clicks on the "Start Talking" button. The tester verbally says "2 oranges" and then the tester presses on the "Text Upload" button. The tester says "a slice of an apple" and then clicks on the "Voice Upload" button. The tester presses the "Submit" button.
 		\paragraph{Multi-Voice Upload}
@@ -976,9 +978,9 @@
 		
 		Input: User clicks on "Upload" found in the taskbar. User clicks on "Voice Upload" and then "Start Talking". User says "2 cheeseburgers random random random how was your day?" and then clicks on "Stop Talking". User clicks on the "Submit" button, and clicks on "Profile" found in the taskbar.
 		
-		Output: The user is able to see that their most logged food is a cheeseburger, their total calories consumed for today is 3207.74, the nutritional value of 2 cheeseburgers next to the current date, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, and the nutritional value of 2 cheeseburgers next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 4 cheeseburgers is summed on the right table. The user is able to see a graph depicting calories versus date.
+		Output: The user is able to see that their most logged food is yogurt, their total calories consumed for today is 3207.74, the nutritional value of 2 cheeseburgers next to the current date, the nutritional values of 2 chicken breasts next to the current date, the nutritional value of 100g of a martini next to the current date, and the nutritional value of 2 cheeseburgers next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 4 cheeseburgers is summed on the right table. The user is able to see a graph depicting calories versus date.
 		
-		Test Case Derivation: The system should properly display the user's most logged food being a cheeseburger.
+		Test Case Derivation: The system should properly display the user's most logged food being yogurt, even with 2 cheeseburgers being implemented. This is because yogurt is logged more than once.
 		
 		How test will be performed: After the tester completes the steps laid out in test case profile-3, the tester will click on "Upload" in the taskbar. The tester clicks on "Voice Upload" and then "Start Talking". Tester says "2 cheeseburgers random random random how was your day?" and then clicks on "Stop Talking". Tester clicks on the "Submit" button. The tester clicks on "Profile" found in the taskbar.
 		
@@ -990,9 +992,9 @@
 		
 		Input: User clicks on "Text Upload" and then types "cheeseburger and cheeseburger" . User clicks on the "Submit" button, and clicks on "Profile" found in the taskbar.
 		
-		Output: The user is able to see that their most logged food is a cheeseburger, their total calories consumed for today is 4278.36, the nutritional value of 1 cheeseburger next to the current date, the nutritional values of 1 cheeseburger next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of 1 chicken breast next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 6 cheeseburgers is summed on the right table. The user is able to see a graph depicting calories versus date.
+		Output: The user is able to see that their most logged food is yogurt, their total calories consumed for today is 4278.36, the nutritional value of 1 cheeseburger next to the current date, the nutritional values of 1 cheeseburger next to the current date, the nutritional value of 2 cheeseburgers next to the current date, and the nutritional value of 1 chicken breast next to the current date (in that order). The user is able to see the total calories of 3 cups of yogurt, 2 chicken breasts, 100g of a martini, and 6 cheeseburgers is summed on the right table. The user is able to see a graph depicting calories versus date.
 		
-		Test Case Derivation: The system should properly display the user's most logged food being a cheeseburger. The system should properly display the cheeseburger's nutritional information even when given in different serving sizes and formats.
+		Test Case Derivation: The system should properly display the user's most logged food being yogurt. The system should properly display the cheeseburger's nutritional information even when given in different serving sizes and formats.
 		
 		How test will be performed: After the tester completes the steps laid out in test case profile-4, the tester clicks on "Upload" found in the taskbar. The tester clicks on "Text Upload" and then types "cheeseburger and cheeseburger". Tester clicks on the "Submit" button. The tester clicks on "Profile" found in the taskbar.
 		
@@ -1308,65 +1310,336 @@
 	
 	\subsection{Traceability Between Test Cases and Functional Requirements}
 	
-	\newpage
+	
+		\begin{table}[H]
+		\caption {Traceability between Tests and Functional Requirements}
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			FR1                     & The user must have the ability to upload a 
+			digital image of a standard image type to the 
+			system.                                                                     
+			&
+			\begin{tabular}[c]{@{}l@{}}one-upload-1\\
+				one-upload-2\\
+				one-upload-auto-1\\ 
+				one-upload-auto-2\end{tabular}                                                  
+			\\                                                    \hline
+			FR2                     & The system will be able to identify the type of 
+			food that is captured in an 
+			image.                                                                      
+			&
+			\begin{tabular}[c]{@{}l@{}}one-upload-1\\
+				one-upload-2\\
+				image-identification-1\\ 
+				image-identification-2\\ 
+				image-identification-3\\current-nutrition-1\end{tabular}                   
+			
+			\\ 
+			\hline
+			FR3                     & The system will be able to make an API call to an 
+			external database of nutrition facts for a variety of foods, including 
+			their macro-nutrients, micro-nutrients, and caloric details. & 
+			\begin{tabular}[c]{@{}l@{}}
+				api-1\\ 
+				current-nutrition-1\\
+				axios-call-1\end{tabular}                       
+			\\ \hline
+		\end{tabular}
+	\end{table}
+	
 	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                                                               
+			\\ \hline
+			FR4                     & The system will be able to retrieve the nutrition 
+			facts for a specific 
+			food.                                                                       
+			&
+			\begin{tabular}[c]{@{}l@{}}one-upload-1\\
+				api-1\\ 
+				log-data-read-data-1\\ 
+				current-nutrition-1\\
+				text-upload-1\\
+				text-upload-2\\
+				text-upload-6\\
+				text-upload-7\\
+				text-upload-8\\
+				multi-text-upload-1\\
+				multi-text-upload-2\\
+				multi-text-upload-3\\
+				voice-upload-1\\
+				voice-upload-2\\
+				voice-upload-3\\
+				voice-upload-9\\
+				voice-upload-10\\
+				voice-upload-11\\
+				voice-upload-12\\
+				multi-voice-upload-1\\
+				multi-voice-upload-2\\
+				multi-voice-upload-3\\
+				profile-4\\
+				profile-5\end{tabular}                                        
+			\\
+			\hline
+			
+		\end{tabular}
+	\end{table}
 	
-	\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
-
-	\hline
-	\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
-	FR1                     & The user must have the ability to upload a 
-	digital image of a standard image type to the 
-	system.                                                                     
-	                 &
-	\begin{tabular}[c]{@{}l@{}}one-upload-1\\ 
-	one-upload-2\\
-	one-upload-auto-1\\
-	one-upload-auto-2\end{tabular}                                                  
-	                                            \\
-	 \hline
-	FR3                     & The system will be able to identify the type of 
-	food that is captured in an 
-	image.                                                                      
-	                              &
-	 \begin{tabular}[c]{@{}l@{}}image-identification-1\\ 
-	 image-identification-2\\ 
-	 image-identification-3\\current-nutrition-1\end{tabular}                   
-	        
-		                                                                 \\ 
-		\hline
-	FR4                     & The system will be able to make an API call to an 
-	external database of nutrition facts for a variety of foods, including 
-	their macro-nutrients, micro-nutrients, and caloric details. & 
-	\begin{tabular}[c]{@{}l@{}}api-1\\ 
-		current-nutrition-1\end{tabular}                                        
-		                                                    \\ \hline
-	FR5                     & The system will be able to retrieve the nutrition 
-	facts for a specific 
-	food.                                                                       
-	                                   &
-	 \begin{tabular}[c]{@{}l@{}}api-1\\ 
-		log-data-read-data-1\\ 
-		current-nutrition-1\end{tabular}                                        
-		                                                    \\
-		 \hline
-	FR6                     & The system will log the nutritional data of a 
-	food.                                                                       
-	                                                            &  
-	\begin{tabular}[c]{@{}l@{}}api-1\\ 
-		log-data-read-data-1\\ 
-		current-nutrition-1\end{tabular}                                        
-		                                               \\ \hline
-	FR7                     & The user will be able to access the nutritional 
-	data of previously logged 
-	foods.                                                                      
-	                                &
-	 \begin{tabular}[c]{@{}l@{}}log-data-read-data-1\\ past-nutrition-text-read-data-2\\ 
-	past-nutrition-text-read-data-2\end{tabular}                       \\ \hline
-	FR8                     & The system will display the nutritional information of a food to the user.                                                                                                            & \begin{tabular}[c]{@{}l@{}}current-nutrition-1\\ past-nutrition-text-read-data-2\end{tabular} \\ \hline
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                                                               
+			\\ \hline
+			FR5                     & The system will log the nutritional data of a 
+			food.                                                                       
+			&  
+			\begin{tabular}[c]{@{}l@{}}api-1\\ 
+				log-data-read-data-1\\ 
+				current-nutrition-1\\
+				profile-1\\
+				profile-2\\
+				profile-3\\
+				profile-4\\
+				profile-5\end{tabular}                                        
+			\\ \hline
+			FR6                     & The user will be able to access the nutritional 
+			data of previously logged 
+			foods.                                                                      
+			&
+			\begin{tabular}[c]{@{}l@{}}log-data-read-data-1\\
+				past-nutrition-read-data-2\\
+				profile-1\\
+				profile-2\\
+				profile-3\\
+				profile-4\\
+				profile-5\\
+				profile-6\\
+				profile-7\\
+				profile-8\\
+				profile-9\\
+				profile-10\\
+				profile-11\\
+				profile-12\\
+				profile-13\end{tabular}                       \\ \hline
+			
+		\end{tabular}
+	\end{table}
 	
-	\end{tabular}
-	\caption {Traceability between System Tests and Functional Requirements}
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                                                               
+			\\ \hline
+			
+			FR7                     & The system will display the nutritional information of a food to the user.                                                                                                            & \begin{tabular}[c]{@{}l@{}}current-nutrition-1\\ past-nutrition-read-data-2\\
+				text-upload-1\\
+				text-upload-2\\
+				text-upload-6\\
+				text-upload-7\\
+				text-upload-8\\
+				multi-text-upload-1\\
+				multi-text-upload-2\\
+				multi-text-upload-3\\
+				voice-upload-1\\
+				voice-upload-2\\
+				voice-upload-3\\
+				voice-upload-9\\
+				voice-upload-10\\
+				voice-upload-11\\
+				voice-upload-12\\
+				multi-voice-upload-1\\
+				multi-voice-upload-2\\
+				multi-voice-upload-3\\
+				display-elements-1\\
+				axios-call-1\end{tabular} \\ \hline
+			
+			FR8                     & The user must have the ability to upload the text of a food input to the system.                                               & \begin{tabular}[c]{@{}l@{}}text-upload-1\\
+				text-upload-2\\
+				text-upload-3\\
+				text-upload-4\\
+				text-upload-5\\
+				text-upload-6\\
+				text-upload-7\\
+				text-upload-8\end{tabular} \\ \hline
+			
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			FR9                     & The user must have the ability to upload multiple texts of food inputs to the system.
+			& \begin{tabular}[c]{@{}l@{}}multi-text-upload-1\\
+				multi-text-upload-2\\
+				multi-text-upload-3\\
+				profile-5\end{tabular} \\ \hline
+			
+			FR10                     & The user must have the ability to upload a food input by speaking to the system.
+			& \begin{tabular}[c]{@{}l@{}}voice-upload-1\\
+				voice-upload-2\\
+				voice-upload-7\\
+				voice-upload-8\\
+				voice-upload-9\\
+				voice-upload-10\\
+				voice-upload-11\\
+				voice-upload-12\\
+				profile-4\end{tabular} \\ \hline
+			
+			FR11                     & The user must have the ability to upload multiple food inputs by speaking to the system.                                                                                                            & \begin{tabular}[c]{@{}l@{}}voice-upload-3\\
+				multi-voice-upload-1\\
+				multi-voice-upload-2\\
+				multi-voice-upload-3\end{tabular} \\ \hline
+			
+			FR12                     & The system will be able to convert vocal input into text.                                                                                                            & \begin{tabular}[c]{@{}l@{}}voice-upload-1\\
+				voice-upload-2\\
+				voice-upload-3\\
+				voice-upload-8\\
+				voice-upload-9\\
+				voice-upload-10\\
+				voice-upload-11\\
+				voice-upload-12\\
+				multi-voice-upload-1\\
+				multi-voice-upload-2\\
+				multi-voice-upload-3\\
+				profile-4\end{tabular} \\ \hline
+			
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			
+			FR13                     & The user must have the ability to restart their voice upload to the system.                                                                                                           & \begin{tabular}[c]{@{}l@{}}voice-upload-4\\
+				voice-upload-5\\
+				voice-upload-6\end{tabular} \\ \hline
+			
+			FR14                     & The system will be able to identify the type of food(s) that is captured in a complex sentence.                                                                                                            & \begin{tabular}[c]{@{}l@{}}text-upload-2\\
+				text-upload-7\\
+				text-upload-8\\
+				multi-text-upload-3\\
+				voice-upload-1\\
+				voice-upload-2\\
+				voice-upload-3\\
+				voice-upload-10\\
+				voice-upload-11\\
+				multi-voice-upload-1\\
+				multi-voice-upload-2\\
+				multi-voice-upload-3\\
+				profile-4\end{tabular} \\ \hline
+			
+			FR15                     & The user must have the ability to select between uploading food(s) through image, text, or voice.                                                                                                    & \begin{tabular}[c]{@{}l@{}}voice-upload-12\\
+				correct-path-1\end{tabular} \\ \hline
+			
+			FR16                     & The system will display the user's most logged food.                                                                                                            & \begin{tabular}[c]{@{}l@{}}profile-1\\
+				profile-2\\
+				profile-3\\
+				profile-4\\
+				profile-5\\
+				profile-13\\
+				display-elements-1\\
+				axios-call-1\end{tabular} \\ \hline
+			
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			FR17                     & The system will display the user's total calories consumed for the day.                                                                                                           & \begin{tabular}[c]{@{}l@{}}profile-1\\
+				profile-2\\
+				profile-3\\
+				profile-4\\
+				profile-5\\
+				profile-13\\
+				display-elements-1\\
+				axios-call-1\end{tabular} \\ \hline
+			
+			FR18                     & The system will display a summary of the foods consumed and their total calories for each of the past 7 days.                                                                                                            & \begin{tabular}[c]{@{}l@{}}profile-1\\
+				profile-2\\
+				profile-3\\
+				profile-4\\
+				profile-5\\
+				profile-9\\
+				profile-10\\
+				profile-11\\
+				profile-12\\
+				profile-13\\
+				display-elements-1\\
+				axios-call-1\end{tabular} \\ \hline
+			
+			FR19                     & The user will be able to access the summary of the foods consumed and their total calories for all days with a food inputted.                                                                                                            & \begin{tabular}[c]{@{}l@{}}profile-1\\
+				profile-2\\
+				profile-3\\
+				profile-4\\
+				profile-5\\
+				profile-9\\
+				profile-10\\
+				profile-11\\
+				profile-12\\
+				profile-13\end{tabular} \\ \hline
+			
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+			
+			\hline
+			\textbf{Requirement \#} & \textbf{Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+			FR20                     & The user will be able to access the Home page, the Upload page, and the Profile page on every page.                                                                                                            & \begin{tabular}[c]{@{}l@{}}upload-page-1\\ profile-page-1\\
+				home-page-1\\
+				home-page-2\\
+				profile-page-2\\
+				upload-page-2\\
+				correct-path-1\end{tabular} \\ \hline
+			
+			FR21                     & The user will be able to delete a previously logged food.                                                                                                            & \begin{tabular}[c]{@{}l@{}}
+				profile-14\end{tabular} \\ \hline
+			
+			FR22                     & The user will be able to input profile statistics related to their health and measurements.                                                                                                            & \begin{tabular}[c]{@{}l@{}}settings-page-1\\
+				settings-page-3\end{tabular} \\ \hline
+			
+			FR23                     &The system shall log the user profile data.                                                                                                            & \begin{tabular}[c]{@{}l@{}}settings-page-1\\
+				settings-page-3\end{tabular} \\ \hline
+			
+			FR24                     &The user will be able to modify the profile statistics.                                                                                                            & \begin{tabular}[c]{@{}l@{}}
+				settings-page-3\end{tabular} \\ \hline
+			
+			FR25                     &The system shall be able to perform BMI related calculations                                                                                                            & \begin{tabular}[c]{@{}l@{}}
+				settings-page-2\\
+				settings-page-4\end{tabular} \\ \hline
+			
+			FR26                     &The system shall be able to display BMI related conclusions based on the user profile
+			data.                                                                                                          & \begin{tabular}[c]{@{}l@{}}
+				settings-page-2\\
+				settings-page-4\end{tabular} \\ \hline
+			
+			FR27                     &The system shall be able to display a graph of user caloric trends.                                                                                                            & \begin{tabular}[c]{@{}l@{}}
+				profile-1\\
+				profile-2\\
+				profile-3\\
+				profile-4\\
+				profile-5\\
+				settings-page-2\\
+				settings-page-4\end{tabular} \\ \hline
+			
+			FR28                     &PLACEHOLDER FOR CAT TO UPDATE SRS                                                                                                            & \begin{tabular}[c]{@{}l@{}}
+				profile-14\\
+				profile-15\end{tabular} \\ \hline
+		\end{tabular}
 	\end{table}
 	
 	\subsection{Tests for Nonfunctional Requirements}
