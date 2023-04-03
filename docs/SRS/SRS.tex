@@ -592,6 +592,18 @@ BMI related data displayed & Profile data (in) / BMI data (out)                 
 	\textbf{Priority:} High
 \end{itemize}
 
+\begin{itemize}
+	\item [\FillFRNumber] The system shall be able to display a graph of user caloric trends. \newline
+	\textbf{Rationale:} Users will be able to see a graphical representation of the calories consumed over time, for another way to visualize their nutritional habits. This can help them reach and stay on track with their nutritional goals. \newline
+	\textbf{Priority:} Medium
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The system shall be verify the user's request to delete a logged food item.  \newline
+	\textbf{Rationale:} In case the user accidentally chooses to delete a logged food item, the system will verify the user's request to ensure it was not done by accident. This prevents unwanted deletions. \newline
+	\textbf{Priority:} High
+\end{itemize}
+
 
 \section{Non-Functional Requirements}
 
@@ -1070,41 +1082,41 @@ This section has been added to the Volere template. The traceability matrix belo
 
 \centering
 	\label{Table:A_trace}
-	\scalebox{0.6}{
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+	\scalebox{0.55}{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
-   &FR1& FR2&FR3&FR4&FR5&FR6&FR7&FR8&FR9&FR10&FR11&FR12&FR13&FR14&FR15&FR16&FR17&FR18&FR19&FR20&FR21&FR22&FR23&FR24&FR25&FR26\\ \hline
-LF1& & x& & & & & x& x& x &x&x&&&x& &x&x&x&x&x&x&x&x&&x&x \\ \hline
-UH1& & x& & & & & & x& x&&&&&&x&&&&&x&&&&&x& \\ \hline
-UH2& & & x& & & & x& & x &x&x&x&x&x&&&x&x&x&x&&&&&x&x\\ \hline
-UH3& x& x& & & & & x& & &x&x&&&x&x&x&&&&&x&x&&&x& \\ \hline
-UH4& x& x& & & & & x& x& x&x&&&x&&x&x&&&&&x&&&&&x\\ \hline
-UH5& x& x& & & & & x& x& x&x&&&&x&&&&&&x&x&&&&x&\\ \hline
-UH6& x& x& & & & & & x& x&&x&&x&&&&&&x&&&&&x&&\\ \hline
-PR1& & & & & & & x& x& x&&&&x&&&&&&&&x&&&&&\\ \hline
-PR2& & & & & & & x& x& x&&&&&x&&x&x&&&&&&x&x&x&\\ \hline
-PR3& & & & & x& & & x& &&&x&&&&&&x&&&&x&&&&\\ \hline
-PR4& & & x& x& x& & x& x& &&x&x&&&&x&&&&&x&&&x&&\\ \hline
-PR5& & & & & & & & &&&&&&&x&&&&&&&x&x&x&& \\ \hline
-PR6& x& x& x& x& x& & x& x& x&&&&&&x&&&&&&x&&&&x&x\\ \hline
-PR7& & x& & & & & & &&&&&&x&&&x&&&&x&&&&&x \\ \hline
-PR8& & & & & & & & & &&&&&&&&&&x&&&&&&&\\ \hline
-PR9& & & & & & & & &&&&&&x&&&x&&&&&&&&&\\ \hline
-OE1& & & & & & & & &&&&&&&&&&&&&&&&x&&\\ \hline
-OE2& & & & & & & & &&&&&&&&&&&x&&&&&&&\\ \hline
-OE3& & & & & & & & &&&&&&&x&&&&&&&x&&&&\\ \hline
-MS1& & & x& & x& & & x&&&&&&&x&x&&x&&&&x&&x&&\\ \hline
-MS2& & & & & & & & & &&&&&&x&&&&&&&&&&&\\ \hline
-MS3& & & & & & & & &&&&&&&&x&&&&&&&&&&\\ \hline
-SR1& & & & & & & & & &&&&&x&&&&&&&&&&&&\\ \hline
-SR2& x& x& & & & & & &&&&&&&&&&x&x&&&x&&x&& \\ \hline
-SR3& & & & & & x& & &&&x&&&&&x&&&&&&&&&& \\ \hline
-CP1& & & & & & & & &&&&&&&&&&&&&&&&&& \\ \hline
-LR1& & & & & & & & & &&&&&&&&&&&&&&&&&\\ \hline
-LR2& & & & & & & & & &&&&&&&&&&&&&&&&&\\ \hline
-LR3& & & & & & & & &&&&&&&&&&&&&&&&&& \\ \hline
-LR4& & & & & & & & & &&&&&&&&&&&&&&&&&\\ \hline
-LR5& & x& & & & & x& x& x &&&&&&&&&&&&&&&&&\\ \hline
+   &FR1& FR2&FR3&FR4&FR5&FR6&FR7&FR8&FR9&FR10&FR11&FR12&FR13&FR14&FR15&FR16&FR17&FR18&FR19&FR20&FR21&FR22&FR23&FR24&FR25&FR26&FR27&FR28\\ \hline
+LF1& & x& & & & & x& x& x &x&x&&&x& &x&x&x&x&x&x&x&x&&x&x&x& \\ \hline
+UH1& & x& & & & & & x& x&&&&&&x&&&&&x&&&&&x&&&x \\ \hline
+UH2& & & x& & & & x& & x &x&x&x&x&x&&&x&x&x&x&&&&&x&x&x&\\ \hline
+UH3& x& x& & & & & x& & &x&x&&&x&x&x&&&&&x&x&&&x&&&\\ \hline
+UH4& x& x& & & & & x& x& x&x&&&x&&x&x&&&&&x&&&&&x&x&x\\ \hline
+UH5& x& x& & & & & x& x& x&x&&&&x&&&&&&x&x&&&&x&&x&\\ \hline
+UH6& x& x& & & & & & x& x&&x&&x&&&&&&x&&&&&x&&&&\\ \hline
+PR1& & & & & & & x& x& x&&&&x&&&&&&&&x&&&&&&&\\ \hline
+PR2& & & & & & & x& x& x&&&&&x&&x&x&&&&&&x&x&x&&x&x\\ \hline
+PR3& & & & & x& & & x& &&&x&&&&&&x&&&&x&&&&&x&x\\ \hline
+PR4& & & x& x& x& & x& x& &&x&x&&&&x&&&&&x&&&x&&&&\\ \hline
+PR5& & & & & & & & &&&&&&&x&&&&&&&x&x&x&& &&x\\ \hline
+PR6& x& x& x& x& x& & x& x& x&&&&&&x&&&&&&x&&&&x&x&x&\\ \hline
+PR7& & x& & & & & & &&&&&&x&&&x&&&&x&&&&&x&&x \\ \hline
+PR8& & & & & & & & & &&&&&&&&&&x&&&&&&&&&\\ \hline
+PR9& & & & & & & & &&&&&&x&&&x&&&&&&&&&&&\\ \hline
+OE1& & & & & & & & &&&&&&&&&&&&&&&&x&&&&\\ \hline
+OE2& & & & & & & & &&&&&&&&&&&x&&&&&&&&x&\\ \hline
+OE3& & & & & & & & &&&&&&&x&&&&&&&x&&&&&&\\ \hline
+MS1& & & x& & x& & & x&&&&&&&x&x&&x&&&&x&&x&&&&x\\ \hline
+MS2& & & & & & & & & &&&&&&x&&&&&&&&&&&&&\\ \hline
+MS3& & & & & & & & &&&&&&&&x&&&&&&&&&&&&\\ \hline
+SR1& & & & & & & & & &&&&&x&&&&&&&&&&&&&&\\ \hline
+SR2& x& x& & & & & & &&&&&&&&&&x&x&&&x&&x&&&& \\ \hline
+SR3& & & & & & x& & &&&x&&&&&x&&&&&&&&&&&& \\ \hline
+CP1& & & & & & & & &&&&&&&&&&&&&&&&&&&& \\ \hline
+LR1& & & & & & & & & &&&&&&&&&&&&&&&&&&&\\ \hline
+LR2& & & & & & & & & &&&&&&&&&&&&&&&&&&&\\ \hline
+LR3& & & & & & & & &&&&&&&&&&&&&&&&&&&& \\ \hline
+LR4& & & & & & & & & &&&&&&&&&&&&&&&&&&&\\ \hline
+LR5& & x& & & & & x& x& x &&&&&&&&&&&&&&&&&&&\\ \hline
 
 \end{tabular}}
 \caption{Traceability Matrix Showing the Connections Between Functional and Non-functional}
