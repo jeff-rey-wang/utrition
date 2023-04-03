@@ -43,10 +43,12 @@
 
 \section{Revision History}
 
-\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\begin{tabularx}{\textwidth}{p{3.5cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 January 18, 2023 & 1.0 & Initial Document\\
+March 7, 2023 & 1.1 & Added New Modules - VNV Report\\
+April 3, 2023 & 1.2 & Final Document Revision\\
 \bottomrule
 \end{tabularx}
 
@@ -79,8 +81,7 @@ This document references multiple other documents that are listed below:
   SC & Scientific Computing \\
   SRS & Software Requirements Specification\\
   \progname & Application name\\
-  UC & Unlikely Change \\
-  \wss{etc.} & \wss{...}\\
+  UC & Unlikely Change\\
   \bottomrule
 \end{tabular}\\
 
@@ -193,9 +194,10 @@ actually be implemented.
 \begin{description}
 \item [\refstepcounter{mnum} \mthemnum \label{mAP}:] Application Path Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mHP}:] Home Page Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mPP}:] Profile Page Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mNL}:] Nutrition Log Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mUP}:] Upload Page Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mPP}:] Profile Page Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mBP}:] BMI Page Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mSP}:] Settings Page Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mUC}:] Upload Container Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mIU}:] Image Upload Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mTU}:] Text Upload Module
@@ -220,11 +222,13 @@ Module
 {Hardware-Hiding Module} & N/A \\
 \midrule
 
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Application Path Module\\
+\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module}
+& Application Path Module\\
 & Home Page Module\\
-& Profile Page Module\\
-& Nutrition Log Module\\
 & Upload Page Module\\
+& Profile Page Module\\
+& BMI Page Module\\
+& Settings Page Module\\
 & Upload Container Module \\
 & Image Upload Module\\
 & Text Upload Module \\
@@ -308,6 +312,17 @@ to be implemented.
 \item[Type of Module:] Abstract Object
 \end{description}
 
+\subsubsection{Upload Page Module (\mref{mUP})}
+
+\begin{description}
+	\item[Secrets:]Displays all objects needed on the Upload Page.
+	\item[Services:] Imports components required to upload data, and organizes 
+	all 
+	components within the page. 
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Object
+\end{description}
+
 \subsubsection{Profile Page Module (\mref{mPP})}
 
 \begin{description}
@@ -317,25 +332,24 @@ to be implemented.
 \item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{Nutrition Log Module (\mref{mNL})}
+\subsubsection{BMI Page Module (\mref{mBP})}
 
 \begin{description}
-	\item[Secrets:]Displays the user's past inputs and their nutritional facts.
-	\item[Services:]Formats the data to be viewed in a visually pleasing manner 
-	on the Profile Page once imported from the Profile Page module.
+	\item[Secrets:]Displays all information needed on the BMI Page.
+	\item[Services:] Provides interface for the user to manage their settings, 
+	and as well relevant information figures.
 	\item[Implemented By:] Utrition
-	\item[Type of Module:] Library
-	
+	\item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{Upload Page Module (\mref{mUP})}
+\subsubsection{Settings Page Module (\mref{mSP})}
 
 \begin{description}
-\item[Secrets:]Displays all objects needed on the Upload Page.
-\item[Services:] Imports components required to upload data, and organizes all 
-components within the page. 
-\item[Implemented By:] Utrition
-\item[Type of Module:] Abstract Object
+	\item[Secrets:]Displays all information needed on the Settings Page.
+	\item[Services:] Imports components relevant to user parameters and 
+	provides a view for the user's settings.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Object
 \end{description}
 
 \subsubsection{Upload Container Module (\mref{mUC})}
@@ -516,8 +530,8 @@ SR3 & M5, M16\\
 \toprule
 \textbf{AC} & \textbf{Modules}\\
 \midrule
-AC2 & M6, M7, M8, M9, M11\\
-AC3 & M2, M3, M4, M6, M7, M10\\
+AC2 &  M7, M8, M9, M10, M12, M15\\
+AC3 & M2, M3, M4, M5, M6, M7\\
 AC4 & M15\\
 AC5 & M13\\
 \bottomrule

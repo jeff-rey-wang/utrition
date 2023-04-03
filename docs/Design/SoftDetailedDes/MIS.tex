@@ -55,6 +55,8 @@ urlcolor=cyan          % color of external links
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 January 18, 2023 & 1.0 & Initial Document\\
+March 7, 2023 & 1.1 & Added New Modules - VNV Report\\
+April 3, 2023 & 1.2 & Final Document Revision\\
 \bottomrule
 \end{tabularx}
 
@@ -133,11 +135,13 @@ The following table is taken directly from the Module Guide document, \cite{MG},
 		{Hardware-Hiding Module} & N/A \\
 		\midrule
 		
-		\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Application Path Module\\
+		\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} 
+		& Application Path Module\\
 		& Home Page Module\\
-		& Profile Page Module\\
-		& Nutrition Log Module\\
 		& Upload Page Module\\
+		& Profile Page Module\\
+		& BMI Page Module\\
+		& Settings Page Module\\
 		& Upload Container Module \\
 		& Image Upload Module\\
 		& Text Upload Module \\
@@ -234,6 +238,44 @@ None
 
 \newpage
 
+\section{MIS of Upload Page Module}
+\subsection{Module}
+Upload
+\subsection{Uses}
+UploadContainer
+\subsection{Syntax}
+\subsubsection{Exported Types}
+Upload = ?
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		Upload & - & Upload & - \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Routine Semantics}
+\noindent Upload():
+\begin{itemize}
+	\item transition: Page rendered with components from ImageUpload, 
+	TextUpload, and VoiceUpload
+	\item output: $out := self$
+	\item exception: None
+\end{itemize}
+\subsubsection{Local Functions}
+None
+
+\newpage
+
 \section{MIS of Profile Page Module} \label{ProfilePage}
 \subsection{Module}
 Profile
@@ -271,36 +313,37 @@ None
 
 \newpage
 
-\section{MIS of Nutrition Log Module} \label{NutritionLog}
+\section{MIS of BMI Page Module}
 \subsection{Module}
-NutritionLog
+Upload
 \subsection{Uses}
-UserLogData
+UploadContainer
 \subsection{Syntax}
-\subsubsection{Exported Constants}
-None
+\subsubsection{Exported Types}
+Upload = ?
 \subsubsection{Exported Access Programs}
 \begin{center}
-	\begin{tabular}{p{2cm} p{2.5cm} p{4cm} p{2cm}}
+	\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
-		dispData & - & Display component & - \\
+		Upload & - & Upload & - \\
 		\hline
 	\end{tabular}
 \end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
-$data$: UserLogData type
+None
 \subsubsection{Environment Variables}
 None
 \subsubsection{Assumptions}
 None
 \subsubsection{Access Routine Semantics}
-\noindent dispData():
+\noindent Upload():
 \begin{itemize}
-	\item transition: $data$ := getData()
-	\item output: $out$ := ($data$ != NULL) $\Rightarrow$ Display component with user data $|$ ($data$ == NULL) $\Rightarrow$ Display component displaying String stating "No user data available"
+	\item transition: Page rendered with components from ImageUpload, 
+	TextUpload, and VoiceUpload
+	\item output: $out := self$
 	\item exception: None
 \end{itemize}
 \subsubsection{Local Functions}
@@ -308,7 +351,7 @@ None
 
 \newpage
 
-\section{MIS of Upload Page Module}
+\section{MIS of Settings Page Module}
 \subsection{Module}
 Upload
 \subsection{Uses}
