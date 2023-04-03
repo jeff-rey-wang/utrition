@@ -158,7 +158,7 @@ Moica, Justina Srebrnjak}
 October 19, 2022 & 1.0 & Initial Version\\
 November 1, 2022 & 1.1 & Migrated Additional Requirements from Hazard Analysis\\
 March 14, 2023 & 1.2 & Updated NFR/FR with testing considerations\\
-March 31, 2023 & 2.0 & Updated with profile and BMI elements\\
+March 31, 2023 & 2.0 & Updated with profile and BMI elements, Removed some NFRs\\
 \bottomrule
 \end{tabularx}
 
@@ -674,96 +674,14 @@ BMI related data displayed & Profile data (in) / BMI data (out)                 
 	\item Switching between different user interface screens will be quick.\\
 	\textbf{Rationale:} The user should not have to wait to access different parts of the Utrition web application.\\
 	\textbf{Fit Criteria:} The time between the user’s click and displaying the new UI will not exceed 2 seconds.
-	\item Identifying and displaying each food item will be done quickly.\\
-	\textbf{Rationale:} No process should force users to wait extended periods of time.\\
-	\textbf{Fit Criteria:} After uploading a picture, Utrition will always display the identified food item within 10 seconds in a test with multiple images.
-	\item Displaying a food’s nutritional value will be done quickly. \\
-	\textbf{Rationale:} No process should force users to wait extended periods of time. \\
-	\textbf{Fit Criteria:} After identifying the correct food item, Utrition will always display the nutritional facts within 5 seconds in a test with multiple images.
 \end{enumerate}
 
 \subsubsection{Safety-Critical Requirements}
-\begin{enumerate}[start=4,label={PR\arabic*.}]
-	\item Utrition will return an error message when the user uploads an abnormal 
-	image format that is not .png, .jpg, or .jpeg. \\
-	\textbf{Rationale:}  Utrition should not crash by improper user 
-	input. Users should have an opportunity to upload a new file of an appropriate 
-	format.\\	
-	\textbf{Fit Criteria:} Error message should prompt user upon upload of an abnormal 
-	image.
-	
-	\item Utrition will return an error message when the user uploads an image file 
-	that exceeds the maximum size. \\
-	\textbf{Rationale:}  Utrition should not crash by improper user 
-	input. Users should have an opportunity to upload a new file of an appropriate 
-	size.\\	
-	\textbf{Fit Criteria:} Error message should prompt user upon upload of an image 
-	larger than 30MB.
-	
-	\item Utrition will return an error message when the user uploads more than one image at a time. \\
-	\textbf{Rationale:}  Utrition should not crash by improper user 
-	input. Users should have an opportunity to upload one image to the system.\\	
-	\textbf{Fit Criteria:} Error message should prompt user upon upload of more than 3 
-	images.
-	
-	\item Utrition will prompt the user if food identification cannot 
-	be completed successfully. The user will be notified on the type of error 
-	that occurs. \\
-	\textbf{Rationale:}  Food identification may fail due to a variety of 
-	reasons, and the user should be notified so they may attempt to find a  
-	workaround for the issue. \\	
-	\textbf{Fit Criteria:} Error message should prompt user upon failure to identify 
-	any food items in the uploaded image.
-	
-	\item Utrition will return an error message if the request to retrieve 
-	nutritional information cannot be completed successfully. \\
-	\textbf{Rationale:}  Information retrieval requests may fail due to a 
-	variety of reasons, and the user should be notified of the reason why the 
-	service could not be completed as expected.\\	
-	\textbf{Fit Criteria:} Error message should prompt user to try again upon failure 
-	to request nutritional info regarding food items in the uploaded image.
-	
-	\item Utrition will return an error message if the nutritional information 
-	of a specific item cannot be found.\\
-	\textbf{Rationale:}  The user should be notified if the nutritional data of 
-	their food item cannot be fetched.\\
-	\textbf{Fit Criteria:} Error message should notify user that the nutritional 
-	information pertaining to their food item does not exist.
-	
-	\item Utrition will return an error message if the user's past nutritional 
-	logs cannot be found.\\
-	\textbf{Rationale:}  The user should be notified if their nutritional data 
-	of past meals cannot be found.\\
-	\textbf{Fit Criteria:} Error message should notify user upon failure to access 
-	user's past nutritional info.
-	
-	\item Utrition will return an error message if the user's past nutritional 
-	logs have been deleted.\\
-	\textbf{Rationale:}  The user should be notified if their nutritional data 
-	of past meals are no longer saved in the system.\\
-	\textbf{Fit Criteria:} Error message should notify user if user's past nutritional 
-	info has been deleted.
-	
-	\item Utrition will prompt the user if past nutritional trends cannot
-	be displayed successfully. The user will be notified on the type of error 
-	that occurs. \\
-	\textbf{Rationale:}  Failure to display past nutritional trends may fail 
-	due to a variety of reasons. The user should be made aware of the issue, 
-	and the underlying cause behind it.\\	
-	\textbf{Fit Criteria:} Error message should prompt user if user's past nutritional 
-	info cannot be depicted on a chart.
-	
-	\item Utrition will prompt the user if their device is not connected to the 
-	internet when attempting to access the system. \\
-	\textbf{Rationale:}  The user should be notified if they are unable to 
-	connect to the system so they may apply a fix to the issue. \\	
-	\textbf{Fit Criteria:} Request will time out after 20 seconds, and user will be 
-	prompted that their device is not connected to the internet.
-\end{enumerate}
+\hspace{1.5cm}N/A
 
 \subsubsection{Precision or Accuracy Requirements}
 
-\begin{enumerate}[start=14,label={PR\arabic*.}]
+\begin{enumerate}[start=2,label={PR\arabic*.}]
 	\item Identifying and displaying each food item will be done correctly. \\
 	\textbf{Rationale:} The web app should provide the user with accurate information. \\
 	\textbf{Fit Criteria:} In a test with multiple images, Utrition will identify and display the correct food with an average accuracy of 70\%.
@@ -773,27 +691,19 @@ BMI related data displayed & Profile data (in) / BMI data (out)                 
 \end{enumerate}
 
 \subsubsection{Reliability and Availibility Requirements}
-
-\begin{enumerate}[{PR}16. ] 
-	\item Utrition will be available to users at all times.\\
-	\textbf{Rationale:} The user should be able to track their diet whenever they decide to eat. \\
-	\textbf{Fit Criteria:} Since Utrition is a local web app, the user will always be allowed to use Utrition unless their device or internet connection is down.
-\end{enumerate}
+\hspace{1.5cm}N/A
 
 \subsubsection{Robustness or Fault-Tolerance Requirements}
 \hspace{1.5cm}N/A
 
 \subsubsection{Capacity Requirements}
 
-\begin{enumerate}[{PR}17. ] 
-	\item Utrition will allow 3 images to be uploaded as a group.\\
-	\textbf{Rationale:} The user will have to wait too long for the calculated results if more than 3 images are uploaded at once. \\
-	\textbf{Fit Criteria:} The system will not allow more than 3 photos to be uploaded at once.
-\end{enumerate}
+\hspace{1.5cm}N/A
+
 
 \subsubsection{Scalability or Extensibility Requirements}
 
-\begin{enumerate}[{PR}18. ] 
+\begin{enumerate}[{PR}4. ] 
 	\item Utrition will have no limit to the size of the user base for its lifespan. \\
 	\textbf{Rationale:} Utrition should be available to all individuals who are health conscious.\\
 	\textbf{Fit Criteria:} Utrition is a local web app and does not depend on a server.
@@ -801,7 +711,7 @@ BMI related data displayed & Profile data (in) / BMI data (out)                 
 
 \subsubsection{Longevity Requirements}
 
-\begin{enumerate}[{PR}19. ] 
+\begin{enumerate}[{PR}5. ] 
 	\item Utrition should operate indefinitely once fully developed.\\
 	\textbf{Rationale:} Nutritional food values will never change and people will always want ways to regulate their diet. \\
 	\textbf{Fit Criteria:} Utrition will be available to use on GitHub for an indefinite amount of time.
