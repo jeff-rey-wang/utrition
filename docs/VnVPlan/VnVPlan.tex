@@ -1818,31 +1818,7 @@
 		
 		How test will be performed: A developer on Durum Wheat Semolina will measure the time it takes for each new screen to load using a stopwatch. The developer will open Utrition on their personal device. The developer will upload an image of different food items 10 times, with a minimum 1 minute time difference between the inputs. The uploaded images of the food items will be randomly selected by the developer in the utrition/test/testPhotos directory. The developer will navigate to each screen, timing each transition.
 		
-		\item{PT-2} 
-		
-		Type: Functional, Dynamic, and Manual.
-		
-		Initial State: The user loads into Utrition.
-		
-		Input/Condition: The user uploads 3 images simultaneously.
-		
-		Output/Result: 
-		\begin{itemize}
-			\item The user is able to view the identification for all 3 food items in 10 or less seconds.
-			\item The user is able to view the nutritional information for all 3 food items in 5 or less seconds.
-		\end{itemize}
-		
-		How test will be performed: A developer on Durum Wheat Semolina will 
-		open Utrition. The developer 
-		will upload three images of food found in the utrition/test/testPhotos 
-		directory. The developer clicks to view 
-		the foods’ nutritional information. The developer measures the amount 
-		of time it takes for Utrition to notify the user of the name of the 
-		identified food items. The developer measures the amount of time it 
-		takes for the system to change from the food identification interface 
-		to the nutritional information interface.
-		
-		\item{PT-3}
+		\item{PT-2}
 		
 		Type: Functional, Dynamic, Automatic
 		
@@ -1859,34 +1835,7 @@
 		How test will be performed: The test will measure if this interaction 
 		was completed in 5 seconds or less.
 		
-		\item{PT-4} 
-		
-		Type: Functional, Dynamic, and Manual.
-		
-		Initial State: The user loads into Utrition.
-		
-		Input/Condition: The user uploads an image of food.
-		
-		Output/Result: The food is correctly identified, and the correlated nutritional facts are correct.
-		
-		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and upload the images of the following foods separately (images found in utrition/test/testPhotos directory):
-		\begin{itemize}
-			\item Uncooked Pork
-			\item Corn
-			\item Lettuce
-			\item Beef
-			\item Penne Pasta
-			\item Rice
-			\item Milk
-			\item Butter
-			\item Wheat Bread
-			\item Orange Juice
-		\end{itemize} 
-		
-		The developer will check the accuracy of each identified food item and 
-		their respective nutritional facts. 70\% of the images must be identified correctly. 90\% of the nutrition facts for the correctly identified foods will be given correctly.
-		
-		\item{PT-5}
+		\item{PT-3}
 		
 		Type: Functional, Dynamic, and Automatic.
 		
@@ -1903,7 +1852,7 @@
 		provided images, more than 90\% of the images have been assessed 
 		correctly.
 		
-		\item{PT-6}
+		\item{PT-4}
 		
 		Type: Functional, Dynamic, and Automatic.
 		
@@ -1922,19 +1871,7 @@
 		provided images, more than 70\% of the images have been assessed 
 		correctly.
 		
-		\item{PT-7} 
-		
-		Type: Functional, Dynamic, and Manual.
-		
-		Initial State: The user loads into Utrition.
-		
-		Input/Condition: The user uploads 4 photos of different food items.
-		
-		Output/Result: The user is notified that they are not able to proceed with viewing the identified foods or their nutritional information.
-		
-		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and attempt to upload four images of random food items found in the utrition/test/testPhotos directory. The developer is notified with an error informing them that only 3 images can be uploaded at once.
-		
-		\item{PT-8} 
+		\item{PT-5} 
 		
 		Type: Static and Manual.
 		
@@ -1945,92 +1882,6 @@
 		Output/Result: Utrition is able to be downloaded.
 		
 		How test will be performed: The developer will access Utrition’s GitHub on their personal device’s web browser. The developer will click on “Code”, and then “Download ZIP”. The developer will verify that Utrition has been downloaded on to their device.
-		
-		\item{PT-9} 
-		
-		Type: Functional, Dynamic, and Manual.
-		
-		Initial State: The user loads into Utrition.
-		
-		Input/Condition: The user uploads a very large photo (more than 30MB) for Utrition to identify.
-		
-		Output/Result: The user is notified that they are not able to proceed with viewing the identified foods or their nutritional information.
-		
-		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and upload “art.png” found in the utrition/test/testPhotos directory. The developer is notified that they cannot proceed with viewing the nutritional information unless they decrease the uploaded image’s file size.
-		
-		\item{PT-10} 
-		
-		Type: Functional, Dynamic, and Manual.
-		
-		Initial State: The user loads into Utrition.
-		
-		Input/Condition: The user uploads an unintelligible image for Utrition to identify.
-		
-		Output/Result: The user is notified that Utrition is not confident in the system’s identification. The system will suggest uploading another image.
-		
-		How test will be performed: A developer on Durum Wheat Semolina will 
-		open Utrition and upload “desk.jpg” found in the utrition/test/testPhotos directory. The developer 
-		is notified that the machine learning algorithm is not confident in the 
-		identification of the food, and that they should upload another image.
-		
-		\item{PT-11}
-		
-		Type: Functional, Dynamic, and Automatic.
-		
-		Initial State: The system is identifying food objects within the user's 
-		uploaded image(s).
-		
-		Input/Condition: Uploaded image.
-		
-		Output/Result: An error message is displayed prompting the user of a failed 
-		identification.
-		
-		How test will be performed: The test will check if an error message element has been rendered.
-		
-		\item{PT-12}
-		Type: Functional, Dynamic, and Manual.
-		
-		Initial State: The user loads into Utrition without connecting to the internet.
-		
-		Input/Condition: The user uploads an image for Utrition to identify.
-		
-		Output/Result: The user is notified that the system is unable to retrieve nutritional information because they are not connected to the internet.
-		
-		How test will be performed: A developer on Durum Wheat Semolina will open Utrition upload a random working image found in the utrition/test/testPhotos directory. The developer is notified that they are not connected to the internet after 20 seconds.
-		
-		\item{PT-13} 
-		Type: Functional, Dynamic, and Manual.
-		
-		Initial State: The user loads into Utrition.
-		
-		Input/Condition: The user uploads an image for Utrition to identify.
-		
-		Output/Result: The user is notified that the system has identified the food item, but could not find the food’s nutritional data.
-		
-		How test will be performed: A developer on Durum Wheat Semolina will open Utrition and upload “dragonfruit.jpg” found in the utrition/test/testPhotos directory. The developer is notified that they have uploaded an image of a “Dragon Fruit”, but the nutritional data cannot be found.
-		
-		\item{PT-14} 
-		
-		Type: Functional, Dynamic, and Manual.
-		
-		Initial State: The user opens Utrition without previously inputting any food items.
-		
-		Input/Condition: The user attempts to view their past inputs' nutritional information as text and as a chart.
-		
-		Output/Result: The user views an empty list with column entries: food name, calories, proteins, carbohydrates, sugars, and date entered. The user will see an empty canvas for the chart, and text detailing that there are no previous nutritional logs.
-		
-		How test will be performed: A developer of Durum Wheat Semolina will open Utrition on their personal device and view nutritional data from past inputs. A message displays “There are no previous food items recorded" and an empty chart.
-		
-		\item{PT-15}
-		Type: Functional, Dynamic, and Manual.
-		
-		Initial State: A user loads into Utrition.
-		
-		Input/Condition: The user uploads a PDF document as an image.
-		
-		Output/Result: The user is notified that they are not able to proceed with viewing the identified foods or their nutritional information.
-		
-		How test will be performed: A developer on Durum Wheat Semolina will open Utrition upload the image “waffle.pdf” to Utrition from the utrition/test/testPhotos directory. The developer is notified that they cannot upload the file since Utrition does not support “.pdf” file types.
 		
 	\end{enumerate}
 	
@@ -2218,56 +2069,8 @@
 			\hline
 			PR1 & The time between the user’s click and displaying the new UI will not exceed 2 seconds. & PT-1 \\
 			\hline
-			PR2 & After uploading a picture, Utrition will always display the 
-			identified food item within 10 seconds in a test with multiple 
-			images. & PT-2 \\
-			\hline
 		\end{tabularx}
 		\label{tab:Non-Functional Traceability}
-	\end{table}
-	\begin{table}[H]
-		\begin{tabularx}{\textwidth}{|l|X|l|}
-			\hline
-			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
-			\hline
-			PR3 & After identifying the correct food item, Utrition will always 
-			display the nutritional facts within 5 seconds in a test with 
-			multiple images. & \begin{tabular}[c]{@{}l@{}}
-				PT-2, PT-3\end{tabular}\\
-			\hline
-			PR4 & Error message should prompt user upon upload of an abnormal 
-			image. & PT-15\\
-			\hline
-			PR5 & Error message should prompt user upon upload of an image 
-			larger than 30MB. & PT-9\\
-			\hline
-			PR6 & Error message should prompt user upon upload of more than 3 
-			images. & PT-7\\
-			\hline
-			PR7 & Error message should prompt user upon failure to identify 
-			any food items in the uploaded image. & 
-			\begin{tabular}[c]{@{}l@{}}PT-10, PT-11 
-			\end{tabular}\\
-			\hline
-			PR8 & Error message should prompt user to try again upon failure 
-			to request nutritional info regarding food items in the uploaded image. & PT-12\\
-			\hline
-			PR9 & Error message should notify user that the nutritional 
-			information pertaining to their food item does not exist. & PT-13\\
-			\hline
-			PR10 & Error message should notify user upon failure to access 
-			user's past nutritional info. & PT-14\\
-			\hline
-			PR11 & Error message should notify user if user's past nutritional 
-			info has been deleted. & PT-14\\
-			\hline
-			PR12 & Error message should prompt user if user's past nutritional 
-			info cannot be depicted on a chart. & PT-14\\
-			\hline
-			PR13 & Request will time out after 20 seconds, and user will be 
-			prompted that their device is not connected to the internet. & PT-12\\
-			\hline
-		\end{tabularx}
 	\end{table}
 	
 	\begin{table}[H]
@@ -2276,23 +2079,19 @@
 			\hline
 			{\bf Requirement \#} & {\bf Description of Fit Criterion} & {\bf Test ID(s)}\\
 			\hline
-			PR14 & In a test with multiple images, Utrition will identify and 
+			PR2 & In a test with multiple images, Utrition will identify and 
 			display the correct food with an average accuracy of 70\%. & 
-			\begin{tabular}[c]{@{}l@{}}PT-4, PT-6 \end{tabular}\\
+			\begin{tabular}[c]{@{}l@{}}PT-4 \end{tabular}\\
 			\hline
-			PR15 & In a test with multiple images, Utrition will display the 
+			PR3 & In a test with multiple images, Utrition will display the 
 			correct nutritional information for an identified food 90\% of the 
-			time. & \begin{tabular}[c]{@{}l@{}}PT-4, PT-5 \end{tabular}\\
+			time. & \begin{tabular}[c]{@{}l@{}}PT-3 \end{tabular}\\
 			\hline
-			PR16 & Since Utrition is a local web app, the user will always be allowed to use Utrition unless their device or internet connection is down. & PT-4\\
+			PR4 & Utrition is a local web app and does not depend on a server. & PT-5\\
 			\hline
-			PR17 & The system will not allow more than 3 photos to be uploaded at once. & PT-2, PT-7\\
+			PR5 & Utrition will be available to use on GitHub for an indefinite amount of time. & PT-5\\
 			\hline
-			PR18 & Utrition is a local web app and does not depend on a server. & PT-8\\
-			\hline
-			PR19 & Utrition will be available to use on GitHub for an indefinite amount of time. & PT-8\\
-			\hline
-			OE1 & Users will be able to find and pull the repository on to their personal device. & PT-8\\
+			OE1 & Users will be able to find and pull the repository on to their personal device. & PT-5\\
 			\hline
 			OE2 & 95\% of a test panel with the intended demographic will be able to install Utrition after reading the installation guide. & OE-1\\
 			\hline
