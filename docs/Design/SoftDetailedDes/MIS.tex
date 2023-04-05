@@ -248,7 +248,7 @@ UploadContainer
 Upload = ?
 \subsubsection{Exported Access Programs}
 \begin{center}
-	\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+	\begin{tabular}{p{3.5cm} p{4cm} p{4cm} p{2cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
@@ -286,7 +286,7 @@ None
 \subsection{Module}
 Profile
 \subsection{Uses}
-NurtritionalData
+N/A
 \subsection{Syntax}
 \subsubsection{Exported Types}
 Profile = ?
@@ -509,31 +509,37 @@ Settings
 N/A
 \subsection{Syntax}
 \subsubsection{Exported Types}
-Upload = ?
+Settings = ?
 \subsubsection{Exported Access Programs}
 \begin{center}
 	\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
-		Upload & - & Upload & - \\
+		Settings & - & Settings & - \\
+		getData & - & - & BadResponseError\\
 		\hline
 	\end{tabular}
 \end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
-None
+$usersettings : $ JSON
 \subsubsection{Environment Variables}
 None
 \subsubsection{Assumptions}
 None
 \subsubsection{Access Routine Semantics}
-\noindent Upload():
+\noindent Settings():
 \begin{itemize}
-	\item transition: Page rendered with components from ImageUpload, 
-	TextUpload, and VoiceUpload
+	\item transition: Page rendered displaying current User Settings values
 	\item output: $out := self$
 	\item exception: None
+\end{itemize}
+\noindent getData():
+\begin{itemize}
+	\item transition: Get currently stored user settings from the backend, 
+	$usersettings :=$ response
+	\item exception: ($responseData ==$ error) $\Rightarrow$ BadResponseError
 \end{itemize}
 \subsubsection{Local Functions}
 None
@@ -550,23 +556,39 @@ ImageUpload, TextUpload, VoiceUpload
 UploadContainer = ?
 \subsubsection{Exported Access Programs}
 \begin{center}
-	\begin{tabular}{p{3cm} p{5cm} p{5cm} p{2cm}}
+	\begin{tabular}{p{3cm} p{3cm} p{5cm} p{2cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
-		UploadContainer & $\mathbb{Z}$ & UploadContainer & - \\
+		UploadContainer & $\mathbb{N}$ & UploadContainer & - \\
+		selectComponent & - & ImageUpload $\lor$ VoiceUpload $\lor$ TextUpload 
+		&-\\
 		\hline
 	\end{tabular}
 \end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
-None
+$displayedUpload:\mathbb{N}$
 \subsubsection{Environment Variables}
 None
 \subsubsection{Assumptions}
 None
 \subsubsection{Access Routine Semantics}
-None
+\noindent UploadContainer():
+\begin{itemize}
+	\item transition: Component renders one of either ImageUpload, TextUpload, 
+	or VoiceUpload
+	\item output: $out := self$
+	\item exception: None
+\end{itemize}
+
+\noindent selectComponent():
+\begin{itemize}
+	\item output: if $displayedUpload == 0: out := $ ImageUpload, if 
+	$displayedUpload == 1: out := $ VoiceUpload, if $displayedUpload == 2: out 
+	:= $ TextUpload
+	\item exception: None
+\end{itemize}
 \subsubsection{Local Functions}
 None
 
@@ -576,7 +598,7 @@ None
 \subsection{Module}
 ImageUpload
 \subsection{Uses}
-None
+N/A
 \subsection{Syntax}
 \subsubsection{Exported Types}
 ImageUpload
@@ -960,13 +982,13 @@ None
 \subsection{Module}
 ProfileData
 \subsection{Uses}
-os, datetime
+os, datetime InputPreProcess, NutritionalData
 \subsection{Syntax}
 \subsubsection{Exported Constants}
 None
 \subsubsection{Exported Access Programs}
 \begin{center}
-	\begin{tabular}{p{6.2cm} p{5cm} p{2.5cm} p{2cm}}
+	\begin{tabular}{p{6.2cm} p{3.7cm} p{2.5cm} p{2cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
@@ -974,11 +996,19 @@ None
 		logData & JSON  & - & - \\
 		calculateTotalNutrients & JSON  & seq of String & - \\
 		readFile & -  & seq of JSON & - \\
+		deleteEntry & $\mathbb{N}$ &- &- \\
 		readFileAsJson & -  & JSON & - \\
+		toMetricWeight & ($\mathbb{R}$, String) &- &-\\
+		toMetricHeight & ($\mathbb{R}$, $\mathbb{R}$, $\mathbb{R}$,  String) &- 
+		&-\\
+		readUserSettings &- & JSON &-\\
+		updateUserSettings & JSON & - &-\\
 		totalCaloriesPerDay & Date  & $\mathbb{R}$ & - \\
 		totalFoodsPerDay & Date  & $\mathbb{Z}$ & - \\
 		totalCaloriesPerDaySummaryList & -  & seq of JSON & - \\
-		mostEatenFood & -  & $\mathbb{R}$ & - \\
+		mostEatenFood & -  & String & - \\
+		calculateBmi &- & $\mathbb{R}$ &-\\
+		calculateRecommendedCalories &- & $\mathbb{R}$ &-\\
 		\hline
 	\end{tabular}
 \end{center}
@@ -1005,6 +1035,11 @@ None
 	\item exception: None
 \end{itemize}
 \noindent readFile():
+\begin{itemize}
+	\item output: $out :=$ seq of Row: String 
+	\item exception: None
+\end{itemize}
+\noindent deleteEntry(index):
 \begin{itemize}
 	\item output: $out :=$ seq of Row: String 
 	\item exception: None
