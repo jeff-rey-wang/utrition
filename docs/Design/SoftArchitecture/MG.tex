@@ -43,10 +43,12 @@
 
 \section{Revision History}
 
-\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\begin{tabularx}{\textwidth}{p{3.5cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 January 18, 2023 & 1.0 & Initial Document\\
+March 7, 2023 & 1.1 & Added New Modules - VNV Report\\
+April 5, 2023 & 1.2 & Final Document Revision\\
 \bottomrule
 \end{tabularx}
 
@@ -79,8 +81,7 @@ This document references multiple other documents that are listed below:
   SC & Scientific Computing \\
   SRS & Software Requirements Specification\\
   \progname & Application name\\
-  UC & Unlikely Change \\
-  \wss{etc.} & \wss{...}\\
+  UC & Unlikely Change\\
   \bottomrule
 \end{tabular}\\
 
@@ -193,9 +194,10 @@ actually be implemented.
 \begin{description}
 \item [\refstepcounter{mnum} \mthemnum \label{mAP}:] Application Path Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mHP}:] Home Page Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mPP}:] Profile Page Module
-\item  [\refstepcounter{mnum} \mthemnum \label{mNL}:] Nutrition Log Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mUP}:] Upload Page Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mPP}:] Profile Page Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mBP}:] BMI Page Module
+\item  [\refstepcounter{mnum} \mthemnum \label{mSP}:] Settings Page Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mUC}:] Upload Container Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mIU}:] Image Upload Module
 \item  [\refstepcounter{mnum} \mthemnum \label{mTU}:] Text Upload Module
@@ -220,11 +222,13 @@ Module
 {Hardware-Hiding Module} & N/A \\
 \midrule
 
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Application Path Module\\
+\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module}
+& Application Path Module\\
 & Home Page Module\\
-& Profile Page Module\\
-& Nutrition Log Module\\
 & Upload Page Module\\
+& Profile Page Module\\
+& BMI Page Module\\
+& Settings Page Module\\
 & Upload Container Module \\
 & Image Upload Module\\
 & Text Upload Module \\
@@ -308,6 +312,17 @@ to be implemented.
 \item[Type of Module:] Abstract Object
 \end{description}
 
+\subsubsection{Upload Page Module (\mref{mUP})}
+
+\begin{description}
+	\item[Secrets:]Displays all objects needed on the Upload Page.
+	\item[Services:] Imports components required to upload data, and organizes 
+	all 
+	components within the page. 
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Object
+\end{description}
+
 \subsubsection{Profile Page Module (\mref{mPP})}
 
 \begin{description}
@@ -317,25 +332,24 @@ to be implemented.
 \item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{Nutrition Log Module (\mref{mNL})}
+\subsubsection{BMI Page Module (\mref{mBP})}
 
 \begin{description}
-	\item[Secrets:]Displays the user's past inputs and their nutritional facts.
-	\item[Services:]Formats the data to be viewed in a visually pleasing manner 
-	on the Profile Page once imported from the Profile Page module.
+	\item[Secrets:]Displays all information needed on the BMI Page.
+	\item[Services:] Provides interface for the user to manage their settings, 
+	and as well relevant information figures.
 	\item[Implemented By:] Utrition
-	\item[Type of Module:] Library
-	
+	\item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{Upload Page Module (\mref{mUP})}
+\subsubsection{Settings Page Module (\mref{mSP})}
 
 \begin{description}
-\item[Secrets:]Displays all objects needed on the Upload Page.
-\item[Services:] Imports components required to upload data, and organizes all 
-components within the page. 
-\item[Implemented By:] Utrition
-\item[Type of Module:] Abstract Object
+	\item[Secrets:]Displays all information needed on the Settings Page.
+	\item[Services:] Imports components relevant to user parameters and 
+	provides a view for the user's settings.
+	\item[Implemented By:] Utrition
+	\item[Type of Module:] Abstract Object
 \end{description}
 
 \subsubsection{Upload Container Module (\mref{mUC})}
@@ -468,56 +482,64 @@ requirements and between the modules and the anticipated changes. The requiremen
 \toprule
 \textbf{Req.} & \textbf{Modules}\\
 \midrule
-FR1 & M1, M6, M7\\
-FR2 & M1, M6, M7\\
-FR3 & M11, M12, M13, M14\\
+FR1 & M8\\
+FR2 & M12, M13, M14\\
+FR3 & M18, M9, M10\\
 FR4 & M15\\
-FR5 & M5, M11, M15, M16\\
-FR6 & M5, M16\\
-FR7 & M5, M16\\
-FR8 & M3, M4, M16 \\
-FR9 & M3, M4, M16 \\
-FR10 & M6, M8, M11\\
-FR11 & M6, M9, M11 \\
-FR12 & M9\\
-LF1 & M1, M2, M3, M6, M10\\
-UH1 & M10\\
-UH2 & M5, M16\\
-UH5 & M4\\
-PR2 & M12, M13, M14, M15\\
-PR3 & M5, M15, M16\\
-PR4 & M6, M7\\
-PR5 & M6, M7\\
-PR6 & M6, M7\\
-PR7 & M14\\
-PR8 & M15\\
-PR9 & M15\\
-PR10 & M4, M5, M16\\
-PR11 & M4, M5, M16\\
-PR12 & M4, M5, M16\\
-PR13 & M11\\
-PR14 & M12, M13, M14\\
-PR15 & M4, M15\\
-PR17 & M7\\
-MS1 & M13\\
-SR2 & M5, M16\\
-SR3 & M5, M16\\
-
-
+FR5 & M15, M16\\
+FR6 & M4, M16\\
+FR7 & M8, M9, M10\\
+FR8 & M9 \\
+FR9 & M9 \\
+FR10 & M10\\
+FR11 & M10\\
+FR12 & M10\\
+FR13 & M10\\
+FR14 & M16\\
+FR15 & M7\\
+FR16 & M4, M16\\
+FR17 & M4, M16\\
+FR18 & M4, M16\\
+FR19 & M4, M16\\
+FR20 & M1, M11\\
+FR21 & M4, M16\\
+FR22 & M6\\
+FR23 & M16\\
+FR24 & M5, M16\\
+FR25 & M16\\
+FR26 & M4, M16\\
+FR27 & M4, M16\\
+FR28 & M4\\
 \bottomrule
 \end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+		\toprule
+		LF1 & M2, M3, M4, M5, M6, M7\\
+		UH1 & M11\\
+		UH2 & M4, M16\\
+		UH5 & M3, M4\\
+		PR2 & M12, M13, M14 \\
+		PR3 & M15\\
+		MS3 & M8\\
+		SR3 & M16\\
+		\bottomrule
+	\end{tabular}
 \caption{Trace Between Requirements and Modules}
 \label{TblRT}
 \end{table}
-
 \begin{table}[H]
 \centering
 \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
 \toprule
 \textbf{AC} & \textbf{Modules}\\
 \midrule
-AC2 & M6, M7, M8, M9, M11\\
-AC3 & M2, M3, M4, M6, M7, M10\\
+AC2 &  M7, M8, M9, M10, M12, M15\\
+AC3 & M2, M3, M4, M5, M6, M7\\
 AC4 & M15\\
 AC5 & M13\\
 \bottomrule
@@ -541,7 +563,7 @@ because they use modules from the lower levels.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{use_hierarchy.png}
+\includegraphics[width=0.8\textwidth]{uses_hierarchy.jpg}
 \caption{Use Hierarchy Among Modules}
 \label{FigUH}
 \end{figure}
