@@ -1022,7 +1022,7 @@ None
 \subsubsection{Access Routine Semantics}
 \noindent logData(foodData):
 \begin{itemize}
-	\item transition: $nutritionLog += csvRow : String$ 
+	\item transition: Adds an additional row, foodData to the csv file 
 	\item exception: None
 \end{itemize}
 \noindent calculateTotalNutrients(foodData):
@@ -1041,7 +1041,8 @@ None
 \end{itemize}
 \noindent deleteEntry(index):
 \begin{itemize}
-	\item output: $out :=$ seq of Row: String 
+	\item transition: Saves csv file as the previous csv file, without the 
+	index-th row
 	\item exception: None
 \end{itemize}
 \noindent readFileAsJson():
@@ -1052,6 +1053,30 @@ None
 	$\mathbb{R}$, sodium: $\mathbb{R}$, totalCarbohydrate: $\mathbb{R}$, 
 	dietaryFibre: $\mathbb{R}$, sugars: $\mathbb{R}$, protein: $\mathbb{R}$, 
 	potassium: $\mathbb{R}$\} 
+	\item exception: None
+\end{itemize}
+\noindent toMetricWeight(weight, weightUnit):
+\begin{itemize}
+	\item out: if $weightUnit == $"lbs", $:= weight \times 0.45359237$; else 
+	$:= weight$
+	\item exception: None
+\end{itemize}
+\noindent toMetricHeight(heightCm, heightFT, heightInches, heightUnit):
+\begin{itemize}
+	\item out: out: if $heightUnit == $"ft", $:= heightFt \times 30.48 + 
+	heightInches \times 2.54$; else $:= heightCm$
+	\item exception: None
+\end{itemize}
+\noindent readUserSettings():
+\begin{itemize}
+	\item out: if user settings file exists an is not empty: return it, else: 
+	return 0
+	\item exception: None
+\end{itemize}
+\noindent updateUserSettings(changedVal):
+\begin{itemize}
+	\item transition: ($\forall$ field $\in$ changedVal $\cdot$ if field 
+	$\lnot$ empty: readUserSettings.field $:=$ changedVal.field)
 	\item exception: None
 \end{itemize}
 \noindent totalCaloriesPerDay(day):
@@ -1072,6 +1097,20 @@ None
 \noindent mostEatenFood():
 \begin{itemize}
 	\item output: $out := mode(\text{seq of foods})$ 
+	\item exception: None
+\end{itemize}
+\noindent calculateBMI():
+\begin{itemize}
+	\item output: $data :=$ readUserSettings(),\\
+	$out:=$ toMetricWeight($data$.weight, $data.$weightUnit)/ 
+	(toMetricHeight($data$.heightCm, $data$.heightFT, $data$.heightInches, 
+	$data.$heightUnit)$/100)^2$
+	\item exception: None
+\end{itemize}
+\noindent calculateRecommendedCalories():
+\begin{itemize}
+	\item output: $out :=$ calories as a function of weight, height, age, 
+	birthSex and activityLevel.
 	\item exception: None
 \end{itemize}
 
