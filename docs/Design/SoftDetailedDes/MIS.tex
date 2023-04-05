@@ -55,6 +55,8 @@ urlcolor=cyan          % color of external links
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 January 18, 2023 & 1.0 & Initial Document\\
+March 7, 2023 & 1.1 & Added New Modules - VNV Report\\
+April 5, 2023 & 1.2 & Final Document Revision\\
 \bottomrule
 \end{tabularx}
 
@@ -133,11 +135,13 @@ The following table is taken directly from the Module Guide document, \cite{MG},
 		{Hardware-Hiding Module} & N/A \\
 		\midrule
 		
-		\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Application Path Module\\
+		\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} 
+		& Application Path Module\\
 		& Home Page Module\\
-		& Profile Page Module\\
-		& Nutrition Log Module\\
 		& Upload Page Module\\
+		& Profile Page Module\\
+		& BMI Page Module\\
+		& Settings Page Module\\
 		& Upload Container Module \\
 		& Image Upload Module\\
 		& Text Upload Module \\
@@ -159,11 +163,11 @@ The following table is taken directly from the Module Guide document, \cite{MG},
 
 ~\newpage
 
-\section{Application Path Module} \label{App}
+\section{MIS of Application Path Module} \label{App}
 \subsection{Module}
 App
 \subsection{Uses}
-NavBar, Home, Upload, Profile
+NavBar, Home, Upload, Profile, BMI, Settings
 \subsection{Syntax}
 \subsubsection{Exported Constants}
 None
@@ -234,80 +238,6 @@ None
 
 \newpage
 
-\section{MIS of Profile Page Module} \label{ProfilePage}
-\subsection{Module}
-Profile
-\subsection{Uses}
-NutritionLog
-\subsection{Syntax}
-\subsubsection{Exported Types}
-Profile = ?
-\subsubsection{Exported Access Programs}
-\begin{center}
-	\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
-		\hline
-		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-		\hline
-		Profile & - & Profile & - \\
-		\hline
-	\end{tabular}
-\end{center}
-\subsection{Semantics}
-\subsubsection{State Variables}
-None
-\subsubsection{Environment Variables}
-None
-\subsubsection{Assumptions}
-None
-\subsubsection{Access Routine Semantics}
-\noindent Profile():
-\begin{itemize}
-	\item transition: Page rendered with information from NutritionLog
-	\item output: $out := self$
-	\item exception: None
-\end{itemize}
-\subsubsection{Local Functions}
-None
-
-\newpage
-
-\section{MIS of Nutrition Log Module} \label{NutritionLog}
-\subsection{Module}
-NutritionLog
-\subsection{Uses}
-UserLogData
-\subsection{Syntax}
-\subsubsection{Exported Constants}
-None
-\subsubsection{Exported Access Programs}
-\begin{center}
-	\begin{tabular}{p{2cm} p{2.5cm} p{4cm} p{2cm}}
-		\hline
-		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-		\hline
-		dispData & - & Display component & - \\
-		\hline
-	\end{tabular}
-\end{center}
-\subsection{Semantics}
-\subsubsection{State Variables}
-$data$: UserLogData type
-\subsubsection{Environment Variables}
-None
-\subsubsection{Assumptions}
-None
-\subsubsection{Access Routine Semantics}
-\noindent dispData():
-\begin{itemize}
-	\item transition: $data$ := getData()
-	\item output: $out$ := ($data$ != NULL) $\Rightarrow$ Display component with user data $|$ ($data$ == NULL) $\Rightarrow$ Display component displaying String stating "No user data available"
-	\item exception: None
-\end{itemize}
-\subsubsection{Local Functions}
-None
-
-\newpage
-
 \section{MIS of Upload Page Module}
 \subsection{Module}
 Upload
@@ -318,17 +248,18 @@ UploadContainer
 Upload = ?
 \subsubsection{Exported Access Programs}
 \begin{center}
-	\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+	\begin{tabular}{p{3.5cm} p{4cm} p{4cm} p{2cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
 		Upload & - & Upload & - \\
+		changeDisplay & $\mathbb{N}$ & - & -\\
 		\hline
 	\end{tabular}
 \end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
-None
+$currentUpload$ : $\mathbb{N}$
 \subsubsection{Environment Variables}
 None
 \subsubsection{Assumptions}
@@ -336,10 +267,279 @@ None
 \subsubsection{Access Routine Semantics}
 \noindent Upload():
 \begin{itemize}
-	\item transition: Page rendered with components from ImageUpload, 
-	TextUpload, and VoiceUpload
+	\item transition: Page rendered with component from UploadContainer
 	\item output: $out := self$
 	\item exception: None
+\end{itemize}
+
+\noindent changeDisplay(selected):
+\begin{itemize}
+	\item transition: $currentUpload :=$ selected
+	\item exception: None
+\end{itemize}
+\subsubsection{Local Functions}
+None
+
+\newpage
+
+\section{MIS of Profile Page Module} \label{ProfilePage}
+\subsection{Module}
+Profile
+\subsection{Uses}
+N/A
+\subsection{Syntax}
+\subsubsection{Exported Types}
+Profile = ?
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{4.7cm} p{4cm} p{4cm} p{3cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		Profile & - & Profile & - \\
+		handleExplanationClick & - & - & - \\
+		getData & - & - & BadResponseError\\
+		leftClickForward & - & - & - \\
+		leftClickBackward & - & - & -\\
+		rightClickForward & - & - & - \\
+		rightClickBackward & - & - & -\\
+		handleDeleteEntry & $\mathbb{N}$ & - & -\\
+		handleCancelDelete & - & - & -\\
+		handleConfirmDelete & - & - & -\\
+		renderConfirmationDialog & - & HTML & -\\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+$totalcal$ : JSON\\
+$showConfirmationDialog$ : Boolean\\
+$entryToDelete$ : $\mathbb{N}$\\
+$showTable$ : Boolean\\
+$isImageLoaded$ : Boolean
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Routine Semantics}
+\noindent Profile():
+\begin{itemize}
+	\item transition: Page rendered with information from NutritionalData
+	\item output: $out := self$
+	\item exception: None
+\end{itemize}
+\noindent handleExplanationClick():
+\begin{itemize}
+	\item transition: $showTable := \lnot showTable$
+	\item exception: None
+\end{itemize}
+\noindent getData():
+\begin{itemize}
+	\item transition: Listen for response from backend, $totalcal := $ response	
+	\item exception: ($responseData ==$ error) $\Rightarrow$ BadResponseError
+\end{itemize}
+\noindent leftClickForward():
+\begin{itemize}
+	\item transition: $totalcal.index := totalcal.index + 4$
+	\item exception: None
+\end{itemize}
+\noindent leftClickBackward():
+\begin{itemize}
+	\item transition: $totalcal.index := totalcal.index - 4$
+	\item exception: None
+\end{itemize}
+\noindent rightClickForward():
+\begin{itemize}
+	\item transition: $totalcal.right_index := totalcal.right_index + 7$
+	\item exception: None
+\end{itemize}
+\noindent rightClickBackward():
+\begin{itemize}
+	\item transition: $totalcal.right_index := totalcal.right_index - 7$
+	\item exception: None
+\end{itemize}
+\noindent handleDeleteEntry(entry):
+\begin{itemize}
+	\item transition: $entryToDelete :=$ entry, $showConfirmationDialog :=$ true
+	\item exception: None
+\end{itemize}
+\noindent handleCancelDelete(entry):
+\begin{itemize}
+	\item transition: $entryToDelete :=$ null, $showConfirmationDialog :=$ false
+\item exception: None
+\end{itemize}
+\noindent handleConfirmDelete():
+\begin{itemize}
+	\item transition: Send deleted index to backend, wait for response, 
+	$totalcal :=$ response, $entryToDelete :=$ null, $showConfirmationDialog 
+	:=$ false
+	\item exception: ($responseData ==$ error) $\Rightarrow$ BadResponseError
+\end{itemize}
+\noindent renderConfirmationDialog():
+\begin{itemize}
+	\item transition: Confirmation Dialog is shown
+	\item output: $out :=$ Confirmation Dialog HTML
+	\item exception: None
+\end{itemize}
+\subsubsection{Local Functions}
+None
+
+\newpage
+
+\section{MIS of BMI Page Module}
+\subsection{Module}
+BMI
+\subsection{Uses}
+N/A
+\subsection{Syntax}
+\subsubsection{Exported Types}
+BMI = ?
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{4.8cm} p{4cm} p{4cm} p{4cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		BMI & - & BMI & - \\
+		handleBirthSexChange & Event & - & -\\
+		handleWeightChange & Event & - & -\\
+		handleWeightUnitChange & Event & - & -\\
+		handleHeightCmChange & Event & - & -\\
+		handleHeightFeetChange & Event & - & -\\
+		handleHeightInchesChange & Event & - & -\\
+		handleHeightUnitChange & Event & - & -\\
+		handleAgeChange & Event & - & -\\
+		handleActivityLevelChange & Event & - & -\\
+		getData & - & - & BadResponseError\\
+		handleSubmit & Event & -&-\\ 
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+$birthSex: $ String \\
+$weight: \mathbb{R}$ \\
+$weightUnit: $ String \\
+$heightCm: \mathbb{R} $ \\
+$heightFeet: \mathbb{R}$  \\
+$heightInches: \mathbb{R} $  \\
+$heightUnit: $ String \\
+$age: \mathbb{N}$ \\
+$activityLevel: $ String \\
+$errorMessage: $ String \\
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Routine Semantics}
+\noindent BMI():
+\begin{itemize}
+	\item transition: Page rendered with components relevant to editing user 
+	settings
+	\item output: $out := self$
+	\item exception: None
+\end{itemize}
+\noindent handleBirthSexChange(e):
+\begin{itemize}
+	\item transition: $birthSex :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleWeightChange(e):
+\begin{itemize}
+	\item transition: $weight :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleWeightUnitChange(e):
+\begin{itemize}
+	\item transition: $weightUnit :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleHeightCmChange(e):
+\begin{itemize}
+	\item transition: $heightCm :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleHeightFeetChange(e):
+\begin{itemize}
+	\item transition: $heightFeet :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleHeightInchesChange(e):
+\begin{itemize}
+	\item transition: $heightInches :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleHeightunitChange(e):
+\begin{itemize}
+	\item transition: $heightUnit:=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleAgeChange(e):
+\begin{itemize}
+	\item transition: $age :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleActivityLevelChange(e):
+\begin{itemize}
+	\item transition: $activityLevel :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent getData():
+\begin{itemize}
+	\item transition: Send state variable values to backend, return to Settings 
+	Page
+	\item exception: ($responseData ==$ error) $\Rightarrow$ BadResponseError
+\end{itemize}
+\noindent handleSubmit(e):
+\begin{itemize}
+	\item transition: if state variable(s) empty: $errorMessage :=$ "Please 
+	fill out all fields.", else: getData()
+	\item exception: None
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\newpage
+
+\section{MIS of Settings Page Module}
+\subsection{Module}
+Settings
+\subsection{Uses}
+N/A
+\subsection{Syntax}
+\subsubsection{Exported Types}
+Settings = ?
+\subsubsection{Exported Access Programs}
+\begin{center}
+	\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+		\hline
+		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+		\hline
+		Settings & - & Settings & - \\
+		getData & - & - & BadResponseError\\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection{Semantics}
+\subsubsection{State Variables}
+$usersettings : $ JSON
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Routine Semantics}
+\noindent Settings():
+\begin{itemize}
+	\item transition: Page rendered displaying current User Settings values
+	\item output: $out := self$
+	\item exception: None
+\end{itemize}
+\noindent getData():
+\begin{itemize}
+	\item transition: Get currently stored user settings from the backend, 
+	$usersettings :=$ response
+	\item exception: ($responseData ==$ error) $\Rightarrow$ BadResponseError
 \end{itemize}
 \subsubsection{Local Functions}
 None
@@ -356,36 +556,52 @@ ImageUpload, TextUpload, VoiceUpload
 UploadContainer = ?
 \subsubsection{Exported Access Programs}
 \begin{center}
-	\begin{tabular}{p{3cm} p{5cm} p{5cm} p{2cm}}
+	\begin{tabular}{p{3cm} p{3cm} p{5cm} p{2cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
-		UploadContainer & $\mathbb{Z}$ & UploadContainer & - \\
+		UploadContainer & $\mathbb{N}$ & UploadContainer & - \\
+		selectComponent & - & ImageUpload $\lor$ VoiceUpload $\lor$ TextUpload 
+		&-\\
 		\hline
 	\end{tabular}
 \end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
-None
+$displayedUpload:\mathbb{N}$
 \subsubsection{Environment Variables}
 None
 \subsubsection{Assumptions}
 None
 \subsubsection{Access Routine Semantics}
-None
+\noindent UploadContainer():
+\begin{itemize}
+	\item transition: Component renders one of either ImageUpload, TextUpload, 
+	or VoiceUpload
+	\item output: $out := self$
+	\item exception: None
+\end{itemize}
+
+\noindent selectComponent():
+\begin{itemize}
+	\item output: if $displayedUpload == 0: out := $ ImageUpload, if 
+	$displayedUpload == 1: out := $ VoiceUpload, if $displayedUpload == 2: out 
+	:= $ TextUpload
+	\item exception: None
+\end{itemize}
 \subsubsection{Local Functions}
 None
 
 \newpage
 
-\section{Image Upload Module} \label{ImageUpload} 
+\section{MIS of Image Upload Module} \label{ImageUpload} 
 \subsection{Module}
 ImageUpload
 \subsection{Uses}
-None
+N/A
 \subsection{Syntax}
 \subsubsection{Exported Types}
-ImageUpload
+ImageUpload =?
 \subsubsection{Exported Access Programs}
 \begin{center}
 	\begin{tabular}{p{3cm} p{4cm} p{4cm} p{3cm}}
@@ -439,7 +655,7 @@ getData():
 
 \newpage
 
-\section{Text Upload Module} \label{TextUpload}
+\section{MIS of Text Upload Module} \label{TextUpload}
 \subsection{Module}
 TextUpload
 \subsection{Uses}
@@ -500,7 +716,7 @@ None
 
 \newpage
 
-\section{Voice Upload Module} \label{VoiceUpload} 
+\section{MIS of Voice Upload Module} \label{VoiceUpload} 
 \subsection{Module}
 VoiceUpload
 \subsection{Uses}
@@ -561,7 +777,7 @@ None
 
 \newpage
 
-\section{Navigation Bar Module} \label{Navbar}
+\section{MIS of Navigation Bar Module} \label{Navbar}
 \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
 \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
 \subsection{Module}
@@ -766,13 +982,13 @@ None
 \subsection{Module}
 ProfileData
 \subsection{Uses}
-os, datetime
+os, datetime InputPreProcess, NutritionalData
 \subsection{Syntax}
 \subsubsection{Exported Constants}
 None
 \subsubsection{Exported Access Programs}
 \begin{center}
-	\begin{tabular}{p{6.2cm} p{5cm} p{2.5cm} p{2cm}}
+	\begin{tabular}{p{6.2cm} p{3.7cm} p{2.5cm} p{2cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
@@ -780,11 +996,19 @@ None
 		logData & JSON  & - & - \\
 		calculateTotalNutrients & JSON  & seq of String & - \\
 		readFile & -  & seq of JSON & - \\
+		deleteEntry & $\mathbb{N}$ &- &- \\
 		readFileAsJson & -  & JSON & - \\
+		toMetricWeight & ($\mathbb{R}$, String) &- &-\\
+		toMetricHeight & ($\mathbb{R}$, $\mathbb{R}$, $\mathbb{R}$,  String) &- 
+		&-\\
+		readUserSettings &- & JSON &-\\
+		updateUserSettings & JSON & - &-\\
 		totalCaloriesPerDay & Date  & $\mathbb{R}$ & - \\
 		totalFoodsPerDay & Date  & $\mathbb{Z}$ & - \\
 		totalCaloriesPerDaySummaryList & -  & seq of JSON & - \\
-		mostEatenFood & -  & $\mathbb{R}$ & - \\
+		mostEatenFood & -  & String & - \\
+		calculateBmi &- & $\mathbb{R}$ &-\\
+		calculateRecommendedCalories &- & $\mathbb{R}$ &-\\
 		\hline
 	\end{tabular}
 \end{center}
@@ -798,7 +1022,7 @@ None
 \subsubsection{Access Routine Semantics}
 \noindent logData(foodData):
 \begin{itemize}
-	\item transition: $nutritionLog += csvRow : String$ 
+	\item transition: Adds an additional row, foodData to the csv file 
 	\item exception: None
 \end{itemize}
 \noindent calculateTotalNutrients(foodData):
@@ -815,6 +1039,12 @@ None
 	\item output: $out :=$ seq of Row: String 
 	\item exception: None
 \end{itemize}
+\noindent deleteEntry(index):
+\begin{itemize}
+	\item transition: Saves csv file as the previous csv file, without the 
+	index-th row
+	\item exception: None
+\end{itemize}
 \noindent readFileAsJson():
 \begin{itemize}
 	\item output: $out := $\{timeStamp: String, foodName : String, calories: 
@@ -823,6 +1053,30 @@ None
 	$\mathbb{R}$, sodium: $\mathbb{R}$, totalCarbohydrate: $\mathbb{R}$, 
 	dietaryFibre: $\mathbb{R}$, sugars: $\mathbb{R}$, protein: $\mathbb{R}$, 
 	potassium: $\mathbb{R}$\} 
+	\item exception: None
+\end{itemize}
+\noindent toMetricWeight(weight, weightUnit):
+\begin{itemize}
+	\item out: if $weightUnit == $"lbs", $:= weight \times 0.45359237$; else 
+	$:= weight$
+	\item exception: None
+\end{itemize}
+\noindent toMetricHeight(heightCm, heightFT, heightInches, heightUnit):
+\begin{itemize}
+	\item out: out: if $heightUnit == $"ft", $:= heightFt \times 30.48 + 
+	heightInches \times 2.54$; else $:= heightCm$
+	\item exception: None
+\end{itemize}
+\noindent readUserSettings():
+\begin{itemize}
+	\item out: if user settings file exists an is not empty: return it, else: 
+	return 0
+	\item exception: None
+\end{itemize}
+\noindent updateUserSettings(changedVal):
+\begin{itemize}
+	\item transition: ($\forall$ field $\in$ changedVal $\cdot$ if field 
+	$\lnot$ empty: readUserSettings.field $:=$ changedVal.field)
 	\item exception: None
 \end{itemize}
 \noindent totalCaloriesPerDay(day):
@@ -843,6 +1097,20 @@ None
 \noindent mostEatenFood():
 \begin{itemize}
 	\item output: $out := mode(\text{seq of foods})$ 
+	\item exception: None
+\end{itemize}
+\noindent calculateBMI():
+\begin{itemize}
+	\item output: $data :=$ readUserSettings(),\\
+	$out:=$ toMetricWeight($data$.weight, $data.$weightUnit)/ 
+	(toMetricHeight($data$.heightCm, $data$.heightFT, $data$.heightInches, 
+	$data.$heightUnit)$/100)^2$
+	\item exception: None
+\end{itemize}
+\noindent calculateRecommendedCalories():
+\begin{itemize}
+	\item output: $out :=$ calories as a function of weight, height, age, 
+	birthSex and activityLevel.
 	\item exception: None
 \end{itemize}
 
