@@ -691,8 +691,8 @@ BMI related data displayed & Profile data (in) / BMI data (out)                 
 	\item Utrition will return an error message when the user uploads more than one image at a time. \\
 	\textbf{Rationale:}  Utrition should not crash by improper user 
 	input. Users should have an opportunity to upload one image to the system.\\	
-	\textbf{Fit Criteria:} Error message should prompt user upon upload of more than 3 
-	images.
+	\textbf{Fit Criteria:} Error message should prompt user upon upload of more than 1 
+	image.
 	
 	\item Utrition will prompt the user if food identification cannot 
 	be completed successfully. The user will be notified on the type of error 
@@ -774,9 +774,9 @@ BMI related data displayed & Profile data (in) / BMI data (out)                 
 \subsubsection{Capacity Requirements}
 
 \begin{enumerate}[{PR}17. ] 
-	\item Utrition will allow 3 images to be uploaded as a group.\\
-	\textbf{Rationale:} The user will have to wait too long for the calculated results if more than 3 images are uploaded at once. \\
-	\textbf{Fit Criteria:} The system will not allow more than 3 photos to be uploaded at once.
+	\item Utrition will allow 1 image to be uploaded as a time.\\
+	\textbf{Rationale:} The user will have to wait too long for the calculated results if more than 1 image is uploaded at once. \\
+	\textbf{Fit Criteria:} The system will not allow more than 1 photo to be uploaded at once.
 \end{enumerate}
 
 \subsubsection{Scalability or Extensibility Requirements}
@@ -1064,13 +1064,11 @@ offline.
 
 \section{Traceability Matrix}
 This section has been added to the Volere template. The traceability matrix below illustrates the relation between functional and non-functional requirements.
-
 \begin{landscape}
 \begin{table}[H]
-
 \centering
 	\label{Table:A_trace}
-	\scalebox{0.6}{
+	\scalebox{0.55}{
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
    &FR1& FR2&FR3&FR4&FR5&FR6&FR7&FR8&FR9&FR10&FR11&FR12&FR13&FR14&FR15&FR16&FR17&FR18&FR19&FR20&FR21&FR22&FR23&FR24&FR25&FR26\\ \hline
@@ -1090,6 +1088,16 @@ PR6& x& x& x& x& x& & x& x& x&&&&&&x&&&&&&x&&&&x&x\\ \hline
 PR7& & x& & & & & & &&&&&&x&&&x&&&&x&&&&&x \\ \hline
 PR8& & & & & & & & & &&&&&&&&&&x&&&&&&&\\ \hline
 PR9& & & & & & & & &&&&&&x&&&x&&&&&&&&&\\ \hline
+PR10& & & x&x& & x& x& &&&&&&x&&&x&&&&&&&&&\\ \hline
+PR11& & & & & & & & &&&&&&x&&&x&&&&&&&&&\\ \hline
+PR12& & & & & & x&x & &&&&&&&x&x&x&x&x&&&&&&&\\ \hline
+PR13& & & & & & & & &&&&&&&&x&x&x&x&&&&&&&\\ \hline
+PR14& &x & & & & & & &&&&&&x&&&x&&&&&&&&&\\ \hline
+PR15& & & x& & & & & &&&&&&x&&&x&&&&&&&&&\\ \hline
+PR16& & & & & & & & &&&&&&&&&&&x&&&&&&&\\ \hline
+PR17& x& & & & & & & &&&&&&&&&&&&&&&&&&\\ \hline
+PR18& & & & & & & & &&&&&&&&&&&&&&&&&&\\ \hline
+PR19& & & & & & & & &&&&&&&&&&&&&&&&&&\\ \hline
 OE1& & & & & & & & &&&&&&&&&&&&&&&&x&&\\ \hline
 OE2& & & & & & & & &&&&&&&&&&&x&&&&&&&\\ \hline
 OE3& & & & & & & & &&&&&&&x&&&&&&&x&&&&\\ \hline
