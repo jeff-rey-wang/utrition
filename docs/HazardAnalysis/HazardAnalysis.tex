@@ -55,7 +55,8 @@
 		\toprule
 		\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 		\midrule
-		\today & All & Initial Version\\
+		October 19, 2022 & All & Initial Version\\
+		April 4, 2023 & All & Revision 1 Changes\\
 		\bottomrule
 	\end{tabularx}
 \end{table}
@@ -82,10 +83,19 @@ mention recommended actions to mitigate and circumvent hazards encountered
 while using the system.
 
 \section{Scope and Purpose of Hazard Analysis}
-The purpose of conducting a hazard analysis is to document the system conditions, that along with conditions in the environment, can cause harm or damage. Documentation for how to control or mitigate these conditions will also be included. The scope of this hazard analysis will span from the time the user inputs an image into Utrition to the time when the nutritional data results of their image are displayed, including the pre-processing, processing, API request, and data representation steps.
+The purpose of conducting a hazard analysis is to document the system conditions, that along with conditions in the environment, can cause harm or damage. Documentation for how to control or mitigate these conditions will also be included. The scope of this hazard analysis will span from the time the user inputs a food item into Utrition to the time when the nutritional data results of their input are displayed, including the pre-processing, processing, API request, and data representation steps.
 
 \section{System Boundaries and Components}
-The system boundaries for this hazard analysis will include the device that the application is installed on as well as the components of the application itself. These components consist of image upload, image pre-processing, image processing \& identification, API request calling, data logging, data log access, and data display components.
+The system boundaries for this hazard analysis will include the device that the application is installed on as well as the components of the application itself. These components consist of text upload, voice upload, voice-to-text translation, image upload, image pre-processing, image processing \& identification, API request calling, data logging, data log access, user settings saving, user settings access, data calculations, and data display components.
+
+\subsection{Text Upload}
+This component allows an textual input to be uploaded by the user and relayed to the API request calling component.
+
+\subsection{Voice Upload}
+This component allows an audio recording to be uploaded by the user and relayed to the voice-to-text translation component.
+
+\subsection{Voice-to-Text Translation}
+This component an audio recording and converts it to text. This text is relayed to the API request calling component.
 
 \subsection{Image Upload}
 This component allows an image to be uploaded by the user and relayed to the pre-processing component.
@@ -104,6 +114,15 @@ This component logs past uses of the application by the identified food and the 
 
 \subsection{Data Log Access}
 This component returns the recorded logs of past uses of the application. These logs include past food items consumed by the user.
+
+\subsection{User Settings Saving}
+This component will save user settings that are relevant for BMI and recommended calories calculations.
+
+\subsection{User Settings Access}
+This component returns the saved user settings which can be used in required calculations.
+
+\subsection{Data Calculations}
+This component calculates all the required values needed when displaying the user's data. This includes calories consumed per day, BMI, and recommended calories. 
 
 \subsection{Data Display}
 This component displays data visually for the user to see, either in textual or graphical formats.
@@ -136,17 +155,18 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 		\multicolumn{8}{|l|}{Subsystem: N/A}\\
 		\multicolumn{8}{|l|}{Phase/Mode: System Requirements}\\\hline
 		\textbf{Design Function} & \textbf{Failure Modes} & \textbf{Causes of Failure} & \textbf{Effects of Failure} & \textbf{Detection} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
-		Image Upload & Image of incorrect type inputted & Users attempt to upload a file of an unsupported type & No image uploaded & Upload error will occur & Provide error message that informs the user that only file types of type .png, .jpg, and .jpeg can be uploaded & SR1 & H1-1 \\ \cline{2-8}
-		& Image size inputted is too large & Image file from user is too large to be uploaded and stored & Same as H1-1 & Same as H1-1 & Provide error message that inputted file is too large & SR2 & H1-2\\ \cline{2-8}
-		& User tries to upload more than 3 images at once & User attempts to upload more than 3 images & Same as H1-1 & Same as H1-1 & Provide error message saying up to 3 photos can be uploaded at once & SR3 & H1-3\\ \hline
-		Image Processing \& Identification & Food from image is incorrectly identified & a. Poor image quality & a. System will process the incorrectly identified food item & a. User will file a report to the development team with the image that was incorrectly identified & a. If the machine learning model is not confident in result, the system will suggest the user upload another image & SR4 & \multirow{3}{*} {H2-1} \\ 
-		& & b. Machine learning model has not been trained to identify inputted food item & b. Same as H2-1a & b. Same as H2-1a & b. Same as H2-1a & & \\
-		& & c. Machine learning model accuracy is low & c. Same as H2-1 & c. Same as H2-1a & c. Same as H2-1 & & \\ \cline{2-8}
-		& No food is identified in the image & Same as H2-1 & No food item will 
-		be identified and the system will not be able to proceed & The food 
-		identification machine learning process will return an error to the 
-		system & Display error message detailing that system could not identify 
-		a food item in the uploaded image & SR4 & H2-2\\ \hline
+		
+		Text Upload & Text is uploaded with no food items & Users upload text that does not contain any food items & No nutritional data output & NULL response from API call & Provide error message that informs the user that their text did not contain any food items & SR1 & H1-1 \\ \hline
+		
+		Voice Upload & Unable to identify speech & User's surroundings are too loud for device to identify speech & No audio detected & None  & Provide feedback on what system has identified & SR2 & H2-1\\ \cline{2-8}
+		& Audio is uploaded with no food items & Users upload audio (i.e. speech) that does not contain any food items & Same as H1-1 & Same as H1-1 & Provide error message that informs the user that their audio did not contain any food items & SR3 & H2-2 \\ \hline
+		
+		Voice-to-Text Translation & Unable to translate sounds into text & User's audio input contained sounds that did not correlate to words & No voice-to-text input created & Same as H2-1  & Same as H2-1 & SR2 & H3-1\\ \cline{2-8}
+		& Speech is translated to wrong words & System identifies user's speech to be different from what was actually said & Incorrect text generated & Same as H2-1 & Same as H2-1 & SR2  & H3-2 \\ \hline
+		
+		Image Upload & Image of incorrect type inputted & Users attempt to upload a file of an unsupported type & No image uploaded & Upload error will occur & Provide error message that informs the user that only file types of type .png, .jpg, and .jpeg can be uploaded & SR4 & H4-1 \\ \cline{2-8}
+		& Image size inputted is too large & Image file from user is too large to be uploaded and stored & Same as H4-1 & Same as H4-1 & Provide error message that inputted file is too large & SR5 & H4-2\\ \cline{2-8}
+		& User tries to upload more than 1 image at once & User attempts to upload more than 1 image & Same as H4-1 & Same as H4-1 & Only allow the user to select one file from their device to upload & SR6 & H4-3\\ \hline
 
 	\end{tabular}
 }
@@ -154,6 +174,37 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 	\caption{FMEA Table Part 1}
 	\label{FMEAPart1}
 \end{table}
+\end{landscape}
+
+\begin{landscape}
+	
+	\begin{table}[ht]
+		\centering
+		
+		\makebox[\linewidth]{
+			\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|p{1cm}|}
+				\multicolumn{8}{c}{}\\
+				\hline
+				\multicolumn{8}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
+				\multicolumn{8}{|l|}{System: Utrition}\\
+				\multicolumn{8}{|l|}{Subsystem: N/A}\\
+				\multicolumn{8}{|l|}{Phase/Mode: System Requirements}\\\hline
+				\textbf{Design Function} & \textbf{Failure Modes} & \textbf{Causes of Failure} & \textbf{Effects of Failure} & \textbf{Detection} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
+
+				Image Processing \& Identification & Food from image is incorrectly identified & a. Poor image quality & a. System will process the incorrectly identified food item & a. User will file a report to the development team with the image that was incorrectly identified & a. If the machine learning model is not confident in result, the system will suggest the user upload another image & SR7 & \multirow{3}{*} {H5-1} \\ 
+				& & b. Machine learning model has not been trained to identify inputted food item & b. Same as H5-1a & b. Same as H5-1a & b. Same as H5-1a & & \\
+				& & c. Machine learning model accuracy is low & c. Same as H5-1a & c. Same as H5-1a & c. Same as H5-1a & & \\ \cline{2-8}
+				& No food is identified in the image & Same as H5-1 & No food item will 
+				be identified and the system will not be able to proceed & The food 
+				identification machine learning process will return an error to the 
+				system & Display error message detailing that system could not identify 
+				a food item in the uploaded image & SR7 & H5-2\\ \hline
+				\end{tabular}
+				}
+				
+	\caption{FMEA Table Part 2}
+	\label{FMEAPart2}
+	\end{table}
 \end{landscape}
 
 \begin{landscape}
@@ -170,34 +221,28 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 				\multicolumn{8}{|l|}{Subsystem: N/A}\\
 				\multicolumn{8}{|l|}{Phase/Mode: System Requirements}\\\hline
 				\textbf{Design Function} & \textbf{Failure Modes}& \textbf{Causes of Failure} & \textbf{Effects of Failure} & \textbf{Detection} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
-				API Request Calling & API call fails unexpectedly & a. Internet connection error & a. System will not return nutritional data for a food item & a. The API response will be verified by the system. The system will detect if the response is an error & a. Display error message detailing a system error due to poor internet connection & SR5 & \multirow{2}{*} {H3-1} \\ 
-				& & b. Too many requests sent to API causing throttling limit to be reached & b. Same as H3-1a & b. Same as H3-1a & b. Display error message detailing a system error due to too many requests being sent & & \\ \cline{2-8}
+				API Request Calling & API call fails unexpectedly & a. Internet connection error & a. System will not return nutritional data for a food item & a. The API response will be verified by the system. The system will detect if the response is an error & a. Display error message detailing a system error due to poor internet connection & SR8 & \multirow{3}{*} {H6-1} \\ 
+				& & b. Too many requests sent to API causing throttling limit to be reached & b. Same as H6-1a & b. Same as H6-1a & b. Display error message detailing a system error due to too many requests being sent & & \\
+				& & c. API outage is in progress & c. Same as H6-1a & c. Same as H6-1a & c. Display error message detailing a system error due to inability to obtain food information & & \\ \cline{2-8}
 				& API does not contain nutrition facts for a food item & Food 
-				item is not found in API database & Same as H3-1a & The API 
+				item is not found in API database & Same as H6-1a & The API 
 				response will be verified by the system and will detect if the 
 				response is empty & Display error message detailing that the 
-				food data could not be fetched & SR6 & H3-2\\ \hline
-				Data Log Access & Nutritional data is unavailable & Nutritional 
-				data has not been put in the database for that particular input 
-				yet & System will not output any nutritional information  & 
-				Database will return no result for past nutritional data & 
-				Display error message explaining that this nutritional data has 
-				not yet been added to the database & SR7 & H4-1 \\ \cline{2-8}
-				& Nutritional data is deleted unintentionally & Accidental 
-				error of database deleting necessary data & Same as H4-1 & Same 
-				as H4-1 & Display error message explaining that this 
-				nutritional data has been deleted & SR8 & H4-2\\ \cline{2-8}
+				food data could not be fetched & SR9 & H6-2\\ \hline
+				Data Log Access & User past data is unavailable & There are no entries of past food inputs given by the user & System will not output any past input data  & 
+				No result will be returned for past food inputs & 
+				Display error message explaining that there are no past food inputs & SR10 & H7-1 \\ \cline{2-8}
 				& User past data is deleted & a. The data was not successfully 
-				stored within the data base & a. System will not output any of 
+				stored within the CSV file & a. System will not output any of 
 				the user's information & a. Nothing will be output after user 
 				requests past data & a. Display error message saying that the 
-				user's past data has been deleted & SR8 & H4-3\\ 
-				& & b. The user's past data was deleted unintentionally & b. Same as H4-3a & b. Same as H4-3a & b. Same as H4-3a & &\\\hline
+				user's past data has been deleted & SR11 & H7-2\\ 
+				& & b. The user's past data was deleted unintentionally & b. Same as H7-2a & b. Same as H7-2a & b. Same as H7-2a & &\\\hline
 			\end{tabular}
 		}
 		
-		\caption{FMEA Table Part 2}
-		\label{FMEAPart2}
+		\caption{FMEA Table Part 3}
+		\label{FMEAPart3}
 	\end{table}
 \end{landscape}
 
@@ -215,50 +260,96 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 				\multicolumn{8}{|l|}{Subsystem: N/A}\\
 				\multicolumn{8}{|l|}{Phase/Mode: System Requirements}\\\hline
 				\textbf{Design Function} & \textbf{Failure Modes}  & \textbf{Causes of Failure} & \textbf{Effects of Failure} & \textbf{Detection} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
-				Data Display & Graph cannot be generated  & Not enough past 
-				information from user  & No graph is displayed to the user & 
-				There is no information available in user's past data & Display 
+				User Settings Access & User settings are unavailable & a. The settings were not successfully 
+				stored within the JSON file & a. System will output NULL values for all settings & a. Requested user settings does not return anything & a. Display NULL values in settings so the user knows that they need to resubmit their settings & SR12 & H8-1\\ 
+				& & b. The user's past data was deleted unintentionally & b. Same as H8-1a & b. Same as H8-1a & b. Same as H8-1a & &\\\hline
+				
+				Data Calculations & Calculations are incorrect & a. No past food item data exists for the required calculations & a. System will output NULL values for required calculation & a. Access past food input data will return NULL & a. Do not display output for calculation & SR13 & H9-1\\ 
+				& & b. No user settings exist for the required calculations & b. Same as H9-1a & b. Access user settings will return NULL & b. Same as H9-1a & &\\\hline
+				 
+				Data Display & Graph cannot be generated  & a. Not enough past 
+				information from user  & a. No graph is displayed to the user & 
+				a. There is no information available in user's past data & a. Display 
 				error message stating there is not enough data to create the 
-				graph & SR9 & H5-1 \\ \hline
-				General System & Device loses internet connection & a. Internet 
-				connection used by device is too weak & a. Unable to access 
-				nutrition facts for food items & a. API calls will fail & a. 
-				Display error message that informs the user that they must be 
-				connected to an internet connection to use the system & SR10 & 
-				H6-1 \\
-				& & b. Internet shutdown on connected network & b. Same as H6-1a & b. Same as H6-1a & b. Same as H6-1a & &\\ \cline{2-8}
-				& System closes unexpectedly & a. Host device shuts down (loses 
-				power) & a. Loss of recently inputted data & a. Device screen 
-				will turn black & a. System should save data with each new 
-				input to minimize lost data & SR11 & \multirow{2}{*}{H6-2}\\
-				& & b. Internal error occurs & b. Same as H6-2a & b. Application will become unresponsive & b. Same as H6-2a & &\\ \hline
+				graph & SR14 & H10-1 \\
+				& & b. Graphing code package fails to create graph image & b. Same as H10-1a & b. Image file is not created & b. Display error message that graph image failed to be created & &\\\cline{2-8}
+				& Past data cannot be displayed & No past food item data exists & System will output NULL values for data value & Access past food input data will return NULL & Do not display output for past data & SR15 & H10-2\\ \hline
 				
 			\end{tabular}
 		}
 		
-		\caption{FMEA Table Part 3}
-		\label{FMEAPart3}
+		\caption{FMEA Table Part 4}
+		\label{FMEAPart4}
+	\end{table}
+\end{landscape}
+
+\begin{landscape}
+	
+	\begin{table}[ht]
+		\centering
+		
+		\makebox[\linewidth]{
+			\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|p{1cm}|}
+				\multicolumn{8}{c}{}\\
+				\hline
+				\multicolumn{8}{|c|}{\textbf{Failure Mode and Effects Analysis}}\\
+				\multicolumn{8}{|l|}{System: Utrition}\\
+				\multicolumn{8}{|l|}{Subsystem: N/A}\\
+				\multicolumn{8}{|l|}{Phase/Mode: System Requirements}\\\hline
+				\textbf{Design Function} & \textbf{Failure Modes}  & \textbf{Causes of Failure} & \textbf{Effects of Failure} & \textbf{Detection} & \textbf{Recommended Actions} & \textbf{SR} & \textbf{Ref} \\ \hline
+				General System & Device loses internet connection & a. Internet 
+				connection used by device is too weak & a. Unable to access 
+				nutrition facts for food items & a. API calls will fail & a. 
+				Display error message that informs the user that they must be 
+				connected to an internet connection to use the system & SR16 & 
+				H11-1 \\
+				& & b. Internet shutdown on connected network & b. Same as H11-1a & b. Same as H11-1a & b. Same as H11-1a & &\\ \cline{2-8}
+				& System closes unexpectedly & a. Host device shuts down (loses 
+				power) & a. Loss of recently inputted data & a. Device screen 
+				will turn black & a. System should save data with each new 
+				input to minimize lost data & SR17 & \multirow{2}{*}{H11-2}\\
+				& & b. Internal error occurs & b. Same as H11-2a & b. Application will become unresponsive & b. Same as H11-2a & &\\ \hline
+				
+				\end{tabular}
+				}
+				
+	\caption{FMEA Table Part 5}
+	\label{FMEAPart5}
 	\end{table}
 \end{landscape}
 
 \section{Safety and Security Requirements}
 \subsection{Safety Requirements}
 \begin{enumerate}[{SR}1.]
+	\item Utrition will return an error message when the user uploads text that does not contain any food items. \\
+	\textbf{Rationale:}  Utrition should not crash by improper user 
+	input. Users should have an opportunity to upload new text.\\	
+	\textbf{Associated Hazards:} H1-1.
+	
+	\item Utrition will provide the user with constant feedback regarding what the system could pick up from audio input. \\
+	\textbf{Rationale:}  Utrition should notify the user if their audio input cannot be deciphered or has been deciphered incorrectly.\\	
+	\textbf{Associated Hazards:} H2-1, H3-1, H3-2.
+	
+	\item Utrition will return an error message when the user uploads audio that does not contain any food items. \\
+	\textbf{Rationale:}  Utrition should not crash by improper user 
+	input. Users should have an opportunity to upload new audio.\\	
+	\textbf{Associated Hazards:} H2-2.
+	
 	\item Utrition will return an error message when the user uploads an abnormal 
 	image format that is not .png, .jpg, or .jpeg. \\
 	\textbf{Rationale:}  Utrition should not crash by improper user 
 	input. Users should have an opportunity to upload a new file of an appropriate format.\\	
-	\textbf{Associated Hazards:} H1-1.
+	\textbf{Associated Hazards:} H4-1.
 	
 	\item Utrition will return an error message when the user uploads an image file that exceeds the maximum size. \\
 	\textbf{Rationale:}  Utrition should not crash by improper user 
 	input. Users should have an opportunity to upload a new file of an appropriate size.\\	
-	\textbf{Associated Hazards:} H1-2.
+	\textbf{Associated Hazards:} H4-2.
 	
 	\item Utrition will return an error message when the user uploads more than three images at once. \\
 	\textbf{Rationale:}  Utrition should not crash by improper user 
 	input. Users should have an opportunity to upload three or fewer images to the system.\\	
-	\textbf{Associated Hazards:} H1-3.
+	\textbf{Associated Hazards:} H4-3.
 	
 	\item Utrition will prompt the user if food identification cannot 
 	be completed successfully. The user will be notified on the type of error 
@@ -266,32 +357,40 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 	\textbf{Rationale:}  Food identification may fail due to a variety of 
 	reasons, and the user should be notified so they may attempt to find a  
 	workaround for the issue. \\	
-	\textbf{Associated Hazards:} H2-1. H2-2.
+	\textbf{Associated Hazards:} H5-1. H5-2.
 	
 	\item Utrition will return an error message if the request to retrieve 
 	nutritional information cannot be completed successfully. \\
 	\textbf{Rationale:}  Information retrieval requests may fail due to a 
 	variety of reasons, and the user should be notified of the reason why the 
 	service could not be completed as expected.\\	
-	\textbf{Associated Hazards:} H3-1.
+	\textbf{Associated Hazards:} H6-1.
 	
 	\item Utrition will return an error message if the nutritional information 
 	of a specific item cannot be found.\\
 	\textbf{Rationale:}  The user should be notified if the nutritional data of 
 	their food item cannot be fetched.\\
-	\textbf{Associated Hazards:} H3-2.
+	\textbf{Associated Hazards:} H6-2.
 	
-	\item Utrition will return an error message if the user's part nutritional 
+	\item Utrition will return an error message if the user's past nutritional 
 	logs cannot be found.\\
 	\textbf{Rationale:}  The user should be notified if their nutritional data 
 	of past meals cannot be found.\\
-	\textbf{Associated Hazards:} H4-1.
+	\textbf{Associated Hazards:} H7-1.
 	
-	\item Utrition will return an error message if the user's part nutritional 
+	\item Utrition will return an error message if the user's past nutritional 
 	logs have been deleted.\\
 	\textbf{Rationale:}  The user should be notified if their nutritional data 
 	of past meals are no longer saved in the system.\\
-	\textbf{Associated Hazards:} H4-2, H4-3.
+	\textbf{Associated Hazards:} H7-2.
+
+	\item Utrition will return NULL values if the user's settings cannot be found.\\
+	\textbf{Rationale:}  The user should be notified if their settings cannot be found.\\
+	\textbf{Associated Hazards:} H8-1.
+	
+	\item Utrition will not display data calculations if there is no past food item inputs or user settings.\\
+	\textbf{Rationale:}  The user will see that there is no data to do calculations for.\\
+	\textbf{Associated Hazards:} H9-1.
 	
 	\item Utrition will prompt the user if past nutritional trends cannot
 	be displayed successfully. The user will be notified on the type of error 
@@ -299,25 +398,29 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 	\textbf{Rationale:}  Failure to display past nutritional trends may fail 
 	due to a variety of reasons. The user should be made aware of the issue, 
 	and the underlying cause behind it.\\	
-	\textbf{Associated Hazards:} H5-1.
+	\textbf{Associated Hazards:} H10-1.
+	
+	\item Utrition will not display data if there is no past food item inputs or user settings.\\
+	\textbf{Rationale:}  The user will see that there is no data to be displayed.\\
+	\textbf{Associated Hazards:} H10-2.
 	
 	\item Utrition will prompt the user if their device is not connected to the 
 	internet when attempting to access the system. \\
 	\textbf{Rationale:}  The user should be notified if they are unable to 
 	connect to the system so they may apply a fix to the issue. \\	
-	\textbf{Associated Hazards:} H6-1.
+	\textbf{Associated Hazards:} H11-1.
 \end{enumerate}
 
 \subsection{Security Requirements}
 \begin{enumerate}[{SR}1.] 
-	\setcounter{enumi}{10}
+	\setcounter{enumi}{16}
 	
 	\item Utrition will periodically save user’s data during use. \\
 	\textbf{Rationale:} In the event of unexpected shutdown, the user should 
 	not lose all information from the last session. Periodically saving user 
 	information will allow users to continue from their last step in the event 
 	of an unexpected shutdown. \\	
-	\textbf{Associated Hazards:} H6-2.
+	\textbf{Associated Hazards:} H11-2.
 \end{enumerate}
 
 \section{Roadmap}
@@ -326,6 +429,6 @@ In this Hazard Analysis, two assumptions are made. Firstly, the user will not be
 timeline?
 	Which requirements will be implemented in the future?}
 
-Durum Wheat Semolina is planning to implement SR1-SR10 during Utrition's capstone timeline. The safety requirements (SR1-SR10) are easy to implement and do not provide much strain to the system. They exist to guide the user through Utrition, and to aid Utrition in being an easy-to-understand application. SR11 is not required to allow the user to use Utrition. The cost of implementing and utilizing SR11 is high with the reward being low. Therefore, the implementation of this requirement, during Utrition's capstone timeline, cannot be prioritized.
+Durum Wheat Semolina is planning to implement SR1-SR17 during Utrition's capstone timeline. All requirements are easy to implement and do not provide much strain to the system. They exist to guide the user through Utrition, and to aid Utrition in being an easy-to-understand application.
 	
 \end{document}

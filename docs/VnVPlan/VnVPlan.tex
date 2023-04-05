@@ -433,7 +433,7 @@
 		
 		\item{log-data-read-data-1\\}
 		
-		Control: Functional and Automatic.
+		Control: Functional, Unit and Automatic.
 		
 		Initial State: The system contains a list of one object of sample JSON data.
 		
@@ -459,7 +459,7 @@
 		
 		\item{current-nutrition-1\\}
 		
-		Control: Functional, Dynamic, and Automatic
+		Control: Functional, Dynamic, Unit, and Automatic
 		
 		Initial State: Image(s) exists in system
 		
@@ -479,7 +479,7 @@
 		
 		\item{past-nutrition-text-read-data-2\\}
 		
-		Control: Functional, Dynamic, and Automatic
+		Control: Functional, Dynamic, Unit, and Automatic
 		
 		Initial State: Logged foods exist in system
 		
@@ -487,7 +487,7 @@
 		
 		Output: The nutritional data of past logged foods in a textual format
 		
-		Test Case Derivation: The system will keep a record of all analysed foods for the user, allowing the user to request to see the nutritional data of their past uploads. This data can be displayed in a human readable textual format.
+		Test Case Derivation: The system will keep a record of all analyzed foods for the user, allowing the user to request to see the nutritional data of their past uploads. This data can be displayed in a human readable textual format.
 		
 		How test will be performed: The program will automatically test that a file of pre-logged foods can be processed to return their corresponding nutritional data as text.
 			
@@ -498,7 +498,7 @@
 	\begin{enumerate}
 		\item{display-elements-1\\}
 		
-		Control: Functional and Automatic.
+		Control: Functional, Unit and Automatic.
 		
 		Initial State: Tester will be located on a page of the Utrition application.
 		
@@ -512,7 +512,7 @@
 		
 		\item{correct-path-1\\}
 		
-		Control: Functional and Automatic.
+		Control: Functional, Unit and Automatic.
 		
 		Initial State: Tester will start on home page
 		
@@ -2152,12 +2152,16 @@
 		have a lower priority for verification than others.  If this is the 
 		case,
 		explain your rationale for the ranking of module importance.}
+		
+		We have decided to test anything that falls under the displaying of nutritional data and the response of the API as these are of a high priority then other modules in our software. Additionally for this project, the majority of testing for functional and nonfunctional requirements was conducted through manual testing. The developers conducted manual tests to measure how the system reacted to possible scenarios and interactions. Only modules of great importance have been selected to have additional unit tests. 
 	
 	\subsection{Tests for Functional Requirements}
 	
 	\wss{Subsets of the tests may be in related, so this section is divided into
 		different areas.  If there are no identifiable subsets for the tests, this
 		level of document structure can be removed.}
+		
+		The automated unit testing of specific core functions in the backend of the application can be seen in the Functional Requirements Evaluation of Nutritional Facts Display (3.4), and Call and Fetch API Response (3.5).
 	
 	\wss{Include a blurb here to explain why the subsections below
 		cover the requirements.  References to the SRS would be good.}
@@ -2180,8 +2184,39 @@
 	
 	\wss{These tests may involve collecting performance data from previously
 		mentioned functional tests.}
+		
+		There are no written unit tests for nonfunctional requirements as all testing done for the functional requirements have been done through different methods of testing. 
 	
 	\subsection{Traceability Between Test Cases and Modules}
+	
+	
+	\newpage
+	\begin{table}[H]
+	
+	\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4.5cm}|}
+
+	\hline
+	\textbf{Module \#} & \textbf{Name and Description}                                                                                                                                                                  & \textbf{Test ID(s)}                                                                                          \\ \hline
+	M8 M9 M10                     & Logging Data -  tests convertion from a list format to a JSON                                                                     
+	                                   &
+	 \begin{tabular}[c]{@{}l@{}}log-data-read-data-1\\ 
+		\end{tabular}                                        
+		                                                    \\
+		 \hline
+	M14                     & Nutritional Facts Display - tests the whole process of classifying an image and retrieving JSON                                                                       
+	                                                            &  
+	\begin{tabular}[c]{@{}l@{}}current-nutrition-1\\ 
+		\end{tabular}                                        
+		                                               \\ \hline
+	M8 M9 M10                     & Nutritional Facts Display - sample data is logged to a CSV file                                                                      
+	                                &
+	 \begin{tabular}[c]{@{}l@{}}past-nutrition-text-read-data-2\end{tabular}                       \\ \hline
+	M2 M3 M4 M11                     & Nutritional Facts Display - check for successful rendering of elements on page                                                                                                            & \begin{tabular}[c]{@{}l@{}}display-elements-1\end{tabular} \\ \hline
+	M11                     & Nutritional Facts Display - attempt to mock a user input event clicking onto the specified hyperlink area                                                                                                            & \begin{tabular}[c]{@{}l@{}}correct-path-1\end{tabular} \\ \hline
+	\end{tabular}
+	\caption {Traceability between Unit Tests and Modules}
+	\end{table}
+
 	
 	
 	\wss{Provide evidence that all of the modules have been considered.}
