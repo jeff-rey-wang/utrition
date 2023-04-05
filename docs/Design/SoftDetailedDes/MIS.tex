@@ -163,11 +163,11 @@ The following table is taken directly from the Module Guide document, \cite{MG},
 
 ~\newpage
 
-\section{Application Path Module} \label{App}
+\section{MIS of Application Path Module} \label{App}
 \subsection{Module}
 App
 \subsection{Uses}
-NavBar, Home, Upload, Profile
+NavBar, Home, Upload, Profile, BMI, Settings
 \subsection{Syntax}
 \subsubsection{Exported Constants}
 None
@@ -253,12 +253,13 @@ Upload = ?
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
 		Upload & - & Upload & - \\
+		changeDisplay & $\mathbb{N}$ & - & -\\
 		\hline
 	\end{tabular}
 \end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
-None
+$currentUpload$ : $\mathbb{N}$
 \subsubsection{Environment Variables}
 None
 \subsubsection{Assumptions}
@@ -266,9 +267,14 @@ None
 \subsubsection{Access Routine Semantics}
 \noindent Upload():
 \begin{itemize}
-	\item transition: Page rendered with components from ImageUpload, 
-	TextUpload, and VoiceUpload
+	\item transition: Page rendered with component from UploadContainer
 	\item output: $out := self$
+	\item exception: None
+\end{itemize}
+
+\noindent changeDisplay(selected):
+\begin{itemize}
+	\item transition: $currentUpload :=$ selected
 	\item exception: None
 \end{itemize}
 \subsubsection{Local Functions}
@@ -280,23 +286,37 @@ None
 \subsection{Module}
 Profile
 \subsection{Uses}
-NutritionLog
+NurtritionalData
 \subsection{Syntax}
 \subsubsection{Exported Types}
 Profile = ?
 \subsubsection{Exported Access Programs}
 \begin{center}
-	\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+	\begin{tabular}{p{4.7cm} p{4cm} p{4cm} p{3cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
 		Profile & - & Profile & - \\
+		handleExplanationClick & - & - & - \\
+		getData & - & - & BadResponseError\\
+		leftClickForward & - & - & - \\
+		leftClickBackward & - & - & -\\
+		rightClickForward & - & - & - \\
+		rightClickBackward & - & - & -\\
+		handleDeleteEntry & $\mathbb{N}$ & - & -\\
+		handleCancelDelete & - & - & -\\
+		handleConfirmDelete & - & - & -\\
+		renderConfirmationDialog & - & HTML & -\\
 		\hline
 	\end{tabular}
 \end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
-None
+$totalcal$ : JSON\\
+$showConfirmationDialog$ : Boolean\\
+$entryToDelete$ : $\mathbb{N}$\\
+$showTable$ : Boolean\\
+$isImageLoaded$ : Boolean
 \subsubsection{Environment Variables}
 None
 \subsubsection{Assumptions}
@@ -304,8 +324,61 @@ None
 \subsubsection{Access Routine Semantics}
 \noindent Profile():
 \begin{itemize}
-	\item transition: Page rendered with information from NutritionLog
+	\item transition: Page rendered with information from NutritionalData
 	\item output: $out := self$
+	\item exception: None
+\end{itemize}
+\noindent handleExplanationClick():
+\begin{itemize}
+	\item transition: $showTable := \lnot showTable$
+	\item exception: None
+\end{itemize}
+\noindent getData():
+\begin{itemize}
+	\item transition: Listen for response from backend, $totalcal := $ response	
+	\item exception: ($responseData ==$ error) $\Rightarrow$ BadResponseError
+\end{itemize}
+\noindent leftClickForward():
+\begin{itemize}
+	\item transition: $totalcal.index := totalcal.index + 4$
+	\item exception: None
+\end{itemize}
+\noindent leftClickBackward():
+\begin{itemize}
+	\item transition: $totalcal.index := totalcal.index - 4$
+	\item exception: None
+\end{itemize}
+\noindent rightClickForward():
+\begin{itemize}
+	\item transition: $totalcal.right_index := totalcal.right_index + 7$
+	\item exception: None
+\end{itemize}
+\noindent rightClickBackward():
+\begin{itemize}
+	\item transition: $totalcal.right_index := totalcal.right_index - 7$
+	\item exception: None
+\end{itemize}
+\noindent handleDeleteEntry(entry):
+\begin{itemize}
+	\item transition: $entryToDelete :=$ entry, $showConfirmationDialog :=$ true
+	\item exception: None
+\end{itemize}
+\noindent handleCancelDelete(entry):
+\begin{itemize}
+	\item transition: $entryToDelete :=$ null, $showConfirmationDialog :=$ false
+\item exception: None
+\end{itemize}
+\noindent handleConfirmDelete():
+\begin{itemize}
+	\item transition: Send deleted index to backend, wait for response, 
+	$totalcal :=$ response, $entryToDelete :=$ null, $showConfirmationDialog 
+	:=$ false
+	\item exception: ($responseData ==$ error) $\Rightarrow$ BadResponseError
+\end{itemize}
+\noindent renderConfirmationDialog():
+\begin{itemize}
+	\item transition: Confirmation Dialog is shown
+	\item output: $out :=$ Confirmation Dialog HTML
 	\item exception: None
 \end{itemize}
 \subsubsection{Local Functions}
@@ -315,37 +388,115 @@ None
 
 \section{MIS of BMI Page Module}
 \subsection{Module}
-Upload
+BMI
 \subsection{Uses}
-UploadContainer
+N/A
 \subsection{Syntax}
 \subsubsection{Exported Types}
-Upload = ?
+BMI = ?
 \subsubsection{Exported Access Programs}
 \begin{center}
-	\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+	\begin{tabular}{p{4.8cm} p{4cm} p{4cm} p{4cm}}
 		\hline
 		\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 		\hline
-		Upload & - & Upload & - \\
+		BMI & - & BMI & - \\
+		handleBirthSexChange & Event & - & -\\
+		handleWeightChange & Event & - & -\\
+		handleWeightUnitChange & Event & - & -\\
+		handleHeightCmChange & Event & - & -\\
+		handleHeightFeetChange & Event & - & -\\
+		handleHeightInchesChange & Event & - & -\\
+		handleHeightUnitChange & Event & - & -\\
+		handleAgeChange & Event & - & -\\
+		handleActivityLevelChange & Event & - & -\\
+		getData & - & - & BadResponseError\\
+		handleSubmit & Event & -&-\\ 
 		\hline
 	\end{tabular}
 \end{center}
 \subsection{Semantics}
 \subsubsection{State Variables}
-None
+$birthSex: $ String \\
+$weight: \mathbb{R}$ \\
+$weightUnit: $ String \\
+$heightCm: \mathbb{R} $ \\
+$heightFeet: \mathbb{R}$  \\
+$heightInches: \mathbb{R} $  \\
+$heightUnit: $ String \\
+$age: \mathbb{N}$ \\
+$activityLevel: $ String \\
+$errorMessage: $ String \\
 \subsubsection{Environment Variables}
 None
 \subsubsection{Assumptions}
 None
 \subsubsection{Access Routine Semantics}
-\noindent Upload():
+\noindent BMI():
 \begin{itemize}
-	\item transition: Page rendered with components from ImageUpload, 
-	TextUpload, and VoiceUpload
+	\item transition: Page rendered with components relevant to editing user 
+	settings
 	\item output: $out := self$
 	\item exception: None
 \end{itemize}
+\noindent handleBirthSexChange(e):
+\begin{itemize}
+	\item transition: $birthSex :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleWeightChange(e):
+\begin{itemize}
+	\item transition: $weight :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleWeightUnitChange(e):
+\begin{itemize}
+	\item transition: $weightUnit :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleHeightCmChange(e):
+\begin{itemize}
+	\item transition: $heightCm :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleHeightFeetChange(e):
+\begin{itemize}
+	\item transition: $heightFeet :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleHeightInchesChange(e):
+\begin{itemize}
+	\item transition: $heightInches :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleHeightunitChange(e):
+\begin{itemize}
+	\item transition: $heightUnit:=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleAgeChange(e):
+\begin{itemize}
+	\item transition: $age :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent handleActivityLevelChange(e):
+\begin{itemize}
+	\item transition: $activityLevel :=$ e.target.value
+	\item exception: None
+\end{itemize}
+\noindent getData():
+\begin{itemize}
+	\item transition: Send state variable values to backend, return to Settings 
+	Page
+	\item exception: ($responseData ==$ error) $\Rightarrow$ BadResponseError
+\end{itemize}
+\noindent handleSubmit(e):
+\begin{itemize}
+	\item transition: if state variable(s) empty: $errorMessage :=$ "Please 
+	fill out all fields.", else: getData()
+	\item exception: None
+\end{itemize}
+
 \subsubsection{Local Functions}
 None
 
@@ -353,9 +504,9 @@ None
 
 \section{MIS of Settings Page Module}
 \subsection{Module}
-Upload
+Settings
 \subsection{Uses}
-UploadContainer
+N/A
 \subsection{Syntax}
 \subsubsection{Exported Types}
 Upload = ?
@@ -421,7 +572,7 @@ None
 
 \newpage
 
-\section{Image Upload Module} \label{ImageUpload} 
+\section{MIS of Image Upload Module} \label{ImageUpload} 
 \subsection{Module}
 ImageUpload
 \subsection{Uses}
@@ -482,7 +633,7 @@ getData():
 
 \newpage
 
-\section{Text Upload Module} \label{TextUpload}
+\section{MIS of Text Upload Module} \label{TextUpload}
 \subsection{Module}
 TextUpload
 \subsection{Uses}
@@ -543,7 +694,7 @@ None
 
 \newpage
 
-\section{Voice Upload Module} \label{VoiceUpload} 
+\section{MIS of Voice Upload Module} \label{VoiceUpload} 
 \subsection{Module}
 VoiceUpload
 \subsection{Uses}
@@ -604,7 +755,7 @@ None
 
 \newpage
 
-\section{Navigation Bar Module} \label{Navbar}
+\section{MIS of Navigation Bar Module} \label{Navbar}
 \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
 \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
 \subsection{Module}
