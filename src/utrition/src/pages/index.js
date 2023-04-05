@@ -155,8 +155,6 @@ const Home = () => {
           >
             Get started!
           </Link>
-          
-
       </div>
       <div
         class="right-container"

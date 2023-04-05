@@ -18,6 +18,7 @@
 \usepackage{afterpage}
 \usepackage{enumerate}
 \usepackage[shortlabels]{enumitem}
+\usepackage{adjustbox}
 
 \usepackage[round]{natbib}
 
@@ -156,6 +157,8 @@ Moica, Justina Srebrnjak}
 \midrule
 October 19, 2022 & 1.0 & Initial Version\\
 November 1, 2022 & 1.1 & Migrated Additional Requirements from Hazard Analysis\\
+March 14, 2023 & 1.2 & Updated NFR/FR with testing considerations\\
+March 31, 2023 & 2.0 & Updated with profile and BMI elements, Removed some NFRs\\
 \bottomrule
 \end{tabularx}
 
@@ -345,7 +348,7 @@ As we wish to make Utrition as accurate as possible when identifying food, the a
 	\textbf{symbol} & \textbf{description}\\
 	\midrule 
 	A & Assumption\\
-	API & Application programming interface\\
+	API & Application Programming Interface\\
 	App & Application\\
 	CP & Cultural and Political Requirement\\
 	FR & Functional Requirement\\
@@ -360,7 +363,7 @@ As we wish to make Utrition as accurate as possible when identifying food, the a
 	UH & Usability and Humanity Requirement\\
 	UI & User Interface\\
 	ULC & Unlikely Change\\
-	\bottomrule
+	Standard image types & These are image files of extensions which include .png, .jpg, .jpeg. \\
 \end{tabular}\\
 
 \subsection{Relevant Facts and Assumptions } 
@@ -413,6 +416,10 @@ Past nutritional data retrieved       & User mouse input (in) / Nutritional data
 \hline
 Past nutritional data chart displayed & Nutritional data (in) / Chart (out)                              & Past nutritional data is displayed in a graph, showing past searches and nutritional data through various periods of time.                  \\
 \hline
+Profile settings logged & Profile data (in) / Saving of data (out)                              & The user inputted profile data is internally saved and persists after the prrogram has exited.                  \\
+\hline
+BMI related data displayed & Profile data (in) / BMI data (out)                              & The profile data is used to calculate a BMI analysis to be displayed to the user.                  \\
+\hline
 \end{tabular}
 
 \subsubsection{Individual Product Use Cases}
@@ -428,14 +435,14 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \begin{itemize}
     \item [\FillFRNumber] The user must have the ability to upload a digital image of a \textbf{standard image type} to the system.\newline 
     \textbf{Formalization}: $x \in A \mid x = \text{Images}, A = \{\text{\textbf{standard image types}}\}$\newline
-    \textbf{Rationale}: In order for the system to identify the food a user is eating, the user would have to upload an image of their food to the system. The image shall be saved on the user’s device, which can then be selected.\newline
+    \textbf{Rationale}: In order for the system to identify the food a user is eating, the user would have to upload an image of their food to the system. The image shall be saved on the user’s device, which can then be selected. This will allow for the user to have a simple process of uploading an image, instead of manually inputting the details of what they ate.\newline
     \textbf{Priority}: High
 \end{itemize}
 
 \begin{itemize}
     \item [\FillFRNumber] The system will be able to identify the type of food that is captured in an image.\newline 
     \textbf{Formalization}: $\forall x \cdot \exists y \cdot y \in B \mid x = \text{Images}, B = \{\text{food label type}\}$\newline
-    \textbf{Rationale}: In order for the system to return the nutritional content of a food, the system must first identify the food present in an image.\newline
+    \textbf{Rationale}: In order for the system to return the nutritional content of a food, the system must first identify the food present in an image.This will further support the user to have a streamlined experience when uploading an image of the food they ate. \newline
     \textbf{Priority}: High
 \end{itemize}
 
@@ -455,7 +462,7 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \begin{itemize}
 	\item [\FillFRNumber] The system will log the nutritional data of a food.\newline
 	\textbf{Formalization}: $\forall v \cdot \exists z \cdot z \in C \mid v = \text{logged food label}, C = \{\text{nutritional data}\}$\newline
-	\textbf{Rationale}: Nutritional data of a food will be saved for future reference. This system shall be able to fetch previously recorded data for other processes, such as displaying visuals and calculating nutritional summaries.\newline 
+	\textbf{Rationale}: Nutritional data of a food will be saved for future reference. This system shall be able to fetch previously recorded data for other processes, such as displaying visuals and calculating nutritional summaries. This will support the user to be able to see their history and nutritional trends. \newline 
 	\textbf{Priority}: Medium
 \end{itemize}
 
@@ -467,31 +474,31 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 
 \begin{itemize}
 	\item [\FillFRNumber] The system will display the nutritional information of a food to the user. \newline
-	\textbf{Rationale:} Nutritional data of a particular food item shall be displayed on the user interface, so the user can view the nutritional breakdown of the food.\newline
+	\textbf{Rationale:} Nutritional data of a particular food item shall be displayed on the user interface, so the user can view the detailed nutritional breakdown of the food.\newline
 	\textbf{Priority:} High
 \end{itemize}
 
 \begin{itemize}
-	\item [\FillFRNumber] The user must have the ability to upload the text of a food input to the system.\newline 
-	\textbf{Rationale:} Users must be able to access the nutritional data of a food through typing its name.\newline
+	\item [\FillFRNumber] The user must have the ability to upload the text of a food as an input to the system.\newline 
+	\textbf{Rationale:} Users must have the ability to log the nutritional data of a food through typing the food items they ate. This gives users more upload options for their convenience.\newline
 	\textbf{Priority:} High
 \end{itemize}
 
 \begin{itemize}
 	\item [\FillFRNumber] The user must have the ability to upload multiple texts of food inputs to the system.\newline 
-	\textbf{Rationale:} Users must be able to access the nutritional data of multiple foods through typing their name.\newline
+	\textbf{Rationale:} Users must have the ability to log the nutritional data of multiple foods through typing the name of the foods.This allows for a smooth user experience, where multiple foods the user would like to log can be added all at once.\newline
 	\textbf{Priority:} High
 \end{itemize}
 
 \begin{itemize}
 	\item [\FillFRNumber] The user must have the ability to upload a food input by speaking to the system.\newline 
-	\textbf{Rationale:}Users must be able to vocally input the food they want the nutritional data for.\newline
+	\textbf{Rationale:} Users must be able to vocally input the food they want the nutritional data for. The user will have another method to upload food for their convenience.\newline
 	\textbf{Priority:} Medium
 \end{itemize}
 
 \begin{itemize}
 	\item [\FillFRNumber] The user must have the ability to upload multiple food inputs by speaking to the system.\newline 
-	\textbf{Rationale:}Users must be able to vocally input the foods they want the nutritional data for.\newline
+	\textbf{Rationale:} Users must be able to vocally input the foods they want the nutritional data for. This allows users to speak in full, compound sentences as a method of inputting food items to the system. \newline
 	\textbf{Priority:} Medium
 \end{itemize}
 
@@ -502,20 +509,20 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \end{itemize}
 
 \begin{itemize}
-	\item [\FillFRNumber] The user must have the ability to restart their voice upload to the system. \newline
-	\textbf{Rationale:} The system must allow the user to correct their misinputs. \newline
+	\item [\FillFRNumber] The user must have the ability to clear their voice upload from the system. \newline
+	\textbf{Rationale:} The system must allow the user to correct their misinputs for the voice input functionality. This will help take pressure off the user to speak perfectly. \newline
 	\textbf{Priority:} Medium
 \end{itemize}
 
 \begin{itemize}
 	\item [\FillFRNumber] The system will be able to identify the type of food(s) that is captured in a complex sentence. \newline
-	\textbf{Rationale:} The system must be able to decipher the food items in a long-winded sentence. Users should be allowed to use their normal speech or texting abilities to input food items. \newline
+	\textbf{Rationale:} The system must be able to process natural language. This means the system must be able to decipher the food items in a long-winded sentence. Users should be allowed to use their normal speech or texting abilities to input food items. \newline
 	\textbf{Priority:} Medium
 \end{itemize}
 
 \begin{itemize}
 	\item [\FillFRNumber] The user must have the ability to select between uploading food(s) through image, text, or voice. \newline
-	\textbf{Rationale:} The system must allow the user to select what type of input they would like to use. \newline
+	\textbf{Rationale:} The system must allow the user to select what type of input they would like to use. This allows the user to have flexibility for input methods according to their needs. \newline
 	\textbf{Priority:} High
 \end{itemize}
 
@@ -527,19 +534,19 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 
 \begin{itemize}
 	\item [\FillFRNumber] The system will display the user's total calories consumed for the day. \newline
-	\textbf{Rationale:} Users will want to count their calories to ensure they don't go over their daily limit. \newline
+	\textbf{Rationale:} Users will want to count their calories to ensure they don't go over their daily limit. This will encourage users to be mindful about their consumed foods.\newline
 	\textbf{Priority:} Medium
 \end{itemize}
 
 \begin{itemize}
 	\item [\FillFRNumber] The system will display a summary of the foods consumed and their total calories for each of the past 7 days. \newline
-	\textbf{Rationale:} Users will want to count their calories and foods they've eaten to ensure they haven't been having too many cheat days. \newline
+	\textbf{Rationale:} Users will be able to have a more holistic overview of their nutritional state by viewing the breakdown of foods eaten over the week, along with their calories. \newline
 	\textbf{Priority:} Medium
 \end{itemize}
 
 \begin{itemize}
 	\item [\FillFRNumber] The user will be able to access the summary of the foods consumed and their total calories for all days with a food inputted. \newline
-	\textbf{Rationale:}  Users will want to access their calories and foods they've eaten to check if they've been sticking to their diet. \newline
+	\textbf{Rationale:}  Users will want to access and view their calories and foods they've eaten. \newline
 	\textbf{Priority:} Medium
 \end{itemize}
 
@@ -548,6 +555,55 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 	\textbf{Rationale:}  Users will be able to access every page, so their use of Utrition is not restricted. \newline
 	\textbf{Priority:} High
 \end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The user will be able to delete a previously logged food. \newline
+	\textbf{Rationale:}  In the profile page displaying the past foods, the user shall have the flexibility to delete a food that was previously logged. \newline
+	\textbf{Priority:} High
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The user will be able to input profile statistics related to their health and measurements. \newline
+	\textbf{Rationale:}  The user shall have the option to input data related to their health, which will allow for customized BMI related calculations and displays. \newline
+	\textbf{Priority:} High
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The system shall log the user profile data.\newline
+	\textbf{Rationale:}  User profile data will be saved for future reference, and to be used for BMI related functionalities. \newline
+	\textbf{Priority:} High
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The user will be able to modify the profile statistics.\newline
+	\textbf{Rationale:}  Users will have the ability to change their profile statistics in case of the event of a mistake or a change in measurements. \newline
+	\textbf{Priority:} Medium
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The system shall be able to perform BMI related calculations. \newline
+	\textbf{Rationale:}  User profile data will be used for BMI related functionalities, including BMI classification, and the calculation of the recommeded amount of calories to maintain a healthy weight. \newline
+	\textbf{Priority:} High
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The system shall be able to display BMI related conclusions based on the user profile data. \newline
+	\textbf{Rationale:} Users will be able to view their BMI classification, and recommended amount of calories. The system will provide the users with more personal and catered data analysis through the BMI calculations. \newline
+	\textbf{Priority:} High
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The system shall be able to display a graph of user caloric trends. \newline
+	\textbf{Rationale:} Users will be able to see a graphical representation of the calories consumed over time, for another way to visualize their nutritional habits. This can help them reach and stay on track with their nutritional goals. \newline
+	\textbf{Priority:} Medium
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The system shall be verify the user's request to delete a logged food item.  \newline
+	\textbf{Rationale:} In case the user accidentally chooses to delete a logged food item, the system will verify the user's request to ensure it was not done by accident. This prevents unwanted deletions. \newline
+	\textbf{Priority:} High
+\end{itemize}
+
 
 \section{Non-Functional Requirements}
 
@@ -618,98 +674,14 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 	\item Switching between different user interface screens will be quick.\\
 	\textbf{Rationale:} The user should not have to wait to access different parts of the Utrition web application.\\
 	\textbf{Fit Criteria:} The time between the user’s click and displaying the new UI will not exceed 2 seconds.
-	\item Identifying and displaying each food item will be done quickly.\\
-	\textbf{Rationale:} No process should force users to wait extended periods of time.\\
-	\textbf{Fit Criteria:} After uploading a picture, Utrition will always display the identified food item within 10 seconds in a test with multiple images.
-	\item Displaying a food’s nutritional value will be done quickly. \\
-	\textbf{Rationale:} No process should force users to wait extended periods of time. \\
-	\textbf{Fit Criteria:} After identifying the correct food item, Utrition will always display the nutritional facts within 5 seconds in a test with multiple images.
 \end{enumerate}
 
 \subsubsection{Safety-Critical Requirements}
-\begin{enumerate}[start=4,label={PR\arabic*.}]
-	\item Utrition will return an error message when the user uploads an abnormal 
-	image format that is not .png, .jpg, or .jpeg. \\
-	\textbf{Rationale:}  Utrition should not crash by improper user 
-	input. Users should have an opportunity to upload a new file of an appropriate 
-	format.\\	
-	\textbf{Fit Criteria:} Error message should prompt user upon upload of an abnormal 
-	image.
-	
-	\item Utrition will return an error message when the user uploads an image file 
-	that exceeds the maximum size. \\
-	\textbf{Rationale:}  Utrition should not crash by improper user 
-	input. Users should have an opportunity to upload a new file of an appropriate 
-	size.\\	
-	\textbf{Fit Criteria:} Error message should prompt user upon upload of an image 
-	larger than 30MB.
-	
-	\item Utrition will return an error message when the user uploads more than three 
-	images at once. \\
-	\textbf{Rationale:}  Utrition should not crash by improper user 
-	input. Users should have an opportunity to upload three or fewer images to the 
-	system.\\	
-	\textbf{Fit Criteria:} Error message should prompt user upon upload of more than 3 
-	images.
-	
-	\item Utrition will prompt the user if food identification cannot 
-	be completed successfully. The user will be notified on the type of error 
-	that occurs. \\
-	\textbf{Rationale:}  Food identification may fail due to a variety of 
-	reasons, and the user should be notified so they may attempt to find a  
-	workaround for the issue. \\	
-	\textbf{Fit Criteria:} Error message should prompt user upon failure to identify 
-	any food items in the uploaded image.
-	
-	\item Utrition will return an error message if the request to retrieve 
-	nutritional information cannot be completed successfully. \\
-	\textbf{Rationale:}  Information retrieval requests may fail due to a 
-	variety of reasons, and the user should be notified of the reason why the 
-	service could not be completed as expected.\\	
-	\textbf{Fit Criteria:} Error message should prompt user to try again upon failure 
-	to request nutritional info regarding food items in the uploaded image.
-	
-	\item Utrition will return an error message if the nutritional information 
-	of a specific item cannot be found.\\
-	\textbf{Rationale:}  The user should be notified if the nutritional data of 
-	their food item cannot be fetched.\\
-	\textbf{Fit Criteria:} Error message should notify user that the nutritional 
-	information pertaining to their food item does not exist.
-	
-	\item Utrition will return an error message if the user's past nutritional 
-	logs cannot be found.\\
-	\textbf{Rationale:}  The user should be notified if their nutritional data 
-	of past meals cannot be found.\\
-	\textbf{Fit Criteria:} Error message should notify user upon failure to access 
-	user's past nutritional info.
-	
-	\item Utrition will return an error message if the user's past nutritional 
-	logs have been deleted.\\
-	\textbf{Rationale:}  The user should be notified if their nutritional data 
-	of past meals are no longer saved in the system.\\
-	\textbf{Fit Criteria:} Error message should notify user if user's past nutritional 
-	info has been deleted.
-	
-	\item Utrition will prompt the user if past nutritional trends cannot
-	be displayed successfully. The user will be notified on the type of error 
-	that occurs. \\
-	\textbf{Rationale:}  Failure to display past nutritional trends may fail 
-	due to a variety of reasons. The user should be made aware of the issue, 
-	and the underlying cause behind it.\\	
-	\textbf{Fit Criteria:} Error message should prompt user if user's past nutritional 
-	info cannot be depicted on a chart.
-	
-	\item Utrition will prompt the user if their device is not connected to the 
-	internet when attempting to access the system. \\
-	\textbf{Rationale:}  The user should be notified if they are unable to 
-	connect to the system so they may apply a fix to the issue. \\	
-	\textbf{Fit Criteria:} Request will time out after 20 seconds, and user will be 
-	prompted that their device is not connected to the internet.
-\end{enumerate}
+\hspace{1.5cm}N/A
 
 \subsubsection{Precision or Accuracy Requirements}
 
-\begin{enumerate}[start=14,label={PR\arabic*.}]
+\begin{enumerate}[start=2,label={PR\arabic*.}]
 	\item Identifying and displaying each food item will be done correctly. \\
 	\textbf{Rationale:} The web app should provide the user with accurate information. \\
 	\textbf{Fit Criteria:} In a test with multiple images, Utrition will identify and display the correct food with an average accuracy of 70\%.
@@ -719,27 +691,19 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 \end{enumerate}
 
 \subsubsection{Reliability and Availibility Requirements}
-
-\begin{enumerate}[{PR}16. ] 
-	\item Utrition will be available to users at all times.\\
-	\textbf{Rationale:} The user should be able to track their diet whenever they decide to eat. \\
-	\textbf{Fit Criteria:} Since Utrition is a local web app, the user will always be allowed to use Utrition unless their device or internet connection is down.
-\end{enumerate}
+\hspace{1.5cm}N/A
 
 \subsubsection{Robustness or Fault-Tolerance Requirements}
 \hspace{1.5cm}N/A
 
 \subsubsection{Capacity Requirements}
 
-\begin{enumerate}[{PR}17. ] 
-	\item Utrition will allow 3 images to be uploaded as a group.\\
-	\textbf{Rationale:} The user will have to wait too long for the calculated results if more than 3 images are uploaded at once. \\
-	\textbf{Fit Criteria:} The system will not allow more than 3 photos to be uploaded at once.
-\end{enumerate}
+\hspace{1.5cm}N/A
+
 
 \subsubsection{Scalability or Extensibility Requirements}
 
-\begin{enumerate}[{PR}18. ] 
+\begin{enumerate}[{PR}4. ] 
 	\item Utrition will have no limit to the size of the user base for its lifespan. \\
 	\textbf{Rationale:} Utrition should be available to all individuals who are health conscious.\\
 	\textbf{Fit Criteria:} Utrition is a local web app and does not depend on a server.
@@ -747,7 +711,7 @@ Past nutritional data chart displayed & Nutritional data (in) / Chart (out)     
 
 \subsubsection{Longevity Requirements}
 
-\begin{enumerate}[{PR}19. ] 
+\begin{enumerate}[{PR}5. ] 
 	\item Utrition should operate indefinitely once fully developed.\\
 	\textbf{Rationale:} Nutritional food values will never change and people will always want ways to regulate their diet. \\
 	\textbf{Fit Criteria:} Utrition will be available to use on GitHub for an indefinite amount of time.
@@ -880,7 +844,7 @@ Below are open issues concerning the development of Utrition:
 \begin{itemize}
 	\item Depending on the amount of identified food image data our team can obtain, the accuracy of our food detection machine learning model may be low
 	\item Currently, Utrition is planned to saved past user input locally. It is unknown how this will be done. One method such as employing an account and password system for each user is added functionality that may be difficult to implement 
-	\item One functional requirement states that past nutritional values of food will be stored for easy access when the system needs it again. When saving large amounts of nutritional data, processing could become slow for the entire system.
+	\item When saving large amounts of nutritional data to the database, processing could become slow for the entire system.
 \end{itemize}
 
 \subsection{Off-the-Shelf Solutions}
@@ -903,6 +867,27 @@ N/A
 \subsection{Tasks}
 \subsubsection{Project Planning}
 Team members will follow a strict schedule to ensure the completion of Utrition. The team will work in 1 week Sprint cycles where tasks are distributed during the first meeting of the week (Monday at 6:30pm) and all tasks must be finished before that meeting the week after. There is also a scheduled progress meeting half-way through the Sprint (Thursday at 1:30pm) to give an update to the team on each person's progress and discuss any blocking issues. The team will create tasks each week based on the due dates provided in SFWRENG 4G06. This ensures that all deadlines are met.
+
+\subsubsection {Project Requirements Timeline}
+
+The following table outlines the timeline and order in which requirements will be phased in:\\
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+	\toprule {\bf Date} & {\bf Requirements Phased into Development} \\
+	\midrule
+	October 30, 2022 & FR1\\
+	November 7, 2022 & FR2 \\
+	November 20, 2022 & FR3, FR4 \\
+	November 27, 2022 & FR5, FR6 \\
+	January 15, 2023 & FR7, FR8, FR9 \\
+	January 30, 2023 & FR10, FR11, FR12, FR14\\
+	February 6, 2023 & FR13, FR15 \\
+	February 13, 2023 & FR16, FR17, FR18, FR19\\
+	February 20, 2023 & FR20, FR21\\
+	March 6, 2023 & FR22, FR23, FR24 \\
+	March 13, 2023 & FR25, FR26\\
+	\bottomrule
+\end{tabularx}
 
 \subsection{Migration to the New Product}
 N/A
@@ -933,7 +918,7 @@ Utrition will be available to users from GitHub. Inside the repository, the READ
 There is no training needed for users to use Utrition. Any questions regarding usage of the system will be available in the user manual.
 
 \subsection{Waiting Room}
-In this section, requirements for future releases of Utrition are stated from highest to lowest priority. For a more in-depth explanation of each requirement, please refer to section 3 (Stretch Goals) inside the Problem Statement and Goals document.
+In this section, requirements for future releases of Utrition are stated from highest to lowest priority. For a more in-depth explanation of each requirement, please refer to section 3 (Stretch Goals) inside the \href{https://github.com/jeff-rey-wang/utrition/blob/main/docs/ProblemStatementAndGoals/ProblemStatement.pdf}{Problem Statement and Goals}.
 
 \begin{itemize}
 	\item [\FillFRNumber] The system must be accessible online as a website.\newline
@@ -970,7 +955,7 @@ This section has been added to the Volere template and details the likely change
 \noindent \begin{itemize}
 
 \item[\textbf{LC\refstepcounter{lcnum}\thelcnum\label{LC_meaningfulLabel}}:] 
-With respect to A1, the system currently assumes the uploaded pictures will 
+The system currently assumes the uploaded pictures will 
 show individual ingredients. In the future, a more sophisticated computer 
 vision model can be added to differentiate individual ingredients from a meal.
 
@@ -1002,48 +987,51 @@ offline.
 \section{Traceability Matrix}
 This section has been added to the Volere template. The traceability matrix below illustrates the relation between functional and non-functional requirements.
 
+\begin{landscape}
 \begin{table}[H]
 
 \centering
 	\label{Table:A_trace}
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+	\scalebox{0.55}{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
-   &FR1& FR2&FR3&FR4&FR5&FR6&FR7&FR8&FR9\\ \hline
-LF1& & x& & & & & x& x& x \\ \hline
-UH1& & x& & & & & & x& x \\ \hline
-UH2& & & x& & & & x& & x \\ \hline
-UH3& x& x& & & & & x& &  \\ \hline
-UH4& x& x& & & & & x& x& x\\ \hline
-UH5& x& x& & & & & x& x& x\\ \hline
-UH6& x& x& & & & & & x& x\\ \hline
-PR1& & & & & & & x& x& x\\ \hline
-PR2& & & & & & & x& x& x\\ \hline
-PR3& & & & & x& & & x& \\ \hline
-PR4& & & x& x& x& & x& x& \\ \hline
-PR5& & & & & & & & & \\ \hline
-PR6& x& x& x& x& x& & x& x& x\\ \hline
-PR7& & x& & & & & & & \\ \hline
-PR8& & & & & & & & & \\ \hline
-PR9& & & & & & & & &\\ \hline
-OE1& & & & & & & & &\\ \hline
-OE2& & & & & & & & &\\ \hline
-OE3& & & & & & & & &\\ \hline
-MS1& & & x& & x& & & x&\\ \hline
-MS2& & & & & & & & & \\ \hline
-MS3& & & & & & & & &\\ \hline
-SR1& & & & & & & & & \\ \hline
-SR2& x& x& & & & & & & \\ \hline
-SR3& & & & & & x& & & \\ \hline
-CP1& & & & & & & & & \\ \hline
-LR1& & & & & & & & & \\ \hline
-LR2& & & & & & & & & \\ \hline
-LR3& & & & & & & & & \\ \hline
-LR4& & & & & & & & & \\ \hline
-LR5& & x& & & & & x& x& x \\ \hline
+   &FR1& FR2&FR3&FR4&FR5&FR6&FR7&FR8&FR9&FR10&FR11&FR12&FR13&FR14&FR15&FR16&FR17&FR18&FR19&FR20&FR21&FR22&FR23&FR24&FR25&FR26&FR27&FR28\\ \hline
+LF1& & x& & & & & x& x& x &x&x&&&x& &x&x&x&x&x&x&x&x&&x&x&x& \\ \hline
+UH1& & x& & & & & & x& x&&&&&&x&&&&&x&&&&&x&&&x \\ \hline
+UH2& & & x& & & & x& & x &x&x&x&x&x&&&x&x&x&x&&&&&x&x&x&\\ \hline
+UH3& x& x& & & & & x& & &x&x&&&x&x&x&&&&&x&x&&&x&&&\\ \hline
+UH4& x& x& & & & & x& x& x&x&&&x&&x&x&&&&&x&&&&&x&x&x\\ \hline
+UH5& x& x& & & & & x& x& x&x&&&&x&&&&&&x&x&&&&x&&x&\\ \hline
+UH6& x& x& & & & & & x& x&&x&&x&&&&&&x&&&&&x&&&&\\ \hline
+PR1& & & & & & & x& x& x&&&&x&&&&&&&&x&&&&&&&\\ \hline
+PR2& & & & & & & x& x& x&&&&&x&&x&x&&&&&&x&x&x&&x&x\\ \hline
+PR3& & & & & x& & & x& &&&x&&&&&&x&&&&x&&&&&x&x\\ \hline
+PR4& & & x& x& x& & x& x& &&x&x&&&&x&&&&&x&&&x&&&&\\ \hline
+PR5& & & & & & & & &&&&&&&x&&&&&&&x&x&x&& &&x\\ \hline
+PR6& x& x& x& x& x& & x& x& x&&&&&&x&&&&&&x&&&&x&x&x&\\ \hline
+PR7& & x& & & & & & &&&&&&x&&&x&&&&x&&&&&x&&x \\ \hline
+PR8& & & & & & & & & &&&&&&&&&&x&&&&&&&&&\\ \hline
+PR9& & & & & & & & &&&&&&x&&&x&&&&&&&&&&&\\ \hline
+OE1& & & & & & & & &&&&&&&&&&&&&&&&x&&&&\\ \hline
+OE2& & & & & & & & &&&&&&&&&&&x&&&&&&&&x&\\ \hline
+OE3& & & & & & & & &&&&&&&x&&&&&&&x&&&&&&\\ \hline
+MS1& & & x& & x& & & x&&&&&&&x&x&&x&&&&x&&x&&&&x\\ \hline
+MS2& & & & & & & & & &&&&&&x&&&&&&&&&&&&&\\ \hline
+MS3& & & & & & & & &&&&&&&&x&&&&&&&&&&&&\\ \hline
+SR1& & & & & & & & & &&&&&x&&&&&&&&&&&&&&\\ \hline
+SR2& x& x& & & & & & &&&&&&&&&&x&x&&&x&&x&&&& \\ \hline
+SR3& & & & & & x& & &&&x&&&&&x&&&&&&&&&&&& \\ \hline
+CP1& & & & & & & & &&&&&&&&&&&&&&&&&&&& \\ \hline
+LR1& & & & & & & & & &&&&&&&&&&&&&&&&&&&\\ \hline
+LR2& & & & & & & & & &&&&&&&&&&&&&&&&&&&\\ \hline
+LR3& & & & & & & & &&&&&&&&&&&&&&&&&&&& \\ \hline
+LR4& & & & & & & & & &&&&&&&&&&&&&&&&&&&\\ \hline
+LR5& & x& & & & & x& x& x &&&&&&&&&&&&&&&&&&&\\ \hline
 
-\end{tabular}
+\end{tabular}}
 \caption{Traceability Matrix Showing the Connections Between Functional and Non-functional}
 \end{table}
+\end{landscape}
 
 \noindent \plt{The following is not part of the template, just some things to consider
   when filing in the template.}
@@ -1084,12 +1072,6 @@ LR5& & x& & & & & x& x& x \\ \hline
   requirement could be more abstract
 \end{itemize}
 }
-
-\section{Appendix}
-This section has been added to the Volere template.
-\begin{itemize}
-	\item \textbf{Standard image types}: These are image files of extensions which include .png, .jpg, .jpeg.
-\end{itemize}
 
 \subsection{Constants}
 N/A
