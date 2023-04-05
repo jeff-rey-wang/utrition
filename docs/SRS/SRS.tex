@@ -158,7 +158,7 @@ Moica, Justina Srebrnjak}
 October 19, 2022 & 1.0 & Initial Version\\
 November 1, 2022 & 1.1 & Migrated Additional Requirements from Hazard Analysis\\
 March 14, 2023 & 1.2 & Updated NFR/FR with testing considerations\\
-March 31, 2023 & 2.0 & Updated with profile and BMI elements\\
+March 31, 2023 & 2.0 & Updated with profile and BMI elements, Removed some NFRs\\
 \bottomrule
 \end{tabularx}
 
@@ -592,6 +592,18 @@ BMI related data displayed & Profile data (in) / BMI data (out)                 
 	\textbf{Priority:} High
 \end{itemize}
 
+\begin{itemize}
+	\item [\FillFRNumber] The system shall be able to display a graph of user caloric trends. \newline
+	\textbf{Rationale:} Users will be able to see a graphical representation of the calories consumed over time, for another way to visualize their nutritional habits. This can help them reach and stay on track with their nutritional goals. \newline
+	\textbf{Priority:} Medium
+\end{itemize}
+
+\begin{itemize}
+	\item [\FillFRNumber] The system shall be verify the user's request to delete a logged food item.  \newline
+	\textbf{Rationale:} In case the user accidentally chooses to delete a logged food item, the system will verify the user's request to ensure it was not done by accident. This prevents unwanted deletions. \newline
+	\textbf{Priority:} High
+\end{itemize}
+
 
 \section{Non-Functional Requirements}
 
@@ -662,15 +674,10 @@ BMI related data displayed & Profile data (in) / BMI data (out)                 
 	\item Switching between different user interface screens will be quick.\\
 	\textbf{Rationale:} The user should not have to wait to access different parts of the Utrition web application.\\
 	\textbf{Fit Criteria:} The time between the user’s click and displaying the new UI will not exceed 2 seconds.
-	\item Identifying and displaying each food item will be done quickly.\\
-	\textbf{Rationale:} No process should force users to wait extended periods of time.\\
-	\textbf{Fit Criteria:} After uploading a picture, Utrition will always display the identified food item within 10 seconds in a test with multiple images.
-	\item Displaying a food’s nutritional value will be done quickly. \\
-	\textbf{Rationale:} No process should force users to wait extended periods of time. \\
-	\textbf{Fit Criteria:} After identifying the correct food item, Utrition will always display the nutritional facts within 5 seconds in a test with multiple images.
 \end{enumerate}
 
 \subsubsection{Safety-Critical Requirements}
+
 \begin{enumerate}[start=4,label={PR\arabic*.}]
 	\item Utrition will return an error message when the user uploads an abnormal 
 	image format that is not .png, .jpg, or .jpeg. \\
@@ -749,9 +756,10 @@ BMI related data displayed & Profile data (in) / BMI data (out)                 
 	prompted that their device is not connected to the internet.
 \end{enumerate}
 
+
 \subsubsection{Precision or Accuracy Requirements}
 
-\begin{enumerate}[start=14,label={PR\arabic*.}]
+\begin{enumerate}[start=2,label={PR\arabic*.}]
 	\item Identifying and displaying each food item will be done correctly. \\
 	\textbf{Rationale:} The web app should provide the user with accurate information. \\
 	\textbf{Fit Criteria:} In a test with multiple images, Utrition will identify and display the correct food with an average accuracy of 70\%.
@@ -761,12 +769,7 @@ BMI related data displayed & Profile data (in) / BMI data (out)                 
 \end{enumerate}
 
 \subsubsection{Reliability and Availibility Requirements}
-
-\begin{enumerate}[{PR}16. ] 
-	\item Utrition will be available to users at all times.\\
-	\textbf{Rationale:} The user should be able to track their diet whenever they decide to eat. \\
-	\textbf{Fit Criteria:} Since Utrition is a local web app, the user will always be allowed to use Utrition unless their device or internet connection is down.
-\end{enumerate}
+\hspace{1.5cm}N/A
 
 \subsubsection{Robustness or Fault-Tolerance Requirements}
 \hspace{1.5cm}N/A
@@ -781,7 +784,7 @@ BMI related data displayed & Profile data (in) / BMI data (out)                 
 
 \subsubsection{Scalability or Extensibility Requirements}
 
-\begin{enumerate}[{PR}18. ] 
+\begin{enumerate}[{PR}4. ] 
 	\item Utrition will have no limit to the size of the user base for its lifespan. \\
 	\textbf{Rationale:} Utrition should be available to all individuals who are health conscious.\\
 	\textbf{Fit Criteria:} Utrition is a local web app and does not depend on a server.
@@ -789,7 +792,7 @@ BMI related data displayed & Profile data (in) / BMI data (out)                 
 
 \subsubsection{Longevity Requirements}
 
-\begin{enumerate}[{PR}19. ] 
+\begin{enumerate}[{PR}5. ] 
 	\item Utrition should operate indefinitely once fully developed.\\
 	\textbf{Rationale:} Nutritional food values will never change and people will always want ways to regulate their diet. \\
 	\textbf{Fit Criteria:} Utrition will be available to use on GitHub for an indefinite amount of time.
@@ -1069,6 +1072,7 @@ This section has been added to the Volere template. The traceability matrix belo
 \centering
 	\label{Table:A_trace}
 	\scalebox{0.55}{
+
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
    &FR1& FR2&FR3&FR4&FR5&FR6&FR7&FR8&FR9&FR10&FR11&FR12&FR13&FR14&FR15&FR16&FR17&FR18&FR19&FR20&FR21&FR22&FR23&FR24&FR25&FR26\\ \hline

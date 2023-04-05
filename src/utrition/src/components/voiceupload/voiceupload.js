@@ -24,12 +24,14 @@ const VoiceUpload = () => {
     }
   }, [])
 
+  // Define a function to reset the speech-to-text results and response data
   function reset() {
     results.splice(0, results.length);
     setResponseData("");
     forceSoftReset(!softReset);
   };
 
+  // Define a function to submit the voice input and retrieve food data
   function voice_submit() {
     var transcript = "";
     results.map((result) => (transcript += " " + result.transcript));
@@ -82,6 +84,7 @@ const VoiceUpload = () => {
         {isRecording ? "❌ Stop Talking" : "📣 Start Talking"}
       </button>
       <ul>
+        {/* Display the interim and final speech-to-text results */}
         {results.map((result) => (
           <li key={result.timestamp}>{result.transcript}</li>
         ))}
