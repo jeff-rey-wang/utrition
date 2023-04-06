@@ -192,7 +192,7 @@ Users will not try to purposefully edit the site path to a nonexistent page.
 \subsubsection{Access Routine Semantics}
 App():
 \begin{itemize}
-	\item transition: $path := "/"$
+	\item transition: $path := ``/"$
 	\item output: $out := self$
 	\item exception: None
 \end{itemize}
@@ -492,7 +492,7 @@ None
 \end{itemize}
 \noindent handleSubmit(e):
 \begin{itemize}
-	\item transition: if state variable(s) empty: $errorMessage :=$ "Please 
+	\item transition: if state variable(s) empty: $errorMessage :=$ ``Please 
 	fill out all fields.", else: getData()
 	\item exception: None
 \end{itemize}
@@ -624,7 +624,7 @@ The input file is of an appropriate type and not empty. The backend of Utrition 
 \subsubsection{Access Routine Semantics}
 ImageUpload():
 \begin{itemize}
-	\item transition: $image, responseData := "", ""$
+	\item transition: $image, responseData := ``", ``"$
 	\item output: $out := self$
 	\item exception: None
 \end{itemize}
@@ -686,7 +686,7 @@ None
 \subsubsection{Access Routine Semantics}
 \noindent TextUpload():
 \begin{itemize}
-	\item transition: $foodDesc, responseData := $ "", ""
+	\item transition: $foodDesc, responseData := $ ``", ``"
 	\item output: $out := self$ 
 	\item exception: None
 \end{itemize}
@@ -747,7 +747,7 @@ None
 \subsubsection{Access Routine Semantics}
 \noindent VoiceUpload():
 \begin{itemize}
-	\item transition: $detectSpeech, responseData :=$ "", ""
+	\item transition: $detectSpeech, responseData :=$ ``", ``"
 	\item output: $out := self$ 
 	\item exception: None
 \end{itemize}
@@ -813,7 +813,7 @@ Users will not try to purposefully change the paths for each button.
 \end{itemize}
 \noindent changePage():
 \begin{itemize}
-	\item transition: $path :=$ "/" $\lor$ "/profile" $\lor$ "/upload" 
+	\item transition: $path :=$ ``/" $\lor$ ``/profile" $\lor$ ``/upload" 
 	\item exception: None
 \end{itemize}
 \subsubsection{Local Functions}
@@ -1057,13 +1057,13 @@ None
 \end{itemize}
 \noindent toMetricWeight(weight, weightUnit):
 \begin{itemize}
-	\item out: if $weightUnit == $"lbs", $:= weight \times 0.45359237$; else 
+	\item out: if $weightUnit == $``lbs", $:= weight \times 0.45359237$; else 
 	$:= weight$
 	\item exception: None
 \end{itemize}
 \noindent toMetricHeight(heightCm, heightFT, heightInches, heightUnit):
 \begin{itemize}
-	\item out: out: if $heightUnit == $"ft", $:= heightFt \times 30.48 + 
+	\item out: out: if $heightUnit == $``ft", $:= heightFt \times 30.48 + 
 	heightInches \times 2.54$; else $:= heightCm$
 	\item exception: None
 \end{itemize}
